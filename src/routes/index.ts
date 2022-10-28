@@ -1,4 +1,4 @@
-export const routes = {
-  home: '/',
-  startProccess: '/inicio-solicitud',
-};
+export const routes ={
+    home:"/",
+    login:"/login",
+}
