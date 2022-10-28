@@ -56,8 +56,6 @@ export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
    * @default false
    */
   autofocus?: true | false;
-
-  disabled?: true | false;
 }
 
 export function Input({
@@ -69,20 +67,19 @@ export function Input({
   startIcon,
   endIcon,
   autofocus = false,
-  disabled = false,
   ...props
 }: InputProps) {
   const labelStyles = `
   peer-placeholder-shown:z-[-1] peer-focus:z-0 z-0
 
-  peer-placeholder-shown:text-azul_gris-90 absolute text-sm
+  peer-placeholder-shown:text-complementario-90 absolute text-sm
 
-  ${error ? 'text-rojo-100' : 'text-azul_gris-100 '}
+  ${error ? 'text-rojo-100' : 'text-complementario-100 '}
 
   duration-300 transform -translate-y-4 scale-75 top-2
   origin-[0] bg-white px-2 peer-focus:px-2
 
-  ${error ? 'peer-focus:text-rojo-100 ' : 'peer-focus:text-azul_gris-100 '}
+  ${error ? 'peer-focus:text-rojo-100 ' : 'peer-focus:text-complementario-100 '}
 
   peer-placeholder-shown:scale-100
   peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-6
@@ -105,12 +102,12 @@ export function Input({
       <div className="relative z-0 w-full">
         {startIcon && (
           <i
-            className={`top-[16px] ml-2 absolute before:font-black leading-4 text-[16px] ${startIcon} text-azul_gris-50`}
+            className={`top-[16px] ml-2 absolute before:font-black leading-4 text-[16px] ${startIcon} text-complementario-50`}
           ></i>
         )}
         {endIcon && (
           <i
-            className={`top-[16px] right-0 mr-2 absolute before:font-black leading-4 text-[16px] ${endIcon} text-azul_gris-50`}
+            className={`top-[16px] right-0 mr-2 absolute before:font-black leading-4 text-[16px] ${endIcon} text-complementario-50`}
           ></i>
         )}
         <input
@@ -119,7 +116,6 @@ export function Input({
           className={`${inputStyles} ${classNameInput}`}
           placeholder=" "
           autoFocus={autofocus}
-          disabled={disabled}
           onWheelCapture={(e) => {
             const target = e.target as HTMLInputElement;
             if (target.hasAttribute('type') && target.getAttribute('type') === 'number') {

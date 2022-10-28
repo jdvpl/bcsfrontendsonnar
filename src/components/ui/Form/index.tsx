@@ -116,7 +116,6 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
             </p>
             <div className="w-full mt-3">
               <Select
-                label="Tipo de documento"
                 onChange={(e: any) => setValue('document_type', e.target.value)}
                 placeholder="Tipo de documento"
                 control={control}
@@ -224,7 +223,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
               </span>
             </label>
           </div>
-          <div className="flex items-start  mt-4">
+          <div className="flex items-start mt-4">
             <input
               {...register('commercial_terms')}
               className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"
