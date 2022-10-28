@@ -12,7 +12,7 @@ interface selectProps {
    * @type string
    * @default 'body'
    */
-  children: ReactNode;
+  children?: ReactNode;
   /**
    *
    * @type string

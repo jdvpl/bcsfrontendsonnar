@@ -1,5 +1,5 @@
 import React, { ClipboardEvent, KeyboardEvent, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import Button from '../Button';
 import Politicas from '../../commons/Politicas';
 import CommercialAuthorization from '../../commons/CommercialAuthorization';
@@ -15,6 +15,7 @@ interface FormProps {
 export interface FormData {
   document_number: string;
   document_type: string;
+  advisory: string;
   policy_and_terms: number;
   commercial_terms: number;
 }
@@ -118,21 +119,59 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
                 label="Tipo de documento"
                 onChange={(e: any) => setValue('document_type', e.target.value)}
                 placeholder="Tipo de documento"
+                control={control}
+                error={!!errors.document_type}
               >
                 <option value="CC"> Cédula de ciudadanía</option>
                 <option value="CE"> Cédula de extranjería</option>
               </Select>
             </div>
           </div>
-          <div className="flex flex-col mt-4 md:mt-[16px] lg:mt-[24px]">
-            <Input label="Número de documento" disabled={!!disabledInput} />
+          <div className="flex flex-col mt-4">
+            <Controller
+              rules={{ required: true, minLength: 5, maxLength: 10 }}
+              render={({ field }) => {
+                return (
+                  <Input
+                    type="number"
+                    error={!!errors.document_number}
+                    onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                      e.preventDefault();
+                    }}
+                    value={field.value || ''}
+                    tabIndex={0}
+                    id="document_number"
+                    inputMode="numeric"
+                    maxLength={10}
+                    required
+                    label="Número de documento"
+                    disabled={!!disabledInput}
+                    onChange={(e: any) => {
+                      if (field.value?.length === 10 && !!e.nativeEvent.data) {
+                        setError('document_number', {
+                          type: 'manual',
+                          message: 'Máximo 10 caracteres permitidos',
+                        });
+                        e.preventDefault();
+                        return;
+                      }
+                      if (field.value?.length === 9) {
+                        setError('document_number', {
+                          type: 'manual',
+                          message: undefined,
+                        });
+                      }
+                      field.onChange(e.target.value.replace(/[^0-9]/g, ''));
+                    }}
+                  />
+                );
+              }}
+              name="document_number"
+              control={control}
+            />
           </div>
         </div>
-        <div className="w-full mt-4">
-          <Select label="Recibio asesoria" placeholder="Recibio asesoria">
-            <option value="1">Inmobiliaria</option>
-          </Select>
-        </div>
+
         <div className="mt-[28px] md:mt-[24px] lg:mt-[32px] ml-1 text-xs mb-[32px]">
           <div className="flex items-start ">
             <input
@@ -185,7 +224,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
               </span>
             </label>
           </div>
-          <div className="flex items-start  mt-[10px] md:mt-[12px] lg:mt-[16px]">
+          <div className="flex items-start  mt-4">
             <input
               {...register('commercial_terms')}
               className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"
@@ -246,6 +285,11 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
               compont={componentModal}
             />
           )}
+        </div>
+        <div className="w-full my-4">
+          <Select label="Recibio asesoria" placeholder="Recibio asesoria">
+            <option value="1">Inmobiliaria</option>
+          </Select>
         </div>
         <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 ">
           <Button

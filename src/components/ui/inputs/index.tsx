@@ -120,6 +120,12 @@ export function Input({
           placeholder=" "
           autoFocus={autofocus}
           disabled={disabled}
+          onWheelCapture={(e) => {
+            const target = e.target as HTMLInputElement;
+            if (target.hasAttribute('type') && target.getAttribute('type') === 'number') {
+              target.blur();
+            }
+          }}
         />
         <label htmlFor="floating_text" className={labelStyles}>
           {label}

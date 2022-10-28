@@ -243,3 +243,7 @@
   border-radius: 50%;
   background: #005491;
 }
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
