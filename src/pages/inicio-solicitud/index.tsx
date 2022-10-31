@@ -1,15 +1,17 @@
-import { Welcome } from '../../components/layouts';
 import { FormData, RegisterForm } from '../../components/ui';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { SssionStorageKeys } from '../../session';
 import { useState } from 'react';
+import LogoBcs from '../../components/svg/LogoBcs';
 
 const InicioSolicitud = () => {
   const dataReg = {
     document_number: '',
-    document_type: '1',
+    document_type: '',
     policy_and_terms: 'false',
     commercial_terms: 'false',
+    advisory_option: 'false',
+    advisory: '',
   };
   const [dataUser, setDataUser] = useSessionStorage(
     SssionStorageKeys.dataUser.key,
@@ -22,8 +24,11 @@ const InicioSolicitud = () => {
 
   return (
     <>
+      <div className="container flex lg:mt-[0] sm:w-[343px] md:w-[528px] lg:w-[1100px] pt-5">
+        <LogoBcs />
+      </div>
       <div className="flex justify-center ">
-        <div className="flex md:px-0 lg:mt-[0] md:mt-[93px]  md:w-[343px] md:max-w-[343px]  lg:w-[448px] lg:max-w-[448px]  lg:py-9 lg:px-[16px]">
+        <div className="mt-[1rem] sm:w-[343px] md:w-[528px] lg:w-[684px]">
           <RegisterForm
             onSubmit={(formData: FormData) => onSubmit(formData)}
             defaultValues={{

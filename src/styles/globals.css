@@ -280,7 +280,7 @@
   background: #005491;
 }
 input[type='number'] {
-  -moz-appearance: textfield;
+  -moz-appearance: textfield !important;
 }
 
 .border-text-area {

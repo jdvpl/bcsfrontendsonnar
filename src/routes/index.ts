@@ -3,4 +3,5 @@ export const routes = {
   startProccess: '/inicio-solicitud',
   ratings: 'calificacion-solicitud',
   otp: 'validacion-otp',
+  validacionIdentidad: '/validacion-identidad',
 };
