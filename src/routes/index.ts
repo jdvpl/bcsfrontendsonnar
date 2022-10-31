@@ -1,4 +1,5 @@
-export const routes ={
-    home:"/",
-    login:"/login",
-}
+export const routes = {
+  home: '/',
+  startProccess: '/inicio-solicitud',
+  validacionIdentidad: '/validacion-identidad',
+};

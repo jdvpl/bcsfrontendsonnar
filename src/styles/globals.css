@@ -1,4 +1,249 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'bcs';
+  src: url('./font/bcs.woff?76682285') format('woff');
+  font-style: normal;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
+
+/* icons */
+
+[class^='bcs-']:before,
+[class*=' bcs-']:before {
+  font-family: 'bcs';
+  font-style: normal;
+
+  display: inline-block;
+  text-decoration: inherit;
+  width: auto;
+  margin-right: 0.2em;
+  text-align: center;
+  /* opacity: .8; */
+
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: 0.2em;
+
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+.bcs-arrow-one-down:before {
+  content: '\e800';
+} /* '' */
+.bcs-arrow-one-left:before {
+  content: '\e801';
+} /* '' */
+.bcs-arrow-one-up:before {
+  content: '\e802';
+} /* '' */
+.bcs-arrow-one-right:before {
+  content: '\e803';
+} /* '' */
+.bcs-arrow-two-down:before {
+  content: '\e804';
+} /* '' */
+.bcs-arrow-two-left:before {
+  content: '\e805';
+} /* '' */
+.bcs-arrow-two-right:before {
+  content: '\e806';
+} /* '' */
+.bcs-arrow-two-up:before {
+  content: '\e807';
+} /* '' */
+.bcs-eye-hide:before {
+  content: '\e808';
+} /* '' */
+.bcs-eye-show:before {
+  content: '\e809';
+} /* '' */
+.bcs-badge:before {
+  content: '\e811';
+} /* '' */
+.bcs-calendar-day:before {
+  content: '\e812';
+} /* '' */
+.bcs-calendar-ok:before {
+  content: '\e813';
+} /* '' */
+.bcs-charts:before {
+  content: '\e814';
+} /* '' */
+.bcs-clock:before {
+  content: '\e815';
+} /* '' */
+.bcs-document-id:before {
+  content: '\e816';
+} /* '' */
+.bcs-document:before {
+  content: '\e817';
+} /* '' */
+.bcs-edit-calendar:before {
+  content: '\e818';
+} /* '' */
+.bcs-hand-money:before {
+  content: '\e819';
+} /* '' */
+.bcs-location:before {
+  content: '\e820';
+} /* '' */
+.bcs-money:before {
+  content: '\e821';
+} /* '' */
+.bcs-push:before {
+  content: '\e822';
+} /* '' */
+.bcs-search:before {
+  content: '\e823';
+} /* '' */
+.bcs-tooltip_info:before {
+  content: '\e824';
+} /* '' */
+.bcs-camera:before {
+  content: '\e825';
+} /* '' */
+.bcs-home:before {
+  content: '\e826';
+} /* '' */
+.bcs-email:before {
+  content: '\e827';
+} /* '' */
+.bcs-check:before {
+  content: '\e828';
+} /* '' */
+.bcs-close:before {
+  content: '\e829';
+} /* '' */
+.bcs-id-hand:before {
+  content: '\e830';
+} /* '' */
+.bcs-star:before {
+  content: '\e831';
+} /* '' */
+.bcs-add:before {
+  content: '\e832';
+} /* '' */
+.bcs-pen-edit:before {
+  content: '\e833';
+} /* '' */
+.bcs-plus-circle:before {
+  content: '\e834';
+} /* '' */
+.bcs-subt:before {
+  content: '\e835';
+} /* '' */
+.bcs-chat-adviser:before {
+  content: '\e836';
+} /* '' */
+.bcs-chat-edit:before {
+  content: '\e837';
+} /* '' */
+.bcs-lock-edit:before {
+  content: '\e838';
+} /* '' */
+.bcs-check-1:before {
+  content: '\e839';
+} /* '' */
+.bcs-error-1:before {
+  content: '\e840';
+} /* '' */
+.bcs-information:before {
+  content: '\e841';
+} /* '' */
+.bcs-advertising:before {
+  content: '\e842';
+} /* '' */
+.bcs-alert:before {
+  content: '\e843';
+} /* '' */
+.bcs-success:before {
+  content: '\e844';
+} /* '' */
+.bcs-check-box-one-hide:before {
+  content: '\e845';
+} /* '' */
+.bcs-check-box-one-show:before {
+  content: '\e846';
+} /* '' */
+.bcs-radio-buttom-hide:before {
+  content: '\e847';
+} /* '' */
+.bcs-radio-buttom-show:before {
+  content: '\e848';
+} /* '' */
+.bcs-bulding:before {
+  content: '\e849';
+} /* '' */
+.bcs-user-heart:before {
+  content: '\e850';
+} /* '' */
+.bcs-phone:before {
+  content: '\e852';
+} /* '' */
+.bcs-adge-money:before {
+  content: '󨀐';
+} /* '\e8010' */
+
+.showActiveCard input ~ span div:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  top: 7px;
+  left: 7px;
+  border-radius: 50%;
+  background: #005491;
+}
+
+.showActiveCard .card-shipping {
+  border: 0.0625rem solid #005390 !important;
+  background-color: #f3f4f6 !important;
+}
+.hover\:border-primario-400:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(0 83 144 / var(--tw-border-opacity));
+}
+.showActiveCard.card-shipping {
+  border: 0.0625rem solid #005390;
+  background-color: #f3f4f6;
+}
+
+.showActiveCard .icon-shipping {
+  background-color: #ffffff;
+}
+
+.showActiveCard input ~ span:after {
+  content: '';
+  position: absolute;
+  display: block !important;
+  width: 1rem;
+  height: 1rem;
+  top: 7px;
+  left: 7px;
+  border-radius: 50%;
+  background: #005491;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield !important;
+}
