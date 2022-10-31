@@ -1,7 +1,4 @@
-import React from 'react';
-
 import * as CryptoJS from 'crypto-js';
-
 export default function useAES() {
   const encriptPass = (password: string, key: string) => {
     return CryptoJS.AES.encrypt(password, key).toString();
