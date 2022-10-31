@@ -8,12 +8,12 @@ export const CardOption = ({ option, actualOption, onChangeActualOption, key }: 
       <input type="radio" className="hidden" value={option?.value} />
       <label
         className={`text-left flex flex-col min-h-[52px] px-[10px] py-[8px] mb-3 bg-white 
-          cursor-pointer  w-full  rounded-md 
+          cursor-pointer w-full rounded-md 
           border border-complementario-80 focus:shadow-none focus:border-primario-600
-           focus:text-primario-600 hover:border-complementario-40 text-black  
-           shadow-small-300 font-semibold ${
+        focus:text-primario-600 hover:border-complementario-40 text-black  
+           shadow-small-300 font-normal ${
              option?.id === actualOption?.id &&
-             'text-primario-600 border-complementario-40 border-primario-600'
+             'text-primario-600 border-primario-600 shadow-primario-300/50 shadow-md'
            }`}
       >
         <span className="hidden" />

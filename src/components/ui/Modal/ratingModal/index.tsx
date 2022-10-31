@@ -19,7 +19,8 @@ export const RatingModal = () => {
       <div
         className={`${
           isOpen ? 'slideInUp' : 'slideOutDown'
-        } p-5 rounded-xl h-fit shadow-lg relative flex flex-col w-full sm:w-[375px] md:w-[528px] lg:w-[684px] bg-white outline-none focus:outline-none`}
+        } p-5 sm:rounded-xl h-fit rounded-none sm:h-fit shadow-lg relative flex flex-col
+        w-full sm:w-[375px] md:w-[528px] lg:w-[528px] bg-white outline-none focus:outline-none sm:my-[5vh]`}
       >
         <div onClick={onOpenModal} className="cursor-pointer text-end">
           <Icons icon="bcs-close" size="text-primario-500 text-end font-bold" />

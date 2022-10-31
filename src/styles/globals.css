@@ -313,8 +313,8 @@ input[type='number'] {
     visibility: visible;
   }
   100% {
-    -webkit-transform: translateY(5vh);
-    transform: translateY(5vh);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
   }
 }
 @keyframes slideInUp {
@@ -324,8 +324,8 @@ input[type='number'] {
     visibility: visible;
   }
   100% {
-    -webkit-transform: translateY(5vh);
-    transform: translateY(5vh);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
   }
 }
 
@@ -389,6 +389,31 @@ input[type='number'] {
   100% {
     opacity: 0;
     display: none;
+  }
+}
+
+@media (max-width: 375px) {
+  @-webkit-keyframes slideInUp {
+    0% {
+      -webkit-transform: translateY(100%);
+      transform: translateY(100%);
+      visibility: visible;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+  @keyframes slideInUp {
+    0% {
+      -webkit-transform: translateY(100%);
+      transform: translateY(100%);
+      visibility: visible;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
   }
 }
 /* End Animations */

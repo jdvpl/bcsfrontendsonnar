@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { PARSE_SCORE, RatingsOptions, RATING_OPTIONS } from '../../../../lib/rating';
+import {
+  PARSE_SCORE,
+  RatingsOptions,
+  RATING_OPTIONS,
+  RATING_OPTIONS_BETTER,
+} from '../../../../lib/rating';
 import { Qualify } from '../../../custom/qualify';
 import Button from '../../Button';
 import { CardOption } from '../../Card/OptionCard';
@@ -21,7 +26,7 @@ export const RateForm = () => {
     <div className="w-full flex flex-col items-center justify-center">
       <div className="w-[348px] lg:w-[500px]">
         <h4 className="font-semibold text-center md:text-[28px] md:leading-[30px] ">
-          ¿Cómo califica su experiencia solicitando su credito?
+          ¿Cómo califica su experiencia adquiriendo el préstamo?
         </h4>
       </div>
       <div className="mt-[16px] w-full md:w-[343px]">
@@ -56,23 +61,23 @@ export const RateForm = () => {
                     ))}
                   </>
                 ) : (
-                  <div
-                    className="text-left block items-center border-color-none bg-white ring-complementario-60 cursor-pointer w-full  font-normal rounded-md px-5 pt-[8px] 
-                    pb-[12px] text-gris-100 mb-3 shadow-small-300 hover:outline-none
-                     hover:border-primario-400 hover:ring-[2px] hover:ring-complementario-60"
-                  >
-                    <TextArea
-                      maxLength={60}
-                      description="Máximo 60 carácteres permitidos"
-                    />
-                  </div>
+                  <>
+                    {RATING_OPTIONS_BETTER?.map((option) => (
+                      <CardOption
+                        key={option.id}
+                        option={option}
+                        actualOption={actualOption}
+                        onChangeActualOption={onChangeActualOption}
+                      />
+                    ))}
+                  </>
                 )}
               </>
             )}
           </div>
         </div>
       </div>
-      <Button disabled={rate < 0}>Continuar</Button>
+      <Button disabled={rate < 0}>Enviar calificación</Button>
     </div>
   );
 };

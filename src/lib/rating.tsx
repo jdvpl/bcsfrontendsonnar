@@ -27,11 +27,35 @@ export const RATING_OPTIONS: RatingsOptions[] = [
   },
   {
     id: '3',
-    value: 'Faltó acompañamiento',
+    value: 'No entendí qué debía hacer',
   },
   {
     id: '4',
-    value: 'No entendí qué debía hacer ',
+    value: 'Faltó acompañamiento',
+  },
+  {
+    id: '5',
+    value: 'Otro',
+  },
+];
+
+
+export const RATING_OPTIONS_BETTER: RatingsOptions[] = [
+  {
+    id: '1',
+    value: 'Tiempo de proceso',
+  },
+  {
+    id: '2',
+    value: 'Seguridad',
+  },
+  {
+    id: '6',
+    value: 'Tener un canal de acompañamiento',
+  },
+  {
+    id: '3',
+    value: 'Lenguaje',
   },
   {
     id: '5',
