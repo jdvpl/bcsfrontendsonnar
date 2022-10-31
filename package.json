@@ -12,6 +12,10 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.10.3",
+    "@mui/material": "^5.10.10",
+    "@mui/styled-engine-sc": "^5.10.1",
+    "@mui/styles": "^5.10.10",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "crypto-js": "^4.1.1",
@@ -27,6 +31,7 @@
   },
   "devDependencies": {
     "@testing-library/user-event": "^14.4.3",
+    "@types/crypto-js": "^4.1.1",
     "@types/node": "^18.7.18",
     "@types/react": "^18.0.20",
     "@types/react-pdf": "^5.7.3",
