@@ -5,9 +5,10 @@ import { Star } from '../../ui/icons/star';
 interface QualifyProps {
   rate: number;
   changeRate: (index: number) => void;
+  isEditable?: boolean;
 }
 
-export const Qualify = ({ rate, changeRate }: QualifyProps) => {
+export const Qualify = ({ rate, changeRate, isEditable = true }: QualifyProps) => {
   const rating = new Array(5).fill(0);
   const [tempRating, setTempRating] = useState<number>(-1);
   return (
@@ -15,10 +16,10 @@ export const Qualify = ({ rate, changeRate }: QualifyProps) => {
       {rating.map((_, index) => (
         <div
           key={'rating' + index}
-          onClick={() => changeRate(index)}
+          onClick={() => isEditable && changeRate(index)}
           className="cursor-pointer"
-          onMouseEnter={() => setTempRating(index)}
-          onMouseLeave={() => setTempRating(-1)}
+          onMouseEnter={() => isEditable && setTempRating(index)}
+          onMouseLeave={() => isEditable && setTempRating(-1)}
         >
           <Star
             key={`star ${index}`}
