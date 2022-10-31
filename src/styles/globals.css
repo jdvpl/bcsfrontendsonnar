@@ -10,6 +10,47 @@
 @tailwind utilities;
 @tailwind variants;
 
+/* Typography */
+@layer base {
+  h1 {
+    @apply text-[32px] leading-[34px] text-primario-900 font-bold tracking-[0.001px];
+  }
+
+  h2 {
+    @apply text-[28px] leading-[30px] text-primario-900 font-bold tracking-[0.001px];
+  }
+
+  h3 {
+    @apply text-[24px] leading-[26px] text-primario-900 font-semibold tracking-[0.001px];
+  }
+
+  h4 {
+    @apply text-[20px] leading-[22px] text-primario-900 font-semibold tracking-[0.001px];
+  }
+
+  p {
+    @apply text-primario-900 tracking-[0.001px];
+  }
+
+  span {
+    @apply tracking-[0.001px];
+  }
+
+  select {
+    @apply text-primario-900 font-light text-base;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  input {
+    @apply text-lg leading-[20px];
+  }
+
+  option {
+    @apply py-3;
+  }
+}
+
 /* icons */
 
 [class^='bcs-']:before,
@@ -45,7 +86,6 @@
   /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
-
 .bcs-arrow-one-down:before {
   content: '\e800';
 } /* '' */
@@ -202,7 +242,6 @@
 .bcs-adge-money:before {
   content: '󨀐';
 } /* '\e8010' */
-
 .showActiveCard input ~ span div:after {
   content: '';
   position: absolute;
@@ -214,7 +253,6 @@
   border-radius: 50%;
   background: #005491;
 }
-
 .showActiveCard .card-shipping {
   border: 0.0625rem solid #005390 !important;
   background-color: #f3f4f6 !important;
@@ -227,11 +265,9 @@
   border: 0.0625rem solid #005390;
   background-color: #f3f4f6;
 }
-
 .showActiveCard .icon-shipping {
   background-color: #ffffff;
 }
-
 .showActiveCard input ~ span:after {
   content: '';
   position: absolute;
@@ -243,7 +279,141 @@
   border-radius: 50%;
   background: #005491;
 }
-
 input[type='number'] {
   -moz-appearance: textfield !important;
 }
+
+.border-text-area {
+  border: 0.5px solid #798c98;
+}
+
+.border-text-area:focus-within {
+  border: 0.5px solid #798c98 !important;
+}
+
+.border-text-area:focus-visible {
+  border: 0.5px solid #798c98 !important;
+  outline: none !important;
+}
+
+/* Start Animations */
+
+.slideInUp {
+  -webkit-animation-name: slideInUp;
+  animation-name: slideInUp;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes slideInUp {
+  0% {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+@keyframes slideInUp {
+  0% {
+    -webkit-transform: translateY(100%);
+    transform: translateY(100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.slideOutDown {
+  -webkit-animation-name: slideOutDown;
+  animation-name: slideOutDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes slideOutDown {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(5vh);
+    transform: translateY(5vh);
+  }
+  100% {
+    visibility: hidden;
+    -webkit-transform: translateY(100vh);
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+@keyframes slideOutDown {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateY(5vh);
+    transform: translateY(5vh);
+  }
+  100% {
+    visibility: hidden;
+    -webkit-transform: translateY(100vh);
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+  -webkit-animation-duration: 1.2s;
+  animation-duration: 1.2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  /* display: none; */
+}
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@media (max-width: 375px) {
+  @-webkit-keyframes slideInUp {
+    0% {
+      -webkit-transform: translateY(100%);
+      transform: translateY(100%);
+      visibility: visible;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+  @keyframes slideInUp {
+    0% {
+      -webkit-transform: translateY(100%);
+      transform: translateY(100%);
+      visibility: visible;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+}
+/* End Animations */

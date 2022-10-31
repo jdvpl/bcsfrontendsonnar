@@ -12,6 +12,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Link href={routes.startProccess}>Inicio de soliciutd</Link>
+      <br />
+      <Link href={routes.ratings}>Calificacion de solicitud</Link>
+      <br />
+      <Link href={routes.otp}>Validacion otp</Link>
     </div>
   );
 }
