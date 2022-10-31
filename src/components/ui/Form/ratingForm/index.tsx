@@ -64,7 +64,6 @@ export const RateForm = () => {
                     <TextArea
                       maxLength={60}
                       description="Máximo 60 carácteres permitidos"
-                      onChange={() => alert('cambio')}
                     />
                   </div>
                 )}
