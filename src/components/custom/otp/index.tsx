@@ -64,12 +64,9 @@ export const Otp = () => {
         Ingrese el código <br className="block md:hidden " />
         enviado por sms a su <br className="md:hidden lg:block" /> celular &nbsp;
         <span className="font-extrabold">
-          {dataTU?.encriptPhone?.encriptPhone
-            ? dataTU?.encriptPhone?.encriptPhone
-            : '+57 31*****57'}
+          +57{dataTU?.encriptPhone?.encriptPhone && dataTU?.encriptPhone?.encriptPhone}
         </span>
       </h4>
-
       <div className="text-normal mb-[24px]">
         <OtpInput
           className="otp-div"
