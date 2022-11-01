@@ -7,7 +7,6 @@ import Modal from '../Modal';
 import Select from '../Select';
 import Input from '../inputs';
 import LogoForm from '../../svg/LogoForm';
-import ReactHookFormSelect from '../Select/NewSelect';
 interface FormProps {
   onSubmit: (data: FormData) => void;
   defaultValues: FormData;

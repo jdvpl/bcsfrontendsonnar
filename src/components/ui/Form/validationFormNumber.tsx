@@ -8,6 +8,8 @@ import { Heading } from '../Headers';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { ContainerButtonForm } from './ContainerButtonForm';
 import { SesionStorageKeys } from '../../../session';
+import { sendNumber } from '../../../services';
+import { routes } from '../../../routes';
 
 interface FormProps {
   isLoading?: boolean;
@@ -31,7 +33,13 @@ export interface FormData {
 const KEY = process.env.KEYENCRYPTADIGITAL;
 
 export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
-  const [dataUser, setDataUser] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
+  const [dataTU, setDataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
+  const [, setEncript] = useSessionStorage(SesionStorageKeys.dataTuEncripPhone.key, '');
+  const [, setProcessBiometry] = useSessionStorage(
+    SesionStorageKeys.dataProcessBiometry.key,
+    ''
+  );
+
   const [loaded, setLoaded] = useState(false);
   const router = useRouter();
   const {
@@ -45,6 +53,11 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
   } = useForm<FormData>({
     mode: 'onChange',
   });
+
+  const proccessResponse = (redirect: string) => {
+    setLoaded(true);
+    setTimeout(() => router.push(redirect), 1000);
+  };
 
   const inputValues = watch('number');
   const variants = {
@@ -60,6 +73,19 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
     clearErrors('number');
   }, [clearErrors, inputValues, setError]);
 
+  const onSubmit = async (formData: FormData) => {
+    const body = {
+      document_type: dataTU?.document_type,
+      document_number: dataTU?.document_number,
+      phone: formData.number,
+    };
+    const response = await sendNumber(body);
+    if (!response.error) {
+      setDataTU({ ...dataTU, personalData: { celular: response.response.data.phone } });
+      setEncript(formData.number);
+      setTimeout(() => proccessResponse(routes.otp), 1000);
+    }
+  };
   return (
     <motion.div
       initial="hidden"
@@ -69,7 +95,11 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
       transition={{ type: 'linear' }}
     >
       <section itemScope itemType="https://schema.org/Person">
-        <form data-testid="formNumber" className="w-full">
+        <form
+          data-testid="formNumber"
+          className="w-full"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <Heading>
             <span itemProp="telephone" tabIndex={0} role="paragraph" id="title">
               {questions?.description}
@@ -141,8 +171,8 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
                         }`}
                         onClick={() => {
                           setValue(`number`, answer.id);
-                          setDataUser({
-                            ...dataUser,
+                          setDataTU({
+                            ...dataTU,
                             encriptPhone: { encriptPhone: answer.option },
                           });
                         }}
