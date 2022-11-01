@@ -1,10 +1,13 @@
 import { FormData, RegisterForm } from '../../components/ui';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
-import { SssionStorageKeys } from '../../session';
-import { useState } from 'react';
+import { SesionStorageKeys } from '../../session';
 import LogoBcs from '../../components/svg/LogoBcs';
+import { getQuestions } from '../../services';
+import { useRouter } from 'next/router';
+import { routes } from '../../routes';
 
 const InicioSolicitud = () => {
+  const router = useRouter();
   const dataReg = {
     document_number: '',
     document_type: '',
@@ -14,12 +17,27 @@ const InicioSolicitud = () => {
     advisory: '',
   };
   const [dataUser, setDataUser] = useSessionStorage(
-    SssionStorageKeys.dataUser.key,
+    SesionStorageKeys.dataUser.key,
     dataReg
   );
+  const [, setDataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
 
-  const onSubmit = (formData: FormData) => {
-    console.log(formData);
+  const onSubmit = async (formData: FormData) => {
+    setDataUser(formData);
+    const body = {
+      document_type: formData.document_type,
+      document_number: formData.document_number,
+      dataTreatment: formData.policy_and_terms,
+      productRegulation: formData.policy_and_terms,
+      commercialPurposes: formData.commercial_terms,
+    };
+    const response = await getQuestions(body);
+    if (!response.error) {
+      setDataQuestions(response.response.data);
+      router.push(routes.validacionIdentidad);
+    } else {
+      console.log(response.response);
+    }
   };
 
   return (

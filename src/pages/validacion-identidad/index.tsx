@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Stepper from '../../components/ui/Stepper';
 import { Question, ValidationForm } from '../../components/ui/Form/ValidationForm';
@@ -7,8 +7,9 @@ import { ValidationFormNumber } from '../../components/ui/Form/validationFormNum
 import VerificationForm from '../../components/ui/Form/verificationForm';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { Layout } from '../../components/layouts/layout';
-import AnimationComponent from '../../components/commons/animation';
-import { NavTitle } from '../../components/commons/navTitle';
+import AnimationComponent from '../../components/commons/Animation';
+import { NavTitle } from '../../components/commons/NavTitle';
+import { SesionStorageKeys } from '../../session';
 
 interface InitDataSend {
   document_type: string;
@@ -19,13 +20,17 @@ interface Quest {
   items: Question[];
 }
 const Index: React.FC = () => {
-  const [dataQuestions] = useSessionStorage('DataQuestions', '');
+  const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
+  const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const [dataNumber, setDataNumber] = useState<any | null>(null);
   const [dataValid, setDataValid] = useState(false);
   const [progress, setprogress] = useState('');
   const [loading, setIsLoading] = useState(false);
   const data: Quest = dataQuestions;
 
+  useEffect(() => {
+    setprogress('25%');
+  }, []);
   return (
     <>
       <Head>

@@ -7,6 +7,7 @@ import Modal from '../Modal';
 import Select from '../Select';
 import Input from '../inputs';
 import LogoForm from '../../svg/LogoForm';
+import ReactHookFormSelect from '../Select/newSelect';
 interface FormProps {
   onSubmit: (data: FormData) => void;
   defaultValues: FormData;
@@ -276,7 +277,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
         </div>
         <div className="flex items-start mt-4">
           <input
-            {...register('commercial_terms')}
+            {...register('advisory_option')}
             className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"
             checked={showOptionsAdvisory}
             aria-checked={showOptionsAdvisory}
@@ -307,7 +308,11 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
 
       {showOptionsAdvisory && (
         <div className="w-full my-4">
-          <Select label="Tipo de asesoría" placeholder="Tipo de asesoría">
+          <Select
+            label="Tipo de asesoría"
+            placeholder="Tipo de asesoría"
+            onChange={(e: any) => setValue('advisory', e.target.value)}
+          >
             <option value="Campaign">Campaña</option>
             <option value="bank_advisor">Asesor banco</option>
             <option value="builder">Constructora</option>
