@@ -81,6 +81,9 @@ const Select: FC<selectProps> = ({
     <div className="justify-center flex flex-col w-full">
       <div className="relative z-0 w-full">
         <select {...props} id="small" className={SelectStyles}>
+          <option className="hidden" selected={false}>
+            {placeholder}
+          </option>
           {children}
         </select>
 

@@ -119,9 +119,6 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
               control={control}
               error={!!errors.document_type}
             >
-              <option value="DEFAULT" disabled>
-                Choose a salutation ...
-              </option>
               <option value="CC"> Cédula de ciudadanía</option>
               <option value="CE"> Cédula de extranjería</option>
             </Select>
@@ -315,9 +312,6 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
             placeholder="Tipo de asesoría"
             onChange={(e: any) => setValue('advisory', e.target.value)}
           >
-            <option value="DEFAULT" disabled>
-              Choose a salutation ...
-            </option>
             <option value="Campaign">Campaña</option>
             <option value="bank_advisor">Asesor banco</option>
             <option value="builder">Constructora</option>
