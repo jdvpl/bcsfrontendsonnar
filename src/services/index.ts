@@ -60,3 +60,22 @@ export const sendNumber = async (data: any) => {
     return { error: true, response: e.response.data };
   }
 };
+export const validateOTOCode = async (data: any) => {
+  try {
+    const dataInfo = await allResponse(data, KEY);
+    const { data: response } = await clientAxiosKYC.post(
+      '/identity-user/pin',
+      { data: dataInfo },
+      headersKYC
+    );
+    return {
+      response: {
+        result: response.result,
+        data: await allResponseDecrypted(response.data, KEY),
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e?.response?.data?.message };
+  }
+};

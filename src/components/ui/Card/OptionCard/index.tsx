@@ -4,7 +4,11 @@ import { TextArea } from '../../inputs/TextArea';
 
 export const CardOption = ({ option, actualOption, onChangeActualOption, key }: any) => {
   return (
-    <div key={key} className="w-full" onClick={() => onChangeActualOption(option)}>
+    <div
+      key={Math.random()}
+      className="w-full"
+      onClick={() => onChangeActualOption(option)}
+    >
       <input type="radio" className="hidden" value={option?.value} />
       <label
         className={`text-left flex flex-col min-h-[52px] px-[10px] py-[8px] mb-3 bg-white 

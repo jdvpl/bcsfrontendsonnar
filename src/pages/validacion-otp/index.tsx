@@ -9,7 +9,8 @@ export default function validacionSolicitud() {
   return (
     <div>
       <Layout navTitle={<NavTitle noBack />}>
-        <Stepper step="1" title="Validación de identidad" percentaje="10%" incomplete='2'  />
+        {/* <Stepper step="1" title="Validación de identidad" percentaje="10%" incomplete='2'  /> */}
+        <Stepper step="1" incomplete="2" title="Personalizar cuenta" percentaje="25%" />
         {/* <div className="container flex lg:mt-[0] sm:w-[343px] md:w-[528px] lg:w-[1100px] pt-5">
         <LogoBcs />
       </div> */}
