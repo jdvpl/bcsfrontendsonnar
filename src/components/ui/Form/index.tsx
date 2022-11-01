@@ -116,7 +116,6 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
               onChange={(e: any) => setValue('document_type', e.target.value)}
               placeholder="Tipo de documento"
               label="Tipo de documento"
-              control={control}
               error={!!errors.document_type}
             >
               <option value="CC"> Cédula de ciudadanía</option>
