@@ -16,6 +16,8 @@ export default function Home() {
       <Link href={routes.ratings}>Calificacion de solicitud</Link>
       <br />
       <Link href={routes.otp}>Validacion otp</Link>
+      <br />
+      <Link href={routes.validacionIdentidad}>Validacion identidad</Link>
     </div>
   );
 }
