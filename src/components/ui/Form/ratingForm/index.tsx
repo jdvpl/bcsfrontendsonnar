@@ -32,7 +32,7 @@ export const RateForm = () => {
       case true:
         return (
           <>
-            <div className="w-full md:w-[348px]">
+            <div className="w-full sm:w-[343px] md:w-[348px]">
               <h4 className="font-semibold text-center md:text-[28px] md:leading-[30px] ">
                 ¡Gracias por calificar su experiencia!
               </h4>
@@ -46,29 +46,27 @@ export const RateForm = () => {
       default:
         return (
           <>
-            <div className="w-[348px] lg:w-[400px]">
-              <h4 className="font-semibold text-center md:text-[28px] md:leading-[30px] ">
-                ¿Cómo califica su <br /> experiencia solicitando su crédito de vivienda?
+            <div className="w-[348px] lg:w-[400px] mt-[20px] mb-[16px]">
+              <h4 className="font-semibold text-center md:text-[28px] md:leading-[30px]">
+                ¿Cómo califica su experiencia solicitando su crédito de vivienda?
               </h4>
             </div>
-            <div className="mt-[16px] w-full md:w-[343px]">
+            <div className="w-full md:w-[343px] mb-[24px]">
               <Qualify rate={rate} changeRate={changeRate} />
               <div className="w-full flex flex-col min-h-[400px]">
-                <br />
                 <p
                   tabIndex={0}
                   role="paragraph"
-                  className="mt-3 text-lg leading-5 text-center font-semibold"
+                  className="mt-3 mb-[12px] text-lg leading-5 text-center font-semibold"
                 >
                   {PARSE_SCORE[rate]?.qualify}
                 </p>
-                <br />
-                <div className="w-full mb-6">
+                <div className="w-full mb-[24px]">
                   <p tabIndex={0} role="paragraph" className="text-left font-semibold">
                     {PARSE_SCORE[rate]?.subtitle}
                   </p>
                 </div>
-                <div className="w-full mb-6 align-bottom">
+                <div className="w-full align-bottom">
                   {rate >= 0 && (
                     <>
                       {rate < 3 ? (
@@ -99,7 +97,12 @@ export const RateForm = () => {
                 </div>
               </div>
             </div>
-            <Button disabled={rate < 0} onClick={() => setQualify(true)}>
+            <Button
+              variant="primary"
+              isLanding="w-full md:w-[343px]"
+              disabled={rate < 0}
+              onClick={() => setQualify(true)}
+            >
               Enviar calificación
             </Button>
           </>
