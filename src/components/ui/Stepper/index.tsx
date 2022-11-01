@@ -11,12 +11,12 @@ const Stepper: React.FC<Props> = ({ step, title, percentaje, incomplete }) => {
   return (
     <NoSSRWrapper>
       <p
-        className="fz-12 fw-400 ln-16 text-primario-900 mb-[8px]"
+        className="text-xs font-normal ln-16 text-primario-900 mb-[8px]"
         data-testid="titleStep"
       >
         {title}
       </p>
-      <div className="d-flex align-items-center justify-content-center">
+      <div className="flex items-center justify-center">
         <div
           className={`${
             step === '1' ||
@@ -25,8 +25,8 @@ const Stepper: React.FC<Props> = ({ step, title, percentaje, incomplete }) => {
             incomplete === '2' ||
             incomplete === '3'
               ? 'bg-primario-20'
-              : 'bg-azul_gris-80'
-          } w-100 mr-[4px]  rounded-l-[6px] `}
+              : 'bg-complementario-80'
+          } w-full mr-[4px]  rounded-l-[6px] `}
           style={{
             height: '4px',
             maxWidth: '225px',
@@ -51,8 +51,8 @@ const Stepper: React.FC<Props> = ({ step, title, percentaje, incomplete }) => {
           className={`${
             step === '2' || step === '3' || incomplete === '3'
               ? 'bg-primario-20'
-              : 'bg-azul_gris-80'
-          } w-100 mr-[4px]`}
+              : 'bg-complementario-80'
+          } w-full mr-[4px]`}
           style={{ height: '4px', maxWidth: '225px' }}
         >
           {incomplete === '2' ? (
@@ -63,8 +63,8 @@ const Stepper: React.FC<Props> = ({ step, title, percentaje, incomplete }) => {
         </div>
         <div
           className={`${
-            step === '3' ? 'bg-primario-20' : 'bg-azul_gris-80'
-          } w-100 mr-[4px]`}
+            step === '3' ? 'bg-primario-20' : 'bg-complementario-80'
+          } w-full mr-[4px]`}
           style={{
             height: '4px',
             maxWidth: '225px',
@@ -82,7 +82,7 @@ const Stepper: React.FC<Props> = ({ step, title, percentaje, incomplete }) => {
       <p
         tabIndex={0}
         role="paragraph"
-        className="text-azul_gris-100 fz-12 ln-16 mt-[8px]"
+        className="text-complementario-100 text-xs ln-16 mt-[8px]"
         data-testid="stepNumber"
       >
         Paso {step || incomplete} de 3
