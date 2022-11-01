@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import Button from '../Button';
-import { FormContainer } from './formContainer';
+import { FormContainer } from './FormContainer';
 import { Heading } from '../Headers';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
-import { ContainerButtonForm } from './containerButtonForm';
-import { SssionStorageKeys } from '../../../session';
+import { ContainerButtonForm } from './ContainerButtonForm';
+import { SesionStorageKeys } from '../../../session';
 
 interface FormProps {
   isLoading?: boolean;
@@ -31,7 +31,7 @@ export interface FormData {
 const KEY = process.env.KEYENCRYPTADIGITAL;
 
 export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
-  const [dataUser, setDataUser] = useSessionStorage(SssionStorageKeys.dataUser.key, '');
+  const [dataUser, setDataUser] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const [loaded, setLoaded] = useState(false);
   const router = useRouter();
   const {

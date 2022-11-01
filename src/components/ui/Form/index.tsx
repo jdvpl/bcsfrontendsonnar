@@ -7,7 +7,7 @@ import Modal from '../Modal';
 import Select from '../Select';
 import Input from '../inputs';
 import LogoForm from '../../svg/LogoForm';
-import ReactHookFormSelect from '../Select/newSelect';
+import ReactHookFormSelect from '../Select/NewSelect';
 interface FormProps {
   onSubmit: (data: FormData) => void;
   defaultValues: FormData;
@@ -131,7 +131,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
             render={({ field }) => {
               return (
                 <Input
-                  type="number"
+                  type="text"
                   error={!!errors.document_number}
                   onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                     e.preventDefault();

@@ -4,4 +4,6 @@ export const routes = {
   ratings: 'calificacion-solicitud',
   otp: 'validacion-otp',
   validacionIdentidad: '/validacion-identidad',
+  validacionBiometrica: '/validacion-biometrica',
+  validacionErrorValidacionIdentidad: '/validacion/error-validacionIdentidad/',
 };
