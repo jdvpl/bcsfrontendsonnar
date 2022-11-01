@@ -46,9 +46,9 @@ export const RateForm = () => {
       default:
         return (
           <>
-            <div className="w-[348px] lg:w-[500px]">
+            <div className="w-[348px] lg:w-[400px]">
               <h4 className="font-semibold text-center md:text-[28px] md:leading-[30px] ">
-                ¿Cómo califica su experiencia adquiriendo el préstamo?
+                ¿Cómo califica su <br /> experiencia solicitando su crédito de vivienda?
               </h4>
             </div>
             <div className="mt-[16px] w-full md:w-[343px]">
@@ -73,9 +73,9 @@ export const RateForm = () => {
                     <>
                       {rate < 3 ? (
                         <>
-                          {RATING_OPTIONS?.map((option) => (
+                          {RATING_OPTIONS?.map((option, index) => (
                             <CardOption
-                              key={option.id}
+                              key={index}
                               option={option}
                               actualOption={actualOption}
                               onChangeActualOption={onChangeActualOption}
@@ -84,9 +84,9 @@ export const RateForm = () => {
                         </>
                       ) : (
                         <>
-                          {RATING_OPTIONS_BETTER?.map((option) => (
+                          {RATING_OPTIONS_BETTER?.map((option, index) => (
                             <CardOption
-                              key={option.id}
+                              key={index}
                               option={option}
                               actualOption={actualOption}
                               onChangeActualOption={onChangeActualOption}

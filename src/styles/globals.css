@@ -710,3 +710,7 @@ li .ellipsis {
     display: none;
   }
 }
+.otp-div :not(input[value=""]) {
+  border-color: #3A4F5D !important;
+  border-width: 1px !important;
+}

@@ -7,8 +7,8 @@ export const PARSE_SCORE: ParseScore[] = [
   { qualify: 'Muy mala', subtitle: '¿Qué salió mal?' },
   { qualify: 'Regular', subtitle: '¿Qué salió mal?' },
   { qualify: 'Buena', subtitle: '¿Qué salió mal?' },
-  { qualify: 'Muy Buena', subtitle: 'Escriba su comentario' },
-  { qualify: 'Excelente', subtitle: 'Escriba su comentario' },
+  { qualify: 'Muy Buena', subtitle: '¿Qué podemos mejorar?' },
+  { qualify: 'Excelente', subtitle: '¿Qué podemos mejorar?' },
 ];
 
 export interface RatingsOptions {
@@ -50,7 +50,7 @@ export const RATING_OPTIONS_BETTER: RatingsOptions[] = [
     value: 'Seguridad',
   },
   {
-    id: '6',
+    id: '4',
     value: 'Tener un canal de acompañamiento',
   },
   {
