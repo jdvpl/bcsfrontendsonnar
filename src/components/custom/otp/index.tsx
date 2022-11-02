@@ -6,17 +6,23 @@ import { routes } from '../../../routes';
 import { validateOTOCode } from '../../../services';
 import { Icons } from '../../ui';
 
+export interface ValidateOTC {
+  pin: string;
+  document_number: String;
+  document_type: String;
+}
+
 export const Otp = () => {
   const [dataTU, setDataUser] = useSessionStorage('dataTU', '');
   const [otp, setOtp] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(false);
-  const [timer, setTimer] = useState<number>(6);
+  const [timer, setTimer] = useState<number>(60);
   const [error, setError] = useState<boolean>(false);
   const intervalRef = useRef<number>();
   const router = useRouter();
 
   const onValidateOTP = async () => {
-    const body = {
+    const body: ValidateOTC = {
       document_number: dataTU?.document_number,
       document_type: dataTU?.document_type,
       pin: otp,
