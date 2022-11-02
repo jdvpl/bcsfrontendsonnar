@@ -710,7 +710,397 @@ li .ellipsis {
     display: none;
   }
 }
-.otp-div :not(input[value=""]) {
-  border-color: #3A4F5D !important;
+.otp-div :not(input[value='']) {
+  border-color: #3a4f5d !important;
   border-width: 1px !important;
+}
+
+div fieldset .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  border-radius: 6px !important;
+  border-color: #c0cfd8 !important;
+}
+
+div .MuiInputBase-root {
+  border-radius: 6px !important;
+  max-height: 48px !important;
+}
+
+.css-1iledgx-MuiFormControl-root {
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.MuiFormLabel-root {
+  font-size: 14px !important;
+}
+
+.border-active {
+  border-color: #798c98 !important;
+  border-width: 1px !important;
+}
+
+.right4 {
+  right: 4%;
+}
+
+.right8 {
+  right: 8%;
+}
+
+.right13 {
+  right: 13%;
+}
+
+.borde-rojo {
+  border-color: red !important;
+}
+
+.hover-input:hover {
+  border-color: #0072c8;
+  border-width: 1px;
+}
+
+#placeOfBirth-label {
+  padding-left: 16px;
+  padding-right: 16px;
+  left: 3px;
+}
+
+#empresa-label {
+  padding-left: 16px;
+  padding-right: 16px;
+  left: 5px;
+}
+
+label#empresa-label {
+  color: #7594a8;
+}
+
+label#empresa-label.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #496374;
+  padding-left: initial;
+  left: 0px;
+  padding-right: initial;
+}
+
+label#empresa-label.MuiFormLabel-filled {
+  color: #496374;
+  padding-left: initial;
+  padding-right: initial;
+  left: 0px;
+}
+
+label#empresa-label.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root {
+  padding-left: initial;
+  padding-right: initial;
+  left: 0px;
+}
+
+label#placeOfBirth-label {
+  color: #7594a8;
+}
+
+label#day-label {
+  color: #7594a8;
+}
+
+label#day-label.MuiFormLabel-filled {
+  color: #496374;
+}
+
+label#month-label {
+  color: #7594a8;
+}
+
+label#month-label.MuiFormLabel-filled {
+  color: #496374;
+}
+
+label#gender-label {
+  color: #7594a8;
+}
+
+label#gender-label.MuiFormLabel-filled {
+  color: #496374;
+}
+
+label#gender-label.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #496374;
+}
+
+label#placeOfBirth-label.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #496374;
+  padding-left: initial;
+  padding-right: initial;
+  left: initial;
+}
+
+label#placeOfBirth-label.MuiFormLabel-filled {
+  color: #496374;
+  padding-left: initial;
+  padding-right: initial;
+  left: initial;
+}
+
+label#placeOfBirth-label.Mui-focused {
+  padding-left: initial;
+  padding-right: initial;
+  left: initial;
+}
+
+label#city-exp-label.Mui-focused {
+  padding-left: initial;
+  padding-right: initial;
+}
+
+#city-label {
+  padding-left: 16px;
+  padding-right: 16px;
+  left: 3px;
+}
+
+label#city-label {
+  color: #7594a8;
+}
+
+label#city-label.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #496374;
+  padding-left: initial;
+  padding-right: initial;
+  left: 5px;
+}
+
+label#city-label.MuiFormLabel-filled {
+  color: #496374;
+  padding-left: initial;
+  padding-right: initial;
+  left: initial;
+}
+
+label#city-label.Mui-focused {
+  padding-left: initial;
+  padding-right: initial;
+  left: initial;
+}
+
+label#city-label.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root {
+  padding-left: initial;
+  padding-right: initial;
+  left: initial;
+}
+
+#sucursal-label {
+  padding-left: 16px;
+  padding-right: 16px;
+  left: 3px;
+}
+
+label#sucursal-label {
+  color: #7594a8;
+}
+
+label#sucursal-label.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #496374;
+  padding-left: initial;
+  left: 0px;
+  padding-right: initial;
+}
+
+label#sucursal-label.Mui-focused {
+  padding-left: initial;
+  padding-right: initial;
+  left: initial;
+}
+
+label#sucursal-label.MuiFormLabel-filled {
+  color: #496374;
+  padding-left: initial;
+  padding-right: initial;
+  left: 0px;
+}
+
+label#sucursal-label.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root {
+  padding-left: initial;
+  padding-right: initial;
+  left: 0px;
+}
+
+#mui-2-label {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+#city-exp-label {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+div.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  color: #00253d;
+}
+
+label#document_type-label {
+  color: #7594a8;
+}
+
+label#document_type-label.MuiFormLabel-filled {
+  color: #496374;
+}
+
+label#document_type:active {
+  color: #496374;
+}
+
+label#city-exp-label {
+  color: #7594a8;
+}
+
+label#city-exp-label.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #496374;
+  padding-left: initial;
+  padding-right: initial;
+}
+
+label#city-exp-label.MuiFormLabel-filled {
+  color: #496374;
+  padding-left: initial;
+  padding-right: initial;
+}
+
+label#document_type-label.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #496374;
+}
+
+label#document_type.MuiInputLabel-shrink {
+  color: #496374 !important;
+}
+
+label#document_type.MuiFormLabel-colorPrimary.MuiFormLabel-filled {
+  color: #496374;
+}
+
+label#day-label.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #496374;
+}
+
+label#day-label.MuiInputLabel-shrink {
+  color: #496374 !important;
+}
+
+label#day-label.MuiFormLabel-colorPrimary.MuiFormLabel-filled {
+  color: #496374;
+}
+
+label#month-label.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #496374;
+}
+
+label#month-label.MuiInputLabel-shrink {
+  color: #496374 !important;
+}
+
+label#month-label.MuiFormLabel-colorPrimary.MuiFormLabel-filled {
+  color: #496374;
+}
+
+label#occupation-label.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused {
+  color: #496374;
+}
+
+label#occupation-label.MuiInputLabel-shrink {
+  color: #496374 !important;
+}
+
+label#occupation-label.MuiFormLabel-colorPrimary.MuiFormLabel-filled {
+  color: #496374;
+}
+
+label#placeOfBirth-label.MuiInputLabel-shrink {
+  color: #496374 !important;
+}
+
+label#placeOfBirth-label.MuiFormLabel-colorPrimary.MuiFormLabel-filled {
+  color: #496374;
+}
+
+input#document_number:disabled {
+  border-color: #c4d1da;
+}
+
+input:disabled + label {
+  color: #b0c2cd;
+}
+
+/* input+label{
+  color:#7594A8
+} */
+.color-desactivado {
+  color: #7594a8;
+}
+
+.relative input:focus + label {
+  color: #496374;
+}
+
+.error-class {
+  border-color: #e76382 !important;
+}
+
+.css-md26zr-MuiInputBase-root-MuiOutlinedInput-root.Mui-disabled
+  .MuiOutlinedInput-notchedOutline {
+  border-color: #ddcddb !important;
+}
+
+.MuiAutocomplete-root:disabled:hover {
+  border-color: initial;
+}
+
+.borde-financial {
+  border-color: #b0c2cd;
+}
+
+.focus-new {
+  border-color: #2972c8;
+}
+
+#empresa div .MuiInputBase-root legend {
+  font-size: initial;
+}
+
+#city-exp div .MuiInputBase-root legend {
+  font-size: 0.68em;
+}
+
+#placeOfBirth div .MuiInputBase-root legend {
+  font-size: 0.68em;
+}
+
+#city div .MuiInputBase-root legend {
+  font-size: 0.7em;
+}
+
+#city-exp.Muifocused .MuiOutlinedInput-notchedOutline {
+  border-width: 1px;
+}
+
+#city.Muifocused .MuiOutlinedInput-notchedOutline {
+  border-width: 1px !important;
+}
+
+#sucursal div .MuiInputBase-root legend {
+  font-size: 0.68em;
+}
+
+.color-activado {
+  color: #496374;
+}
+
+#pass-container > .MuiFormControl-root {
+  margin: 0px !important;
+}
+
+input[type='checkbox'] {
+  background: #327dff !important;
+  outline: none;
+  border: 5px solid black !important;
 }
