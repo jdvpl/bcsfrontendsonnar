@@ -88,7 +88,7 @@ export function Input({
 
   const inputStyles = `
   h-12 bg-[transparent] block py-2 px-3 w-full text-sm leading-none
-    ${error ? 'text-rojo-100' : 'text-primario-900'}
+    ${error ? 'text-complementario-100' : 'text-primario-900'}
     bg-transparent border-[0.03125rem] rounded-md
     ${
       error
@@ -127,7 +127,7 @@ export function Input({
           {label}
         </label>
       </div>
-      {helperText && <HelperText error={error} text={helperText} />}
+      {helperText && error && <HelperText error={error} text={helperText} />}
     </div>
   );
 }

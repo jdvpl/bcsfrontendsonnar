@@ -7,6 +7,9 @@ import Modal from '../Modal';
 import Select from '../Select';
 import Input from '../inputs';
 import LogoForm from '../../svg/LogoForm';
+import ReactHookFormSelect from '../Select/newSelect';
+import { MenuItem } from '@mui/material';
+import Typography from '../Tipography';
 interface FormProps {
   onSubmit: (data: FormData) => void;
   defaultValues: FormData;
@@ -108,19 +111,29 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
 
       <div className="text-gray-100">
         <div>
-          <p className="text-center my-5">
+          <Typography
+            variant="bodyM4"
+            className="m-auto text-center mb-[36px] mt-[24px] text-[18px] text-primario-900 sm:w-[306px]"
+          >
             Para iniciar la solicitud de su crédito ingrese los siguientes datos.
-          </p>
+          </Typography>
           <div className="w-full mt-3">
-            <Select
+            <ReactHookFormSelect
               onChange={(e: any) => setValue('document_type', e.target.value)}
               placeholder="Tipo de documento"
               label="Tipo de documento"
               error={!!errors.document_type}
+              defaultValue=""
+              control={control}
+              left="right4"
+              valueLength=""
+              name="document_type"
+              className="w-100"
+              margin="normal"
             >
-              <option value="CC"> Cédula de ciudadanía</option>
-              <option value="CE"> Cédula de extranjería</option>
-            </Select>
+              <MenuItem value="CC"> Cédula de ciudadanía</MenuItem>
+              <MenuItem value="CE"> Cédula de extranjería</MenuItem>
+            </ReactHookFormSelect>
           </div>
         </div>
         <div className="flex flex-col mt-4">
@@ -129,6 +142,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
             render={({ field }) => {
               return (
                 <Input
+                  helperText="Número incorrecto"
                   type="text"
                   error={!!errors.document_number}
                   onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
@@ -306,15 +320,22 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
 
       {showOptionsAdvisory && (
         <div className="w-full my-4">
-          <Select
+          <ReactHookFormSelect
             label="Tipo de asesoría"
             placeholder="Tipo de asesoría"
             onChange={(e: any) => setValue('advisory', e.target.value)}
+            defaultValue=""
+            control={control}
+            left="right4"
+            valueLength=""
+            name="advisory"
+            className="w-100"
+            margin="normal"
           >
-            <option value="Campaign">Campaña</option>
-            <option value="bank_advisor">Asesor banco</option>
-            <option value="builder">Constructora</option>
-          </Select>
+            <MenuItem value="Campaign">Campaña</MenuItem>
+            <MenuItem value="bank_advisor">Asesor banco</MenuItem>
+            <MenuItem value="builder">Constructora</MenuItem>
+          </ReactHookFormSelect>
         </div>
       )}
       <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 ">
