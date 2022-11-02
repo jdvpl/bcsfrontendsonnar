@@ -46,7 +46,7 @@ export const RateForm = () => {
       default:
         return (
           <>
-            <div className="w-[348px] lg:w-[400px] mt-[20px] mb-[16px]">
+            <div className="w-[368px] lg:w-[400px] mt-[20px] mb-[16px]">
               <h4 className="font-semibold text-center md:text-[28px] md:leading-[30px]">
                 ¿Cómo califica su experiencia solicitando su crédito de vivienda?
               </h4>

@@ -6,8 +6,8 @@ export const CardOption = ({ option, actualOption, onChangeActualOption, key }: 
   return (
     <div
       key={Math.random()}
-      className="w-full"
       onClick={() => onChangeActualOption(option)}
+      className="w-full"
     >
       <input type="radio" className="hidden" value={option?.value} />
       <label
@@ -17,7 +17,7 @@ export const CardOption = ({ option, actualOption, onChangeActualOption, key }: 
         focus:text-primario-600 hover:border-complementario-40 text-black  
            shadow-small-300 font-normal ${
              option?.id === actualOption?.id &&
-             'text-primario-600 border-primario-600 shadow-primario-300/50 shadow-md'
+             'border-[1px] text-primario-600 border-primario-400 active'
            }`}
       >
         <span className="hidden" />
