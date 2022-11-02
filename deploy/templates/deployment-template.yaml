@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ .Values.application_name }}-{{ .Values.enviroment_name }}"
+  namespace: "{{ .Values.namespace_name }}"
+spec:
+  selector:
+    matchLabels:
+      app: "{{ .Values.application_name }}-{{ .Values.enviroment_name }}"
+      name: "{{ .Values.application_name }}-{{ .Values.enviroment_name }}"
+  template:
+    metadata:
+      labels:
+        name: "{{ .Values.application_name }}-{{ .Values.enviroment_name }}"
+        app: "{{ .Values.application_name }}-{{ .Values.enviroment_name }}"
+    spec:
+      containers:
+        - name: {{ .Values.application_name }}
+          image: {{ .Values.image }}
+          ports:
+            - containerPort: {{ .Values.container_port }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              port: {{ .Values.container_port }}
+              path: /
+            initialDelaySeconds: 20
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              port: {{ .Values.container_port }}
+              path: /
+            initialDelaySeconds: 20
+            timeoutSeconds: 10
+          resources:
+            limits:
+              memory: 512Mi
+            requests:
+              cpu: 0.3
+              memory: 512Mi
