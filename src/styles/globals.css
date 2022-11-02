@@ -1104,3 +1104,7 @@ input:disabled + label {
 #pass-container > .MuiFormControl-root {
   margin: 0px !important;
 }
+
+input[type='checkbox']:checked {
+  background: #0386e6 !important;
+}

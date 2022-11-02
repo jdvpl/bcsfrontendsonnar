@@ -340,7 +340,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
       )}
       <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 ">
         <Button
-          isLanding="w-full xs:w-[288px] xs:max-w-[288px]  sm:w-[311px]  sm:max-w-[311px] md:w-[311px] md:max-w-[311px] lg:w-[375px] lg:max-w-[375px]"
+          isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px]"
           type="submit"
           name="abrirCuenta"
           data-testid="btn-openAccount1"
