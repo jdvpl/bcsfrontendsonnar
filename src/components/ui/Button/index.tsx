@@ -36,7 +36,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         rounded h-[48px] transition-all duration-500  shadow-media-300  text-lg leading-5
         ${
           isLanding ||
-          ' w-[288px] sm:w-[343px] sm:max-w-[343px] md:w-[343px] lg:w-[375px] lg:max-w-[375px] '
+          'w-[288px] sm:w-[343px] sm:max-w-[343px] md:w-[343px] lg:w-[375px] lg:max-w-[375px] '
         }
         
            ${

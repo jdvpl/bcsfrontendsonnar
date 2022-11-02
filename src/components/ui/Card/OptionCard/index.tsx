@@ -6,22 +6,22 @@ export const CardOption = ({ option, actualOption, onChangeActualOption, key }: 
   return (
     <div
       key={Math.random()}
-      className="w-full"
       onClick={() => onChangeActualOption(option)}
+      className="w-full"
     >
       <input type="radio" className="hidden" value={option?.value} />
       <label
-        className={`text-left flex flex-col min-h-[52px] px-[10px] py-[8px] mb-3 bg-white 
+        className={`text-left flex flex-col min-h-[52px] pl-[20px] py-[8px] mb-3 bg-white 
           cursor-pointer w-full rounded-md 
           border border-complementario-80 focus:shadow-none focus:border-primario-600
         focus:text-primario-600 hover:border-complementario-40 text-black  
            shadow-small-300 font-normal ${
              option?.id === actualOption?.id &&
-             'text-primario-600 border-primario-600 shadow-primario-300/50 shadow-md'
+             'border-[1px] text-primario-600 border-primario-400 active'
            }`}
       >
         <span className="hidden" />
-        <div className="w-full flex items-center gap-3">
+        <div className="w-full flex text-[16px] items-center gap-3">
           <Image
             src={`/images/score/item${option?.id}.png`}
             alt="img-card"

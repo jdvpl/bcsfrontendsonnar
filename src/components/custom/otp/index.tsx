@@ -10,7 +10,7 @@ export const Otp = () => {
   const [dataTU, setDataUser] = useSessionStorage('dataTU', '');
   const [otp, setOtp] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(false);
-  const [timer, setTimer] = useState<number>(60);
+  const [timer, setTimer] = useState<number>(6);
   const [error, setError] = useState<boolean>(false);
   const intervalRef = useRef<number>();
   const router = useRouter();
@@ -59,15 +59,12 @@ export const Otp = () => {
     <div className="w-scren flex flex-col items-center mt-20">
       <h4
         id="title"
-        className="font-semibold text-[20px] text-primario-900 text-center mb-[36px]"
+        className="font-semibold text-[20px] text-primario-900 text-center mb-[36px] sm:w-[343px]"
       >
-        Ingrese el código <br className="block md:hidden " />
-        enviado por sms a su <br className="md:hidden lg:block" /> celular &nbsp;
-        <span className="font-extrabold">
-          +57{dataTU?.encriptPhone?.encriptPhone && dataTU?.encriptPhone?.encriptPhone}
-        </span>
+        Ingrese el código enviado por <br /> sms a su celular +57
+        {dataTU?.encriptPhone?.encriptPhone && dataTU?.encriptPhone?.encriptPhone}
       </h4>
-      <div className="text-normal mb-[24px]">
+      <div className="text-normal">
         <OtpInput
           className="otp-div"
           value={otp}
@@ -125,24 +122,20 @@ export const Otp = () => {
         <>
           {timer > 0 ? (
             <>
-              <p className="text-complementario-60 text-[14px]">
+              <p className="text-complementario-60 text-[14px] mt-[24px] mb-[16px]">
                 Volver a enviar código en{' '}
               </p>
-              <p>
+              <p className="font-[500] text-gris-30">
                 <Icons icon="bcs-clock" size="text-center text-[14px]" /> {timer} Segundos
               </p>
             </>
           ) : (
-            <div className="text-center w-full ">
+            <div className="text-center w-full mt-[16px] ">
               <button
                 id="reSend"
                 type="button"
-                // disabled={isLoading || !buttonDisabled || resend2 === 'true'}
                 className={`text-center cursor-pointer  fz-16  text-primario-20 text-base leading-[14px] -tracking-[0.2px] font-semibold
                   disabled:text-azul_gris-40 disabled:font-normal disabled:text-sm disabled:leading-[18px]`}
-                // onClick={() => {
-                //   getCode();
-                // }}
               >
                 <span id="reSend">Volver a enviar código</span>
               </button>
