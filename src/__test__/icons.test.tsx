@@ -4,7 +4,7 @@ import Icons from '../components/ui/icons';
 
 describe('Icons', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Icons />);
+    const { baseElement } = render(<Icons icon="bcs-add" />);
     expect(baseElement).toBeTruthy();
   });
 });

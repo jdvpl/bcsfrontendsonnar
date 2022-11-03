@@ -19,8 +19,6 @@ export interface FormData {
   document_type: string;
   policy_and_terms: number;
   commercial_terms: number;
-  advisory_option: number;
-  advisory: string;
 }
 export interface HowItemProps {
   children: string | JSX.Element;
@@ -46,7 +44,6 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
   const [terminos, setTerminos] = useState(false);
   const [commercial, setCommercial] = useState(false);
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [showOptionsAdvisory, setshowOptionsAdvisory] = useState<boolean>(false);
   const [componentModal, setComponentModal] = useState<HowItemProps>({
     children: '',
     title: '',
@@ -59,9 +56,6 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
 
   const handleCommercial = () => {
     setCommercial(!commercial);
-  };
-  const handleAdvisory = () => {
-    setshowOptionsAdvisory(!showOptionsAdvisory);
   };
 
   useEffect(() => {
@@ -287,27 +281,6 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
             </span>
           </label>
         </div>
-        <div className="flex items-start mt-4">
-          <input
-            {...register('advisory_option')}
-            className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"
-            checked={showOptionsAdvisory}
-            aria-checked={showOptionsAdvisory}
-            tabIndex={0}
-            type="checkbox"
-            id="chk-advisory"
-            onChange={handleAdvisory}
-          />
-          <label
-            htmlFor="chk-advisory"
-            className="inline-block font-normal text-black p-0 m-0 pl-[10px]"
-            role="tabpanel"
-            tabIndex={0}
-            itemScope
-          >
-            Recibió asesoría en este proceso
-          </label>
-        </div>
 
         {showModal && (
           <Modal
@@ -318,26 +291,6 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
         )}
       </div>
 
-      {showOptionsAdvisory && (
-        <div className="w-full my-4">
-          <ReactHookFormSelect
-            label="Tipo de asesoría"
-            placeholder="Tipo de asesoría"
-            onChange={(e: any) => setValue('advisory', e.target.value)}
-            defaultValue=""
-            control={control}
-            left="right4"
-            valueLength=""
-            name="advisory"
-            className="w-100"
-            margin="normal"
-          >
-            <MenuItem value="Campaign">Campaña</MenuItem>
-            <MenuItem value="bank_advisor">Asesor banco</MenuItem>
-            <MenuItem value="builder">Constructora</MenuItem>
-          </ReactHookFormSelect>
-        </div>
-      )}
       <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 ">
         <Button
           isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px]"

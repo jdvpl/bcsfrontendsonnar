@@ -13,8 +13,6 @@ const InicioSolicitud = () => {
     document_type: '',
     policy_and_terms: 'false',
     commercial_terms: 'false',
-    advisory_option: 'false',
-    advisory: '',
   };
   const [dataUser, setDataUser] = useSessionStorage(
     SesionStorageKeys.dataUser.key,
