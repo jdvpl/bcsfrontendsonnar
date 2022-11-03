@@ -3,7 +3,7 @@ import Card from '../components/ui/Card';
 
 describe('Card', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Card dataTestId={''} children={undefined} />);
+    const { baseElement } = render(<Card dataTestId="card" />);
     expect(baseElement).toBeTruthy();
   });
 });

@@ -8,7 +8,12 @@ export default function validacionSolicitud() {
   return (
     <div>
       <Layout navTitle={<NavTitle noBack />}>
-        <Stepper step="1" incomplete="2" title="Validación de identidad" percentaje="25%" />
+        <Stepper
+          step="1"
+          incomplete="2"
+          title="Validación de identidad"
+          percentaje="25%"
+        />
         <Otp />
       </Layout>
     </div>
