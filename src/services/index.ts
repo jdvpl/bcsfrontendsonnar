@@ -1,3 +1,4 @@
+import { ValidateOTC } from '../components/custom/otp';
 import { clientAxiosKYC } from '../config/AxiosKYC';
 import useAES from '../hooks/useAES';
 import { headersKYC } from './HeadersKYC';
@@ -60,7 +61,7 @@ export const sendNumber = async (data: any) => {
     return { error: true, response: e.response.data };
   }
 };
-export const validateOTOCode = async (data: any) => {
+export const validateOTOCode = async (data: ValidateOTC) => {
   try {
     const dataInfo = await allResponse(data, KEY);
     const { data: response } = await clientAxiosKYC.post(

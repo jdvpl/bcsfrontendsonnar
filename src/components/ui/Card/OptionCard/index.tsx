@@ -1,14 +1,18 @@
 import Image from 'next/image';
 import { basePath } from '../../../../../next.config';
+import { RatingsOptions } from '../../../../lib/rating';
 import { TextArea } from '../../inputs/TextArea';
+import FC from 'react';
 
-export const CardOption = ({ option, actualOption, onChangeActualOption, key }: any) => {
+export interface CardOption {
+  option: RatingsOptions;
+  actualOption: RatingsOptions;
+  onChangeActualOption: (option: RatingsOptions) => void;
+}
+
+export const CardOption = ({ option, actualOption, onChangeActualOption}: CardOption) => {
   return (
-    <div
-      key={Math.random()}
-      onClick={() => onChangeActualOption(option)}
-      className="w-full"
-    >
+    <div onClick={() => onChangeActualOption(option)} className="w-full">
       <input type="radio" className="hidden" value={option?.value} />
       <label
         className={`text-left flex flex-col min-h-[52px] pl-[20px] py-[8px] mb-3 bg-white 

@@ -8,7 +8,6 @@ import {
 import { Qualify } from '../../../custom/qualify';
 import Button from '../../Button';
 import { CardOption } from '../../Card/OptionCard';
-import { TextArea } from '../../inputs/TextArea';
 
 export const RateForm = () => {
   const [rate, setRate] = useState<number>(-1);
@@ -71,25 +70,31 @@ export const RateForm = () => {
                     <>
                       {rate < 3 ? (
                         <>
-                          {RATING_OPTIONS?.map((option, index) => (
-                            <CardOption
-                              key={index}
-                              option={option}
-                              actualOption={actualOption}
-                              onChangeActualOption={onChangeActualOption}
-                            />
-                          ))}
+                          {RATING_OPTIONS?.map(
+                            (option: RatingsOptions): JSX.Element => (
+                              <div key={option?.id}>
+                                <CardOption
+                                  option={option}
+                                  actualOption={actualOption}
+                                  onChangeActualOption={onChangeActualOption}
+                                />
+                              </div>
+                            )
+                          )}
                         </>
                       ) : (
                         <>
-                          {RATING_OPTIONS_BETTER?.map((option, index) => (
-                            <CardOption
-                              key={index}
-                              option={option}
-                              actualOption={actualOption}
-                              onChangeActualOption={onChangeActualOption}
-                            />
-                          ))}
+                          {RATING_OPTIONS_BETTER?.map(
+                            (option: RatingsOptions): JSX.Element => (
+                              <div key={option?.id}>
+                                <CardOption
+                                  option={option}
+                                  actualOption={actualOption}
+                                  onChangeActualOption={onChangeActualOption}
+                                />
+                              </div>
+                            )
+                          )}
                         </>
                       )}
                     </>
@@ -101,7 +106,7 @@ export const RateForm = () => {
               variant="primary"
               isLanding="w-full md:w-[343px]"
               disabled={rate < 0}
-              onClick={() => setQualify(true)}
+              onClick={(): void => setQualify(true)}
             >
               Enviar calificación
             </Button>
