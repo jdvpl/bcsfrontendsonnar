@@ -19,6 +19,8 @@ export interface FormData {
   document_type: string;
   policy_and_terms: number;
   commercial_terms: number;
+  advisory_option: number;
+  advisory: string;
 }
 export interface HowItemProps {
   children: string | JSX.Element;
@@ -44,6 +46,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
   const [terminos, setTerminos] = useState(false);
   const [commercial, setCommercial] = useState(false);
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [showOptionsAdvisory, setshowOptionsAdvisory] = useState<boolean>(false);
   const [componentModal, setComponentModal] = useState<HowItemProps>({
     children: '',
     title: '',
@@ -56,6 +59,9 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
 
   const handleCommercial = () => {
     setCommercial(!commercial);
+  };
+  const handleAdvisory = () => {
+    setshowOptionsAdvisory(!showOptionsAdvisory);
   };
 
   useEffect(() => {
