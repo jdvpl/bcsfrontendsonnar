@@ -585,7 +585,7 @@ input[type='radio']:checked + label span {
 }
 
 .otp-div :not(input[value='']) {
-  border-color: #3a4f5d !important;
+  border-color: #005da2 !important;
   border-width: 1px !important;
 }
 
@@ -717,7 +717,7 @@ li .ellipsis {
   }
 }
 .otp-div :not(input[value='']) {
-  border-color: #3a4f5d !important;
+  border-color: #005da2 !important;
   border-width: 1px !important;
 }
 

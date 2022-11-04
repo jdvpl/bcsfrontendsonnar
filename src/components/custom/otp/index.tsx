@@ -5,6 +5,7 @@ import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { routes } from '../../../routes';
 import { validateOTOCode } from '../../../services';
 import { Icons } from '../../ui';
+import Typography from '../../ui/Tipography';
 
 export interface ValidateOTC {
   pin: string;
@@ -16,8 +17,9 @@ export const Otp = () => {
   const [dataTU, setDataUser] = useSessionStorage('dataTU', '');
   const [otp, setOtp] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(false);
-  const [timer, setTimer] = useState<number>(60);
+  const [timer, setTimer] = useState<number>(10);
   const [error, setError] = useState<boolean>(false);
+  const [wasResend, setWasResend] = useState<boolean>(false);
   const intervalRef = useRef<number>();
   const router = useRouter();
 
@@ -37,6 +39,12 @@ export const Otp = () => {
     } else {
       setError(true);
       console.log(response);
+    }
+  };
+
+  const onResendOTP = () => {
+    if (timer === 0 && !wasResend) {
+      setWasResend(true);
     }
   };
 
@@ -62,15 +70,16 @@ export const Otp = () => {
   }, [timer]);
 
   return (
-    <div className="w-scren flex flex-col items-center mt-20">
+    <div className="w-scren flex flex-col items-center">
       <h4
         id="title"
-        className="font-semibold text-[20px] text-primario-900 text-center mb-[36px] sm:w-[343px]"
+        className="font-semibold text-[20px] text-primario-900 text-center mt-[40px] mb-[36px]  md:mt-[64px]  md:mb-[52px] lg:mb-[36px]"
       >
         Ingrese el código enviado por <br /> sms a su celular +57
         {dataTU?.encriptPhone?.encriptPhone && dataTU?.encriptPhone?.encriptPhone}
       </h4>
-      <div className="text-normal">
+
+      <div className="text-normal mb-[16px]">
         <OtpInput
           className="otp-div"
           value={otp}
@@ -83,71 +92,44 @@ export const Otp = () => {
           focusStyle={{
             outline: 'none',
             border: '1px solid #005491',
+            boxShadow: '0px 0px 3px 2px rgba(3, 134, 230, 0.25)',
           }}
-          inputStyle={
-            200 <= 370
-              ? {
-                  width: '43px',
-                  height: '54px',
-                  margin: '0px 3px',
-                  fontSize: '36px',
-                  fontWeight: 500,
-                  fontColor: '#000000',
-                  borderRadius: 6,
-                  border: '1px solid #C4D1DA',
-                }
-              : {
-                  width: '52px',
-                  height: '64px',
-                  margin: '0px 3px',
-                  fontSize: '36px',
-                  fontWeight: 500,
-                  fontColor: '#000000',
-                  borderRadius: 6,
-                  border: '1px solid #C4D1DA',
-                }
-          }
+          inputStyle={{
+            width: '43px',
+            height: '54px',
+            margin: '0px 3px',
+            fontSize: '36px',
+            fontWeight: 500,
+            fontColor: '#000000',
+            borderRadius: 6,
+            border: '1px solid #C4D1DA',
+          }}
         />
       </div>
-      {isValid ||
-        (error && (
-          <>
-            <div
-              className={`${
-                isValid ? 'bg-verde-70 ' : 'bg-rojo-70 '
-              } rounded-full p-2 mb-5`}
-            >
-              <Icons
-                icon={`${isValid ? 'bcs-check' : 'bcs-close'}`}
-                size="text-white text-[20px]"
-              />
-            </div>
-          </>
-        ))}
-      {isValid === false && (
-        <>
-          {timer > 0 ? (
-            <>
-              <p className="text-complementario-60 text-[14px] mt-[24px] mb-[16px]">
-                Volver a enviar código en{' '}
-              </p>
-              <p className="font-[500] text-gris-30">
-                <Icons icon="bcs-clock" size="text-center text-[14px]" /> {timer} Segundos
-              </p>
-            </>
-          ) : (
-            <div className="text-center w-full mt-[16px] ">
-              <button
-                id="reSend"
-                type="button"
-                className={`text-center cursor-pointer  fz-16  text-primario-20 text-base leading-[14px] -tracking-[0.2px] font-semibold
-                  disabled:text-azul_gris-40 disabled:font-normal disabled:text-sm disabled:leading-[18px]`}
-              >
-                <span id="reSend">Volver a enviar código</span>
-              </button>
-            </div>
-          )}
-        </>
+
+      <div className="w-[33px] h-[33px] bg-primario-20 mb-[16px]"></div>
+
+      <Typography
+        onClick={onResendOTP}
+        variant={'caption1'}
+        className={`${
+          timer === 0 && wasResend === false
+            ? 'text-primario-20 cursor-pointer'
+            : 'text-gris-200'
+        } mb-[16px]`}
+      >
+        {timer === 0 && wasResend === false
+          ? 'Volver a enviar código'
+          : 'Volver a enviar código en'}
+      </Typography>
+
+      {timer === 0 && wasResend === true ? null : (
+        <div className="flex justify-center items-center gap-1">
+          <Icons icon="bcs-clock" size="text-gris-30 font-semibold" />
+          <Typography variant="caption2" className="text-gris-30 font-semibold">
+            {timer} segundos
+          </Typography>
+        </div>
       )}
     </div>
   );
