@@ -1,10 +1,12 @@
+import { findAllByTestId } from '@testing-library/react';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect, useRef } from 'react';
 import OtpInput from 'react-otp-input-rc-17';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { routes } from '../../../routes';
-import { validateOTOCode } from '../../../services';
+import { reSendOTPCode, validateOTOCode } from '../../../services';
 import { Icons } from '../../ui';
+import { OTLoader } from '../../ui/Loaders/OTPloader';
 import Typography from '../../ui/Tipography';
 
 export interface ValidateOTC {
@@ -12,18 +14,25 @@ export interface ValidateOTC {
   document_number: String;
   document_type: String;
 }
+export interface OTPCodeRequest {
+  document_type: string;
+  document_number: string;
+  phone: string;
+}
 
 export const Otp = () => {
   const [dataTU, setDataUser] = useSessionStorage('dataTU', '');
   const [otp, setOtp] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(false);
-  const [timer, setTimer] = useState<number>(10);
+  const [timer, setTimer] = useState<number>(60);
   const [error, setError] = useState<boolean>(false);
   const [wasResend, setWasResend] = useState<boolean>(false);
   const intervalRef = useRef<number>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
 
   const onValidateOTP = async () => {
+    setIsLoading(true);
     const body: ValidateOTC = {
       document_number: dataTU?.document_number,
       document_type: dataTU?.document_type,
@@ -32,19 +41,28 @@ export const Otp = () => {
     const response = await validateOTOCode(body);
     if (!response.error) {
       setIsValid(true);
+      setIsLoading(false);
       // setDataQuestions(response.response.data);
       setTimeout(() => {
         router.push(routes.ratings);
       }, 3000);
     } else {
       setError(true);
-      console.log(response);
+      setIsLoading(false);
     }
   };
 
-  const onResendOTP = () => {
+  const onResendOTP = async () => {
     if (timer === 0 && !wasResend) {
-      setWasResend(true);
+      const body: OTPCodeRequest = {
+        document_number: dataTU?.document_number,
+        document_type: dataTU?.document_type,
+        phone: dataTU?.personalData?.phoneNumber,
+      };
+      const response = await reSendOTPCode(body);
+      if (!response.error) {
+        setWasResend(true);
+      }
     }
   };
 
@@ -107,23 +125,46 @@ export const Otp = () => {
         />
       </div>
 
-      <div className="w-[33px] h-[33px] bg-primario-20 mb-[16px]"></div>
+      {(isLoading || error || isValid) && (
+        <div className={`"w-[33px] h-[48px] mb-[16px]" flex flex-col items-center`}>
+          {isLoading && <OTLoader />}
+          {error && (
+            <div className="w-[294px] h-[28px] bg-[#ffd4ce40] px-[9px] py-[8px] flex items-center rounded-[4px]">
+              <Icons icon="bcs-advertising" size="text-rojo-200 mr-[10px]" />
+              <Typography
+                variant="caption4"
+                className="font-normal text-rojo-200 text-[12px]"
+              >
+                Código invalido, intente nuevamente
+              </Typography>
+            </div>
+          )}
+          {isValid && (
+            <div>
+              <div className="bg-verde-70  h-[48px] w-[48.22px] flex items-center justify-center rounded-full">
+                <Icons icon="bcs-check" size="text-white" />
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+      {!wasResend && !isValid && (
+        <Typography
+          onClick={onResendOTP}
+          variant={'caption1'}
+          className={`text-[14px] leading-4 ${
+            timer === 0 && wasResend === false
+              ? 'text-primario-20 cursor-pointer'
+              : 'text-gris-200'
+          } mb-[16px]`}
+        >
+          {timer === 0 && wasResend === false
+            ? 'Volver a enviar código'
+            : 'Volver a enviar código en'}
+        </Typography>
+      )}
 
-      <Typography
-        onClick={onResendOTP}
-        variant={'caption1'}
-        className={`${
-          timer === 0 && wasResend === false
-            ? 'text-primario-20 cursor-pointer'
-            : 'text-gris-200'
-        } mb-[16px]`}
-      >
-        {timer === 0 && wasResend === false
-          ? 'Volver a enviar código'
-          : 'Volver a enviar código en'}
-      </Typography>
-
-      {timer === 0 && wasResend === true ? null : (
+      {timer === 0 || isValid ? null : (
         <div className="flex justify-center items-center gap-1">
           <Icons icon="bcs-clock" size="text-gris-30 font-semibold" />
           <Typography variant="caption2" className="text-gris-30 font-semibold">

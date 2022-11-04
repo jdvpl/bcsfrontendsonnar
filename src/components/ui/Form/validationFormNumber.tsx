@@ -81,7 +81,13 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
     };
     const response = await sendNumber(body);
     if (!response.error) {
-      setDataTU({ ...dataTU, personalData: { celular: response.response.data.phone } });
+      setDataTU({
+        ...dataTU,
+        personalData: {
+          celular: response.response.data.phone,
+          phoneNumber: formData.number,
+        },
+      });
       setEncript(formData.number);
       setTimeout(() => proccessResponse(routes.otp), 1000);
     }
