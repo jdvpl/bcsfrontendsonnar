@@ -97,7 +97,7 @@ export const Otp = () => {
         {dataTU?.encriptPhone?.encriptPhone && dataTU?.encriptPhone?.encriptPhone}
       </h4>
 
-      <div className="text-normal mb-[16px]">
+      <div className="text-normal mb-[12px]">
         <OtpInput
           className="otp-div"
           value={otp}
@@ -126,7 +126,7 @@ export const Otp = () => {
       </div>
 
       {(isLoading || error || isValid) && (
-        <div className={`"w-[33px] h-[48px] mb-[16px]" flex flex-col items-center`}>
+        <div className={`"w-[33px] h-[48px] mb-[12px]" flex flex-col items-center`}>
           {isLoading && <OTLoader />}
           {error && (
             <div className="w-[294px] h-[28px] bg-[#ffd4ce40] px-[9px] py-[8px] flex items-center rounded-[4px]">
@@ -135,7 +135,7 @@ export const Otp = () => {
                 variant="caption4"
                 className="font-normal text-rojo-200 text-[12px]"
               >
-                Código invalido, intente nuevamente
+                Código inválido, intente nuevamente
               </Typography>
             </div>
           )}
@@ -156,7 +156,7 @@ export const Otp = () => {
             timer === 0 && wasResend === false
               ? 'text-primario-20 cursor-pointer'
               : 'text-gris-200'
-          } mb-[16px]`}
+          } mb-[12px]`}
         >
           {timer === 0 && wasResend === false
             ? 'Volver a enviar código'
