@@ -1030,11 +1030,11 @@ label#placeOfBirth-label.MuiFormLabel-colorPrimary.MuiFormLabel-filled {
 }
 
 input#document_number:disabled {
-  border-color: #c4d1da;
+  border-color: #7594a8;
 }
 
 input:disabled + label {
-  color: #b0c2cd;
+  color: #7594a8;
 }
 
 /* input+label{
@@ -1106,5 +1106,5 @@ input:disabled + label {
 }
 
 input[type='checkbox']:checked {
-  background: #0386e6 !important;
+  accent-color: #0386e6 !important;
 }

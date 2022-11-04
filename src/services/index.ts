@@ -23,6 +23,17 @@ export const getQuestions = async (data: any) => {
     return { error: true, response: e.response.data.message };
   }
 };
+/**
+ * It takes in a data object, encrypts it, sends it to the server, and then decrypts the response
+ * @param {any} data - The data to be sent to the server.
+ * @returns {
+ *   response: {
+ *     result: response.result,
+ *     data: await allResponseDecrypted(response.data, KEY),
+ *   },
+ *   error: false,
+ * }
+ */
 export const sendQuestions = async (data: any) => {
   try {
     const dataInfo = await allResponse(data, KEY);
