@@ -9,7 +9,8 @@ import Icons from '../../icons';
 import Typography from '../../Tipography';
 
 export const InactivityModal = () => {
-  const timeout = 180000;
+  // const timeout = 180000;
+  const timeout = 12000;
   const [remaining, setRemaining] = useState(timeout);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(30);
@@ -144,14 +145,12 @@ export const InactivityModal = () => {
   return (
     <div
       id="modal"
-      className={`bg-black/70 w-screen h-screen z-40 fixed top-0 left-0 flex justify-center content-center ${
-        isOpen ? 'overflow-y-auto' : 'hidden'
-      }`}
+      className={`bg-black/70 w-screen h-screen z-40 fixed top-0 left-0 flex justify-center content-center ${isOpen ? 'overflow-y-auto' : 'hidden'
+        }`}
     >
       <div
-        className={`${
-          isOpen ? 'slideInUp' : 'slideOutDown'
-        } bg-white w-[343px] h-[428px] md:w-[528px] rounded-xl pt-[64px] md:mt-[94px] px-[16px] mt-[47px]`}
+        className={`${isOpen ? 'slideInUp' : 'slideOutDown'
+          } bg-white w-[343px] h-[428px] md:w-[528px] rounded-xl pt-[64px] md:mt-[94px] px-[16px] mt-[47px]`}
       >
         <h3 className="text-gris-100 text-center w-[311px] mx-auto px-2 text-[24px]">
           Ha estado inactivo en los últimos minutos
