@@ -1,5 +1,5 @@
 export type IconListAvailable =
-  | 'bcs-arrow-one-down'
+  'bcs-arrow-one-down'
   | 'bcs-arrow-one-left'
   | 'bcs-arrow-one-up'
   | 'bcs-arrow-one-right'
@@ -9,13 +9,18 @@ export type IconListAvailable =
   | 'bcs-arrow-two-up'
   | 'bcs-eye-hide'
   | 'bcs-eye-show'
+  | 'bcs-adge-money'
+  | 'bcs-hand-mobile'
+  | 'bcs-hand-simbol'
+  | 'bcs-mobile-check'
+  | 'bcs-women-check'
   | 'bcs-badge'
   | 'bcs-calendar-day'
   | 'bcs-calendar-ok'
   | 'bcs-charts'
   | 'bcs-clock'
   | 'bcs-document-id'
-  | 'bcs-document'
+  | 'bcs-document-one'
   | 'bcs-edit-calendar'
   | 'bcs-hand-money'
   | 'bcs-location'
@@ -50,4 +55,11 @@ export type IconListAvailable =
   | 'bcs-bulding'
   | 'bcs-user-heart'
   | 'bcs-phone'
-  | 'bcs-adge-money';
+  | 'bcs-mobile-grade'
+  | 'bcs-user-job'
+  | 'bcs-document-18'
+
+
+
+
+

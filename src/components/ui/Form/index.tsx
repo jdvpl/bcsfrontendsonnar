@@ -42,7 +42,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
   const documentType = watch('document_type', documentTypeValue);
   const documentNumber = watch('document_number');
   const [disabled, setDisable] = useState(false);
-  const [disabledInput, setDisableInput] = useState(false);
+  const [disabledInput, setDisableInput] = useState(true);
   const [terminos, setTerminos] = useState(false);
   const [commercial, setCommercial] = useState(false);
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -96,24 +96,18 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
       className="w-full p-2 md:py-5 lg:p-4 bg-white"
       autoComplete="off"
     >
-      <div className="text-left text-[28px] leading-[30px] text-primario-900 font-bold">
-        <h2
-          role="paragraph"
-          className="sm:ml-[10px] md:ml-0 mt-[20px] md:mt-[0px] lg:mt-[20px] text-center text-[24px]  leading-[26px] lg:leading-[34px] lg:text-[32px] md:font-bold"
-          tabIndex={0}
-        >
-          <span className="text-center"> Bienvenido a </span>
-        </h2>
-        <figure itemProp="logo" className="flex justify-center">
-          <LogoForm />
-        </figure>
-      </div>
+      <Typography variant="h2" className="text-center text-primario-900">
+        Bienvenido a
+      </Typography>
+      <figure itemProp="logo" className="flex justify-center">
+        <LogoForm />
+      </figure>
 
       <div className="text-gray-100">
         <div>
           <Typography
             variant="bodyM4"
-            className="m-auto text-center mb-[36px] mt-[24px] text-[18px] text-primario-900 sm:w-[306px]"
+            className="m-auto text-center mb-[36px] mt-[24px] text-[18px] text-complementario-100 sm:w-[306px]"
           >
             Para iniciar la solicitud de su crédito ingrese los siguientes datos.
           </Typography>
@@ -155,7 +149,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
                   maxLength={10}
                   required
                   label="Número de documento"
-                  disabled={!!disabledInput}
+                  disabled={disabledInput}
                   onChange={(e: any) => {
                     if (field.value?.length === 10 && !!e.nativeEvent.data) {
                       setError('document_number', {
