@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  basePath: '',
   env: {
     KYC_API_URL: process.env.KYC_API_URL,
     MAINTENANCE: process.env.MAINTENANCE,

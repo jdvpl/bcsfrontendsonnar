@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import "./sdks.css";
 @font-face {
   font-family: 'bcs';
   src: url('./font/bcs.woff?76682285') format('woff');
