@@ -13,6 +13,7 @@ import { SesionStorageKeys } from '../../session';
 import { sendQuestions } from '../../services';
 import { useRouter } from 'next/router';
 import { routes } from '../../routes';
+import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
 
 interface InitDataSend {
   document_type: string;
@@ -73,33 +74,34 @@ const Index: React.FC = () => {
       <Head>
         <title>Validación de identidad - BCS Viviendamiga Digital</title>
       </Head>
-      <Layout navTitle={<NavTitle noBack />}>
-        {loading && <AnimationComponent show="" valid={loading} loaded={false} />}
-        <Stepper
-          step=""
-          incomplete="1"
-          title="Validación de identidad"
-          percentaje={progress}
-        />
-        {data && !dataNumber && !dataValid && (
+      <InactivityWarper>
+        <Layout navTitle={<NavTitle noBack />}>
+          {loading && <AnimationComponent show="" valid={loading} loaded={false} />}
+          <Stepper
+            step=""
+            incomplete="1"
+            title="Validación de identidad"
+            percentaje={progress}
+          />
+          {data && !dataNumber && !dataValid && (
+            <AnimatePresence>
+              <ValidationForm
+                questions={data?.items}
+                onSubmit={(dataSend: any) => {
+                  onSubmitResponse(dataSend);
+                  setprogress('75%');
+                }}
+              />
+            </AnimatePresence>
+          )}
           <AnimatePresence>
-            <ValidationForm
-              questions={data?.items}
-              onSubmit={(dataSend: any) => {
-                onSubmitResponse(dataSend);
-                setprogress('75%');
-              }}
-            />
+            {dataValid ? <VerificationForm onSubmit={(dataLogin: any) => {}} /> : ''}
           </AnimatePresence>
-        )}
-
-        <AnimatePresence>
-          {dataValid ? <VerificationForm onSubmit={(dataLogin: any) => {}} /> : ''}
-        </AnimatePresence>
-        <AnimatePresence>
-          {dataNumber && <ValidationFormNumber questions={dataNumber} />}
-        </AnimatePresence>
-      </Layout>
+          <AnimatePresence>
+            {dataNumber && <ValidationFormNumber questions={dataNumber} />}
+          </AnimatePresence>
+        </Layout>
+      </InactivityWarper>
     </>
   );
 };

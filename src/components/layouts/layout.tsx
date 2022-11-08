@@ -3,8 +3,8 @@ import { motion } from 'framer-motion';
 
 import LogoBcs from '../svg/LogoBcs';
 import { childrenProps } from '../../interfaces';
-import { InactivityWrapper } from '../inactivity/InactivityWrapper';
 import LogoForm from '../svg/LogoForm';
+import { InactivityModal } from '../ui/Modal/inactivityModal';
 
 interface LayoutProps extends childrenProps {
   className?: string;
@@ -41,12 +41,10 @@ export const Layout: React.FC<LayoutProps> = ({ className, navTitle, children })
             </div>
           </header>
           <main className="flex flex-col px-[16px] pt-[40px] md:pt-0 sm:px-[16px] md:px-[30px] max-w-full lg:pt-0 md:justify-center items-center self-start md:self-center text w-full lg:min-h-[100%] lg:h-full">
-            <InactivityWrapper>
-              <div className="w-full h-full max-w-[343px] md:min-w-[528px] lg:min-w-[684px]">
-                <div className="flex lg:hidden">{navTitle}</div>
-                {children}
-              </div>
-            </InactivityWrapper>
+            <div className="w-full h-full max-w-[343px] md:min-w-[528px] lg:min-w-[684px]">
+              <div className="flex lg:hidden">{navTitle}</div>
+              {children}
+            </div>
           </main>
         </div>
       </section>

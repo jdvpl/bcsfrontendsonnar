@@ -6,4 +6,5 @@ export const routes = {
   validacionIdentidad: '/validacion-identidad',
   validacionBiometrica: '/validacion-biometrica',
   validacionErrorValidacionIdentidad: '/validacion/error-validacionIdentidad/',
+  inactivityScreen: '/inactividad',
 };
