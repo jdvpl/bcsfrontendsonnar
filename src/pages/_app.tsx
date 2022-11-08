@@ -1,12 +1,21 @@
 import { AppProps } from 'next/app';
+import { useEffect, useState } from 'react';
 import '../styles/globals.css';
 import {AplicationProvider} from '../context/AplicationContext'
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
-  return (<AplicationProvider key="app">
-    <Component {...pageProps} />;
-  </AplicationProvider>
-  )
+  const [initialRenderComplete, setInitialRenderComplete] = useState<boolean>(false);
+  useEffect(() => {
+    setInitialRenderComplete(true);
+  }, []);
+
+  if (!initialRenderComplete) return <></>;
+
+  return (
+    <AplicationProvider>
+    <Component {...pageProps} />
+    </AplicationProvider>
+  ) 
 }
 
 export default MyApp;

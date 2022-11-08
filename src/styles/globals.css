@@ -2,7 +2,8 @@
 @import "./sdks.css";
 @font-face {
   font-family: 'bcs';
-  src: url('./font/bcs.woff?76682285') format('woff');
+  src: url('./font/bcs.ttf?6314861') format('truetype');
+
   font-style: normal;
 }
 
@@ -97,162 +98,66 @@
   /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
-.bcs-arrow-one-down:before {
-  content: '\e800';
-} /* '' */
-.bcs-arrow-one-left:before {
-  content: '\e801';
-} /* '' */
-.bcs-arrow-one-up:before {
-  content: '\e802';
-} /* '' */
-.bcs-arrow-one-right:before {
-  content: '\e803';
-} /* '' */
-.bcs-arrow-two-down:before {
-  content: '\e804';
-} /* '' */
-.bcs-arrow-two-left:before {
-  content: '\e805';
-} /* '' */
-.bcs-arrow-two-right:before {
-  content: '\e806';
-} /* '' */
-.bcs-arrow-two-up:before {
-  content: '\e807';
-} /* '' */
-.bcs-eye-hide:before {
-  content: '\e808';
-} /* '' */
-.bcs-eye-show:before {
-  content: '\e809';
-} /* '' */
-.bcs-badge:before {
-  content: '\e811';
-} /* '' */
-.bcs-calendar-day:before {
-  content: '\e812';
-} /* '' */
-.bcs-calendar-ok:before {
-  content: '\e813';
-} /* '' */
-.bcs-charts:before {
-  content: '\e814';
-} /* '' */
-.bcs-clock:before {
-  content: '\e815';
-} /* '' */
-.bcs-document-id:before {
-  content: '\e816';
-} /* '' */
-.bcs-document:before {
-  content: '\e817';
-} /* '' */
-.bcs-edit-calendar:before {
-  content: '\e818';
-} /* '' */
-.bcs-hand-money:before {
-  content: '\e819';
-} /* '' */
-.bcs-location:before {
-  content: '\e820';
-} /* '' */
-.bcs-money:before {
-  content: '\e821';
-} /* '' */
-.bcs-push:before {
-  content: '\e822';
-} /* '' */
-.bcs-search:before {
-  content: '\e823';
-} /* '' */
-.bcs-tooltip_info:before {
-  content: '\e824';
-} /* '' */
-.bcs-camera:before {
-  content: '\e825';
-} /* '' */
-.bcs-home:before {
-  content: '\e826';
-} /* '' */
-.bcs-email:before {
-  content: '\e827';
-} /* '' */
-.bcs-check:before {
-  content: '\e828';
-} /* '' */
-.bcs-close:before {
-  content: '\e829';
-} /* '' */
-.bcs-id-hand:before {
-  content: '\e830';
-} /* '' */
-.bcs-star:before {
-  content: '\e831';
-} /* '' */
-.bcs-add:before {
-  content: '\e832';
-} /* '' */
-.bcs-pen-edit:before {
-  content: '\e833';
-} /* '' */
-.bcs-plus-circle:before {
-  content: '\e834';
-} /* '' */
-.bcs-subt:before {
-  content: '\e835';
-} /* '' */
-.bcs-chat-adviser:before {
-  content: '\e836';
-} /* '' */
-.bcs-chat-edit:before {
-  content: '\e837';
-} /* '' */
-.bcs-lock-edit:before {
-  content: '\e838';
-} /* '' */
-.bcs-check-1:before {
-  content: '\e839';
-} /* '' */
-.bcs-error-1:before {
-  content: '\e840';
-} /* '' */
-.bcs-information:before {
-  content: '\e841';
-} /* '' */
-.bcs-advertising:before {
-  content: '\e842';
-} /* '' */
-.bcs-alert:before {
-  content: '\e843';
-} /* '' */
-.bcs-success:before {
-  content: '\e844';
-} /* '' */
-.bcs-check-box-one-hide:before {
-  content: '\e845';
-} /* '' */
-.bcs-check-box-one-show:before {
-  content: '\e846';
-} /* '' */
-.bcs-radio-buttom-hide:before {
-  content: '\e847';
-} /* '' */
-.bcs-radio-buttom-show:before {
-  content: '\e848';
-} /* '' */
-.bcs-bulding:before {
-  content: '\e849';
-} /* '' */
-.bcs-user-heart:before {
-  content: '\e850';
-} /* '' */
-.bcs-phone:before {
-  content: '\e852';
-} /* '' */
-.bcs-adge-money:before {
-  content: '󨀐';
-} /* '\e8010' */
+.bcs-arrow-one-down:before { content: '\e800'; } /* '' */
+.bcs-arrow-one-left:before { content: '\e801'; } /* '' */
+.bcs-arrow-one-up:before { content: '\e802'; } /* '' */
+.bcs-arrow-one-right:before { content: '\e803'; } /* '' */
+.bcs-arrow-two-down:before { content: '\e804'; } /* '' */
+.bcs-arrow-two-left:before { content: '\e805'; } /* '' */
+.bcs-arrow-two-right:before { content: '\e806'; } /* '' */
+.bcs-arrow-two-up:before { content: '\e807'; } /* '' */
+.bcs-eye-hide:before { content: '\e808'; } /* '' */
+.bcs-eye-show:before { content: '\e809'; } /* '' */
+.bcs-adge-money:before { content: '\e80a'; } /* '' */
+.bcs-hand-mobile:before { content: '\e80b'; } /* '' */
+.bcs-hand-simbol:before { content: '\e80c'; } /* '' */
+.bcs-mobile-check:before { content: '\e80d'; } /* '' */
+.bcs-women-check:before { content: '\e80e'; } /* '' */
+.bcs-badge:before { content: '\e811'; } /* '' */
+.bcs-calendar-day:before { content: '\e812'; } /* '' */
+.bcs-calendar-ok:before { content: '\e813'; } /* '' */
+.bcs-charts:before { content: '\e814'; } /* '' */
+.bcs-clock:before { content: '\e815'; } /* '' */
+.bcs-document-id:before { content: '\e816'; } /* '' */
+.bcs-document-one:before { content: '\e817'; } /* '' */
+.bcs-edit-calendar:before { content: '\e818'; } /* '' */
+.bcs-hand-money:before { content: '\e819'; } /* '' */
+.bcs-location:before { content: '\e820'; } /* '' */
+.bcs-money:before { content: '\e821'; } /* '' */
+.bcs-push:before { content: '\e822'; } /* '' */
+.bcs-search:before { content: '\e823'; } /* '' */
+.bcs-tooltip_info:before { content: '\e824'; } /* '' */
+.bcs-camera:before { content: '\e825'; } /* '' */
+.bcs-home:before { content: '\e826'; } /* '' */
+.bcs-email:before { content: '\e827'; } /* '' */
+.bcs-check:before { content: '\e828'; } /* '' */
+.bcs-close:before { content: '\e829'; } /* '' */
+.bcs-id-hand:before { content: '\e830'; } /* '' */
+.bcs-star:before { content: '\e831'; } /* '' */
+.bcs-add:before { content: '\e832'; } /* '' */
+.bcs-pen-edit:before { content: '\e833'; } /* '' */
+.bcs-plus-circle:before { content: '\e834'; } /* '' */
+.bcs-subt:before { content: '\e835'; } /* '' */
+.bcs-chat-adviser:before { content: '\e836'; } /* '' */
+.bcs-chat-edit:before { content: '\e837'; } /* '' */
+.bcs-lock-edit:before { content: '\e838'; } /* '' */
+.bcs-check-1:before { content: '\e839'; } /* '' */
+.bcs-error-1:before { content: '\e840'; } /* '' */
+.bcs-information:before { content: '\e841'; } /* '' */
+.bcs-advertising:before { content: '\e842'; } /* '' */
+.bcs-alert:before { content: '\e843'; } /* '' */
+.bcs-success:before { content: '\e844'; } /* '' */
+.bcs-check-box-one-hide:before { content: '\e845'; } /* '' */
+.bcs-check-box-one-show:before { content: '\e846'; } /* '' */
+.bcs-radio-buttom-hide:before { content: '\e847'; } /* '' */
+.bcs-radio-buttom-show:before { content: '\e848'; } /* '' */
+.bcs-bulding:before { content: '\e849'; } /* '' */
+.bcs-user-heart:before { content: '\e850'; } /* '' */
+.bcs-phone:before { content: '\e852'; }
+
+.bcs-mobile-grade:before { content: '\e83a'; } /* '' */
+.bcs-user-job:before { content: '\e810'; } /* '' */
+.bcs-document-18:before { content: '\e80f'; } /* '' */
 .showActiveCard input ~ span div:after {
   content: '';
   position: absolute;
@@ -1035,11 +940,11 @@ label#placeOfBirth-label.MuiFormLabel-colorPrimary.MuiFormLabel-filled {
 }
 
 input#document_number:disabled {
-  border-color: #c4d1da;
+  border-color: #7594a8;
 }
 
 input:disabled + label {
-  color: #b0c2cd;
+  color: #7594a8;
 }
 
 /* input+label{
@@ -1111,5 +1016,34 @@ input:disabled + label {
 }
 
 input[type='checkbox']:checked {
-  background: #0386e6 !important;
+  accent-color: #0386e6 !important;
+}
+
+
+.listInitial ul {
+  list-style: none;
+}
+.listInitial li {
+  position: relative;
+  list-style-type: none;
+  padding-left: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.listInitial ul li:before {
+  /* content: '✓';
+  color:#00B5FF;
+  font-size: 2rem; */
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 8px;
+  height: 20px;
+  border-width: 0 4px 4px 0;
+  border-style: solid;
+  border-color: #00B5FF;
+  transform-origin: bottom left;
+  transform: rotate(45deg);
 }

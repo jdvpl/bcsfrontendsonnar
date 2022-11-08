@@ -1,4 +1,8 @@
 export const SesionStorageKeys = {
+  device: {
+    key: 'device',
+    description: 'This key saves the kind of device in sessionStorage',
+  },
   dataUser: {
     key: 'dataTU',
     description: 'This key saves the data in sessionStorage from initial form',

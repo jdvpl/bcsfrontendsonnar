@@ -1,8 +1,6 @@
 import Image from 'next/image';
-import { basePath } from '../../../../../next.config';
 import { RatingsOptions } from '../../../../lib/rating';
 import { TextArea } from '../../inputs/TextArea';
-import FC from 'react';
 
 export interface CardOption {
   option: RatingsOptions;
@@ -10,7 +8,11 @@ export interface CardOption {
   onChangeActualOption: (option: RatingsOptions) => void;
 }
 
-export const CardOption = ({ option, actualOption, onChangeActualOption}: CardOption) => {
+export const CardOption = ({
+  option,
+  actualOption,
+  onChangeActualOption,
+}: CardOption) => {
   return (
     <div onClick={() => onChangeActualOption(option)} className="w-full">
       <input type="radio" className="hidden" value={option?.value} />
