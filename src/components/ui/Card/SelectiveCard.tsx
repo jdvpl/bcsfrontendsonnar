@@ -2,12 +2,15 @@ import { useRouter } from 'next/router';
 import { FC } from 'react';
 import Icons, { IconsProps } from '../icons';
 import Typography from '../Tipography/index';
+import { dynamicClassesSelective } from './SelectiveClassnames';
 
 export interface ISelectiveCardProps extends IconsProps {
-  label: string;
+  label?: string;
   description: string;
-  pathTo: string;
-  className?:string;
+  pathTo?: string;
+  className?: string;
+  hasTitle?: boolean;
+  onclick: boolean;
 }
 const SelectiveCard: FC<ISelectiveCardProps> = ({
   label,
@@ -15,18 +18,19 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
   icon,
   color = '',
   size,
-  pathTo,
-  className
+  pathTo = '',
+  className = '',
+  hasTitle = true,
+  onclick = true
 }) => {
   const router = useRouter();
+  const classNames = dynamicClassesSelective(hasTitle, className)
   return (
     <div
-      className={`group b-4 relative xl:flex flex md:flex sm:flex-row md:flex-col lg:flex-col  md:justify-center md:text-center lg:justify-center lg:text-center items-center w-full px-[16px] rounded-l-lg  select-none py-[20px] rounded-r-xl cursor-pointer  hover:bg-primario-20 shadow-lg bg-white ${className}`}
-      onClick={() => {
-        router.push(pathTo);
-      }}
+      className={classNames.mainClasesParentDiv}
+      {...(onclick ? { onClick: () => router.push(pathTo) } : {})}
     >
-      <div className="h-[4.25rem] max-w-[4rem] max-h-[4.25rem] mim-w-[4rem] mr-1 justify-center w-full flex items-center rounded-[0.75rem] bg-white group-hover:bg-primario-20">
+      <div className={classNames.iconContainerStyle}>
         <Icons
           icon={icon}
           color={color}
@@ -36,21 +40,24 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
       </div>
       <label className="label-shipping" htmlFor="shipping-home">
         <div>
-          <Typography
-            variant="bodyM2"
-            className="text-[1rem] leading-[1.125rem] text-primario-900 m-0 tracking-normal font-semibold font-heading group-hover:text-white"
-          >
-            {label}
-          </Typography>
+
+          {hasTitle &&
+            <Typography
+              variant="bodyM2"
+              className="text-[1rem] leading-[1.125rem] text-primario-900 m-0 tracking-normal font-semibold font-heading group-hover:text-white"
+            >
+              {label}
+            </Typography>
+          }
           <Typography
             variant="bodyS3"
-            className="leading-[1.125rem] text-[1rem] text-complementario-100 mt-2 group-hover:text-white"
+            className="leading-[1.125rem] text-[1rem] text-complementario-100 mt-2 group-hover:text-white font-ligth md:w-[224px]"
           >
             {description}
           </Typography>
         </div>
       </label>
-    </div>
+    </div >
   );
 };
 
