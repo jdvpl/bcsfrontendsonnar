@@ -5,13 +5,8 @@ metadata:
   namespace: "{{ .Values.namespace_name }}"
 spec:
   ports:
-  - name: http
-    protocol: TCP
+  - protocol: TCP
     port: 80
-    targetPort: {{ .Values.container_port }}
-  - name: https
-    protocol: TCP
-    port: 443
     targetPort: {{ .Values.container_port }}
   selector:
     app: "{{ .Values.application_name }}-{{ .Values.enviroment_name }}"
