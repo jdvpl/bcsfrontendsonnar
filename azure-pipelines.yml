@@ -49,7 +49,8 @@ stages:
         displayName: 'Sonar: Prepare'
       - task: Npm@1
         inputs:
-          command: ci
+          command: 'ci'
+          workingDir: '.'
         displayName: 'Npm: ci'
       - task: Npm@1
         inputs:
