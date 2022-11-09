@@ -3,7 +3,7 @@ import { clientAxiosKYC } from '../config/AxiosKYC';
 import useAES from '../hooks/useAES';
 import { headersKYC } from './HeadersKYC';
 const { allResponse, allResponseDecrypted } = useAES();
-const KEY = process.env.KEY_KYC_HASH;
+const KEY = process.env.KEYKYCHASH;
 export const getQuestions = async (data: any) => {
   try {
     const dataInfo = await allResponse(data, KEY);

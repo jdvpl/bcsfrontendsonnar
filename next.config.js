@@ -3,9 +3,9 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   env: {
-    KYC_API_URL: process.env.KYC_API_URL,
+    KYCAPIURL: process.env.KYCAPIURL,
     MAINTENANCE: process.env.MAINTENANCE,
-    KEY_KYC_HASH: process.env.KEY_KYC_HASH,
+    KEYKYCHASH: process.env.KEYKYCHASH,
   },
 }
 
