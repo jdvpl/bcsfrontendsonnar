@@ -5,26 +5,6 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
-- stage: Artifact
-  displayName: 'Artifact'
-  jobs:
-    - job: artifact
-      displayName: 'Artifact: ubuntu'
-      pool:
-        vmImage: ubuntu-latest
-      steps:
-        - task: CopyFiles@2
-          inputs:
-            Contents: '**'
-            targetFolder: '$(Build.ArtifactStagingDirectory)'    
-          displayName: 'Artifact: Copy'
-        - task: PublishBuildArtifacts@1
-          inputs:
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-            ArtifactName: 'drop'
-            publishLocation: 'Container'
-          displayName: 'Artifact: Publish'
-
 - stage: Test
   displayName: Test
   jobs:
@@ -63,3 +43,23 @@ stages:
         inputs:
           pollingTimeoutSec: '300'
         displayName: 'Sonar: Publish'
+
+- stage: Artifact
+  displayName: 'Artifact'
+  jobs:
+    - job: artifact
+      displayName: 'Artifact: ubuntu'
+      pool:
+        vmImage: ubuntu-latest
+      steps:
+        - task: CopyFiles@2
+          inputs:
+            Contents: '**'
+            targetFolder: '$(Build.ArtifactStagingDirectory)'    
+          displayName: 'Artifact: Copy'
+        - task: PublishBuildArtifacts@1
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+            ArtifactName: 'drop'
+            publishLocation: 'Container'
+          displayName: 'Artifact: Publish'
