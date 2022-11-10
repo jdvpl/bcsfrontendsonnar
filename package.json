@@ -6,8 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "test": "jest --watch"
+    "lint": "next lint --fix",
+    "export": "next build && next export",
+    "test": "jest --coverage",
+    "test-watch": "jest --watch",
+    "test:ci": "jest --ci",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage --silent --ci",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
