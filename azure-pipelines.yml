@@ -43,6 +43,10 @@ stages:
         inputs:
           pollingTimeoutSec: '300'
         displayName: 'Sonar: Publish'
+      - task: sonarcloud-buildbreaker@2
+        inputs:
+          SonarCloud: 'SonarCloud'
+          organization: 'equipoinnovaciondigital'
 
 - stage: Artifact
   displayName: 'Artifact'
