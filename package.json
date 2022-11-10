@@ -28,7 +28,7 @@
     "react-hook-form": "^7.38.0",
     "react-idle-timer": "^5.4.2",
     "react-lottie-player": "^1.5.0",
-    "react-otp-input-rc-17": "^2.4.1-minor",
+    "react18-input-otp": "^1.1.0",
     "react-pdf": "^5.7.2",
     "react-popper-tooltip": "^4.4.2"
   },

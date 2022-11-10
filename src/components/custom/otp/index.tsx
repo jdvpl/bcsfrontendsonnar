@@ -1,7 +1,7 @@
 import { findAllByTestId } from '@testing-library/react';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect, useRef } from 'react';
-import OtpInput from 'react-otp-input-rc-17';
+import OtpInput from 'react18-input-otp';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { routes } from '../../../routes';
 import { reSendOTPCode, validateOTOCode } from '../../../services';
