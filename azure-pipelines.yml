@@ -47,6 +47,7 @@ stages:
         inputs:
           SonarCloud: 'SonarCloud'
           organization: 'equipoinnovaciondigital'
+        displayName: 'Sonar: Validation Status Sonar'
 
 - stage: Artifact
   displayName: 'Artifact'
