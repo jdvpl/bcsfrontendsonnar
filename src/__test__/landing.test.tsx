@@ -7,5 +7,4 @@ describe('Landing page testing', () => {
     const { asFragment } = render(<Home />)
 
   })
-
 })
