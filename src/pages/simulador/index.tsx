@@ -25,18 +25,25 @@ const Simulator = () => {
     percentageQuota: ''
   }
   const [dataFormQuota, setdataFormQuota] = useSessionStorage(
-    SesionStorageKeys.dataFormQuota.key,
+    SesionStorageKeys.dataFormSimulation.key,
     dataReg
   );
+  const [, setdataFormResponse] = useSessionStorage(
+    SesionStorageKeys.dataFormSimulationResponse.key,
+    dataReg
+  );
+
   const router = useRouter();
   const [simulatioTypeOption, setsimulatioTypeOption] = useState<"house" | "salary">("house")
   const onSubmit = async (formData: iFormDataSimulation) => {
     const body = { ...formData, simulationType: simulatioTypeOption, houseValue: 0, percentageFinance: 0, valueFinance: 0 }
-    console.log(JSON.stringify(body));
+
     setdataFormQuota(body);
     const response = await sendSimulationData(formData);
     if (!response.error) {
+      setdataFormResponse(response.response)
       router.push(routes.simuladorResumen)
+
     }
   }
   return (
