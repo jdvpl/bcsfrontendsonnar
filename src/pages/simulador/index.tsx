@@ -49,7 +49,7 @@ const Simulator = () => {
           <LogoForm />
         </div>
       </div>
-      <div className="lg:w-[684px] md:w-[584px] m-auto">
+      <div className="lg:w-[684px] md:w-[584px] w-[343px] m-auto">
         <Typography variant="h2" className="mt-8 text-center">
           Simulador del crédito
         </Typography>
