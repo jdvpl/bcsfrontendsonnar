@@ -45,7 +45,7 @@ const InicioSolicitud = () => {
       <div className="container flex lg:mt-[0] sm:w-[343px] md:w-[528px] lg:w-[1100px] pt-5">
         <LogoBcs />
       </div>
-      <div className="flex justify-center ">
+      <div className="flex justify-center">
         <div className="mt-[1rem] sm:w-[343px] md:w-[528px] lg:w-[684px]">
           <RegisterForm
             onSubmit={(formData: FormData) => onSubmit(formData)}

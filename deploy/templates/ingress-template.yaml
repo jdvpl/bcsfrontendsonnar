@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "{{ .Values.application_name }}-{{ .Values.enviroment_name }}"
+  namespace: "{{ .Values.namespace_name }}"
+  annotations:
+    appgw.ingress.kubernetes.io/backend-path-prefix: "/"
+    kubernetes.io/ingress.class: azure/application-gateway
+spec:
+  tls:
+    - secretName: az-id
+  rules:
+  - http:
+      paths:
+      - path: /vivienda*
+        backend:
+          service:
+            name: "{{ .Values.application_name }}-{{ .Values.enviroment_name }}"
+            port:
+              number: 80
+        pathType: Prefix

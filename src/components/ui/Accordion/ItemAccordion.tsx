@@ -35,14 +35,14 @@ export const ItemAccordion: React.FC<Props & childrenProps> = ({
           : 'bg-white border-[1px] border-complementario-70  rounded-t-md'
           }`}
       >
-        <h3
+        <h2
           id={`title-question-${id}`}
-          className={` font-semibold text-base leading-[18px] ${active ? 'py-[21px]' : 'py-4'
+          className={` font-semibold text-base leading-[18px] text-[16px] ${active ? 'py-[21px]' : 'py-4'
             }  head-accordiom-color text-complementario-100`}
           itemProp="name"
         >
           {title}
-        </h3>
+        </h2>
         <div>
           <svg
             width="24"

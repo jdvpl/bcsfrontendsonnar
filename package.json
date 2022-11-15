@@ -6,8 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "test": "jest --watch"
+    "lint": "next lint --fix",
+    "export": "next build && next export",
+    "test": "jest --coverage",
+    "test-watch": "jest --watch",
+    "test:ci": "jest --ci",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage --silent --ci",
+    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
+    "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -28,7 +35,7 @@
     "react-hook-form": "^7.38.0",
     "react-idle-timer": "^5.4.2",
     "react-lottie-player": "^1.5.0",
-    "react-otp-input-rc-17": "^2.4.1-minor",
+    "react18-input-otp": "^1.1.0",
     "react-pdf": "^5.7.2",
     "react-popper-tooltip": "^4.4.2"
   },

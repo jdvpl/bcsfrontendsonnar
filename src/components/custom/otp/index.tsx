@@ -1,7 +1,7 @@
 import { findAllByTestId } from '@testing-library/react';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect, useRef } from 'react';
-import OtpInput from 'react-otp-input-rc-17';
+import OtpInput from 'react18-input-otp';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { routes } from '../../../routes';
 import { reSendOTPCode, validateOTOCode } from '../../../services';
@@ -54,6 +54,7 @@ export const Otp = () => {
 
   const onResendOTP = async () => {
     if (timer === 0 && !wasResend) {
+      setIsLoading(true);
       const body: OTPCodeRequest = {
         document_number: dataTU?.document_number,
         document_type: dataTU?.document_type,
@@ -63,6 +64,7 @@ export const Otp = () => {
       if (!response.error) {
         setWasResend(true);
       }
+      setIsLoading(false);
     }
   };
 
@@ -152,11 +154,10 @@ export const Otp = () => {
         <Typography
           onClick={onResendOTP}
           variant={'caption1'}
-          className={`text-[14px] leading-4 ${
-            timer === 0 && wasResend === false
+          className={`text-[14px] leading-4 ${timer === 0 && wasResend === false
               ? 'text-primario-20 cursor-pointer'
               : 'text-gris-200'
-          } mb-[12px]`}
+            } mb-[12px]`}
         >
           {timer === 0 && wasResend === false
             ? 'Volver a enviar código'

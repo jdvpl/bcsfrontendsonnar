@@ -18,14 +18,14 @@ export const Questions: FC = () => {
     >
       <h2
         id="questions"
-        className="text-center min-w-[291px] mb-[60px] mt-[60px]  md:mb-[80px] md:mt-[80px] w-full text-[30px] leading-[34px]  lg:text-[32px] lg:leading-[34px]"
+        className="text-center min-w-[291px] mb-[60px] mt-[60px]  md:mb-[79px] md:mt-[80px] w-full text-[30px] leading-[34px]  lg:text-[32px] lg:leading-[34px]"
         role="paragraph"
         tabIndex={0}
       >
         Preguntas frecuentes
       </h2>
       <div className="w-full lg:max-w-[1200px] ">
-        <div id="accordion" className="w-full mx-auto space-y-[12px]">
+        <div id="accordion" className="w-full mx-auto space-y-[11px]">
           <ItemAccordion
             id="1"
             active={selected === '1'}

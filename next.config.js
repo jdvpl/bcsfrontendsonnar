@@ -1,13 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  productionBrowserSourceMaps: false,
+  poweredByHeader: false,
+  reactStrictMode: true,
+  basePath: '/vivienda',
+  trailingSlash: true,
   reactStrictMode: true,
   swcMinify: true,
   basePath:'',
   env: {
-    KYC_API_URL: process.env.KYC_API_URL,
+    KYCAPIURL: process.env.KYCAPIURL,
     MAINTENANCE: process.env.MAINTENANCE,
-    KEY_KYC_HASH: process.env.KEY_KYC_HASH,
+    KEYKYCHASH: process.env.KEYKYCHASH,
   },
+  images: {
+    loader: 'akamai',
+    path: '',
+  }
 }
 
 module.exports = nextConfig

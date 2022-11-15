@@ -1,4 +1,4 @@
-# bcs-savings-frontend
+# bcs-mortgage-frontend
 
 ## Pull request checklist
 

@@ -44,14 +44,14 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
           {hasTitle &&
             <Typography
               variant="bodyM2"
-              className="text-[1rem] leading-[1.125rem] text-primario-900 m-0 tracking-normal font-semibold font-heading group-hover:text-white"
+              className="text-[1rem] lg:mt-[14px] lg:mb-[18px] leading-[1.125rem] text-primario-900 m-0 tracking-normal font-semibold font-heading group-hover:text-white"
             >
               {label}
             </Typography>
           }
           <Typography
             variant="bodyS3"
-            className="leading-[1.125rem] text-[1rem] text-complementario-100 mt-2 group-hover:text-white font-ligth md:w-[224px]"
+            className={`hasTitle leading-[1.125rem]  text-[1rem] text-complementario-100 mt-2 group-hover:text-white font-ligth md:w-[224px]`}
           >
             {description}
           </Typography>
