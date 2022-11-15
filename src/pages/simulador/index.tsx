@@ -11,26 +11,14 @@ import { useRouter } from 'next/router'
 import { routes } from '../../routes';
 
 const Simulator = () => {
-  const dataReg = {
-    simulationType: 'salary',
-    typeHouse: '',
-    houseValue: '', //house
-    percentageFinance: '', //house
-    valueFinance: '', //house
-    termFinance: '',
-    insuranceCheck: '',
-    dateOfBirth: '',
-    monthlySalary: '',
-    amountQuota: '',
-    percentageQuota: ''
-  }
+
   const [dataFormQuota, setdataFormQuota] = useSessionStorage(
     SesionStorageKeys.dataFormSimulation.key,
-    dataReg
+    {}
   );
   const [, setdataFormResponse] = useSessionStorage(
     SesionStorageKeys.dataFormSimulationResponse.key,
-    dataReg
+    {}
   );
 
   const router = useRouter();
@@ -41,7 +29,7 @@ const Simulator = () => {
     setdataFormQuota(body);
     const response = await sendSimulationData(formData);
     if (!response.error) {
-      setdataFormResponse(response.response)
+      setdataFormResponse(response.response.data)
       router.push(routes.simuladorResumen)
 
     }
@@ -72,7 +60,7 @@ const Simulator = () => {
         {
           simulatioTypeOption === 'salary' &&
           <FormQuota
-            onSubmit={(formData: iFormDataSimulation) => onSubmit(formData)} defaultValues={{ ...dataFormQuota }} />
+            onSubmit={(formData: iFormDataSimulation) => onSubmit(formData)} />
         }
       </div>
 

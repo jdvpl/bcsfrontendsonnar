@@ -8,14 +8,13 @@ import Input from '../inputs';
 import DateOfBirth from '../inputs/dateOfBirth';
 import ReactHookFormSelect from '../Select/newSelect'
 
+
 interface FormProps {
   onSubmit: (data: iFormDataSimulation) => void;
-  defaultValues: iFormDataSimulation;
 }
 
-const FormQuota: FC<FormProps> = ({ onSubmit, defaultValues }) => {
+const FormQuota: FC<FormProps> = ({ onSubmit }) => {
   const [percentage, setpercentage] = useState<number>(0.3);
-  const [quotaPerMonth, setquotaPerMonth] = useState(0)
   const [insuranceValue, setinsuranceValue] = useState(false);
 
   const {
@@ -27,9 +26,9 @@ const FormQuota: FC<FormProps> = ({ onSubmit, defaultValues }) => {
     register,
     formState: { errors, isValid },
   } = useForm<iFormDataSimulation>({ mode: 'onChange' });
-  const typeHouse = watch('typeHouse', defaultValues.typeHouse);
-  const monthlySalary = watch('monthlySalary', defaultValues.monthlySalary);
-  const percentageQuotaData = watch('percentageQuota', defaultValues.percentageQuota);
+  const typeHouse = watch('typeHouse', 'novis');
+  const monthlySalary = watch('monthlySalary', 0);
+  const amountQuota = watch('amountQuota', 0);
 
   useEffect(() => {
     if (typeHouse === 'novis') {
@@ -43,7 +42,6 @@ const FormQuota: FC<FormProps> = ({ onSubmit, defaultValues }) => {
   }, [typeHouse]);
 
   const automationQuota = () => {
-    setquotaPerMonth(monthlySalary * percentage)
     setValue('amountQuota', monthlySalary * percentage)
 
   }
@@ -52,11 +50,11 @@ const FormQuota: FC<FormProps> = ({ onSubmit, defaultValues }) => {
   const handleInsurance = () => {
     setinsuranceValue(!insuranceValue)
   }
-  const getPercentage = (value: number | string) => {
-    const percentage = (+value / monthlySalary)
-    setpercentage(percentage)
-    setValue('percentageQuota', percentage)
-    return percentage;
+  const getPercentage = (value: any) => {
+    if (+amountQuota > 0 && +monthlySalary > 0) {
+      const percentage = (+amountQuota / +monthlySalary);
+      setpercentage(percentage)
+    }
   }
 
   return (
@@ -116,6 +114,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit, defaultValues }) => {
 
               render={({ field }) => {
                 // field.value = quotaPerMonth;
+                getPercentage(field);
                 return (
                   <Input
                     type="text"
@@ -130,11 +129,9 @@ const FormQuota: FC<FormProps> = ({ onSubmit, defaultValues }) => {
                     inputMode="text"
                     required
                     label="Cuota mensual"
-                    {...register('amountQuota')}
                     onChange={(e: any) => {
-                      console.log(field.value)
                       if (typeHouse === 'vis') {
-                        if (getPercentage(field.value) > 0.4 && !!e.nativeEvent.data) {
+                        if (percentage > 0.4 && !!e.nativeEvent.data) {
                           setError('amountQuota', {
                             type: 'manual',
                             message: 'El valor ingresador no debe superar el porcentaje permitido',
@@ -143,7 +140,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit, defaultValues }) => {
                           return;
                         }
                       } else if (typeHouse === 'novis') {
-                        if (getPercentage(field.value) > 0.3 && !!e.nativeEvent.data) {
+                        if (percentage > 0.3 && !!e.nativeEvent.data) {
                           setError('amountQuota', {
                             type: 'manual',
                             message: 'El valor ingresador no debe superar el porcentaje permitido',
@@ -152,7 +149,6 @@ const FormQuota: FC<FormProps> = ({ onSubmit, defaultValues }) => {
                           return;
                         }
                       }
-
                       field.onChange(e.target.value.replace(/[^0-9]/g, ''));
                     }}
                   />
@@ -164,7 +160,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit, defaultValues }) => {
             <div className="bg-complementario-80 w-[98px] ml-3 rounded-md text-center grid place-items-center">
               <Input
                 type="text"
-                value={`${+(percentage.toFixed(2)) * 100}%`}
+                value={`${+(percentage.toFixed(5)) * 100}%`}
                 id="percentageQuota"
                 inputMode="text"
                 {...register('percentageQuota')}
@@ -200,7 +196,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit, defaultValues }) => {
               render={({ field: { onChange } }) => (
                 <DateOfBirth
                   id="dateOfBirth"
-                  defaultValues={defaultValues?.dateOfBirth || undefined}
+                  defaultValues={undefined}
                   onChangeDate={(e) => {
                     onChange(e);
                   }}
