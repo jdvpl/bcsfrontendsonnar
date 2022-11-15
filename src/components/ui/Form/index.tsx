@@ -145,7 +145,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
                   tabIndex={0}
                   id="document_number"
                   inputMode="numeric"
-                  maxLength={10}
+                  // maxLength={10}
                   required
                   label="Número de documento"
                   disabled={disabledInput}

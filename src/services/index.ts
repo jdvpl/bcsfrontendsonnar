@@ -1,7 +1,10 @@
 import { OTPCodeRequest, ValidateOTC } from '../components/custom/otp';
 import { clientAxiosKYC } from '../config/AxiosKYC';
+import { clientAxiosBackend } from '../config/AxiosMortgage';
 import useAES from '../hooks/useAES';
+import { headersBack } from './HeaderBack';
 import { headersKYC } from './HeadersKYC';
+import { iFormDataSimulation } from '../interfaces'
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
 export const getQuestions = async (data: any) => {
@@ -110,3 +113,24 @@ export const reSendOTPCode = async (data: OTPCodeRequest) => {
     return { error: true, response: e?.response?.data?.message };
   }
 };
+export const sendSimulationData = async (data: iFormDataSimulation) => {
+  try {
+    const { data: response } = await clientAxiosBackend.post(
+      '/simulation',
+      { data },
+      headersBack
+    );
+    return {
+      response: {
+        data: response.data,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    console.log(e)
+    return { error: true, response: e?.response?.data?.message };
+  }
+};
+
+
+

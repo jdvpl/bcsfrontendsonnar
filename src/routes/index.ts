@@ -8,4 +8,5 @@ export const routes = {
   validacionErrorValidacionIdentidad: '/validacion/error-validacionIdentidad/',
   inactivityScreen: '/inactividad',
   simulador: '/simulador',
+  simuladorResumen: '/simulador/resumen',
 };

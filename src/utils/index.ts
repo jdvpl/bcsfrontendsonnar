@@ -10,7 +10,7 @@ export const convertToColombianPesos = (value: any) => {
         currency: "COP",
         minimumFractionDigits: 0,
     });
-    if (value === 0 || value === undefined || value === '0' || value === '00' || value === '') return '';
+    if (value === 0 || value === undefined || value === '0' || value === '00' || value === '' || Number.isNaN(value)) return '';
     return peso.format(value);
 };
 export const calculateAge = (dob: string): number => {
