@@ -35,7 +35,7 @@ const HouseSimulator = () => {
 
   const calculatePercentageFinance = (field: any) => {
     if (houseValue > 0 && valueFinance > 0 && valueFinance < houseValue * 0.7) {
-      const calculatePercentage = Math.round((valueFinance / houseValue) * 10) / 10;
+      const calculatePercentage = valueFinance / houseValue;
       setPercentageFinance(calculatePercentage);
     } else {
       setPercentageFinance(0.7);
@@ -82,9 +82,9 @@ const HouseSimulator = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div
-        className={`w-[343px] md:w-[517px] xl:w-[656px] m-auto mt-[200px] flex items-center flex-col`}
+        className={`w-[343px] md:w-[517px] xl:w-[656px] m-auto flex items-center flex-col`}
       >
-        <div className={`grid grid-cols-6 gap-y-4 gap-x-3 w-full mb-8`}>
+        <div className={`grid grid-cols-6 gap-y-4 gap-x-2 w-full mb-8`}>
           <ReactHookFormSelect
             onChange={(e: any) => setValue('typeHouse', e.target.value)}
             placeholder="Tipo de vivienda"
@@ -165,8 +165,8 @@ const HouseSimulator = () => {
               name="valueFinance"
               control={control}
             />
-            <div className="rounded-md  border-[0.5px] w-[78px] h-[48px] bg-complementario-80 border-primario-900 flex justify-center items-center text-complementario-20">
-              {percentageFinance * 100} %
+            <div className="rounded-md w-[78px] border-[0.1px] text-[14px] h-[48px] bg-complementario-80 border-complementario-20/50 flex justify-center items-center text-complementario-20">
+              {(percentageFinance * 100)?.toFixed(2)} %
             </div>
           </div>
 
@@ -274,6 +274,7 @@ const HouseSimulator = () => {
             type="checkbox"
             tabIndex={0}
             id="insuranceCheck"
+            className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"
             inputMode="numeric"
             required
             onChange={(e) => setInsuranceCheck(e.target.checked)}
@@ -287,6 +288,7 @@ const HouseSimulator = () => {
 
         <Button
           type="submit"
+          className="mb-10"
           disabled={!(isValid && Object.entries(errors).length === 0 && insuranceCheck)}
         >
           Simular

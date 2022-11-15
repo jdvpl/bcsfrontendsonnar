@@ -60,7 +60,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit, defaultValues }) => {
   }
 
   return (
-    <div className="">
+    <div className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto">
       <div className="w-full mt-3">
         <form onSubmit={handleSubmit(onSubmit)}>
           <ReactHookFormSelect
@@ -161,8 +161,9 @@ const FormQuota: FC<FormProps> = ({ onSubmit, defaultValues }) => {
               name="amountQuota"
               control={control}
             />
-            <div className="bg-complementario-80 w-[98px] ml-3 rounded-md text-center grid place-items-center">
+            <div className="bg-complementario-80 w-[78px] ml-3 rounded-md text-center grid place-items-center">
               <Input
+                classNameInput='text-complementario-20 text-center border-[0.1px]'
                 type="text"
                 value={`${+(percentage.toFixed(2)) * 100}%`}
                 id="percentageQuota"
@@ -208,7 +209,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit, defaultValues }) => {
               )}
             />
           </div>
-          <div className="flex items-start mt-4">
+          <div className="flex items-start mt-8">
             <input
               {...register('insuranceCheck')}
               className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"
@@ -221,7 +222,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit, defaultValues }) => {
             />
             <label
               htmlFor="insuranceCheck"
-              className="inline-block font-normal text-black p-0 m-0 pl-[10px]"
+              className="ml-3 text-[12px] text-primario-900"
               role="tabpanel"
               tabIndex={0}
               itemScope
@@ -235,6 +236,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit, defaultValues }) => {
               isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[375px]"
               type="submit"
               name="openQuotaSimulation"
+              className='mb-10'
               data-testid="btn-openQuotaSimulation"
               tabIndex={0}
               disabled={
