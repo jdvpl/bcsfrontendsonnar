@@ -7,7 +7,6 @@ const nextConfig = {
   trailingSlash: true,
   reactStrictMode: true,
   swcMinify: true,
-  basePath: '/vivienda',
   env: {
     KYCAPIURL: process.env.KYCAPIURL,
     MAINTENANCE: process.env.MAINTENANCE,
@@ -15,7 +14,7 @@ const nextConfig = {
   },
   images: {
     loader: 'akamai',
-    path: '/',
+    path: '',
   }
 }
 
