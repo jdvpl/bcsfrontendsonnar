@@ -15,6 +15,7 @@ import { useRouter } from 'next/router';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import { routes } from '../../../../routes';
+import Icons from '../../icons';
 
 const HouseSimulator = () => {
   const router = useRouter();
@@ -100,6 +101,16 @@ const HouseSimulator = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      {errors.typeHouse ? (
+        <div className="w-[343px] md:w-[517px] xl:w-[656px] m-auto bg-[#EBF8FE] flex mb-7 gap-[10px] py-2 px-3">
+          <Icons icon="bcs-information" size="text-[#2F6EAE]" />
+          <span className="text-[14px] text-gris-200 rounded-sm font-normal">
+            Recuerde que la financiación del crédito hipotecario es hasta el 70% del valor
+            comercial de la vivienda y la cuota inicial equivalente al 30% restante debe
+            solventarla con recursos propios.
+          </span>
+        </div>
+      ) : null}
       <div
         className={`w-[343px] md:w-[517px] xl:w-[656px] m-auto flex items-center flex-col`}
       >
