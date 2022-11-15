@@ -1,7 +1,8 @@
 import React from 'react';
 import { ItemOne, ItemThree, ItemTwo } from '../icons/biometria/items';
+import { childrenProps } from '../../interfaces';
 
-const CardImage: React.FC = ({ children }) => <div className="flex mr-6">{children}</div>;
+const CardImage: React.FC <childrenProps>= ({ children }) => <div className="flex mr-6">{children}</div>;
 
 export const Description: React.FC = () => (
   <div data-testid="descripcion-biometrica" className="">
