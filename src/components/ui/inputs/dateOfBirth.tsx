@@ -265,7 +265,7 @@ const DateOfBirth: React.FC<InputProps> = ({
     >
       <Label className="text-[10px] text-complementario-100">{label}</Label>
       <div className="flex justify-between max-h-[48px] mt-3 gap-2">
-        <div className="w-[97px] sm:w-[92px] md:w-[141.62px] lg:w-[183.46px]  max-h-[52px] ">
+        <div className="w-full   max-h-[52px] ">
 
           <ReactHookFormSelect
             valueLength={fields?.day}
@@ -287,7 +287,7 @@ const DateOfBirth: React.FC<InputProps> = ({
             ))}
           </ReactHookFormSelect>
         </div>
-        <div className="w-[101px] sm:w-[143px] md:w-[220.13px] lg:w-[285.17px] max-h-[52px]">
+        <div className="w-full  max-h-[52px]">
           <ReactHookFormSelect
             left="right8"
             id={`${id}-month`}
@@ -309,7 +309,7 @@ const DateOfBirth: React.FC<InputProps> = ({
             ))}
           </ReactHookFormSelect>
         </div>
-        <div className="w-[78px] sm:w-[92px] md:w-[141.62px] lg:w-[183.6px] d-flex  align:end ">
+        <div className="w-full d-flex  align:end ">
 
           <Controller
             rules={{ required: true, minLength: 5, maxLength: 10 }}
@@ -327,7 +327,7 @@ const DateOfBirth: React.FC<InputProps> = ({
                   value={fields.year || ''}
                   valueLength
                   tabIndex={0}
-                  type="number"
+                  type="text"
                   inputMode="numeric"
                   maxLength={4}
                   id={`${id}-year`}

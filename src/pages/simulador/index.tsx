@@ -12,26 +12,13 @@ import { routes } from '../../routes';
 import HouseSimulator from '../../components/ui/Form/houseSimulator/HouseSimulator';
 
 const Simulator = () => {
-  const dataReg = {
-    simulationType: 'salary',
-    typeHouse: '',
-    houseValue: '', //house
-    percentageFinance: '', //house
-    valueFinance: '', //house
-    termFinance: '',
-    insuranceCheck: '',
-    dateOfBirth: '',
-    monthlySalary: '',
-    amountQuota: '',
-    percentageQuota: '',
-  };
   const [dataFormQuota, setdataFormQuota] = useSessionStorage(
     SesionStorageKeys.dataFormSimulation.key,
-    dataReg
+    {}
   );
   const [, setdataFormResponse] = useSessionStorage(
     SesionStorageKeys.dataFormSimulationResponse.key,
-    dataReg
+    {}
   );
 
   const router = useRouter();
@@ -98,13 +85,12 @@ const Simulator = () => {
             }
             onClick={() => setsimulatioTypeOption('salary')}
           >
-            Cuota que puedo pagar
+            Cuanto me prestan
           </button>
         </div>
         {simulatioTypeOption === 'salary' && (
           <FormQuota
             onSubmit={(formData: iFormDataSimulation) => onSubmit(formData)}
-            defaultValues={{ ...dataFormQuota }}
           />
         )}
         {simulatioTypeOption === 'house' && <HouseSimulator />}
