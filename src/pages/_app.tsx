@@ -1,6 +1,7 @@
 import { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 import '../styles/globals.css';
+import {AplicationProvider} from '../context/AplicationContext'
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const [initialRenderComplete, setInitialRenderComplete] = useState<boolean>(false);
@@ -10,7 +11,11 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
   if (!initialRenderComplete) return <></>;
 
-  return <Component {...pageProps} />;
+  return (
+    <AplicationProvider>
+    <Component {...pageProps} />
+    </AplicationProvider>
+  ) 
 }
 
 export default MyApp;

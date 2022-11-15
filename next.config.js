@@ -7,6 +7,7 @@ const nextConfig = {
   trailingSlash: true,
   reactStrictMode: true,
   swcMinify: true,
+  basePath:'',
   env: {
     KYCAPIURL: process.env.KYCAPIURL,
     MAINTENANCE: process.env.MAINTENANCE,
