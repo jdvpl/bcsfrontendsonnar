@@ -20,7 +20,7 @@ export const getQuestions = async (data: any) => {
       error: false,
     };
   } catch (e: any) {
-    return { error: true, response: e.response.data.message };
+    return { error: true, response: e.response?.data?.message };
   }
 };
 /**
