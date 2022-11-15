@@ -14,11 +14,15 @@ import { NavTitle } from '../../components/commons/NavTitle';
 
 <<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+
 const CardImage:React.FC<childrenProps> = ({children}) => (
   <div className="flex mr-6 minw-64">{children}</div>
 );
 const ValidationMessage: React.FC<childrenProps> = () => {
 =======
+>>>>>>> 7dea39af3fac9e21ffaf2b812c6e424ba0e6183d
 const CardImage:React.FC<childrenProps> = ({children}) => (
   <div className="flex mr-6 minw-64">{children}</div>
 );
