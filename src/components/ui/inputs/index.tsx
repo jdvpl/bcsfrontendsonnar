@@ -1,4 +1,4 @@
-import { HelperText } from './HelperText';
+import { HelperText } from "./HelperText";
 
 export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   /**
