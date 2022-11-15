@@ -122,7 +122,7 @@ export const sendSimulationData = async (data: iFormDataSimulation) => {
     );
     return {
       response: {
-        data: response.data,
+        data: response,
       },
       error: false,
     };

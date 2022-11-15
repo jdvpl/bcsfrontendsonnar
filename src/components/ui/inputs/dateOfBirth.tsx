@@ -263,8 +263,8 @@ const DateOfBirth: React.FC<InputProps> = ({
       itemProp="birthDate"
       className={`flex flex-col justify-start ${ageError ? 'pb-[2px]' : 'pb-[0px]'} `}
     >
-      <Label className="">{label}</Label>
-      <div className="flex justify-between max-h-[48px] mt-2 ">
+      <Label className="text-[10px] text-complementario-100">{label}</Label>
+      <div className="flex justify-between max-h-[48px] mt-3 gap-2">
         <div className="w-[97px] sm:w-[92px] md:w-[141.62px] lg:w-[183.46px]  max-h-[52px] ">
 
           <ReactHookFormSelect
@@ -309,7 +309,7 @@ const DateOfBirth: React.FC<InputProps> = ({
             ))}
           </ReactHookFormSelect>
         </div>
-        <div className="w-[78px] sm:w-[92px] md:w-[141.62px] lg:w-[183.6px] d-flex  align:end -mt-[3px]">
+        <div className="w-[78px] sm:w-[92px] md:w-[141.62px] lg:w-[183.6px] d-flex  align:end ">
 
           <Controller
             rules={{ required: true, minLength: 5, maxLength: 10 }}
