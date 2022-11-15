@@ -46,11 +46,11 @@ const Simulator = () => {
       percentageFinance: 0,
       valueFinance: 0,
     };
-
+    console.log(body)
     setdataFormQuota(body);
     const response = await sendSimulationData(formData);
     if (!response.error) {
-      setdataFormResponse(response.response);
+      setdataFormResponse(response.response.data);
       router.push(routes.simuladorResumen);
     }
   };

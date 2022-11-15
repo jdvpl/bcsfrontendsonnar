@@ -7,13 +7,27 @@ import { convertToColombianPesos } from '../../../../utils';
 import { days, months } from '../../../../lib/dates';
 import { HelperText } from '../../inputs/HelperText';
 import Button from '../../Button';
-import { SimulationData } from '../../../../interfaces';
+import { iFormDataSimulation, SimulationData } from '../../../../interfaces';
 import { yearsAvailable } from '../../../../lib/simulator';
 import useValidations from './useValidations';
+import { sendSimulationData } from '../../../../services';
+import { useRouter } from 'next/router';
+import { useSessionStorage } from '../../../../hooks/useSessionStorage';
+import { SesionStorageKeys } from '../../../../session';
+import { routes } from '../../../../routes';
 
 const HouseSimulator = () => {
+  const router = useRouter();
   const [percentageFinance, setPercentageFinance] = useState<number>(0.7);
   const [insuranceCheck, setInsuranceCheck] = useState<boolean>(false);
+  const [dataFormQuota, setDataFormQuota] = useSessionStorage(
+    SesionStorageKeys.dataFormSimulation.key,
+    {}
+  );
+  const [, setDataFormResponse] = useSessionStorage(
+    SesionStorageKeys.dataFormSimulationResponse.key,
+    {}
+  );
 
   const {
     handleSubmit,
@@ -34,7 +48,7 @@ const HouseSimulator = () => {
   const year = watch('year', '');
 
   const calculatePercentageFinance = (field: any) => {
-    if (houseValue > 0 && valueFinance > 0 && valueFinance < houseValue * 0.7) {
+    if (houseValue > 0 && valueFinance > 999999 && valueFinance < houseValue * 0.7) {
       const calculatePercentage = valueFinance / houseValue;
       setPercentageFinance(calculatePercentage);
     } else {
@@ -54,6 +68,7 @@ const HouseSimulator = () => {
     houseValue,
     valueFinance,
     termFinance,
+    calculatePercentageFinance,
     day,
     month,
     year,
@@ -61,22 +76,26 @@ const HouseSimulator = () => {
     setError
   );
 
-  const onSubmit = (formData: SimulationData): void => {
-    const body: SimulationData = {
+  const onSubmit = async (formData: SimulationData) => {
+    const body: iFormDataSimulation = {
       typeHouse: formData?.typeHouse,
-      houseValue: formData?.houseValue,
-      valueFinance: formData?.valueFinance,
+      houseValue: Math.floor(formData.houseValue),
+      valueFinance: formData.valueFinance,
       termFinance: formData?.termFinance,
       percentageFinance,
       insuranceCheck,
-      dateOfBirth: `${day}/${month}/${year}`,
+      dateOfBirth: `${day}-${month}-${year}`,
       simulationType: 'house',
       monthlySalary: 0,
       amountQuota: 0,
-      percentageQuote: 0,
+      percentageQuota: 0,
     };
-
-    console.log(body);
+    const response = await sendSimulationData(body);
+    if (!response.error) {
+      setDataFormResponse(response?.response?.data);
+      setDataFormQuota(body);
+      router.push(routes.simuladorResumen);
+    }
   };
 
   return (
@@ -105,7 +124,6 @@ const HouseSimulator = () => {
 
           <Controller
             render={({ field }) => {
-              calculatePercentageFinance(field);
               return (
                 <Input
                   containerClassName="col-span-6"
@@ -166,7 +184,7 @@ const HouseSimulator = () => {
               control={control}
             />
             <div className="rounded-md w-[78px] border-[0.1px] text-[14px] h-[48px] bg-complementario-80 border-complementario-20/50 flex justify-center items-center text-complementario-20">
-              {(percentageFinance * 100)?.toFixed(2)} %
+              {(percentageFinance * 100).toFixed()}%
             </div>
           </div>
 

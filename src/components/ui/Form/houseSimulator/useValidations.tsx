@@ -7,6 +7,7 @@ export default function useValidations(
   houseValue: number,
   valueFinance: number,
   termFinance: number,
+  calculatePercentageFinance: any,
   day: any,
   month: any,
   year: any,
@@ -29,7 +30,7 @@ export default function useValidations(
         'typeHouse',
         {
           type: 'error',
-          message: "El valor de la vivienda VIS debe ser menor a $150'000.000 M",
+          message: "El valor de Debe ser mayor a 18 años y menor a 70 añosvivienda VIS debe ser menor a $150'000.000 M",
         },
         {
           shouldFocus: true,
@@ -39,14 +40,14 @@ export default function useValidations(
   };
 
   const validateAge = () => {
-    if (day && month && year) {
+    if (day && month && year && year?.length === 4) {
       const age = calculateAge(`${day}/${month}/${year}`);
       if (age < 19 || age > 69) {
         setError(
           'day',
           {
             type: 'error',
-            message: 'No te encuentras dentro del rango de edad',
+            message: 'Debe ser mayor a 18 años y menor a 70 años',
           },
           {
             shouldFocus: true,
@@ -56,7 +57,7 @@ export default function useValidations(
           'month',
           {
             type: 'error',
-            message: 'No te encuentras dentro del rango de edad',
+            message: 'Debe ser mayor a 18 años y menor a 70 años',
           },
           {
             shouldFocus: true,
@@ -66,7 +67,7 @@ export default function useValidations(
           'year',
           {
             type: 'error',
-            message: 'No te encuentras dentro del rango de edad',
+            message: 'Debe ser mayor a 18 años y menor a 70 años',
           },
           {
             shouldFocus: true,
@@ -79,6 +80,7 @@ export default function useValidations(
   useEffect(() => {
     handleClearErrors();
     validateTypeHouse();
+    calculatePercentageFinance();
     validateAge();
   }, [typeHouse, houseValue, valueFinance, termFinance, day, month, year]);
 }
