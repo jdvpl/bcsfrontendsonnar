@@ -6,6 +6,7 @@ import Select from '@mui/material/Select';
 import { Controller } from 'react-hook-form';
 
 import { useEffect, useState } from 'react';
+import { HelperText } from '../inputs/HelperText';
 
 const ReactHookFormSelect: React.FC<any> = ({
   name,
@@ -17,6 +18,9 @@ const ReactHookFormSelect: React.FC<any> = ({
   valueLength,
   left,
   margin,
+  rules,
+  helperText,
+  error = false,
   ...props
 }) => {
   const labelId = `${name}-label`;
@@ -36,7 +40,7 @@ const ReactHookFormSelect: React.FC<any> = ({
     );
   }, []);
   return (
-    <FormControl {...props} fullWidth className="position-relative">
+    <FormControl {...props} fullWidth className={`position-relative ${props?.className}`}>
       <div className={`position-absolute ${left} top-1/3`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -50,11 +54,18 @@ const ReactHookFormSelect: React.FC<any> = ({
           <path fillRule="evenodd" clipRule="evenodd" d={initialIcon} fill="#496374" />
         </svg>
       </div>
-      <InputLabel htmlFor={labelId} id={labelId}>
+      <InputLabel
+        htmlFor={labelId}
+        id={labelId}
+        sx={{
+          color: error && '#ce1126',
+        }}
+      >
         {label}
       </InputLabel>
       <Controller
         defaultValue={defaultValue || ''}
+        rules={rules}
         render={({ field }) => (
           <Select
             id={labelId}
@@ -62,7 +73,7 @@ const ReactHookFormSelect: React.FC<any> = ({
             {...field}
             key={props.id}
             sx={{
-              color: '#00253D',
+              color: error ? '#ce1126' : '#00253D',
               fontSize: '14px',
               '.MuiFormLabel-root': {
                 fontSize: '14px',
@@ -71,15 +82,15 @@ const ReactHookFormSelect: React.FC<any> = ({
                 fontSize: '14px',
               },
               '.MuiOutlinedInput-notchedOutline': {
-                borderColor: initialBorder,
+                borderColor: error ? '#ce1126' : initialBorder,
                 borderWidth: '1px',
               },
               '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                borderColor: '#2972C8',
+                borderColor: error ? '#ce1126' : '#2972C8',
                 borderWidth: '1px',
               },
               '&:hover .MuiOutlinedInput-notchedOutline': {
-                borderColor: '#2972C8',
+                borderColor: error ? '#ce1126' : '#2972C8',
                 borderWidth: '1px',
               },
               '.MuiSvgIcon-root ': {
@@ -117,6 +128,7 @@ const ReactHookFormSelect: React.FC<any> = ({
         name={name}
         control={control}
       />
+      {helperText ? <HelperText text={helperText} error={error} /> : null}
     </FormControl>
   );
 };

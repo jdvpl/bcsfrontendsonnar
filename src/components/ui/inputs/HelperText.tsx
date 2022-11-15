@@ -1,11 +1,12 @@
 interface HelperTextProps {
   text: string;
   error: boolean;
+  className: string;
 }
 
-export const HelperText = ({ text, error }: HelperTextProps) => {
+export const HelperText = ({ text, error, className }: HelperTextProps) => {
   return (
-    <div className="flex items-center help pl-2 ">
+    <div className={`flex items-center help pl-2 ${className}`}>
       <svg
         width="12"
         height="12"
