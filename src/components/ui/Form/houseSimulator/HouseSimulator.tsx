@@ -16,6 +16,8 @@ import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import { routes } from '../../../../routes';
 import Icons from '../../icons';
+import Alert from '../../Alert';
+import { parserPercentageDecimal } from '../../../../utils/index';
 
 const HouseSimulator = () => {
   const router = useRouter();
@@ -101,19 +103,16 @@ const HouseSimulator = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {errors.typeHouse ? (
-        <div className="w-[343px] md:w-[517px] xl:w-[656px] m-auto bg-[#EBF8FE] flex mb-7 gap-[10px] py-2 px-3">
-          <Icons icon="bcs-information" size="text-[#2F6EAE]" />
-          <span className="text-[14px] text-gris-200 rounded-sm font-normal">
-            Recuerde que la financiación del crédito hipotecario es hasta el 70% del valor
-            comercial de la vivienda y la cuota inicial equivalente al 30% restante debe
-            solventarla con recursos propios.
-          </span>
-        </div>
-      ) : null}
       <div
         className={`w-[343px] md:w-[517px] xl:w-[656px] m-auto flex items-center flex-col`}
       >
+        {errors.typeHouse ? (
+          <Alert
+            message={
+              'Recuerde que la financiación del crédito hipotecario es hasta el 70% del valor comercial de la vivienda y la cuota inicial equivalente al 30% restante debe solventarla con recursos propios.'
+            }
+          />
+        ) : null}
         <div className={`grid grid-cols-6 gap-y-4 gap-x-2 w-full mb-8`}>
           <ReactHookFormSelect
             onChange={(e: any) => setValue('typeHouse', e.target.value)}
@@ -193,7 +192,7 @@ const HouseSimulator = () => {
               control={control}
             />
             <div className="rounded-md w-[78px] border-[0.1px] text-[14px] h-[48px] bg-complementario-80 border-complementario-20/50 flex justify-center items-center text-complementario-20">
-              {(percentageFinance * 100).toFixed()}%
+              {parserPercentageDecimal(percentageFinance * 100)}%
             </div>
           </div>
 
@@ -310,13 +309,13 @@ const HouseSimulator = () => {
           <span className="text-[12px] text-primario-900">
             Deseo incluir en la simulación del crédito el valor de los seguros
             correspondientes.
-          </span>
+          </span> 
         </div>
 
         <Button
           type="submit"
           className="mb-10"
-          disabled={!(isValid && Object.entries(errors).length === 0 && insuranceCheck)}
+          disabled={!(isValid && Object.entries(errors).length === 0)}
         >
           Simular
         </Button>

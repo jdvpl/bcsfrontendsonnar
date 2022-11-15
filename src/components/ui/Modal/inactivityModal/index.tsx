@@ -9,8 +9,7 @@ import Icons from '../../icons';
 import Typography from '../../Tipography';
 
 export const InactivityModal = () => {
-  // const timeout = 180000;
-  const timeout = 12000;
+  const timeout = 180000;
   const [remaining, setRemaining] = useState(timeout);
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(30);
