@@ -2,7 +2,7 @@
 @import "./sdks.css";
 @font-face {
   font-family: 'bcs';
-  src: url('./font/bcs.ttf?6314861') format('truetype');
+  src: url('./font/bcs.ttf') format('truetype');
 
   font-style: normal;
 }
