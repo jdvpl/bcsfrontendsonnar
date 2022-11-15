@@ -20,4 +20,12 @@ export const SesionStorageKeys = {
     key: 'process',
     description: 'This key save the process of the biometry process',
   },
+  dataFormSimulation: {
+    key: 'simulationValues',
+    description: 'This key saves the data from the form simulator quota.',
+  },
+  dataFormSimulationResponse: {
+    key: 'simulationResponse',
+    description: 'This key saves the data of the response from the simulation form.',
+  },
 };
