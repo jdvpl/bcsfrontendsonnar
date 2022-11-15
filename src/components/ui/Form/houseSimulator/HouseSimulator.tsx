@@ -119,8 +119,6 @@ const HouseSimulator = () => {
             onChange={(e: any) => setValue('typeHouse', e.target.value)}
             placeholder="Tipo de vivienda"
             label="Tipo de vivienda"
-            error={!!errors.typeHouse}
-            helperText={errors.typeHouse?.message}
             defaultValue="novis"
             control={control}
             left="right4"
