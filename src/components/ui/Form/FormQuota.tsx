@@ -57,6 +57,14 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
   }
   const getPercentage = (value: any) => {
     if (+amountQuota > 0 && +monthlySalary > 0) {
+      if (typeHouse === 'novis' && monthlySalary > amountQuota * 0.3) {
+        setpercentage(0.3)
+        return;
+      }
+      if (typeHouse === 'vis' && monthlySalary > amountQuota * 0.4) {
+        setpercentage(0.4)
+        return;
+      }
       const percentage = (+amountQuota / +monthlySalary);
       setpercentage(percentage)
     } else {
@@ -131,7 +139,13 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                     onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                       e.preventDefault();
                     }}
-                    value={convertToColombianPesos(Math.round(field.value))}
+                    value={
+
+                      typeHouse == 'novis' && field.value > monthlySalary * 0.3 ?
+                        convertToColombianPesos(Math.round(monthlySalary * 0.3))
+                        : typeHouse == 'vis' && field.value > monthlySalary * 0.4 ?
+                          convertToColombianPesos(Math.round(monthlySalary * 0.4))
+                          : convertToColombianPesos(Math.round(field.value))}
                     tabIndex={0}
                     helperText={errors.amountQuota?.message}
                     id="amountQuota"
@@ -167,7 +181,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
               name="amountQuota"
               control={control}
             />
-            <div className="bg-complementario-80 w-[78px] ml-3 rounded-md text-center grid place-items-center">
+            <div className="bg-complementario-80 w-[78px] ml-3 rounded-md text-center grid place-items-center p-0">
               <Typography variant="caption2"
                 className='text-complementario-20 text-center'
               >
