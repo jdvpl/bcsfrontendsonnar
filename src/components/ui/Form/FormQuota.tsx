@@ -84,6 +84,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
             name="typeHouse"
             className="w-100"
             margin="normal"
+            required
           >
             <MenuItem value="novis">No VIS</MenuItem>
             <MenuItem value="vis">VIS</MenuItem>
@@ -177,6 +178,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
 
           <div className="mt-4">
             <ReactHookFormSelect
+              required
               onChange={(e: any) => setValue('termFinance', e.target.value)}
               placeholder="Plazo"
               label="Plazo"
