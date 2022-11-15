@@ -85,7 +85,7 @@ const Simulator = () => {
             }
             onClick={() => setsimulatioTypeOption('salary')}
           >
-            Cuota que puedo pagar
+            Cuanto me prestan
           </button>
         </div>
         {simulatioTypeOption === 'salary' && (

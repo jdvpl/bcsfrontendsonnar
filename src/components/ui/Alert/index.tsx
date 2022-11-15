@@ -10,7 +10,7 @@ const Alert: FC<propAlert> = ({ message }) => {
       <span className="absolute top-0 bottom-0 left-0 flex items-center px-3">
         <Icons icon='bcs-information' color={'text-[#2F6EAE]'} />
       </span>
-      <span className="block ml-6 mr-6 font-light text-center md:text-left"> {message}</span>
+      <span className="block ml-6 mr-6 font-light text-center md:text-left text-[#7594A8]"> {message}</span>
     </div>
 
   )
