@@ -2,11 +2,13 @@ import { MenuItem } from '@mui/material'
 import React, { ClipboardEvent, FC, KeyboardEvent, useEffect, useRef, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form';
 import { iFormDataSimulation } from '../../../interfaces';
-import { convertToColombianPesos } from '../../../utils';
+import { convertToColombianPesos, parserPercentageDecimal } from '../../../utils';
+import Alert from '../Alert';
 import Button from '../Button';
 import Input from '../inputs';
 import DateOfBirth from '../inputs/dateOfBirth';
 import ReactHookFormSelect from '../Select/newSelect'
+import Typography from '../Tipography/index';
 
 
 interface FormProps {
@@ -16,6 +18,7 @@ interface FormProps {
 const FormQuota: FC<FormProps> = ({ onSubmit }) => {
   const [percentage, setpercentage] = useState<number>(0.3);
   const [insuranceValue, setinsuranceValue] = useState(false);
+  const [errorMessageAlert, seterrorMessageAlert] = useState<string>('');
 
   const {
     handleSubmit,
@@ -34,9 +37,11 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
     if (typeHouse === 'novis') {
       setpercentage(0.3);
       setValue('percentageQuota', 0.3);
+      seterrorMessageAlert('El valor de la cuota mensual para vivienda No VIS, no puede superar el 30% de sus ingresos totales..')
       return;
     } else if (typeHouse === 'vis') {
       setValue('percentageQuota', 0.4);
+      seterrorMessageAlert('El valor de la cuota mensual para vivienda VIS, no puede superar el 40% de sus ingresos totales.')
       setpercentage(0.4);
     }
   }, [typeHouse]);
@@ -54,11 +59,14 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
     if (+amountQuota > 0 && +monthlySalary > 0) {
       const percentage = (+amountQuota / +monthlySalary);
       setpercentage(percentage)
+    } else {
+      setpercentage(typeHouse === 'novis' ? 0.3 : 0.4)
     }
   }
 
   return (
     <div className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto">
+      <Alert message={errorMessageAlert} />
       <div className="w-full mt-3">
         <form onSubmit={handleSubmit(onSubmit)}>
           <ReactHookFormSelect
@@ -128,6 +136,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                     id="amountQuota"
                     inputMode="text"
                     required
+                    disabled={!(monthlySalary > 0)}
                     label="Cuota mensual"
                     onChange={(e: any) => {
                       if (typeHouse === 'vis') {
@@ -158,15 +167,11 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
               control={control}
             />
             <div className="bg-complementario-80 w-[78px] ml-3 rounded-md text-center grid place-items-center">
-              <Input
-                classNameInput='text-complementario-20 text-center border-[0.1px]'
-                type="text"
-                value={`${+(percentage.toFixed(5)) * 100}%`}
-                id="percentageQuota"
-                inputMode="text"
-                {...register('percentageQuota')}
-                disabled
-              />
+              <Typography variant="caption2"
+                className='text-complementario-20 text-center'
+              >
+                {`${parserPercentageDecimal(percentage * 100)}%`}
+              </Typography>
             </div>
           </div>
 
