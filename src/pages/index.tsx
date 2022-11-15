@@ -77,7 +77,7 @@ export default function Home() {
             color="text-primario-300"
             label="Simule su crédito"
             description="Con nuestro simulador podrá calcular el valor del crédito y sus cuotas."
-            pathTo={routes.startProccess}
+            pathTo={routes.simulador}
             className="sm:mt-4 xs:mt-4"
             onclick={true}
           />

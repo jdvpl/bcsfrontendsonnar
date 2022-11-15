@@ -10,4 +10,6 @@ export const routes = {
   validacionErrorDiario:'/validacion/error-validacionDiario/',
   validacionBlock:'/validacion/error-validacionBlock/',
   inactivityScreen: '/inactividad',
+  simulador: '/simulador',
+  simuladorResumen: '/simulador/resumen',
 };

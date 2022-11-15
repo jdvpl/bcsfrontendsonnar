@@ -4,7 +4,6 @@ import Button from '../Button';
 import Politicas from '../../commons/Politicas';
 import CommercialAuthorization from '../../commons/CommercialAuthorization';
 import Modal from '../Modal';
-import Select from '../Select';
 import Input from '../inputs';
 import LogoForm from '../../svg/LogoForm';
 import ReactHookFormSelect from '../Select/newSelect';
@@ -146,7 +145,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
                   tabIndex={0}
                   id="document_number"
                   inputMode="numeric"
-                  maxLength={10}
+                  // maxLength={10}
                   required
                   label="Número de documento"
                   disabled={disabledInput}
