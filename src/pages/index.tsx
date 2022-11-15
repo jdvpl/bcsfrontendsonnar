@@ -20,7 +20,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="overflow-hidden">
+    <div data-testid="landingPage" className="overflow-hidden">
       <div className="lg:bg-[url('../public/images/backgroundLg.svg')] xl:bg-[url('../public/images/backgroundLg.svg')] xxl:bg-[url('../public/images/backgroundLg.svg')] md:bg-[url('../public/images/backgroundMd.svg')] sm:bg-[url('../public/images/backgroundSm.svg')] xs:bg-[url('../public/images/backgroundSm.svg')] bg-no-repeat  -z-30 bg-cover xs:bg-bottom sm:bg-bottom md:bg-bottom lg:bg-top xl:bg-bottom xs:h-[540px] sm:h-[580px] md:h-[650px] lg:h-[715px] xl:h-[715px] xxl:bg-top xxl:h-[910px]">
         <div
           className=" container flex justify-start items-baseline xs:pt-3 xs:pl-2 sm:pt-3 ms:pl-2 md:pl-6 md:pt-6 lg:pt-5 lg:pl-10 xl:pt-5 xxl:pl-0 xxl:ml-20"
@@ -196,7 +196,7 @@ export default function Home() {
         <Typography variant="h2" className='mt-[84px] text-center lg:mb-[105px]'>Beneficios</Typography>
         <div className="bg-gris-80 md:grid md:grid-cols-2 sm:grid sm:grid-col-1 xs:mt-[12rem] md:mt-[5rem] relative md:h-[412px] gap-10">
           <div className="relative xs:top-[-150px] md:top-[-25px] flex justify-center md:justify-end ">
-            <img src="/images/beneficios.png" alt="img-card"
+            <img src="/public/images/beneficios.png" alt="img-card"
               className='w-[302px] h-[420px] md:h-[450px]'
             />
           </div>
