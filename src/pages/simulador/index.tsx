@@ -4,7 +4,7 @@ import LogoForm from '../../components/svg/LogoForm'
 import FormQuota from '../../components/ui/Form/FormQuota'
 import Typography from '../../components/ui/Tipography'
 import { useSessionStorage } from '../../hooks/useSessionStorage'
-import { iFormDataSimulation } from '../../interfaces'
+import { iFormDataSimulation } from '../../interfaces/formSimulation'
 import { SesionStorageKeys } from '../../session'
 import { sendSimulationData } from '../../services/index';
 import { useRouter } from 'next/router'
