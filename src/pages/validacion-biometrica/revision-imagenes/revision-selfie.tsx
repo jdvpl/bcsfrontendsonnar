@@ -10,12 +10,16 @@ import { basePath } from '../../../../next.config';
 import useAES from '../../../hooks/useAES';
 import { ContainerButtonForm } from '../../../components/form/containerButtonForm';
 import { urlAndUtms } from '../../../utils/RouterUtmsUrl';
+import { Layout } from '../../../components/layouts/layout';
+import { NavTitle } from '../../../components/commons/NavTitle';
 
 const KEY = process.env.KEY_KYC_HASH;
 
 const RevisionImagenes: React.FC = () => {
   const router = useRouter();
   const { selfies, setSelfieSonriendo, setSelfieNormal } = useContext(AplicationContext);
+  console.log("1",selfies.sonriendo.image)
+  console.log("2",selfies.sonriendo.image_alive)
   const [showAnimation, setShowAnimation] = useState(false);
   const [, setIsLoading] = useState(true);
   const [validated, setValidated] = useState(false);
@@ -54,7 +58,7 @@ const RevisionImagenes: React.FC = () => {
     const bodyEncript = await allResponse(body, KEY);
     try {
       const response = await fetch(
-        `${process.env.APIURL}/kyc/identity-user/biometry/process`,
+        `${process.env.KYC_API_URL}/kyc/identity-user/biometry/process`,
         {
           method: 'POST',
           headers: requestHeaders,
@@ -87,8 +91,8 @@ const RevisionImagenes: React.FC = () => {
     const requestHeaders: HeadersInit = new Headers();
 
     const body = {
-      selfie_normal: selfies.sonriendo,
-      selfie_alive: selfies.normal,
+      selfie_normal: selfies.sonriendo.image,
+      selfie_alive: selfies.sonriendo.image_alive,
       document_type: dataTU.document_type,
       document_number: dataTU.document_number,
     };
@@ -146,7 +150,7 @@ const RevisionImagenes: React.FC = () => {
     await sendSelfie();
   };
   return (
-    <div>
+    <Layout navTitle={<NavTitle noBack />}>
       {showAnimation && <AnimationComponent show="" valid={validated} loaded={loaded} />}
       <div data-testid="revision">
         <div className="pt-3 md:pt-0 w-full lg:mt-10">
@@ -167,7 +171,7 @@ const RevisionImagenes: React.FC = () => {
                 <img
                   data-testid="image1"
                   className="w-100 mb-6 max-w-[130px] max-h-[130px] rounded-[50%] object-cover"
-                  src={selfies ? selfies.sonriendo : ''}
+                  src={selfies ? selfies.sonriendo.image : ''}
                   alt=""
                 />
               </div>
@@ -178,7 +182,7 @@ const RevisionImagenes: React.FC = () => {
                 <img
                   data-testid="image2"
                   className="w-100 mb-6 max-w-[130px] max-h-[130px] rounded-[50%] object-cover"
-                  src={selfies ? selfies.normal : ''}
+                  src={selfies ? selfies.sonriendo.image_alive : ''}
                   alt=""
                 />
               </div>
@@ -209,7 +213,7 @@ const RevisionImagenes: React.FC = () => {
           </Button>
         </ContainerButtonForm>
       </div>
-    </div>
+    </Layout>
   );
 };
 export default RevisionImagenes;

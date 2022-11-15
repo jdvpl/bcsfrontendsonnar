@@ -17,6 +17,8 @@ import { childrenProps } from '../../interfaces';
 import svgCel from "../../../public/images/new1.svg"
 import svgCelInl from "../../../public/images/new2.svg"
 import svgDoc from "../../../public/images/new3.svg"
+import { Layout } from '../../components/layouts/layout';
+import { NavTitle } from '../../components/commons/NavTitle';
 
 const KEY = process.env.KEY_KYC_HASH;
 
@@ -43,7 +45,7 @@ const ValidationMessage: React.FC = () => {
     };
     const bodyEncript = await allResponse(body, KEY);
     try {
-      const response = await fetch(`${process.env.APIURL}/kyc/identity-user/biometry`, {
+      const response = await fetch(`${process.env.KYC_API_URL}/kyc/identity-user/biometry`, {
         method: 'POST',
         headers: requestHeaders,
         body: JSON.stringify({
@@ -103,7 +105,7 @@ const ValidationMessage: React.FC = () => {
       <Head>
         <title>Validación biométrica</title>
       </Head>
-      
+      <Layout navTitle={<NavTitle noBack />} >
         {showAnimation && (
           <AnimationComponent show="" valid={validated} loaded={loaded} />
         )}
@@ -264,6 +266,7 @@ const ValidationMessage: React.FC = () => {
             </ContainerButtonForm>
           </div>
         )}
+        </Layout>
     </div>
   );
 };

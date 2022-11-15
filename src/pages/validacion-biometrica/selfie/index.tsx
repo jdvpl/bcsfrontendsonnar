@@ -11,8 +11,7 @@ const FotoSelfie: React.FC = () => {
   const [alto, setAlto] = useState(100);
   useEffect(() => {
     setAlto(window.innerHeight);
-
-    if (selfies.normal && selfies.sonriendo) {
+    if (selfies.sonriendo) {
       urlAndUtms(router, '/validacion-biometrica/revision-imagenes/revision-selfie');
     }
   }, [selfies]);

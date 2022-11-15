@@ -9,6 +9,8 @@ import { childrenProps } from '../../interfaces';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
 import { ContainerButtonForm } from '../../components/form/containerButtonForm';
 import { urlAndUtms } from '../../utils/RouterUtmsUrl/index';
+import { Layout } from '../../components/layouts/layout';
+import { NavTitle } from '../../components/commons/NavTitle';
 
 const CardImage:React.FC<childrenProps> = ({children}) => (
   <div className="flex mr-6 minw-64">{children}</div>
@@ -17,7 +19,7 @@ const ValidationMessage: React.FC = () => {
   const router = useRouter();
   const { isMobile } = useDeviceDetect();
   return (
-      <>
+    <Layout navTitle={<NavTitle noBack />}>
       {isMobile ? (
         <div>
           <div className="pt-3 md:pt-0 w-full lg:mt-10">
@@ -219,7 +221,7 @@ const ValidationMessage: React.FC = () => {
           </Button>
         </div>
       )}
-    </>
+    </Layout>
   );
 };
 

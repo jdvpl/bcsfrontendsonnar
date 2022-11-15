@@ -1,6 +1,5 @@
 import React from 'react';
 import view from './prueba_selfie.view';
-
 import { AplicationContext } from '../../context/AplicationContext';
 import { basePath } from '../../../next.config';
 
@@ -21,7 +20,7 @@ export default class PhotoLiveSelfiePage extends React.Component {
     // Face Image
     faceImage: false,
   };
-
+  
   setMessage = (message: string) => this.setState({ message: message });
   setUnmounted = (unmounted: boolean) => this.setState({ unmounted: unmounted });
   setPrefaceImage = (prefaceImage: any) => this.setState({ prefaceImage: prefaceImage });
@@ -45,9 +44,8 @@ export default class PhotoLiveSelfiePage extends React.Component {
   }
 
   componentDidMount() {
-    // Get the reference to the DOM 'target' element
-    this.target = window.document.getElementById('target');
-
+    if(!window.document.getElementById("tercero") ){
+      this.target = window.document.getElementById('target');
     // Set the events handlers for the VDAlive events.
     this.target.addEventListener('VDAlive_mounted', this.onVDAliveMounted);
     this.target.addEventListener('VDAlive_mountFailure', this.onVDAliveMountFailure);
@@ -55,6 +53,9 @@ export default class PhotoLiveSelfiePage extends React.Component {
     this.target.addEventListener('VDAlive_prefaceDetection', this.onVDPrefaceDetection);
     this.target.addEventListener('VDAlive_faceDetection', this.onVDAliveFaceDetection);
     this.start();
+    }
+    // Get the reference to the DOM 'target' element
+    
   }
 
   //Start the VDAlive SDK
@@ -160,12 +161,13 @@ export default class PhotoLiveSelfiePage extends React.Component {
 
   // Face image has been taken
   onVDAliveFaceDetection = (data: any) => {
+    
     // Assign the images to their variables
-
-    this.setPrefaceImage(data.detail.image);
-    this.context.setSelfieSonriendo(data.detail.image);
-
-    this.context.setSelfieNormal(data.detail.image_alive);
+    // this.setPrefaceImage(data.detail.image);
+    // this.context.setSelfieNormal(data.detail.image_alive);
+    this.context.setSelfieSonriendo(data.detail);
+    //this.setFaceImage( data.detail.image_alive );
+    
   };
 
   // CV script fails to load
@@ -173,3 +175,4 @@ export default class PhotoLiveSelfiePage extends React.Component {
     this.setMessage('Failed to load/initialize cv.js');
   };
 }
+
