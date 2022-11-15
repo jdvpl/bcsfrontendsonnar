@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from 'react'
 import LogoBcs from '../../components/svg/LogoBcs'
 import LogoForm from '../../components/svg/LogoForm'
@@ -7,16 +6,6 @@ import Typography from '../../components/ui/Tipography'
 import { useSessionStorage } from '../../hooks/useSessionStorage'
 import { iFormDataSimulation } from '../../interfaces/formSimulation'
 import { SesionStorageKeys } from '../../session'
-=======
-import React, { useState } from 'react';
-import LogoBcs from '../../components/svg/LogoBcs';
-import LogoForm from '../../components/svg/LogoForm';
-import FormQuota from '../../components/ui/Form/FormQuota';
-import Typography from '../../components/ui/Tipography';
-import { useSessionStorage } from '../../hooks/useSessionStorage';
-import { iFormDataSimulation } from '../../interfaces';
-import { SesionStorageKeys } from '../../session';
->>>>>>> 085be42c9af50a232f4fe1b01cd42078e602b5d9
 import { sendSimulationData } from '../../services/index';
 import { useRouter } from 'next/router';
 import { routes } from '../../routes';
