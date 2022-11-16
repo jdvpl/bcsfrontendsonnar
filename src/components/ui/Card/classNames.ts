@@ -13,7 +13,7 @@ export const dynamicClasses = (
     ? 'pointer-events-none border-gris-90 hover:border-azul_gris-50 shadow-none'
     : `cursor-pointer  border-azul_gris-80 hover:border-primario-400 shadow-lg ${showActiveCardStyles}`;
 
-  //? classes of each component
+  // ? classes of each component
   // main card styles
   const mainCardStyles = instructiveCard
     ? 'flex py-4 pl-4 rounded-lg bg-gris-80'
@@ -71,8 +71,7 @@ export const dynamicClasses = (
   const editableIconSectionsStyle =
     'flex items-end justify-end w-full cursor-pointer items-flex-end';
 
-  const editableTextSectionsStyle =
-    'inline m-0 text-sm font-bold text-primario-100';
+  const editableTextSectionsStyle = 'inline m-0 text-sm font-bold text-primario-100';
   return {
     mainCardStyles,
     iconColorStyle,

@@ -9,8 +9,16 @@ export interface IconsProps {
   iconclassNames?: string;
 }
 
-export const Icons: FC<IconsProps> = ({ icon, size, color, iconclassNames = '', ...props }) => {
-  return <i {...props} className={`icon-ds-bcs ${icon} ${color} ${size} ${iconclassNames}`}></i>;
+export const Icons: FC<IconsProps> = ({
+  icon,
+  size,
+  color,
+  iconclassNames = '',
+  ...props
+}) => {
+  return (
+    <i {...props} className={`icon-ds-bcs ${icon} ${color} ${size} ${iconclassNames}`} />
+  );
 };
 
 export default Icons;

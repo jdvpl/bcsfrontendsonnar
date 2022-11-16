@@ -4,7 +4,8 @@ import { clientAxiosBackend } from '../config/AxiosMortgage';
 import useAES from '../hooks/useAES';
 import { headersBack } from './HeaderBack';
 import { headersKYC } from './HeadersKYC';
-import { iFormDataSimulation } from '../interfaces'
+import { iFormDataSimulation } from '../interfaces';
+
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
 export const getQuestions = async (data: any) => {
@@ -127,10 +128,7 @@ export const sendSimulationData = async (data: iFormDataSimulation) => {
       error: false,
     };
   } catch (e: any) {
-    console.log(e)
+    console.log(e);
     return { error: true, response: e?.response?.data?.message };
   }
 };
-
-
-

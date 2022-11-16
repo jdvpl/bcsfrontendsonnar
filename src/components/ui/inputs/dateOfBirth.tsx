@@ -226,13 +226,15 @@ const DateOfBirth: React.FC<InputProps> = ({
 
   useEffect(() => {
     const date = `${fields.day}/${fields.month}/${fields.year}`;
-    const dateFormat = `${fields.year}-${parseInt(fields.month, 10) < 10 && fields.month.length < 2
-      ? `0${fields.month}`
-      : fields.month
-      }-${parseInt(fields.day, 10) < 10 && fields.day.length < 2
+    const dateFormat = `${fields.year}-${
+      parseInt(fields.month, 10) < 10 && fields.month.length < 2
+        ? `0${fields.month}`
+        : fields.month
+    }-${
+      parseInt(fields.day, 10) < 10 && fields.day.length < 2
         ? `0${fields.day}`
         : fields.day
-      }`;
+    }`;
     if (!fields.year) {
       return;
     }
@@ -266,7 +268,6 @@ const DateOfBirth: React.FC<InputProps> = ({
       <Label className="text-[10px] text-complementario-100">{label}</Label>
       <div className="flex justify-between max-h-[48px] mt-3 gap-2">
         <div className="w-full   max-h-[52px] ">
-
           <ReactHookFormSelect
             valueLength={fields?.day}
             left="right13"
@@ -310,7 +311,6 @@ const DateOfBirth: React.FC<InputProps> = ({
           </ReactHookFormSelect>
         </div>
         <div className="w-full d-flex  align:end ">
-
           <Controller
             rules={{ required: true, minLength: 5, maxLength: 10 }}
             render={({ field }) => {

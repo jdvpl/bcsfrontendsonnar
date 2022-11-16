@@ -1,5 +1,5 @@
-import FC from 'react';
-import { useState } from 'react';
+import FC, { useState } from 'react';
+
 import { Star } from '../../ui/icons/star';
 
 interface QualifyProps {
@@ -15,7 +15,7 @@ export const Qualify = ({ rate, changeRate, isEditable = true }: QualifyProps) =
     <div className="flex gap-0 items-center justify-center mt-[16px] w-full">
       {rating.map((_, index) => (
         <div
-          key={'rating' + index}
+          key={`rating${index}`}
           onClick={() => isEditable && changeRate(index)}
           className="cursor-pointer"
           onMouseEnter={() => isEditable && setTempRating(index)}

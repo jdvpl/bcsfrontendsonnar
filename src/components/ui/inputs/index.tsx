@@ -1,4 +1,4 @@
-import { HelperText } from "./HelperText";
+import { HelperText } from './HelperText';
 
 export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   /**
@@ -58,7 +58,7 @@ export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   autofocus?: true | false;
 }
 
-export function Input({
+export const Input = ({
   label,
   classNameInput,
   containerClassName,
@@ -68,7 +68,7 @@ export function Input({
   endIcon,
   autofocus = false,
   ...props
-}: InputProps) {
+}: InputProps) => {
   const labelStyles = `
   peer-placeholder-shown:z-[-1] peer-focus:z-0 z-0
 
@@ -103,12 +103,12 @@ export function Input({
         {startIcon && (
           <i
             className={`top-[16px] ml-2 absolute before:font-black leading-4 text-[16px] ${startIcon} text-complementario-50`}
-          ></i>
+          />
         )}
         {endIcon && (
           <i
             className={`top-[16px] right-0 mr-2 absolute before:font-black leading-4 text-[16px] ${endIcon} text-complementario-50`}
-          ></i>
+          />
         )}
         <input
           type="text"
@@ -130,6 +130,6 @@ export function Input({
       {helperText && error && <HelperText error={error} text={helperText} />}
     </div>
   );
-}
+};
 
 export default Input;

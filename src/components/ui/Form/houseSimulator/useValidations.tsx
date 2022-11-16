@@ -30,7 +30,8 @@ export default function useValidations(
         'typeHouse',
         {
           type: 'error',
-          message: "El valor de Debe ser mayor a 18 años y menor a 70 añosvivienda VIS debe ser menor a $150'000.000 M",
+          message:
+            "El valor de Debe ser mayor a 18 años y menor a 70 añosvivienda VIS debe ser menor a $150'000.000 M",
         },
         {
           shouldFocus: true,

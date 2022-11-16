@@ -153,11 +153,12 @@ export const Otp = () => {
       {!wasResend && !isValid && (
         <Typography
           onClick={onResendOTP}
-          variant={'caption1'}
-          className={`text-[14px] leading-4 ${timer === 0 && wasResend === false
+          variant="caption1"
+          className={`text-[14px] leading-4 ${
+            timer === 0 && wasResend === false
               ? 'text-primario-20 cursor-pointer'
               : 'text-gris-200'
-            } mb-[12px]`}
+          } mb-[12px]`}
         >
           {timer === 0 && wasResend === false
             ? 'Volver a enviar código'

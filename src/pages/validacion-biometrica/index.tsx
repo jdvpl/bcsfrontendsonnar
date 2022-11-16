@@ -14,16 +14,15 @@ import { ContainerButtonForm } from '../../components/form/containerButtonForm';
 import useAES from '../../hooks/useAES';
 import { urlAndUtms } from '../../utils/RouterUtmsUrl';
 import { childrenProps } from '../../interfaces';
-import svgCel from "../../../public/images/new1.svg"
-import svgCelInl from "../../../public/images/new2.svg"
-import svgDoc from "../../../public/images/new3.svg"
+import svgCel from '../../../public/images/new1.svg';
+import svgCelInl from '../../../public/images/new2.svg';
+import svgDoc from '../../../public/images/new3.svg';
 import { Layout } from '../../components/layouts/layout';
 import { NavTitle } from '../../components/commons/NavTitle';
 
 const KEY = process.env.KEY_KYC_HASH;
 
-
-const CardImage:React.FC<childrenProps> = ({children}) => (
+const CardImage: React.FC<childrenProps> = ({ children }) => (
   <div className="flex mr-6 minw-64">{children}</div>
 );
 const ValidationMessage: React.FC = () => {
@@ -40,18 +39,21 @@ const ValidationMessage: React.FC = () => {
     requestHeaders.set('Content-Type', 'application/json');
     requestHeaders.set('App-Name', 'ADIGITAL');
     const body = {
-      document_type: "CC",
-      document_number: "1015444367",
+      document_type: 'CC',
+      document_number: '1015444367',
     };
     const bodyEncript = await allResponse(body, KEY);
     try {
-      const response = await fetch(`${process.env.KYC_API_URL}/kyc/identity-user/biometry`, {
-        method: 'POST',
-        headers: requestHeaders,
-        body: JSON.stringify({
-          data: bodyEncript,
-        }),
-      });
+      const response = await fetch(
+        `${process.env.KYC_API_URL}/kyc/identity-user/biometry`,
+        {
+          method: 'POST',
+          headers: requestHeaders,
+          body: JSON.stringify({
+            data: bodyEncript,
+          }),
+        }
+      );
       if (response.ok) {
         setValidated(false);
         setShowAnimation(false);
@@ -105,7 +107,7 @@ const ValidationMessage: React.FC = () => {
       <Head>
         <title>Validación biométrica</title>
       </Head>
-      <Layout navTitle={<NavTitle noBack />} >
+      <Layout navTitle={<NavTitle noBack />}>
         {showAnimation && (
           <AnimationComponent show="" valid={validated} loaded={loaded} />
         )}
@@ -266,7 +268,7 @@ const ValidationMessage: React.FC = () => {
             </ContainerButtonForm>
           </div>
         )}
-        </Layout>
+      </Layout>
     </div>
   );
 };

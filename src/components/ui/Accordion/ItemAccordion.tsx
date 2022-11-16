@@ -1,4 +1,4 @@
-import { childrenProps } from "../../../interfaces";
+import { childrenProps } from '../../../interfaces';
 
 interface Props {
   id: string;
@@ -12,13 +12,14 @@ export const ItemAccordion: React.FC<Props & childrenProps> = ({
   setSelected,
   active,
   title,
-  children
+  children,
 }) => {
   return (
     <div
       data-testid="accordion"
-      className={`w-full bg-white  shadow-small-300   ${active ? 'border-[1px] border-complementario-70 rounded-md  ' : ' rounded-t-md '
-        } `}
+      className={`w-full bg-white  shadow-small-300   ${
+        active ? 'border-[1px] border-complementario-70 rounded-md  ' : ' rounded-t-md '
+      } `}
       itemScope
       itemProp="mainEntity"
       itemType="https://schema.org/Question"
@@ -30,15 +31,17 @@ export const ItemAccordion: React.FC<Props & childrenProps> = ({
         onFocus={() => setSelected?.(id)}
         role="button"
         tabIndex={0}
-        className={`flex justify-between items-center cursor-pointer px-[20px] text-azul_gris-100 ${active
-          ? 'bg-gris-80  rounded-t-md border-b-complementario-70 border-b-[1px]'
-          : 'bg-white border-[1px] border-complementario-70  rounded-t-md'
-          }`}
+        className={`flex justify-between items-center cursor-pointer px-[20px] text-azul_gris-100 ${
+          active
+            ? 'bg-gris-80  rounded-t-md border-b-complementario-70 border-b-[1px]'
+            : 'bg-white border-[1px] border-complementario-70  rounded-t-md'
+        }`}
       >
         <h2
           id={`title-question-${id}`}
-          className={` font-semibold text-base leading-[18px] text-[16px] ${active ? 'py-[21px]' : 'py-4'
-            }  head-accordiom-color text-complementario-100`}
+          className={` font-semibold text-base leading-[18px] text-[16px] ${
+            active ? 'py-[21px]' : 'py-4'
+          }  head-accordiom-color text-complementario-100`}
           itemProp="name"
         >
           {title}

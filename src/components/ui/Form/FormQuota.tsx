@@ -1,5 +1,12 @@
-import { MenuItem } from '@mui/material'
-import React, { ClipboardEvent, FC, KeyboardEvent, useEffect, useRef, useState } from 'react'
+import { MenuItem } from '@mui/material';
+import React, {
+  ClipboardEvent,
+  FC,
+  KeyboardEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { iFormDataSimulation } from '../../../interfaces';
 import { convertToColombianPesos, parserPercentageDecimal } from '../../../utils';
@@ -7,9 +14,8 @@ import Alert from '../Alert';
 import Button from '../Button';
 import Input from '../inputs';
 import DateOfBirth from '../inputs/dateOfBirth';
-import ReactHookFormSelect from '../Select/newSelect'
+import ReactHookFormSelect from '../Select/newSelect';
 import Typography from '../Tipography/index';
-
 
 interface FormProps {
   onSubmit: (data: iFormDataSimulation) => void;
@@ -37,40 +43,42 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
     if (typeHouse === 'novis') {
       setpercentage(0.3);
       setValue('percentageQuota', 0.3);
-      seterrorMessageAlert('El valor de la cuota mensual para vivienda No VIS, no puede superar el 30% de sus ingresos totales..')
-      return;
+      seterrorMessageAlert(
+        'El valor de la cuota mensual para vivienda No VIS, no puede superar el 30% de sus ingresos totales..'
+      );
     } else if (typeHouse === 'vis') {
       setValue('percentageQuota', 0.4);
-      seterrorMessageAlert('El valor de la cuota mensual para vivienda VIS, no puede superar el 40% de sus ingresos totales.')
+      seterrorMessageAlert(
+        'El valor de la cuota mensual para vivienda VIS, no puede superar el 40% de sus ingresos totales.'
+      );
       setpercentage(0.4);
     }
   }, [typeHouse]);
 
   const automationQuota = () => {
-    setValue('amountQuota', monthlySalary * percentage)
-
-  }
-  const yearsAvailable = [5, 6, 7, 8, 9, 10, 15, 20]
+    setValue('amountQuota', monthlySalary * percentage);
+  };
+  const yearsAvailable = [5, 6, 7, 8, 9, 10, 15, 20];
 
   const handleInsurance = () => {
-    setinsuranceValue(!insuranceValue)
-  }
+    setinsuranceValue(!insuranceValue);
+  };
   const getPercentage = (value: any) => {
     if (+amountQuota > 0 && +monthlySalary > 0) {
       if (typeHouse === 'novis' && monthlySalary > amountQuota * 0.3) {
-        setpercentage(0.3)
+        setpercentage(0.3);
         return;
       }
       if (typeHouse === 'vis' && monthlySalary > amountQuota * 0.4) {
-        setpercentage(0.4)
+        setpercentage(0.4);
         return;
       }
-      const percentage = (+amountQuota / +monthlySalary);
-      setpercentage(percentage)
+      const percentage = +amountQuota / +monthlySalary;
+      setpercentage(percentage);
     } else {
-      setpercentage(typeHouse === 'novis' ? 0.3 : 0.4)
+      setpercentage(typeHouse === 'novis' ? 0.3 : 0.4);
     }
-  }
+  };
 
   return (
     <div className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto">
@@ -128,7 +136,6 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
           </div>
           <div className="flex mt-4">
             <Controller
-
               render={({ field }) => {
                 // field.value = quotaPerMonth;
                 getPercentage(field);
@@ -140,12 +147,12 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                       e.preventDefault();
                     }}
                     value={
-
-                      typeHouse == 'novis' && field.value > monthlySalary * 0.3 ?
-                        convertToColombianPesos(Math.round(monthlySalary * 0.3))
-                        : typeHouse == 'vis' && field.value > monthlySalary * 0.4 ?
-                          convertToColombianPesos(Math.round(monthlySalary * 0.4))
-                          : convertToColombianPesos(Math.round(field.value))}
+                      typeHouse == 'novis' && field.value > monthlySalary * 0.3
+                        ? convertToColombianPesos(Math.round(monthlySalary * 0.3))
+                        : typeHouse == 'vis' && field.value > monthlySalary * 0.4
+                        ? convertToColombianPesos(Math.round(monthlySalary * 0.4))
+                        : convertToColombianPesos(Math.round(field.value))
+                    }
                     tabIndex={0}
                     helperText={errors.amountQuota?.message}
                     id="amountQuota"
@@ -158,7 +165,8 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                         if (percentage > 0.4 && !!e.nativeEvent.data) {
                           setError('amountQuota', {
                             type: 'manual',
-                            message: 'El valor ingresador no debe superar el porcentaje permitido',
+                            message:
+                              'El valor ingresador no debe superar el porcentaje permitido',
                           });
                           e.preventDefault();
                           return;
@@ -167,7 +175,8 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                         if (percentage > 0.3 && !!e.nativeEvent.data) {
                           setError('amountQuota', {
                             type: 'manual',
-                            message: 'El valor ingresador no debe superar el porcentaje permitido',
+                            message:
+                              'El valor ingresador no debe superar el porcentaje permitido',
                           });
                           e.preventDefault();
                           return;
@@ -182,8 +191,9 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
               control={control}
             />
             <div className="bg-complementario-80 w-[78px] ml-3 rounded-md text-center grid place-items-center p-0">
-              <Typography variant="caption2"
-                className='text-complementario-20 text-center'
+              <Typography
+                variant="caption2"
+                className="text-complementario-20 text-center"
               >
                 {`${parserPercentageDecimal(percentage * 100)}%`}
               </Typography>
@@ -206,7 +216,9 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
               margin="normal"
             >
               {yearsAvailable.map((y, i) => (
-                <MenuItem value={y} key={i}>{y} años</MenuItem>
+                <MenuItem value={y} key={i}>
+                  {y} años
+                </MenuItem>
               ))}
             </ReactHookFormSelect>
           </div>
@@ -245,7 +257,8 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
               itemScope
               itemType="https://schema.org/Service"
             >
-              Deseo incluir en la simulación del crédito el valor de los seguros correspondientes.
+              Deseo incluir en la simulación del crédito el valor de los seguros
+              correspondientes.
             </label>
           </div>
           <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-10">
@@ -253,12 +266,10 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
               isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[375px]"
               type="submit"
               name="openQuotaSimulation"
-              className='mb-10'
+              className="mb-10"
               data-testid="btn-openQuotaSimulation"
               tabIndex={0}
-              disabled={
-                (!errors.typeHouse?.message && !isValid)
-              }
+              disabled={!errors.typeHouse?.message && !isValid}
               id="btn-next"
             >
               Simular
@@ -267,7 +278,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FormQuota
+export default FormQuota;

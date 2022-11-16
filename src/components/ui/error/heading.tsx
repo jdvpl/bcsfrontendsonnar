@@ -1,4 +1,5 @@
 import { childrenProps } from '../../../interfaces';
+
 export const HeadingError: React.FC<childrenProps> = ({ children }) => (
   <h3
     id="title-error"

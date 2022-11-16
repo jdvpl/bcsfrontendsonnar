@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Layout } from '../../../components/layouts/layout';
 import { NavTitle } from '../../../components/commons/NavTitle';
-import Button from "../../../components/ui/Button/index"
+import Button from '../../../components/ui/Button/index';
 import { AplicationContext } from '../../../context/AplicationContext';
 import Stepper from '../../../components/ui/Stepper/index';
 import AnimationComponent from '../../../components/Animations/animation';
@@ -12,7 +12,6 @@ import { basePath } from '../../../../next.config';
 import { ContainerButtonForm } from '../../../components/form/containerButtonForm';
 import useAES from '../../../hooks/useAES';
 import { urlAndUtms } from '../../../utils/RouterUtmsUrl/index';
-
 
 const KEY = process.env.KEY_KYC_HASH;
 
@@ -84,13 +83,13 @@ const RevisionImagenes: React.FC = () => {
     //   );
     //   if (response.ok) {
     //     setIsLoading(false);
-        
+
     //     redirectLoader('/validacion-biometrica/indexSelfie');
     //   } else if (response.status === 403) {
     //     const dataResponse: any = await response.json();
 
     //     const code = dataResponse.internal_code;
-  
+
     //     switch (code) {
     //       case 'VQ-01':
     //         urlAndUtms(router, '/');
@@ -133,12 +132,7 @@ const RevisionImagenes: React.FC = () => {
       )}
       <div data-testid="revision">
         <div className="pt-3 md:pt-0 w-full lg:mt-10">
-          <Stepper
-            step="1"
-            incomplete=""
-            title="Validación de identidad"
-            percentaje=""
-          />
+          <Stepper step="1" incomplete="" title="Validación de identidad" percentaje="" />
         </div>
 
         <div>
@@ -199,15 +193,13 @@ const RevisionImagenes: React.FC = () => {
             </div>
           </div>
           {error ? <div className="text-center mt-[12px] ">Intentelo de nuevo</div> : ''}
-         
-            <Button id="btn-go-bank" data-testid="sendPhoto" onClick={() => sendData()}>
-              Continuar
-            </Button>
-       
+
+          <Button id="btn-go-bank" data-testid="sendPhoto" onClick={() => sendData()}>
+            Continuar
+          </Button>
         </div>
       </div>
-      </Layout>
-
+    </Layout>
   );
 };
 export default RevisionImagenes;
