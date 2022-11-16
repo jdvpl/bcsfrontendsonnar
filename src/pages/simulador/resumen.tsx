@@ -40,7 +40,7 @@ const resumen = () => {
         </div>
         <div className="flex gap-3 my-5">
           <button type="button" disabled={simulationTypeOption === 'salary' ? true: false} className={simulationTypeOption === 'house' ? `w-full max-w-[23.438rem] rounded h-[3rem] transition-all duration-500 text-white bg-primario-100 hover:bg-primario-400 focus:bg-primario-400 focus:text-primario-60 focus:shadow-none shadow-none` : `w-full max-w-[23.438rem] rounded h-[3rem] text-complementario-70 bg-gris-90 shadow-none`} onClick={() => setsimulatioTypeOption('house')}>Valor de vivienda</button>
-          <button type="button" disabled={simulationTypeOption === 'house' ? true: false} className={simulationTypeOption === 'salary' ? `w-full max-w-[23.438rem] rounded h-[3rem] transition-all duration-500 text-white bg-primario-100 hover:bg-primario-400 focus:bg-primario-400 focus:text-primario-60 focus:shadow-none shadow-none` : `w-full max-w-[23.438rem] rounded h-[3rem] text-complementario-70 bg-gris-90 shadow-none`} onClick={() => setsimulatioTypeOption('salary')}>Cuota que puedo pagar</button>
+          <button type="button" disabled={simulationTypeOption === 'house' ? true: false} className={simulationTypeOption === 'salary' ? `w-full max-w-[23.438rem] rounded h-[3rem] transition-all duration-500 text-white bg-primario-100 hover:bg-primario-400 focus:bg-primario-400 focus:text-primario-60 focus:shadow-none shadow-none` : `w-full max-w-[23.438rem] rounded h-[3rem] text-complementario-70 bg-gris-90 shadow-none`} onClick={() => setsimulatioTypeOption('salary')}>Cuanto me prestan</button>
         </div>
         {
           simulationTypeOption === 'house' ?

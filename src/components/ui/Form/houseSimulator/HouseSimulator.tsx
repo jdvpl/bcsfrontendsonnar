@@ -106,18 +106,18 @@ const HouseSimulator = () => {
       <div
         className={`w-[343px] md:w-[517px] xl:w-[656px] m-auto flex items-center flex-col`}
       >
-        {errors.typeHouse ? (
-          <Alert
-            message={
-              'Recuerde que la financiación del crédito hipotecario es hasta el 70% del valor comercial de la vivienda y la cuota inicial equivalente al 30% restante debe solventarla con recursos propios.'
-            }
-          />
-        ) : null}
+        <Alert
+          message={
+            'Recuerde que la financiación del crédito hipotecario es hasta el 70% del valor comercial de la vivienda y la cuota inicial equivalente al 30% restante debe solventarla con recursos propios.'
+          }
+        />
         <div className={`grid grid-cols-6 gap-y-4 gap-x-2 w-full mb-8`}>
           <ReactHookFormSelect
             onChange={(e: any) => setValue('typeHouse', e.target.value)}
             placeholder="Tipo de vivienda"
             label="Tipo de vivienda"
+            error={!!errors.typeHouse}
+            helperText={errors.typeHouse?.message}
             defaultValue="novis"
             control={control}
             left="right4"
@@ -309,7 +309,7 @@ const HouseSimulator = () => {
           <span className="text-[12px] text-primario-900">
             Deseo incluir en la simulación del crédito el valor de los seguros
             correspondientes.
-          </span> 
+          </span>
         </div>
 
         <Button
