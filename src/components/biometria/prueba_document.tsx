@@ -5,7 +5,10 @@ import { AplicationContext } from '../../context/AplicationContext';
 import view from './prueba_document.view';
 
 export default class DocumentPage extends React.Component {
-  static contextType = AplicationContext;
+  static contextType= AplicationContext;
+  context!: React.ContextType<typeof AplicationContext>;
+  
+
   // Reference to DOM target element where the SDK will load
   target: any = false;
   // Reference to VDDocument SDK

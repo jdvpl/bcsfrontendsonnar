@@ -28,7 +28,7 @@ const ImageLoader = ({ alt, title, itemprop, ...props }: Img) => {
       role="img"
       title={title}
       itemProp="image"
-    />;
+    />
   );
 };
 
