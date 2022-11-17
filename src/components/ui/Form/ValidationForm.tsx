@@ -85,41 +85,39 @@ export const ValidationForm: React.FC<FormProps> = ({ questions, onSubmit }) => 
                     <div className="w-full md:w-[348px] lg:w-[448px] space-y-[12px]">
                       {question.type === 'CLOSED-QUESTION' &&
                         question.options &&
-                        question?.options.map((answer) => {
-                          return (
-                            <div id={`answer-${answer.id}`} key={answer.id}>
-                              <input type="radio" value={answer.id} className="hidden" />
-                              <label
-                                aria-hidden="true"
-                                tabIndex={0}
-                                role="paragraph"
-                                htmlFor="tax-yes"
-                                className="flex items-center cursor-pointer bg-white w-full border border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black  font-semibold rounded-md px-5 py-[17px] shadow-small-300 overflow-auto"
-                                onClick={() => {
-                                  setValue(`${question.key}`, answer.id);
-                                  if (questions.length - 1 !== index) {
-                                    setCurrent(index + 1);
-                                  }
-                                  if (!response) {
-                                    setResponse([
-                                      { item: question.key, option: answer.id },
-                                    ]);
-                                    return;
-                                  }
-                                  setResponse(
-                                    response?.concat({
-                                      item: question.key,
-                                      option: answer.id,
-                                    })
-                                  );
-                                }}
-                              >
-                                <span itemProp="relatedTo" className="hidden" />
-                                {answer.option}
-                              </label>
-                            </div>
-                          );
-                        })}
+                        question?.options.map((answer) => (
+                          <div id={`answer-${answer.id}`} key={answer.id}>
+                            <input type="radio" value={answer.id} className="hidden" />
+                            <label
+                              aria-hidden="true"
+                              tabIndex={0}
+                              role="paragraph"
+                              htmlFor="tax-yes"
+                              className="flex items-center cursor-pointer bg-white w-full border border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black  font-semibold rounded-md px-5 py-[17px] shadow-small-300 overflow-auto"
+                              onClick={() => {
+                                setValue(`${question.key}`, answer.id);
+                                if (questions.length - 1 !== index) {
+                                  setCurrent(index + 1);
+                                }
+                                if (!response) {
+                                  setResponse([
+                                    { item: question.key, option: answer.id },
+                                  ]);
+                                  return;
+                                }
+                                setResponse(
+                                  response?.concat({
+                                    item: question.key,
+                                    option: answer.id,
+                                  })
+                                );
+                              }}
+                            >
+                              <span itemProp="relatedTo" className="hidden" />
+                              {answer.option}
+                            </label>
+                          </div>
+                        ))}
                       {question.type === 'OPEN-QUESTION' && (
                         <div id={`question-${question.key}`}>
                           <Controller

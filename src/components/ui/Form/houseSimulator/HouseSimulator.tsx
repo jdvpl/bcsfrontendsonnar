@@ -124,28 +124,26 @@ const HouseSimulator = () => {
           </ReactHookFormSelect>
 
           <Controller
-            render={({ field }) => {
-              return (
-                <Input
-                  containerClassName="col-span-6"
-                  type="text"
-                  error={!!errors.houseValue}
-                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                    e.preventDefault();
-                  }}
-                  value={convertToColombianPesos(field.value)}
-                  tabIndex={0}
-                  id="houseValue"
-                  inputMode="text"
-                  required
-                  label="Valor de Vivienda"
-                  onBlur={automationValueFinance}
-                  onChange={(e: any) => {
-                    field.onChange(e.target.value.replace(/[^0-9]/g, ''));
-                  }}
-                />
-              );
-            }}
+            render={({ field }) => (
+              <Input
+                containerClassName="col-span-6"
+                type="text"
+                error={!!errors.houseValue}
+                onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                  e.preventDefault();
+                }}
+                value={convertToColombianPesos(field.value)}
+                tabIndex={0}
+                id="houseValue"
+                inputMode="text"
+                required
+                label="Valor de Vivienda"
+                onBlur={automationValueFinance}
+                onChange={(e: any) => {
+                  field.onChange(e.target.value.replace(/[^0-9]/g, ''));
+                }}
+              />
+            )}
             name="houseValue"
             control={control}
           />
@@ -155,32 +153,30 @@ const HouseSimulator = () => {
               rules={{
                 required: true,
               }}
-              render={({ field }) => {
-                return (
-                  <Input
-                    disabled={!(houseValue > 0)}
-                    type="text"
-                    error={!!errors.valueFinance}
-                    helperText={errors.valueFinance?.message}
-                    onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                      e.preventDefault();
-                    }}
-                    value={
-                      field.value > houseValue * 0.7
-                        ? convertToColombianPesos(houseValue * 0.7)
-                        : convertToColombianPesos(field.value)
-                    }
-                    tabIndex={0}
-                    id="valueFinance"
-                    inputMode="text"
-                    required
-                    label="Valor a financiar"
-                    onChange={(e: any) => {
-                      field.onChange(e.target.value.replace(/[^0-9]/g, ''));
-                    }}
-                  />
-                );
-              }}
+              render={({ field }) => (
+                <Input
+                  disabled={!(houseValue > 0)}
+                  type="text"
+                  error={!!errors.valueFinance}
+                  helperText={errors.valueFinance?.message}
+                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                    e.preventDefault();
+                  }}
+                  value={
+                    field.value > houseValue * 0.7
+                      ? convertToColombianPesos(houseValue * 0.7)
+                      : convertToColombianPesos(field.value)
+                  }
+                  tabIndex={0}
+                  id="valueFinance"
+                  inputMode="text"
+                  required
+                  label="Valor a financiar"
+                  onChange={(e: any) => {
+                    field.onChange(e.target.value.replace(/[^0-9]/g, ''));
+                  }}
+                />
+              )}
               name="valueFinance"
               control={control}
             />
@@ -259,24 +255,22 @@ const HouseSimulator = () => {
             name="year"
             control={control}
             rules={{ required: true }}
-            render={({ field }) => {
-              return (
-                <Input
-                  containerClassName="col-span-2"
-                  type="text"
-                  onChange={(e) => {
-                    field.onChange(e.target.value);
-                  }}
-                  error={!!errors.year}
-                  value={field.value}
-                  tabIndex={0}
-                  id="year"
-                  inputMode="numeric"
-                  maxLength={4}
-                  label="Año"
-                />
-              );
-            }}
+            render={({ field }) => (
+              <Input
+                containerClassName="col-span-2"
+                type="text"
+                onChange={(e) => {
+                  field.onChange(e.target.value);
+                }}
+                error={!!errors.year}
+                value={field.value}
+                tabIndex={0}
+                id="year"
+                inputMode="numeric"
+                maxLength={4}
+                label="Año"
+              />
+            )}
           />
 
           {errors?.day ? (

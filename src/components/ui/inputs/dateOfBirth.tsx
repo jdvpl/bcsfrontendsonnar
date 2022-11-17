@@ -313,27 +313,25 @@ const DateOfBirth: React.FC<InputProps> = ({
         <div className="w-full d-flex  align:end ">
           <Controller
             rules={{ required: true, minLength: 5, maxLength: 10 }}
-            render={({ field }) => {
-              return (
-                <NewInput
-                  label="Año"
-                  {...register('year', {
-                    maxLength: 4,
-                    onChange(event) {
-                      allowOnlyNumber(event.target.value);
-                    },
-                  })}
-                  {...field}
-                  value={fields.year || ''}
-                  valueLength
-                  tabIndex={0}
-                  type="text"
-                  inputMode="numeric"
-                  maxLength={4}
-                  id={`${id}-year`}
-                />
-              );
-            }}
+            render={({ field }) => (
+              <NewInput
+                label="Año"
+                {...register('year', {
+                  maxLength: 4,
+                  onChange(event) {
+                    allowOnlyNumber(event.target.value);
+                  },
+                })}
+                {...field}
+                value={fields.year || ''}
+                valueLength
+                tabIndex={0}
+                type="text"
+                inputMode="numeric"
+                maxLength={4}
+                id={`${id}-year`}
+              />
+            )}
             name="year"
             control={control}
           />

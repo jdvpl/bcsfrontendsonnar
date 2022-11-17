@@ -15,19 +15,21 @@ interface Img {
 
 const myLoader = ({ src }: Img) => `${src}`;
 
-const ImageLoader = ({ alt, title, itemprop, ...props }: Img) => (
-  <Image
-    data-testid="imageLoader"
-    layout="responsive"
-    {...props}
-    loader={myLoader}
-    unoptimized
-    alt={alt}
-    tabIndex={0}
-    role="img"
-    title={title}
-    itemProp="image"
-  />
-);
+const ImageLoader = ({ alt, title, itemprop, ...props }: Img) => {
+  return (
+    <Image
+      data-testid="imageLoader"
+      layout="responsive"
+      {...props}
+      loader={myLoader}
+      unoptimized
+      alt={alt}
+      tabIndex={0}
+      role="img"
+      title={title}
+      itemProp="image"
+    />;
+  );
+};
 
 export default ImageLoader;

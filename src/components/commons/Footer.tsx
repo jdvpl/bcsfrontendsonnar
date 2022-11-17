@@ -1,5 +1,3 @@
 import React, { FC } from 'react';
 
-export const Footer: FC = () => {
-  return <div>Footer</div>;
-};
+export const Footer: FC = () => <div>Footer</div>;

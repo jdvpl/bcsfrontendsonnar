@@ -10,6 +10,8 @@ export default class DocumentPage extends React.Component {
   target: any = false;
   // Reference to VDDocument SDK
   vdDocument: any = false;
+  
+  
 
   state = {
     // Log messages

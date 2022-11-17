@@ -26,6 +26,5 @@ export const calculateAge = (dob: string): number => {
   return differenceInYears(new Date(), date);
 };
 
-export const parserPercentageDecimal = (number: number) => {
-  return Math.round((number + Number.EPSILON) * 100) / 100;
-};
+export const parserPercentageDecimal = (number: number) =>
+  Math.round((number + Number.EPSILON) * 100) / 100;

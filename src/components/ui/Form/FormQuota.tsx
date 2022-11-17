@@ -109,27 +109,25 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
           <div className="flex flex-col mt-4">
             <Controller
               rules={{ required: true, min: 1000000 }}
-              render={({ field }) => {
-                return (
-                  <Input
-                    type="text"
-                    error={!!errors.monthlySalary}
-                    onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                      e.preventDefault();
-                    }}
-                    value={convertToColombianPesos(field.value)}
-                    tabIndex={0}
-                    id="monthlySalary"
-                    inputMode="text"
-                    required
-                    label="Ingreso mensual"
-                    onKeyUp={automationQuota}
-                    onChange={(e: any) => {
-                      field.onChange(e.target.value.replace(/[^0-9]/g, ''));
-                    }}
-                  />
-                );
-              }}
+              render={({ field }) => (
+                <Input
+                  type="text"
+                  error={!!errors.monthlySalary}
+                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                    e.preventDefault();
+                  }}
+                  value={convertToColombianPesos(field.value)}
+                  tabIndex={0}
+                  id="monthlySalary"
+                  inputMode="text"
+                  required
+                  label="Ingreso mensual"
+                  onKeyUp={automationQuota}
+                  onChange={(e: any) => {
+                    field.onChange(e.target.value.replace(/[^0-9]/g, ''));
+                  }}
+                />
+              )}
               name="monthlySalary"
               control={control}
             />

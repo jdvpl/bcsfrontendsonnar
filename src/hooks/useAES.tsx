@@ -1,9 +1,8 @@
 import * as CryptoJS from 'crypto-js';
 
 export default function useAES() {
-  const encriptPass = (password: string, key: string) => {
-    return CryptoJS.AES.encrypt(password, key).toString();
-  };
+  const encriptPass = (password: string, key: string) =>
+    CryptoJS.AES.encrypt(password, key).toString();
 
   const decryptPass = (password: string, key: string) => {
     const bytes = CryptoJS.AES.decrypt(password, key);

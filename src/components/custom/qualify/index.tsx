@@ -1,5 +1,4 @@
-import FC, { useState } from 'react';
-
+import React, { useState } from 'react';
 import { Star } from '../../ui/icons/star';
 
 interface QualifyProps {

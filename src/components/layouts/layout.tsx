@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import LogoBcs from '../svg/LogoBcs';
 import { childrenProps } from '../../interfaces';
 import LogoForm from '../svg/LogoForm';
-import { InactivityModal } from '../ui/Modal/inactivityModal';
 
 interface LayoutProps extends childrenProps {
   className?: string;
@@ -16,7 +15,7 @@ export const Layout: React.FC<LayoutProps> = ({ className, navTitle, children })
     enter: { opacity: 1, x: 0, y: 0 },
     exit: { opacity: 0, x: 0 },
   };
-  const [variants, setVariants] = useState(initialState);
+  const [variants] = useState(initialState);
 
   return (
     <motion.div
