@@ -1,24 +1,19 @@
-import { childrenProps } from '../../../interfaces/childrenProps';
 import Card from './Card';
 import { basePath } from '../../../../next.config';
 
-interface ReviewHouseProps extends childrenProps {
-  disbursementValue: string;
+interface ReviewHouseProps {
   financedValue: string;
   fireInsurance: string;
   lifeInsurance: string;
   monthlyCoute: string;
-  monthlyFee: string;
   numberPeriods: string;
   rate: string;
 }
 export const ReviewHouse: React.FC<ReviewHouseProps> = ({
-  disbursementValue,
   financedValue,
   fireInsurance,
   lifeInsurance,
   monthlyCoute,
-  monthlyFee,
   numberPeriods,
   rate,
 }) => (
