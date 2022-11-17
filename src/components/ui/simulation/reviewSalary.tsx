@@ -28,6 +28,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       title="Valor financiado apróximado"
       value={financedValue?.toString()}
       text="text-[38px] pl-[16px]"
+      urlsvg=''
     />
     <Card
       className="lg:w-[448px] h-[88px] sm:w-[343px] h-[92px] bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
