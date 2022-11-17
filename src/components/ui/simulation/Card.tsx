@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { childrenProps } from '../../../interfaces/childrenProps';
 
-interface CardProps extends childrenProps {
+
+interface CardProps {
   htmlFor?: string;
   className?: string;
   typebg?: string;
@@ -12,7 +12,6 @@ interface CardProps extends childrenProps {
   text: string;
 }
 export const Card: React.FC<CardProps> = ({
-  htmlFor,
   className,
   text,
   value,

@@ -28,6 +28,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       title="Couta mensual sin seguros"
       value={monthlyCoute?.toString()}
       text="text-[38px] pl-[18px]"
+      urlsvg=''
     />
     <Card
       className="lg:w-[448px] h-[88px] sm:w-[343px] h-[92px] bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
