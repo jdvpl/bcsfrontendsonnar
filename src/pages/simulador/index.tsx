@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import LogoBcs from '../../components/svg/LogoBcs'
-import LogoForm from '../../components/svg/LogoForm'
-import FormQuota from '../../components/ui/Form/FormQuota'
-import Typography from '../../components/ui/Tipography'
-import { useSessionStorage } from '../../hooks/useSessionStorage'
-import { iFormDataSimulation } from '../../interfaces/formSimulation'
-import { SesionStorageKeys } from '../../session'
-import { sendSimulationData } from '../../services/index';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+import LogoBcs from '../../components/svg/LogoBcs';
+import LogoForm from '../../components/svg/LogoForm';
+import FormQuota from '../../components/ui/Form/FormQuota';
+import Typography from '../../components/ui/Tipography';
+import { useSessionStorage } from '../../hooks/useSessionStorage';
+import { iFormDataSimulation } from '../../interfaces/formSimulation';
+import { SesionStorageKeys } from '../../session';
+import { sendSimulationData } from '../../services/index';
 import { routes } from '../../routes';
 import HouseSimulator from '../../components/ui/Form/houseSimulator/HouseSimulator';
 
@@ -33,7 +33,7 @@ const Simulator = () => {
       percentageFinance: 0,
       valueFinance: 0,
     };
-    console.log(body)
+    console.log(body);
     setdataFormQuota(body);
     const response = await sendSimulationData(formData);
     if (!response.error) {
@@ -89,9 +89,7 @@ const Simulator = () => {
           </button>
         </div>
         {simulatioTypeOption === 'salary' && (
-          <FormQuota
-            onSubmit={(formData: iFormDataSimulation) => onSubmit(formData)}
-          />
+          <FormQuota onSubmit={(formData: iFormDataSimulation) => onSubmit(formData)} />
         )}
         {simulatioTypeOption === 'house' && <HouseSimulator />}
       </div>

@@ -23,7 +23,7 @@ describe('qualify', () => {
     let starsWithActiveFill = 0;
     component.container.querySelectorAll('svg').forEach((star) => {
       if (star?.querySelector('path')?.getAttribute('fill') === '#FBBF24') {
-        starsWithActiveFill = starsWithActiveFill + 1;
+        starsWithActiveFill += 1;
       }
     });
     expect(starsWithActiveFill).toBe(props?.rate + 1);

@@ -4,8 +4,7 @@ import { basePath } from '../../../next.config';
 import styles from '../../styles/Home.module.css';
 import { childrenProps } from '../../interfaces';
 
-
-export const ErrorLayout: React.FC<childrenProps>= ({ children }) => (
+export const ErrorLayout: React.FC<childrenProps> = ({ children }) => (
   <div className={styles.container}>
     <Head>
       <title>BCS Cuentamiga Digital</title>
@@ -16,9 +15,7 @@ export const ErrorLayout: React.FC<childrenProps>= ({ children }) => (
       itemScope
       itemType="https://schema.org/Brand"
     >
-      <div className="lg:w-[1160px] mx-auto" itemProp="logo">
-
-      </div>
+      <div className="lg:w-[1160px] mx-auto" itemProp="logo" />
     </header>
     <main
       data-testid="main-errorLayout"

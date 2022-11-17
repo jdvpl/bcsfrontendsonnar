@@ -39,7 +39,6 @@ export const RATING_OPTIONS: RatingsOptions[] = [
   },
 ];
 
-
 export const RATING_OPTIONS_BETTER: RatingsOptions[] = [
   {
     id: '1',

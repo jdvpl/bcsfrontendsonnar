@@ -1,5 +1,5 @@
 export type IconListAvailable =
-  'bcs-arrow-one-down'
+  | 'bcs-arrow-one-down'
   | 'bcs-arrow-one-left'
   | 'bcs-arrow-one-up'
   | 'bcs-arrow-one-right'
@@ -57,9 +57,4 @@ export type IconListAvailable =
   | 'bcs-phone'
   | 'bcs-mobile-grade'
   | 'bcs-user-job'
-  | 'bcs-document-18'
-
-
-
-
-
+  | 'bcs-document-18';

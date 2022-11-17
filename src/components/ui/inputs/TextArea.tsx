@@ -1,7 +1,7 @@
 interface TextAreaProps extends React.ComponentPropsWithoutRef<'textarea'> {
   description?: string;
 }
-export function TextArea({ description, ...props }: TextAreaProps) {
+export const TextArea = ({ description, ...props }: TextAreaProps) => {
   return (
     <>
       <textarea
@@ -13,4 +13,4 @@ export function TextArea({ description, ...props }: TextAreaProps) {
       </p>
     </>
   );
-}
+};

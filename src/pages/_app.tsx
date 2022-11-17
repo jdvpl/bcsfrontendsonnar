@@ -1,9 +1,9 @@
 import { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 import '../styles/globals.css';
-import {AplicationProvider} from '../context/AplicationContext'
+import { AplicationProvider } from '../context/AplicationContext';
 
-function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   const [initialRenderComplete, setInitialRenderComplete] = useState<boolean>(false);
   useEffect(() => {
     setInitialRenderComplete(true);
@@ -13,9 +13,9 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
   return (
     <AplicationProvider>
-    <Component {...pageProps} />
+      <Component {...pageProps} />
     </AplicationProvider>
-  ) 
-}
+  );
+};
 
 export default MyApp;

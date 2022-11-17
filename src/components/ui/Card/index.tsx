@@ -3,6 +3,7 @@ import Icons, { IconsProps } from '../icons';
 /* eslint-disable-next-line */
 // import './card.css';
 import { dynamicClasses } from './classNames';
+
 export interface CardsProps extends IconsProps {
   dataTestId?: string;
   label?: string;
@@ -136,7 +137,7 @@ export const Card: FC<CardsProps> = ({
             !editableCard && (
               <label className="input-shipping radio">
                 <input type="radio" name="radio" className="hidden" />
-                <span className={classNames.spanCardStyle}></span>
+                <span className={classNames.spanCardStyle} />
               </label>
             )}
         </ConditionalWrapper>

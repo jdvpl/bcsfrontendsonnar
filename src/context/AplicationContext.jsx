@@ -11,7 +11,7 @@ export const AplicationProvider = (props) => {
     normal: '',
     sonriendo: '',
   });
-  console.log(selfies)
+  console.log(selfies);
   const [fotoEditada, setFotoEditado] = useState('');
   const [selfieEditada, setSelfieEditada] = useState('');
   // const [atrasAnimacion, setAtrasAnimacion] = useState(false);

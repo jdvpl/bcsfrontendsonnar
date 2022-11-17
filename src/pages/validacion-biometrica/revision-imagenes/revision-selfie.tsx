@@ -18,8 +18,8 @@ const KEY = process.env.KEY_KYC_HASH;
 const RevisionImagenes: React.FC = () => {
   const router = useRouter();
   const { selfies, setSelfieSonriendo, setSelfieNormal } = useContext(AplicationContext);
-  console.log("1",selfies.sonriendo.image)
-  console.log("2",selfies.sonriendo.image_alive)
+  console.log('1', selfies.sonriendo.image);
+  console.log('2', selfies.sonriendo.image_alive);
   const [showAnimation, setShowAnimation] = useState(false);
   const [, setIsLoading] = useState(true);
   const [validated, setValidated] = useState(false);
@@ -116,12 +116,11 @@ const RevisionImagenes: React.FC = () => {
       if (response.ok) {
         setIsLoading(false);
         biometryProcess();
-        
       } else if (response.status === 403) {
         const dataResponse: any = await response.json();
 
         const code = dataResponse.internal_code;
-        
+
         switch (code) {
           case 'VQ-01':
             urlAndUtms(router, '/');
@@ -154,12 +153,7 @@ const RevisionImagenes: React.FC = () => {
       {showAnimation && <AnimationComponent show="" valid={validated} loaded={loaded} />}
       <div data-testid="revision">
         <div className="pt-3 md:pt-0 w-full lg:mt-10">
-          <Stepper
-            step="1"
-            incomplete=""
-            title="Validación de identidad"
-            percentaje=""
-          />
+          <Stepper step="1" incomplete="" title="Validación de identidad" percentaje="" />
         </div>
 
         <div className="pb-28">

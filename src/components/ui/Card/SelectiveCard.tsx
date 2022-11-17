@@ -21,10 +21,10 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
   pathTo = '',
   className = '',
   hasTitle = true,
-  onclick = true
+  onclick = true,
 }) => {
   const router = useRouter();
-  const classNames = dynamicClassesSelective(hasTitle, className)
+  const classNames = dynamicClassesSelective(hasTitle, className);
   return (
     <div
       className={classNames.mainClasesParentDiv}
@@ -40,24 +40,23 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
       </div>
       <label className="label-shipping" htmlFor="shipping-home">
         <div>
-
-          {hasTitle &&
+          {hasTitle && (
             <Typography
               variant="bodyM2"
               className="text-[1rem] lg:mt-[14px] lg:mb-[18px] leading-[1.125rem] text-primario-900 m-0 tracking-normal font-semibold font-heading group-hover:text-white"
             >
               {label}
             </Typography>
-          }
+          )}
           <Typography
             variant="bodyS3"
-            className={`hasTitle leading-[1.125rem]  text-[1rem] text-complementario-100 mt-2 group-hover:text-white font-ligth md:w-[224px]`}
+            className="hasTitle leading-[1.125rem]  text-[1rem] text-complementario-100 mt-2 group-hover:text-white font-ligth md:w-[224px]"
           >
             {description}
           </Typography>
         </div>
       </label>
-    </div >
+    </div>
   );
 };
 

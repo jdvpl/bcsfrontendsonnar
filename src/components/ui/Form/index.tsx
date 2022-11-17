@@ -1,5 +1,6 @@
 import React, { ClipboardEvent, KeyboardEvent, useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
+import { MenuItem } from '@mui/material';
 import Button from '../Button';
 import Politicas from '../../commons/Politicas';
 import CommercialAuthorization from '../../commons/CommercialAuthorization';
@@ -7,8 +8,8 @@ import Modal from '../Modal';
 import Input from '../inputs';
 import LogoForm from '../../svg/LogoForm';
 import ReactHookFormSelect from '../Select/newSelect';
-import { MenuItem } from '@mui/material';
 import Typography from '../Tipography';
+
 interface FormProps {
   onSubmit: (data: FormData) => void;
   defaultValues: FormData;

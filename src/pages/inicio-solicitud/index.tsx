@@ -1,9 +1,9 @@
+import { useRouter } from 'next/router';
 import { FormData, RegisterForm } from '../../components/ui';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../session';
 import LogoBcs from '../../components/svg/LogoBcs';
 import { getQuestions } from '../../services';
-import { useRouter } from 'next/router';
 import { routes } from '../../routes';
 
 const InicioSolicitud = () => {
@@ -20,7 +20,7 @@ const InicioSolicitud = () => {
     SesionStorageKeys.dataUser.key,
     dataReg
   );
-  
+
   const [, setDataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
 
   const onSubmit = async (formData: FormData) => {
@@ -33,7 +33,7 @@ const InicioSolicitud = () => {
       commercialPurposes: formData.commercial_terms,
     };
     const response = await getQuestions(body);
-    console.log(response)
+    console.log(response);
     if (!response.error) {
       setDataQuestions(response.response.data);
       router.push(routes.validacionIdentidad);

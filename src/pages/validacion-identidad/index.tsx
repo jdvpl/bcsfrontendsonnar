@@ -1,6 +1,7 @@
 import { AnimatePresence } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import Stepper from '../../components/ui/Stepper';
 import { Question, ValidationForm } from '../../components/ui/Form/ValidationForm';
 import { ValidationFormNumber } from '../../components/ui/Form/validationFormNumber';
@@ -11,7 +12,6 @@ import AnimationComponent from '../../components/commons/Animation';
 import { NavTitle } from '../../components/commons/NavTitle';
 import { SesionStorageKeys } from '../../session';
 import { sendQuestions } from '../../services';
-import { useRouter } from 'next/router';
 import { routes } from '../../routes';
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
 
@@ -61,7 +61,7 @@ const Index: React.FC = () => {
           break;
       }
     } else if (!response.error) {
-      const step = response.response.data.step;
+      const { step } = response.response.data;
       if (step === 'AUTH') {
         setDataValid(true);
       } else if (step === 'VQ') {

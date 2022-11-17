@@ -1,10 +1,16 @@
 import { childrenProps } from '../../../interfaces/childrenProps';
+
 interface labelProps extends childrenProps {
   htmlFor?: string;
   className?: string;
-  disabled?: boolean
+  disabled?: boolean;
 }
-export const Label: React.FC<labelProps> = ({ htmlFor, className, children, disabled }) => (
+export const Label: React.FC<labelProps> = ({
+  htmlFor,
+  className,
+  children,
+  disabled,
+}) => (
   <label
     htmlFor={htmlFor}
     id={`label-${htmlFor}`}

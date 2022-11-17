@@ -128,7 +128,7 @@ export const sendSimulationData = async (data: iFormDataSimulation) => {
       error: false,
     };
   } catch (e: any) {
-    console.log(e)
+    console.log(e);
     return { error: true, response: e?.response?.data?.message };
   }
 };

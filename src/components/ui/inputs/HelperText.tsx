@@ -4,7 +4,7 @@ interface HelperTextProps {
   className?: string;
 }
 
-export const HelperText = ({ text, error, className="" }: HelperTextProps) => {
+export const HelperText = ({ text, error, className = '' }: HelperTextProps) => {
   return (
     <div className={`flex items-center help pl-2 ${className}`}>
       <svg
