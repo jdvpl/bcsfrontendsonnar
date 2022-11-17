@@ -5,7 +5,7 @@ interface CardProps extends childrenProps {
   htmlFor?: string;
   className?: string;
   typebg?: string;
-  urlsvg?: string;
+  urlsvg: string;
   altsvg?: string;
   title: string;
   value: string;
