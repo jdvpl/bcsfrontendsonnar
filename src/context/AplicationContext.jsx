@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react';
 
+
 export const AplicationContext = createContext();
 
 export const AplicationProvider = (props) => {

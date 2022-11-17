@@ -5,6 +5,7 @@ import { basePath } from '../../../next.config';
 
 export default class PhotoLiveSelfiePage extends React.Component {
   static contextType = AplicationContext;
+  context!: React.ContextType<typeof AplicationContext>;
   // Reference to DOM target element where the SDK will load
   target: any = false;
   // Reference to VDDocument SDK
