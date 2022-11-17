@@ -15,7 +15,6 @@ import { useRouter } from 'next/router';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import { routes } from '../../../../routes';
-import Icons from '../../icons';
 import Alert from '../../Alert';
 import { parserPercentageDecimal } from '../../../../utils/index';
 
@@ -309,7 +308,7 @@ const HouseSimulator = () => {
           <span className="text-[12px] text-primario-900">
             Deseo incluir en la simulación del crédito el valor de los seguros
             correspondientes.
-          </span> 
+          </span>
         </div>
 
         <Button

@@ -5,6 +5,7 @@ import useAES from '../hooks/useAES';
 import { headersBack } from './HeaderBack';
 import { headersKYC } from './HeadersKYC';
 import { iFormDataSimulation } from '../interfaces'
+import axios from 'axios';
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
 export const getQuestions = async (data: any) => {
@@ -131,6 +132,25 @@ export const sendSimulationData = async (data: iFormDataSimulation) => {
     return { error: true, response: e?.response?.data?.message };
   }
 };
+export const getDataPDF = async (data: iFormDataSimulation) => {
+  try {
+    const { data: response } = await axios.post(
+      'https://63753d9548dfab73a4f56dd5.mockapi.io/v1/generatepdf',
+      { data },
+      headersBack
+    );
+    return {
+      response: {
+        data: response,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    console.log(e)
+    return { error: true, response: e?.response?.data?.message };
+  }
+};
+
 
 
 

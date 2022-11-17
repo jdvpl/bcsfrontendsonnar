@@ -10,7 +10,7 @@ import { routes } from '../routes';
 import LogoBcs from '../components/svg/LogoBcs';
 import { Icons } from '../components/ui';
 import { Questions } from '../components/ui/Accordion';
-
+import { basePath } from '../../next.config';
 export default function Home() {
   const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, '');
   useEffect(() => {
@@ -196,7 +196,7 @@ export default function Home() {
         <Typography variant="h2" className='mt-[84px] text-center lg:mb-[105px]'>Beneficios</Typography>
         <div className="bg-gris-80 md:grid md:grid-cols-2 sm:grid sm:grid-col-1 xs:mt-[12rem] md:mt-[5rem] relative md:h-[412px] gap-10">
           <div className="relative xs:top-[-150px] md:top-[-25px] flex justify-center md:justify-end ">
-            <img src="/public/images/beneficios.png" alt="img-card"
+            <img src={`${basePath}/public/images/beneficios.png`} alt="beneficios"
               className='w-[302px] h-[420px] md:h-[450px]'
             />
           </div>
