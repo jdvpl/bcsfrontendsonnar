@@ -19,13 +19,14 @@ const Pdf = () => {
   }, [])
   const getData = async () => {
     const data = await getDataPDF(dataFormQuota)
-    console.log(data)
-    setinfo(data.response.data)
-    setloadData(true)
+    if (!data.error) {
+      setinfo(data.response.data)
+      setloadData(true)
+    }
   }
   return loadData ? (
     <PDFViewer style={{ width: "100%", height: "100vh" }}>
-      <PDFDocumentData infoUserData={info} />
+      <PDFDocumentData infoData={info} />
     </PDFViewer>
   ) :
     null
