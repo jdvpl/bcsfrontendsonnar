@@ -2,9 +2,7 @@ import { MenuItem } from '@mui/material';
 import React, {
   ClipboardEvent,
   FC,
-  KeyboardEvent,
   useEffect,
-  useRef,
   useState,
 } from 'react';
 import { useForm, Controller } from 'react-hook-form';
@@ -65,14 +63,6 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
   };
   const getPercentage = (value: any) => {
     if (+amountQuota > 0 && +monthlySalary > 0) {
-      if (typeHouse === 'novis' && monthlySalary > amountQuota * 0.3) {
-        setpercentage(0.3);
-        return;
-      }
-      if (typeHouse === 'vis' && monthlySalary > amountQuota * 0.4) {
-        setpercentage(0.4);
-        return;
-      }
       const percentage = +amountQuota / +monthlySalary;
       setpercentage(percentage);
     } else {
@@ -108,10 +98,12 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
 
           <div className="flex flex-col mt-4">
             <Controller
-              rules={{ required: true, min: 1000000 }}
+              rules={{ required: true }}
               render={({ field }) => {
                 return (
                   <Input
+                    helperText={errors.monthlySalary?.message}
+
                     type="text"
                     error={!!errors.monthlySalary}
                     onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
@@ -125,6 +117,14 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                     label="Ingreso mensual"
                     onKeyUp={automationQuota}
                     onChange={(e: any) => {
+                      console.log(field.value);
+                      if (field.value < 1000000 && !!e.nativeEvent.data) {
+                        setError('monthlySalary', {
+                          type: 'manual',
+                          message: 'Los ingresos mínimos permitidos son de 1 SMMLV.',
+                        });
+                        e.preventDefault();
+                      }
                       field.onChange(e.target.value.replace(/[^0-9]/g, ''));
                     }}
                   />
@@ -141,20 +141,17 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                 getPercentage(field);
                 return (
                   <Input
+                    helperText={errors.amountQuota?.message}
+
                     type="text"
                     error={!!errors.amountQuota}
                     onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                       e.preventDefault();
                     }}
                     value={
-                      typeHouse == 'novis' && field.value > monthlySalary * 0.3
-                        ? convertToColombianPesos(Math.round(monthlySalary * 0.3))
-                        : typeHouse == 'vis' && field.value > monthlySalary * 0.4
-                        ? convertToColombianPesos(Math.round(monthlySalary * 0.4))
-                        : convertToColombianPesos(Math.round(field.value))
+                      convertToColombianPesos(Math.round(field.value))
                     }
                     tabIndex={0}
-                    helperText={errors.amountQuota?.message}
                     id="amountQuota"
                     inputMode="text"
                     required
@@ -168,8 +165,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                             message:
                               'El valor ingresador no debe superar el porcentaje permitido',
                           });
-                          e.preventDefault();
-                          return;
+
                         }
                       } else if (typeHouse === 'novis') {
                         if (percentage > 0.3 && !!e.nativeEvent.data) {
@@ -178,8 +174,6 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                             message:
                               'El valor ingresador no debe superar el porcentaje permitido',
                           });
-                          e.preventDefault();
-                          return;
                         }
                       }
                       field.onChange(e.target.value.replace(/[^0-9]/g, ''));
