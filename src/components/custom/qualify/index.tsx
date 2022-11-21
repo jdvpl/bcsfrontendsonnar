@@ -7,7 +7,7 @@ interface QualifyProps {
   isEditable?: boolean;
 }
 
-export const Qualify = ({ rate, changeRate, isEditable = true }: QualifyProps) => {
+export function Qualify({ rate, changeRate, isEditable = true }: QualifyProps) {
   const rating = new Array(5).fill(0);
   const [tempRating, setTempRating] = useState<number>(-1);
   return (
@@ -29,4 +29,4 @@ export const Qualify = ({ rate, changeRate, isEditable = true }: QualifyProps) =
       ))}
     </div>
   );
-};
+}

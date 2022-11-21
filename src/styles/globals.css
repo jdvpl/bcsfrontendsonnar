@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import "./sdks.css";
+@import "./tooltip.css";
 @font-face {
   font-family: 'bcs';
   src: url('./font/bcs.ttf') format('truetype');

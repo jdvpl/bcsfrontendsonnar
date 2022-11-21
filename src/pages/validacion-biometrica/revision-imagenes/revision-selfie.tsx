@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Button from '../../../components/ui/Button';
 import { AplicationContext } from '../../../context/AplicationContext';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
-import AnimationComponent from '../../../components/Animations/animation';
+import AnimationComponent from '../../../components/commons/Animation';
 import Stepper from '../../../components/ui/Stepper/index';
 import { Heading } from '../../../components/form/heading';
 import { basePath } from '../../../../next.config';
@@ -13,7 +13,7 @@ import { urlAndUtms } from '../../../utils/RouterUtmsUrl';
 import { Layout } from '../../../components/layouts/layout';
 import { NavTitle } from '../../../components/commons/NavTitle';
 
-const KEY = process.env.KEY_KYC_HASH;
+const KEY = process.env.KEYKYCHASH;
 
 const RevisionImagenes: React.FC = () => {
   const router = useRouter();
@@ -58,7 +58,7 @@ const RevisionImagenes: React.FC = () => {
     const bodyEncript = await allResponse(body, KEY);
     try {
       const response = await fetch(
-        `${process.env.KYC_API_URL}/kyc/identity-user/biometry/process`,
+        `${process.env.KYCAPIUR}/identity-user/biometry/process`,
         {
           method: 'POST',
           headers: requestHeaders,
@@ -74,7 +74,7 @@ const RevisionImagenes: React.FC = () => {
           ...dataTU,
           personalData: { ...dataUser, ...decrypdata },
         });
-        redirectLoader('/datos-personales/');
+        redirectLoader('/simulador/');
       } else if (response.status === 403) {
         setIsLoading(false);
       } else if (response.status === 401) {
@@ -104,7 +104,7 @@ const RevisionImagenes: React.FC = () => {
       setShowAnimation(true);
 
       const response = await fetch(
-        `${process.env.APIURL}/kyc/identity-user/biometry/selfie`,
+        `${process.env.KYCAPIUR}/identity-user/biometry/selfie`,
         {
           method: 'POST',
           headers: requestHeaders,

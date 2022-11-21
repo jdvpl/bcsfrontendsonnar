@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CommercialAuthorization = () => {
+function CommercialAuthorization() {
   return (
     <div data-testid="comercialAuth" className="m-0 md:mt-0 sm:mt-[29px] text-left">
       <ul className="list-disc pl-[20px] md:pl-[40px] sm:text-[16px] md:text-[18px]">
@@ -30,6 +30,6 @@ const CommercialAuthorization = () => {
       </ul>
     </div>
   );
-};
+}
 
 export default CommercialAuthorization;

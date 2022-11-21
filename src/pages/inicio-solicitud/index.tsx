@@ -6,7 +6,7 @@ import LogoBcs from '../../components/svg/LogoBcs';
 import { getQuestions } from '../../services';
 import { routes } from '../../routes';
 
-const InicioSolicitud = () => {
+function InicioSolicitud() {
   const router = useRouter();
   const dataReg = {
     document_number: '',
@@ -88,6 +88,6 @@ const InicioSolicitud = () => {
       </div>
     </>
   );
-};
+}
 
 export default InicioSolicitud;

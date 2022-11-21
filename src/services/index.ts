@@ -115,6 +115,7 @@ export const reSendOTPCode = async (data: OTPCodeRequest) => {
   }
 };
 export const sendSimulationData = async (data: iFormDataSimulation) => {
+
   try {
     const { data: response } = await clientAxiosBackend.post(
       '/simulator',
@@ -138,6 +139,7 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
       'http://localhost:7000/api/users',
       { data },
       headersBack
+
     );
     return {
       response: {
