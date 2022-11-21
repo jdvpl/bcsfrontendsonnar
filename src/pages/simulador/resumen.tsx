@@ -75,21 +75,14 @@ const resumen = () => {
         </div>
         {simulationTypeOption === 'house' && insuranceCheck.insuranceCheck ? (
           <ReviewHouse
-<<<<<<< HEAD
           monthlyCouteInsurance={`${convertToColombianPesos(Math.floor(valuesSimulation.monthlyCoute+valuesSimulation.lifeInsurance+valuesSimulation.fireInsurance))}`}
             monthlyCoute={`${convertToColombianPesos(Math.floor(valuesSimulation.monthlyCoute))}`}
             financedValue={`${convertToColombianPesos(Math.floor(valuesSimulation.financeValue))}`}
             termFinance={`${valuesSimulation.termFinance} años`}
-=======
-            monthlyCoute={`${convertToColombianPesos(valuesSimulation.monthlyCoute)}`}
-            financedValue={`${convertToColombianPesos(valuesSimulation.financeValue)}`}
-            numberPeriods={valuesSimulation.termFinance}
->>>>>>> b3b487cb20eeefa6c950369d3eb2b89e076dd641
             rate={valuesSimulation.rate}
             lifeInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
             fireInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
           />
-<<<<<<< HEAD
         ) :
         null}
         {simulationTypeOption === 'salary' && insuranceCheck.insuranceCheck ? (
@@ -98,13 +91,6 @@ const resumen = () => {
             amountQuota={`${convertToColombianPesos(Math.floor(valuesSimulation.amountQuota))}`}
             amountQuotatotal={`${convertToColombianPesos(Math.floor(valuesSimulation.amountQuota+valuesSimulation.lifeInsurance+valuesSimulation.fireInsurance))}`}
             termFinance={`${valuesSimulation.termFinance} años`}
-=======
-        ) : (
-          <ReviewSalary
-            financedValue={`${convertToColombianPesos(valuesSimulation.financeValue)}`}
-            monthlyFee={`${convertToColombianPesos(valuesSimulation.monthlyFee)}`}
-            numberPeriods={valuesSimulation.termFinance}
->>>>>>> b3b487cb20eeefa6c950369d3eb2b89e076dd641
             rate={valuesSimulation.rate}
             lifeInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
             fireInsurance={`${convertToColombianPesos(valuesSimulation.fireInsurance)}`}

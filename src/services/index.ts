@@ -118,13 +118,8 @@ export const sendSimulationData = async (data: iFormDataSimulation) => {
   
   try {
     const { data: response } = await clientAxiosBackend.post(
-<<<<<<< HEAD
       '/simulator/simulator',
       data,
-=======
-      '/simulator',
-       data ,
->>>>>>> b3b487cb20eeefa6c950369d3eb2b89e076dd641
       headersBack
       
     );

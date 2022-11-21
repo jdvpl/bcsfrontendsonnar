@@ -64,13 +64,8 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
     <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
       title="Plazo"
-<<<<<<< HEAD
       value={termFinance?.toString()}
       text="text-[20px] pl-[25px] font-semibold"
-=======
-      value={numberPeriods?.toString()+' Años'}
-      text="text-[14px] pl-[16px]"
->>>>>>> b3b487cb20eeefa6c950369d3eb2b89e076dd641
       urlsvg={`${basePath}/images/Calendar.svg`}
       classtitle="h-[14px] text-[13px]"
       tooltiptext=''
