@@ -17,6 +17,7 @@ interface CardProps {
   textsub?:string;
   tooltip?:boolean;
   tooltiptext:React.ReactNode;
+  id?:string;
 }
 export const Card: React.FC<CardProps> = ({
   className,
@@ -29,9 +30,10 @@ export const Card: React.FC<CardProps> = ({
   subvalue,
   textsub,
   tooltip,
-  tooltiptext
+  tooltiptext,
+  id,
 }) => (
-  <div className={`${className}`}>
+  <div className={`${className}`} id={id}>
     <div className="flex">
       <div className="pr-[8px] ml-[2px]">
         <Image

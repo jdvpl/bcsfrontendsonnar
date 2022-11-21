@@ -1,5 +1,6 @@
 import Card from './Card';
 import { basePath } from '../../../../next.config';
+import React from 'react';
 
 interface ReviewSalaryProps{
   financedValue: string;
@@ -9,6 +10,7 @@ interface ReviewSalaryProps{
   amountQuotatotal?:string;
   termFinance: string;
   rate: string;
+  id?:string;
 }
 const fetchresumen = () => alert("No hay resumen aun, no molesten")
 export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
@@ -106,6 +108,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       text="text-[20px] pl-[18px] font-semibold"
       urlsvg={`${basePath}/images/Home.svg`}
       classtitle="h-[14px] text-[14px]"
+      id="fireInsuranceSalary"
       tooltip={true}
       tooltiptext={<p className='flex text-white'>Seguro diseñado para proteger a sus asegurados en caso de presentarse  muerte, incapacidad total y permanente, y demás riesgos previstos en la póliza. </p>}
     />:null
@@ -121,6 +124,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       classtitle="h-[14px] text-[13 px]"
       subvalue='pesos'
       textsub='20'
+      id="lifeInsuranceSalary"
       tooltiptext=''
     />:null
     }

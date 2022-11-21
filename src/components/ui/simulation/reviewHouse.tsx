@@ -1,7 +1,6 @@
 import Card from './Card';
 import { basePath } from '../../../../next.config';
-import { ToolTipInfo } from '../../../components/ui/Tooltip';
-import { InfoIco } from '../Tooltip/info';
+import React from 'react';
 
 interface ReviewHouseProps {
   financedValue: string;
@@ -11,6 +10,7 @@ interface ReviewHouseProps {
   monthlyCouteInsurance?: string;
   termFinance: string;
   rate: string;
+  id?:string;
 }
 const fetchresumen = () => alert("No hay resumen aun, no molesten")
 export const ReviewHouse: React.FC<ReviewHouseProps> = ({
@@ -21,6 +21,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
   monthlyCouteInsurance,
   termFinance,
   rate,
+  id
 }) => (
   <div className="flex flex-col items-center ">
     { lifeInsurance ?
@@ -107,6 +108,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       urlsvg={`${basePath}/images/Insurage.svg`}
       classtitle="h-[14px] text-[14px]"
       tooltip={true}
+      id="lifeInsuranceHouse"
       tooltiptext={<p className='flex text-white'>Seguro diseñado para proteger a sus asegurados en caso de presentarse  muerte, incapacidad total y permanente, y demás riesgos previstos en la póliza. </p>}
     />:null
     }
@@ -120,6 +122,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       urlsvg={`${basePath}/images/Home.svg`}
       classtitle="h-[14px] text-[14px]"
       tooltip={true}
+      id="fireInsuranceHouse"
       tooltiptext={<p className='flex text-white'>Seguro diseñado para proteger a sus asegurados en caso de presentarse  muerte, incapacidad total y permanente, y demás riesgos previstos en la póliza. </p>}
     />:null
     }
