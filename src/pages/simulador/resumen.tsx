@@ -8,9 +8,11 @@ import { routes } from '../../routes/index';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import Button from '../../components/ui/Button/index';
 import { convertToColombianPesos } from '../../utils/index';
+import { urlAndUtms } from '../../utils/RouterUtmsUrl';
+import { useRouter } from 'next/router';
 
 
-const resumen = () => {
+const Resumen = () => {
   const [simulationTypeOption, setsimulatioTypeOption] = useState<any>('');
   const [simulationType, setSimulationType] = useSessionStorage('simulationValues', '');
   const [insuranceCheck, setInsuranceCheck] = useSessionStorage('simulationValues', '');
@@ -19,6 +21,7 @@ const resumen = () => {
     'simulationResponse',
     ''
   );
+  const router = useRouter();
 
   useEffect(() => {
     setsimulatioTypeOption(simulationType.simulationType.toString());
@@ -116,7 +119,7 @@ const resumen = () => {
         <div className="flex flex-col items-center">
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px]"
-            type="submit"
+            onClick={() => urlAndUtms(router, '/inicio-solicitud')}
             name="solicitarCredito"
             data-testid="btn-openAccount1"
             tabIndex={0}
@@ -126,7 +129,7 @@ const resumen = () => {
           </Button>
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px]"
-            type="submit"
+            onClick={() => urlAndUtms(router, '/simulador')}
             name="solicitarCredito"
             data-testid="btn-openAccount1"
             tabIndex={0}
@@ -141,4 +144,4 @@ const resumen = () => {
   );
 };
 
-export default resumen;
+export default Resumen;

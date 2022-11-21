@@ -43,14 +43,14 @@ export const ValidationMessageBiometry: React.FC = () => {
         <span>
           <Link href="/">
             <a
-              href="https://digital.bancocajasocial.com/cuentamiga"
+              href="https://digital.bancocajasocial.com/vivienda"
               className="text-primario-20"
               rel="noreferrer"
               tabIndex={0}
               role="link"
               aria-label="Ir a la página de inicio del banco caja social"
             >
-              https://digital.bancocajasocial.com/cuentamiga
+              https://digital.bancocajasocial.com/vivienda
             </a>
           </Link>
         </span>

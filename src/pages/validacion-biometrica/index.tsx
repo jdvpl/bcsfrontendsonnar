@@ -20,7 +20,7 @@ import svgDoc from '../../../public/images/new3.svg';
 import { Layout } from '../../components/layouts/layout';
 import { NavTitle } from '../../components/commons/NavTitle';
 
-const KEY = process.env.KEY_KYC_HASH;
+const KEY = process.env.KEYKYCHASH;
 
 const CardImage: React.FC<childrenProps> = ({ children }) => (
   <div className="flex mr-6 minw-64">{children}</div>
@@ -40,12 +40,12 @@ const ValidationMessage: React.FC = () => {
     requestHeaders.set('App-Name', 'ADIGITAL');
     const body = {
       document_type: 'CC',
-      document_number: '1015444367',
+      document_number: '1018422010',
     };
     const bodyEncript = await allResponse(body, KEY);
     try {
       const response = await fetch(
-        `${process.env.KYC_API_URL}/kyc/identity-user/biometry`,
+        `${process.env.KYCAPIURL}/identity-user/biometry`,
         {
           method: 'POST',
           headers: requestHeaders,
