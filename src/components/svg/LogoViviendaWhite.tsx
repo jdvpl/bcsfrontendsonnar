@@ -1,4 +1,4 @@
-const LogoViviendaWhite = () => {
+function LogoViviendaWhite() {
   return (
     <svg
       width="279"
@@ -82,6 +82,6 @@ const LogoViviendaWhite = () => {
       />
     </svg>
   );
-};
+}
 
 export default LogoViviendaWhite;

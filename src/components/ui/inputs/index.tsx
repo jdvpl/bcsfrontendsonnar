@@ -58,7 +58,7 @@ export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   autofocus?: true | false;
 }
 
-export const Input = ({
+export function Input({
   label,
   classNameInput,
   containerClassName,
@@ -68,7 +68,7 @@ export const Input = ({
   endIcon,
   autofocus = false,
   ...props
-}: InputProps) => {
+}: InputProps) {
   const labelStyles = `
   peer-placeholder-shown:z-[-1] peer-focus:z-0 z-0
 
@@ -130,6 +130,6 @@ export const Input = ({
       {helperText && error && <HelperText error={error} text={helperText} />}
     </div>
   );
-};
+}
 
 export default Input;

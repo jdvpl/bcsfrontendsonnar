@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import React, { Component, useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { isTablet, isMobile, isDesktop, isIPad13 } from 'react-device-detect';
 import Image from 'next/image';
 import { ValidationMessageBiometry } from '../../components/biometria/error-validacion';
@@ -27,7 +27,7 @@ const CardImage: React.FC<childrenProps> = ({ children }) => (
 );
 const ValidationMessage: React.FC = () => {
   const router = useRouter();
-  // const [dataTU] = useSessionStorage('DataUser', '');
+  const [dataTU] = useSessionStorage('DataUser', '');
   const [biometryProcess] = useSessionStorage('process', '');
   const [showAnimation, setShowAnimation] = useState(false);
   const [validated, setValidated] = useState(true);
@@ -78,15 +78,15 @@ const ValidationMessage: React.FC = () => {
       document.body.classList.remove('body-scroll-hidden');
     }
   };
-  // useEffect(() => {
-  //   scrollBody();
-  //   if (biometryProcess) {
-  //     setShowAnimation(false);
-  //     setValidated(false);
-  //   } else if (isMobile || isTablet || window.innerWidth <= 1000) {
-  //     beginBiometry();
-  //   }
-  // }, []);
+  useEffect(() => {
+    scrollBody();
+    if (biometryProcess) {
+      setShowAnimation(false);
+      setValidated(false);
+    } else if (isMobile || isTablet || window.innerWidth <= 1000) {
+      beginBiometry();
+    }
+  }, []);
 
   if (
     isDesktop &&

@@ -1,4 +1,4 @@
-const LogoBcs = () => {
+function LogoBcs() {
   return (
     <svg
       width="196"
@@ -311,6 +311,6 @@ const LogoBcs = () => {
       />
     </svg>
   );
-};
+}
 
 export default LogoBcs;

@@ -6,13 +6,13 @@ import { useSessionStorage } from '../hooks/useSessionStorage';
 
 describe('Visibility of the ValidationForm', () => {
   it('render component ', async () => {
-    const TestComponent = () => {
+    function TestComponent() {
       const [dataQuestions] = useSessionStorage('DataQuestions', '');
       const data = dataQuestions;
       return (
         <ValidationForm questions={data?.items} onSubmit={() => console.log('hola')} />
       );
-    };
+    }
     render(<TestComponent />);
     const component = screen.getByTestId(`validationForm`);
     expect(component).toBeInTheDocument();

@@ -3,7 +3,7 @@ export interface iFormDataSimulation {
   typeHouse: string;
   houseValue: number; // house
   percentageFinance: number; // house
-  valueFinance: number; // house
+  financeValue: number; // house
   termFinance: number;
   insuranceCheck: boolean;
   dateOfBirth: string;

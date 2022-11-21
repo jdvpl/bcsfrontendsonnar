@@ -4,14 +4,17 @@ import LogoForm from '../../components/svg/LogoForm';
 import Typography from '../../components/ui/Tipography';
 import ReviewHouse from '../../components/ui/simulation/reviewHouse';
 import ReviewSalary from '../../components/ui/simulation/reviewSalary';
-import { basePath } from '../../../next.config';
+import { routes } from '../../routes/index';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import Button from '../../components/ui/Button/index';
 import { convertToColombianPesos } from '../../utils/index';
 
+
 const resumen = () => {
   const [simulationTypeOption, setsimulatioTypeOption] = useState<any>('');
   const [simulationType, setSimulationType] = useSessionStorage('simulationValues', '');
+  const [insuranceCheck, setInsuranceCheck] = useSessionStorage('simulationValues', '');
+  console.log(insuranceCheck.insuranceCheck)
   const [valuesSimulation, setValuesSimulation] = useSessionStorage(
     'simulationResponse',
     ''
@@ -19,26 +22,25 @@ const resumen = () => {
 
   useEffect(() => {
     setsimulatioTypeOption(simulationType.simulationType.toString());
-    console.log(valuesSimulation, simulationType);
   }, []);
   return (
     <div>
-      <div className="container flex lg:mt-[0] sm:w-[343px] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-end">
-        <div className="mt-4 hidden lg:block">
+      <div className="container flex lg:mt-[0] xs:w-[343px] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-end">
+        <div className="mt-4  hidden lg:block">
           <LogoBcs />
         </div>
-        <div className="mt-4">
+        <div className="mt-4 w-[180px] lg:w-[303px] mb-[24px] mr-[16px]">
           <LogoForm />
         </div>
       </div>
-      <div className="lg:w-[684px] md:w-[584px] w-[343px] m-auto">
-        <Typography variant="h2" className="mt-8 text-center">
+      <div className=" xs:w-[290px] sm:w-[343px]  lg:w-[684px] md:w-[584px] m-auto">
+        <Typography variant="h2" className="mt-8 mb-[52px] text-center">
           Simulador del crédito
         </Typography>
         <div>
           <Typography
             variant="bodyS3"
-            className="text-center lg:mt-[52px] pmx-3 text-primario-900"
+            className="text-center xs:w-[290px] sm:w-[343px] md:w-[656px] lg:mt-[52px] pmx-3 text-primario-900"
           >
             Los valores presentados en el simulador son únicamente informativos y no
             constituyen ningún tipo de asesoria, ni obligan al Banco en su calidad de
@@ -71,26 +73,46 @@ const resumen = () => {
             Cuanto me prestan
           </button>
         </div>
-        {simulationTypeOption === 'house' ? (
+        {simulationTypeOption === 'house' && insuranceCheck.insuranceCheck ? (
           <ReviewHouse
-            monthlyCoute={`${convertToColombianPesos(valuesSimulation.monthlyCoute)}`}
-            financedValue={`${convertToColombianPesos(valuesSimulation.financedValue)}`}
-            numberPeriods={valuesSimulation.numberPeriods}
+          monthlyCouteInsurance={`${convertToColombianPesos(Math.floor(valuesSimulation.monthlyCoute+valuesSimulation.lifeInsurance+valuesSimulation.fireInsurance))}`}
+            monthlyCoute={`${convertToColombianPesos(Math.floor(valuesSimulation.monthlyCoute))}`}
+            financedValue={`${convertToColombianPesos(Math.floor(valuesSimulation.financeValue))}`}
+            termFinance={`${valuesSimulation.termFinance} años`}
             rate={valuesSimulation.rate}
             lifeInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
             fireInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
           />
-        ) : (
-          <ReviewSalary
-            financedValue={`${convertToColombianPesos(valuesSimulation.financedValue)}`}
-            monthlyFee={`${convertToColombianPesos(valuesSimulation.monthlyFee)}`}
-            numberPeriods={valuesSimulation.numberPeriods}
+        ) :
+        null}
+        {simulationTypeOption === 'salary' && insuranceCheck.insuranceCheck ? (
+        <ReviewSalary
+            financedValue={`${convertToColombianPesos(Math.floor(valuesSimulation.financeValue))}`}
+            amountQuota={`${convertToColombianPesos(Math.floor(valuesSimulation.amountQuota))}`}
+            amountQuotatotal={`${convertToColombianPesos(Math.floor(valuesSimulation.amountQuota+valuesSimulation.lifeInsurance+valuesSimulation.fireInsurance))}`}
+            termFinance={`${valuesSimulation.termFinance} años`}
             rate={valuesSimulation.rate}
             lifeInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
-            fireInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
+            fireInsurance={`${convertToColombianPesos(valuesSimulation.fireInsurance)}`}
           />
-        )}
-
+        ):null}
+        {simulationTypeOption === 'house' && !insuranceCheck.insuranceCheck ? (
+          <ReviewHouse
+            monthlyCoute={`${convertToColombianPesos(Math.floor(valuesSimulation.monthlyCoute))}`}
+            financedValue={`${convertToColombianPesos(Math.floor(valuesSimulation.financeValue))}`}
+            termFinance={`${valuesSimulation.termFinance} años`}
+            rate={valuesSimulation.rate}
+          />
+        ) :
+        null}
+        {simulationTypeOption === 'salary' && !insuranceCheck.insuranceCheck ? (
+        <ReviewSalary
+            financedValue={`${convertToColombianPesos(Math.floor(valuesSimulation.financeValue))}`}
+            amountQuota={`${convertToColombianPesos(Math.floor(valuesSimulation.amountQuota))}`}
+            termFinance={`${valuesSimulation.termFinance} años`}
+            rate={valuesSimulation.rate}
+          />
+        ):null}
         <div className="flex flex-col items-center">
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px]"

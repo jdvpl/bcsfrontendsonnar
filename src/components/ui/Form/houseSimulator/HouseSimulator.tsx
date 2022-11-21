@@ -18,7 +18,7 @@ import { routes } from '../../../../routes';
 import Icons from '../../icons';
 import Alert from '../../Alert';
 
-const HouseSimulator = () => {
+function HouseSimulator() {
   const router = useRouter();
   const [percentageFinance, setPercentageFinance] = useState<number>(0.7);
   const [insuranceCheck, setInsuranceCheck] = useState<boolean>(false);
@@ -26,7 +26,7 @@ const HouseSimulator = () => {
     SesionStorageKeys.dataFormSimulation.key,
     {}
   );
-  const [, setDataFormResponse] = useSessionStorage(
+  const [dataFormResponse,setDataFormResponse] = useSessionStorage(
     SesionStorageKeys.dataFormSimulationResponse.key,
     {}
   );
@@ -43,15 +43,15 @@ const HouseSimulator = () => {
 
   const typeHouse = watch('typeHouse', 'novis');
   const houseValue = watch('houseValue', 0);
-  const valueFinance = watch('valueFinance', 0);
+  const financeValue = watch('financeValue', 0);
   const termFinance = watch('termFinance', 0);
   const day = watch('day', '');
   const month = watch('month', '');
   const year = watch('year', '');
 
   const calculatePercentageFinance = (field: any) => {
-    if (houseValue > 0 && valueFinance > 999999 && valueFinance < houseValue * 0.7) {
-      const calculatePercentage = valueFinance / houseValue;
+    if (houseValue > 0 && financeValue > 999999 && financeValue < houseValue * 0.7) {
+      const calculatePercentage = financeValue / houseValue;
       setPercentageFinance(calculatePercentage);
     } else {
       setPercentageFinance(0.7);
@@ -61,14 +61,14 @@ const HouseSimulator = () => {
   const automationValueFinance = () => {
     if (houseValue > 0) {
       console.log(houseValue);
-      setValue('valueFinance', houseValue * 0.7);
+      setValue('financeValue', houseValue * 0.7);
     }
   };
 
   useValidations(
     typeHouse,
     houseValue,
-    valueFinance,
+    financeValue,
     termFinance,
     calculatePercentageFinance,
     day,
@@ -82,7 +82,7 @@ const HouseSimulator = () => {
     const body: iFormDataSimulation = {
       typeHouse: formData?.typeHouse,
       houseValue: Math.floor(formData.houseValue),
-      valueFinance: formData.valueFinance,
+      financeValue: formData.financeValue,
       termFinance: formData?.termFinance,
       percentageFinance,
       insuranceCheck,
@@ -90,8 +90,9 @@ const HouseSimulator = () => {
       simulationType: 'house',
       monthlySalary: 0,
       amountQuota: 0,
-      percentageQuota: 0,
+      percentageQuota: 0.3,
     };
+    console.log(body)
     const response = await sendSimulationData(body);
     if (!response.error) {
       setDataFormResponse(response?.response?.data);
@@ -157,8 +158,8 @@ const HouseSimulator = () => {
                 <Input
                   disabled={!(houseValue > 0)}
                   type="text"
-                  error={!!errors.valueFinance}
-                  helperText={errors.valueFinance?.message}
+                  error={!!errors.financeValue}
+                  helperText={errors.financeValue?.message}
                   onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                     e.preventDefault();
                   }}
@@ -177,7 +178,7 @@ const HouseSimulator = () => {
                   }}
                 />
               )}
-              name="valueFinance"
+              name="financeValue"
               control={control}
             />
             <div className="rounded-md w-[78px] border-[0.1px] text-[14px] h-[48px] bg-complementario-80 border-complementario-20/50 flex justify-center items-center text-complementario-20">
@@ -289,7 +290,6 @@ const HouseSimulator = () => {
             id="insuranceCheck"
             className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"
             inputMode="numeric"
-            required
             onChange={(e) => setInsuranceCheck(e.target.checked)}
           />
 
@@ -309,6 +309,6 @@ const HouseSimulator = () => {
       </div>
     </form>
   );
-};
+}
 
 export default HouseSimulator;

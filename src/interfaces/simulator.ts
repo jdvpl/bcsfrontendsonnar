@@ -6,7 +6,7 @@ export interface SimulationData {
   amountQuota: number;
   percentageFinance: number;
   percentageQuote: number;
-  valueFinance: number;
+  financeValue: number;
   termFinance: number;
   insuranceCheck: boolean;
   dateOfBirth: string;

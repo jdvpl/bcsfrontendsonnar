@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Politicas = () => {
+function Politicas() {
   return (
     <div data-testid="terminos">
       <span className="font-bold">
@@ -126,6 +126,6 @@ const Politicas = () => {
       </ul>
     </div>
   );
-};
+}
 
 export default Politicas;

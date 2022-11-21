@@ -4,10 +4,10 @@ import React from 'react';
 // eslint-disable-next-line react/jsx-no-useless-fragment
 // eslint-disable-next-line react/destructuring-assignment
 
-const NoSSRWrapper = (props: { children: any }) => {
+function NoSSRWrapper(props: { children: any }) {
   const { children } = props;
   return <>{children}</>;
-};
+}
 
 export default dynamic(() => Promise.resolve(NoSSRWrapper), {
   ssr: false,

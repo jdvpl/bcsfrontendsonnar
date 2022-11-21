@@ -20,7 +20,7 @@ export interface OTPCodeRequest {
   phone: string;
 }
 
-export const Otp = () => {
+export function Otp() {
   const [dataTU, setDataUser] = useSessionStorage('dataTU', '');
   const [otp, setOtp] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(false);
@@ -176,4 +176,4 @@ export const Otp = () => {
       )}
     </div>
   );
-};
+}
