@@ -32,9 +32,3 @@ spec:
               path: /
             initialDelaySeconds: 20
             timeoutSeconds: 10
-          resources:
-            limits:
-              memory: 128Mi
-            requests:
-              cpu: 0.1
-              memory: 128Mi

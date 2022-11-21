@@ -150,50 +150,48 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
                 </p>
               </div>
               {questions?.options &&
-                questions?.options.map((answer) => {
-                  return (
-                    <div
-                      className="space-y-[12px]"
-                      id={`answer-${answer.id}`}
-                      key={answer.id}
-                    >
-                      <input
-                        {...register('number')}
-                        type="radio"
-                        value={answer.id}
-                        className="hidden"
-                      />
-                      <label
-                        tabIndex={0}
-                        role="paragraph"
-                        aria-hidden="true"
-                        htmlFor="number"
-                        className={`flex items-center bg-white cursor-pointer  w-full border  rounded-md px-5 py-[17px]
+                questions?.options.map((answer) => (
+                  <div
+                    className="space-y-[12px]"
+                    id={`answer-${answer.id}`}
+                    key={answer.id}
+                  >
+                    <input
+                      {...register('number')}
+                      type="radio"
+                      value={answer.id}
+                      className="hidden"
+                    />
+                    <label
+                      tabIndex={0}
+                      role="paragraph"
+                      aria-hidden="true"
+                      htmlFor="number"
+                      className={`flex items-center bg-white cursor-pointer  w-full border  rounded-md px-5 py-[17px]
                         border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black  shadow-small-300  font-semibold
                         ${
                           answer.id === inputValues
                             ? 'shadow-none border-primario-600 text-primario-600'
                             : ''
                         }`}
-                        onClick={() => {
-                          setValue(`number`, answer.id);
-                          setDataTU({
-                            ...dataTU,
-                            encriptPhone: { encriptPhone: answer.option },
-                          });
-                        }}
-                      >
-                        <span
-                          itemProp="telephone"
-                          tabIndex={0}
-                          role="paragraph"
-                          className="hidden"
-                        />
-                        {answer.option}
-                      </label>
-                    </div>
-                  );
-                })}
+                      onClick={() => {
+                        setValue(`number`, answer.id);
+                        setDataTU({
+                          ...dataTU,
+                          encriptPhone: { encriptPhone: answer.option },
+                        });
+                      }}
+                    >
+                      <span
+                        itemProp="telephone"
+                        tabIndex={0}
+                        role="paragraph"
+                        className="hidden"
+                      />
+                      {answer.option}
+                    </label>
+                  </div>
+                ))}
             </div>
             <ContainerButtonForm>
               <Button

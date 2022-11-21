@@ -117,7 +117,7 @@ export const reSendOTPCode = async (data: OTPCodeRequest) => {
 export const sendSimulationData = async (data: iFormDataSimulation) => {
   try {
     const { data: response } = await clientAxiosBackend.post(
-      '/simulation',
+      '/simulator',
       data,
       headersBack
     );
@@ -128,7 +128,6 @@ export const sendSimulationData = async (data: iFormDataSimulation) => {
       error: false,
     };
   } catch (e: any) {
-    console.log(e);
     return { error: true, response: e?.response?.data?.message };
   }
 };

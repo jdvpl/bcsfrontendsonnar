@@ -11,8 +11,8 @@ import Typography from '../../ui/Tipography';
 
 export interface ValidateOTC {
   pin: string;
-  document_number: String;
-  document_type: String;
+  document_number: string;
+  document_type: string;
 }
 export interface OTPCodeRequest {
   document_type: string;

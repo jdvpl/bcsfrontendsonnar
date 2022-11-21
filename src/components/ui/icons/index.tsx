@@ -15,10 +15,8 @@ export const Icons: FC<IconsProps> = ({
   color,
   iconclassNames = '',
   ...props
-}) => {
-  return (
-    <i {...props} className={`icon-ds-bcs ${icon} ${color} ${size} ${iconclassNames}`} />
-  );
-};
+}) => (
+  <i {...props} className={`icon-ds-bcs ${icon} ${color} ${size} ${iconclassNames}`} />
+);
 
 export default Icons;

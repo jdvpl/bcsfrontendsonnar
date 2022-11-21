@@ -133,43 +133,41 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
         <div className="flex flex-col mt-4">
           <Controller
             rules={{ required: true, minLength: 5, maxLength: 10 }}
-            render={({ field }) => {
-              return (
-                <Input
-                  helperText="Número incorrecto"
-                  type="text"
-                  error={!!errors.document_number}
-                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+            render={({ field }) => (
+              <Input
+                helperText="Número incorrecto"
+                type="text"
+                error={!!errors.document_number}
+                onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                  e.preventDefault();
+                }}
+                value={field.value || ''}
+                tabIndex={0}
+                id="document_number"
+                inputMode="numeric"
+                // maxLength={10}
+                required
+                label="Número de documento"
+                disabled={disabledInput}
+                onChange={(e: any) => {
+                  if (field.value?.length === 10 && !!e.nativeEvent.data) {
+                    setError('document_number', {
+                      type: 'manual',
+                      message: 'Máximo 10 caracteres permitidos',
+                    });
                     e.preventDefault();
-                  }}
-                  value={field.value || ''}
-                  tabIndex={0}
-                  id="document_number"
-                  inputMode="numeric"
-                  // maxLength={10}
-                  required
-                  label="Número de documento"
-                  disabled={disabledInput}
-                  onChange={(e: any) => {
-                    if (field.value?.length === 10 && !!e.nativeEvent.data) {
-                      setError('document_number', {
-                        type: 'manual',
-                        message: 'Máximo 10 caracteres permitidos',
-                      });
-                      e.preventDefault();
-                      return;
-                    }
-                    if (field.value?.length === 9) {
-                      setError('document_number', {
-                        type: 'manual',
-                        message: undefined,
-                      });
-                    }
-                    field.onChange(e.target.value.replace(/[^0-9]/g, ''));
-                  }}
-                />
-              );
-            }}
+                    return;
+                  }
+                  if (field.value?.length === 9) {
+                    setError('document_number', {
+                      type: 'manual',
+                      message: undefined,
+                    });
+                  }
+                  field.onChange(e.target.value.replace(/[^0-9]/g, ''));
+                }}
+              />
+            )}
             name="document_number"
             control={control}
           />

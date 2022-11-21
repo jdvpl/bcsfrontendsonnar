@@ -1,18 +1,17 @@
 import Image from 'next/image';
-import { childrenProps } from '../../../interfaces/childrenProps';
 
-interface CardProps extends childrenProps {
+
+interface CardProps {
   htmlFor?: string;
   className?: string;
   typebg?: string;
-  urlsvg?: string;
+  urlsvg: string;
   altsvg?: string;
   title: string;
   value: string;
   text: string;
 }
 export const Card: React.FC<CardProps> = ({
-  htmlFor,
   className,
   text,
   value,

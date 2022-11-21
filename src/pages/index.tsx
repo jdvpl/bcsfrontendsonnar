@@ -13,11 +13,12 @@ import { Questions } from '../components/ui/Accordion';
 import { basePath } from '../../next.config';
 export default function Home() {
   const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, '');
-  useEffect(() => {
-    return () => {
+  useEffect(
+    () => () => {
       setDevice(deviceType);
-    };
-  }, []);
+    },
+    []
+  );
 
   return (
     <div data-testid="landingPage" className="overflow-hidden">

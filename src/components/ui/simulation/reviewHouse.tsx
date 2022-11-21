@@ -1,24 +1,19 @@
-import { childrenProps } from '../../../interfaces/childrenProps';
 import Card from './Card';
 import { basePath } from '../../../../next.config';
 
-interface ReviewHouseProps extends childrenProps {
-  disbursementValue: string;
+interface ReviewHouseProps {
   financedValue: string;
   fireInsurance: string;
   lifeInsurance: string;
   monthlyCoute: string;
-  monthlyFee: string;
   numberPeriods: string;
   rate: string;
 }
 export const ReviewHouse: React.FC<ReviewHouseProps> = ({
-  disbursementValue,
   financedValue,
   fireInsurance,
   lifeInsurance,
   monthlyCoute,
-  monthlyFee,
   numberPeriods,
   rate,
 }) => (
@@ -28,6 +23,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       title="Couta mensual sin seguros"
       value={monthlyCoute?.toString()}
       text="text-[38px] pl-[18px]"
+      urlsvg=''
     />
     <Card
       className="lg:w-[448px] h-[88px] sm:w-[343px] h-[92px] bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
@@ -39,7 +35,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
     <Card
       className="lg:w-[448px] h-[88px] sm:w-[343px] h-[92px] bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
       title="Plazo"
-      value={numberPeriods?.toString()}
+      value={numberPeriods?.toString()+' Años'}
       text="text-[20px] pl-[18px] font-semibold"
       urlsvg={`${basePath}/images/Calendar.svg`}
     />

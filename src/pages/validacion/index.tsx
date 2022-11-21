@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router';
 import React, { useContext, useEffect } from 'react';
 import { basePath } from '../../../next.config';
-import { ContainerButton } from '../../components/error/containerButton';
-import { HeadingError } from '../../components/error/heading';
-import { SubtitleError } from '../../components/error/subtitle';
-import Button from '../../components/form/button';
-import ImageLoader from '../../components/imageLoader';
+import { ContainerButton } from '../../components/ui/error/containerButton';
+import { HeadingError } from '../../components/ui/error/heading';
+import { SubtitleError } from '../../components/ui/error/subtitle';
+import Button from '../../components/ui/Button/index';
+import ImageLoader from '../../components/ui/Loaders/imageLoader';
 import { ErrorLayout } from '../../components/layouts/errorLayout';
 import { AplicationContext } from '../../context/AplicationContext';
 

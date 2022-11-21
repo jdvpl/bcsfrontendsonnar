@@ -1,5 +1,6 @@
 import { createContext, useState } from 'react';
 
+
 export const AplicationContext = createContext();
 
 export const AplicationProvider = (props) => {
@@ -11,7 +12,6 @@ export const AplicationProvider = (props) => {
     normal: '',
     sonriendo: '',
   });
-  console.log(selfies);
   const [fotoEditada, setFotoEditado] = useState('');
   const [selfieEditada, setSelfieEditada] = useState('');
   // const [atrasAnimacion, setAtrasAnimacion] = useState(false);
