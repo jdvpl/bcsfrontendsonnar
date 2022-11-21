@@ -47,14 +47,14 @@ const resumen = () => {
             emisor.
           </Typography>
         </div>
-        <div className="flex gap-3 my-5">
+        <div className="flex gap-1 my-5">
           <button
             type="button"
             disabled={simulationTypeOption === 'salary'}
             className={
               simulationTypeOption === 'house'
-                ? `w-full max-w-[23.438rem] rounded h-[3rem] transition-all duration-500 text-white bg-primario-100 hover:bg-primario-400 focus:bg-primario-400 focus:text-primario-60 focus:shadow-none shadow-none`
-                : `w-full max-w-[23.438rem] rounded h-[3rem] text-complementario-70 bg-gris-90 shadow-none`
+              ? ` font-semibold button-shadow text-[14px] w-full max-w-[23.438rem] rounded-l-lg h-[3rem] transition-all duration-500 text-white bg-primario-100 hover:bg-primario-400  shadow-none`
+              : ` font-semibold button-shadow text-[14px] w-full max-w-[23.438rem] rounded-l-lg h-[3rem] text-complementario-70 bg-gris-90 shadow-none`
             }
             onClick={() => setsimulatioTypeOption('house')}
           >
@@ -65,8 +65,8 @@ const resumen = () => {
             disabled={simulationTypeOption === 'house'}
             className={
               simulationTypeOption === 'salary'
-                ? `w-full max-w-[23.438rem] rounded h-[3rem] transition-all duration-500 text-white bg-primario-100 hover:bg-primario-400 focus:bg-primario-400 focus:text-primario-60 focus:shadow-none shadow-none`
-                : `w-full max-w-[23.438rem] rounded h-[3rem] text-complementario-70 bg-gris-90 shadow-none`
+              ? ` font-semibold button-shadow text-[14px] w-full max-w-[23.438rem] rounded-r-lg h-[3rem] transition-all duration-500 text-white bg-primario-100 hover:bg-primario-400  shadow-none`
+                : ` font-semibold button-shadow text-[14px] w-full max-w-[23.438rem] rounded-r-lg h-[3rem] text-complementario-70 bg-gris-90 shadow-none`
             }
             onClick={() => setsimulatioTypeOption('salary')}
           >
@@ -75,14 +75,21 @@ const resumen = () => {
         </div>
         {simulationTypeOption === 'house' && insuranceCheck.insuranceCheck ? (
           <ReviewHouse
+<<<<<<< HEAD
           monthlyCouteInsurance={`${convertToColombianPesos(Math.floor(valuesSimulation.monthlyCoute+valuesSimulation.lifeInsurance+valuesSimulation.fireInsurance))}`}
             monthlyCoute={`${convertToColombianPesos(Math.floor(valuesSimulation.monthlyCoute))}`}
             financedValue={`${convertToColombianPesos(Math.floor(valuesSimulation.financeValue))}`}
             termFinance={`${valuesSimulation.termFinance} años`}
+=======
+            monthlyCoute={`${convertToColombianPesos(valuesSimulation.monthlyCoute)}`}
+            financedValue={`${convertToColombianPesos(valuesSimulation.financeValue)}`}
+            numberPeriods={valuesSimulation.termFinance}
+>>>>>>> b3b487cb20eeefa6c950369d3eb2b89e076dd641
             rate={valuesSimulation.rate}
             lifeInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
             fireInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
           />
+<<<<<<< HEAD
         ) :
         null}
         {simulationTypeOption === 'salary' && insuranceCheck.insuranceCheck ? (
@@ -91,6 +98,13 @@ const resumen = () => {
             amountQuota={`${convertToColombianPesos(Math.floor(valuesSimulation.amountQuota))}`}
             amountQuotatotal={`${convertToColombianPesos(Math.floor(valuesSimulation.amountQuota+valuesSimulation.lifeInsurance+valuesSimulation.fireInsurance))}`}
             termFinance={`${valuesSimulation.termFinance} años`}
+=======
+        ) : (
+          <ReviewSalary
+            financedValue={`${convertToColombianPesos(valuesSimulation.financeValue)}`}
+            monthlyFee={`${convertToColombianPesos(valuesSimulation.monthlyFee)}`}
+            numberPeriods={valuesSimulation.termFinance}
+>>>>>>> b3b487cb20eeefa6c950369d3eb2b89e076dd641
             rate={valuesSimulation.rate}
             lifeInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
             fireInsurance={`${convertToColombianPesos(valuesSimulation.fireInsurance)}`}

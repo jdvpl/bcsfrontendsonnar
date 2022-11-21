@@ -6,7 +6,6 @@ import ReactHookFormSelect from '../../Select/newSelect';
 import Input from '../../inputs/index';
 import { convertToColombianPesos, parserPercentageDecimal } from '../../../../utils';
 import { days, months } from '../../../../lib/dates';
-import { HelperText } from '../../inputs/HelperText';
 import Button from '../../Button';
 import { iFormDataSimulation, SimulationData } from '../../../../interfaces';
 import { yearsAvailable } from '../../../../lib/simulator';
@@ -58,7 +57,7 @@ function HouseSimulator() {
     }
   };
 
-  const automationValueFinance = () => {
+  const automationfinanceValue = () => {
     if (houseValue > 0) {
       console.log(houseValue);
       setValue('financeValue', houseValue * 0.7);
@@ -110,8 +109,6 @@ function HouseSimulator() {
             onChange={(e: any) => setValue('typeHouse', e.target.value)}
             placeholder="Tipo de vivienda"
             label="Tipo de vivienda"
-            error={!!errors.typeHouse}
-            helperText={errors.typeHouse?.message}
             defaultValue="novis"
             control={control}
             left="right4"
@@ -125,26 +122,30 @@ function HouseSimulator() {
           </ReactHookFormSelect>
 
           <Controller
-            render={({ field }) => (
-              <Input
-                containerClassName="col-span-6"
-                type="text"
-                error={!!errors.houseValue}
-                onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                  e.preventDefault();
-                }}
-                value={convertToColombianPesos(field.value)}
-                tabIndex={0}
-                id="houseValue"
-                inputMode="text"
-                required
-                label="Valor de Vivienda"
-                onBlur={automationValueFinance}
-                onChange={(e: any) => {
-                  field.onChange(e.target.value.replace(/[^0-9]/g, ''));
-                }}
-              />
-            )}
+            render={({ field }) => {
+              return (
+                <Input
+                  containerClassName="col-span-6"
+                  type="text"
+                  // error={!!errors.houseValue}
+                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                    e.preventDefault();
+                  }}
+                  error={!!errors.typeHouse}
+                  helperText={errors.typeHouse?.message}
+                  value={convertToColombianPesos(field.value)}
+                  tabIndex={0}
+                  id="houseValue"
+                  inputMode="text"
+                  required
+                  label="Valor de Vivienda"
+                  // onBlur={automationfinanceValue}
+                  onChange={(e: any) => {
+                    field.onChange(e.target.value.replace(/[^0-9]/g, ''));
+                  }}
+                />
+              );
+            }}
             name="houseValue"
             control={control}
           />
@@ -216,7 +217,6 @@ function HouseSimulator() {
             onChange={(e: any) => setValue('day', e.target.value)}
             placeholder="Dia"
             label="Dia"
-            error={!!errors.day}
             defaultValue=""
             control={control}
             left="right4"
@@ -236,7 +236,6 @@ function HouseSimulator() {
             onChange={(e: any) => setValue('month', e.target.value)}
             placeholder="Mes"
             label="Mes"
-            error={!!errors.month}
             defaultValue=""
             control={control}
             left="right4"
@@ -256,31 +255,26 @@ function HouseSimulator() {
             name="year"
             control={control}
             rules={{ required: true }}
-            render={({ field }) => (
-              <Input
-                containerClassName="col-span-2"
-                type="text"
-                onChange={(e) => {
-                  field.onChange(e.target.value);
-                }}
-                error={!!errors.year}
-                value={field.value}
-                tabIndex={0}
-                id="year"
-                inputMode="numeric"
-                maxLength={4}
-                label="Año"
-              />
-            )}
+            render={({ field }) => {
+              return (
+                <Input
+                  containerClassName="col-span-2"
+                  type="text"
+                  onChange={(e) => {
+                    field.onChange(e.target.value);
+                  }}
+                  error={!!errors.day}
+                  helperText={errors?.day?.message}
+                  value={field.value}
+                  tabIndex={0}
+                  id="year"
+                  inputMode="numeric"
+                  maxLength={4}
+                  label="Año"
+                />
+              );
+            }}
           />
-
-          {errors?.day ? (
-            <HelperText
-              className="col-span-6"
-              error={!!errors?.day}
-              text={errors?.day?.message || ''}
-            />
-          ) : null}
         </div>
 
         <div className="flex items-center gap-3 mb-8 w-full">

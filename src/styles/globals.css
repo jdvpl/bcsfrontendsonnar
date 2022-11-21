@@ -63,6 +63,9 @@
     @apply py-3;
   }
 }
+.button-shadow{
+  box-shadow: inset 0px 1px 4px rgba(0, 37, 61, 0.12);
+}
 
 /* icons */
 

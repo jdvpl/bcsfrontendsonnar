@@ -64,7 +64,11 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
     <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
       title="Plazo"
+<<<<<<< HEAD
       value={termFinance?.toString()}
+=======
+      value={numberPeriods?.toString()+' Años'}
+>>>>>>> b3b487cb20eeefa6c950369d3eb2b89e076dd641
       text="text-[20px] pl-[18px] font-semibold"
       urlsvg={`${basePath}/images/Calendar.svg`}
       classtitle="h-[14px] text-[14px]"
