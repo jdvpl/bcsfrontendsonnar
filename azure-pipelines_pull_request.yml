@@ -1,5 +1,5 @@
 trigger:
-- main
+- pull_request
 
 pool:
   vmImage: ubuntu-latest
@@ -41,23 +41,3 @@ stages:
           SonarCloud: 'SonarCloud'
           organization: 'equipoinnovaciondigital'
         displayName: 'Sonar: Validation Status Sonar'
-
-- stage: Artifact
-  displayName: 'Artifact'
-  jobs:
-    - job: artifact
-      displayName: 'Artifact: ubuntu'
-      pool:
-        vmImage: ubuntu-latest
-      steps:
-        - task: CopyFiles@2
-          inputs:
-            Contents: '**'
-            targetFolder: '$(Build.ArtifactStagingDirectory)'    
-          displayName: 'Artifact: Copy'
-        - task: PublishBuildArtifacts@1
-          inputs:
-            PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-            ArtifactName: 'drop'
-            publishLocation: 'Container'
-          displayName: 'Artifact: Publish'
