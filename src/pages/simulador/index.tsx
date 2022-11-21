@@ -11,7 +11,7 @@ import { sendSimulationData } from '../../services/index';
 import { routes } from '../../routes';
 import HouseSimulator from '../../components/ui/Form/houseSimulator/HouseSimulator';
 
-const Simulator = () => {
+function Simulator() {
   const [dataFormQuota, setdataFormQuota] = useSessionStorage(
     SesionStorageKeys.dataFormSimulation.key,
     {}
@@ -26,16 +26,22 @@ const Simulator = () => {
     'house'
   );
   const onSubmit = async (formData: iFormDataSimulation) => {
-    const body = {
-      ...formData,
+    const body: iFormDataSimulation = {
       simulationType: simulatioTypeOption,
+      typeHouse: formData.typeHouse,
+      termFinance: formData.termFinance,
+      insuranceCheck: formData.insuranceCheck,
+      dateOfBirth: formData.dateOfBirth,
+      monthlySalary: +formData.monthlySalary,
+      amountQuota: formData.amountQuota,
+      percentageQuota: formData.percentageQuota,
       houseValue: 0,
       percentageFinance: 0,
-      valueFinance: 0,
+      financeValue: 0,
     };
-    console.log(body);
+ 
     setdataFormQuota(body);
-    const response = await sendSimulationData(formData);
+    const response = await sendSimulationData(body);
     if (!response.error) {
       setdataFormResponse(response.response.data);
       router.push(routes.simuladorResumen);
@@ -47,7 +53,7 @@ const Simulator = () => {
         <div className="mt-4 hidden lg:block">
           <LogoBcs />
         </div>
-        <div className="mt-4">
+        <div className="mt-4 w-[180px] md:w-[303px]">
           <LogoForm />
         </div>
       </div>
@@ -95,6 +101,6 @@ const Simulator = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Simulator;

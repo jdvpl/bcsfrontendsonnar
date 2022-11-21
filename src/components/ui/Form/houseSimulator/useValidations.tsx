@@ -33,20 +33,21 @@ export default function useValidations(
   const validateTypeHouse = () => {
     if (
       (houseValue < minHouseValueVis || houseValue > maxHouseValueVis) &&
-      typeHouse === 'vis'
+      typeHouse === 'vis' &&
+      houseValue > 0
     ) {
       setError('typeHouse', {
         type: 'error',
         message: 'El valor de la vivienda VIS debe estar entre 50 y 150 SMMLV.',
       });
     }
-    if (houseValue < minHouseValueNoVis && typeHouse === 'novis') {
+    if (houseValue < minHouseValueNoVis && typeHouse === 'novis' && houseValue > 0) {
       setError('typeHouse', {
         type: 'error',
         message: 'El valor mínimo de la vivienda debe ser de 150 SMMLV.',
       });
     }
-    if (houseValue > maxHouseValueNoVis && typeHouse === 'novis') {
+    if (houseValue > maxHouseValueNoVis && typeHouse === 'novis' && houseValue > 0) {
       setError('typeHouse', {
         type: 'error',
         message: 'El valor de la vivienda máximo debe ser de 1.400 SMMLV.',
@@ -73,13 +74,13 @@ export default function useValidations(
   };
 
   const validatefinanceValue = () => {
-    if (financeValue > houseValue * 0.7) {
+    if (financeValue > houseValue * 0.7 && financeValue > 0) {
       setError('financeValueE', {
         type: 'error',
         message: 'El valor máximo a financiar no puede superar el 70% de la vivienda.',
       });
     }
-    if (financeValue < SMMLV * 20) {
+    if (financeValue < SMMLV * 20 && financeValue > 0) {
       setError('financeValueE', {
         type: 'error',
         message: 'El valor mínimo a financiar para vivienda VIS es de 20 SMMLV.',

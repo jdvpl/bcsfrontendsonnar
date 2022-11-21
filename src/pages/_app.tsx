@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import '../styles/globals.css';
 import { AplicationProvider } from '../context/AplicationContext';
 
-const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
+function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const [initialRenderComplete, setInitialRenderComplete] = useState<boolean>(false);
   useEffect(() => {
     setInitialRenderComplete(true);
@@ -16,6 +16,6 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
       <Component {...pageProps} />
     </AplicationProvider>
   );
-};
+}
 
 export default MyApp;

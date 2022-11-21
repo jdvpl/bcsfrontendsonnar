@@ -2,7 +2,6 @@
 const nextConfig = {
   productionBrowserSourceMaps: false,
   poweredByHeader: false,
-  reactStrictMode: true,
   basePath: '/vivienda',
   trailingSlash: true,
   reactStrictMode: true,

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { RateForm } from '../../Form/ratingForm';
 import Icons from '../../icons';
 
-export const RatingModal = () => {
+export function RatingModal() {
   const [isOpen, setIsOpen] = useState<boolean>(true);
   const onOpenModal = (): void => {
     setIsOpen(!isOpen);
@@ -30,4 +30,4 @@ export const RatingModal = () => {
       </div>
     </div>
   );
-};
+}

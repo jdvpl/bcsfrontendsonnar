@@ -4,7 +4,7 @@ interface HelperTextProps {
   className?: string;
 }
 
-export const HelperText = ({ text, error, className = '' }: HelperTextProps) => {
+export function HelperText({ text, error, className = '' }: HelperTextProps) {
   return (
     <div className={`flex items-center help pl-2 ${className}`}>
       <svg
@@ -40,4 +40,4 @@ export const HelperText = ({ text, error, className = '' }: HelperTextProps) => 
       </p>
     </div>
   );
-};
+}

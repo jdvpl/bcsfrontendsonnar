@@ -42,12 +42,12 @@ const paragraphs = [
   'bodyS3',
 ];
 const spans = ['caption1', 'caption2', 'caption3', 'caption4', 'overline'];
-export const Typography = ({
+export function Typography({
   children,
   variant = 'bodyM1',
   className,
   ...props
-}: TypographyProps) => {
+}: TypographyProps) {
   const componentStyles = () => {
     switch (variant) {
       case 'h1':
@@ -76,6 +76,6 @@ export const Typography = ({
       {children}
     </Tag>
   );
-};
+}
 
 export default Typography;

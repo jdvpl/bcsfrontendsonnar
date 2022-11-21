@@ -7,7 +7,7 @@ export interface SimulationData {
   percentageFinance: number;
   percentageQuote: number;
   financeValue: number;
-  valueFinanceE?: number;
+  financeValueE?:number;
   termFinance: number;
   insuranceCheck: boolean;
   dateOfBirth: string;

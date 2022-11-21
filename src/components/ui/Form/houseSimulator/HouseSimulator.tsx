@@ -17,7 +17,7 @@ import { routes } from '../../../../routes';
 import Icons from '../../icons';
 import Alert from '../../Alert';
 
-const HouseSimulator = () => {
+function HouseSimulator() {
   const router = useRouter();
   const [percentageFinance, setPercentageFinance] = useState<number>(0.7);
   const [insuranceCheck, setInsuranceCheck] = useState<boolean>(false);
@@ -25,7 +25,7 @@ const HouseSimulator = () => {
     SesionStorageKeys.dataFormSimulation.key,
     {}
   );
-  const [, setDataFormResponse] = useSessionStorage(
+  const [dataFormResponse,setDataFormResponse] = useSessionStorage(
     SesionStorageKeys.dataFormSimulationResponse.key,
     {}
   );
@@ -48,19 +48,16 @@ const HouseSimulator = () => {
   const month = watch('month', '');
   const year = watch('year', '');
 
-  const calculatePercentageFinance = (field: any) => {
-    if (houseValue > 0 && financeValue > 499999 && financeValue < houseValue * 0.7) {
+  const calculatePercentageFinance = () => {
+    if (houseValue > 0 && financeValue > 999999) {
       const calculatePercentage = financeValue / houseValue;
       setPercentageFinance(calculatePercentage);
-    } else {
-      setPercentageFinance(0.7);
     }
   };
 
-  const automationfinanceValue = () => {
-    if (houseValue > 0) {
-      console.log(houseValue);
-      setValue('financeValue', houseValue * 0.7);
+  const automationFinanceValue = (value: number) => {
+    if (value > 0) {
+      setValue('financeValue', value * 0.7);
     }
   };
 
@@ -81,7 +78,7 @@ const HouseSimulator = () => {
     const body: iFormDataSimulation = {
       typeHouse: formData?.typeHouse,
       houseValue: Math.floor(formData.houseValue),
-      financeValue: Math.floor(formData.financeValue),
+      financeValue: formData.financeValue,
       termFinance: formData?.termFinance,
       percentageFinance,
       insuranceCheck,
@@ -89,7 +86,7 @@ const HouseSimulator = () => {
       simulationType: 'house',
       monthlySalary: 0,
       amountQuota: 0,
-      percentageQuota: 0,
+      percentageQuota: 0.3,
     };
     const response = await sendSimulationData(body);
     if (!response.error) {
@@ -126,7 +123,6 @@ const HouseSimulator = () => {
                 <Input
                   containerClassName="col-span-6"
                   type="text"
-                  // error={!!errors.houseValue}
                   onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                     e.preventDefault();
                   }}
@@ -138,8 +134,8 @@ const HouseSimulator = () => {
                   inputMode="text"
                   required
                   label="Valor de Vivienda"
-                  // onBlur={automationfinanceValue}
                   onChange={(e: any) => {
+                    automationFinanceValue(e.target.value.replace(/[^0-9]/g, ''));
                     field.onChange(e.target.value.replace(/[^0-9]/g, ''));
                   }}
                 />
@@ -154,33 +150,34 @@ const HouseSimulator = () => {
               rules={{
                 required: true,
               }}
-              render={({ field }) => {
-                return (
-                  <Input
-                    disabled={!(houseValue > 0)}
-                    type="text"
-                    error={!!errors?.financeValueE}
-                    helperText={errors?.financeValueE?.message}
-                    onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                      e.preventDefault();
-                    }}
-                    value={convertToColombianPesos(field.value)}
-                    tabIndex={0}
-                    id="financeValue"
-                    inputMode="text"
-                    required
-                    label="Valor a financiar"
-                    onChange={(e: any) => {
-                      field.onChange(e.target.value.replace(/[^0-9]/g, ''));
-                    }}
-                  />
-                );
-              }}
+              render={({ field }) => (
+                <Input
+                  disabled={!(houseValue > 0) || !!errors?.houseValue}
+                  type="text"
+                  error={!!errors.financeValueE}
+                  helperText={errors.financeValueE?.message}
+                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                    e.preventDefault();
+                  }}
+                  value={convertToColombianPesos(field.value)}
+                  tabIndex={0}
+                  id="valueFinance"
+                  inputMode="text"
+                  required
+                  label="Valor a financiar"
+                  onChange={(e: any) => {
+                    field.onChange(e.target.value.replace(/[^0-9]/g, ''));
+                  }}
+                />
+              )}
               name="financeValue"
               control={control}
             />
             <div className="rounded-md w-[78px] border-[0.1px] text-[14px] h-[48px] bg-complementario-80 border-complementario-20/50 flex justify-center items-center text-complementario-20">
-              {parserPercentageDecimal(percentageFinance * 100)}%
+              {Math.floor(percentageFinance * 100) > 70
+                ? `+70`
+                : Math.floor(percentageFinance * 100)}
+              %
             </div>
           </div>
 
@@ -300,6 +297,6 @@ const HouseSimulator = () => {
       </div>
     </form>
   );
-};
+}
 
 export default HouseSimulator;

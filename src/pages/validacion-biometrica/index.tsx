@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import React, { Component, useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { isTablet, isMobile, isDesktop, isIPad13 } from 'react-device-detect';
 import Image from 'next/image';
 import { ValidationMessageBiometry } from '../../components/biometria/error-validacion';
@@ -20,14 +20,14 @@ import svgDoc from '../../../public/images/new3.svg';
 import { Layout } from '../../components/layouts/layout';
 import { NavTitle } from '../../components/commons/NavTitle';
 
-const KEY = process.env.KEY_KYC_HASH;
+const KEY = process.env.KEYKYCHASH;
 
 const CardImage: React.FC<childrenProps> = ({ children }) => (
   <div className="flex mr-6 minw-64">{children}</div>
 );
 const ValidationMessage: React.FC = () => {
   const router = useRouter();
-  // const [dataTU] = useSessionStorage('DataUser', '');
+  const [dataTU] = useSessionStorage('DataUser', '');
   const [biometryProcess] = useSessionStorage('process', '');
   const [showAnimation, setShowAnimation] = useState(false);
   const [validated, setValidated] = useState(true);
@@ -40,12 +40,12 @@ const ValidationMessage: React.FC = () => {
     requestHeaders.set('App-Name', 'ADIGITAL');
     const body = {
       document_type: 'CC',
-      document_number: '1015444367',
+      document_number: '1018422010',
     };
     const bodyEncript = await allResponse(body, KEY);
     try {
       const response = await fetch(
-        `${process.env.KYC_API_URL}/kyc/identity-user/biometry`,
+        `${process.env.KYCAPIURL}/identity-user/biometry`,
         {
           method: 'POST',
           headers: requestHeaders,
@@ -78,15 +78,15 @@ const ValidationMessage: React.FC = () => {
       document.body.classList.remove('body-scroll-hidden');
     }
   };
-  // useEffect(() => {
-  //   scrollBody();
-  //   if (biometryProcess) {
-  //     setShowAnimation(false);
-  //     setValidated(false);
-  //   } else if (isMobile || isTablet || window.innerWidth <= 1000) {
-  //     beginBiometry();
-  //   }
-  // }, []);
+  useEffect(() => {
+    scrollBody();
+    if (biometryProcess) {
+      setShowAnimation(false);
+      setValidated(false);
+    } else if (isMobile || isTablet || window.innerWidth <= 1000) {
+      beginBiometry();
+    }
+  }, []);
 
   if (
     isDesktop &&
