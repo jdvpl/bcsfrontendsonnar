@@ -35,7 +35,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
     <Card
       className="lg:w-[448px] h-[88px] sm:w-[343px] h-[92px] bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
       title="Plazo"
-      value={numberPeriods?.toString()}
+      value={numberPeriods?.toString()+' Años'}
       text="text-[20px] pl-[18px] font-semibold"
       urlsvg={`${basePath}/images/Calendar.svg`}
     />

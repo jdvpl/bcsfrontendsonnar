@@ -69,8 +69,8 @@ const Simulator = () => {
             type="button"
             className={
               simulatioTypeOption === 'house'
-                ? `text-[14px] w-full max-w-[23.438rem] rounded h-[3rem] transition-all duration-500 text-white bg-primario-100 hover:bg-primario-400 focus:bg-primario-400 focus:text-primario-60 focus:shadow-none shadow-none`
-                : `text-[14px] w-full max-w-[23.438rem] rounded h-[3rem] text-complementario-70 bg-gris-90 shadow-none`
+                ? ` font-semibold button-shadow text-[14px] w-full max-w-[23.438rem] rounded-l-lg h-[3rem] transition-all duration-500 text-white bg-primario-100 hover:bg-primario-400  shadow-none`
+                : ` font-semibold button-shadow text-[14px] w-full max-w-[23.438rem] rounded-l-lg h-[3rem] text-complementario-70 bg-gris-90 shadow-none`
             }
             onClick={() => setsimulatioTypeOption('house')}
           >
@@ -80,8 +80,8 @@ const Simulator = () => {
             type="button"
             className={
               simulatioTypeOption === 'salary'
-                ? `text-[14px] w-full max-w-[23.438rem] rounded h-[3rem] transition-all duration-500 text-white bg-primario-100 hover:bg-primario-400 focus:bg-primario-400 focus:text-primario-60 focus:shadow-none shadow-none`
-                : `text-[14px] w-full max-w-[23.438rem] rounded h-[3rem] text-complementario-70 bg-gris-90 shadow-none`
+                ? ` font-semibold button-shadow text-[14px] w-full max-w-[23.438rem] rounded-r-lg h-[3rem] transition-all duration-500 text-white bg-primario-100 hover:bg-primario-400  shadow-none`
+                : ` font-semibold button-shadow text-[14px] w-full max-w-[23.438rem] rounded-r-lg h-[3rem] text-complementario-70 bg-gris-90 shadow-none`
             }
             onClick={() => setsimulatioTypeOption('salary')}
           >

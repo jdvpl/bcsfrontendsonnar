@@ -6,7 +6,6 @@ import ReactHookFormSelect from '../../Select/newSelect';
 import Input from '../../inputs/index';
 import { convertToColombianPesos, parserPercentageDecimal } from '../../../../utils';
 import { days, months } from '../../../../lib/dates';
-import { HelperText } from '../../inputs/HelperText';
 import Button from '../../Button';
 import { iFormDataSimulation, SimulationData } from '../../../../interfaces';
 import { yearsAvailable } from '../../../../lib/simulator';
@@ -43,32 +42,32 @@ const HouseSimulator = () => {
 
   const typeHouse = watch('typeHouse', 'novis');
   const houseValue = watch('houseValue', 0);
-  const valueFinance = watch('valueFinance', 0);
+  const financeValue = watch('financeValue', 0);
   const termFinance = watch('termFinance', 0);
   const day = watch('day', '');
   const month = watch('month', '');
   const year = watch('year', '');
 
   const calculatePercentageFinance = (field: any) => {
-    if (houseValue > 0 && valueFinance > 999999 && valueFinance < houseValue * 0.7) {
-      const calculatePercentage = valueFinance / houseValue;
+    if (houseValue > 0 && financeValue > 499999 && financeValue < houseValue * 0.7) {
+      const calculatePercentage = financeValue / houseValue;
       setPercentageFinance(calculatePercentage);
     } else {
       setPercentageFinance(0.7);
     }
   };
 
-  const automationValueFinance = () => {
+  const automationfinanceValue = () => {
     if (houseValue > 0) {
       console.log(houseValue);
-      setValue('valueFinance', houseValue * 0.7);
+      setValue('financeValue', houseValue * 0.7);
     }
   };
 
   useValidations(
     typeHouse,
     houseValue,
-    valueFinance,
+    financeValue,
     termFinance,
     calculatePercentageFinance,
     day,
@@ -82,7 +81,7 @@ const HouseSimulator = () => {
     const body: iFormDataSimulation = {
       typeHouse: formData?.typeHouse,
       houseValue: Math.floor(formData.houseValue),
-      valueFinance: formData.valueFinance,
+      financeValue: Math.floor(formData.financeValue),
       termFinance: formData?.termFinance,
       percentageFinance,
       insuranceCheck,
@@ -109,8 +108,6 @@ const HouseSimulator = () => {
             onChange={(e: any) => setValue('typeHouse', e.target.value)}
             placeholder="Tipo de vivienda"
             label="Tipo de vivienda"
-            error={!!errors.typeHouse}
-            helperText={errors.typeHouse?.message}
             defaultValue="novis"
             control={control}
             left="right4"
@@ -124,26 +121,30 @@ const HouseSimulator = () => {
           </ReactHookFormSelect>
 
           <Controller
-            render={({ field }) => (
-              <Input
-                containerClassName="col-span-6"
-                type="text"
-                error={!!errors.houseValue}
-                onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                  e.preventDefault();
-                }}
-                value={convertToColombianPesos(field.value)}
-                tabIndex={0}
-                id="houseValue"
-                inputMode="text"
-                required
-                label="Valor de Vivienda"
-                onBlur={automationValueFinance}
-                onChange={(e: any) => {
-                  field.onChange(e.target.value.replace(/[^0-9]/g, ''));
-                }}
-              />
-            )}
+            render={({ field }) => {
+              return (
+                <Input
+                  containerClassName="col-span-6"
+                  type="text"
+                  // error={!!errors.houseValue}
+                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                    e.preventDefault();
+                  }}
+                  error={!!errors.typeHouse}
+                  helperText={errors.typeHouse?.message}
+                  value={convertToColombianPesos(field.value)}
+                  tabIndex={0}
+                  id="houseValue"
+                  inputMode="text"
+                  required
+                  label="Valor de Vivienda"
+                  // onBlur={automationfinanceValue}
+                  onChange={(e: any) => {
+                    field.onChange(e.target.value.replace(/[^0-9]/g, ''));
+                  }}
+                />
+              );
+            }}
             name="houseValue"
             control={control}
           />
@@ -153,31 +154,29 @@ const HouseSimulator = () => {
               rules={{
                 required: true,
               }}
-              render={({ field }) => (
-                <Input
-                  disabled={!(houseValue > 0)}
-                  type="text"
-                  error={!!errors.valueFinance}
-                  helperText={errors.valueFinance?.message}
-                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                    e.preventDefault();
-                  }}
-                  value={
-                    field.value > houseValue * 0.7
-                      ? convertToColombianPesos(houseValue * 0.7)
-                      : convertToColombianPesos(field.value)
-                  }
-                  tabIndex={0}
-                  id="valueFinance"
-                  inputMode="text"
-                  required
-                  label="Valor a financiar"
-                  onChange={(e: any) => {
-                    field.onChange(e.target.value.replace(/[^0-9]/g, ''));
-                  }}
-                />
-              )}
-              name="valueFinance"
+              render={({ field }) => {
+                return (
+                  <Input
+                    disabled={!(houseValue > 0)}
+                    type="text"
+                    error={!!errors?.financeValueE}
+                    helperText={errors?.financeValueE?.message}
+                    onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                      e.preventDefault();
+                    }}
+                    value={convertToColombianPesos(field.value)}
+                    tabIndex={0}
+                    id="financeValue"
+                    inputMode="text"
+                    required
+                    label="Valor a financiar"
+                    onChange={(e: any) => {
+                      field.onChange(e.target.value.replace(/[^0-9]/g, ''));
+                    }}
+                  />
+                );
+              }}
+              name="financeValue"
               control={control}
             />
             <div className="rounded-md w-[78px] border-[0.1px] text-[14px] h-[48px] bg-complementario-80 border-complementario-20/50 flex justify-center items-center text-complementario-20">
@@ -215,7 +214,6 @@ const HouseSimulator = () => {
             onChange={(e: any) => setValue('day', e.target.value)}
             placeholder="Dia"
             label="Dia"
-            error={!!errors.day}
             defaultValue=""
             control={control}
             left="right4"
@@ -235,7 +233,6 @@ const HouseSimulator = () => {
             onChange={(e: any) => setValue('month', e.target.value)}
             placeholder="Mes"
             label="Mes"
-            error={!!errors.month}
             defaultValue=""
             control={control}
             left="right4"
@@ -255,31 +252,26 @@ const HouseSimulator = () => {
             name="year"
             control={control}
             rules={{ required: true }}
-            render={({ field }) => (
-              <Input
-                containerClassName="col-span-2"
-                type="text"
-                onChange={(e) => {
-                  field.onChange(e.target.value);
-                }}
-                error={!!errors.year}
-                value={field.value}
-                tabIndex={0}
-                id="year"
-                inputMode="numeric"
-                maxLength={4}
-                label="Año"
-              />
-            )}
+            render={({ field }) => {
+              return (
+                <Input
+                  containerClassName="col-span-2"
+                  type="text"
+                  onChange={(e) => {
+                    field.onChange(e.target.value);
+                  }}
+                  error={!!errors.day}
+                  helperText={errors?.day?.message}
+                  value={field.value}
+                  tabIndex={0}
+                  id="year"
+                  inputMode="numeric"
+                  maxLength={4}
+                  label="Año"
+                />
+              );
+            }}
           />
-
-          {errors?.day ? (
-            <HelperText
-              className="col-span-6"
-              error={!!errors?.day}
-              text={errors?.day?.message || ''}
-            />
-          ) : null}
         </div>
 
         <div className="flex items-center gap-3 mb-8 w-full">
@@ -289,7 +281,6 @@ const HouseSimulator = () => {
             id="insuranceCheck"
             className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"
             inputMode="numeric"
-            required
             onChange={(e) => setInsuranceCheck(e.target.checked)}
           />
 

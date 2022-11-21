@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { Qualify } from '../components/custom/qualify';
 import '@testing-library/jest-dom/extend-expect';
 
-describe('qualify', () => {
+describe('<Qualify/>', () => {
   it('should render correctly', () => {
     const props = {
       rate: 5,
@@ -23,7 +23,7 @@ describe('qualify', () => {
     let starsWithActiveFill = 0;
     component.container.querySelectorAll('svg').forEach((star) => {
       if (star?.querySelector('path')?.getAttribute('fill') === '#FBBF24') {
-        starsWithActiveFill += 1;
+        starsWithActiveFill = starsWithActiveFill + 1;
       }
     });
     expect(starsWithActiveFill).toBe(props?.rate + 1);
