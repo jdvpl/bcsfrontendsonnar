@@ -2,10 +2,12 @@ export interface SimulationData {
   simulationType: string;
   typeHouse: string;
   houseValue: number;
+  monthlySalaryE?: number;
   monthlySalary: number;
+  amountQuotaE?: number;
   amountQuota: number;
   percentageFinance: number;
-  percentageQuote: number;
+  percentageQuota: number;
   financeValue: number;
   valueFinanceE?: number;
   termFinance: number;

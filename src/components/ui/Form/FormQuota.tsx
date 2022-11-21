@@ -6,14 +6,15 @@ import React, {
   useState,
 } from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { iFormDataSimulation } from '../../../interfaces';
+import { iFormDataSimulation, SimulationData } from '../../../interfaces';
+import { yearsAvailable } from '../../../lib/simulator';
 import { convertToColombianPesos, parserPercentageDecimal } from '../../../utils';
 import Alert from '../Alert';
 import Button from '../Button';
 import Input from '../inputs';
 import DateOfBirth from '../inputs/dateOfBirth';
 import ReactHookFormSelect from '../Select/newSelect';
-import Typography from '../Tipography/index';
+import useValidations from './useValidations';
 
 interface FormProps {
   onSubmit: (data: iFormDataSimulation) => void;
@@ -21,42 +22,28 @@ interface FormProps {
 
 const FormQuota: FC<FormProps> = ({ onSubmit }) => {
   const [percentage, setpercentage] = useState<number>(0.3);
-  const [insuranceValue, setinsuranceValue] = useState(false);
+  const [insuranceValue, setinsuranceValue] = useState<boolean>(false);
   const [errorMessageAlert, seterrorMessageAlert] = useState<string>('');
+  const [amountQuotaValue, setamountQuotaValue] = useState<number>(0)
 
   const {
     handleSubmit,
     watch,
     setError,
+    clearErrors,
     control,
     setValue,
     register,
     formState: { errors, isValid },
-  } = useForm<iFormDataSimulation>({ mode: 'onChange' });
+  } = useForm<SimulationData>({ mode: 'onChange' });
+
   const typeHouse = watch('typeHouse', 'novis');
   const monthlySalary = watch('monthlySalary', 0);
   const amountQuota = watch('amountQuota', 0);
+  const termFinance = watch('termFinance', 0);
 
-  useEffect(() => {
-    if (typeHouse === 'novis') {
-      setpercentage(0.3);
-      setValue('percentageQuota', 0.3);
-      seterrorMessageAlert(
-        'El valor de la cuota mensual para vivienda No VIS, no puede superar el 30% de sus ingresos totales..'
-      );
-    } else if (typeHouse === 'vis') {
-      setValue('percentageQuota', 0.4);
-      seterrorMessageAlert(
-        'El valor de la cuota mensual para vivienda VIS, no puede superar el 40% de sus ingresos totales.'
-      );
-      setpercentage(0.4);
-    }
-  }, [typeHouse]);
 
-  const automationQuota = () => {
-    setValue('amountQuota', monthlySalary * percentage);
-  };
-  const yearsAvailable = [5, 6, 7, 8, 9, 10, 15, 20];
+
 
   const handleInsurance = () => {
     setinsuranceValue(!insuranceValue);
@@ -69,7 +56,18 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
       setpercentage(typeHouse === 'novis' ? 0.3 : 0.4);
     }
   };
-
+  useValidations(
+    typeHouse,
+    monthlySalary,
+    amountQuota,
+    termFinance,
+    getPercentage,
+    clearErrors,
+    setError,
+    setpercentage,
+    seterrorMessageAlert,
+    setValue
+  );
   return (
     <div className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto">
       <Alert message={errorMessageAlert} />
@@ -78,7 +76,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
           <ReactHookFormSelect
             onChange={(e: any) => {
               setValue('typeHouse', e.target.value);
-              automationQuota();
+              setamountQuotaValue(monthlySalary * percentage);
             }}
             placeholder="Tipo de vivienda"
             label="Tipo de vivienda"
@@ -98,14 +96,12 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
 
           <div className="flex flex-col mt-4">
             <Controller
-              rules={{ required: true }}
               render={({ field }) => {
                 return (
                   <Input
-                    helperText={errors.monthlySalary?.message}
-
+                    helperText={errors.monthlySalaryE?.message}
                     type="text"
-                    error={!!errors.monthlySalary}
+                    error={!!errors.monthlySalaryE}
                     onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                       e.preventDefault();
                     }}
@@ -115,16 +111,8 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                     inputMode="text"
                     required
                     label="Ingreso mensual"
-                    onKeyUp={automationQuota}
                     onChange={(e: any) => {
-                      console.log(field.value);
-                      if (field.value < 1000000 && !!e.nativeEvent.data) {
-                        setError('monthlySalary', {
-                          type: 'manual',
-                          message: 'Los ingresos mínimos permitidos son de 1 SMMLV.',
-                        });
-                        e.preventDefault();
-                      }
+                      setamountQuotaValue(e.target.value.replace(/[^0-9]/g, '') * percentage);
                       field.onChange(e.target.value.replace(/[^0-9]/g, ''));
                     }}
                   />
@@ -134,22 +122,19 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
               control={control}
             />
           </div>
-          <div className="flex mt-4">
+          <div className="flex mt-4 gap-3">
             <Controller
               render={({ field }) => {
-                // field.value = quotaPerMonth;
-                getPercentage(field);
                 return (
                   <Input
-                    helperText={errors.amountQuota?.message}
-
+                    helperText={errors.amountQuotaE?.message}
                     type="text"
-                    error={!!errors.amountQuota}
+                    error={!!errors.amountQuotaE}
                     onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                       e.preventDefault();
                     }}
                     value={
-                      convertToColombianPesos(Math.round(field.value))
+                      convertToColombianPesos(Math.round(field.value || amountQuotaValue))
                     }
                     tabIndex={0}
                     id="amountQuota"
@@ -158,23 +143,8 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                     disabled={!(monthlySalary > 0)}
                     label="Cuota mensual"
                     onChange={(e: any) => {
-                      if (typeHouse === 'vis') {
-                        if (percentage > 0.4 && !!e.nativeEvent.data) {
-                          setError('amountQuota', {
-                            type: 'manual',
-                            message:
-                              'El valor ingresador no debe superar el porcentaje permitido',
-                          });
-
-                        }
-                      } else if (typeHouse === 'novis') {
-                        if (percentage > 0.3 && !!e.nativeEvent.data) {
-                          setError('amountQuota', {
-                            type: 'manual',
-                            message:
-                              'El valor ingresador no debe superar el porcentaje permitido',
-                          });
-                        }
+                      if (field.value > 9999999 && !!e.nativeEvent.data) {
+                        return;
                       }
                       field.onChange(e.target.value.replace(/[^0-9]/g, ''));
                     }}
@@ -184,13 +154,9 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
               name="amountQuota"
               control={control}
             />
-            <div className="bg-complementario-80 w-[78px] ml-3 rounded-md text-center grid place-items-center p-0">
-              <Typography
-                variant="caption2"
-                className="text-complementario-20 text-center"
-              >
-                {`${parserPercentageDecimal(percentage * 100)}%`}
-              </Typography>
+            <div className="rounded-md w-[78px] border-[0.1px] text-[14px] h-[48px] bg-complementario-80 border-complementario-20/50 flex justify-center items-center text-complementario-20">
+
+              {percentage * 100 > 100 ? '>100%' : `${parserPercentageDecimal(percentage * 100)}%`}
             </div>
           </div>
 
