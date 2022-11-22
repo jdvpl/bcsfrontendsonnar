@@ -4,7 +4,7 @@ import { clientAxiosBackend } from '../config/AxiosMortgage';
 import useAES from '../hooks/useAES';
 import { headersBack } from './HeaderBack';
 import { headersKYC } from './HeadersKYC';
-import { iFormDataSimulation } from '../interfaces'
+import { iFormDataSimulation } from '../interfaces';
 import axios from 'axios';
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
@@ -116,7 +116,6 @@ export const reSendOTPCode = async (data: OTPCodeRequest) => {
   }
 };
 export const sendSimulationData = async (data: iFormDataSimulation) => {
-
   try {
     const { data: response } = await clientAxiosBackend.post(
       '/simulator/simulator',
@@ -137,10 +136,9 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
   try {
     const { data: response } = await axios.post(
       // '/simulator/generatepdf'
-      'https://bcsgeneratepdf.herokuapp.com/api/users',
-      { data },
+      'https://3707-181-61-49-250.ngrok.io/simulator/generatepdf',
+      data,
       headersBack
-
     );
     return {
       response: {
@@ -149,11 +147,7 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
       error: false,
     };
   } catch (e: any) {
-    console.log(e)
+    console.log(e);
     return { error: true, response: e?.response?.data?.message };
   }
 };
-
-
-
-

@@ -13,18 +13,23 @@ import { useRouter } from 'next/router';
 import { getDataPDF } from '../../services';
 import { SesionStorageKeys } from '../../session';
 
-
 const intialDataPdfInfo = {
-  "approximateFinancedValue": 0,
-  "term": 0,
-  "rate": "",
-  "quotes": []
-}
+  approximateFinancedValue: 0,
+  term: 0,
+  rate: '',
+  quotes: [],
+};
 const Resumen = () => {
   const [simulationTypeOption, setsimulatioTypeOption] = useState<any>('');
-  const [simulationType,] = useSessionStorage(SesionStorageKeys.dataFormSimulation.key, '');
-  const [insuranceCheck,] = useSessionStorage(SesionStorageKeys.dataFormSimulation.key, '');
-  const [getDataPdfInfo, setgetDataPdfInfo] = useState(intialDataPdfInfo)
+  const [simulationType] = useSessionStorage(
+    SesionStorageKeys.dataFormSimulation.key,
+    ''
+  );
+  const [insuranceCheck] = useSessionStorage(
+    SesionStorageKeys.dataFormSimulation.key,
+    ''
+  );
+  const [getDataPdfInfo, setgetDataPdfInfo] = useState(intialDataPdfInfo);
   const [valuesSimulation, setValuesSimulation] = useSessionStorage(
     'simulationResponse',
     ''
@@ -33,16 +38,15 @@ const Resumen = () => {
 
   useEffect(() => {
     setsimulatioTypeOption(simulationType.simulationType.toString());
-    getDataPDf()
+    getDataPDf();
   }, []);
 
   const getDataPDf = async () => {
     const response = await getDataPDF(insuranceCheck);
     if (!response.error) {
-      console.log(response.response.data)
       setgetDataPdfInfo(response.response.data);
     }
-  }
+  };
   return (
     <div>
       <div className="container flex lg:mt-[0] xs:w-[343px] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-end">
@@ -62,7 +66,9 @@ const Resumen = () => {
             variant="bodyS3"
             className="text-center xs:w-[290px] sm:w-[343px] md:w-[656px] lg:mt-[52px] pmx-3 text-primario-900"
           >
-           Los valores presentados en el simulador son únicamente informativos y no constituyen ningún tipo de asesoría, ni obligan al Banco en su calidad de emisor.
+            Los valores presentados en el simulador son únicamente informativos y no
+            constituyen ningún tipo de asesoría, ni obligan al Banco en su calidad de
+            emisor.
           </Typography>
         </div>
         <div className="flex gap-1 my-5">
@@ -93,22 +99,41 @@ const Resumen = () => {
         </div>
         {simulationTypeOption === 'house' && insuranceCheck.insuranceCheck ? (
           <ReviewHouse
-            monthlyCouteInsurance={`${convertToColombianPesos(Math.floor(valuesSimulation.monthlyCoute + valuesSimulation.lifeInsurance + valuesSimulation.fireInsurance))}`}
-            monthlyCoute={`${convertToColombianPesos(Math.floor(valuesSimulation.monthlyCoute))}`}
-            financedValue={`${convertToColombianPesos(Math.floor(valuesSimulation.financeValue))}`}
+            monthlyCouteInsurance={`${convertToColombianPesos(
+              Math.floor(
+                valuesSimulation.monthlyCoute +
+                  valuesSimulation.lifeInsurance +
+                  valuesSimulation.fireInsurance
+              )
+            )}`}
+            monthlyCoute={`${convertToColombianPesos(
+              Math.floor(valuesSimulation.monthlyCoute)
+            )}`}
+            financedValue={`${convertToColombianPesos(
+              Math.floor(valuesSimulation.financeValue)
+            )}`}
             termFinance={`${valuesSimulation.termFinance} años`}
             rate={valuesSimulation.rate}
             lifeInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
             fireInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
             dataPdf={getDataPdfInfo && getDataPdfInfo}
           />
-        ) :
-          null}
+        ) : null}
         {simulationTypeOption === 'salary' && insuranceCheck.insuranceCheck ? (
           <ReviewSalary
-            financedValue={`${convertToColombianPesos(Math.floor(valuesSimulation.financeValue))}`}
-            amountQuota={`${convertToColombianPesos(Math.floor(valuesSimulation.amountQuota))}`}
-            amountQuotatotal={`${convertToColombianPesos(Math.floor(valuesSimulation.amountQuota + valuesSimulation.lifeInsurance + valuesSimulation.fireInsurance))}`}
+            financedValue={`${convertToColombianPesos(
+              Math.floor(valuesSimulation.financeValue)
+            )}`}
+            amountQuota={`${convertToColombianPesos(
+              Math.floor(valuesSimulation.amountQuota)
+            )}`}
+            amountQuotatotal={`${convertToColombianPesos(
+              Math.floor(
+                valuesSimulation.amountQuota +
+                  valuesSimulation.lifeInsurance +
+                  valuesSimulation.fireInsurance
+              )
+            )}`}
             termFinance={`${valuesSimulation.termFinance} años`}
             rate={valuesSimulation.rate}
             lifeInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
@@ -118,17 +143,25 @@ const Resumen = () => {
         ) : null}
         {simulationTypeOption === 'house' && !insuranceCheck.insuranceCheck ? (
           <ReviewHouse
-            monthlyCoute={`${convertToColombianPesos(Math.floor(valuesSimulation.monthlyCoute))}`}
-            financedValue={`${convertToColombianPesos(Math.floor(valuesSimulation.financeValue))}`}
+            monthlyCoute={`${convertToColombianPesos(
+              Math.floor(valuesSimulation.monthlyCoute)
+            )}`}
+            financedValue={`${convertToColombianPesos(
+              Math.floor(valuesSimulation.financeValue)
+            )}`}
             termFinance={`${valuesSimulation.termFinance} años`}
             rate={valuesSimulation.rate}
-            dataPdf={getDataPdfInfo} />
-        ) :
-          null}
+            dataPdf={getDataPdfInfo}
+          />
+        ) : null}
         {simulationTypeOption === 'salary' && !insuranceCheck.insuranceCheck ? (
           <ReviewSalary
-            financedValue={`${convertToColombianPesos(Math.floor(valuesSimulation.financeValue))}`}
-            amountQuota={`${convertToColombianPesos(Math.floor(valuesSimulation.amountQuota))}`}
+            financedValue={`${convertToColombianPesos(
+              Math.floor(valuesSimulation.financeValue)
+            )}`}
+            amountQuota={`${convertToColombianPesos(
+              Math.floor(valuesSimulation.amountQuota)
+            )}`}
             termFinance={`${valuesSimulation.termFinance} años`}
             rate={valuesSimulation.rate}
             dataPdf={getDataPdfInfo && getDataPdfInfo}
@@ -157,8 +190,8 @@ const Resumen = () => {
             Volver a simular
           </Button>
         </div>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 };
 

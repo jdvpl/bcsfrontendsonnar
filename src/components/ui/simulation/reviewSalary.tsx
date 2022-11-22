@@ -133,7 +133,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
         /> : null
     }
     <div className='xs:w-[290px] sm:w-[343px] md:w-[448px] flex justify-end mb-[20px] mt-[20px]'>
-      {dataPdf?.qoutes?.length > 0 ? <BtnPdfDownloader pdf={dataPdf} /> : null}
+      {dataPdf?.quotes?.length > 0 ? <BtnPdfDownloader pdf={dataPdf} /> : null}
     </div>
   </div>
 );

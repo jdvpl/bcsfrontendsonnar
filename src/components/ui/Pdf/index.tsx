@@ -125,8 +125,8 @@ interface itableProps {
   children: any, col: any, th: any
 }
 const PDFDocumentData = ({ infoData }: iPdfProps) => {
-  const data = infoData?.qoutes;
-  const quantiyPages = infoData?.qoutes?.length;
+  const data = infoData?.quotes;
+  const quantiyPages = infoData?.quotes?.length;
   const numberOfPages = Array(quantiyPages - 1).fill(0)
   return (
     <Document>
