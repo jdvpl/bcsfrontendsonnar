@@ -9,7 +9,6 @@ import AnimationComponent from '../../../components/commons/Animation';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { Heading } from '../../../components/form/heading';
 import { basePath } from '../../../../next.config';
-import { ContainerButtonForm } from '../../../components/form/containerButtonForm';
 import useAES from '../../../hooks/useAES';
 import { urlAndUtms } from '../../../utils/RouterUtmsUrl/index';
 
@@ -54,67 +53,67 @@ const RevisionImagenes: React.FC = () => {
     }, 100);
   };
 
-  const sendAll = async () => {
-    const requestHeaders: HeadersInit = new Headers();
-    requestHeaders.set('x-mock-match-request-body', 'true');
-    requestHeaders.set('Content-Type', 'application/json');
-    requestHeaders.set('App-Name', 'ADIGITAL');
+  // const sendAll = async () => {
+  //   const requestHeaders: HeadersInit = new Headers();
+  //   requestHeaders.set('x-mock-match-request-body', 'true');
+  //   requestHeaders.set('Content-Type', 'application/json');
+  //   requestHeaders.set('App-Name', 'ADIGITAL');
 
-    const body = {
-      front: fotosCedula.delantera,
-      back: fotosCedula.trasera,
-      document_type: dataTU.document_type,
-      document_number: dataTU.document_number,
-    };
-    const encrypt = await allResponse(body, KEY);
-    try {
-      setShowAnimation(true);
-      setError(false);
-      const response = await fetch(
-        `${process.env.KYCAPIURL}/identity-user/biometry/document`,
-        {
-          method: 'POST',
-          headers: requestHeaders,
-          body: JSON.stringify({
-            data: encrypt,
-          }),
-        }
-      );
-      if (response.ok) {
-        setIsLoading(false);
-        
-        redirectLoader('/validacion-biometrica/indexSelfie');
-      } else if (response.status === 403) {
-        const dataResponse: any = await response.json();
+  //   const body = {
+  //     front: fotosCedula.delantera,
+  //     back: fotosCedula.trasera,
+  //     document_type: dataTU.document_type,
+  //     document_number: dataTU.document_number,
+  //   };
+  //   const encrypt = await allResponse(body, KEY);
+  //   try {
+  //     setShowAnimation(true);
+  //     setError(false);
+  //     const response = await fetch(
+  //       `${process.env.KYCAPIURL}/identity-user/biometry/document`,
+  //       {
+  //         method: 'POST',
+  //         headers: requestHeaders,
+  //         body: JSON.stringify({
+  //           data: encrypt,
+  //         }),
+  //       }
+  //     );
+  //     if (response.ok) {
+  //       setIsLoading(false);
+  //       redirectLoader('/validacion-biometrica/indexSelfie');
+  //     } else if (response.status === 403) {
+  //       const dataResponse: any = await response.json();
 
-        const code = dataResponse.internal_code;
+  //       const code = dataResponse.internal_code;
         
-        switch (code) {
-          case 'VQ-01':
-            urlAndUtms(router, '/');
-            break;
-          case 'VQ-02':
-            urlAndUtms(router, '/validacion/error-validacionIdentidad');
-            break;
-          default:
-            urlAndUtms(router, '/validacion/');
-        }
-      } else if (response.status === 401) {
-        urlAndUtms(router, '/validacion/error-validacionIdentidad');
-      } else if (response.status === 504 || response.status === 408) {
-        setShowAnimation(false);
-        setIsLoading(false);
-        setError(true);
-      } else {
-        urlAndUtms(router, '/validacion/error-validacionIdentidad');
-      }
-    } catch (e: any) {
-      urlAndUtms(router, '/validacion/error');
-    }
-  };
+  //       switch (code) {
+  //         case 'VQ-01':
+  //           urlAndUtms(router, '/');
+  //           break;
+  //         case 'VQ-02':
+  //           urlAndUtms(router, '/validacion/error-validacionIdentidad');
+  //           break;
+  //         default:
+  //           urlAndUtms(router, '/validacion/');
+  //       }
+  //     } else if (response.status === 401) {
+  //       urlAndUtms(router, '/validacion/error-validacionIdentidad');
+  //     } else if (response.status === 504 || response.status === 408) {
+  //       setShowAnimation(false);
+  //       setIsLoading(false);
+  //       setError(true);
+  //     } else {
+  //       urlAndUtms(router, '/validacion/error-validacionIdentidad');
+  //     }
+  //   } catch (e: any) {
+  //     urlAndUtms(router, '/validacion/error');
+  //   }
+  // };
 
   const sendData = async () => {
-    await sendAll();
+    setIsLoading(false);
+    redirectLoader('/validacion-biometrica/indexSelfie');
   };
   useEffect(() => {
     scrollBody();

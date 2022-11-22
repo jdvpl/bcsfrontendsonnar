@@ -14,11 +14,9 @@ import { ContainerButtonForm } from '../../components/form/containerButtonForm';
 import useAES from '../../hooks/useAES';
 import { urlAndUtms } from '../../utils/RouterUtmsUrl';
 import { childrenProps } from '../../interfaces';
-import svgCel from '../../../public/images/new1.svg';
-import svgCelInl from '../../../public/images/new2.svg';
-import svgDoc from '../../../public/images/new3.svg';
 import { Layout } from '../../components/layouts/layout';
 import { NavTitle } from '../../components/commons/NavTitle';
+import { basePath } from '../../../next.config';
 
 const KEY = process.env.KEYKYCHASH;
 
@@ -33,46 +31,47 @@ const ValidationMessage: React.FC = () => {
   const [validated, setValidated] = useState(true);
   const [loaded] = useState(false);
   const { allResponse } = useAES();
-  const beginBiometry = async () => {
-    const requestHeaders: HeadersInit = new Headers();
-    requestHeaders.set('x-mock-match-request-body', 'true');
-    requestHeaders.set('Content-Type', 'application/json');
-    requestHeaders.set('App-Name', 'ADIGITAL');
-    const body = {
-      document_type: 'CC',
-      document_number: '1018422010',
-    };
-    const bodyEncript = await allResponse(body, KEY);
-    try {
-      const response = await fetch(
-        `${process.env.KYCAPIURL}/identity-user/biometry`,
-        {
-          method: 'POST',
-          headers: requestHeaders,
-          body: JSON.stringify({
-            data: bodyEncript,
-          }),
-        }
-      );
-      if (response.ok) {
-        setValidated(false);
-        setShowAnimation(false);
-      } else if (response.status === 403) {
-        setValidated(false);
-        setShowAnimation(false);
-        const dataResponse: any = await response.json();
-        if (dataResponse.internal_code === 'VQ-01') {
-          setTimeout(() => urlAndUtms(router, '/'), 100);
-        } else {
-          setTimeout(() => urlAndUtms(router, '/validacion/error'), 100);
-        }
-      } else {
-        urlAndUtms(router, '/validacion/error');
-      }
-    } catch (e: any) {
-      urlAndUtms(router, '/validacion/error');
-    }
-  };
+
+  // const beginBiometry = async () => {
+  //   const requestHeaders: HeadersInit = new Headers();
+  //   requestHeaders.set('x-mock-match-request-body', 'true');
+  //   requestHeaders.set('Content-Type', 'application/json');
+  //   requestHeaders.set('App-Name', 'ADIGITAL');
+  //   const body = {
+  //     document_type: dataTU.document_type,
+  //     document_number: dataTU.document_number,
+  //   };
+  //   const bodyEncript = await allResponse(body, KEY);
+  //   try {
+  //     const response = await fetch(
+  //       `${process.env.KYCAPIURL}/identity-user/biometry`,
+  //       {
+  //         method: 'POST',
+  //         headers: requestHeaders,
+  //         body: JSON.stringify({
+  //           data: bodyEncript,
+  //         }),
+  //       }
+  //     );
+  //     if (response.ok) {
+  //       setValidated(false);
+  //       setShowAnimation(false);
+  //     } else if (response.status === 403) {
+  //       setValidated(false);
+  //       setShowAnimation(false);
+  //       const dataResponse: any = await response.json();
+  //       if (dataResponse.internal_code === 'VQ-01') {
+  //         setTimeout(() => urlAndUtms(router, '/'), 100);
+  //       } else {
+  //         setTimeout(() => urlAndUtms(router, '/validacion/error'), 100);
+  //       }
+  //     } else {
+  //       urlAndUtms(router, '/validacion/error');
+  //     }
+  //   } catch (e: any) {
+  //     urlAndUtms(router, '/validacion/error');
+  //   }
+  // };
   const scrollBody = () => {
     if (typeof window === 'object') {
       document.body.classList.remove('body-scroll-hidden');
@@ -84,7 +83,7 @@ const ValidationMessage: React.FC = () => {
       setShowAnimation(false);
       setValidated(false);
     } else if (isMobile || isTablet || window.innerWidth <= 1000) {
-      beginBiometry();
+      console.log("incio biometria")
     }
   }, []);
 
@@ -141,7 +140,7 @@ const ValidationMessage: React.FC = () => {
                       <CardImage>
                         <Image
                           unoptimized
-                          src={svgCel}
+                          src={`${basePath}/images/new1.svg`}
                           className="mw-64 hw-64"
                           alt="celular"
                           title="celular"
@@ -182,7 +181,7 @@ const ValidationMessage: React.FC = () => {
                       <CardImage>
                         <Image
                           unoptimized
-                          src={svgCelInl}
+                          src={`${basePath}/images/new2.svg`}
                           className="mw-64 mh-64"
                           alt="celular inclinado"
                           title="celular inclinado"
@@ -221,7 +220,7 @@ const ValidationMessage: React.FC = () => {
                     <CardImage>
                       <Image
                         unoptimized
-                        src={svgDoc}
+                        src={`${basePath}/images/new3.svg`}
                         className="mw-64 mh-64"
                         alt="documento de identidad"
                         title="documento de identidad"
