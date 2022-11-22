@@ -39,7 +39,7 @@ function Simulator() {
       percentageFinance: 0,
       financeValue: 0,
     };
- 
+
     setdataFormQuota(body);
     const response = await sendSimulationData(body);
     if (!response.error) {
@@ -48,12 +48,12 @@ function Simulator() {
     }
   };
   return (
-    <div>
+    <div data-testid="simuladorTestC">
       <div className="container flex lg:mt-[0] sm:w-[343px] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-end">
         <div className="mt-4 hidden lg:block">
           <LogoBcs />
         </div>
-        <div className="mt-4 w-[180px] md:w-[303px]">
+        <div className="mt-4 w-[180px] md:w-[180px] lg:w-[280px]">
           <LogoForm />
         </div>
       </div>
@@ -64,7 +64,7 @@ function Simulator() {
         <div>
           <Typography
             variant="bodyS3"
-            className="text-center lg:mt-[52px] pmx-3 text-primario-900"
+            className="text-center mt-[40px] md:mt-[54px] lg:mt-[52px] pmx-3 text-primario-900"
           >
             A través de nuestro simulador podrá realizar los cálculos necesarios para
             conocer los valores aproximados relacionados con el crédito de vivienda.
@@ -83,6 +83,7 @@ function Simulator() {
             Valor de vivienda
           </button>
           <button
+            data-testid="salaryTestBtn"
             type="button"
             className={
               simulatioTypeOption === 'salary'

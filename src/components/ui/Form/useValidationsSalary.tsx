@@ -44,12 +44,7 @@ export default function useValidations(
         message: 'La cuota mensual no puede superar el 30% de sus ingresos.',
       });
     }
-    if (amountQuota > 0 && amountQuota < minValueQuotaAllowed) {
-      setError('amountQuotaE', {
-        type: 'error',
-        message: `La cuota mensual no puede ser inferior a ${(convertToColombianPesos(minValueQuotaAllowed))}`,
-      });
-    }
+
   };
 
   useEffect(() => {
@@ -57,7 +52,7 @@ export default function useValidations(
       setpercentage(0.3);
       setValue('percentageQuota', 0.3);
       seterrorMessageAlert(
-        'El valor de la cuota mensual para vivienda No VIS, no puede superar el 30% de sus ingresos totales..'
+        'El valor de la cuota mensual para vivienda No VIS, no puede superar el 30% de sus ingresos totales.'
       );
     } else if (typeHouse === 'vis') {
       setValue('percentageQuota', 0.4);

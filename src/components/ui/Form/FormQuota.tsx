@@ -2,7 +2,6 @@ import { MenuItem } from '@mui/material';
 import React, {
   ClipboardEvent,
   FC,
-  useEffect,
   useState,
 } from 'react';
 import { useForm, Controller } from 'react-hook-form';
@@ -13,8 +12,9 @@ import Alert from '../Alert';
 import Button from '../Button';
 import Input from '../inputs';
 import DateOfBirth from '../inputs/dateOfBirth';
+import NewInput from '../inputs/newInput';
 import ReactHookFormSelect from '../Select/newSelect';
-import useValidations from './useValidations';
+import useValidations from './useValidationsSalary';
 
 interface FormProps {
   onSubmit: (data: iFormDataSimulation) => void;
@@ -24,7 +24,6 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
   const [percentage, setpercentage] = useState<number>(0.3);
   const [insuranceValue, setinsuranceValue] = useState<boolean>(false);
   const [errorMessageAlert, seterrorMessageAlert] = useState<string>('');
-  const [amountQuotaValue, setamountQuotaValue] = useState<number>(0)
 
   const {
     handleSubmit,
@@ -69,14 +68,14 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
     setValue
   );
   return (
-    <div className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto">
+    <div data-testid="FormQuotaTest" className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto">
       <Alert message={errorMessageAlert} />
       <div className="w-full mt-3">
         <form onSubmit={handleSubmit(onSubmit)}>
           <ReactHookFormSelect
             onChange={(e: any) => {
               setValue('typeHouse', e.target.value);
-              setamountQuotaValue(monthlySalary * percentage);
+              setValue("amountQuota", monthlySalary * percentage);
             }}
             placeholder="Tipo de vivienda"
             label="Tipo de vivienda"
@@ -112,7 +111,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                     required
                     label="Ingreso mensual"
                     onChange={(e: any) => {
-                      setamountQuotaValue(e.target.value.replace(/[^0-9]/g, '') * percentage);
+                      setValue("amountQuota", e.target.value.replace(/[^0-9]/g, '') * percentage);
                       field.onChange(e.target.value.replace(/[^0-9]/g, ''));
                     }}
                   />
@@ -124,6 +123,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
           </div>
           <div className="flex mt-4 gap-3">
             <Controller
+              rules={{ required: true }}
               render={({ field }) => {
                 return (
                   <Input
@@ -134,7 +134,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                       e.preventDefault();
                     }}
                     value={
-                      convertToColombianPesos(Math.round(field.value || amountQuotaValue))
+                      convertToColombianPesos(Math.round(field.value))
                     }
                     tabIndex={0}
                     id="amountQuota"
@@ -161,19 +161,20 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
           </div>
 
           <div className="mt-4">
+
             <ReactHookFormSelect
-              required
               onChange={(e: any) => setValue('termFinance', e.target.value)}
               placeholder="Plazo"
               label="Plazo"
               error={!!errors.termFinance}
               defaultValue=""
-              control={control}
               left="right4"
               valueLength=""
-              name="termFinance"
               className="w-100"
               margin="normal"
+              control={control}
+              name="termFinance"
+              rules={{ required: true }}
             >
               {yearsAvailable.map((y, i) => (
                 <MenuItem value={y} key={i}>
@@ -181,6 +182,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                 </MenuItem>
               ))}
             </ReactHookFormSelect>
+
           </div>
           <div className="mt-4">
             <Controller
@@ -229,15 +231,15 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
               className="mb-10"
               data-testid="btn-openQuotaSimulation"
               tabIndex={0}
-              disabled={!errors.typeHouse?.message && !isValid}
+              disabled={!(isValid && Object.entries(errors).length === 0)}
               id="btn-next"
             >
               Simular
             </Button>
           </div>
         </form>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 

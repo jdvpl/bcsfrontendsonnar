@@ -41,6 +41,9 @@ const HeadersTable = () => {
     em: {
       fontFamily: 'Roboto',
       fontWeight: 1000
+    },
+    textsmall: {
+      fontSize: '6px'
     }
   });
   return (
@@ -62,10 +65,14 @@ const HeadersTable = () => {
       </View>
       <View style={[styles.cell, styles.tableHeader]}>
         <Text style={[styles.cellText]}>Seguro IRT
-          (Incendio, rayo y terremoto)</Text>
+        </Text>
+        <Text style={styles.textsmall}>(Incendio, rayo y </Text>
+        <Text style={styles.textsmall}>terremoto) </Text>
+
       </View>
       <View style={[styles.cell, styles.tableHeader]}>
-        <Text style={[styles.cellText]}>Cuota total con seguros</Text>
+        <Text style={[styles.cellText]}>Cuota total con </Text>
+        <Text style={[styles.cellText]}>seguros </Text>
       </View>
       <View style={[styles.cell, styles.ligthBlue]}>
         <Text style={[styles.cellText]}>Saldo Final</Text>

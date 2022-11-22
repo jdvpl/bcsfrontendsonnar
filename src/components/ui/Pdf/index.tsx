@@ -12,6 +12,7 @@ import { convertToColombianPesos } from "../../../utils";
 import ViewTable from "./ViewTable";
 // Create styles
 Font.register({ family: 'Roboto', src: `${basePath}/fonts/RobotoBold.ttf` });
+Font.register({ family: 'RobotoLight', src: `${basePath}/fonts/RobotoLight.ttf` });
 
 const styles = StyleSheet.create({
   mainView: {
@@ -105,13 +106,16 @@ const styles = StyleSheet.create({
     marginVertical: 20
   },
   textDetailText: {
-    fontSize: '13px'
+    fontSize: '10px'
   },
   icon: {
     width: 15,
     height: 15,
     marginHorizontal: 7,
     marginTop: 8
+  },
+  textLight: {
+    fontFamily: 'RobotoLight'
   }
 });
 interface iPdfProps {
@@ -133,12 +137,12 @@ const PDFDocumentData = ({ infoData }: iPdfProps) => {
             <Image src={`${basePath}/images/PDF.png`} />
           </View>
           <View style={[styles.colLg10, styles.mAuto]}>
-            <Text style={[styles.textSize]}>
+            <Text style={[styles.textSize, styles.textLight]}>
               El {" "}
               <Text style={styles.em}>Banco Caja Social</Text>{" "}
               lo acompaña en su sueño de comprar vivienda, por esta razón disponemos de nuestro simulador para que conozca los valores aproximados de su crédito hipotecario.
             </Text>
-            <Text style={[styles.mt5, styles.textSize]}>
+            <Text style={[styles.mt5, styles.textSize, styles.textLight]}>
               Tenga en cuenta que los valores presentados en el simulador son únicamente informativos y no constituyen ningún tipo de asesoría, ni obligan al Banco en su calidad de emisor.
             </Text>
             <Text style={[styles.my20, styles.textDetailText, styles.em]}>
@@ -147,11 +151,11 @@ const PDFDocumentData = ({ infoData }: iPdfProps) => {
             <View style={[styles.row, styles.justifyBetween, styles.mb10]}>
               {/* aproximatefinance */}
               <View style={[styles.card]}>
-                <Text style={styles.cardHeaderText}>
+                <Text style={[styles.cardHeaderText, styles.textLight]}>
                   Valor financiado aproximado
                 </Text>
                 <Text style={[styles.cardHeaderBody, styles.em]}>
-                  {convertToColombianPesos(infoData.approximateFinancedValue)} Pesos
+                  {convertToColombianPesos(infoData.approximateFinancedValue)} pesos
                 </Text>
               </View>
               {/* second */}
@@ -159,7 +163,7 @@ const PDFDocumentData = ({ infoData }: iPdfProps) => {
                 <View style={[styles.row]}>
                   <Image src={`${basePath}/images/calendar.png`} style={styles.icon} />
                   <View>
-                    <Text style={styles.cardHeaderText}>
+                    <Text style={[styles.cardHeaderText, styles.textLight]}>
                       Plazo
                     </Text>
                     <Text style={[styles.cardHeaderBody, styles.em]}>
@@ -173,7 +177,7 @@ const PDFDocumentData = ({ infoData }: iPdfProps) => {
                 <View style={[styles.row]}>
                   <Image src={`${basePath}/images/charts.png`} style={styles.icon} />
                   <View>
-                    <Text style={[styles.cardHeaderText]}>
+                    <Text style={[styles.cardHeaderText, styles.textLight]}>
                       Taza
                     </Text>
                     <Text style={[styles.cardHeaderBody, styles.em]}>
