@@ -14,7 +14,6 @@ import { sendSimulationData } from '../../../../services';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import { routes } from '../../../../routes';
-import Icons from '../../icons';
 import Alert from '../../Alert';
 
 function HouseSimulator() {
@@ -88,7 +87,6 @@ function HouseSimulator() {
       amountQuota: 0,
       percentageQuota: 0.3,
     };
-    console.log(body)
     const response = await sendSimulationData(body);
     if (!response.error) {
       setDataFormResponse(response?.response?.data);
