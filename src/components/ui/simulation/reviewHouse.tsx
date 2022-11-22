@@ -53,7 +53,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
 
     <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
-      title="Valor financiado aproximado"
+      title="Valor financiado apróximado"
       value={financedValue?.toString()}
       text="text-[20px] pl-[18px] font-semibold flex items-baseline"
       urlsvg={`${basePath}/images/Money.svg`}

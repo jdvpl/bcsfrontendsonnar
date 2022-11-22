@@ -39,7 +39,6 @@ function Simulator() {
       percentageFinance: 0,
       financeValue: 0,
     };
-
     setdataFormQuota(body);
     const response = await sendSimulationData(body);
     if (!response.error) {
