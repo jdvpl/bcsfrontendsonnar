@@ -15,10 +15,7 @@ describe('All tests of formQuota', () => {
     const { container } = render(<FormQuota onSubmit={mkFn} />);
     expect(container.children.length).toBe(1)
   })
-  it('should render 1 element', () => {
-    render(<FormQuota onSubmit={mkFn} />);
-    expect(screen.getByText('Fecha de nacimiento:')).toBeInTheDocument()
-  })
+
 
 
 });
