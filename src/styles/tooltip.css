@@ -1,5 +1,5 @@
 .tooltip-container {
-  --tooltipBackground: #005491;
+  --tooltipBackground: #005DA2;
   --tooltipBorder: transparent;
   background-color: var(--tooltipBackground);
   border-radius: 8px;

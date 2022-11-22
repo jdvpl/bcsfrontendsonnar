@@ -31,7 +31,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         lifeInsurance ?
           <Card
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px]"
-            title="Couta mensual total con seguros"
+            title="Cuota mensual total con seguros"
             value={monthlyCouteInsurance?.toString()
             }
             text="text-[32px] pl-[23px] pt-2 flex items-baseline"
@@ -46,7 +46,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         !lifeInsurance ?
           <Card
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px]"
-            title="Couta mensual sin seguros"
+            title="Cuota mensual sin seguros"
             value={monthlyCoute?.toString()}
             text="text-[32px] pl-[23px] pt-2 flex items-baseline"
             urlsvg=''
@@ -95,7 +95,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         lifeInsurance ?
           <Card
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
-            title="Couta mensual sin seguros"
+            title="Cuota mensual sin seguros"
             value={monthlyCoute?.toString()}
             text="text-[20px] pl-[18px] font-semibold flex items-baseline"
             urlsvg={`${basePath}/images/Money.svg`}

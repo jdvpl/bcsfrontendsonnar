@@ -136,7 +136,7 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
   try {
     const { data: response } = await axios.post(
       // '/simulator/generatepdf'
-      'https://3707-181-61-49-250.ngrok.io/simulator/generatepdf',
+      'https://dev.bancocajasocialsa.org/bcs-mortgage/simulator/simulator/generatepdf',
       data,
       headersBack
     );

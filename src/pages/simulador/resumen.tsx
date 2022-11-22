@@ -113,7 +113,7 @@ const Resumen = () => {
               Math.floor(valuesSimulation.financeValue)
             )}`}
             termFinance={`${valuesSimulation.termFinance} años`}
-            rate={valuesSimulation.rate}
+            rate={`${valuesSimulation?.rate?.toString()?.replace('.',',')}% EA`}
             lifeInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
             fireInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
             dataPdf={getDataPdfInfo && getDataPdfInfo}
@@ -135,7 +135,7 @@ const Resumen = () => {
               )
             )}`}
             termFinance={`${valuesSimulation.termFinance} años`}
-            rate={valuesSimulation.rate}
+            rate={`${valuesSimulation?.rate?.toString()?.replace('.',',')}% EA`}
             lifeInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
             fireInsurance={`${convertToColombianPesos(valuesSimulation.fireInsurance)}`}
             dataPdf={getDataPdfInfo && getDataPdfInfo}
@@ -167,9 +167,9 @@ const Resumen = () => {
             dataPdf={getDataPdfInfo && getDataPdfInfo}
           />
         ) : null}
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center gap-y-5">
           <Button
-            isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px]"
+            isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] shadow-none"
             onClick={() => urlAndUtms(router, '/inicio-solicitud')}
             name="solicitarCredito"
             data-testid="btn-openAccount1"
@@ -179,7 +179,7 @@ const Resumen = () => {
             Solicitar crédito
           </Button>
           <Button
-            isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px]"
+            isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] shadow-none"
             onClick={() => urlAndUtms(router, '/simulador')}
             name="solicitarCredito"
             data-testid="btn-openAccount1"

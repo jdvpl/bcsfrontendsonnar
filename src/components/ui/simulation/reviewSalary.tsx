@@ -42,7 +42,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       lifeInsurance ?
         <Card
           className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
-          title="Couta mensual total"
+          title="Cuota mensual total"
           value={amountQuota?.toString()}
           text="text-[20px] pl-[25px] font-semibold flex items-baseline"
           urlsvg={`${basePath}/images/Money.svg`}
@@ -56,7 +56,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       !lifeInsurance ?
         <Card
           className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
-          title="Couta mensual total"
+          title="Cuota mensual total"
           value={amountQuota?.toString()}
           text="text-[20px] pl-[25px] font-semibold flex items-baseline"
           urlsvg={`${basePath}/images/Money.svg`}
@@ -121,7 +121,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       lifeInsurance ?
         <Card
           className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
-          title="Couta mensual total con seguros"
+          title="Cuota mensual total con seguros"
           value={amountQuotatotal?.toString()}
           text="text-[20px] pl-[25px] font-semibold flex items-baseline"
           urlsvg={`${basePath}/images/Money.svg`}
