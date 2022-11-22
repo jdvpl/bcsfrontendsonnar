@@ -37,6 +37,7 @@
     "react-hook-form": "^7.38.0",
     "react-idle-timer": "^5.4.2",
     "react-lottie-player": "^1.5.0",
+    "react-pdf": "^6.2.0",
     "react-popper-tooltip": "^4.4.2",
     "react-reconciler": "^0.23.0",
     "react18-input-otp": "^1.1.0"
@@ -46,6 +47,7 @@
     "@types/crypto-js": "^4.1.1",
     "@types/node": "^18.7.18",
     "@types/react": "^18.0.20",
+    "@types/react-pdf": "^5.7.4",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "autoprefixer": "^10.4.11",
