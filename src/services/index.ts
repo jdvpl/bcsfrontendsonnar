@@ -67,13 +67,14 @@ export const sendNumber = async (data: any) => {
     );
     return {
       response: {
+        status: response.status,
         result: response.result,
         data: await allResponseDecrypted(response.data, KEY),
       },
       error: false,
     };
   } catch (e: any) {
-    return { error: true, response: e.response.data };
+    return { error: true, response: e.response.data, status: e.response.status };
   }
 };
 export const validateOTOCode = async (data: ValidateOTC) => {
