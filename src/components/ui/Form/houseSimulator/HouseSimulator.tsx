@@ -48,19 +48,16 @@ function HouseSimulator() {
   const month = watch('month', '');
   const year = watch('year', '');
 
-  const calculatePercentageFinance = (field: any) => {
-    if (houseValue > 0 && financeValue > 999999 && financeValue < houseValue * 0.7) {
+  const calculatePercentageFinance = () => {
+    if (houseValue > 0 && financeValue > 999999) {
       const calculatePercentage = financeValue / houseValue;
       setPercentageFinance(calculatePercentage);
-    } else {
-      setPercentageFinance(0.7);
     }
   };
 
-  const automationfinanceValue = () => {
-    if (houseValue > 0) {
-      console.log(houseValue);
-      setValue('financeValue', houseValue * 0.7);
+  const automationFinanceValue = (value: number) => {
+    if (value > 0) {
+      setValue('financeValue', value * 0.7);
     }
   };
 
@@ -127,7 +124,6 @@ function HouseSimulator() {
                 <Input
                   containerClassName="col-span-6"
                   type="text"
-                  // error={!!errors.houseValue}
                   onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                     e.preventDefault();
                   }}
@@ -139,8 +135,8 @@ function HouseSimulator() {
                   inputMode="text"
                   required
                   label="Valor de Vivienda"
-                  // onBlur={automationfinanceValue}
                   onChange={(e: any) => {
+                    automationFinanceValue(e.target.value.replace(/[^0-9]/g, ''));
                     field.onChange(e.target.value.replace(/[^0-9]/g, ''));
                   }}
                 />
@@ -157,18 +153,14 @@ function HouseSimulator() {
               }}
               render={({ field }) => (
                 <Input
-                  disabled={!(houseValue > 0)}
+                  disabled={!(houseValue > 0) || !!errors?.houseValue}
                   type="text"
-                  error={!!errors.financeValue}
-                  helperText={errors.financeValue?.message}
+                  error={!!errors.financeValueE}
+                  helperText={errors.financeValueE?.message}
                   onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                     e.preventDefault();
                   }}
-                  value={
-                    field.value > houseValue * 0.7
-                      ? convertToColombianPesos(houseValue * 0.7)
-                      : convertToColombianPesos(field.value)
-                  }
+                  value={convertToColombianPesos(field.value)}
                   tabIndex={0}
                   id="valueFinance"
                   inputMode="text"
@@ -183,7 +175,10 @@ function HouseSimulator() {
               control={control}
             />
             <div className="rounded-md w-[78px] border-[0.1px] text-[14px] h-[48px] bg-complementario-80 border-complementario-20/50 flex justify-center items-center text-complementario-20">
-              {parserPercentageDecimal(percentageFinance * 100)}%
+              {Math.floor(percentageFinance * 100) > 70
+                ? `+70`
+                : Math.floor(percentageFinance * 100)}
+              %
             </div>
           </div>
 
