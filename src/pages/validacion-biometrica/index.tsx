@@ -9,7 +9,7 @@ import { Heading } from '../../components/form/heading';
 import Stepper from '../../components/ui/Stepper/index';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { ErrorLayout } from '../../components/layouts/errorLayout';
-import AnimationComponent from '../../components/Animations/animation';
+import AnimationComponent from '../../components/commons/Animation';
 import { ContainerButtonForm } from '../../components/form/containerButtonForm';
 import useAES from '../../hooks/useAES';
 import { urlAndUtms } from '../../utils/RouterUtmsUrl';
