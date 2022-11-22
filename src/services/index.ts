@@ -135,8 +135,8 @@ export const sendSimulationData = async (data: iFormDataSimulation) => {
 export const getDataPDF = async (data: iFormDataSimulation) => {
   try {
     const { data: response } = await axios.post(
-      // 'https://63753d9548dfab73a4f56dd5.mockapi.io/v1/generatepdf',
-      'http://localhost:7000/api/users',
+      // '/simulator/generatepdf'
+      'https://bcsgeneratepdf.herokuapp.com/api/users',
       { data },
       headersBack
 

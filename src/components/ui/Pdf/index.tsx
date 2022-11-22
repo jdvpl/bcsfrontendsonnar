@@ -125,12 +125,11 @@ interface itableProps {
   children: any, col: any, th: any
 }
 const PDFDocumentData = ({ infoData }: iPdfProps) => {
-  const data = infoData?.coutes;
-  const quantiyPages = infoData.coutes.length;
+  const data = infoData?.qoutes;
+  const quantiyPages = infoData?.qoutes?.length;
   const numberOfPages = Array(quantiyPages - 1).fill(0)
   return (
     <Document>
-      {/* huella de carbono */}
       <Page size="A4" orientation="portrait">
         <View style={styles.mainView}>
           <View>

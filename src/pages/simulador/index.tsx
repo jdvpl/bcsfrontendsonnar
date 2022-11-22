@@ -33,7 +33,7 @@ function Simulator() {
       insuranceCheck: formData.insuranceCheck,
       dateOfBirth: formData.dateOfBirth,
       monthlySalary: +formData.monthlySalary,
-      amountQuota: formData.amountQuota,
+      amountQuota: +formData.amountQuota,
       percentageQuota: formData.percentageQuota,
       houseValue: 0,
       percentageFinance: 0,

@@ -1,6 +1,7 @@
 import Card from './Card';
 import { basePath } from '../../../../next.config';
 import React from 'react';
+import BtnPdfDownloader from './BtnPdfDownloader';
 
 interface ReviewSalaryProps {
   financedValue: string;
@@ -11,6 +12,8 @@ interface ReviewSalaryProps {
   termFinance: string;
   rate: string;
   id?: string;
+  dataPdf: any
+
 }
 const fetchresumen = () => alert("No hay resumen aun, no molesten")
 export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
@@ -21,6 +24,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
   amountQuotatotal,
   termFinance,
   rate,
+  dataPdf
 }) => (
   <div className="flex flex-col items-center mt-[36px]">
     <Card
@@ -129,8 +133,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
         /> : null
     }
     <div className='xs:w-[290px] sm:w-[343px] md:w-[448px] flex justify-end mb-[20px] mt-[20px]'>
-      <a className='pr-[8px] pt-[5px] pb-[5px]'>Descargar simulación</a>
-      <img className="hover:cursor-pointer" onClick={fetchresumen} src={`${basePath}/images/Frame.svg`} />
+      {dataPdf?.qoutes?.length > 0 ? <BtnPdfDownloader pdf={dataPdf} /> : null}
     </div>
   </div>
 );

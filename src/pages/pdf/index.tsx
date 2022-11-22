@@ -1,5 +1,4 @@
 import { PDFViewer } from "@react-pdf/renderer";
-import PageLoader from "next/dist/client/page-loader";
 import { useEffect, useState } from "react";
 import PDFDocumentData from "../../components/ui/Pdf";
 import { useSessionStorage } from "../../hooks/useSessionStorage";
