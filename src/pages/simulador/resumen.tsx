@@ -150,7 +150,7 @@ const Resumen = () => {
               Math.floor(valuesSimulation.financeValue)
             )}`}
             termFinance={`${valuesSimulation.termFinance} años`}
-            rate={valuesSimulation.rate}
+            rate={`${valuesSimulation?.rate?.toString()?.replace('.',',')}% EA`}
             dataPdf={getDataPdfInfo}
           />
         ) : null}
@@ -163,7 +163,7 @@ const Resumen = () => {
               Math.floor(valuesSimulation.amountQuota)
             )}`}
             termFinance={`${valuesSimulation.termFinance} años`}
-            rate={valuesSimulation.rate}
+            rate={`${valuesSimulation?.rate?.toString()?.replace('.',',')}% EA`}
             dataPdf={getDataPdfInfo && getDataPdfInfo}
           />
         ) : null}

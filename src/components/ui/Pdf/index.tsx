@@ -177,7 +177,7 @@ const PDFDocumentData = ({ infoData }: iPdfProps) => {
                   <Image src={`${basePath}/images/charts.png`} style={styles.icon} />
                   <View>
                     <Text style={[styles.cardHeaderText, styles.textLight]}>
-                      Taza
+                      Tasa
                     </Text>
                     <Text style={[styles.cardHeaderBody, styles.em]}>
                       {infoData.rate}

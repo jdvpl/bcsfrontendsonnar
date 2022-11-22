@@ -59,7 +59,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
 
       <Card
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
-        title="Valor financiado apróximado"
+        title="Valor financiado aproximado"
         value={financedValue?.toString()}
         text="text-[20px] pl-[18px] font-semibold flex items-baseline"
         urlsvg={`${basePath}/images/Money.svg`}
@@ -74,7 +74,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         value={termFinance?.toString()}
         text="text-[20px] pl-[18px] font-semibold"
         urlsvg={`${basePath}/images/Calendar.svg`}
-        classtitle="h-[14px] text-[14px]"
+        classtitle="h-[14px] text-[13px]"
         tooltiptext=''
       />
       <Card
@@ -83,7 +83,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         value={rate}
         text="text-[20px] pl-[18px] font-semibold"
         urlsvg={`${basePath}/images/Charts.svg`}
-        classtitle="h-[14px] text-[14px]"
+        classtitle="h-[14px] text-[13px]"
         tooltip={true}
         tooltiptext={<p className='text-white'>La tasa de interés es el precio que se debe pagar por utilizar una cantidad de dinero durante un tiempo determinado.<br />
           <p className='flex text-white'><p className='font-bold text-white'>Tasa %MV:</p>Tasa nóminal mes vencido</p>
@@ -113,7 +113,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
             value={lifeInsurance?.toString()}
             text="text-[20px] pl-[18px] font-semibold"
             urlsvg={`${basePath}/images/Insurage.svg`}
-            classtitle="h-[14px] text-[14px]"
+            classtitle="h-[14px] text-[13px]"
             tooltip={true}
             id="lifeInsuranceHouse"
             tooltiptext={<p className='flex text-white'>Seguro diseñado para proteger a sus asegurados en caso de presentarse  muerte, incapacidad total y permanente, y demás riesgos previstos en la póliza. </p>}
@@ -123,11 +123,11 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         fireInsurance ?
           <Card
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
-            title="Seguro de Incendio,Rayo y Terremoto"
+            title="Seguro de Incendio, Rayo y Terremoto"
             value={fireInsurance?.toString()}
             text="text-[20px] pl-[18px] font-semibold"
             urlsvg={`${basePath}/images/Home.svg`}
-            classtitle="h-[14px] text-[14px]"
+            classtitle="h-[14px] text-[13px]"
             tooltip={true}
             id="fireInsuranceHouse"
             tooltiptext={<p className='flex text-white'>Seguro diseñado para proteger a sus asegurados en caso de presentarse  muerte, incapacidad total y permanente, y demás riesgos previstos en la póliza. </p>}
