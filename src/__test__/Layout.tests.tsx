@@ -1,10 +1,12 @@
 import { render } from '@testing-library/react';
-import AnimationComponent from '../components/commons/Animation';
+import { Layout } from '../components/layouts/layout';
 
-describe('<AnimationComponent/>', () => {
+describe('Card', () => {
   test('should render successfully', () => {
     const { baseElement } = render(
-      <AnimationComponent show='' loaded={true} valid={false} />
+      <Layout className="none" navTitle="home">
+        <h1>Hola</h1>
+      </Layout>
     );
     expect(baseElement).toBeTruthy();
   });
