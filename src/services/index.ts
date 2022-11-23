@@ -5,7 +5,7 @@ import useAES from '../hooks/useAES';
 import { headersBack } from './HeaderBack';
 import { headersKYC } from './HeadersKYC';
 import { iFormDataSimulation } from '../interfaces';
-
+import axios from 'axios';
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
 export const getQuestions = async (data: any) => {
@@ -67,13 +67,14 @@ export const sendNumber = async (data: any) => {
     );
     return {
       response: {
+        status: response.status,
         result: response.result,
         data: await allResponseDecrypted(response.data, KEY),
       },
       error: false,
     };
   } catch (e: any) {
-    return { error: true, response: e.response.data };
+    return { error: true, response: e.response.data, status: e.response.status };
   }
 };
 export const validateOTOCode = async (data: ValidateOTC) => {
@@ -115,13 +116,11 @@ export const reSendOTPCode = async (data: OTPCodeRequest) => {
   }
 };
 export const sendSimulationData = async (data: iFormDataSimulation) => {
-  
   try {
     const { data: response } = await clientAxiosBackend.post(
       '/simulator/simulator',
       data,
       headersBack
-      
     );
     return {
       response: {
@@ -130,6 +129,25 @@ export const sendSimulationData = async (data: iFormDataSimulation) => {
       error: false,
     };
   } catch (e: any) {
+    return { error: true, response: e?.response?.data?.message };
+  }
+};
+export const getDataPDF = async (data: iFormDataSimulation) => {
+  try {
+    const { data: response } = await axios.post(
+      // '/simulator/generatepdf'
+      'https://dev.bancocajasocialsa.org/bcs-mortgage/simulator/simulator/generatepdf',
+      data,
+      headersBack
+    );
+    return {
+      response: {
+        data: response,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    console.log(e);
     return { error: true, response: e?.response?.data?.message };
   }
 };

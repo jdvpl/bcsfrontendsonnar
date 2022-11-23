@@ -33,7 +33,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         type="button"
         disabled={disabled}
         className={`
-        rounded h-[48px] transition-all duration-500  shadow-media-300  text-lg leading-5
+        rounded h-[48px] transition-all duration-500  hover:shadow-media-300  text-lg leading-5
         ${
           isLanding ||
           'w-[288px] sm:w-[343px] sm:max-w-[343px] md:w-[343px] lg:w-[375px] lg:max-w-[375px] '
@@ -47,7 +47,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         
         ${
           variant === 'secondary'
-            ? 'valid:text-primario-100 px-[18px] py-[10px]  shadow-none border border-primario-100 bg-white text-primario-100 hover:border-primario-80  focus:bg-secundario-400 focus:text-white focus:shadow-none disabled:text-azul_gris-70 disabled:bg-gris-80 disabled:border-0 '
+            ? 'valid:text-primario-100 px-[18px] py-[10px]  hover:shadow-none border border-primario-100 bg-white text-primario-100 hover:border-primario-80  focus:bg-secundario-400 focus:text-white focus:shadow-none disabled:text-azul_gris-70 disabled:bg-gris-80 disabled:border-0 '
             : ''
         }
         ${className || ''}

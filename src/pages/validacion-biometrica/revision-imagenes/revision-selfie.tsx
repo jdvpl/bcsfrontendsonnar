@@ -44,109 +44,110 @@ const RevisionImagenes: React.FC = () => {
     }, 2300);
   }
 
-  const biometryProcess = async () => {
-    setIsLoading(true);
+  // const biometryProcess = async () => {
+  //   setIsLoading(true);
 
-    const requestHeaders: HeadersInit = new Headers();
-    requestHeaders.set('x-mock-match-request-body', 'true');
-    requestHeaders.set('Content-Type', 'application/json');
-    requestHeaders.set('App-Name', 'ADIGITAL');
-    const body = {
-      document_type: dataTU.document_type,
-      document_number: dataTU.document_number,
-    };
-    const bodyEncript = await allResponse(body, KEY);
-    try {
-      const response = await fetch(
-        `${process.env.KYCAPIUR}/identity-user/biometry/process`,
-        {
-          method: 'POST',
-          headers: requestHeaders,
-          body: JSON.stringify({
-            data: bodyEncript,
-          }),
-        }
-      );
-      if (response.ok) {
-        const dataResponse: any = await response.json();
-        const decrypdata = await allResponseDecrypted(dataResponse.data, KEY);
-        setDataUser({
-          ...dataTU,
-          personalData: { ...dataUser, ...decrypdata },
-        });
-        redirectLoader('/simulador/');
-      } else if (response.status === 403) {
-        setIsLoading(false);
-      } else if (response.status === 401) {
-        urlAndUtms(router, '/validacion/error-validacionIdentidad');
-      } else {
-        setIsLoading(false);
-        urlAndUtms(router, '/validacion/error');
-      }
-    } catch (e: unknown) {
-      setIsLoading(false);
-    }
-  };
-  const sendSelfie = async () => {
-    const requestHeaders: HeadersInit = new Headers();
+  //   const requestHeaders: HeadersInit = new Headers();
+  //   requestHeaders.set('x-mock-match-request-body', 'true');
+  //   requestHeaders.set('Content-Type', 'application/json');
+  //   requestHeaders.set('App-Name', 'ADIGITAL');
+  //   const body = {
+  //     document_type: dataTU.document_type,
+  //     document_number: dataTU.document_number,
+  //   };
+  //   const bodyEncript = await allResponse(body, KEY);
+  //   try {
+  //     const response = await fetch(
+  //       `${process.env.KYCAPIUR}/identity-user/biometry/process`,
+  //       {
+  //         method: 'POST',
+  //         headers: requestHeaders,
+  //         body: JSON.stringify({
+  //           data: bodyEncript,
+  //         }),
+  //       }
+  //     );
+  //     if (response.ok) {
+  //       const dataResponse: any = await response.json();
+  //       const decrypdata = await allResponseDecrypted(dataResponse.data, KEY);
+  //       setDataUser({
+  //         ...dataTU,
+  //         personalData: { ...dataUser, ...decrypdata },
+  //       });
+  //       redirectLoader('/simulador/');
+  //     } else if (response.status === 403) {
+  //       setIsLoading(false);
+  //     } else if (response.status === 401) {
+  //       urlAndUtms(router, '/validacion/error-validacionIdentidad');
+  //     } else {
+  //       setIsLoading(false);
+  //       urlAndUtms(router, '/simulador/');
+  //     }
+  //   } catch (e: unknown) {
+  //     setIsLoading(false);
+  //   }
+  // };
+  // const sendSelfie = async () => {
+  //   const requestHeaders: HeadersInit = new Headers();
 
-    const body = {
-      selfie_normal: selfies.sonriendo.image,
-      selfie_alive: selfies.sonriendo.image_alive,
-      document_type: dataTU.document_type,
-      document_number: dataTU.document_number,
-    };
-    requestHeaders.set('x-mock-match-request-body', 'true');
-    requestHeaders.set('Content-Type', 'application/json');
-    requestHeaders.set('App-Name', 'ADIGITAL');
-    const encript = await allResponse(body, KEY);
-    try {
-      setShowAnimation(true);
+  //   const body = {
+  //     selfie_normal: selfies.sonriendo.image,
+  //     selfie_alive: selfies.sonriendo.image_alive,
+  //     document_type: dataTU.document_type,
+  //     document_number: dataTU.document_number,
+  //   };
+  //   requestHeaders.set('x-mock-match-request-body', 'true');
+  //   requestHeaders.set('Content-Type', 'application/json');
+  //   requestHeaders.set('App-Name', 'ADIGITAL');
+  //   const encript = await allResponse(body, KEY);
+  //   try {
+  //     setShowAnimation(true);
 
-      const response = await fetch(
-        `${process.env.KYCAPIUR}/identity-user/biometry/selfie`,
-        {
-          method: 'POST',
-          headers: requestHeaders,
-          body: JSON.stringify({
-            data: encript,
-          }),
-        }
-      );
-      if (response.ok) {
-        setIsLoading(false);
-        biometryProcess();
-      } else if (response.status === 403) {
-        const dataResponse: any = await response.json();
+  //     const response = await fetch(
+  //       `${process.env.KYCAPIUR}/identity-user/biometry/selfie`,
+  //       {
+  //         method: 'POST',
+  //         headers: requestHeaders,
+  //         body: JSON.stringify({
+  //           data: encript,
+  //         }),
+  //       }
+  //     );
+  //     if (response.ok) {
+  //       setIsLoading(false);
+  //       biometryProcess();
+  //     } else if (response.status === 403) {
+  //       const dataResponse: any = await response.json();
 
-        const code = dataResponse.internal_code;
+  //       const code = dataResponse.internal_code;
 
-        switch (code) {
-          case 'VQ-01':
-            urlAndUtms(router, '/');
-            break;
-          case 'VQ-02':
-            urlAndUtms(router, '/validacion/error-validacionIdentidad');
-            break;
-          default:
-            urlAndUtms(router, '/validacion/');
-        }
-      } else if (response.status === 401) {
-        urlAndUtms(router, '/validacion/error-validacionIdentidad');
-      } else if (response.status === 504 || response.status === 408) {
-        setShowAnimation(false);
-        setIsLoading(false);
-        setError(true);
-      } else {
-        urlAndUtms(router, '/validacion/error');
-      }
-    } catch (e: any) {
-      urlAndUtms(router, '/validacion/error');
-    }
-  };
+  //       switch (code) {
+  //         case 'VQ-01':
+  //           urlAndUtms(router, '/');
+  //           break;
+  //         case 'VQ-02':
+  //           urlAndUtms(router, '/validacion/error-validacionIdentidad');
+  //           break;
+  //         default:
+  //           urlAndUtms(router, '/validacion/');
+  //       }
+  //     } else if (response.status === 401) {
+  //       urlAndUtms(router, '/validacion/error-validacionIdentidad');
+  //     } else if (response.status === 504 || response.status === 408) {
+  //       setShowAnimation(false);
+  //       setIsLoading(false);
+  //       setError(true);
+  //     } else {
+  //       urlAndUtms(router, '/validacion/error');
+  //     }
+  //   } catch (e: any) {
+  //     urlAndUtms(router, '/validacion/error');
+  //   }
+  // };
 
   const sendData = async () => {
-    await sendSelfie();
+    setIsLoading(false);
+    redirectLoader('/simulador/');
   };
   return (
     <Layout navTitle={<NavTitle noBack />}>

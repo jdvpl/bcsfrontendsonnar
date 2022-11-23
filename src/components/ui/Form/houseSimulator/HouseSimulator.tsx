@@ -14,7 +14,6 @@ import { sendSimulationData } from '../../../../services';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import { routes } from '../../../../routes';
-import Icons from '../../icons';
 import Alert from '../../Alert';
 
 function HouseSimulator() {
@@ -57,7 +56,9 @@ function HouseSimulator() {
 
   const automationFinanceValue = (value: number) => {
     if (value > 0) {
-      setValue('financeValue', value * 0.7);
+      setValue('financeValue', Math.round(value * 0.7));
+    }else{
+      setValue('financeValue', 0);
     }
   };
 
@@ -174,8 +175,8 @@ function HouseSimulator() {
               control={control}
             />
             <div className="rounded-md w-[78px] border-[0.1px] text-[14px] h-[48px] bg-complementario-80 border-complementario-20/50 flex justify-center items-center text-complementario-20">
-              {Math.floor(percentageFinance * 100) > 70
-                ? `+70`
+              {Math.floor(percentageFinance * 100) > 100
+                ? `>100`
                 : Math.floor(percentageFinance * 100)}
               %
             </div>
