@@ -102,8 +102,8 @@ const Resumen = () => {
             monthlyCouteInsurance={`${convertToColombianPesos(
               Math.floor(
                 valuesSimulation.monthlyCoute +
-                  valuesSimulation.lifeInsurance +
-                  valuesSimulation.fireInsurance
+                valuesSimulation.lifeInsurance +
+                valuesSimulation.fireInsurance
               )
             )}`}
             monthlyCoute={`${convertToColombianPesos(
@@ -113,10 +113,10 @@ const Resumen = () => {
               Math.floor(valuesSimulation.financeValue)
             )}`}
             termFinance={`${valuesSimulation.termFinance} años`}
-            rate={`${valuesSimulation?.rate?.toString()?.replace('.',',')}% EA`}
+            rate={`${valuesSimulation?.rate?.toString()?.replace('.', ',')}% EA`}
             lifeInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
             fireInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
-            dataPdf={getDataPdfInfo && getDataPdfInfo}
+            dataPdf={getDataPdfInfo}
           />
         ) : null}
         {simulationTypeOption === 'salary' && insuranceCheck.insuranceCheck ? (
@@ -130,15 +130,15 @@ const Resumen = () => {
             amountQuotatotal={`${convertToColombianPesos(
               Math.floor(
                 valuesSimulation.amountQuota +
-                  valuesSimulation.lifeInsurance +
-                  valuesSimulation.fireInsurance
+                valuesSimulation.lifeInsurance +
+                valuesSimulation.fireInsurance
               )
             )}`}
             termFinance={`${valuesSimulation.termFinance} años`}
-            rate={`${valuesSimulation?.rate?.toString()?.replace('.',',')}% EA`}
+            rate={`${valuesSimulation?.rate?.toString()?.replace('.', ',')}% EA`}
             lifeInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
             fireInsurance={`${convertToColombianPesos(valuesSimulation.fireInsurance)}`}
-            dataPdf={getDataPdfInfo && getDataPdfInfo}
+            dataPdf={getDataPdfInfo}
           />
         ) : null}
         {simulationTypeOption === 'house' && !insuranceCheck.insuranceCheck ? (
@@ -150,7 +150,7 @@ const Resumen = () => {
               Math.floor(valuesSimulation.financeValue)
             )}`}
             termFinance={`${valuesSimulation.termFinance} años`}
-            rate={`${valuesSimulation?.rate?.toString()?.replace('.',',')}% EA`}
+            rate={`${valuesSimulation?.rate?.toString()?.replace('.', ',')}% EA`}
             dataPdf={getDataPdfInfo}
           />
         ) : null}
@@ -163,8 +163,8 @@ const Resumen = () => {
               Math.floor(valuesSimulation.amountQuota)
             )}`}
             termFinance={`${valuesSimulation.termFinance} años`}
-            rate={`${valuesSimulation?.rate?.toString()?.replace('.',',')}% EA`}
-            dataPdf={getDataPdfInfo && getDataPdfInfo}
+            rate={`${valuesSimulation?.rate?.toString()?.replace('.', ',')}% EA`}
+            dataPdf={getDataPdfInfo}
           />
         ) : null}
         <div className="flex flex-col items-center gap-y-5">
