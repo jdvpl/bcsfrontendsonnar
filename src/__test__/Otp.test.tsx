@@ -1,9 +1,10 @@
+import 'jest-canvas-mock';
 import { render } from '@testing-library/react';
-import Terminos from '../components/commons/Terminos';
+import { Otp } from '../components/custom/otp/index';
 
 describe('Terminos', () => {
   test('should render "Terminos" successfully', () => {
-    const { baseElement } = render(<Terminos />);
+    const { baseElement } = render(<Otp />);
     expect(baseElement).toBeTruthy();
   });
 
