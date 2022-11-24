@@ -4,7 +4,7 @@ import OtpInput from 'react-otp-input-rc-17';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { routes } from '../../../routes';
 import { reSendOTPCode, validateOTOCode } from '../../../services';
-import { Icons } from '../../ui';
+import { Icons } from '../../ui/icons';
 import { OTLoader } from '../../ui/Loaders/OTPloader';
 import Typography from '../../ui/Tipography';
 

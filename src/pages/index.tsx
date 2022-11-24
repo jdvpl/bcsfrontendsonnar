@@ -8,7 +8,7 @@ import LogoViviendaWhite from '../components/svg/LogoViviendaWhite';
 import SelectiveCard from '../components/ui/Card/SelectiveCard';
 import { routes } from '../routes';
 import LogoBcs from '../components/svg/LogoBcs';
-import { Icons } from '../components/ui';
+import { Icons } from '../components/ui/icons';
 import { Questions } from '../components/ui/Accordion';
 import { basePath } from '../../next.config';
 export default function Home() {
