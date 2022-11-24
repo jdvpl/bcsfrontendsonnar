@@ -1,11 +1,15 @@
 import 'jest-canvas-mock';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Otp } from '../components/custom/otp/index';
 
-describe('Terminos', () => {
-  test('should render "Terminos" successfully', () => {
+describe('Otp', () => {
+  it('should render "Otp" successfully', () => {
     const { baseElement } = render(<Otp />);
     expect(baseElement).toBeTruthy();
   });
+  it('should render the text', () => {
+    render(<Otp />)
+    expect(screen.getByTestId('h4OtpText').textContent).toMatch(/ingrese el código enviado por/i)
+  })
 
 });

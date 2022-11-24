@@ -92,9 +92,10 @@ export function Otp() {
       <h4
         id="title"
         className="font-semibold text-[20px] text-primario-900 text-center mt-[40px] mb-[36px]  md:mt-[64px]  md:mb-[52px] lg:mb-[36px]"
+        data-testid="h4OtpText"
       >
         Ingrese el código enviado por <br /> sms a su celular +57
-        {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : null}
+        {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : ''}
       </h4>
 
       <div className="text-normal mb-[12px]">
