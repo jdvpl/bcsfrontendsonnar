@@ -13,7 +13,7 @@ export default function validacionSolicitud() {
           step="1"
           incomplete="2"
           title="Validación de identidad"
-          percentaje="25%"
+          percentage="25%"
         />
         <Otp />
       </Layout>

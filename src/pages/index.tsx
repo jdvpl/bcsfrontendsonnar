@@ -1,7 +1,7 @@
 import { deviceType } from 'react-device-detect';
 import { useEffect } from 'react';
 import LogoBcsWhite from '../components/svg/LogoBcsWhite';
-import Typography from '../components/ui/Tipography';
+import Typography from '../components/ui/Typography';
 import { useSessionStorage } from '../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../session';
 import LogoViviendaWhite from '../components/svg/LogoViviendaWhite';

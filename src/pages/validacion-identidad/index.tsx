@@ -81,7 +81,7 @@ const Index: React.FC = () => {
             step=""
             incomplete="1"
             title="Validación de identidad"
-            percentaje={progress}
+            percentage={progress}
           />
           {data && !dataNumber && !dataValid && (
             <AnimatePresence>

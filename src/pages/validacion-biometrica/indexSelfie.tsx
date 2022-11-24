@@ -28,7 +28,7 @@ const ValidationMessage: React.FC = () => {
               step="1"
               incomplete=""
               title="Validación de identidad"
-              percentaje=""
+              percentage=""
             />
           </div>
           <Heading>

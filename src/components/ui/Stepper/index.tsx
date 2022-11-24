@@ -4,13 +4,13 @@ import NoSSRWrapper from '../../../hooks/noSSR';
 interface Props {
   step?: string;
   title?: string;
-  percentaje?: string;
+  percentage?: string;
   incomplete?: string;
 }
-const Stepper: React.FC<Props> = ({ step, title, percentaje, incomplete }) => (
+const Stepper: React.FC<Props> = ({ step, title, percentage, incomplete }) => (
   <NoSSRWrapper>
     <p
-      className="text-xs font-normal ln-16 text-primario-900 mb-[8px]"
+      className="text-[16px] leading-4 text-primario-900 mb-[8px] font-semibold"
       data-testid="titleStep"
     >
       {title}
@@ -37,7 +37,7 @@ const Stepper: React.FC<Props> = ({ step, title, percentaje, incomplete }) => (
           <div
             className="bg-primario-20 h-100"
             style={{
-              width: percentaje,
+              width: percentage,
               borderTopLeftRadius: '2px',
               borderBottomLeftRadius: '2px',
             }}
@@ -55,7 +55,7 @@ const Stepper: React.FC<Props> = ({ step, title, percentaje, incomplete }) => (
         style={{ height: '4px', maxWidth: '225px' }}
       >
         {incomplete === '2' ? (
-          <div className="bg-primario-20 h-100" style={{ width: percentaje }} />
+          <div className="bg-primario-20 h-100" style={{ width: percentage }} />
         ) : (
           ''
         )}
@@ -72,7 +72,7 @@ const Stepper: React.FC<Props> = ({ step, title, percentaje, incomplete }) => (
         }}
       >
         {incomplete === '3' ? (
-          <div className="bg-primario-20 h-100" style={{ width: percentaje }} />
+          <div className="bg-primario-20 h-100" style={{ width: percentage }} />
         ) : (
           ''
         )}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import LogoBcs from '../../components/svg/LogoBcs';
 import LogoForm from '../../components/svg/LogoForm';
-import Typography from '../../components/ui/Tipography';
+import Typography from '../../components/ui/Typography';
 import ReviewHouse from '../../components/ui/simulation/reviewHouse';
 import ReviewSalary from '../../components/ui/simulation/reviewSalary';
 import { routes } from '../../routes/index';

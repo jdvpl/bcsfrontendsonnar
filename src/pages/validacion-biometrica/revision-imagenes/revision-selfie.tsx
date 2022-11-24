@@ -154,7 +154,7 @@ const RevisionImagenes: React.FC = () => {
       {showAnimation && <AnimationComponent show="" valid={validated} loaded={loaded} />}
       <div data-testid="revision">
         <div className="pt-3 md:pt-0 w-full lg:mt-10">
-          <Stepper step="1" incomplete="" title="Validación de identidad" percentaje="" />
+          <Stepper step="1" incomplete="" title="Validación de identidad" percentage="" />
         </div>
 
         <div className="pb-28">
