@@ -1,4 +1,3 @@
-import { findAllByTestId } from '@testing-library/react';
 import { useRouter } from 'next/router';
 import React, { useState, useEffect, useRef } from 'react';
 import OtpInput from 'react-otp-input-rc-17';
@@ -21,7 +20,7 @@ export interface OTPCodeRequest {
 }
 
 export function Otp() {
-  const [dataTU, setDataUser] = useSessionStorage('dataTU', '');
+  const [dataTU,] = useSessionStorage('dataTU', '');
   const [otp, setOtp] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(60);
@@ -42,7 +41,6 @@ export function Otp() {
     if (!response.error) {
       setIsValid(true);
       setIsLoading(false);
-      // setDataQuestions(response.response.data);
       setTimeout(() => {
         router.push(routes.ratings);
       }, 3000);
@@ -96,7 +94,7 @@ export function Otp() {
         className="font-semibold text-[20px] text-primario-900 text-center mt-[40px] mb-[36px]  md:mt-[64px]  md:mb-[52px] lg:mb-[36px]"
       >
         Ingrese el código enviado por <br /> sms a su celular +57
-        {dataTU?.encriptPhone?.encriptPhone && dataTU?.encriptPhone?.encriptPhone}
+        {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : null}
       </h4>
 
       <div className="text-normal mb-[12px]">
@@ -155,8 +153,8 @@ export function Otp() {
           onClick={onResendOTP}
           variant="caption1"
           className={`text-[14px] leading-4 ${timer === 0 && wasResend === false
-              ? 'text-primario-20 cursor-pointer'
-              : 'text-gris-200'
+            ? 'text-primario-20 cursor-pointer'
+            : 'text-gris-200'
             } mb-[12px]`}
         >
           {timer === 0 && wasResend === false
