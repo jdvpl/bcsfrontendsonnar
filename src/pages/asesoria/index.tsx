@@ -20,7 +20,7 @@ const Consultancy = ({ options = initialOptions }: any) => {
   };
 
   const prevStep = () => {
-    if (actualStep > 0) {
+    if (actualStep > 1) {
       setActualStep(actualStep - 1);
     }
   };
