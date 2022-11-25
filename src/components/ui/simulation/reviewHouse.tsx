@@ -31,7 +31,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         lifeInsurance ?
           <Card
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px]"
-            title="Couta mensual total con seguros"
+            title="Cuota mensual total con seguros"
             value={monthlyCouteInsurance?.toString()
             }
             text="text-[32px] pl-[23px] pt-2 flex items-baseline"
@@ -46,7 +46,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         !lifeInsurance ?
           <Card
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px]"
-            title="Couta mensual sin seguros"
+            title="Cuota mensual sin seguros"
             value={monthlyCoute?.toString()}
             text="text-[32px] pl-[23px] pt-2 flex items-baseline"
             urlsvg=''
@@ -59,7 +59,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
 
       <Card
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
-        title="Valor financiado apróximado"
+        title="Valor financiado aproximado"
         value={financedValue?.toString()}
         text="text-[20px] pl-[18px] font-semibold flex items-baseline"
         urlsvg={`${basePath}/images/Money.svg`}
@@ -74,7 +74,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         value={termFinance?.toString()}
         text="text-[20px] pl-[18px] font-semibold"
         urlsvg={`${basePath}/images/Calendar.svg`}
-        classtitle="h-[14px] text-[14px]"
+        classtitle="h-[14px] text-[13px]"
         tooltiptext=''
       />
       <Card
@@ -83,7 +83,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         value={rate}
         text="text-[20px] pl-[18px] font-semibold"
         urlsvg={`${basePath}/images/Charts.svg`}
-        classtitle="h-[14px] text-[14px]"
+        classtitle="h-[14px] text-[13px]"
         tooltip={true}
         tooltiptext={<p className='text-white'>La tasa de interés es el precio que se debe pagar por utilizar una cantidad de dinero durante un tiempo determinado.<br />
           <p className='flex text-white'><p className='font-bold text-white'>Tasa %MV:</p>Tasa nóminal mes vencido</p>
@@ -95,7 +95,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         lifeInsurance ?
           <Card
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
-            title="Couta mensual sin seguros"
+            title="Cuota mensual sin seguros"
             value={monthlyCoute?.toString()}
             text="text-[20px] pl-[18px] font-semibold flex items-baseline"
             urlsvg={`${basePath}/images/Money.svg`}
@@ -113,7 +113,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
             value={lifeInsurance?.toString()}
             text="text-[20px] pl-[18px] font-semibold"
             urlsvg={`${basePath}/images/Insurage.svg`}
-            classtitle="h-[14px] text-[14px]"
+            classtitle="h-[14px] text-[13px]"
             tooltip={true}
             id="lifeInsuranceHouse"
             tooltiptext={<p className='flex text-white'>Seguro diseñado para proteger a sus asegurados en caso de presentarse  muerte, incapacidad total y permanente, y demás riesgos previstos en la póliza. </p>}
@@ -127,7 +127,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
             value={fireInsurance?.toString()}
             text="text-[20px] pl-[18px] font-semibold"
             urlsvg={`${basePath}/images/Home.svg`}
-            classtitle="h-[14px] text-[14px]"
+            classtitle="h-[14px] text-[13px]"
             tooltip={true}
             id="fireInsuranceHouse"
             tooltiptext={<p className='flex text-white'>Seguro diseñado para proteger a sus asegurados en caso de presentarse  muerte, incapacidad total y permanente, y demás riesgos previstos en la póliza. </p>}
@@ -135,7 +135,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       }
 
       <div className='xs:w-[290px] sm:w-[343px] md:w-[448px] flex justify-end mb-[12px]'>
-        {dataPdf?.qoutes?.length > 0 ? <BtnPdfDownloader pdf={dataPdf} /> : null}
+        {dataPdf?.quotes?.length > 0 ? <BtnPdfDownloader pdf={dataPdf} /> : null}
       </div>
     </div >
   )

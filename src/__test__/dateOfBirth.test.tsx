@@ -3,7 +3,7 @@ import DateOfBirth from '../components/ui/inputs/dateOfBirth';
 import userEvent from "@testing-library/user-event";
 
 const mkFn = jest.fn()
-describe('Landing page testing', () => {
+describe('dateOfBirth testing', () => {
   render(<DateOfBirth id="dateOfBirth"
     defaultValues={undefined}
     onChangeDate={mkFn} />)

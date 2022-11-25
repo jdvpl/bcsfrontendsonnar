@@ -56,7 +56,9 @@ function HouseSimulator() {
 
   const automationFinanceValue = (value: number) => {
     if (value > 0) {
-      setValue('financeValue', value * 0.7);
+      setValue('financeValue', Math.round(value * 0.7));
+    }else{
+      setValue('financeValue', 0);
     }
   };
 

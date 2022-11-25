@@ -74,7 +74,7 @@ export default function useValidations(
   };
 
   const validatefinanceValue = () => {
-    if (financeValue > houseValue * 0.7 && financeValue > 0) {
+    if (financeValue > Math.round(houseValue * 0.7) && financeValue > 0) {
       setError('financeValueE', {
         type: 'error',
         message: 'El valor máximo a financiar no puede superar el 70% de la vivienda.',

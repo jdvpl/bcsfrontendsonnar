@@ -1,0 +1,5 @@
+
+export const Questions = [
+  { "step": "VQ", "key": "34bc511a-908d-4215-8e7a-1cc8fbd8ca4e", "type": "CLOSED-QUESTION", "description": "¿Cual es el mes de expedición de su cédula?", "options": [{ "id": "ff714d1b-2064-45ec-a4cd-4d53eca283d4", "option": "Abril" }, { "id": "ca684954-d7f0-4f78-9d2a-c69f3f56e46d", "option": "Octubre" }, { "id": "e9edde01-24ff-4e05-8a80-441d5d85d2a4", "option": "Agosto" }, { "id": "452f91b6-d73e-45bf-83f5-a50ba18e1091", "option": "Ninguno" }] },
+  { "step": "VQ", "key": "ed1491a9-a61b-4a17-8f16-fced6e5b4b3e", "type": "CLOSED-QUESTION", "description": "¿En que rango de edad se encuentra?", "options": [{ "id": "8a13f026-16f6-4651-96c4-863acd5484e3", "option": "25-30" }, { "id": "3ac53412-0474-4648-9ce8-202e0da08db9", "option": "31-35" }, { "id": "bce83c34-ef7f-4eb1-a6bc-53dc3c0ed465", "option": "18-25" }, { "id": "2a505f6b-95b3-42b1-b09e-f7e917657d52", "option": "Ninguno" }] }
+]
