@@ -1,115 +1,58 @@
-import Link from 'next/link';
 import React, { useState } from 'react';
 import { basePath } from '../../../next.config';
+import Close from '../../components/svg/Close';
 import LogoBcs from '../../components/svg/LogoBcs';
 import LogoForm from '../../components/svg/LogoForm';
 import { Icons } from '../../components/ui';
 import Button from '../../components/ui/Button';
 import Typography from '../../components/ui/Typography';
-
-const initialOptions = [
-  [
-    {
-      label: 'Vivienda Nueva',
-      value: '1',
-    },
-    {
-      label: 'Vivienda Usada',
-      value: '2',
-    },
-    {
-      label: '¿Qué es vivienda VIS?',
-      value: '3',
-    },
-    {
-      label: '¿Qué es vivienda No VIS?',
-      value: '4',
-    },
-  ],
-  [
-    {
-      label: 'Cuota Inicial',
-      value: '1',
-    },
-    {
-      label: 'Crédito hipotecario',
-      value: '2',
-    },
-    {
-      label: 'Compra del inmueble',
-      value: '3',
-    },
-  ],
-  [
-    {
-      label: 'Avalúo',
-      value: '1',
-    },
-    {
-      label: 'Estudio de títulos',
-      value: '2',
-    },
-    {
-      label: 'Escrituración',
-      value: '2',
-    },
-  ],
-  [
-    {
-      label: 'Reciba su vivienda',
-      value: '1',
-    },
-  ],
-];
-
-const stepperTitles = [
-  'Características de vivienda',
-  '¿Cómo pagar la vivienda?',
-  'Legalización de una vivienda',
-  'Reciba su vivienda',
-];
+import { initialOptions, stepperTitles } from '../../lib/consultancy';
 
 const Consultancy = ({ options = initialOptions }: any) => {
   const [itemActive, setItemActive] = useState('');
+  const [activeIndex, setActiveIndex] = useState(0);
   const [actualStep, setActualStep] = useState<number>(1);
-  const [modalPosition, setModalPosition] = useState({
-    clientX: 0,
-    clientY: 0,
-  });
 
   const nextStep = () => {
     if (actualStep < 4) {
       setActualStep(actualStep + 1);
     }
   };
+
   const prevStep = () => {
-    if (actualStep > 1) {
+    if (actualStep > 0) {
       setActualStep(actualStep - 1);
     }
   };
-  const openModal = (event: any, label: string) => {
-    const { clientX, clientY } = event;
-    setModalPosition({ clientX, clientY });
+
+  const openModal = (label: string, index: number) => {
+    setActiveIndex(index);
     setItemActive(label);
+  };
+
+  const onCloseModal = () => {
+    setActiveIndex(0);
+    setItemActive('');
+  };
+
+  const renderContent = () => {
+    return (
+      <div className="w-[411px] text-[20px]">
+        <span className="font-semibold text-primario-900">{itemActive}</span>
+        {options[actualStep - 1]?.[activeIndex]?.content()}
+      </div>
+    );
   };
 
   return (
     <>
-      <div
-        className="w-[287px] h-[312px] rounded-md absolute bg-white z-10"
-        style={{
-          top: `${modalPosition.clientY - 100}px`,
-          left: `${modalPosition.clientX + 100}px`,
-        }}
-      >
-        a
-      </div>
       {itemActive !== '' ? (
         <div
-          className="bg-complementario-900/50 w-[100vw] h-[100vh] fixed top-0 left-0"
+          className="bg-complementario-900/50 w-[100%] min-h-screen	fixed top-0 left-0"
           onClick={() => setItemActive('')}
-        ></div>
+        />
       ) : null}
+
       <div className="w-[90%] m-auto">
         <div className="flex justify-between lg:w-[1080px] mx-auto lg:mb-[82px] lg:mt-[59px]">
           <LogoBcs />
@@ -130,7 +73,11 @@ const Consultancy = ({ options = initialOptions }: any) => {
       </div>
 
       <div className="lg:w-[1127px] mx-auto flex items-center mb-[77px]">
-        <div className="cursor-pointer flex items-center flex-col">
+        <div
+          className={`cursor-pointer flex items-center flex-col ${
+            actualStep === 1 ? 'opacity-0' : ''
+          }`}
+        >
           <div
             onClick={prevStep}
             className="rounded-full w-[40px] h-[40px] border-primario-20 flex justify-center items-center border-2	mb-[33px]"
@@ -148,38 +95,53 @@ const Consultancy = ({ options = initialOptions }: any) => {
         <div
           className="mx-auto lg:w-[757.2px] lg:h-[395px] flex flex-col justify-center items-start gap-y-3 pl-[63px] box-border"
           style={{
-            // border: '1px solid black',
             backgroundImage: `url(${basePath}/images/consultancy/${actualStep}.png)`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'contain',
             backgroundPosition: '50%',
           }}
         >
-          {options[actualStep - 1]?.map((option: any) => (
+          {options[actualStep - 1]?.map((option: any, index: number) => (
             <Button
               key={option?.label}
-              onClick={(event) => openModal(event, option?.label)}
+              onClick={() => openModal(option?.label, index)}
               variant="secondary"
-              isLanding={`z-10 w-[230px] font-semibold rounded-[8px] lg:h-48px ${
+              isLanding={`p-0 z-10 w-[253px] font-semibold rounded-[8px] lg:h-48px ${
                 itemActive === option?.label ? 'translate-x-[16px] bg-primario-20' : ''
               }`}
             >
-              <div className="flex justify-between">
-                <Typography
-                  variant="bodyS2"
-                  className={`text-center w-full ${
+              <div className="flex justify-center">
+                <span
+                  className={`text-center ${
                     itemActive === option?.label ? 'text-white' : 'text-primario-100'
-                  } text-[14px] p-0`}
+                  } text-[18px] p-0`}
                 >
                   {option?.label}
-                </Typography>
-                <Icons icon="bcs-arrow-two-right" iconclassNames="text-[14px]" />
+                </span>
               </div>
             </Button>
           ))}
+          {itemActive !== '' ? (
+            <div
+              onClick={onCloseModal}
+              className="lg:w-[465px] w-[287px] rounded-md absolute bg-white z-9 ml-[263px] p-[33px] box-border cursor-pointer"
+            >
+              <div className="absolute cursor-pointer rounded-full top-[-22px] right-[-22px] p-[6px] bg-primario-20/30">
+                <div className="rounded-full h-[44.24px] w-[44.24px] bg-primario-20 flex justify-center items-center">
+                  <Close />
+                </div>
+              </div>
+              {renderContent()}
+            </div>
+          ) : null}
         </div>
 
-        <div onClick={nextStep} className="cursor-pointer flex items-center flex-col">
+        <div
+          onClick={nextStep}
+          className={`cursor-pointer flex items-center flex-col ${
+            actualStep === 4 ? 'opacity-0' : ''
+          }`}
+        >
           <div className="rounded-full w-[40px] h-[40px] border-primario-20 flex justify-center items-center border-2 mb-[33px]">
             <Icons
               icon="bcs-arrow-two-right"

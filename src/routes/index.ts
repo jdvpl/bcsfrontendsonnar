@@ -12,4 +12,5 @@ export const routes = {
   inactivityScreen: '/inactividad',
   simulador: '/simulador',
   simuladorResumen: '/simulador/resumen',
+  consultancy: '/asesoria',
 };

@@ -60,7 +60,7 @@ export default function Home() {
             color="text-primario-300"
             label={`Iniciar asesoría ${device !== 'mobile' ? 'interactiva' : ''}`}
             description="Aquí encontrará todo lo que debe saber para comprar una vivienda."
-            pathTo={routes.startProccess}
+            pathTo={routes.consultancy}
             className="sm:mt-4 xs:mt-4"
             onclick
           />
