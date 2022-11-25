@@ -15,17 +15,19 @@ export const initialOptions = [
           <p className="font-light my-3">
             Existen dos formas de adquirir una vivienda nueva:
           </p>
-          <ol className="list-decimal mb-3 list-inside ml-2">
-            <li>
-              <span className="font-semibold text-primario-900">Sobre planos: </span>
-              Cuando aún está en construcción.
-            </li>
-            <li>
-              <span className="font-semibold text-primario-900">Edificado: </span>Una vez
-              terminada la obra.
-            </li>
-          </ol>
-          <span className="font-semibold text-primario-900">Ventajas:</span>
+          <div style={{paddingLeft:"20px"}}>
+            <ol className="list-decimal mb-3 list-inside">
+              <li>
+                <span className="font-medium text-primario-900">Sobre planos:</span>
+                <p className="inline-block font-light">{" "}Cuando aún está en construcción.</p>
+              </li>
+              <li>
+                <span className="font-medium text-primario-900">Edificado: </span>
+                <p className="inline-block font-light">Una vez terminada la obra.</p>
+              </li>
+            </ol>
+          </div>
+          <span className="font-bold text-primario-900">Ventajas:</span>
           <ol className="list-decimal mb-3 list-inside ml-2 special-list">
             <li className="my-3 ">
               <span className="font-light">
@@ -74,7 +76,7 @@ export const initialOptions = [
       content: () => (
         <div>
           <p className="font-light my-3">
-            Las
+            Las{' '}
             <span className="font-semibold text-primario-900">
               Viviendas de Interés Social
             </span>

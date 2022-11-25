@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import { basePath } from '../../../next.config';
 import Close from '../../components/svg/Close';
@@ -7,21 +8,27 @@ import { Icons } from '../../components/ui';
 import Button from '../../components/ui/Button';
 import Typography from '../../components/ui/Typography';
 import { initialOptions, stepperTitles } from '../../lib/consultancy';
+import { routes } from '../../routes';
 
 const Consultancy = ({ options = initialOptions }: any) => {
   const [itemActive, setItemActive] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
   const [actualStep, setActualStep] = useState<number>(1);
+  const router = useRouter();
 
   const nextStep = () => {
     if (actualStep < 4) {
       setActualStep(actualStep + 1);
+    } else {
+      router.push(routes.home);
     }
   };
 
   const prevStep = () => {
     if (actualStep > 1) {
       setActualStep(actualStep - 1);
+    } else {
+      router.push(routes.home);
     }
   };
 
@@ -37,8 +44,10 @@ const Consultancy = ({ options = initialOptions }: any) => {
 
   const renderContent = () => {
     return (
-      <div className="w-[411px] text-[20px]">
-        <span className="font-semibold text-primario-900">{itemActive}</span>
+      <div className="lg:w-[411px] text-[14px]">
+        <span className="font-semibold text-primario-900 lg:text-[20px] text-[16px]">
+          {itemActive}
+        </span>
         {options[actualStep - 1]?.[activeIndex]?.content()}
       </div>
     );
@@ -54,46 +63,44 @@ const Consultancy = ({ options = initialOptions }: any) => {
       ) : null}
 
       <div className="w-[90%] m-auto">
-        <div className="flex justify-between lg:w-[1080px] mx-auto lg:mb-[82px] lg:mt-[59px]">
-          <LogoBcs />
+        <div className="flex justify-between lg:w-[1080px] mx-auto md:mb-[38px] md:mt-[64px] lg:mb-[82px] lg:mt-[59px]">
+          <div className="opacity-0 lg:opacity-100">
+            <LogoBcs />
+          </div>
           <LogoForm />
         </div>
-        <div className="lg:w-[825px] mx-auto">
-          <Typography variant="h2" className="lg:mb-[36px] text-[28px] text-center">
+        <div className="lg:w-[825px] mx-auto md:w-[528px]">
+          <Typography
+            variant="h2"
+            className="lg:mb-[36px] md:mb-[48px] text-[28px] text-center"
+          >
             Esto es lo primero que debe saber para comprar una vivienda
           </Typography>
           <Stepper
             steps={4}
             actualStep={actualStep}
             percentage={40}
-            className="lg:w-[684px] mx-auto lg:mb-[59px]"
+            className="lg:w-[684px] md:w-[456px] mx-auto lg:mb-[59px] md:mb-[53px]"
             title={stepperTitles[actualStep - 1]}
           />
         </div>
       </div>
 
-      <div className="lg:w-[1127px] mx-auto flex items-center mb-[77px]">
-        <div
-          className={`cursor-pointer flex items-center flex-col ${
-            actualStep === 1 ? 'opacity-0' : ''
-          }`}
-        >
-          <div
-            onClick={prevStep}
-            className="rounded-full w-[40px] h-[40px] border-primario-20 flex justify-center items-center border-2	mb-[33px]"
-          >
+      <div className="lg:w-[1127px] w-[528px] lg:gap-x-[120px] gap-x-[34px] mx-auto flex items-center mb-[77px]">
+        <div onClick={prevStep} className={`cursor-pointer flex items-center flex-col `}>
+          <div className="rounded-full w-[40px] h-[40px] border-primario-20 flex justify-center items-center border-2	mb-[33px]">
             <Icons
               icon="bcs-arrow-two-left"
               iconclassNames="text-[18px] font-bold text-primario-20"
             />
           </div>
           <a className=" text-primario-20 font-bold underline text-center text-[14px]">
-            Anterior
+            {actualStep === 1 ? 'Volver al Inicio' : 'Anterior'}
           </a>
         </div>
 
         <div
-          className="mx-auto lg:w-[757.2px] lg:h-[395px] flex flex-col justify-center items-start gap-y-3 pl-[63px] box-border"
+          className="mx-auto lg:w-[757.2px] w-[529px] h-[279px] lg:h-[395px] flex flex-col justify-center items-start gap-y-3  box-border"
           style={{
             backgroundImage: `url(${basePath}/images/consultancy/${actualStep}.png)`,
             backgroundRepeat: 'no-repeat',
@@ -107,7 +114,7 @@ const Consultancy = ({ options = initialOptions }: any) => {
               onClick={() => openModal(option?.label, index)}
               variant="secondary"
               isLanding={`p-0 z-10 w-[253px] font-semibold rounded-[8px] lg:h-48px ${
-                itemActive === option?.label ? 'translate-x-[16px] bg-primario-20' : ''
+                itemActive === option?.label ? 'translate-x-[16px] bg-primario-100' : ''
               }`}
             >
               <div className="flex justify-center">
@@ -121,6 +128,7 @@ const Consultancy = ({ options = initialOptions }: any) => {
               </div>
             </Button>
           ))}
+
           {itemActive !== '' ? (
             <div
               onClick={onCloseModal}
@@ -136,12 +144,7 @@ const Consultancy = ({ options = initialOptions }: any) => {
           ) : null}
         </div>
 
-        <div
-          onClick={nextStep}
-          className={`cursor-pointer flex items-center flex-col ${
-            actualStep === 4 ? 'opacity-0' : ''
-          }`}
-        >
+        <div onClick={nextStep} className={`cursor-pointer flex items-center flex-col`}>
           <div className="rounded-full w-[40px] h-[40px] border-primario-20 flex justify-center items-center border-2 mb-[33px]">
             <Icons
               icon="bcs-arrow-two-right"
@@ -149,12 +152,12 @@ const Consultancy = ({ options = initialOptions }: any) => {
             />
           </div>
           <a className=" text-primario-20 font-bold underline text-center text-[14px]">
-            Siguiente
+            {actualStep === 4 ? 'Salir' : 'Siguiente'}
           </a>
         </div>
       </div>
 
-      <div className="w-full text-center mb-[80px]">
+      <div className={`w-full text-center mb-[80px] ${actualStep === 1 ? 'hidden' : ''}`}>
         <a
           href={`${basePath}`}
           className=" text-primario-20 font-bold underline  text-[14px]"
