@@ -123,7 +123,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         fireInsurance ?
           <Card
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
-            title="Seguro de Incendio,Rayo y Terremoto"
+            title="Seguro de Incendio, Rayo y Terremoto"
             value={fireInsurance?.toString()}
             text="text-[20px] pl-[18px] font-semibold"
             urlsvg={`${basePath}/images/Home.svg`}
