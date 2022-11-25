@@ -12,12 +12,12 @@ interface CardProps {
   title: string;
   value?: string;
   text: string;
-  classtitle?:string;
-  subvalue?:string
-  textsub?:string;
-  tooltip?:boolean;
-  tooltiptext:React.ReactNode;
-  id?:string;
+  classtitle?: string;
+  subvalue?: string
+  textsub?: string;
+  tooltip?: boolean;
+  tooltiptext: React.ReactNode;
+  id?: string;
 }
 export const Card: React.FC<CardProps> = ({
   className,
@@ -47,25 +47,25 @@ export const Card: React.FC<CardProps> = ({
       </div>
       <p className={classtitle}>{title}</p>
       {tooltip ?
-      <ToolTipInfo
-      id="tax"
-      info=""
-      infohtml={tooltiptext}
-      icon={
-        <div
-          id="-group"
-          className="relative  w-5 h-4 flex flex-col items-center group"
-        >
-          <InfoIco />
-        </div>
+        <ToolTipInfo
+          id="tax"
+          info=""
+          infohtml={tooltiptext}
+          icon={
+            <div
+              id="-group"
+              className="relative  w-5 h-4 flex flex-col items-center group"
+            >
+              <InfoIco />
+            </div>
+          }
+        />
+        : null
       }
-    />
-    :null
-    }
-      
+
     </div>
     <div className={text}>
-      <p>{value}</p>
+      <p className='pl-[10px]'>{value}</p>
       <p className={`text-[${textsub}px]  pl-[5px]`}>{subvalue}</p>
     </div>
   </div>
