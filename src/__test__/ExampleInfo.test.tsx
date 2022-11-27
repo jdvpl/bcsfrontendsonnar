@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
-import Terminos from '../components/commons/Terminos';
+import { ExampleInfo } from '../components/commons/ExampleInfo';
 
-describe('Terminos', () => {
+describe('ExampleInfo', () => {
   test('should render "Terminos" successfully', () => {
-    const { baseElement } = render(<Terminos />);
+    const { baseElement } = render(<ExampleInfo />);
     expect(baseElement).toBeTruthy();
   });
 

@@ -3,8 +3,7 @@
 @import './tooltip.css';
 @font-face {
   font-family: 'bcs';
-  src: url('./font/bcs.ttf') format('truetype');
-
+  src: url('font/bcs.ttf') format('truetype');
   font-style: normal;
 }
 
@@ -71,7 +70,7 @@
 
 [class^='bcs-']:before,
 [class*=' bcs-']:before {
-  font-family: 'bcs';
+  font-family: bcs;
   font-style: normal;
 
   display: inline-block;

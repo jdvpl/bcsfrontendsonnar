@@ -3,7 +3,7 @@ import { ItemOne, ItemThree, ItemTwo } from '../icons/biometria/items';
 import { childrenProps } from '../../interfaces';
 
 
-const CardImage: React.FC <childrenProps> = ({ children }) => <div className="flex mr-6">{children}</div>;
+const CardImage: React.FC<childrenProps> = ({ children }) => <div className="flex mr-6">{children}</div>;
 
 export const Description: React.FC = () => (
   <div data-testid="descripcion-biometrica" className="">
@@ -38,7 +38,7 @@ export const Description: React.FC = () => (
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <line y1="0.75" x2="240" y2="0.75" stroke="#798C98" stroke-width="0.5" />
+            <line y1="0.75" x2="240" y2="0.75" stroke="#798C98" strokeWidth="0.5" />
           </svg>
         </div>
       </div>
@@ -64,7 +64,7 @@ export const Description: React.FC = () => (
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <line y1="0.75" x2="240" y2="0.75" stroke="#798C98" stroke-width="0.5" />
+            <line y1="0.75" x2="240" y2="0.75" stroke="#798C98" strokeWidth="0.5" />
           </svg>
         </div>
       </div>
