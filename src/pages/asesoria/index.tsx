@@ -57,22 +57,22 @@ const Consultancy = ({ options = initialOptions }: any) => {
     <>
       {itemActive !== '' ? (
         <div
-          className="bg-complementario-900/50 w-[100%] min-h-screen	fixed top-0 left-0"
+          className="bg-complementario-900/50 w-[100%] h-[300vh]	fixed top-0 left-0"
           onClick={() => setItemActive('')}
         />
       ) : null}
 
       <div className="w-[90%] m-auto">
-        <div className="flex justify-between lg:w-[1080px] mx-auto md:mb-[38px] md:mt-[64px] lg:mb-[82px] lg:mt-[59px]">
+        <div className="flex justify-between lg:w-[1080px] mx-auto mb-[38px] mt-[64px] lg:mb-[82px] lg:mt-[59px]">
           <div className="opacity-0 lg:opacity-100">
             <LogoBcs />
           </div>
           <LogoForm />
         </div>
-        <div className="lg:w-[825px] mx-auto md:w-[528px]">
+        <div className="lg:w-[825px] mx-auto w-[528px]">
           <Typography
             variant="h2"
-            className="lg:mb-[36px] md:mb-[48px] text-[28px] text-center"
+            className="lg:mb-[36px] mb-[48px] text-[28px] text-center"
           >
             Esto es lo primero que debe saber para comprar una vivienda
           </Typography>
@@ -80,7 +80,7 @@ const Consultancy = ({ options = initialOptions }: any) => {
             steps={4}
             actualStep={actualStep}
             percentage={40}
-            className="lg:w-[684px] md:w-[456px] mx-auto lg:mb-[59px] md:mb-[53px]"
+            className="lg:w-[684px] w-[456px] mx-auto lg:mb-[59px] mb-[53px]"
             title={stepperTitles[actualStep - 1]}
           />
         </div>
