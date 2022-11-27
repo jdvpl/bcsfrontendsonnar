@@ -24,12 +24,7 @@ const ValidationMessage: React.FC = () => {
       {isMobile ? (
         <div>
           <div className="pt-3 md:pt-0 w-full lg:mt-10">
-            <Stepper
-              step="1"
-              incomplete=""
-              title="Validación de identidad"
-              percentage=""
-            />
+            <Stepper steps={4} actualStep={0} title="Validación de identidad" />
           </div>
           <Heading>
             Por seguridad le pediremos tomar dos fotos de su rostro y compararemos con su
