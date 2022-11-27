@@ -77,7 +77,7 @@ const Index: React.FC = () => {
       <InactivityWarper>
         <Layout navTitle={<NavTitle noBack />}>
           {loading && <AnimationComponent show="" valid={loading} loaded={false} />}
-          <Stepper steps={4} actualStep={3} title="Validación de identidad" />
+          <Stepper steps={4} actualStep={1} title="Validación de identidad" />
           {data && !dataNumber && !dataValid && (
             <AnimatePresence>
               <ValidationForm
