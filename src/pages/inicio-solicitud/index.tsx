@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { FormData, RegisterForm } from '../../components/ui';
+import { FormData, RegisterForm } from '../../components/ui/Form';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../session';
 import LogoBcs from '../../components/svg/LogoBcs';

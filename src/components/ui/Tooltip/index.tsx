@@ -3,7 +3,7 @@ import { usePopperTooltip } from 'react-popper-tooltip';
 
 interface ToolTipProps {
   info: string;
-  infohtml?:React.ReactNode;
+  infohtml?: React.ReactNode;
   icon: React.ReactNode;
   id?: string;
   absolute?: boolean;
@@ -46,9 +46,8 @@ export const ToolTipInfo = ({
           id={`card-tooltip-${id}`}
           ref={setTooltipRef}
           {...getTooltipProps({
-            className: `tooltip-container max-w-[290px] ${
-              padding ? 'pall-24' : 'pall-15'
-            }`,
+            className: `tooltip-container max-w-[290px] ${padding ? 'pall-24' : 'pall-15'
+              }`,
           })}
         >
           {infohtml}
