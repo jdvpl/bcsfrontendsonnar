@@ -100,10 +100,10 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="xs:mt-[17rem] sm:mt-[15rem] md:mt-[87px] lg:mt-[42px] bg-gris-90 pb-10">
+      <div className="xs:mt-[20rem] sm:mt-[20rem] md:mt-[87px] lg:mt-[42px] bg-gris-90 pb-10">
         <Typography
           variant="h2"
-          className="text-center sm:my-[3rem] xs:my-[3rem] lg:mt-[42px] xlmt-[42px] md:pt-[80px] lg:pt-[80px] lg:mb-[64px]"
+          className="text-center sm:my-[3rem] xs:my-[3rem] lg:mt-[42px] xl-mt-[42px] md:pt-[80px] lg:pt-[80px] lg:mb-[64px] pt-20"
         >
           Requisitos
         </Typography>
@@ -152,7 +152,7 @@ export default function Home() {
       </div>
       {/* steps  */}
       <div className="container bg-white relative">
-        <Typography variant="h2" className="text-center lg:mt-[84px] lg:mb-[64px]">
+        <Typography variant="h2" className="text-center my-20 lg:mt-[84px] lg:mb-[64px]">
           En 4 pasos solicite su{' '}
           <span className="md:block">Crédito de Vivienda Digital</span>
         </Typography>
