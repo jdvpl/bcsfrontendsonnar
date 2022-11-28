@@ -11,24 +11,41 @@ import LogoBcs from '../components/svg/LogoBcs';
 import { Icons } from '../components/ui/icons';
 import { Questions } from '../components/ui/Accordion';
 import { basePath } from '../../next.config';
+import React from 'react'
+import { useMediaQuery } from "react-responsive";
+
 export default function Home() {
   const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, 'browser');
+  const isMobile = useMediaQuery({
+    query: "(max-width:575px)"
+  })
+  const isTablet = useMediaQuery({
+    query: "(min-width: 576px) and (max-width: 1023px)"
+  })
+  const isBrowser = useMediaQuery({
+    query: "(min-width: 1024px) "
+  })
   useEffect(
     () => () => {
       setDevice(deviceType);
     },
-    []
+    [device]
   );
+  console.log({ isMobile })
+  console.log({ isTablet });
+  console.log({ isBrowser });
 
   return (
     <div data-testid="landingPage" className="overflow-hidden">
-      <div className="lg:bg-[url('../public/images/backgroundLg.svg')] xl:bg-[url('../public/images/backgroundLg.svg')] xxl:bg-[url('../public/images/backgroundLg.svg')] md:bg-[url('../public/images/backgroundMd.svg')] sm:bg-[url('../public/images/backgroundSm.svg')] xs:bg-[url('../public/images/backgroundSm.svg')] bg-no-repeat  -z-30 bg-cover xs:bg-bottom sm:bg-bottom md:bg-bottom lg:bg-top xl:bg-bottom xs:h-[540px] sm:h-[580px] md:h-[650px] lg:h-[715px] xl:h-[715px] xxl:bg-top xxl:h-[910px]">
+      <div className="lg:bg-[url('../public/images/backgroundLg.svg')] xl:bg-[url('../public/images/backgroundLg.svg')] xxl:bg-[url('../public/images/backgroundLg.svg')] md:bg-[url('../public/images/backgroundMd.svg')] sm:bg-[url('../public/images/backgroundSm.svg')] xs:bg-[url('../public/images/backgroundSm.svg')] bg-no-repeat  -z-30 bg-cover xs:bg-bottom sm:bg-bottom md:bg-bottom lg:bg-center xl:bg-bottom xs:h-[540px] sm:h-[580px] md:h-[650px] lg:h-[755px] xl:h-[715px] xxl:bg-top xxl:h-[910px]">
         <div
           className=" container flex justify-start items-baseline xs:pt-3 xs:pl-2 sm:pt-3 ms:pl-2 md:pl-6 md:pt-6 lg:pt-5 lg:pl-10 xl:pt-5 xxl:pl-0 xxl:ml-20"
           itemScope
           itemProp="logo"
         >
-          {device === 'browser' ? <LogoBcs /> : <LogoBcsWhite />}
+          {isMobile ? <LogoBcsWhite /> : null}
+          {isBrowser ? <LogoBcs /> : null}
+          {isTablet ? <LogoBcsWhite /> : null}
         </div>
         <div className="xs:pt-3 sm:pt-3 md:flex md:justify-end md:mr-[7rem] lg:flex lg:justify-center lg:mt-[6rem] lg:pl-[20rem] xxl:mt-[9rem] md:mt-[4rem]">
           <div className="md:flex md:flex-col">
