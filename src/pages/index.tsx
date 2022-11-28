@@ -31,9 +31,6 @@ export default function Home() {
     },
     [device]
   );
-  console.log({ isMobile })
-  console.log({ isTablet });
-  console.log({ isBrowser });
 
   return (
     <div data-testid="landingPage" className="overflow-hidden">
