@@ -1,4 +1,5 @@
 import { PDFDownloadLink } from '@react-pdf/renderer';
+import React from 'react';
 import { basePath } from '../../../../next.config';
 import PDFDocumentData from '../Pdf';
 
