@@ -33,6 +33,7 @@ export interface FormData {
 const KEY = process.env.KEYENCRYPTADIGITAL;
 
 export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
+  console.log(JSON.stringify(questions));
   const [dataTU, setDataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const [, setEncript] = useSessionStorage(SesionStorageKeys.dataTuEncripPhone.key, '');
   const [, setProcessBiometry] = useSessionStorage(
@@ -196,10 +197,9 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
                       htmlFor="number"
                       className={`flex items-center bg-white cursor-pointer  w-full border  rounded-md px-5 py-[17px]
                         border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black  shadow-small-300  font-semibold
-                        ${
-                          answer.id === inputValues
-                            ? 'shadow-none border-primario-600 text-primario-600'
-                            : ''
+                        ${answer.id === inputValues
+                          ? 'shadow-none border-primario-600 text-primario-600'
+                          : ''
                         }`}
                       onClick={() => {
                         setValue(`number`, answer.id);
