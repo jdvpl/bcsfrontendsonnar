@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import React, {useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { isTablet, isMobile, isDesktop, isIPad13 } from 'react-device-detect';
 import Image from 'next/image';
 import { ValidationMessageBiometry } from '../../components/biometria/error-validacion';
@@ -83,7 +83,7 @@ const ValidationMessage: React.FC = () => {
       setShowAnimation(false);
       setValidated(false);
     } else if (isMobile || isTablet || window.innerWidth <= 1000) {
-      console.log("incio biometria")
+      console.log('incio biometria');
     }
   }, []);
 
@@ -114,10 +114,9 @@ const ValidationMessage: React.FC = () => {
           <div>
             <div className="pt-3 md:pt-0 w-full lg:mt-10">
               <Stepper
-                step="1"
-                incomplete=""
+                steps={1}
+                actualStep={0}
                 title="Validación de identidad"
-                percentaje=""
               />
             </div>
             <Heading>

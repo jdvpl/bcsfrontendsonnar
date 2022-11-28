@@ -1,7 +1,7 @@
 import { deviceType } from 'react-device-detect';
 import { useEffect } from 'react';
 import LogoBcsWhite from '../components/svg/LogoBcsWhite';
-import Typography from '../components/ui/Tipography';
+import Typography from '../components/ui/Typography';
 import { useSessionStorage } from '../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../session';
 import LogoViviendaWhite from '../components/svg/LogoViviendaWhite';
@@ -12,7 +12,7 @@ import { Icons } from '../components/ui/icons';
 import { Questions } from '../components/ui/Accordion';
 import { basePath } from '../../next.config';
 export default function Home() {
-  const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, '');
+  const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, 'browser');
   useEffect(
     () => () => {
       setDevice(deviceType);
@@ -60,7 +60,7 @@ export default function Home() {
             color="text-primario-300"
             label={`Iniciar asesoría ${device !== 'mobile' ? 'interactiva' : ''}`}
             description="Aquí encontrará todo lo que debe saber para comprar una vivienda."
-            pathTo={routes.startProccess}
+            pathTo={routes.consultancy}
             className="sm:mt-4 xs:mt-4"
             onclick
           />
