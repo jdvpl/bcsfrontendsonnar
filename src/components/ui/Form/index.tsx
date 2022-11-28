@@ -8,7 +8,7 @@ import Modal from '../Modal';
 import Input from '../inputs';
 import LogoForm from '../../svg/LogoForm';
 import ReactHookFormSelect from '../Select/newSelect';
-import Typography from '../Tipography';
+import Typography from '../Typography';
 
 interface FormProps {
   onSubmit: (data: FormData) => void;

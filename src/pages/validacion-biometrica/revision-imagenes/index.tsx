@@ -86,7 +86,7 @@ const RevisionImagenes: React.FC = () => {
   //       const dataResponse: any = await response.json();
 
   //       const code = dataResponse.internal_code;
-        
+
   //       switch (code) {
   //         case 'VQ-01':
   //           urlAndUtms(router, '/');
@@ -130,7 +130,11 @@ const RevisionImagenes: React.FC = () => {
       )}
       <div data-testid="revision">
         <div className="pt-3 md:pt-0 w-full lg:mt-10">
-          <Stepper step="1" incomplete="" title="Validación de identidad" percentaje="" />
+          <Stepper
+            steps={1}
+            actualStep={0}
+            title="Validación de identidad"
+          />
         </div>
 
         <div>

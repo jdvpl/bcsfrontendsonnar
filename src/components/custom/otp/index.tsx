@@ -6,7 +6,7 @@ import { routes } from '../../../routes';
 import { reSendOTPCode, validateOTOCode } from '../../../services';
 import { Icons } from '../../ui';
 import { OTLoader } from '../../ui/Loaders/OTPloader';
-import Typography from '../../ui/Tipography';
+import Typography from '../../ui/Typography';
 
 export interface ValidateOTC {
   pin: string;
@@ -20,7 +20,7 @@ export interface OTPCodeRequest {
 }
 
 export function Otp() {
-  const [dataTU,] = useSessionStorage('dataTU', '');
+  const [dataTU, ] = useSessionStorage('dataTU', '');
   const [otp, setOtp] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(60);
