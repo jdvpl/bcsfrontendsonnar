@@ -64,11 +64,13 @@ const Consultancy = ({ options = initialOptions }: any) => {
       ) : null}
 
       <div className="w-[90%] m-auto">
-        <div className="flex justify-between lg:w-[1080px] mx-auto mb-[38px] mt-[64px] lg:mb-[82px] lg:mt-[59px]">
+        <div className="flex justify-between lg:w-[1080px] mx-auto mb-[38px] mt-[64px] lg:mb-[82px] lg:mt-[59px] lg:h-[29px] h-[18px]">
           <div className="opacity-0 lg:opacity-100">
             <LogoBcs />
           </div>
-          <LogoForm />
+          <div className="lg:w-[280px] w-[180px]">
+            <LogoForm />
+          </div>
         </div>
         <div className="lg:w-[825px] mx-auto w-[528px]">
           <Typography
