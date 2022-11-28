@@ -32,15 +32,15 @@ stages:
         displayName: 'Npm: test'
       - task: SonarCloudAnalyze@1
         displayName: 'Sonar: Analyze'
-      - task: SonarCloudPublish@1
-        inputs:
-          pollingTimeoutSec: '300'
-        displayName: 'Sonar: Publish'
-      - task: sonarcloud-buildbreaker@2
-        inputs:
-          SonarCloud: 'SonarCloud'
-          organization: 'equipoinnovaciondigital'
-        displayName: 'Sonar: Validation Status Sonar'
+#      - task: SonarCloudPublish@1
+#        inputs:
+#          pollingTimeoutSec: '300'
+#        displayName: 'Sonar: Publish'
+#      - task: sonarcloud-buildbreaker@2
+#        inputs:
+#          SonarCloud: 'SonarCloud'
+#          organization: 'equipoinnovaciondigital'
+#        displayName: 'Sonar: Validation Status Sonar'
 
 - stage: Artifact
   displayName: 'Artifact'
