@@ -1,5 +1,5 @@
 import { HelperText } from './HelperText';
-
+import React from 'react'
 export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   /**
    * Icon on the left side of the text box
@@ -90,10 +90,9 @@ export function Input({
   h-12 bg-[transparent] block py-2 px-3 w-full text-sm leading-none
     ${error ? 'text-complementario-100' : 'text-primario-900'}
     bg-transparent border-[0.03125rem] rounded-md
-    ${
-      error
-        ? 'border-rojo-100 focus:border-rojo-100'
-        : 'border-[#798c98a6] focus:border-primario-20'
+    ${error
+      ? 'border-rojo-100 focus:border-rojo-100'
+      : 'border-[#798c98a6] focus:border-primario-20'
     }
     appearance-none  peer focus:border focus:outline-none`;
 

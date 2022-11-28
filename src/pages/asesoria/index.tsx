@@ -4,7 +4,7 @@ import { basePath } from '../../../next.config';
 import Close from '../../components/svg/Close';
 import LogoBcs from '../../components/svg/LogoBcs';
 import LogoForm from '../../components/svg/LogoForm';
-import { Icons } from '../../components/ui';
+import { Icons } from '../../components/ui/icons';
 import Button from '../../components/ui/Button';
 import Stepper from '../../components/ui/Stepper';
 import Typography from '../../components/ui/Typography';
@@ -116,15 +116,13 @@ const Consultancy = ({ options = initialOptions }: any) => {
               key={option?.label}
               onClick={() => openModal(option?.label, index)}
               variant="secondary"
-              isLanding={`p-0 z-10 w-[253px] font-semibold rounded-[8px] lg:h-48px ${
-                itemActive === option?.label ? 'translate-x-[16px] bg-primario-100' : ''
-              }`}
+              isLanding={`p-0 z-10 w-[253px] font-semibold rounded-[8px] lg:h-48px ${itemActive === option?.label ? 'translate-x-[16px] bg-primario-100' : ''
+                }`}
             >
               <div className="flex justify-center">
                 <span
-                  className={`text-center ${
-                    itemActive === option?.label ? 'text-white' : 'text-primario-100'
-                  } text-[18px] p-0`}
+                  className={`text-center ${itemActive === option?.label ? 'text-white' : 'text-primario-100'
+                    } text-[18px] p-0`}
                 >
                   {option?.label}
                 </span>
