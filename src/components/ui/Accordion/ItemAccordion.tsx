@@ -16,9 +16,6 @@ export const ItemAccordion: React.FC<Props & childrenProps> = ({
   children,
 }) => {
 
-  const setActiveOpo = () => {
-    return !active;
-  }
   return (
     <div
       data-testid="accordion"
