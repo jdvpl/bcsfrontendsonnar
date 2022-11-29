@@ -18,24 +18,24 @@ export const initialOptions = [
           <div style={{paddingLeft:"20px"}}>
             <ol className="list-decimal mb-3 list-inside">
               <li>
-                <span className="font-medium text-primario-900">Sobre planos:</span>
-                <p className="inline-block font-light">{" "}Cuando aún está en construcción.</p>
+                <span className="font-semibold text-primario-900">Sobre planos: </span>
+                <p className="inline-block font-medium">{" "}Cuando aún está en construcción.</p>
               </li>
               <li>
-                <span className="font-medium text-primario-900">Edificado: </span>
-                <p className="inline-block font-light">Una vez terminada la obra.</p>
+                <span className="font-semibold text-primario-900">Edificado: </span>
+                <p className="inline-block font-medium">Una vez terminada la obra.</p>
               </li>
             </ol>
           </div>
           <span className="font-bold text-primario-900">Ventajas:</span>
           <ol className="list-decimal mb-3 list-inside ml-2 special-list">
             <li className="my-3 ">
-              <span className="font-light">
+              <span className="font-medium">
                 Este tipo de vivienda permite pagar la cuota inicial en un amplio plazo
               </span>
             </li>
             <li className="my-3 ">
-              <span className="font-light">
+              <span className="font-medium">
                 Su valorización es rápida, normalmente estas nuevas viviendas están
                 ubicadas en zonas de gran proyección urbanística
               </span>
@@ -56,12 +56,12 @@ export const initialOptions = [
           <span className="font-semibold text-primario-900">Ventajas:</span>
           <ol className="list-decimal mb-3 list-inside ml-2 special-list">
             <li className="my-3">
-              <span className="font-light">
+              <span className="font-medium">
                 La entrega de una vivienda usada es casi inmediata
               </span>
             </li>
             <li className="my-3">
-              <span className="font-light">
+              <span className="font-medium">
                 Normalmente están ubicadas en zonas urbanísticas ya consolidadas y esto
                 garantiza un valor comercial seguro.
               </span>

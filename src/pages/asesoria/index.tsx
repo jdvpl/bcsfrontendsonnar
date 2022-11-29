@@ -154,7 +154,7 @@ const Consultancy = ({ options = initialOptions }: any) => {
               onClick={onCloseModal}
               className="lg:w-[465px] w-[287px] rounded-md absolute bg-white z-9 ml-[263px] p-[33px] box-border cursor-pointer"
             >
-              <div className="absolute cursor-pointer rounded-full top-[-22px] right-[-22px] p-[6px] bg-primario-20/30">
+              <div className="absolute cursor-pointer rounded-full top-[-22px] right-[-22px] p-[6px] text-primario-900 bg-primario-20/30">
                 <div className="rounded-full h-[44.24px] w-[44.24px] bg-primario-20 flex justify-center items-center">
                   <Close />
                 </div>
