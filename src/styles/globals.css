@@ -1190,4 +1190,5 @@ input[type='checkbox']:checked {
 .special-list li span {
   margin-left: 15px;
   display: inline-block;
+  color:#00253d;
 }
