@@ -54,20 +54,20 @@ const Consultancy = ({ options = initialOptions }: any) => {
     );
   };
 
-  const positionImages =()=>{
+  const positionImages = () => {
     switch (actualStep) {
       case 1:
-        return '40px'
+        return '40px';
       case 2:
-        return '55px'
+        return '55px';
       case 3:
-        return '30px'
+        return '30px';
       case 4:
-        return '10px'
+        return '10px';
       default:
-        return '10px'
+        return '10px';
     }
-  }
+  };
 
   return (
     <>
@@ -105,7 +105,7 @@ const Consultancy = ({ options = initialOptions }: any) => {
       </div>
 
       <div className="lg:w-[1127px] w-[528px] lg:gap-x-[120px] gap-x-[34px] mx-auto flex items-center mb-[77px]">
-        <div onClick={prevStep} className={`cursor-pointer flex items-center flex-col `}>
+        <div onClick={prevStep} className={`cursor-pointer flex items-center flex-col lg:w-[150px]`}>
           <div className="rounded-full w-[40px] h-[40px] border-primario-20 flex justify-center items-center border-2	mb-[33px]">
             <Icons
               icon="bcs-arrow-two-left"
@@ -118,13 +118,15 @@ const Consultancy = ({ options = initialOptions }: any) => {
         </div>
 
         <div
-          className="mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:h-[395px] flex flex-col justify-center items-start gap-y-3  box-border"
+          className={`${
+            itemActive !== '' ? 'sm:ml-[-95px]' : ''
+          }  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] flex flex-col justify-center items-start gap-y-3  box-border`}
           style={{
             backgroundImage: `url(${basePath}/images/consultancy/${actualStep}.png)`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'contain',
             backgroundPositionY: 'center',
-            backgroundPositionX:positionImages() ,
+            backgroundPositionX: positionImages(),
           }}
         >
           {options[actualStep - 1]?.map((option: any, index: number) => (
@@ -147,7 +149,6 @@ const Consultancy = ({ options = initialOptions }: any) => {
               </div>
             </Button>
           ))}
-
           {itemActive !== '' ? (
             <div
               onClick={onCloseModal}
@@ -163,7 +164,7 @@ const Consultancy = ({ options = initialOptions }: any) => {
           ) : null}
         </div>
 
-        <div onClick={nextStep} className={`cursor-pointer flex items-center flex-col`}>
+        <div onClick={nextStep} className={`cursor-pointer flex items-center flex-col lg:w-[150px]`}>
           <div className="rounded-full w-[40px] h-[40px] border-primario-20 flex justify-center items-center border-2 mb-[33px]">
             <Icons
               icon="bcs-arrow-two-right"
