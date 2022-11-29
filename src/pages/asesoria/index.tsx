@@ -177,7 +177,7 @@ const Consultancy = ({ options = initialOptions }: any) => {
         </div>
       </div>
 
-      <div className={`w-full text-center mb-[80px] ${actualStep === 1 ? 'hidden' : ''}`}>
+      <div className={`w-full text-center mb-[80px] ${actualStep === 1 || actualStep === 4 ? 'hidden' : ''}`}>
         <a
           href={`${basePath}`}
           className=" text-primario-20 font-bold underline  text-[14px]"
