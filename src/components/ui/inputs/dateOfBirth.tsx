@@ -273,6 +273,7 @@ const DateOfBirth: React.FC<InputProps> = ({
             name="day"
             className="w-100"
             label="Día"
+            dataTestId="dayDateOfBithTest"
             control={control}
             defaultValue={fields.day || ''}
             margin="normal"
@@ -298,6 +299,7 @@ const DateOfBirth: React.FC<InputProps> = ({
             defaultValue={fields.month || ''}
             value={fields.month}
             margin="normal"
+            dataTestId="monthDateOfBithTest"
             onChange={(e: any) => setValue('month', e.target.value)}
           >
             {months.map((a) => (
@@ -326,6 +328,7 @@ const DateOfBirth: React.FC<InputProps> = ({
                 tabIndex={0}
                 type="text"
                 inputMode="numeric"
+                dataTestId="yearDateOfBithTest"
                 maxLength={4}
                 id={`${id}-year`}
               />
@@ -338,7 +341,7 @@ const DateOfBirth: React.FC<InputProps> = ({
       </div>
       <div className="flex justify-end mr-[0.3rem] md:mr-[2rem] lg:mr-[6rem]">
         {ageError && (
-          <div className="mt-[5px]">
+          <div className="mt-[5px]" data-testid="messageErrorDateOfBirth">
             <MessageError message={ageError} />
           </div>
         )}
