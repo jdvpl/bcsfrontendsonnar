@@ -2,7 +2,7 @@ import InputLabel from '@mui/material/InputLabel';
 
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
+import React from 'react'
 import { Controller } from 'react-hook-form';
 
 import { useEffect, useState } from 'react';
@@ -21,6 +21,7 @@ const ReactHookFormSelect: React.FC<any> = ({
   rules,
   helperText,
   error = false,
+  dataTestId,
   ...props
 }) => {
   const labelId = `${name}-label`;
@@ -70,6 +71,7 @@ const ReactHookFormSelect: React.FC<any> = ({
           <Select
             id={labelId}
             margin="none"
+            data-testid={dataTestId}
             {...field}
             key={props.id}
             sx={{
