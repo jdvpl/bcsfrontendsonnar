@@ -18,6 +18,7 @@ interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   error?: any;
   helper?: string;
   errorText?: string;
+  dataTestId?: string;
 }
 
 const NewInput = forwardRef<HTMLInputElement, InputProps>(
@@ -34,6 +35,7 @@ const NewInput = forwardRef<HTMLInputElement, InputProps>(
       helper,
       error,
       errorText,
+      dataTestId = "newInputTest",
       ...props
     },
     ref
@@ -49,14 +51,13 @@ const NewInput = forwardRef<HTMLInputElement, InputProps>(
             ref={ref}
             maxLength={maxLength}
             type={type}
+            data-testid={dataTestId}
             id={props.id}
-            className={` w-100 hover-input h-12 bg-[transparent] block py-2 pr-3.5 pl-3  w-full text-sm leading-none text-primario-900 bg-transparent border  rounded-md border-[#798c98a6] appearance-none focus:border-1  focus:border-primario-100   ${
-              errorLabel ? 'error-class border-2' : 'focus:focus-new  active:focus-new'
-            }
+            className={` w-100 hover-input h-12 bg-[transparent] block py-2 pr-3.5 pl-3  w-full text-sm leading-none text-primario-900 bg-transparent border  rounded-md border-[#798c98a6] appearance-none focus:border-1  focus:border-primario-100   ${errorLabel ? 'error-class border-2' : 'focus:focus-new  active:focus-new'
+              }
             
-            ${
-              disabled ? 'br-gray' : ''
-            } peer focus:border focus:outline-none error:bg-rojo-100`}
+            ${disabled ? 'br-gray' : ''
+              } peer focus:border focus:outline-none error:bg-rojo-100`}
             placeholder=" "
             {...props}
             onWheelCapture={(e) => {
@@ -88,11 +89,9 @@ const NewInput = forwardRef<HTMLInputElement, InputProps>(
           />
           <label
             htmlFor="floating_text"
-            className={`peer-placeholder-shown:z-[-1] peer-focus:z-0 z-0  absolute text-sm ${
-              disabled ? 'native-azul_gris-100' : 'native-secondary-300'
-            }  duration-300 peer-placeholder-shown:color-desactivado ${
-              internalState ? 'color-activado' : 'color-desactivado'
-            } transform -translate-y-5 scale-75 top-2 origin-[0] bg-white px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-6 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-5 left-1.5`}
+            className={`peer-placeholder-shown:z-[-1] peer-focus:z-0 z-0  absolute text-sm ${disabled ? 'native-azul_gris-100' : 'native-secondary-300'
+              }  duration-300 peer-placeholder-shown:color-desactivado ${internalState ? 'color-activado' : 'color-desactivado'
+              } transform -translate-y-5 scale-75 top-2 origin-[0] bg-white px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-6 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-5 left-1.5`}
           >
             {label}
           </label>
