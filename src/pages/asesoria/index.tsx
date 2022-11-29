@@ -54,6 +54,21 @@ const Consultancy = ({ options = initialOptions }: any) => {
     );
   };
 
+  const positionImages =()=>{
+    switch (actualStep) {
+      case 1:
+        return '40px'
+      case 2:
+        return '55px'
+      case 3:
+        return '30px'
+      case 4:
+        return '10px'
+      default:
+        return '10px'
+    }
+  }
+
   return (
     <>
       {itemActive !== '' ? (
@@ -103,12 +118,13 @@ const Consultancy = ({ options = initialOptions }: any) => {
         </div>
 
         <div
-          className="mx-auto lg:w-[757.2px] w-[529px] h-[279px] lg:h-[395px] flex flex-col justify-center items-start gap-y-3  box-border"
+          className="mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:h-[395px] flex flex-col justify-center items-start gap-y-3  box-border"
           style={{
             backgroundImage: `url(${basePath}/images/consultancy/${actualStep}.png)`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'contain',
-            backgroundPosition: '50%',
+            backgroundPositionY: 'center',
+            backgroundPositionX:positionImages() ,
           }}
         >
           {options[actualStep - 1]?.map((option: any, index: number) => (
@@ -116,13 +132,15 @@ const Consultancy = ({ options = initialOptions }: any) => {
               key={option?.label}
               onClick={() => openModal(option?.label, index)}
               variant="secondary"
-              isLanding={`p-0 z-10 w-[253px] font-semibold rounded-[8px] lg:h-48px ${itemActive === option?.label ? 'translate-x-[16px] bg-primario-100' : ''
-                }`}
+              isLanding={`p-0 z-10 w-[253px] font-semibold rounded-[8px] lg:h-48px ${
+                itemActive === option?.label ? 'translate-x-[16px] bg-primario-100' : ''
+              }`}
             >
               <div className="flex justify-center">
                 <span
-                  className={`text-center ${itemActive === option?.label ? 'text-white' : 'text-primario-100'
-                    } text-[18px] p-0`}
+                  className={`text-center ${
+                    itemActive === option?.label ? 'text-white' : 'text-primario-100'
+                  } text-[18px] p-0`}
                 >
                   {option?.label}
                 </span>
