@@ -1,13 +1,11 @@
 import Link from 'next/link';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { ItemAccordion } from './ItemAccordion';
 
 export const Questions: FC = () => {
-  const [selected, setSelected] = useState<null | string>('4');
+  const [selected, setSelected] = useState<null | string>('');
 
-  useEffect(() => {
-    setSelected('1');
-  }, []);
+
 
   return (
     <section
@@ -29,7 +27,7 @@ export const Questions: FC = () => {
             id="1"
             active={selected === '1'}
             title="¿Cuales son los gastos adicionales al momento de comprar vivienda?"
-            setSelected={(item) => setSelected(item)}
+            setSelected={(item: any) => selected === '1' ? setSelected(item + item) : setSelected(item)}
           >
             <>
               Para el proceso de legalización es necesario contemplar los gastos de
@@ -44,7 +42,7 @@ export const Questions: FC = () => {
             id="2"
             active={selected === '2'}
             title="¿El banco me presta el 100% del valor de la vivienda?"
-            setSelected={(item) => setSelected(item)}
+            setSelected={(item: any) => selected === '2' ? setSelected(item + item) : setSelected(item)}
           >
             No, debido a la ley de vivienda el banco tiene permitido prestar para crédito
             hipotecario hasta el 80% del valor total del inmueble para vivienda VIS y 70%
@@ -54,7 +52,7 @@ export const Questions: FC = () => {
             id="3"
             active={selected === '3'}
             title="¿Debo elegir la vivienda antes o despues de pedir el crédito hipotecario?"
-            setSelected={(item) => setSelected(item)}
+            setSelected={(item: any) => selected === '3' ? setSelected(item + item) : setSelected(item)}
           >
             No existe un orden obligatorio, lo recomendable es que las personas primero
             conozcan cuanto les puede prestar el banco y posteriormente con ese
@@ -66,7 +64,7 @@ export const Questions: FC = () => {
             id="4"
             active={selected === '4'}
             title="¿Cuales son los factores que analiza el banco para aprobar un crédito hipotecario?"
-            setSelected={(item) => setSelected(item)}
+            setSelected={(item: any) => selected === '4' ? setSelected(item + item) : setSelected(item)}
           >
             Nosotros tenemos en cuenta los siguientes factores:
             <ul className="list-disc ml-6 mt-3">
