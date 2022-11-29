@@ -145,7 +145,7 @@ export const initialOptions = [
           <p className="font-medium my-3">
             <a
               className="font-semibold text-primario-900 underline"
-              href={basePath + routes?.startProccess}
+            href={basePath + routes?.startProccess}
             >
               Solicite su crédito digital aquí
             </a>{' '}
