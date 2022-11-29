@@ -18,8 +18,6 @@ const KEY = process.env.KEYKYCHASH;
 const RevisionImagenes: React.FC = () => {
   const router = useRouter();
   const { selfies, setSelfieSonriendo, setSelfieNormal } = useContext(AplicationContext);
-  console.log('1', selfies.sonriendo.image);
-  console.log('2', selfies.sonriendo.image_alive);
   const [showAnimation, setShowAnimation] = useState(false);
   const [, setIsLoading] = useState(true);
   const [validated, setValidated] = useState(false);
