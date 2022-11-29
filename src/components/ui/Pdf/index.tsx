@@ -204,6 +204,6 @@ const PDFDocumentData = ({ infoData }: iPdfProps) => {
       }
     </Document>
   );
-};
+}
 
 export default PDFDocumentData;

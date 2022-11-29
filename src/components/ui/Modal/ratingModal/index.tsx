@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { RateForm } from '../../Form/ratingForm';
 import Icons from '../../icons';
 
-export function RatingModal() {
+export const RatingModal = () => {
   const [isOpen, setIsOpen] = useState<boolean>(true);
   const onOpenModal = (): void => {
     setIsOpen(!isOpen);

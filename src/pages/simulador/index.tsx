@@ -11,7 +11,7 @@ import { sendSimulationData } from '../../services/index';
 import { routes } from '../../routes';
 import HouseSimulator from '../../components/ui/Form/houseSimulator/HouseSimulator';
 
-function Simulator() {
+const Simulator = () => {
   const [dataFormQuota, setdataFormQuota] = useSessionStorage(
     SesionStorageKeys.dataFormSimulation.key,
     {}

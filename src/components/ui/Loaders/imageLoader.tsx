@@ -15,8 +15,7 @@ interface Img {
 
 const myLoader = ({ src }: Img) => `${src}`;
 
-function ImageLoader({ alt, title, itemprop, ...props }: Img) {
-  return (
+const ImageLoader = ({ alt, title, itemprop, ...props }: Img) => (
     <Image
       data-testid="imageLoader"
       layout="responsive"
@@ -29,7 +28,6 @@ function ImageLoader({ alt, title, itemprop, ...props }: Img) {
       title={title}
       itemProp="image"
     />
-  );
-}
+  )
 
 export default ImageLoader;

@@ -1,6 +1,6 @@
 import React from 'react';
-import Ratings from '../pages/calificacion-solicitud';
 import { render } from '@testing-library/react';
+import Ratings from '../pages/calificacion-solicitud';
 import '@testing-library/jest-dom/extend-expect';
 
 describe('<Ratings/>', () => {

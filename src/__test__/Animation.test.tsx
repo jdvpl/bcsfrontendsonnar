@@ -6,7 +6,7 @@ import Animation from '../components/commons/Animation';
 
 describe('Visibility animation', () => {
   it('appear success message', async () => {
-    render(<Animation show="block" loaded={true} valid={true} />);
+    render(<Animation show="block" loaded valid />);
     const successMessage = screen.getByTestId('success-message');
     expect(successMessage).toBeInTheDocument();
   });

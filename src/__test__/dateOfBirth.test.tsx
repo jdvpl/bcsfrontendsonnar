@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import DateOfBirth from '../components/ui/inputs/dateOfBirth';
 import userEvent from "@testing-library/user-event";
+import DateOfBirth from '../components/ui/inputs/dateOfBirth';
 
 const mkFn = jest.fn()
 describe('dateOfBirth testing', () => {

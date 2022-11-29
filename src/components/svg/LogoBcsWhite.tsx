@@ -1,5 +1,4 @@
-function LogoBcsWhite() {
-  return (
+const LogoBcsWhite = () => (
     <svg
       width="189"
       height="48"
@@ -280,7 +279,6 @@ function LogoBcsWhite() {
         fill="#38A1D4"
       />
     </svg>
-  );
-}
+  )
 
 export default LogoBcsWhite;

@@ -3,7 +3,7 @@ import { createContext, useState } from 'react';
 
 export const AplicationContext = createContext();
 
-export function AplicationProvider(props) {
+export const AplicationProvider = (props) => {
   const [fotosCedula, setFotosCedula] = useState({
     delantera: '',
     trasera: '',

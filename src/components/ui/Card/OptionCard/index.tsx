@@ -8,12 +8,11 @@ export interface CardOption {
   onChangeActualOption: (option: RatingsOptions) => void;
 }
 
-export function CardOption({
+export const CardOption = ({
   option,
   actualOption,
   onChangeActualOption,
-}: CardOption) {
-  return (
+}: CardOption) => (
     <div onClick={() => onChangeActualOption(option)} className="w-full">
       <input type="radio" className="hidden" value={option?.value} />
       <label
@@ -47,5 +46,4 @@ export function CardOption({
         )}
       </label>
     </div>
-  );
-}
+  )

@@ -90,8 +90,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
       });
       setEncript(formData.number);
       setTimeout(() => proccessResponse(routes.otp), 1000);
-    } else {
-      if (response.status === 403) {
+    } else if (response.status === 403) {
         const code = response.response.internal_code;
         switch (code) {
           case 'VQ-01':
@@ -117,7 +116,6 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
       } else {
         router.push('/validacion/error/');
       }
-    }
   };
   return (
     <motion.div

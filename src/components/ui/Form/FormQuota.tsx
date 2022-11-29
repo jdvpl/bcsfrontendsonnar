@@ -95,8 +95,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
 
           <div className="flex flex-col mt-4">
             <Controller
-              render={({ field }) => {
-                return (
+              render={({ field }) => (
                   <Input
                     helperText={errors.monthlySalaryE?.message}
                     type="text"
@@ -115,8 +114,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                       field.onChange(e.target.value.replace(/[^0-9]/g, ''));
                     }}
                   />
-                );
-              }}
+                )}
               name="monthlySalary"
               control={control}
             />
@@ -124,8 +122,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
           <div className="flex mt-4 gap-3">
             <Controller
               rules={{ required: true }}
-              render={({ field }) => {
-                return (
+              render={({ field }) => (
                   <Input
                     helperText={errors.amountQuotaE?.message}
                     type="text"
@@ -149,8 +146,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                       field.onChange(e.target.value.replace(/[^0-9]/g, ''));
                     }}
                   />
-                );
-              }}
+                )}
               name="amountQuota"
               control={control}
             />

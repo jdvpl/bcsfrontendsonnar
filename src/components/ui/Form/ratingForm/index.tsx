@@ -9,7 +9,7 @@ import { Qualify } from '../../../custom/qualify';
 import Button from '../../Button';
 import { CardOption } from '../../Card/OptionCard';
 
-export function RateForm() {
+export const RateForm = () => {
   const [rate, setRate] = useState<number>(-1);
   const [actualOption, setActualOption] = useState<RatingsOptions>({
     id: '',

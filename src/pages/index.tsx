@@ -11,6 +11,7 @@ import LogoBcs from '../components/svg/LogoBcs';
 import { Icons } from '../components/ui';
 import { Questions } from '../components/ui/Accordion';
 import { basePath } from '../../next.config';
+
 export default function Home() {
   const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, '');
   useEffect(

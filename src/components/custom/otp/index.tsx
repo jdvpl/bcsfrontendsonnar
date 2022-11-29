@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { useState, useEffect, useRef } from 'react';
-import OtpInput from 'react-otp-input-rc-17';
+import OtpInput from 'react18-input-otp';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { routes } from '../../../routes';
 import { reSendOTPCode, validateOTOCode } from '../../../services';
@@ -19,7 +19,7 @@ export interface OTPCodeRequest {
   phone: string;
 }
 
-export function Otp() {
+export const Otp = () => {
   const [dataTU,] = useSessionStorage('dataTU', '');
   const [otp, setOtp] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(false);

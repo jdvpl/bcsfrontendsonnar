@@ -5,7 +5,7 @@ import { childrenProps } from '../../interfaces';
 
 const CardImage: React.FC<childrenProps> = ({ children }) => <div className="flex mr-6">{children}</div>;
 
-export const Description: React.FC = () => (
+const Description: React.FC = () => (
   <div data-testid="descripcion-biometrica" className="">
     <p
       tabIndex={0}
@@ -83,3 +83,5 @@ export const Description: React.FC = () => (
     </div>
   </div>
 );
+
+export default Description

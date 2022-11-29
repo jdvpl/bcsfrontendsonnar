@@ -1,5 +1,4 @@
-function LogoForm({w}:any) {
-  return (
+const LogoForm = ({w}:any) => (
     <svg
       width="100%"
       height="32"
@@ -82,7 +81,6 @@ function LogoForm({w}:any) {
         fill="#005DA2"
       />
     </svg>
-  );
-}
+  )
 
 export default LogoForm;

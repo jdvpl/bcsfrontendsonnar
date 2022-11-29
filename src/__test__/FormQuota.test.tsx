@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import FormQuota from '../components/ui/Form/FormQuota';
 import userEvent from "@testing-library/user-event";
+import FormQuota from '../components/ui/Form/FormQuota';
 import Simulator from '../pages/simulador';
 
 const mkFn = jest.fn()

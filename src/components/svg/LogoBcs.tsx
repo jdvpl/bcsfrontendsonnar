@@ -1,5 +1,4 @@
-function LogoBcs() {
-  return (
+const LogoBcs = () => (
     <svg
       width="196"
       height="48"
@@ -310,7 +309,6 @@ function LogoBcs() {
         fill="#75A8DA"
       />
     </svg>
-  );
-}
+  )
 
 export default LogoBcs;

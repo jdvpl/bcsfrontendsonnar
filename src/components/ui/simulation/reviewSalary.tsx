@@ -1,6 +1,6 @@
+import React from 'react';
 import Card from './Card';
 import { basePath } from '../../../../next.config';
-import React from 'react';
 import BtnPdfDownloader from './BtnPdfDownloader';
 
 interface ReviewSalaryProps {
@@ -83,7 +83,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       text="text-[20px] pl-[25px] font-semibold"
       urlsvg={`${basePath}/images/Charts.svg`}
       classtitle="h-[14px] text-[13px]"
-      tooltip={true}
+      tooltip
       tooltiptext={<p className='text-white'>La tasa de interés es el precio que se debe pagar por utilizar una cantidad de dinero durante un tiempo determinado.<br />
         <p className='flex text-white'><p className='font-bold text-white'>Tasa %MV:</p>Tasa nóminal mes vencido</p>
         <p className='flex text-white'><p className='font-bold text-white'>Tasa EA:</p>Tasa efectiva anual</p>
@@ -99,7 +99,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
           text="text-[20px] pl-[18px] font-semibold"
           urlsvg={`${basePath}/images/Insurage.svg`}
           classtitle="h-[14px] text-[14px]"
-          tooltip={true}
+          tooltip
           tooltiptext={<p className='flex text-white'>Seguro diseñado para proteger a sus asegurados en caso de presentarse  muerte, incapacidad total y permanente, y demás riesgos previstos en la póliza. </p>}
         /> : null
     }
@@ -113,7 +113,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
           urlsvg={`${basePath}/images/Home.svg`}
           classtitle="h-[14px] text-[14px]"
           id="fireInsuranceSalary"
-          tooltip={true}
+          tooltip
           tooltiptext={<p className='flex text-white'>Seguro diseñado para proteger a sus asegurados en caso de presentarse  muerte, incapacidad total y permanente, y demás riesgos previstos en la póliza. </p>}
         /> : null
     }
@@ -125,11 +125,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
           value={amountQuotatotal?.toString()}
           text="text-[20px] pl-[25px] font-semibold flex items-baseline"
           urlsvg={`${basePath}/images/Money.svg`}
-<<<<<<< HEAD
-          classtitle="h-[14px] text-[14px]"
-=======
           classtitle="h-[14px] text-[13px]"
->>>>>>> 634e743737c279d95116a44dcbc4e17bf37ec2a6
           subvalue='pesos'
           textsub='20'
           id="lifeInsuranceSalary"

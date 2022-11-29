@@ -6,7 +6,7 @@ import LogoBcs from '../../components/svg/LogoBcs';
 import { getQuestions } from '../../services';
 import { routes } from '../../routes';
 
-function InicioSolicitud() {
+const InicioSolicitud = () => {
   const router = useRouter();
   const dataReg = {
     document_number: '',
