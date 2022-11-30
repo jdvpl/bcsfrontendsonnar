@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { IconListAvailable } from '../../../types';
-
+import React from 'react'
 /* eslint-disable-next-line */
 export interface IconsProps {
   icon?: IconListAvailable;

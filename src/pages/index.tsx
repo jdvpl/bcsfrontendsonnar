@@ -94,7 +94,7 @@ export default function Home() {
             color="text-primario-300"
             label="Solicite su crédito"
             description="Obtenga la aprobación de su crédito en línea y compre la vivienda que desea."
-            pathTo={routes.startProccess}
+            pathTo={routes.onboarding}
             className="sm:mt-4 xs:mt-4"
             onclick
           />

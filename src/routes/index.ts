@@ -13,4 +13,6 @@ export const routes = {
   simulador: '/simulador',
   simuladorResumen: '/simulador/resumen',
   consultancy: '/asesoria',
+  onboarding: '/bienvenida',
+  authentication: '/autenticacion',
 };

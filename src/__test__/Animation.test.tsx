@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import 'jest-canvas-mock';
-
+import React from 'react'
 import { render, screen } from '@testing-library/react';
 import Animation from '../components/commons/Animation';
 
