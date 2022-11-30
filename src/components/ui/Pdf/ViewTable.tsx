@@ -41,7 +41,7 @@ const ViewTable = ({ data, position }: any) => {
     <View style={styles.table} >
 
       <HeadersTable />
-      {data[position].map((info: any, i: number) => (
+      {data[position]?.map((info: any, i: number) => (
         <View key={i} style={[styles.tableRow]}>
           <View style={[styles.cell, styles.bggrayCell]}>
             <Text style={[styles.cellText, styles.textBlue]}>{info.term}</Text>

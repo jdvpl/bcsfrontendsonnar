@@ -6,7 +6,7 @@ import { routes } from '../../../../routes';
 import { clearSessionStorage } from '../../../../utils';
 import Button from '../../Button';
 import Icons from '../../icons';
-import Typography from '../../Tipography';
+import Typography from '../../Typography';
 
 export const InactivityModal = () => {
   const timeout = 180000;
@@ -44,55 +44,8 @@ export const InactivityModal = () => {
   });
 
   const handleExit = async (exit?: boolean) => {
-    // scrollBody();
     pause();
     closeProcess();
-    // const requestHeaders: HeadersInit = new Headers();
-    // requestHeaders.set('x-mock-match-request-body', 'true');
-    // requestHeaders.set('Content-Type', 'application/json');
-    // requestHeaders.set('App-Name', 'ADIGITAL');
-    // const body = {
-    //   document_type: dataUser?.document_type,
-    //   document_number: dataUser?.document_number,
-    // };
-    // const bodyEncript = await allResponse(body, KEY);
-    // try {
-    //   const response = await fetch(`${process.env.APIURL}/kyc/delete-keys`, {
-    //     method: 'POST',
-    //     headers: requestHeaders,
-    //     body: JSON.stringify({
-    //       data: bodyEncript,
-    //     }),
-    //   });
-    //   if (response.ok) {
-    //     if (exit) {
-    //       TagManager.dataLayer({
-    //         dataLayer: {
-    //           event: 'idle_exit',
-    //         },
-    //       });
-    //       router.push('/');
-    //       return;
-    //     }
-    //     TagManager.dataLayer({
-    //       dataLayer: {
-    //         event: 'idle_exit',
-    //       },
-    //     });
-    //     router.push('/validacion/error-validacionInactividad');
-    //   }
-    // } catch (e: any) {
-    //   if (exit) {
-    //     router.push('/');
-    //     return;
-    //   }
-    //   TagManager.dataLayer({
-    //     dataLayer: {
-    //       event: 'idle_exit',
-    //     },
-    //   });
-    //   router.push('/validacion/error-validacionInactividad');
-    // }
   };
 
   useEffect(() => {
@@ -122,24 +75,6 @@ export const InactivityModal = () => {
     }, 1000);
     return () => clearInterval(intervalRef.current);
   }, [setTimer, timer]);
-
-  // useEffect(() => {
-  //   if (isIdle) {
-  //     setIsOpen(true);
-  //     intervalRef.current = window.setInterval(() => {
-  //       setTimer((time) => time - 1);
-  //     }, 1000);
-  //   }
-  //   return () => clearInterval(intervalRef.current);
-  // }, [setTimer, timer]);
-
-  // useEffect(() => {
-  //   if (timer <= 0) {
-  //     clearInterval(intervalRef.current);
-  //     clearSessionStorage();
-  //     router.push(routes.inactivityScreen);
-  //   }
-  // }, [timer]);
 
   return (
     <div

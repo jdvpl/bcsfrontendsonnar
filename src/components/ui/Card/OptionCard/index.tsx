@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { basePath } from '../../../../../next.config';
 import { RatingsOptions } from '../../../../lib/rating';
 import { TextArea } from '../../inputs/TextArea';
 
@@ -26,13 +27,14 @@ export const CardOption = ({
            }`}
       >
         <span className="hidden" />
+        <pre>
+        </pre>
         <div className="w-full flex text-[16px] items-center gap-3">
-          <Image
-            src={`/images/score/item${option?.id}.png`}
+          <img
+            src={`${basePath}/images/score/item${option?.id}.png`}
             alt="img-card"
             width={36}
             height={36}
-            quality={100}
           />
           {option?.value}
         </div>

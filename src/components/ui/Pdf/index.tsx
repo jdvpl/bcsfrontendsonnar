@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   }
 });
 interface iPdfProps {
-  infoData: any,
+  infoData?: any,
 }
 interface itableProps {
   children: any, col: any, th: any

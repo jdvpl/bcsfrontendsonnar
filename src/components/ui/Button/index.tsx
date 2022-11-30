@@ -41,13 +41,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         
            ${
              variant === 'primary'
-               ? 'px-[18px] py-[10px] text-white bg-primario-100  hover:bg-primario-400 focus:bg-primario-400 focus:text-secundario-200 focus:shadow-none disabled:text-[#ACD1ED] disabled:bg-gris-80 disabled:shadow-none '
+               ? 'py-[10px] text-white bg-primario-100  hover:bg-primario-400  focus:text-secundario-200 focus:shadow-none disabled:text-[#ACD1ED] disabled:bg-gris-80 disabled:shadow-none '
                : ''
            }  
         
         ${
           variant === 'secondary'
-            ? 'valid:text-primario-100 px-[18px] py-[10px]  hover:shadow-none border border-primario-100 bg-white text-primario-100 hover:border-primario-80  focus:bg-secundario-400 focus:text-white focus:shadow-none disabled:text-azul_gris-70 disabled:bg-gris-80 disabled:border-0 '
+            ? 'valid:text-primario-100  py-[10px]  hover:shadow-none border border-primario-100 bg-white text-primario-100 hover:border-primario-80   focus:text-white focus:shadow-none disabled:text-azul_gris-70 disabled:bg-gris-80 disabled:border-0 '
             : ''
         }
         ${className || ''}

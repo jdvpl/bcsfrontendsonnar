@@ -84,13 +84,14 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
             control={control}
             left="right4"
             valueLength=""
+            dataTestId="typeHouseSalaryTest"
             name="typeHouse"
             className="w-100"
             margin="normal"
             required
           >
             <MenuItem value="novis">No VIS</MenuItem>
-            <MenuItem value="vis">VIS</MenuItem>
+            <MenuItem value="vis" data-testid="typeSalaryVisTest">VIS</MenuItem>
           </ReactHookFormSelect>
 
           <div className="flex flex-col mt-4">

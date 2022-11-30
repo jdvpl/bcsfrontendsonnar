@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { FC } from 'react';
 import Icons, { IconsProps } from '../icons';
-import Typography from '../Tipography/index';
+import Typography from '../Typography/index';
 import { dynamicClassesSelective } from './SelectiveClassnames';
 
 export interface ISelectiveCardProps extends IconsProps {

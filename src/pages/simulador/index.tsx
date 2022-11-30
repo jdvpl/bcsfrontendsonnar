@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import LogoBcs from '../../components/svg/LogoBcs';
 import LogoForm from '../../components/svg/LogoForm';
 import FormQuota from '../../components/ui/Form/FormQuota';
-import Typography from '../../components/ui/Tipography';
+import Typography from '../../components/ui/Typography';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { iFormDataSimulation } from '../../interfaces/formSimulation';
 import { SesionStorageKeys } from '../../session';

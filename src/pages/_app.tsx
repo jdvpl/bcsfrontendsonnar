@@ -1,8 +1,8 @@
 import { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 import '../styles/globals.css';
-import { AplicationProvider } from '../context/AplicationContext';
 import Script from 'next/script';
+import { AplicationProvider } from '../context/AplicationContext';
 
 const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
   const [initialRenderComplete, setInitialRenderComplete] = useState<boolean>(false);

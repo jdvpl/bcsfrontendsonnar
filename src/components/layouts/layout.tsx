@@ -30,7 +30,7 @@ export const Layout: React.FC<LayoutProps> = ({ className, navTitle, children })
         <div className={`${className || 'bg-white '} min-h-screen`}>
           <header className="hidden lg:flex pt-[60px] min-h-[100px] md:w-full lg:justify-center lg:pb-6">
             <div
-              className="lg:w-[1160px] lg:max-w-[100%] mx-4 flex justify-between items-baseline"
+              className="lg:w-[1160px] lg:max-w-[100%] mx-4  flex justify-between items-baseline"
               itemScope
               itemType="http://schema.org/Organization"
               itemProp="logo"

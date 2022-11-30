@@ -4,9 +4,9 @@ import OtpInput from 'react18-input-otp';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { routes } from '../../../routes';
 import { reSendOTPCode, validateOTOCode } from '../../../services';
-import { Icons } from '../../ui';
+import { Icons } from '../../ui/icons';
 import { OTLoader } from '../../ui/Loaders/OTPloader';
-import Typography from '../../ui/Tipography';
+import Typography from '../../ui/Typography';
 
 export interface ValidateOTC {
   pin: string;
@@ -19,8 +19,13 @@ export interface OTPCodeRequest {
   phone: string;
 }
 
+<<<<<<< HEAD
 export const Otp = () => {
   const [dataTU,] = useSessionStorage('dataTU', '');
+=======
+export function Otp() {
+  const [dataTU, ] = useSessionStorage('dataTU', '');
+>>>>>>> 11eb09b29ee4d96c7eccbdfcd6c2f202e8422486
   const [otp, setOtp] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(60);
@@ -92,9 +97,10 @@ export const Otp = () => {
       <h4
         id="title"
         className="font-semibold text-[20px] text-primario-900 text-center mt-[40px] mb-[36px]  md:mt-[64px]  md:mb-[52px] lg:mb-[36px]"
+        data-testid="h4OtpText"
       >
         Ingrese el código enviado por <br /> sms a su celular +57
-        {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : null}
+        {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : ''}
       </h4>
 
       <div className="text-normal mb-[12px]">

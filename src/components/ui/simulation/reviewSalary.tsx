@@ -26,16 +26,20 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
   rate,
   dataPdf
 }) => (
-  <div className="flex flex-col items-center mt-[36px]">
+  <div className="flex flex-col items-center ">
     <Card
+<<<<<<< HEAD
       className="xs:w-[290px] sm:w-[343px] md:w-[448px] h-[88px]  bg-[#C4D1DA]  mb-[12px] font-semibold rounded-[8px]"
+=======
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px]"
+>>>>>>> 11eb09b29ee4d96c7eccbdfcd6c2f202e8422486
       title="Valor financiado aproximado"
       value={financedValue?.toString()}
-      text="text-[27px] pl-[23px] pt-2 flex items-baseline"
+      text="text-[32px] pl-[23px] pt-2 flex items-baseline"
       urlsvg=''
       classtitle="h-[18px] pt-[16px] text-[16px]"
       subvalue='pesos'
-      textsub='27'
+      textsub='30'
       tooltiptext=''
     />
     {
@@ -44,7 +48,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
           className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
           title="Cuota mensual sin seguros"
           value={amountQuota?.toString()}
-          text="text-[20px] pl-[25px] font-semibold flex items-baseline"
+          text="text-[20px] pl-[18px] font-semibold flex items-baseline"
           urlsvg={`${basePath}/images/Money.svg`}
           classtitle="h-[14px] text-[13px]"
           subvalue='pesos'
@@ -55,10 +59,10 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
     {
       !lifeInsurance ?
         <Card
-          className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
+          className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] text-[14px] font-light"
           title="Cuota mensual sin seguros"
           value={amountQuota?.toString()}
-          text="text-[20px] pl-[25px] font-semibold flex items-baseline"
+          text="ttext-[20px] pl-[18px] font-semibold flex items-baseline"
           urlsvg={`${basePath}/images/Money.svg`}
           classtitle="h-[14px] text-[13px]"
           subvalue='pesos'
@@ -68,10 +72,10 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
     }
 
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] text-[14px] font-light"
       title="Plazo"
       value={termFinance?.toString()}
-      text="text-[20px] pl-[25px] font-semibold"
+      text="text-[20px] pl-[18px] font-semibold flex items-baseline"
       urlsvg={`${basePath}/images/Calendar.svg`}
       classtitle="h-[14px] text-[13px]"
       tooltiptext=''
@@ -80,7 +84,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
       title="Tasa"
       value={rate?.toString()}
-      text="text-[20px] pl-[25px] font-semibold"
+      text="text-[20px] pl-[18px] font-semibold"
       urlsvg={`${basePath}/images/Charts.svg`}
       classtitle="h-[14px] text-[13px]"
       tooltip
@@ -113,8 +117,13 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
           urlsvg={`${basePath}/images/Home.svg`}
           classtitle="h-[14px] text-[14px]"
           id="fireInsuranceSalary"
+<<<<<<< HEAD
           tooltip
           tooltiptext={<p className='flex text-white'>Seguro diseñado para proteger a sus asegurados en caso de presentarse  muerte, incapacidad total y permanente, y demás riesgos previstos en la póliza. </p>}
+=======
+          tooltip={true}
+          tooltiptext={<p className='flex text-white'>Póliza que protege al inmueble hipotecado al Banco contra las pérdidas y daños materiales originados de forma accidental, súbita e imprevista como consecuencia directa de los riesgos amparados. </p>}
+>>>>>>> 11eb09b29ee4d96c7eccbdfcd6c2f202e8422486
         /> : null
     }
     {
@@ -123,7 +132,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
           className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
           title="Cuota mensual total con seguros"
           value={amountQuotatotal?.toString()}
-          text="text-[20px] pl-[25px] font-semibold flex items-baseline"
+          text="text-[20px] pl-[18px] font-semibold flex items-baseline"
           urlsvg={`${basePath}/images/Money.svg`}
           classtitle="h-[14px] text-[13px]"
           subvalue='pesos'
