@@ -46,7 +46,6 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
   const [terminos, setTerminos] = useState(false);
   const [commercial, setCommercial] = useState(false);
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [showOptionsAdvisory, setshowOptionsAdvisory] = useState<boolean>(false);
   const [componentModal, setComponentModal] = useState<HowItemProps>({
     children: '',
     title: '',
@@ -59,9 +58,6 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
 
   const handleCommercial = () => {
     setCommercial(!commercial);
-  };
-  const handleAdvisory = () => {
-    setshowOptionsAdvisory(!showOptionsAdvisory);
   };
 
   useEffect(() => {

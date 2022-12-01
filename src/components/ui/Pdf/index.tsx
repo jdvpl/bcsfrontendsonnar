@@ -8,7 +8,6 @@ import {
   Font
 } from "@react-pdf/renderer";
 import { basePath } from "../../../../next.config";
-import { convertToColombianPesos } from "../../../utils";
 import ViewTable from "./ViewTable";
 // Create styles
 Font.register({ family: 'Roboto', src: `${basePath}/fonts/RobotoBold.ttf` });
@@ -154,7 +153,7 @@ function PDFDocumentData({ infoData }: iPdfProps) {
                   Valor financiado aproximado
                 </Text>
                 <Text style={[styles.cardHeaderBody, styles.em]}>
-                  {convertToColombianPesos(infoData.approximateFinancedValue)} pesos
+                  {infoData.approximateFinancedValue} pesos
                 </Text>
               </View>
               {/* second */}
