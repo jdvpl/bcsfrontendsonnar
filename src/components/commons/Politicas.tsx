@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Politicas = () => (
-    <div data-testid="terminos">
+function Politicas() {
+  return <div data-testid="terminos">
       <span className="font-bold">
         AUTORIZACIÓN BANCO CAJA SOCIAL Y ENTIDADES FILIALES
       </span>
@@ -124,6 +124,6 @@ const Politicas = () => (
         </li>
       </ul>
     </div>
-  )
+}
 
 export default Politicas;

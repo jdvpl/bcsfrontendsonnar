@@ -1,21 +1,20 @@
-import Image from 'next/image';
 import { basePath } from '../../../../../next.config';
 import { RatingsOptions } from '../../../../lib/rating';
 import { TextArea } from '../../inputs/TextArea';
 
-export interface CardOption {
+export interface CardOptions {
   option: RatingsOptions;
   actualOption: RatingsOptions;
   onChangeActualOption: (option: RatingsOptions) => void;
 }
 
-export const CardOption = ({
+export function CardOption({
   option,
   actualOption,
   onChangeActualOption,
-}: CardOption) => (
-    <div onClick={() => onChangeActualOption(option)} className="w-full">
-      <input type="radio" className="hidden" value={option?.value} />
+}: CardOptions) {
+  return <div onClick={() => onChangeActualOption(option)} className="w-full">
+      <input type="radio" className="hidden" value={option?.value} role="generic" tabIndex={0} />
       <label
         className={`text-left flex flex-col min-h-[52px] pl-[20px] py-[8px] mb-3 bg-white 
           cursor-pointer w-full rounded-md 
@@ -25,10 +24,10 @@ export const CardOption = ({
              option?.id === actualOption?.id &&
              'border-[1px] text-primario-600 border-primario-400 active'
            }`}
+           role="generic"
       >
         <span className="hidden" />
-        <pre>
-        </pre>
+        <pre />
         <div className="w-full flex text-[16px] items-center gap-3">
           <img
             src={`${basePath}/images/score/item${option?.id}.png`}
@@ -48,4 +47,4 @@ export const CardOption = ({
         )}
       </label>
     </div>
-  )
+}

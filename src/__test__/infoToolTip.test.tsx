@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { InfoIco } from '../components/ui/Tooltip/info';
 import React from 'react'
+import { InfoIco } from '../components/ui/Tooltip/info';
 
 describe('InfoIco', () => {
   test('should render "InfoIco" successfully', () => {

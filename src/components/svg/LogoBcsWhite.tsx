@@ -1,5 +1,5 @@
-const LogoBcsWhite = () => (
-    <svg
+function LogoBcsWhite() {
+  return <svg
       width="189"
       height="48"
       viewBox="0 0 189 48"
@@ -279,6 +279,6 @@ const LogoBcsWhite = () => (
         fill="#38A1D4"
       />
     </svg>
-  )
+}
 
 export default LogoBcsWhite;

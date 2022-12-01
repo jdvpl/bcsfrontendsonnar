@@ -7,7 +7,7 @@ interface QualifyProps {
   isEditable?: boolean;
 }
 
-export const Qualify = ({ rate, changeRate, isEditable = true }: QualifyProps) => {
+const Qualify = ({ rate, changeRate, isEditable = true }: QualifyProps) => {
   const rating = new Array(5).fill(0);
   const [tempRating, setTempRating] = useState<number>(-1);
   return (
@@ -19,6 +19,7 @@ export const Qualify = ({ rate, changeRate, isEditable = true }: QualifyProps) =
           className="cursor-pointer"
           onMouseEnter={() => isEditable && setTempRating(index)}
           onMouseLeave={() => isEditable && setTempRating(-1)}
+          role="generic"
         >
           <Star
             key={`star ${index}`}
@@ -30,3 +31,5 @@ export const Qualify = ({ rate, changeRate, isEditable = true }: QualifyProps) =
     </div>
   );
 }
+
+export default Qualify

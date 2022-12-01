@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import NewAutoComplete from '../components/ui/inputs/newAutoComplete';
 import React, { useState } from 'react'
+import NewAutoComplete from '../components/ui/inputs/newAutoComplete';
 
 describe('newAutoComplete', () => {
   const initialBorder = '#B0C2CD';

@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import VerificationForm from '../components/ui/Form/verificationForm';
 import React from 'react'
+import VerificationForm from '../components/ui/Form/verificationForm';
 
 const mkFn = jest.fn()
 describe('Terminos', () => {

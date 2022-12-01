@@ -8,8 +8,8 @@ interface AnimationData {
   valid?: boolean;
 }
 
-const AnimationComponent = ({ show, loaded, valid }: AnimationData) => (
-    <div className={`fixed inset-0 z-[100]  bg-white ${show}`}>
+function AnimationComponent({ show, loaded, valid }: AnimationData) {
+  return <div className={`fixed inset-0 z-[100]  bg-white ${show}`}>
       <div className="flex flex-col h-screen content-center inset-0 z-40 ">
         {loaded ? (
           valid && (
@@ -59,6 +59,6 @@ const AnimationComponent = ({ show, loaded, valid }: AnimationData) => (
         )}
       </div>
     </div>
-  )
+}
 
 export default AnimationComponent;

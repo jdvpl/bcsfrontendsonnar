@@ -1,5 +1,6 @@
-import { HelperText } from './HelperText';
 import React from 'react'
+import { HelperText } from './HelperText';
+
 export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   /**
    * Icon on the left side of the text box
@@ -58,7 +59,7 @@ export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   autofocus?: true | false;
 }
 
-export const Input = ({
+export function Input({
   label,
   classNameInput,
   containerClassName,
@@ -68,7 +69,7 @@ export const Input = ({
   endIcon,
   autofocus = false,
   ...props
-}: InputProps) => {
+}: InputProps) {
   const labelStyles = `
   peer-placeholder-shown:z-[-1] peer-focus:z-0 z-0
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { Qualify } from '../components/custom/qualify';
+import  Qualify  from '../components/custom/qualify';
 import '@testing-library/jest-dom/extend-expect';
 
 describe('<Qualify/>', () => {

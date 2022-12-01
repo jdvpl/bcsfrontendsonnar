@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import React from 'react'
-import InicioSolicitud from '../pages/inicio-solicitud';
 import userEvent from "@testing-library/user-event";
+import InicioSolicitud from '../pages/inicio-solicitud';
 
 describe('InicioSolicitud', () => {
   it('should render "InicioSolicitud" successfully', () => {

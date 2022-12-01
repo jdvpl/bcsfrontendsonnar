@@ -5,11 +5,11 @@ import {
   RATING_OPTIONS,
   RATING_OPTIONS_BETTER,
 } from '../../../../lib/rating';
-import { Qualify } from '../../../custom/qualify';
+import  Qualify  from '../../../custom/qualify';
 import Button from '../../Button';
 import { CardOption } from '../../Card/OptionCard';
 
-export const RateForm = () => {
+export function RateForm() {
   const [rate, setRate] = useState<number>(-1);
   const [actualOption, setActualOption] = useState<RatingsOptions>({
     id: '',

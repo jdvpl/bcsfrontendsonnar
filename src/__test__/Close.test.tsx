@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import Close from '../components/svg/Close';
 import React from 'react'
+import Close from '../components/svg/Close';
 
 describe('Close', () => {
   test('should render "Close" successfully', () => {

@@ -1,5 +1,6 @@
 import { deviceType } from 'react-device-detect';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useMediaQuery } from "react-responsive";
 import LogoBcsWhite from '../components/svg/LogoBcsWhite';
 import Typography from '../components/ui/Typography';
 import { useSessionStorage } from '../hooks/useSessionStorage';
@@ -9,13 +10,9 @@ import SelectiveCard from '../components/ui/Card/SelectiveCard';
 import { routes } from '../routes';
 import LogoBcs from '../components/svg/LogoBcs';
 import { Icons } from '../components/ui/icons';
-import { Questions } from '../components/ui/Accordion';
+import Questions  from '../components/ui/Accordion';
 import { basePath } from '../../next.config';
-<<<<<<< HEAD
-=======
-import React from 'react'
-import { useMediaQuery } from "react-responsive";
->>>>>>> 11eb09b29ee4d96c7eccbdfcd6c2f202e8422486
+
 
 export default function Home() {
   const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, 'browser');

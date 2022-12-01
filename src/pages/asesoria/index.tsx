@@ -11,7 +11,7 @@ import Typography from '../../components/ui/Typography';
 import { initialOptions, stepperTitles } from '../../lib/consultancy';
 import { routes } from '../../routes';
 
-const Consultancy = ({ options = initialOptions }: any) => {
+function Consultancy({ options = initialOptions }: any) {
   const [itemActive, setItemActive] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
   const [actualStep, setActualStep] = useState<number>(1);
@@ -43,8 +43,7 @@ const Consultancy = ({ options = initialOptions }: any) => {
     setItemActive('');
   };
 
-  const renderContent = () => {
-    return (
+  const renderContent = () => (
       <div className="lg:w-[411px] text-[14px]">
         <span className="font-semibold text-primario-900 lg:text-[20px] text-[16px]">
           {itemActive}
@@ -52,7 +51,6 @@ const Consultancy = ({ options = initialOptions }: any) => {
         {options[actualStep - 1]?.[activeIndex]?.content()}
       </div>
     );
-  };
 
   const positionImages = () => {
     switch (actualStep) {
@@ -105,7 +103,7 @@ const Consultancy = ({ options = initialOptions }: any) => {
       </div>
 
       <div className="lg:w-[1127px] w-[528px] lg:gap-x-[120px] gap-x-[34px] mx-auto flex items-center mb-[77px]">
-        <div onClick={prevStep} className={`cursor-pointer flex items-center flex-col lg:w-[150px]`}>
+        <div onClick={prevStep} className="cursor-pointer flex items-center flex-col lg:w-[150px]">
           <div className="rounded-full w-[40px] h-[40px] border-primario-20 flex justify-center items-center border-2	mb-[33px]">
             <Icons
               icon="bcs-arrow-two-left"
@@ -164,7 +162,7 @@ const Consultancy = ({ options = initialOptions }: any) => {
           ) : null}
         </div>
 
-        <div onClick={nextStep} className={`cursor-pointer flex items-center flex-col lg:w-[150px]`}>
+        <div onClick={nextStep} className="cursor-pointer flex items-center flex-col lg:w-[150px]">
           <div className="rounded-full w-[40px] h-[40px] border-primario-20 flex justify-center items-center border-2 mb-[33px]">
             <Icons
               icon="bcs-arrow-two-right"
@@ -187,7 +185,7 @@ const Consultancy = ({ options = initialOptions }: any) => {
       </div>
     </>
   );
-};
+}
 
 export default Consultancy;
 

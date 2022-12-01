@@ -8,7 +8,7 @@ import Button from '../../Button';
 import Icons from '../../icons';
 import Typography from '../../Typography';
 
-export const InactivityModal = () => {
+export function InactivityModal() {
   const timeout = 180000;
   const [remaining, setRemaining] = useState(timeout);
   const [isOpen, setIsOpen] = useState<boolean>(false);

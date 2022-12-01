@@ -4,7 +4,7 @@ import '../styles/globals.css';
 import Script from 'next/script';
 import { AplicationProvider } from '../context/AplicationContext';
 
-const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
+function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const [initialRenderComplete, setInitialRenderComplete] = useState<boolean>(false);
   useEffect(() => {
     setInitialRenderComplete(true);

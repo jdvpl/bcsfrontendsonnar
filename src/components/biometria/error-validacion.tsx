@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
-import { ErrorImageDesktop } from "../icons/errorImageValidationDesktop";
-import { QRPage } from "../icons/errorQR";
+import  ErrorImageDesktop  from "../icons/errorImageValidationDesktop";
+import  QRPage  from "../icons/errorQR";
 
 const ValidationMessageBiometry: React.FC = () => (
     <section itemScope itemType="https//schema.org/Action">

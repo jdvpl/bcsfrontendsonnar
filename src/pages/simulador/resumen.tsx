@@ -19,7 +19,7 @@ const intialDataPdfInfo = {
   rate: '',
   quotes: [],
 };
-const Resumen = () => {
+function Resumen() {
   const [simulationTypeOption, setsimulatioTypeOption] = useState<any>('');
   const [simulationType] = useSessionStorage(
     SesionStorageKeys.dataFormSimulation.key,

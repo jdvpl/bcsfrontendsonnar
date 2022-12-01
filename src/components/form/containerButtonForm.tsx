@@ -1,7 +1,7 @@
 import React from 'react';
 import { childrenProps } from '../../interfaces';
 
-export const ContainerButtonForm: React.FC<childrenProps> = ({ children }) => (
+const ContainerButtonForm: React.FC<childrenProps> = ({ children }) => (
   <div className="flex justify-center items-center">
     <div
       className="z-50 lg:z-0 w-full  md:w-[528px] lg:w-full 
@@ -13,3 +13,5 @@ export const ContainerButtonForm: React.FC<childrenProps> = ({ children }) => (
     </div>
   </div>
 );
+
+export default ContainerButtonForm

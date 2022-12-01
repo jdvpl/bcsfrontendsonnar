@@ -24,7 +24,7 @@ const scrollBody = () => {
   }
 };
 
-const Modal = ({ compont, showModal = false, onClose }: Props) => {
+function Modal({ compont, showModal = false, onClose }: Props) {
   const [show, setShow] = useState('');
 
   useEffect(() => {

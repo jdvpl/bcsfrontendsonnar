@@ -11,7 +11,7 @@ interface ToolTipProps {
   className?: string;
 }
 
-export const ToolTipInfo = ({
+export function ToolTipInfo({
   info,
   icon,
   id,
@@ -19,7 +19,7 @@ export const ToolTipInfo = ({
   padding = false,
   className,
   infohtml,
-}: ToolTipProps) => {
+}: ToolTipProps) {
   const { getArrowProps, getTooltipProps, setTooltipRef, setTriggerRef, visible } =
     usePopperTooltip();
 

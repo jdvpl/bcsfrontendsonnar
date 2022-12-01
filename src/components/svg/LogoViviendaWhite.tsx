@@ -1,5 +1,5 @@
-const LogoViviendaWhite = () => (
-    <svg
+function LogoViviendaWhite() {
+  return <svg
       width="279"
       height="29"
       viewBox="0 0 279 29"
@@ -80,6 +80,6 @@ const LogoViviendaWhite = () => (
         fill="white"
       />
     </svg>
-  )
+}
 
 export default LogoViviendaWhite;

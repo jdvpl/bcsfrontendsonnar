@@ -31,18 +31,14 @@
       "react/jsx-props-no-spreading": 0,
       "react/default-props-match-prop-types": 0,
       "object-curly-newline": 0,
+      "import/extensions": "off",
+      "react/button-has-type": "off",
+      "import/prefer-default-export": "off",
       "global-require": 0,
       "react/react-in-jsx-scope": "off",
       "react/prop-types": "off",
       "react/require-default-props": "off",
       "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
-      "react/function-component-definition": [
-        2,
-        {
-            "namedComponents": "arrow-function",
-            "unnamedComponents": "arrow-function"
-        }
-    ],
       "jsx-a11y/no-noninteractive-tabindex": [
         "error",
         {
@@ -58,11 +54,18 @@
             "option",
             "paragraph",
             "radio",
-            "tabpanel"
+            "tabpanel",
+            "button"
           ],
           "allowExpressionValues": true
         }
+      ],
+      "import/no-import-module-exports": [
+        "error",
+        {
+          "exceptions": ["**/jest.setup.js"]
+        }
       ]
     },
-    "ignorePatterns": ["**/biometria/*.tsx,**/biometrica/*.tsx"]
+    "ignorePatterns": ["**/biometria/*.tsx","**/validacion-biometrica/**","**/components/custom/**","**/components/ui/Alert/**"]
 }

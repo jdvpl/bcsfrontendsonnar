@@ -16,7 +16,7 @@ import { SesionStorageKeys } from '../../../../session';
 import { routes } from '../../../../routes';
 import Alert from '../../Alert';
 
-const HouseSimulator = () => {
+function HouseSimulator() {
   const router = useRouter();
   const [percentageFinance, setPercentageFinance] = useState<number>(0.7);
   const [insuranceCheck, setInsuranceCheck] = useState<boolean>(false);

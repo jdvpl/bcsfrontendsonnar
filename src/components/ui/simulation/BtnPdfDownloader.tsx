@@ -6,8 +6,8 @@ import PDFDocumentData from '../Pdf';
 interface dataPdf {
   pdf: object;
 }
-const BtnPdfDownloader = ({ pdf }: dataPdf) => (
-    <PDFDownloadLink
+function BtnPdfDownloader({ pdf }: dataPdf) {
+  return <PDFDownloadLink
       document={<PDFDocumentData infoData={pdf} />}
       fileName="Plan_de_pagos_simulador.pdf"
       className="flex items-center my-3"
@@ -17,6 +17,6 @@ const BtnPdfDownloader = ({ pdf }: dataPdf) => (
       </a>
       <img className="hover:cursor-pointer" src={`${basePath}/images/Frame.svg`} />
     </PDFDownloadLink>
-  )
+}
 
 export default BtnPdfDownloader;
