@@ -1,0 +1,25 @@
+import { render, screen, waitFor } from '@testing-library/react';
+import { ItemAccordion } from '../../../../components/ui/Accordion/ItemAccordion';
+import React from 'react'
+import userEvent from '@testing-library/user-event';
+
+const mkFn = jest.fn().mockReturnValueOnce('1')
+describe('ItemAccordion component', () => {
+  test('should render "ItemAccordion" successfully', async () => {
+    const initialState = '1'
+    React.useState = jest.fn().mockReturnValue([initialState, {}])
+    render(<ItemAccordion id={'1'} active={initialState === '1'} title="¿Cuales son los gastos adicionales al momento de comprar vivienda?">
+      <>
+        Para el proceso de legalización es necesario contemplar los gastos de
+        avalúo, estudio de títulos y escrituración. Si desea conocer más a cerca de
+        estos conceptos, diríjase a nuestra
+      </>
+    </ItemAccordion>);
+    const buttonItem = screen.getByRole('button');
+    await waitFor(() => userEvent.click(buttonItem));
+    await waitFor(() => userEvent.pointer({ target: buttonItem, keys: '[Enter]' }));
+    const result = mkFn();
+    expect(result).toBe('1');
+  });
+
+});

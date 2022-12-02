@@ -8,10 +8,10 @@ import Stepper from '../../../components/ui/Stepper/index';
 import { Heading } from '../../../components/form/heading';
 import { basePath } from '../../../../next.config';
 import useAES from '../../../hooks/useAES';
-import { ContainerButtonForm } from '../../../components/form/containerButtonForm';
 import { urlAndUtms } from '../../../utils/RouterUtmsUrl';
 import { Layout } from '../../../components/layouts/layout';
 import { NavTitle } from '../../../components/commons/NavTitle';
+import { ContainerButtonForm } from '../../../components/ui/Form/ContainerButtonForm';
 
 const KEY = process.env.KEYKYCHASH;
 

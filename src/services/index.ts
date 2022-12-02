@@ -134,9 +134,8 @@ export const sendSimulationData = async (data: iFormDataSimulation) => {
 };
 export const getDataPDF = async (data: iFormDataSimulation) => {
   try {
-    const { data: response } = await axios.post(
-      // '/simulator/generatepdf'
-      'https://dev.bancocajasocialsa.org/bcs-mortgage/simulator/simulator/generatepdf',
+    const { data: response } = await clientAxiosBackend.post(
+      '/simulator/simulator/generatepdf',
       data,
       headersBack
     );
@@ -147,7 +146,6 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
       error: false,
     };
   } catch (e: any) {
-    console.log(e);
     return { error: true, response: e?.response?.data?.message };
   }
 };

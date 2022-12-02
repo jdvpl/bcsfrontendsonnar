@@ -73,26 +73,26 @@ const Authentication = () => {
   }
   return (
     <div>
-      {showAnimation && <AnimationComponent show="" valid={validated} loaded={loaded} />}
-      <div className="container flex lg:mt-[0] w-full md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-between ">
-        <div className="mt-4 hidden lg:block">
+      {showAnimation ? <AnimationComponent show="" valid={validated} loaded={loaded} /> : null}
+      <div className="container flex lg:mt-[0] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-between  ">
+        <div className="mt-4 hidden md:block lg:block">
           <LogoBcs />
         </div>
-        <div className="xs:block sm:block lg:hidden mt-4 cursor-pointer" onClick={() => router.back()}>
+        <div className="xs:block sm:block md:hidden lg:hidden mt-6 cursor-pointer xs:ml-4" onClick={() => router.back()} role="btnGoBack">
           <Icons icon='bcs-arrow-one-left' size="text-[1.2rem]" />
         </div>
-        <div className="mt-4 w-[180px] md:w-[180px] lg:w-[280px]">
+        <div className="mt-6 w-[180px] md:w-[180px] lg:w-[280px] xs:mr-4">
           <LogoForm />
         </div>
       </div>
       <div className="m-auto lg:w-[528px]">
-        <div className="mt-20 flex justify-center">
+        <div className="mt-20 lg:h-[300px] md:w-[350px] md:h-[300px] sm:w-[234px] sm:h-[200px] xs:h-[200px] xs:w-[234px] m-auto ">
           <img src={`${basePath}/images/authentication.svg`} alt="" />
         </div>
         <Typography variant='h3' className='text-center mt-[52px] text-primario-900 font-[24px]'>
-          Por seguridad validaremos
+          Por seguridad <span className='xs:block sm:inline'>validaremos</span>
           <span className="block">
-            su identidad
+            su información
           </span>
         </Typography>
 

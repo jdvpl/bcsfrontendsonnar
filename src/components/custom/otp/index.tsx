@@ -4,6 +4,7 @@ import OtpInput from 'react-otp-input-rc-17';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { routes } from '../../../routes';
 import { reSendOTPCode, validateOTOCode } from '../../../services';
+import { SesionStorageKeys } from '../../../session';
 import { Icons } from '../../ui/icons';
 import { OTLoader } from '../../ui/Loaders/OTPloader';
 import Typography from '../../ui/Typography';
@@ -20,7 +21,7 @@ export interface OTPCodeRequest {
 }
 
 export function Otp() {
-  const [dataTU, ] = useSessionStorage('dataTU', '');
+  const [dataTU,] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const [otp, setOtp] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(60);

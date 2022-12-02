@@ -116,6 +116,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
               defaultValue=""
               control={control}
               left="right4"
+              role="typeDocumentRole"
               valueLength=""
               name="document_type"
               className="w-100"
