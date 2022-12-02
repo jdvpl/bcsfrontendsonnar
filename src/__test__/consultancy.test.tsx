@@ -33,7 +33,4 @@ describe('<Consultancy />', () => {
   test('Render simulation insurance text', () => {
     component.getByText('¿Qué es vivienda No VIS?');
   });
-//   test('Render 8 inputs ', () => {
-//     expect(component.container.querySelectorAll('input').length).toBe(8);
-//   });
 });
