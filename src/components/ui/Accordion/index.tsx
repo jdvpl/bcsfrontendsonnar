@@ -4,9 +4,6 @@ import ItemAccordion from './ItemAccordion';
 
 const Questions: FC = () => {
   const [selected, setSelected] = useState<null | string>('');
-
-
-
   return (
     <section
       className="mb-[15vh] lg:mb-[10vh] flex flex-col items-center"

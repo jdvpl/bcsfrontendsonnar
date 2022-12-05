@@ -21,7 +21,7 @@ function InicioSolicitud() {
 
   return (
     <>
-      <div className="container flex lg:mt-[0] sm:w-[343px] md:w-[528px] lg:w-[1100px] pt-5">
+      <div className="container flex lg:mt-[0] sm:w-[343px] md:w-[528px] lg:w-[1100px] pt-5 xs:ml-4">
         <LogoBcs />
       </div>
       <div className="flex justify-center">

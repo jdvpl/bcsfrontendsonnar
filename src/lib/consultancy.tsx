@@ -78,7 +78,7 @@ export const initialOptions = [
           <p className="font-medium my-3">
             Las{' '}
             <span className="font-semibold text-primario-900">
-              Viviendas de Interés Social
+              Viviendas de Interés Social {" "}
             </span>
             son aquellas que su precio no supera los 135 ó 150 SMMLV, dicho monto varía
             según la ubicación de la vivienda. Gracias a su valor las personas con
@@ -90,7 +90,7 @@ export const initialOptions = [
             estipulados,
             <span className="font-semibold text-primario-900">
               {' '}
-              puede postularse a los subsidios
+              puede postularse a los subsidios{" "}
             </span>
             que brinda tanto el Gobierno como las Cajas de Compensación.
           </p>

@@ -57,6 +57,7 @@ export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
    * @default false
    */
   autofocus?: true | false;
+  dataTestId?: string;
 }
 
 export function Input({
@@ -68,6 +69,7 @@ export function Input({
   startIcon,
   endIcon,
   autofocus = false,
+  dataTestId,
   ...props
 }: InputProps) {
   const labelStyles = `
@@ -112,6 +114,7 @@ export function Input({
         )}
         <input
           type="text"
+          data-testid={dataTestId}
           {...props}
           className={`${inputStyles} ${classNameInput}`}
           placeholder=" "

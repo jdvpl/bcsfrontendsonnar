@@ -5,7 +5,7 @@ import Layout from '../../components/layouts/layout';
 import Stepper from '../../components/ui/Stepper';
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
 
-export default function validacionSolicitud() {
+export default function ValidacionSolicitud() {
   return (
     <InactivityWarper>
       <Layout navTitle={<NavTitle noBack />}>

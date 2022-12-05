@@ -33,7 +33,6 @@ export interface FormData {
 const KEY = process.env.KEYENCRYPTADIGITAL;
 
 export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
-  console.log(JSON.stringify(questions));
   const [dataTU, setDataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const [, setEncript] = useSessionStorage(SesionStorageKeys.dataTuEncripPhone.key, '');
   const [, setProcessBiometry] = useSessionStorage(

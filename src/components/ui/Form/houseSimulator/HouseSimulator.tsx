@@ -113,6 +113,7 @@ function HouseSimulator() {
             name="typeHouse"
             className="col-span-6"
             margin="normal"
+            rules={{ required: true }}
           >
             <MenuItem value="novis">No VIS</MenuItem>
             <MenuItem value="vis">VIS</MenuItem>
@@ -193,6 +194,7 @@ function HouseSimulator() {
             name="termFinance"
             className="col-span-6"
             margin="normal"
+            rules={{ required: true }}
           >
             {yearsAvailable.map((y, i) => (
               <MenuItem value={y} key={i}>
@@ -268,17 +270,18 @@ function HouseSimulator() {
           />
         </div>
 
-        <div className="flex items-center gap-3 mb-8 w-full">
+        <div className="flex items-center gap-3 mb-8 w-full cursor-pointer" onClick={()=>setInsuranceCheck(!insuranceCheck)}>
           <input
             type="checkbox"
             tabIndex={0}
+            checked={insuranceCheck}
             id="insuranceCheck"
             className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"
             inputMode="numeric"
             onChange={(e) => setInsuranceCheck(e.target.checked)}
           />
 
-          <span className="text-[12px] text-primario-900">
+          <span className="text-[12px] text-primario-900 cursor-pointer">
             Deseo incluir en la simulación del crédito el valor de los seguros
             correspondientes.
           </span>

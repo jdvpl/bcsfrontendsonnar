@@ -10,13 +10,17 @@ import Stepper from '../../components/ui/Stepper/index';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import ErrorLayout from '../../components/layouts/errorLayout';
 import AnimationComponent from '../../components/commons/Animation';
+<<<<<<< HEAD
 import ContainerButtonForm  from '../../components/form/containerButtonForm';
+=======
+>>>>>>> f130e99ff91745022fb5520f79eb51d3b10f8b58
 import useAES from '../../hooks/useAES';
 import { urlAndUtms } from '../../utils/RouterUtmsUrl';
 import { childrenProps } from '../../interfaces';
 import  Layout  from '../../components/layouts/layout';
 import  NavTitle  from '../../components/commons/NavTitle';
 import { basePath } from '../../../next.config';
+import { ContainerButtonForm } from '../../components/ui/Form/ContainerButtonForm';
 
 const KEY = process.env.KEYKYCHASH;
 
@@ -83,7 +87,7 @@ const ValidationMessage: React.FC = () => {
       setShowAnimation(false);
       setValidated(false);
     } else if (isMobile || isTablet || window.innerWidth <= 1000) {
-      console.log('incio biometria');
+      console.log("is mobile")
     }
   }, []);
 

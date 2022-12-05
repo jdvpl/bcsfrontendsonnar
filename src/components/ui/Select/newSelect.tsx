@@ -21,7 +21,6 @@ const ReactHookFormSelect: React.FC<any> = ({
   rules,
   helperText,
   error = false,
-  dataTestId,
   ...props
 }) => {
   const labelId = `${name}-label`;
@@ -69,9 +68,13 @@ const ReactHookFormSelect: React.FC<any> = ({
         rules={rules}
         render={({ field }) => (
           <Select
+            data-testid={"select"}
+            SelectDisplayProps={{
+              // @ts-ignore
+              "data-testid": `select`
+            }}
             id={labelId}
             margin="none"
-            data-testid={dataTestId}
             {...field}
             key={props.id}
             sx={{

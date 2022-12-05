@@ -12,19 +12,32 @@ export function CardOption({
   option,
   actualOption,
   onChangeActualOption,
+<<<<<<< HEAD
 }: CardOptions) {
   return <div onClick={() => onChangeActualOption(option)} className="w-full">
       <input type="radio" className="hidden" value={option?.value} role="generic" tabIndex={0} />
+=======
+}: CardOption) {
+  return (
+    <div onClick={() => onChangeActualOption(option)} className="w-full" role="btnCardOptionTest">
+      <input type="radio" className="hidden" value={option?.value} />
+>>>>>>> f130e99ff91745022fb5520f79eb51d3b10f8b58
       <label
         className={`text-left flex flex-col min-h-[52px] pl-[20px] py-[8px] mb-3 bg-white 
           cursor-pointer w-full rounded-md 
           border border-complementario-80 focus:shadow-none focus:border-primario-600
         focus:text-primario-600 hover:border-complementario-40 text-black  
+<<<<<<< HEAD
            shadow-small-300 font-normal ${
              option?.id === actualOption?.id &&
              'border-[1px] text-primario-600 border-primario-400 active'
            }`}
            role="generic"
+=======
+           shadow-small-300 font-normal ${option?.id === actualOption?.id &&
+          'border-[1px] text-primario-600 border-primario-400 active'
+          }`}
+>>>>>>> f130e99ff91745022fb5520f79eb51d3b10f8b58
       >
         <span className="hidden" />
         <pre />

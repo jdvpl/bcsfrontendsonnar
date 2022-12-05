@@ -7,10 +7,17 @@ import  Heading  from '../../components/form/heading';
 import Stepper from '../../components/ui/Stepper/index';
 import { childrenProps } from '../../interfaces';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
+<<<<<<< HEAD
 import  ContainerButtonForm  from '../../components/form/containerButtonForm';
 import { urlAndUtms } from '../../utils/RouterUtmsUrl/index';
 import Layout  from '../../components/layouts/layout';
 import  NavTitle  from '../../components/commons/NavTitle';
+=======
+import { urlAndUtms } from '../../utils/RouterUtmsUrl/index';
+import { Layout } from '../../components/layouts/layout';
+import { NavTitle } from '../../components/commons/NavTitle';
+import { ContainerButtonForm } from '../../components/ui/Form/ContainerButtonForm';
+>>>>>>> f130e99ff91745022fb5520f79eb51d3b10f8b58
 
 const CardImage: React.FC<childrenProps> = ({ children }) => (
   <div className="flex mr-6 minw-64">{children}</div>
