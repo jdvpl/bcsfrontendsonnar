@@ -1,5 +1,4 @@
 import { waitFor, render, screen, fireEvent } from '@testing-library/react';
-import React from 'react'
 import InicioSolicitud from '../../pages/inicio-solicitud';
 import userEvent from '@testing-library/user-event';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
