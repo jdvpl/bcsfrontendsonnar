@@ -17,10 +17,9 @@ interface FormProps {
 export interface FormData {
   document_number: string;
   document_type: string;
-  policy_and_terms: number;
-  commercial_terms: number;
-  advisory_option: number;
-  advisory: string;
+  policy_and_terms: boolean;
+  commercial_terms: boolean;
+
 }
 export interface HowItemProps {
   children: string | JSX.Element;
@@ -121,9 +120,10 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
               name="document_type"
               className="w-100"
               margin="normal"
+
             >
-              <MenuItem value="CC"> Cédula de ciudadanía</MenuItem>
-              <MenuItem value="CE"> Cédula de extranjería</MenuItem>
+              <MenuItem value="CC">Cédula de ciudadanía</MenuItem>
+              <MenuItem value="CE">Cédula de extranjería</MenuItem>
             </ReactHookFormSelect>
           </div>
         </div>
@@ -138,6 +138,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
                 onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                   e.preventDefault();
                 }}
+                dataTestId="inputDocument"
                 value={field.value || ''}
                 tabIndex={0}
                 id="document_number"
@@ -178,6 +179,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
             className="inline-block p-0 m-0  h-[18px] w-[18.6px] min-w-[18.6px] "
             type="checkbox"
             id="chk_policy_and_terms"
+            data-testid="chk_policy_and_terms"
             checked={terminos}
             aria-checked={terminos}
             tabIndex={0}
@@ -232,6 +234,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
             tabIndex={0}
             type="checkbox"
             id="chk-terminos"
+            data-testid="chkterminos"
             onChange={handleCommercial}
           />
           <label
