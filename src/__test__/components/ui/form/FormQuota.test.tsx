@@ -18,12 +18,6 @@ describe('All tests of formQuota', () => {
     const { container } = render(<FormQuota onSubmit={mkFn} />);
     expect(container.children.length).toBe(1);
   });
-  it('should select vis from select', async () => {
-    render(<FormQuota onSubmit={mkFn} />);
-    userEvent.click(getByRole(screen.getByTestId('typeHouseSalaryTest'), 'button'));
-    await waitFor(() => userEvent.click(screen.getByTestId('typeHouseSalaryTest')));
-    expect(screen.queryByTestId('typeSalaryVisTest')?.children.length).toBe(1);
-  });
   test('contain alert text', () => {
     component.getByText(
       'Recuerde que la financiación del crédito hipotecario es hasta el 70% del valor comercial de la vivienda y la cuota inicial equivalente al 30% restante debe solventarla con recursos propios.'
