@@ -6,8 +6,8 @@ import { RouterContext } from 'next/dist/shared/lib/router-context';
 import userEvent from "@testing-library/user-event";
 import { routes } from '../../../../routes';
 
-describe('HeadingError', () => {
-  test('should render "HeadingError" successfully', () => {
+describe('ErrorScreen', () => {
+  test('should render "ErrorScreen" successfully', () => {
     const { baseElement } = render(<ErrorScreen urlsvg={''} title={undefined} text={undefined} textbtn={' '} />);
     expect(baseElement).toBeTruthy();
   });
@@ -20,7 +20,6 @@ describe('HeadingError', () => {
     );
     const getbackRouteTest = screen.getByTestId('getbackRouteTest');
     await waitFor(() => userEvent.click(getbackRouteTest));
-
   })
   test('should goto startprocess', async () => {
     const router = createMockRouter({});
