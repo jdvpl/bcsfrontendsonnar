@@ -11,9 +11,10 @@ export function Qualify({ rate, changeRate, isEditable = true }: QualifyProps) {
   const rating = new Array(5).fill(0);
   const [tempRating, setTempRating] = useState<number>(-1);
   return (
-    <div className="flex gap-0 items-center justify-center mt-[16px] w-full">
+    <div className="flex gap-0 items-center justify-center mt-[16px] w-full" role="ratingContainer">
       {rating.map((_, index) => (
         <div
+          role="ratingTestbtn"
           key={`rating${index}`}
           onClick={() => isEditable && changeRate(index)}
           className="cursor-pointer"
