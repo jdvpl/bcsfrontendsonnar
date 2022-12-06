@@ -78,7 +78,7 @@ const Authentication = () => {
         <div className="mt-4 hidden md:block lg:block">
           <LogoBcs />
         </div>
-        <div className="xs:block sm:block md:hidden lg:hidden mt-6 cursor-pointer xs:ml-4" onClick={() => router.back()} role="btnGoBack">
+        <div className="xs:block sm:block md:hidden lg:hidden mt-6 cursor-pointer xs:ml-4" onClick={() => router.back()} role="btnGoBack" data-testid="getbackRouteTest">
           <Icons icon='bcs-arrow-one-left' size="text-[1.2rem]" />
         </div>
         <div className="mt-6 w-[180px] md:w-[180px] lg:w-[280px] xs:mr-4">
