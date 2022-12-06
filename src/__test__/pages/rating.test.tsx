@@ -1,10 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD:src/__test__/rating.test.tsx
-=======
 import Ratings from '../../pages/calificacion-solicitud';
->>>>>>> f130e99ff91745022fb5520f79eb51d3b10f8b58:src/__test__/pages/rating.test.tsx
 import { render } from '@testing-library/react';
-import Ratings from '../pages/calificacion-solicitud';
 import '@testing-library/jest-dom/extend-expect';
 
 describe('<Ratings/>', () => {

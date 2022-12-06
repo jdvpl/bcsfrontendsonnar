@@ -5,20 +5,13 @@ import { AplicationContext } from '../../../context/AplicationContext';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import AnimationComponent from '../../../components/commons/Animation';
 import Stepper from '../../../components/ui/Stepper/index';
-import  Heading  from '../../../components/form/heading';
+import Heading from '../../../components/form/heading';
 import { basePath } from '../../../../next.config';
 import useAES from '../../../hooks/useAES';
-<<<<<<< HEAD
-import  ContainerButtonForm  from '../../../components/form/containerButtonForm';
 import { urlAndUtms } from '../../../utils/RouterUtmsUrl';
 import Layout from '../../../components/layouts/layout';
-import  NavTitle  from '../../../components/commons/NavTitle';
-=======
-import { urlAndUtms } from '../../../utils/RouterUtmsUrl';
-import { Layout } from '../../../components/layouts/layout';
-import { NavTitle } from '../../../components/commons/NavTitle';
-import { ContainerButtonForm } from '../../../components/ui/Form/ContainerButtonForm';
->>>>>>> f130e99ff91745022fb5520f79eb51d3b10f8b58
+import NavTitle from '../../../components/commons/NavTitle';
+import ContainerButtonForm from '../../../components/ui/Form/ContainerButtonForm';
 
 const KEY = process.env.KEYKYCHASH;
 

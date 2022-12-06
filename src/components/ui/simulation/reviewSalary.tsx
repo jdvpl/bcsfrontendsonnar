@@ -113,13 +113,8 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
           urlsvg={`${basePath}/images/Home.svg`}
           classtitle="h-[14px] text-[14px]"
           id="fireInsuranceSalary"
-<<<<<<< HEAD
-          tooltip
-          tooltiptext={<p className='flex text-white'>Seguro diseñado para proteger a sus asegurados en caso de presentarse  muerte, incapacidad total y permanente, y demás riesgos previstos en la póliza. </p>}
-=======
           tooltip={true}
           tooltiptext={<p className='flex text-white'>Póliza que protege al inmueble hipotecado al Banco contra las pérdidas y daños materiales originados de forma accidental, súbita e imprevista como consecuencia directa de los riesgos amparados. </p>}
->>>>>>> 11eb09b29ee4d96c7eccbdfcd6c2f202e8422486
         /> : null
     }
     {

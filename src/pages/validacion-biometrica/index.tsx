@@ -3,24 +3,20 @@ import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import { isTablet, isMobile, isDesktop, isIPad13 } from 'react-device-detect';
 import Image from 'next/image';
-import  ValidationMessageBiometry  from '../../components/biometria/error-validacion';
+import ValidationMessageBiometry from '../../components/biometria/error-validacion';
 import Button from '../../components/ui/Button';
-import Heading  from '../../components/form/heading';
+import { Heading } from '../../components/form/heading';
 import Stepper from '../../components/ui/Stepper/index';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
-import ErrorLayout from '../../components/layouts/errorLayout';
+import { ErrorLayout } from '../../components/layouts/errorLayout';
 import AnimationComponent from '../../components/commons/Animation';
-<<<<<<< HEAD
-import ContainerButtonForm  from '../../components/form/containerButtonForm';
-=======
->>>>>>> f130e99ff91745022fb5520f79eb51d3b10f8b58
 import useAES from '../../hooks/useAES';
 import { urlAndUtms } from '../../utils/RouterUtmsUrl';
 import { childrenProps } from '../../interfaces';
-import  Layout  from '../../components/layouts/layout';
-import  NavTitle  from '../../components/commons/NavTitle';
+import Layout from '../../components/layouts/layout';
+import NavTitle from '../../components/commons/NavTitle';
 import { basePath } from '../../../next.config';
-import { ContainerButtonForm } from '../../components/ui/Form/ContainerButtonForm';
+import ContainerButtonForm from '../../components/ui/Form/ContainerButtonForm';
 
 const KEY = process.env.KEYKYCHASH;
 

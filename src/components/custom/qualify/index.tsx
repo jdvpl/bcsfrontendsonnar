@@ -20,7 +20,6 @@ const Qualify = ({ rate, changeRate, isEditable = true }: QualifyProps) => {
           className="cursor-pointer"
           onMouseEnter={() => isEditable && setTempRating(index)}
           onMouseLeave={() => isEditable && setTempRating(-1)}
-          role="generic"
         >
           <Star
             key={`star ${index}`}

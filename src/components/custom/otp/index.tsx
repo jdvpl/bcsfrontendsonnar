@@ -20,13 +20,8 @@ export interface OTPCodeRequest {
   phone: string;
 }
 
-<<<<<<< HEAD
-export const Otp = () => {
-  const [dataTU, ] = useSessionStorage('dataTU', '');
-=======
 export function Otp() {
   const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
->>>>>>> f130e99ff91745022fb5520f79eb51d3b10f8b58
   const [otp, setOtp] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(60);
@@ -136,11 +131,10 @@ export function Otp() {
         <Typography
           onClick={onResendOTP}
           variant="caption1"
-          className={`text-[14px] leading-4 ${
-            timer === 0 && wasResend === false
+          className={`text-[14px] leading-4 ${timer === 0 && wasResend === false
               ? 'text-primario-20 cursor-pointer'
               : 'text-gris-200'
-          } mb-[12px]`}
+            } mb-[12px]`}
         >
           {timer === 0 && wasResend === false
             ? 'Volver a enviar código'

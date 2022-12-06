@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { ErrorImageDesktop } from '../../../../components/icons/errorImageValidationDesktop';
+import ErrorImageDesktop from '../../../../components/icons/errorImageValidationDesktop';
 import React from 'react'
 
 describe('Card', () => {

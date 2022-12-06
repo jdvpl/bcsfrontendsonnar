@@ -51,13 +51,13 @@ function Consultancy({ options = initialOptions }: any) {
   };
 
   const renderContent = () => (
-      <div className="lg:w-[411px] text-[14px]">
-        <span className="font-semibold text-primario-900 lg:text-[20px] text-[16px]">
-          {itemActive}
-        </span>
-        {options[actualStep - 1]?.[activeIndex]?.content()}
-      </div>
-    );
+    <div className="lg:w-[411px] text-[14px]">
+      <span className="font-semibold text-primario-900 lg:text-[20px] text-[16px]">
+        {itemActive}
+      </span>
+      {options[actualStep - 1]?.[activeIndex]?.content()}
+    </div>
+  );
 
   const positionImages = () => {
     switch (actualStep) {
@@ -81,17 +81,15 @@ function Consultancy({ options = initialOptions }: any) {
             key={option?.label}
             onClick={() => openModal(option?.label, index)}
             variant="secondary"
-            isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%] font-semibold rounded-[8px] lg:h-48px ${
-              itemActive === option?.label ? 'bg-primario-100' : ''
-            }
+            isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%] font-semibold rounded-[8px] lg:h-48px ${itemActive === option?.label ? 'bg-primario-100' : ''
+              }
             ${itemActive && !isMobile === option?.label ? 'translate-x-[16px]' : ''}
             `}
           >
             <div className="flex justify-center">
               <span
-                className={`text-center ${
-                  itemActive === option?.label ? 'text-white' : 'text-primario-100'
-                } text-[18px] p-0`}
+                className={`text-center ${itemActive === option?.label ? 'text-white' : 'text-primario-100'
+                  } text-[18px] p-0`}
               >
                 {option?.label}
               </span>
@@ -143,31 +141,15 @@ function Consultancy({ options = initialOptions }: any) {
         </div>
       </div>
 
-<<<<<<< HEAD
-      <div className="lg:w-[1127px] w-[528px] lg:gap-x-[120px] gap-x-[34px] mx-auto flex items-center mb-[77px]">
-        <div onClick={prevStep} className="cursor-pointer flex items-center flex-col lg:w-[150px]">
-          <div className="rounded-full w-[40px] h-[40px] border-primario-20 flex justify-center items-center border-2	mb-[33px]">
-            <Icons
-              icon="bcs-arrow-two-left"
-              iconclassNames="text-[18px] font-bold text-primario-20"
-            />
-          </div>
-          <a className=" text-primario-20 font-bold underline text-center text-[14px]">
-            {actualStep === 1 ? 'Volver al Inicio' : 'Anterior'}
-          </a>
-        </div>
-=======
       <div className="lg:w-[1127px] md:w-[528px] xs:flex-col md:flex-row w-[90%] xs:w-[340px] lg:gap-x-[120px] gap-x-[34px] mx-auto flex items-center mb-[77px]">
         <img
           className="w-[100%] xs:max-w-[340px] xs:h-[180px] md:hidden object-contain"
           src={`${basePath}/images/consultancy/${actualStep}.svg`}
         />
->>>>>>> f130e99ff91745022fb5520f79eb51d3b10f8b58
 
         <div
-          className={`${
-            itemActive !== '' ? 'sm:ml-[-95px]' : ''
-          } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
+          className={`${itemActive !== '' ? 'sm:ml-[-95px]' : ''
+            } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
           style={{
             backgroundImage: `url(${basePath}/images/consultancy/${actualStep}.svg)`,
             backgroundRepeat: 'no-repeat',
@@ -193,14 +175,6 @@ function Consultancy({ options = initialOptions }: any) {
           ) : null}
         </div>
 
-<<<<<<< HEAD
-        <div onClick={nextStep} className="cursor-pointer flex items-center flex-col lg:w-[150px]">
-          <div className="rounded-full w-[40px] h-[40px] border-primario-20 flex justify-center items-center border-2 mb-[33px]">
-            <Icons
-              icon="bcs-arrow-two-right"
-              iconclassNames="text-[18px] font-bold text-primario-20"
-            />
-=======
         {itemActive !== '' && isMobile ? (
           <div className="flex flex-col max-w-[340px] justify-center absolute pb-[50px]">
             <div
@@ -217,7 +191,6 @@ function Consultancy({ options = initialOptions }: any) {
             <div className="flex flex-col gap-y-3 w-full mt-[12px]">
               <OptionList />
             </div>
->>>>>>> f130e99ff91745022fb5520f79eb51d3b10f8b58
           </div>
         ) : null}
 
@@ -270,9 +243,8 @@ function Consultancy({ options = initialOptions }: any) {
       </div>
 
       <div
-        className={`w-full text-center mb-[80px] xs:hidden md:block${
-          actualStep === 1 || actualStep === 4 ? 'hidden' : ''
-        }`}
+        className={`w-full text-center mb-[80px] xs:hidden md:block${actualStep === 1 || actualStep === 4 ? 'hidden' : ''
+          }`}
       >
         <a
           href={`${basePath}`}

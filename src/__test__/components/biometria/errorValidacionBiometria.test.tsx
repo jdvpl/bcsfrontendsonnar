@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import React from 'react';
-import { ValidationMessageBiometry } from '../../../components/biometria/error-validacion';
+import ValidationMessageBiometry from '../../../components/biometria/error-validacion';
 
 describe('Visibility in error biometry', () => {
   beforeEach(() => {
