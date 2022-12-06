@@ -200,6 +200,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
               role="link"
               aria-hidden="true"
               aria-expanded="true"
+              data-testid="politicsTestSpan"
               tabIndex={0}
               onClick={() => {
                 setShowModal(true);
@@ -252,6 +253,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
               role="link"
               aria-hidden="true"
               aria-expanded="true"
+              data-testid="commercialTermsTest"
               tabIndex={0}
               onClick={() => {
                 setShowModal(true);
@@ -282,6 +284,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
 
         {showModal && (
           <Modal
+
             showModal={showModal}
             onClose={() => setShowModal(false)}
             compont={componentModal}
