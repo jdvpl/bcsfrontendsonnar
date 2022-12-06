@@ -46,6 +46,7 @@ function Modal({ compont, showModal = false, onClose }: Props) {
       id="modal-container"
       className={`fixed inset-0 z-40 ${show}`}
       role="tabpanel"
+      data-testid="modalDataTest"
       tabIndex={0}
     >
       <div className="modal-background">
