@@ -2,12 +2,12 @@ import { useRouter } from 'next/router';
 import React, { useState, useEffect, useRef } from 'react';
 import OtpInput from 'react-otp-input-rc-17';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
-import { routes } from '../../../routes';
-import { reSendOTPCode, validateOTOCode } from '../../../services';
 import { SesionStorageKeys } from '../../../session';
 import { Icons } from '../../ui/icons';
 import { OTLoader } from '../../ui/Loaders/OTPloader';
 import Typography from '../../ui/Typography';
+import useOtp from './useOtp';
+import { reSendOTPCode, validateOTOCode } from '../../../services';
 
 export interface ValidateOTC {
   pin: string;
@@ -21,7 +21,7 @@ export interface OTPCodeRequest {
 }
 
 export function Otp() {
-  const [dataTU,] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
+  const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const [otp, setOtp] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(60);
@@ -30,42 +30,19 @@ export function Otp() {
   const intervalRef = useRef<number>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
-
-  const onValidateOTP = async () => {
-    setIsLoading(true);
-    const body: ValidateOTC = {
-      document_number: dataTU?.document_number,
-      document_type: dataTU?.document_type,
-      pin: otp,
-    };
-    const response = await validateOTOCode(body);
-    if (!response.error) {
-      setIsValid(true);
-      setIsLoading(false);
-      setTimeout(() => {
-        router.push(routes.ratings);
-      }, 3000);
-    } else {
-      setError(true);
-      setIsLoading(false);
-    }
-  };
-
-  const onResendOTP = async () => {
-    if (timer === 0 && !wasResend) {
-      setIsLoading(true);
-      const body: OTPCodeRequest = {
-        document_number: dataTU?.document_number,
-        document_type: dataTU?.document_type,
-        phone: dataTU?.personalData?.phoneNumber,
-      };
-      const response = await reSendOTPCode(body);
-      if (!response.error) {
-        setWasResend(true);
-      }
-      setIsLoading(false);
-    }
-  };
+  const { onValidateOTP, onResendOTP } = useOtp({
+    setIsLoading,
+    dataTU,
+    otp,
+    setIsValid,
+    setError,
+    wasResend,
+    setWasResend,
+    timer,
+    router,
+    reSendOTPCode,
+    validateOTOCode,
+  });
 
   useEffect(() => {
     if (otp?.length === 6) {
@@ -154,10 +131,11 @@ export function Otp() {
         <Typography
           onClick={onResendOTP}
           variant="caption1"
-          className={`text-[14px] leading-4 ${timer === 0 && wasResend === false
-            ? 'text-primario-20 cursor-pointer'
-            : 'text-gris-200'
-            } mb-[12px]`}
+          className={`text-[14px] leading-4 ${
+            timer === 0 && wasResend === false
+              ? 'text-primario-20 cursor-pointer'
+              : 'text-gris-200'
+          } mb-[12px]`}
         >
           {timer === 0 && wasResend === false
             ? 'Volver a enviar código'
