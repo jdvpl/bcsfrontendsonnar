@@ -31,7 +31,7 @@ describe('Bienvenida', () => {
     );
     const getbackRouteTest = screen.getByTestId('getbackRouteTest');
     await waitFor(() => userEvent.click(getbackRouteTest));
-
+    expect(router.back).not.toHaveBeenCalledWith(routes.onboarding)
   })
 
 
