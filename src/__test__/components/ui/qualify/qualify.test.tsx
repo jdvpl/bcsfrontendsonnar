@@ -1,21 +1,30 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-<<<<<<< HEAD:src/__test__/qualify.test.tsx
-import  Qualify  from '../components/custom/qualify';
-=======
-import { Qualify } from '../../../../components/custom/qualify';
->>>>>>> f130e99ff91745022fb5520f79eb51d3b10f8b58:src/__test__/components/ui/qualify/qualify.test.tsx
+import { render, screen, fireEvent } from '@testing-library/react';
+import Qualify from '../../../../components/custom/qualify';
 import '@testing-library/jest-dom/extend-expect';
 
 describe('<Qualify/>', () => {
   it('should render correctly', () => {
     const props = {
       rate: 5,
-      changeRate: () => { },
+      changeRate: (index: number) => { index },
       isEditable: true,
     };
     const { container } = render(<Qualify {...props} />);
     expect(container).toBeTruthy();
+  });
+  it('should render events', async () => {
+    const props = {
+      rate: 5,
+      changeRate: (index: number) => { index },
+      isEditable: true,
+    };
+    render(<Qualify {...props} />);
+    const ratingTestBtn = screen.getAllByRole('ratingTestbtn')[0];
+    fireEvent.click(ratingTestBtn)
+    fireEvent.mouseEnter(ratingTestBtn)
+    fireEvent.mouseLeave(ratingTestBtn);
+
   });
   it('should render stars with active fill', () => {
     const props = {
