@@ -1,4 +1,4 @@
-import Image from 'next/image';
+// import Image from 'next/image';
 import LogoBcs from '../../../components/svg/LogoBcs'
 import Icons from '../../../components/ui/icons';
 import LogoForm from '../../../components/svg/LogoForm'
@@ -15,8 +15,6 @@ interface CardProps {
   title: React.ReactNode;
   text: React.ReactNode;
   textbtn:string;
-  width:string;
-  heigth:string
 }
 
 export const ErrorLayout: React.FC<CardProps> = ({
@@ -25,8 +23,6 @@ export const ErrorLayout: React.FC<CardProps> = ({
   title,
   text,
   textbtn,
-  width,
-  heigth
 }) => {
   const router = useRouter();
   return (
@@ -43,14 +39,11 @@ export const ErrorLayout: React.FC<CardProps> = ({
         </div>
         </div>
         <div className="m-auto lg:w-[528px]">
-          <div className="mt-20 flex justify-center">
-            <Image
-              unoptimized
+        <div className="mt-20 lg:h-[300px] md:w-[292px] md:h-[300px] sm:w-[195px] sm:h-[200px] xs:h-[200px] xs:w-[195px] m-auto ">
+            <img
               src={urlsvg}
               alt={altsvg}
               title={altsvg}
-              width={width}
-              height={heigth}
             />
           </div>
           <Typography variant='h3' className='text-center mt-[52px] text-primario-900 font-[24px]'>

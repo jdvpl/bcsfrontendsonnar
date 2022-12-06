@@ -9,7 +9,7 @@ export default function Error() {
   return (
     <div>
     {router.query.error == "error-validacion" ? (
-      <ErrorLayout altsvg='warning' title="Lo sentimos" text={<p>No es posible gestionar su solicitud</p>}  urlsvg={`${basePath}/images/autenticacion1.svg`} textbtn="Cerrar" width="300" heigth='300'/>
+      <ErrorLayout altsvg='warning' title="Lo sentimos" text={<p>No es posible gestionar su solicitud</p>}  urlsvg={`${basePath}/images/autenticacion1.svg`} textbtn="Cerrar"/>
     ):null}
     {router.query.error == "error-validacion-identidad" ? (
       <ErrorLayout altsvg='warning' title={<p>Validación de identidad <br/> no exitosa</p>}  text="Dirijase a una sucursal del banco" urlsvg={`${basePath}/images/autenticacion1.svg`} textbtn="Sucursales del banco"/>
