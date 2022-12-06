@@ -31,7 +31,7 @@ export const ErrorLayout: React.FC<CardProps> = ({
         <div className="mt-4 hidden lg:block">
           <LogoBcs />
         </div>
-        <div className="xs:block sm:block lg:hidden mt-4 cursor-pointer" onClick={() => router.back()}>
+        <div className="xs:block sm:block lg:hidden mt-4 cursor-pointer" onClick={() => router.back()} data-testid="getbackRouteTest">
           <Icons icon='bcs-arrow-one-left' size="text-[1.2rem]" />
         </div>
         <div className="mt-4 w-[180px] md:w-[180px] lg:w-[280px]">
