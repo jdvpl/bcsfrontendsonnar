@@ -1,4 +1,6 @@
-export const QRPage: React.FC = () => (
+import React from "react";
+
+const QRPage: React.FC = () => (
   <svg
     data-testid="QRsvg"
     width="154"
@@ -484,3 +486,5 @@ export const QRPage: React.FC = () => (
     <path d="M29.1427 124.865H16.6562V137.352H29.1427V124.865Z" fill="black" />
   </svg>
 );
+
+export default QRPage

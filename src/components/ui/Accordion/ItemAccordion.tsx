@@ -1,5 +1,5 @@
-import { childrenProps } from '../../../interfaces';
 import React from 'react'
+import { childrenProps } from '../../../interfaces';
 
 interface Props {
   id: string;
@@ -8,15 +8,13 @@ interface Props {
   setSelected?: (item: string | null) => void;
 }
 
-export const ItemAccordion: React.FC<Props & childrenProps> = ({
+const ItemAccordion: React.FC<Props & childrenProps> = ({
   id,
   setSelected,
   active,
   title,
   children,
-}) => {
-
-  return (
+}) => (
     <div
       data-testid="accordion"
       className={`w-full bg-white  shadow-small-300   ${active ? 'border-[1px] border-complementario-70 rounded-md  ' : ' rounded-t-md '
@@ -31,7 +29,7 @@ export const ItemAccordion: React.FC<Props & childrenProps> = ({
         onKeyDown={() => setSelected?.(id)}
         onFocus={() => setSelected?.(id)}
         role="button"
-        // tabIndex={0}
+        tabIndex={0}
         className={`flex justify-between items-center cursor-pointer px-[20px] text-azul_gris-100 ${active
           ? 'bg-gris-80  rounded-t-md border-b-complementario-70 border-b-[1px]'
           : 'bg-white border-[1px] border-complementario-70  rounded-t-md'
@@ -86,5 +84,6 @@ export const ItemAccordion: React.FC<Props & childrenProps> = ({
         </div>
       </div>
     </div >
-  )
-};
+  );
+
+  export default ItemAccordion

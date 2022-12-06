@@ -141,7 +141,7 @@ interface iPdfProps {
 interface itableProps {
   children: any, col: any, th: any
 }
-const PDFDocumentData = ({ infoData }: iPdfProps) => {
+function PDFDocumentData({ infoData }: iPdfProps) {
   const data = infoData?.quotes;
   const quantiyPages = infoData?.quotes?.length;
   const numberOfPages = Array(quantiyPages - 1).fill(0)
@@ -241,6 +241,6 @@ const PDFDocumentData = ({ infoData }: iPdfProps) => {
       }
     </Document>
   );
-};
+}
 
 export default PDFDocumentData;

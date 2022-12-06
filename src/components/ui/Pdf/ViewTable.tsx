@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from '@react-pdf/renderer'
 import HeadersTable from './HeadersTable';
 
-const ViewTable = ({ data, position }: any) => {
+function ViewTable({ data, position }: any) {
   const styles = StyleSheet.create({
     cellText: {
       fontSize: '7px',

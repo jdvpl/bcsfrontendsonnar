@@ -7,9 +7,9 @@ import { Question, ValidationForm } from '../../components/ui/Form/ValidationFor
 import { ValidationFormNumber } from '../../components/ui/Form/validationFormNumber';
 import VerificationForm from '../../components/ui/Form/verificationForm';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
-import { Layout } from '../../components/layouts/layout';
+import Layout from '../../components/layouts/layout';
 import AnimationComponent from '../../components/commons/Animation';
-import { NavTitle } from '../../components/commons/NavTitle';
+import NavTitle from '../../components/commons/NavTitle';
 import { SesionStorageKeys } from '../../session';
 import { sendQuestions } from '../../services';
 import { routes } from '../../routes';

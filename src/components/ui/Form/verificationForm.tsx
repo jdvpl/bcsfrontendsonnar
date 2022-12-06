@@ -13,11 +13,11 @@ import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import { motion } from 'framer-motion';
 import Button from '../Button';
 
-import { ContainerButtonForm } from './ContainerButtonForm';
+import  ContainerButtonForm  from './ContainerButtonForm';
 
 import NewInput from '../inputs/newInput';
 
-import { Heading } from '../Headers';
+import  Heading  from '../Headers';
 
 interface FormProps {
   onSubmit: (data: VerificationFormProps) => void;

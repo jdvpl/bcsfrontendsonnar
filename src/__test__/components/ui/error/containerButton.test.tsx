@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { ContainerButton } from '../../../../components/ui/error/containerButton';
+import ContainerButton from '../../../../components/ui/error/containerButton';
 import React from 'react'
 
 describe('ContainerButton', () => {

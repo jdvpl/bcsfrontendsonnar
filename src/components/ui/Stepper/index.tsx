@@ -1,5 +1,6 @@
 import React from 'react';
 import NoSSRWrapper from '../../../hooks/noSSR';
+
 interface stepsProps {
   steps: number;
   actualStep: number;
@@ -7,13 +8,13 @@ interface stepsProps {
   title?: string;
   className?: string;
 }
-const Stepper = ({
+function Stepper({
   steps,
   actualStep,
   percentage = 100,
   title = '',
   className = '',
-}: stepsProps) => {
+}: stepsProps) {
   const renderSteps = new Array(steps).fill(0);
   return (
     <NoSSRWrapper>
@@ -44,6 +45,6 @@ const Stepper = ({
       </div>
     </NoSSRWrapper>
   );
-};
+}
 
 export default Stepper;

@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router';
 import { FC } from 'react';
+/* eslint-disable-next-line */
 import Icons, { IconsProps } from '../icons';
 import Typography from '../Typography/index';
-import { dynamicClassesSelective } from './SelectiveClassnames';
+import  dynamicClassesSelective  from './SelectiveClassnames';
 
 export interface ISelectiveCardProps extends IconsProps {
   label?: string;
@@ -22,11 +23,13 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
   className = '',
   hasTitle = true,
   onclick = true,
+  ...props
 }) => {
   const router = useRouter();
   const classNames = dynamicClassesSelective(hasTitle, className);
   return (
     <div
+      {...props}
       className={classNames.mainClasesParentDiv}
       {...(onclick ? { onClick: () => router.push(pathTo) } : {})}
     >

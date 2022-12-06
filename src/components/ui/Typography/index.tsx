@@ -1,6 +1,6 @@
-import { HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 import cn from 'classnames';
-import React from 'react'
+
 export type TagType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
 
 export type HeadingType = HTMLAttributes<HTMLHeadingElement>;
@@ -42,7 +42,7 @@ const paragraphs = [
   'bodyS3',
 ];
 const spans = ['caption1', 'caption2', 'caption3', 'caption4', 'overline'];
-export function Typography({
+function Typography({
   children,
   variant = 'bodyM1',
   className,

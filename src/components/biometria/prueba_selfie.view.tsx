@@ -1,9 +1,8 @@
 import React from 'react';
 
-const view = (me: any) => {
-  return (
+const view = (me: any) => (
     <div id="photo_live_selfie_page" data-testid="selfie">
-      <div id="target"></div>
+      <div id="target" />
 
       {me.state.message !== '' ? (
         <div className="message">{me.state.message}</div>
@@ -32,6 +31,5 @@ const view = (me: any) => {
       </div> */}
     </div>
   );
-};
 
 export default view;

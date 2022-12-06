@@ -2,7 +2,7 @@ import { Font, StyleSheet, Text, View } from '@react-pdf/renderer'
 import { basePath } from '../../../../next.config';
 
 Font.register({ family: 'Roboto', src: `${basePath}/fonts/RobotoBold.ttf` });
-const HeadersTable = () => {
+function HeadersTable() {
 
   const styles = StyleSheet.create({
     cellText: {

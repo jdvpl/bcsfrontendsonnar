@@ -1,6 +1,5 @@
-function LogoForm({w}:any) {
-  return (
-    <svg
+function LogoForm() {
+  return <svg
       height="32"
       width="100%"
       viewBox="0 0 303 32"
@@ -82,7 +81,6 @@ function LogoForm({w}:any) {
         fill="#005DA2"
       />
     </svg>
-  );
 }
 
 export default LogoForm;

@@ -1,9 +1,8 @@
 import React from 'react';
 
-const view = (me: any) => {
-  return (
+const view = (me: any) => (
     <div data-testid="document_photo" id="document_page">
-      <div id="target"></div>
+      <div id="target" />
 
       {me.state.message !== '' ? (
         <div className="message">{me.state.message}</div>
@@ -14,6 +13,5 @@ const view = (me: any) => {
       )}
     </div>
   );
-};
 
 export default view;

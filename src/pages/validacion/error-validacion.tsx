@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from 'react';
-import { ValidationMessageBiometry } from '../../components/biometria/error-validacion';
-import { ErrorLayout } from '../../components/layouts/errorLayout';
+import  ValidationMessageBiometry  from '../../components/biometria/error-validacion';
+import  ErrorLayout from '../../components/layouts/errorLayout';
 import { AplicationContext } from '../../context/AplicationContext';
 
 const ErrorValidacion: React.FC = () => {

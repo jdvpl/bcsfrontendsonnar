@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import { FormContainer } from './FormContainer';
-import { Heading } from '../Headers';
-import { ContainerButtonForm } from './ContainerButtonForm';
+import FormContainer from './FormContainer';
+import Heading  from '../Headers';
+import ContainerButtonForm  from './ContainerButtonForm';
 import Button from '../Button';
 import NewAutoComplete from '../inputs/newAutoComplete';
 

@@ -4,7 +4,7 @@ import React from 'react'
 
 describe('HelperText', () => {
   test('should render "HelperText" successfully', () => {
-    const { baseElement } = render(<HelperText text={''} error={false} />);
+    const { baseElement } = render(<HelperText text="" error={false} />);
     expect(baseElement).toBeTruthy();
   });
 
