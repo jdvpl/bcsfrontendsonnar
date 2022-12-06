@@ -41,6 +41,7 @@ export const ErrorLayout: React.FC<CardProps> = ({
       <div className="m-auto lg:w-[528px]">
         <div className="mt-20 lg:h-[300px] md:w-[292px] md:h-[300px] sm:w-[195px] sm:h-[200px] xs:h-[200px] xs:w-[195px] m-auto ">
           <img
+            role="imageError"
             src={urlsvg}
             alt={altsvg}
             title={altsvg}
