@@ -22,11 +22,13 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
   className = '',
   hasTitle = true,
   onclick = true,
+  ...props
 }) => {
   const router = useRouter();
   const classNames = dynamicClassesSelective(hasTitle, className);
   return (
     <div
+      {...props}
       className={classNames.mainClasesParentDiv}
       {...(onclick ? { onClick: () => router.push(pathTo) } : {})}
     >
