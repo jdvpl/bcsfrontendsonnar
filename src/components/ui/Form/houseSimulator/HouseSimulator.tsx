@@ -120,8 +120,7 @@ function HouseSimulator() {
           </ReactHookFormSelect>
 
           <Controller
-            render={({ field }) => {
-              return (
+            render={({ field }) => (
                 <Input
                   containerClassName="col-span-6"
                   type="text"
@@ -141,8 +140,7 @@ function HouseSimulator() {
                     field.onChange(e.target.value.replace(/[^0-9]/g, ''));
                   }}
                 />
-              );
-            }}
+              )}
             name="houseValue"
             control={control}
           />
@@ -252,8 +250,7 @@ function HouseSimulator() {
             name="year"
             control={control}
             rules={{ required: true }}
-            render={({ field }) => {
-              return (
+            render={({ field }) => (
                 <Input
                   containerClassName="col-span-2"
                   type="text"
@@ -269,8 +266,7 @@ function HouseSimulator() {
                   maxLength={4}
                   label="Año"
                 />
-              );
-            }}
+              )}
           />
         </div>
 

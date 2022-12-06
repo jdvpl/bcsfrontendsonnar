@@ -6,7 +6,7 @@ import React from 'react'
 
 describe('ImageLoader', () => {
   test('should render "ImageLoader" successfully', () => {
-    const { baseElement } = render(<ImageLoader src={''} />);
+    const { baseElement } = render(<ImageLoader src="" />);
     expect(baseElement).toBeTruthy();
   });
 

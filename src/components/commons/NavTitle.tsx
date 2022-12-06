@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const NavTitle: React.FC<{ noBack?: boolean; onClick?: () => void }> = ({
+const NavTitle: React.FC<{ noBack?: boolean; onClick?: () => void }> = ({
   noBack,
   onClick,
 }) => (
@@ -118,3 +118,5 @@ export const NavTitle: React.FC<{ noBack?: boolean; onClick?: () => void }> = ({
     </div>
   </div>
 );
+
+export default NavTitle

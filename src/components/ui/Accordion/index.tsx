@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import React, { FC, useState } from 'react';
-import { ItemAccordion } from './ItemAccordion';
+import ItemAccordion from './ItemAccordion';
 
-export const Questions: FC = () => {
+const Questions: FC = () => {
   const [selected, setSelected] = useState<null | string>('');
   return (
     <section
@@ -77,3 +77,5 @@ export const Questions: FC = () => {
     </section>
   );
 };
+
+export default Questions

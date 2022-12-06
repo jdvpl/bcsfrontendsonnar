@@ -1,4 +1,6 @@
-export const ErrorImageDesktop: React.FC = () => (
+import React from "react";
+
+const ErrorImageDesktop: React.FC = () => (
   <svg
     width="228"
     height="205"
@@ -144,3 +146,5 @@ export const ErrorImageDesktop: React.FC = () => (
     </defs>
   </svg>
 );
+
+export default ErrorImageDesktop

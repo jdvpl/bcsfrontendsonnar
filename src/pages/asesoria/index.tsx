@@ -15,7 +15,7 @@ import { useMediaQuery } from 'react-responsive';
 const ConditionalWrapper: FC<any> = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
-const Consultancy = ({ options = initialOptions }: any) => {
+function Consultancy({ options = initialOptions }: any) {
   const [itemActive, setItemActive] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
   const [actualStep, setActualStep] = useState<number>(1);
@@ -50,16 +50,14 @@ const Consultancy = ({ options = initialOptions }: any) => {
     setItemActive('');
   };
 
-  const renderContent = () => {
-    return (
-      <div className="lg:w-[411px] text-[14px]">
-        <span className="font-semibold text-primario-900 lg:text-[20px] text-[16px]">
-          {itemActive}
-        </span>
-        {options[actualStep - 1]?.[activeIndex]?.content()}
-      </div>
-    );
-  };
+  const renderContent = () => (
+    <div className="lg:w-[411px] text-[14px]">
+      <span className="font-semibold text-primario-900 lg:text-[20px] text-[16px]">
+        {itemActive}
+      </span>
+      {options[actualStep - 1]?.[activeIndex]?.content()}
+    </div>
+  );
 
   const positionImages = () => {
     switch (actualStep) {
@@ -83,17 +81,15 @@ const Consultancy = ({ options = initialOptions }: any) => {
             key={option?.label}
             onClick={() => openModal(option?.label, index)}
             variant="secondary"
-            isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%] font-semibold rounded-[8px] lg:h-48px ${
-              itemActive === option?.label ? 'bg-primario-100' : ''
-            }
+            isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%] font-semibold rounded-[8px] lg:h-48px ${itemActive === option?.label ? 'bg-primario-100' : ''
+              }
             ${itemActive && !isMobile === option?.label ? 'translate-x-[16px]' : ''}
             `}
           >
             <div className="flex justify-center">
               <span
-                className={`text-center ${
-                  itemActive === option?.label ? 'text-white' : 'text-primario-100'
-                } text-[18px] p-0`}
+                className={`text-center ${itemActive === option?.label ? 'text-white' : 'text-primario-100'
+                  } text-[18px] p-0`}
               >
                 {option?.label}
               </span>
@@ -152,9 +148,8 @@ const Consultancy = ({ options = initialOptions }: any) => {
         />
 
         <div
-          className={`${
-            itemActive !== '' ? 'sm:ml-[-95px]' : ''
-          } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
+          className={`${itemActive !== '' ? 'sm:ml-[-95px]' : ''
+            } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
           style={{
             backgroundImage: `url(${basePath}/images/consultancy/${actualStep}.svg)`,
             backgroundRepeat: 'no-repeat',
@@ -248,9 +243,8 @@ const Consultancy = ({ options = initialOptions }: any) => {
       </div>
 
       <div
-        className={`w-full text-center mb-[80px] xs:hidden md:block${
-          actualStep === 1 || actualStep === 4 ? 'hidden' : ''
-        }`}
+        className={`w-full text-center mb-[80px] xs:hidden md:block${actualStep === 1 || actualStep === 4 ? 'hidden' : ''
+          }`}
       >
         <a
           href={`${basePath}`}
@@ -261,6 +255,6 @@ const Consultancy = ({ options = initialOptions }: any) => {
       </div>
     </>
   );
-};
+}
 
 export default Consultancy;

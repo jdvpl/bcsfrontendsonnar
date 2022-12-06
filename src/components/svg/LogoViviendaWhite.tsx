@@ -1,6 +1,5 @@
 function LogoViviendaWhite() {
-  return (
-    <svg
+  return <svg
       width="279"
       height="29"
       viewBox="0 0 279 29"
@@ -81,7 +80,6 @@ function LogoViviendaWhite() {
         fill="white"
       />
     </svg>
-  );
 }
 
 export default LogoViviendaWhite;

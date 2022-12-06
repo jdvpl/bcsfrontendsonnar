@@ -1,7 +1,7 @@
 import React from 'react';
 import { childrenProps } from '../../interfaces';
 
-export const Heading: React.FC<childrenProps> = ({ children }) => (
+const Heading: React.FC<childrenProps> = ({ children }) => (
   <h4
     data-testid="head"
     id="title"
@@ -12,3 +12,5 @@ export const Heading: React.FC<childrenProps> = ({ children }) => (
     {children}
   </h4>
 );
+
+export default Heading

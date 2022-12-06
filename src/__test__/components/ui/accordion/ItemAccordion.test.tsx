@@ -1,5 +1,5 @@
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import { ItemAccordion } from '../../../../components/ui/Accordion/ItemAccordion';
+import ItemAccordion from '../../../../components/ui/Accordion/ItemAccordion';
 import React from 'react'
 import userEvent from '@testing-library/user-event';
 

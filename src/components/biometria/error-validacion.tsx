@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import React from 'react';
-import { ErrorImageDesktop } from '../../components/icons/errorImageValidationDesktop';
-import { QRPage } from '../../components/icons/errorQR';
+import  ErrorImageDesktop  from "../icons/errorImageValidationDesktop";
+import  QRPage  from "../icons/errorQR";
 
-export const ValidationMessageBiometry: React.FC = () => {
-  return (
+const ValidationMessageBiometry: React.FC = () => (
     <section itemScope itemType="https//schema.org/Action">
       <div data-testid="error-biometria" className="flex justify-center ">
         <ErrorImageDesktop />
@@ -59,4 +58,5 @@ export const ValidationMessageBiometry: React.FC = () => {
       </p>
     </section>
   );
-};
+
+export default ValidationMessageBiometry

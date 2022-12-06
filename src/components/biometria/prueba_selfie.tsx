@@ -5,9 +5,12 @@ import { basePath } from '../../../next.config';
 
 export default class PhotoLiveSelfiePage extends React.Component {
   static contextType = AplicationContext;
+
   context!: React.ContextType<typeof AplicationContext>;
+
   // Reference to DOM target element where the SDK will load
   target: any = false;
+
   // Reference to VDDocument SDK
   VDAlive: any = false;
 
@@ -22,10 +25,13 @@ export default class PhotoLiveSelfiePage extends React.Component {
     faceImage: false,
   };
   
-  setMessage = (message: string) => this.setState({ message: message });
-  setUnmounted = (unmounted: boolean) => this.setState({ unmounted: unmounted });
-  setPrefaceImage = (prefaceImage: any) => this.setState({ prefaceImage: prefaceImage });
-  setFaceImage = (faceImage: any) => this.setState({ faceImage: faceImage });
+  setMessage = (message: string) => this.setState({ message });
+
+  setUnmounted = (unmounted: boolean) => this.setState({ unmounted });
+
+  setPrefaceImage = (prefaceImage: any) => this.setState({ prefaceImage });
+
+  setFaceImage = (faceImage: any) => this.setState({ faceImage });
 
   render() {
     return view(this);
@@ -59,7 +65,7 @@ export default class PhotoLiveSelfiePage extends React.Component {
     
   }
 
-  //Start the VDAlive SDK
+  // Start the VDAlive SDK
   sdkStart() {
     const gifPath = `${basePath}/jsBiometria/gifs/`;
 
@@ -98,7 +104,7 @@ export default class PhotoLiveSelfiePage extends React.Component {
 
   // Method to load JS scripts
   loadScript(src: any) {
-    let script = document.createElement('script');
+    const script = document.createElement('script');
     script.setAttribute('src', src);
     script.setAttribute('id', 'tercero');
 
@@ -108,9 +114,9 @@ export default class PhotoLiveSelfiePage extends React.Component {
     document.head.appendChild(script);
   }
 
-  ////////////////////
+  /// /////////////////
   // EVENTS HANDLERS
-  ////////////////////
+  /// /////////////////
 
   // Start the VDAlive SDK after CV script is initialized
   onRuntimeInitialized = () => {
@@ -129,7 +135,7 @@ export default class PhotoLiveSelfiePage extends React.Component {
   // VDAlive SDK is mounted
   onVDAliveMounted = () => {
     this.setMessage('VDAlive mounted');
-    //Unset the unmounted flag
+    // Unset the unmounted flag
     this.setUnmounted(false);
   };
 
@@ -140,15 +146,15 @@ export default class PhotoLiveSelfiePage extends React.Component {
 
   // VDAlive SDK is unmounted
   onVDAliveUnmounted = () => {
-    //Set the unmounted flag
-    let scripts = document.getElementById('tercero');
+    // Set the unmounted flag
+    const scripts = document.getElementById('tercero');
 
     scripts?.parentNode?.removeChild(scripts);
     this.setUnmounted(true);
     this.setMessage('');
   };
 
-  //PreFace event
+  // PreFace event
 
   onVDPrefaceDetection = (data: any) => {
     if (this.context.selfieEditada === '' || this.context.selfieEditada === 'normal') {
@@ -167,7 +173,7 @@ export default class PhotoLiveSelfiePage extends React.Component {
     // this.setPrefaceImage(data.detail.image);
     // this.context.setSelfieNormal(data.detail.image_alive);
     this.context.setSelfieSonriendo(data.detail);
-    //this.setFaceImage( data.detail.image_alive );
+    // this.setFaceImage( data.detail.image_alive );
     
   };
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { useRouter } from 'next/router';
 import LogoBcs from '../../components/svg/LogoBcs';
 import LogoForm from '../../components/svg/LogoForm';
 import Typography from '../../components/ui/Typography';
@@ -9,7 +10,6 @@ import { useSessionStorage } from '../../hooks/useSessionStorage';
 import Button from '../../components/ui/Button/index';
 import { convertToColombianPesos } from '../../utils/index';
 import { urlAndUtms } from '../../utils/RouterUtmsUrl';
-import { useRouter } from 'next/router';
 import { getDataPDF } from '../../services';
 import { SesionStorageKeys } from '../../session';
 
@@ -19,7 +19,7 @@ const intialDataPdfInfo = {
   rate: '',
   quotes: [],
 };
-const Resumen = () => {
+function Resumen() {
   const [simulationTypeOption, setsimulatioTypeOption] = useState<any>('');
   const [simulationType] = useSessionStorage(
     SesionStorageKeys.dataFormSimulation.key,
@@ -193,6 +193,6 @@ const Resumen = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Resumen;

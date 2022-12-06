@@ -1,6 +1,5 @@
 function LogoBcs() {
-  return (
-    <svg
+  return <svg
       width="196"
       height="48"
       viewBox="0 0 196 48"
@@ -310,7 +309,6 @@ function LogoBcs() {
         fill="#75A8DA"
       />
     </svg>
-  );
 }
 
 export default LogoBcs;

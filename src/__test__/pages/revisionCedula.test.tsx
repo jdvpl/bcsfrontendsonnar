@@ -6,6 +6,7 @@ import RevisionImagenes from '../../pages/validacion-biometrica/revision-imagene
 import { AplicationContext, AplicationProvider } from '../../context/AplicationContext';
 import React from 'react';
 const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+
 describe('Render images', () => {
   it('render images', () => {
     const fotosCedula = {

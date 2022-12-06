@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { OTPCodeRequest, ValidateOTC } from '../components/custom/otp';
 import { clientAxiosKYC } from '../config/AxiosKYC';
 import { clientAxiosBackend } from '../config/AxiosMortgage';
@@ -5,7 +6,7 @@ import useAES from '../hooks/useAES';
 import { headersBack } from './HeaderBack';
 import { headersKYC } from './HeadersKYC';
 import { iFormDataSimulation } from '../interfaces';
-import axios from 'axios';
+
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
 export const getQuestions = async (data: any) => {

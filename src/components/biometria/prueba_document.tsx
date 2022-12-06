@@ -351,4 +351,4 @@ export default class DocumentPage extends React.Component {
     }, 100);
   }
 }
-/*eslint-enable */
+/* eslint-enable */

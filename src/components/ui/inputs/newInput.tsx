@@ -1,6 +1,6 @@
 import React, { forwardRef, useState } from 'react';
-import { ErrorInfo } from '../../commons/ErrorInfo';
-import { ExampleInfo } from '../../commons/ExampleInfo';
+import ErrorInfo from '../../commons/ErrorInfo';
+import ExampleInfo from '../../commons/ExampleInfo';
 
 interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   placeholder?: string;

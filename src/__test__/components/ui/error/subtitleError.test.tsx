@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { SubtitleError } from '../../../../components/ui/error/subtitle';
+import SubtitleError from '../../../../components/ui/error/subtitle';
 import React from 'react'
 
 describe('HeadingError', () => {

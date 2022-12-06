@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { ContainerButtonForm } from '../../../../components/ui/Form/ContainerButtonForm';
+import ContainerButtonForm from '../../../../components/ui/Form/ContainerButtonForm';
 import React from 'react'
 
 describe('ContainerButtonForm', () => {

@@ -1,5 +1,6 @@
-import { HelperText } from './HelperText';
 import React from 'react'
+import { HelperText } from './HelperText';
+
 export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   /**
    * Icon on the left side of the text box
