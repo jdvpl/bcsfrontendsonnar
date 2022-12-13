@@ -1,9 +1,5 @@
 import { MenuItem } from '@mui/material';
-import React, {
-  ClipboardEvent,
-  FC,
-  useState,
-} from 'react';
+import React, { ClipboardEvent, FC, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { iFormDataSimulation, SimulationData } from '../../../interfaces';
 import { yearsAvailable } from '../../../lib/simulator';
@@ -22,7 +18,6 @@ interface FormProps {
 
 const FormQuota: FC<FormProps> = ({ onSubmit }) => {
   const [percentage, setpercentage] = useState<number>(0.3);
-  const [insuranceValue, setinsuranceValue] = useState<boolean>(false);
   const [errorMessageAlert, seterrorMessageAlert] = useState<string>('');
 
   const {
@@ -41,12 +36,6 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
   const amountQuota = watch('amountQuota', 0);
   const termFinance = watch('termFinance', 0);
 
-
-
-
-  const handleInsurance = () => {
-    setinsuranceValue(!insuranceValue);
-  };
   const getPercentage = (value: any) => {
     if (+amountQuota > 0 && +monthlySalary > 0) {
       const percentage = +amountQuota / +monthlySalary;
@@ -68,14 +57,17 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
     setValue
   );
   return (
-    <div data-testid="FormQuotaTest" className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto">
+    <div
+      data-testid="FormQuotaTest"
+      className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto"
+    >
       <Alert message={errorMessageAlert} />
       <div className="w-full mt-3">
         <form onSubmit={handleSubmit(onSubmit)}>
           <ReactHookFormSelect
             onChange={(e: any) => {
               setValue('typeHouse', e.target.value);
-              setValue("amountQuota", monthlySalary * percentage);
+              setValue('amountQuota', monthlySalary * percentage);
             }}
             placeholder="Tipo de vivienda"
             label="Tipo de vivienda"
@@ -91,31 +83,36 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
             required
           >
             <MenuItem value="novis">No VIS</MenuItem>
-            <MenuItem value="vis" data-testid="typeSalaryVisTest">VIS</MenuItem>
+            <MenuItem value="vis" data-testid="typeSalaryVisTest">
+              VIS
+            </MenuItem>
           </ReactHookFormSelect>
 
           <div className="flex flex-col mt-4">
             <Controller
               render={({ field }) => (
-                  <Input
-                    helperText={errors.monthlySalaryE?.message}
-                    type="text"
-                    error={!!errors.monthlySalaryE}
-                    onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                      e.preventDefault();
-                    }}
-                    value={convertToColombianPesos(field.value)}
-                    tabIndex={0}
-                    id="monthlySalary"
-                    inputMode="text"
-                    required
-                    label="Ingreso mensual"
-                    onChange={(e: any) => {
-                      setValue("amountQuota", e.target.value.replace(/[^0-9]/g, '') * percentage);
-                      field.onChange(e.target.value.replace(/[^0-9]/g, ''));
-                    }}
-                  />
-                )}
+                <Input
+                  helperText={errors.monthlySalaryE?.message}
+                  type="text"
+                  error={!!errors.monthlySalaryE}
+                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                    e.preventDefault();
+                  }}
+                  value={convertToColombianPesos(field.value)}
+                  tabIndex={0}
+                  id="monthlySalary"
+                  inputMode="text"
+                  required
+                  label="Ingreso mensual"
+                  onChange={(e: any) => {
+                    setValue(
+                      'amountQuota',
+                      e.target.value.replace(/[^0-9]/g, '') * percentage
+                    );
+                    field.onChange(e.target.value.replace(/[^0-9]/g, ''));
+                  }}
+                />
+              )}
               name="monthlySalary"
               control={control}
             />
@@ -124,41 +121,39 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
             <Controller
               rules={{ required: true }}
               render={({ field }) => (
-                  <Input
-                    helperText={errors.amountQuotaE?.message}
-                    type="text"
-                    error={!!errors.amountQuotaE}
-                    onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                      e.preventDefault();
-                    }}
-                    value={
-                      convertToColombianPesos(Math.round(field.value))
+                <Input
+                  helperText={errors.amountQuotaE?.message}
+                  type="text"
+                  error={!!errors.amountQuotaE}
+                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                    e.preventDefault();
+                  }}
+                  value={convertToColombianPesos(Math.round(field.value))}
+                  tabIndex={0}
+                  id="amountQuota"
+                  inputMode="text"
+                  required
+                  disabled={!(monthlySalary > 0)}
+                  label="Cuota mensual"
+                  onChange={(e: any) => {
+                    if (field.value > 9999999 && !!e.nativeEvent.data) {
+                      return;
                     }
-                    tabIndex={0}
-                    id="amountQuota"
-                    inputMode="text"
-                    required
-                    disabled={!(monthlySalary > 0)}
-                    label="Cuota mensual"
-                    onChange={(e: any) => {
-                      if (field.value > 9999999 && !!e.nativeEvent.data) {
-                        return;
-                      }
-                      field.onChange(e.target.value.replace(/[^0-9]/g, ''));
-                    }}
-                  />
-                )}
+                    field.onChange(e.target.value.replace(/[^0-9]/g, ''));
+                  }}
+                />
+              )}
               name="amountQuota"
               control={control}
             />
             <div className="rounded-md w-[78px] border-[0.1px] text-[14px] h-[48px] bg-complementario-80 border-complementario-20/50 flex justify-center items-center text-complementario-20">
-
-              {percentage * 100 > 100 ? '>100%' : `${parserPercentageDecimal(percentage * 100)}%`}
+              {percentage * 100 > 100
+                ? '>100%'
+                : `${parserPercentageDecimal(percentage * 100)}%`}
             </div>
           </div>
 
           <div className="mt-4">
-
             <ReactHookFormSelect
               onChange={(e: any) => setValue('termFinance', e.target.value)}
               placeholder="Plazo"
@@ -179,7 +174,6 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                 </MenuItem>
               ))}
             </ReactHookFormSelect>
-
           </div>
           <div className="mt-4">
             <Controller
@@ -197,29 +191,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
               )}
             />
           </div>
-          <div className="flex items-start mt-8">
-            <input
-              {...register('insuranceCheck')}
-              className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"
-              checked={insuranceValue}
-              aria-checked={insuranceValue}
-              tabIndex={0}
-              type="checkbox"
-              id="insuranceCheck"
-              onChange={handleInsurance}
-            />
-            <label
-              htmlFor="insuranceCheck"
-              className="ml-3 text-[12px] text-primario-900"
-              role="tabpanel"
-              tabIndex={0}
-              itemScope
-              itemType="https://schema.org/Service"
-            >
-              Deseo incluir en la simulación del crédito el valor de los seguros
-              correspondientes.
-            </label>
-          </div>
+
           <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-10">
             <Button
               isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[375px]"
@@ -235,8 +207,8 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
             </Button>
           </div>
         </form>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 };
 

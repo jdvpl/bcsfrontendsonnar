@@ -150,3 +150,19 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
     return { error: true, response: e?.response?.data?.message };
   }
 };
+export const fetchSarlaft = async (body: any) => {
+  try {
+    const { data: response } = await axios.post(
+      'https://3481-152-200-184-53.ngrok.io/sarlaft-questions',
+      body
+    );
+    return {
+      response: {
+        result: response,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e.response?.data?.message };
+  }
+};

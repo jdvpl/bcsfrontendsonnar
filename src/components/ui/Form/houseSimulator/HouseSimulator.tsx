@@ -19,7 +19,7 @@ import Alert from '../../Alert';
 function HouseSimulator() {
   const router = useRouter();
   const [percentageFinance, setPercentageFinance] = useState<number>(0.7);
-  const [insuranceCheck, setInsuranceCheck] = useState<boolean>(false);
+  const [insuranceCheck, setInsuranceCheck] = useState<boolean>(true);
   const [dataFormQuota, setDataFormQuota] = useSessionStorage(
     SesionStorageKeys.dataFormSimulation.key,
     {}
@@ -268,23 +268,6 @@ function HouseSimulator() {
                 />
               )}
           />
-        </div>
-
-        <div className="flex items-center gap-3 mb-8 w-full cursor-pointer" onClick={()=>setInsuranceCheck(!insuranceCheck)}>
-          <input
-            type="checkbox"
-            tabIndex={0}
-            checked={insuranceCheck}
-            id="insuranceCheck"
-            className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"
-            inputMode="numeric"
-            onChange={(e) => setInsuranceCheck(e.target.checked)}
-          />
-
-          <span className="text-[12px] text-primario-900 cursor-pointer">
-            Deseo incluir en la simulación del crédito el valor de los seguros
-            correspondientes.
-          </span>
         </div>
 
         <Button

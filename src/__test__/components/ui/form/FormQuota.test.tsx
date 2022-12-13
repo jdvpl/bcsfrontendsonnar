@@ -26,12 +26,7 @@ describe('All tests of formQuota', () => {
   test('Render simulation button', () => {
     component.getByText('Simular');
   });
-  test('Render simulation insurance text', () => {
-    component.getByText(
-      'Deseo incluir en la simulación del crédito el valor de los seguros correspondientes.'
-    );
-  });
-  test('Render 8 inputs ', () => {
-    expect(component.container.querySelectorAll('input').length).toBe(8);
+  test('Render 7 inputs ', () => {
+    expect(component.container.querySelectorAll('input').length).toBe(7);
   });
 });
