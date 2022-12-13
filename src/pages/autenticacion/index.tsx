@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
+import { useRouter } from 'next/router';
+import { deviceType } from 'react-device-detect';
 import LogoBcs from '../../components/svg/LogoBcs'
 import LogoForm from '../../components/svg/LogoForm'
 import { basePath } from '../../../next.config';
 import Typography from '../../components/ui/Typography';
 import Button from '../../components/ui/Button'
-import { useRouter } from 'next/router';
 import { routes } from '../../routes';
 import Icons from '../../components/ui/icons';
-import { deviceType } from 'react-device-detect';
 import { getQuestions } from '../../services';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../session';
 import AnimationComponent from '../../components/commons/Animation';
 
-const Authentication = () => {
+function Authentication() {
   const router = useRouter();
   const [, setDataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
   const [dataUser,] = useSessionStorage(

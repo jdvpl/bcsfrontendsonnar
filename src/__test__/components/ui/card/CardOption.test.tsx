@@ -1,7 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import { CardOption } from '../../../../components/ui/Card/OptionCard';
 import userEvent from '@testing-library/user-event';
 import React from 'react'
+import { CardOption } from '../../../../components/ui/Card/OptionCard';
+
 const fn = jest.fn()
 const options = [
   {

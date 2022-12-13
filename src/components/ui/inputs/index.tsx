@@ -60,7 +60,7 @@ export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
   dataTestId?: string;
 }
 
-const Input = ({
+function Input({
   label,
   classNameInput,
   containerClassName,
@@ -71,7 +71,7 @@ const Input = ({
   autofocus = false,
   dataTestId,
   ...props
-}: InputProps) => {
+}: InputProps) {
   const labelStyles = `
   peer-placeholder-shown:z-[-1] peer-focus:z-0 z-0
 

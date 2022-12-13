@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import NewInput from '../../../../components/ui/inputs/newInput';
 import React from 'react'
+import NewInput from '../../../../components/ui/inputs/newInput';
 
 const mockSetState = jest.fn();
 

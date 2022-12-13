@@ -1,10 +1,10 @@
 import 'jest-canvas-mock';
 import { render, waitFor, screen } from '@testing-library/react';
-import Authentication from '../../pages/autenticacion';
 import React from 'react'
-import { createMockRouter } from '../utils/createMockRouter';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import userEvent from "@testing-library/user-event";
+import { createMockRouter } from '../utils/createMockRouter';
+import Authentication from '../../pages/autenticacion';
 import { routes } from '../../routes';
 
 describe('Authentication', () => {

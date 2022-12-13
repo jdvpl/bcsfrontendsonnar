@@ -1,8 +1,9 @@
 import { render, screen, getByRole, waitFor } from '@testing-library/react';
-import FormQuota from '../../../../components/ui/Form/FormQuota';
 import userEvent from '@testing-library/user-event';
-import Simulator from '../../../../pages/simulador';
 import React from 'react'
+import FormQuota from '../../../../components/ui/Form/FormQuota';
+import Simulator from '../../../../pages/simulador';
+
 const mkFn = jest.fn()
 describe('All tests of formQuota', () => {
   let component: any;

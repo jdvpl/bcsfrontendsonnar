@@ -68,7 +68,7 @@ const ReactHookFormSelect: React.FC<any> = ({
         rules={rules}
         render={({ field }) => (
           <Select
-            data-testid={"select"}
+            data-testid="select"
             SelectDisplayProps={{
               // @ts-ignore
               "data-testid": `select`

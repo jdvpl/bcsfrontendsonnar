@@ -1,12 +1,12 @@
 // import Image from 'next/image';
-import LogoBcs from '../../../components/svg/LogoBcs'
-import Icons from '../../../components/ui/icons';
-import LogoForm from '../../../components/svg/LogoForm'
-import Button from '../../../components/ui/Button'
-import Typography from '../../../components/ui/Typography';
 import { useRouter } from 'next/router';
-import { routes } from '../../../routes';
 import React from 'react'
+import LogoBcs from "../../svg/LogoBcs"
+import Icons from "../icons";
+import LogoForm from "../../svg/LogoForm"
+import Button from "../Button"
+import Typography from "../Typography";
+import { routes } from '../../../routes';
 
 
 interface CardProps {
@@ -15,6 +15,7 @@ interface CardProps {
   title: React.ReactNode;
   text: React.ReactNode;
   textbtn: string;
+  ImgClass: string;
 }
 
 export const ErrorLayout: React.FC<CardProps> = ({
@@ -23,6 +24,7 @@ export const ErrorLayout: React.FC<CardProps> = ({
   title,
   text,
   textbtn,
+  ImgClass
 }) => {
   const router = useRouter();
   return (
@@ -39,7 +41,7 @@ export const ErrorLayout: React.FC<CardProps> = ({
         </div>
       </div>
       <div className="m-auto lg:w-[528px]">
-        <div className="mt-20 lg:h-[300px] md:w-[292px] md:h-[300px] sm:w-[195px] sm:h-[200px] xs:h-[200px] xs:w-[195px] m-auto ">
+        <div className={ImgClass}>
           <img
             role="imageError"
             src={urlsvg}

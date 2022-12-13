@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import HeadingError from '../../../../components/ui/error/heading';
 import React from 'react'
+import HeadingError from '../../../../components/ui/error/heading';
 
 describe('HeadingError', () => {
   test('should render "HeadingError" successfully', () => {

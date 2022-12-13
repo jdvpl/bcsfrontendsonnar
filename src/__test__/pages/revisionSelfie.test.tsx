@@ -1,9 +1,10 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import 'jest-canvas-mock';
+import React from 'react'
 import RevisionImagenes from '../../pages/validacion-biometrica/revision-imagenes/revision-selfie';
 import { AplicationContext } from '../../context/AplicationContext';
-import React from 'react'
+
 describe('render images', () => {
   it('render images', () => {
     const selfies = {

@@ -1,9 +1,9 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import Bienvenida from '../../pages/bienvenida';
 import React from 'react'
 import userEvent from "@testing-library/user-event";
-import { routes } from '../../routes';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
+import { routes } from '../../routes';
+import Bienvenida from '../../pages/bienvenida';
 import { createMockRouter } from '../utils/createMockRouter';
 
 describe('Bienvenida', () => {

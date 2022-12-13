@@ -2,9 +2,10 @@ import '@testing-library/jest-dom';
 import Router from 'next/router';
 import { fireEvent, render, screen } from '@testing-library/react';
 import 'jest-canvas-mock';
+import React from 'react';
 import RevisionImagenes from '../../pages/validacion-biometrica/revision-imagenes/index';
 import { AplicationContext, AplicationProvider } from '../../context/AplicationContext';
-import React from 'react';
+
 const useRouter = jest.spyOn(require('next/router'), 'useRouter');
 
 describe('Render images', () => {

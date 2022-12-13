@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import ExampleInfo from '../../../components/commons/ExampleInfo';
 import React from 'react'
+import ExampleInfo from '../../../components/commons/ExampleInfo';
 
 describe('ExampleInfo', () => {
   test('should render "ExampleInfo" successfully', () => {

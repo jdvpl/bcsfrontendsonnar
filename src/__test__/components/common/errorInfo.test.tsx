@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import ErrorInfo from '../../../components/commons/ErrorInfo';
 import React from 'react'
+import ErrorInfo from '../../../components/commons/ErrorInfo';
 
 describe('Card', () => {
   test('should render successfully', () => {

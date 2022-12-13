@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import HouseSimulator from '../../../../components/ui/Form/houseSimulator/HouseSimulator';
 import React from 'react'
+import HouseSimulator from '../../../../components/ui/Form/houseSimulator/HouseSimulator';
 
 describe('<HouseSimulator />', () => {
   let component: any;

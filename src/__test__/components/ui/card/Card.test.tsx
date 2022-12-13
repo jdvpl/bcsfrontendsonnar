@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
-import Card from '../../../../components/ui/simulation/Card';
 import React from 'react'
+import Card from '../../../../components/ui/simulation/Card';
+
 describe('<Card/>', () => {
   let component: any;
   beforeEach(() => {
@@ -8,7 +9,7 @@ describe('<Card/>', () => {
       <Card
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px] "
         title="Cuota mensual total con seguros"
-        value={'200.000.000'}
+        value="200.000.000"
         text="text-[32px] pl-[23px] pt-2 flex items-baseline"
         urlsvg=""
         classtitle="h-[18px] pt-[16px] text-[16px]"

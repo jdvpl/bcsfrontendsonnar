@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
-import Consultancy from '../../pages/asesoria';
 import React from 'react'
+import Consultancy from '../../pages/asesoria';
+
 describe('<Consultancy />', () => {
   let component: any;
   beforeEach(() => {

@@ -1,10 +1,11 @@
 import { waitFor, render, screen, fireEvent } from '@testing-library/react';
-import InicioSolicitud from '../../pages/inicio-solicitud';
 import userEvent from '@testing-library/user-event';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
+import React from 'react'
+import InicioSolicitud from '../../pages/inicio-solicitud';
 import { createMockRouter } from '../utils/createMockRouter';
 import { routes } from '../../routes';
-import React from 'react'
+
 jest.mock('../../hooks/useAES')
 
 describe('InicioSolicitud', () => {

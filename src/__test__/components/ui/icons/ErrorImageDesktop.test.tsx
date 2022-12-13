@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import ErrorImageDesktop from '../../../../components/icons/errorImageValidationDesktop';
 import React from 'react'
+import ErrorImageDesktop from '../../../../components/icons/errorImageValidationDesktop';
 
 describe('Card', () => {
   test('should render successfully', () => {

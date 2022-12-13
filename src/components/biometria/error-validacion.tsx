@@ -1,10 +1,25 @@
 import Link from 'next/link';
+import router from 'next/router';
 import React from 'react';
 import  ErrorImageDesktop  from "../icons/errorImageValidationDesktop";
 import  QRPage  from "../icons/errorQR";
+import LogoBcs from '../svg/LogoBcs';
+import LogoForm from '../svg/LogoForm';
+import Icons from '../ui/icons';
 
 const ValidationMessageBiometry: React.FC = () => (
     <section itemScope itemType="https//schema.org/Action">
+    <div className="container flex lg:mt-[0] sm:w-[343px] md:w-[528px] lg:w-[1100px] mb-5 lg:justify-between justify-between">
+        <div className="mt-4 hidden lg:block">
+          <LogoBcs />
+        </div>
+        <div className="xs:block sm:block lg:hidden mt-4 cursor-pointer" onClick={() => router.back()} data-testid="getbackRouteTest">
+          <Icons icon='bcs-arrow-one-left' size="text-[1.2rem]" />
+        </div>
+        <div className="mt-4 w-[180px] md:w-[180px] lg:w-[280px]">
+          <LogoForm />
+        </div>
+      </div>
       <div data-testid="error-biometria" className="flex justify-center ">
         <ErrorImageDesktop />
       </div>

@@ -1,7 +1,8 @@
 import 'jest-canvas-mock';
 import { render, screen } from '@testing-library/react';
-import Index from '../../pages/validacion-identidad';
 import React from 'react'
+import Index from '../../pages/validacion-identidad';
+
 describe('validacion-identidad', () => {
   it('should render "ValidacionSolicitud" successfully', () => {
     const { baseElement } = render(<Index />);

@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import Home from '../../pages';
 import React from 'react'
-import { createMockRouter } from '../utils/createMockRouter';
-import { routes } from '../../routes';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import userEvent from "@testing-library/user-event";
+import Home from '../../pages';
+import { createMockRouter } from '../utils/createMockRouter';
+import { routes } from '../../routes';
 
 describe('Landing page testing', () => {
   test('should render "Politicas" successfully', () => {

@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import ErrorLayout from '../../../components/layouts/errorLayout';
 import React from 'react'
+import ErrorLayout from '../../../components/layouts/errorLayout';
 
 describe('ErrorLayout', () => {
   test('should render ErrorLayout successfully', () => {

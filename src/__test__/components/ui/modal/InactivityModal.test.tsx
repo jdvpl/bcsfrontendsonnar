@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import { InactivityModal } from '../../../../components/ui/Modal/inactivityModal/index';
 import React from 'react'
+import { InactivityModal } from '../../../../components/ui/Modal/inactivityModal/index';
 
 describe('<HouseSimuInactivityModallator />', () => {
   let component: any;

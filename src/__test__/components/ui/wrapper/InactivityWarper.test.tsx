@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
-import { InactivityWarper } from '../../../../components/ui/wrapers/InactivityWarper'
 import React from 'react'
+import { InactivityWarper } from '../../../../components/ui/wrapers/InactivityWarper'
+
 const fn = jest.fn()
 describe('InactivitiWrapper', () => {
   test('should render "Terminos" successfully', () => {

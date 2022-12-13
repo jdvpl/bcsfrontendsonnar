@@ -1,13 +1,14 @@
 import React from 'react'
+import { useRouter } from 'next/router';
 import LogoBcs from '../../components/svg/LogoBcs'
 import LogoForm from '../../components/svg/LogoForm'
 import { basePath } from '../../../next.config';
 import Typography from '../../components/ui/Typography';
 import Button from '../../components/ui/Button'
-import { useRouter } from 'next/router';
 import { routes } from '../../routes';
 import Icons from '../../components/ui/icons';
-const Bienvenida = () => {
+
+function Bienvenida() {
   const router = useRouter();
   return (
     <div>
@@ -27,7 +28,7 @@ const Bienvenida = () => {
           <img src={`${basePath}/images/onboarding.svg`} alt="" />
         </div>
         <Typography variant='h3' className='text-center mt-[52px] text-primario-900 text-[24px] font-semibold'>
-          Cumpla su sueño {""}
+          Cumpla su sueño 
           <span className="md:block sm:block xs:block lg:inline">
             de comprar vivienda
           </span>

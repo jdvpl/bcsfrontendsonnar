@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import InactivityScreen from '../../pages/inactividad';
 import React from 'react'
+import InactivityScreen from '../../pages/inactividad';
 
 describe('<HouseSimulator />', () => {
   let component: any;

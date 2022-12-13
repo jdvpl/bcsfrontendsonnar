@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
-import { RatingModal } from '../../../../components/ui/Modal/ratingModal';
 import React from 'react'
+import { RatingModal } from '../../../../components/ui/Modal/ratingModal';
+
 describe('<RatingModal />', () => {
   let component: any;
   beforeEach(() => {

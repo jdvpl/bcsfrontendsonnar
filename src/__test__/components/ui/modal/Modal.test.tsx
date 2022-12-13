@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
-import Modal from '../../../../components/ui/Modal';
 import React from 'react'
+import Modal from '../../../../components/ui/Modal';
 
 const mkFn = jest.fn()
 describe('Modal', () => {

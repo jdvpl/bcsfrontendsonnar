@@ -1,8 +1,8 @@
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react';
-import DateOfBirth from '../../../../components/ui/inputs/dateOfBirth';
 import React from 'react'
 import { debug } from 'console';
+import DateOfBirth from '../../../../components/ui/inputs/dateOfBirth';
 
 const mkFn = jest.fn()
 describe('dateOfBirth testing', () => {

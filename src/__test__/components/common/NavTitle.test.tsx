@@ -1,8 +1,8 @@
 import { render, screen, waitFor } from '@testing-library/react';
-import NavTitle from '../../../components/commons/NavTitle';
 import userEvent from "@testing-library/user-event";
 
 import React from 'react'
+import NavTitle from '../../../components/commons/NavTitle';
 
 const mkFn = jest.fn().mockReturnValueOnce(true)
 describe('NavTitle', () => {

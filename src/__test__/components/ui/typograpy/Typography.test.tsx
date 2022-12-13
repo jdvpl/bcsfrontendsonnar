@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import Typography from '../../../../components/ui/Typography';
 import React from 'react'
+import Typography from '../../../../components/ui/Typography';
 
 describe('Typography', () => {
   test('should render "Typography" successfully', () => {

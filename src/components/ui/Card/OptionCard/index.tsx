@@ -1,7 +1,8 @@
+import React from 'react'
 import { basePath } from '../../../../../next.config';
 import { RatingsOptions } from '../../../../lib/rating';
 import { TextArea } from '../../inputs/TextArea';
-import React from 'react'
+
 export interface CardOptions {
   option: RatingsOptions;
   actualOption: RatingsOptions;

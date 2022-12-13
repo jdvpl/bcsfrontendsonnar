@@ -1,7 +1,8 @@
 import 'jest-canvas-mock';
 import { render, screen } from '@testing-library/react';
-import { Otp } from '../../../../components/custom/otp';
 import React from 'react'
+import { Otp } from '../../../../components/custom/otp';
+
 describe('Otp', () => {
   it('should render "Otp" successfully', () => {
     const { baseElement } = render(<Otp />);
