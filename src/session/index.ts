@@ -28,4 +28,8 @@ export const SesionStorageKeys = {
     key: 'simulationResponse',
     description: 'This key saves the data of the response from the simulation form.',
   },
+  dataBasicData: {
+    key: 'personalData',
+    description: 'This key saves the data of form',
+  }
 };

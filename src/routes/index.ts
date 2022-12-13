@@ -15,4 +15,6 @@ export const routes = {
   consultancy: '/asesoria',
   onboarding: '/bienvenida',
   authentication: '/autenticacion',
+  personalData: '/datos-personales',
+  sarlaft: '/preguntas-sarlaft',
 };

@@ -11,7 +11,7 @@ interface stepsProps {
 function Stepper({
   steps,
   actualStep,
-  percentage = 100,
+  percentage,
   title = '',
   className = '',
 }: stepsProps) {
@@ -27,11 +27,12 @@ function Stepper({
         </p>
         <div className="w-full flex gap-1 my-2">
           {renderSteps?.map((item, index) => (
-            <div
-              className={`w-[100%] h-[4px] bg-${
-                actualStep >= index + 1 ? 'primario-20' : 'complementario-80'
-              }`}
-            />
+            <div className='w-full bg-complementario-80'>
+              <div key={index}
+                className={`w-[${actualStep === index + 1 ? percentage : 100}%] h-[4px] bg-${actualStep >= index + 1 ? 'primario-20' : 'complementario-80'
+                  }`}
+              />
+            </div>
           ))}
         </div>
         <p

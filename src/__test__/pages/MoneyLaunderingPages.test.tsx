@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import MoneyLaunderingPage from '../../pages/inicio-solicitud/sarlaft';
+import MoneyLaunderingPage from '../../pages/preguntas-sarlaft';
 
 describe('<HouseSimulator />', () => {
   let component: any;

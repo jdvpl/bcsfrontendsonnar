@@ -4,7 +4,7 @@ import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../session';
 import LogoBcs from '../../components/svg/LogoBcs';
 import { routes } from '../../routes';
-
+import React from 'react'
 function InicioSolicitud() {
   const router = useRouter();
 

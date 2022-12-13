@@ -23,8 +23,9 @@ export interface FormData {
 }
 export interface HowItemProps {
   children: string | JSX.Element;
-  title: string;
+  title: string | JSX.Element;
   id: string;
+  heightModal?: string
 }
 export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
   const {
@@ -42,13 +43,14 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
   const documentNumber = watch('document_number');
   const [disabled, setDisable] = useState(false);
   const [disabledInput, setDisableInput] = useState(true);
-  const [terminos, setTerminos] = useState(false);
+  const [terminos, setTerminos] = useState(true);
   const [commercial, setCommercial] = useState(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [componentModal, setComponentModal] = useState<HowItemProps>({
     children: '',
     title: '',
     id: '',
+    heightModal: ''
   });
 
   const handleTerminos = () => {
@@ -262,6 +264,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
                   title:
                     'Autoriza que su información sea utilizada con fines comerciales',
                   id: 'modal-commercial',
+                  heightModal: 'lg:h-[50%]'
                 });
               }}
               onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
@@ -272,6 +275,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
                     title:
                       'Autoriza que su información sea utilizada con fines comerciales',
                     id: 'modal-commercial',
+                    heightModal: 'lg:h-[50%]'
                   });
                 }
               }}
@@ -284,7 +288,6 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
 
         {showModal && (
           <Modal
-
             showModal={showModal}
             onClose={() => setShowModal(false)}
             compont={componentModal}

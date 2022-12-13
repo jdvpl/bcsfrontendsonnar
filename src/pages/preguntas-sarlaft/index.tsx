@@ -1,11 +1,11 @@
 import React from 'react';
-import { basePath } from '../../../../next.config';
-import LogoBcs from '../../../components/svg/LogoBcs';
-import LogoForm from '../../../components/svg/LogoForm';
-import { MoneyLaunderingForm } from '../../../components/ui/Form/MoneyLaunderingForm/MoneyLaunderingForm';
-import Icons from '../../../components/ui/icons';
-import Stepper from '../../../components/ui/Stepper';
-import Typography from '../../../components/ui/Typography';
+import { basePath } from '../../../next.config';
+import LogoBcs from '../../components/svg/LogoBcs';
+import LogoForm from '../../components/svg/LogoForm';
+import { MoneyLaunderingForm } from '../../components/ui/Form/MoneyLaunderingForm/MoneyLaunderingForm';
+import Icons from '../../components/ui/icons';
+import Stepper from '../../components/ui/Stepper';
+import Typography from '../../components/ui/Typography';
 
 function MoneyLaunderingPage() {
   return (

@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { FC, ReactNode, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 import { basePath } from '../../../next.config';
 import Close from '../../components/svg/Close';
 import LogoBcs from '../../components/svg/LogoBcs';
@@ -8,7 +9,6 @@ import { Icons } from '../../components/ui/icons';
 import Stepper from '../../components/ui/Stepper';
 import Typography from '../../components/ui/Typography';
 import { stepperTitles } from '../../lib/consultancy';
-import { useMediaQuery } from 'react-responsive';
 import useConsultancy from './useConsultancy';
 
 const ConditionalWrapper: FC<any> = ({ condition, wrapper, children }) =>
@@ -140,7 +140,7 @@ const Consultancy = () => {
           <>
             <div
               onClick={prevStep}
-              className={`md:order-1 cursor-pointer  flex xs:gap-x-3 items-center xs:justify-center xs:flex-row md:flex-col lg:w-[150px]`}
+              className="md:order-1 cursor-pointer  flex xs:gap-x-3 items-center xs:justify-center xs:flex-row md:flex-col lg:w-[150px]"
             >
               <div className="rounded-full xs:w-[24px] md:w-[40px] xs:h-[24px] md:h-[40px] border-primario-20 flex justify-center items-center border-2 md:mb-[33px]">
                 <Icons
@@ -155,7 +155,7 @@ const Consultancy = () => {
 
             <div
               onClick={nextStep}
-              className={`md:order-3 cursor-pointer  flex xs:gap-x-3 items-center flex-row md:flex-col lg:w-[150px]`}
+              className="md:order-3 cursor-pointer  flex xs:gap-x-3 items-center flex-row md:flex-col lg:w-[150px]"
             >
               <div className="rounded-full xs:w-[24px] md:w-[40px] md:order-1 xs:order-2 xs:h-[24px] md:h-[40px] border-primario-20 flex justify-center items-center border-2 md:mb-[33px]">
                 <Icons

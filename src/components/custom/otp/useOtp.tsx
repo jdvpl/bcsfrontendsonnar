@@ -26,7 +26,7 @@ export default function useOtp({
       setIsValid(true);
       setIsLoading(false);
       setTimeout(() => {
-        router.push(routes.ratings);
+        router.push(routes.personalData);
       }, 3000);
     } else {
       setError(true);

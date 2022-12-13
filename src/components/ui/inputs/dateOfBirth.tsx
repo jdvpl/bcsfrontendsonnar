@@ -26,10 +26,10 @@ const DateOfBirth: React.FC<InputProps> = ({
   defaultValues,
   id,
   onChangeDate,
+  disabled
 }) => {
   const dateDefault = defaultValues?.split('-');
   const [ageError, setAgeError] = useState<string | undefined>(undefined);
-
   const days = [
     {
       numero: '01',
@@ -223,6 +223,10 @@ const DateOfBirth: React.FC<InputProps> = ({
     setValue('year', value.replace(/[^0-9]+/g, ''));
   };
   const fields = watch();
+  fields.year = dateDefault?.[0] || '';
+  fields.month = dateDefault?.[1] || '';
+  fields.day = dateDefault?.[2] || '';
+  console.log(fields)
 
   useEffect(() => {
     const date = `${fields.day}/${fields.month}/${fields.year}`;
@@ -233,9 +237,8 @@ const DateOfBirth: React.FC<InputProps> = ({
         ? `0${fields.day}`
         : fields.day
       }`;
-    if (!fields.year) {
-      return;
-    }
+
+
     if (fields.day === (0 || undefined) || fields.month === (0 || undefined)) {
       onChangeDate?.(undefined);
       return;
@@ -275,8 +278,9 @@ const DateOfBirth: React.FC<InputProps> = ({
             label="Día"
             dataTestId="dayDateOfBithTest"
             control={control}
-            defaultValue={fields.day || ''}
+            value={fields.day || ''}
             margin="normal"
+            disabled={disabled}
             onChange={(e: any) => setValue('day', e.target.value)}
           >
             {days.map((a) => (
@@ -296,9 +300,10 @@ const DateOfBirth: React.FC<InputProps> = ({
             className="w-100"
             label="Mes"
             control={control}
-            defaultValue={fields.month || ''}
+            // defaultValue={fields.month || ''}
             value={fields.month}
             margin="normal"
+            disabled={disabled}
             dataTestId="monthDateOfBithTest"
             onChange={(e: any) => setValue('month', e.target.value)}
           >
@@ -327,6 +332,7 @@ const DateOfBirth: React.FC<InputProps> = ({
                 valueLength
                 tabIndex={0}
                 type="text"
+                disabled={disabled}
                 inputMode="numeric"
                 dataTestId="yearDateOfBithTest"
                 maxLength={4}

@@ -6,6 +6,7 @@ import useAES from '../hooks/useAES';
 import { headersBack } from './HeaderBack';
 import { headersKYC } from './HeadersKYC';
 import { iFormDataSimulation } from '../interfaces';
+import { iFormBasicData } from '../interfaces/basicDataProps';
 
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
@@ -150,6 +151,23 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
     return { error: true, response: e?.response?.data?.message };
   }
 };
+export const getBasicData = async (data: iFormBasicData) => {
+  try {
+    const { data: response } = await axios.post(
+      'https://efc19c57-40ff-4c65-b11e-e218e49e6fdb.mock.pstmn.io/basic-data',
+      data,
+    );
+    return {
+      response: {
+        data: response,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e?.response?.data?.message };
+  }
+};
+
 export const fetchSarlaft = async (body: any) => {
   try {
     const { data: response } = await axios.post(
@@ -165,4 +183,5 @@ export const fetchSarlaft = async (body: any) => {
   } catch (e: any) {
     return { error: true, response: e.response?.data?.message };
   }
+
 };

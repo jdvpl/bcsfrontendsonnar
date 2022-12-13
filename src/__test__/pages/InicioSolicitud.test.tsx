@@ -32,7 +32,6 @@ describe('InicioSolicitud', () => {
     const chkterminos = screen.getByTestId('chkterminos');
     fireEvent.input(selectBtn, { target: { value: 'CC' } });
     fireEvent.input(inputDocument, { target: { value: '1018422010' } });
-    await userEvent.click(inputCheck)
     await userEvent.click(chkterminos)
     expect(selectBtn.tagName).toMatch('INPUT')
     expect(inputDocument.tagName).toMatch('INPUT')

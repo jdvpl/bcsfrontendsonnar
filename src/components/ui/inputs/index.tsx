@@ -1,4 +1,5 @@
 import React from 'react'
+import { IconListAvailable } from '../../../types';
 import { HelperText } from './HelperText';
 
 export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
@@ -7,7 +8,7 @@ export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
    * @type string
    * @default ''
    */
-  startIcon?: string;
+  startIcon?: IconListAvailable;
 
   /**
    * Icon on the right side of the text box
@@ -58,6 +59,7 @@ export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
    */
   autofocus?: true | false;
   dataTestId?: string;
+  helperTextOption?: boolean;
 }
 
 function Input({
@@ -70,6 +72,7 @@ function Input({
   endIcon,
   autofocus = false,
   dataTestId,
+  helperTextOption = false,
   ...props
 }: InputProps) {
   const labelStyles = `
@@ -90,6 +93,7 @@ function Input({
   `;
 
   const inputStyles = `
+  ${startIcon ? 'pl-8' : ''}
   h-12 bg-[transparent] block py-2 px-3 w-full text-sm leading-none
     ${error ? 'text-complementario-100' : 'text-primario-900'}
     bg-transparent border-[0.03125rem] rounded-md
@@ -104,7 +108,7 @@ function Input({
       <div className="relative z-0 w-full">
         {startIcon && (
           <i
-            className={`top-[16px] ml-2 absolute before:font-black leading-4 text-[16px] ${startIcon} text-complementario-50`}
+            className={`top-[16px] ml-2 absolute before:font-black leading-4 text-[16px] ${startIcon} text-complementario-50 `}
           />
         )}
         {endIcon && (
@@ -131,6 +135,7 @@ function Input({
         </label>
       </div>
       {helperText && error && <HelperText error={error} text={helperText} />}
+      {helperText && helperTextOption && <HelperText error={false} text={helperText} />}
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 interface HowItemProps {
   children: string | JSX.Element;
-  title?: string;
+  title?: string | JSX.Element;
   id: string;
 }
 
@@ -10,6 +10,8 @@ type Props = {
   compont?: HowItemProps;
   showModal: boolean;
   onClose: () => void;
+  advisory?: boolean;
+  heightModal?: string;
 };
 
 const scrollBodyHidden = () => {
@@ -24,7 +26,7 @@ const scrollBody = () => {
   }
 };
 
-function Modal({ compont, showModal = false, onClose }: Props) {
+function Modal({ compont, showModal = false, onClose, advisory = false, heightModal = 'lg:h-[90%]' }: Props) {
   const [show, setShow] = useState('');
 
   useEffect(() => {
@@ -50,14 +52,14 @@ function Modal({ compont, showModal = false, onClose }: Props) {
       tabIndex={0}
     >
       <div className="modal-background">
-        <div className="modal justify-center items-end lg:items-center md:items-center flex overflow-x-hidden fixed inset-0 z-10 outline-none focus:outline-none">
-          <div className="relative lg:h-[90%] md:h-[63%] h-[83%]   w-full mx-auto max-w-3xl lg:max-w-[684px]">
+        <div className="modal justify-center items-center lg:items-center md:items-center flex overflow-x-hidden fixed inset-0 z-10 outline-none focus:outline-none">
+          <div className={`relative ${heightModal} md:h-[63%] h-[83%]   w-full  mx-auto max-w-3xl lg:max-w-[684px]`}>
             {/* content */}
-            <div className="border-0 sm:rounded-b-none md:rounded-lg rounded-lg shadow-lg relative flex flex-col w-full h-full bg-white outline-none focus:outline-none">
+            <div className="border-0 sm:rounded-b-none md:rounded-lg rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
               {/* header */}
               <div className="rounded-t p-0 m-0">
                 <div
-                  className="md:mt-[36px] md:mr-[36px] mt-[15px] mr-[15px] float-right"
+                  className="md:mt-[20px] md:mr-[20px] mr-[15px] float-right"
                   role="button"
                   aria-hidden="true"
                   onClick={() => onClose()}
@@ -68,8 +70,8 @@ function Modal({ compont, showModal = false, onClose }: Props) {
                   tabIndex={0}
                 >
                   <svg
-                    width="20"
-                    height="20"
+                    width="12"
+                    height="12"
                     viewBox="0 0 20 20"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +84,7 @@ function Modal({ compont, showModal = false, onClose }: Props) {
                 </div>
                 {compont && (
                   <h3
-                    className="text-center font-bold md:mt-[60px] md:pt-0 lg:pt-[68px] pt-[40px] text-primario-900 text-[22px] px-[16px] sm:px-[55px] lg:text-[28px] lg:leading-[30px] leading-none"
+                    className="text-center font-bold md:mt-[60px] md:pt-0 lg:mt-[60px] pt-[40px] text-primario-900 text-[22px] px-[16px] sm:px-[55px] lg:text-[28px] lg:leading-[30px] leading-none"
                     id={`${compont?.id}-title`}
                   >
                     {compont?.title}
@@ -90,7 +92,7 @@ function Modal({ compont, showModal = false, onClose }: Props) {
                 )}
               </div>
               {/* body */}
-              <div className="text-[16px] md:text-[18px] text-left leading-5 md:mx-[30px] md:mt-[36px] md:mb-[100px] m-[16px] sm:m-[25px] text-[#4A4E60] overflow-y-auto h-full">
+              <div className={advisory ? '' : "text-[16px] md:text-[18px] text-left leading-5 md:mx-[30px] md:mt-[40px] md:mb-[60px] m-[16px] sm:m-[25px] text-[#4A4E60] overflow-y-auto h-full"}>
                 {compont?.children}
               </div>
               {/* footer */}
