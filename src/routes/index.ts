@@ -17,4 +17,5 @@ export const routes = {
   authentication: '/autenticacion',
   personalData: '/datos-personales',
   sarlaft: '/preguntas-sarlaft',
+  finalcialData: '/datos-financieros',
 };

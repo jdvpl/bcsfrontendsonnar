@@ -19,7 +19,6 @@ export interface FormData {
   document_type: string;
   policy_and_terms: boolean;
   commercial_terms: boolean;
-
 }
 export interface HowItemProps {
   children: string | JSX.Element;

@@ -1,12 +1,10 @@
-import { waitFor, render, screen, fireEvent } from '@testing-library/react';
+import { waitFor, render, screen, fireEvent, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import React from 'react'
 import InicioSolicitud from '../../pages/inicio-solicitud';
 import { createMockRouter } from '../utils/createMockRouter';
 import { routes } from '../../routes';
-
-jest.mock('../../hooks/useAES')
 
 describe('InicioSolicitud', () => {
   it('should render "InicioSolicitud" successfully', () => {
@@ -18,8 +16,7 @@ describe('InicioSolicitud', () => {
     const btnDisabled = screen.getByTestId('btn-openAccount1');
     expect(btnDisabled.getAttribute('disabled')).toBe("")
   });
-
-  test('should goTopre logon', async () => {
+  test('should go To pre login', async () => {
     const router = createMockRouter({});
     render(
       <RouterContext.Provider value={router}>
@@ -32,7 +29,7 @@ describe('InicioSolicitud', () => {
     const chkterminos = screen.getByTestId('chkterminos');
     fireEvent.input(selectBtn, { target: { value: 'CC' } });
     fireEvent.input(inputDocument, { target: { value: '1018422010' } });
-    await userEvent.click(chkterminos)
+    await await waitFor(() => userEvent.click(chkterminos))
     expect(selectBtn.tagName).toMatch('INPUT')
     expect(inputDocument.tagName).toMatch('INPUT')
     expect(inputCheck.tagName).toMatch('INPUT')

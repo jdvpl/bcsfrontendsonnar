@@ -10,6 +10,7 @@ const nextConfig = {
     KYCAPIURL: process.env.KYCAPIURL,
     MAINTENANCE: process.env.MAINTENANCE,
     KEYKYCHASH: process.env.KEYKYCHASH,
+    KEYSESSIONSTORAGE: process.env.KEYSESSIONSTORAGE,
   },
   images: {
     loader: 'akamai',

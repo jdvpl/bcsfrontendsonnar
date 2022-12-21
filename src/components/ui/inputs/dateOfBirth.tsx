@@ -226,7 +226,6 @@ const DateOfBirth: React.FC<InputProps> = ({
   fields.year = dateDefault?.[0] || '';
   fields.month = dateDefault?.[1] || '';
   fields.day = dateDefault?.[2] || '';
-  console.log(fields)
 
   useEffect(() => {
     const date = `${fields.day}/${fields.month}/${fields.year}`;

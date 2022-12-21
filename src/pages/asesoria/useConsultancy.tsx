@@ -1,7 +1,7 @@
 import { initialOptions } from '../../lib/consultancy';
 import { routes } from '../../routes';
 import Button from '../../components/ui/Button';
-
+import React from 'react'
 export default function useConsultancy({
   actualStep,
   setActualStep,
@@ -57,17 +57,15 @@ export default function useConsultancy({
             key={option?.label}
             onClick={() => openModal(option?.label, index)}
             variant="secondary"
-            isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%] font-semibold rounded-[8px] lg:h-48px ${
-              itemActive === option?.label ? 'bg-primario-100' : ''
-            }
+            isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%] font-semibold rounded-[8px] lg:h-48px ${itemActive === option?.label ? 'bg-primario-100' : ''
+              }
                 ${itemActive && !isMobile === option?.label ? 'translate-x-[16px]' : ''}
                 `}
           >
             <div className="flex justify-center">
               <span
-                className={`text-center ${
-                  itemActive === option?.label ? 'text-white' : 'text-primario-100'
-                } text-[18px] p-0`}
+                className={`text-center ${itemActive === option?.label ? 'text-white' : 'text-primario-100'
+                  } text-[18px] p-0`}
               >
                 {option?.label}
               </span>

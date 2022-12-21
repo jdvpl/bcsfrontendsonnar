@@ -135,7 +135,7 @@ function Input({
         </label>
       </div>
       {helperText && error && <HelperText error={error} text={helperText} />}
-      {helperText && helperTextOption && <HelperText error={false} text={helperText} />}
+      {helperText && helperTextOption && !error && <HelperText error={false} text={helperText} />}
     </div>
   );
 }

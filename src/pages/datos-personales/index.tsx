@@ -78,14 +78,15 @@ const PersonalData = () => {
           <LogoForm />
         </div>
       </div>
-      <Stepper
-        steps={4}
-        actualStep={1}
-        percentage={50}
-        className="lg:w-[684px] md:w-[456px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px]"
-        title="Datos personales"
-      />
+
       <div className="lg:w-[684px] md:w-[584px] w-[343px] m-auto">
+        <Stepper
+          steps={4}
+          actualStep={1}
+          percentage={50}
+          className="lg:w-[684px] md:w-[456px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px] text-left"
+          title="Datos personales"
+        />
         <Typography variant="h2" className="mt-8 text-center">
           {userInfo.firstName || 'Hola'}, {userInfo.isClient ? 'confirme sus datos personales' : 'ingrese sus datos personales'}
         </Typography>

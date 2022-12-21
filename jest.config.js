@@ -12,7 +12,6 @@ const customJestConfig = {
     '<rootDir>/src/services/**',
     '<rootDir>/src/utils/**',
     '<rootDir>/{!(),}.config.js',
-    '!<rootDir>/src/hooks/**.ts',
     '!<rootDir>/src/components/**/**.ts',
     '!<rootDir>/src/components/svg/**',
     '!<rootDir>/src/pages/_**.tsx',

@@ -27,8 +27,8 @@ function Stepper({
         </p>
         <div className="w-full flex gap-1 my-2">
           {renderSteps?.map((item, index) => (
-            <div className='w-full bg-complementario-80'>
-              <div key={index}
+            <div className='w-full bg-complementario-80' key={index}>
+              <div
                 className={`w-[${actualStep === index + 1 ? percentage : 100}%] h-[4px] bg-${actualStep >= index + 1 ? 'primario-20' : 'complementario-80'
                   }`}
               />

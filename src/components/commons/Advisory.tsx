@@ -22,7 +22,7 @@ const Advisory = ({ setShowModal }: any) => {
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[343px] mb-[12px] shadow-none"
             name="solicitarCredito"
-            data-testid="btn-openAccount1"
+            data-testid="btn-advisoryTest"
             tabIndex={0}
             onClick={() => setshowMessage(false)}
             id="btn-next"
@@ -40,7 +40,7 @@ const Advisory = ({ setShowModal }: any) => {
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[343px] mb-[40px] shadow-none"
             onClick={() => closeModal()}
             name="solicitarCredito"
-            data-testid="btn-openAccount1"
+            data-testid="btn-closeModal"
             tabIndex={0}
             id="btn-next"
             variant="secondary"

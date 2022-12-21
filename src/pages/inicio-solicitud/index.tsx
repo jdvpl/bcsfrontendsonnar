@@ -12,9 +12,11 @@ function InicioSolicitud() {
     SesionStorageKeys.dataUser.key,
     {}
   );
-
-
   const onSubmit = async (formData: FormData) => {
+    const labels = { policy_and_terms_label: 'Acepta tratamiento de datos personales y consulta en centrales de riesgo', commercial_terms_label: 'Autoriza que su información sea utilizada con fines comerciales' }
+    const data = { ...formData, ...labels }
+    console.log(data); //TODO: this data is sent to the endpoint
+
     setDataUser(formData);
     router.push(routes.authentication)
   }
