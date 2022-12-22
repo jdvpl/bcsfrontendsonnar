@@ -1,4 +1,3 @@
-import React from 'react';
 import useOtp from '../../../../components/custom/otp/useOtp';
 
 describe('useOtp when onValidateOTP fetch is successfully', () => {
@@ -27,7 +26,7 @@ describe('useOtp when onValidateOTP fetch is successfully', () => {
     otp = '123456';
     wasResend = false;
 
-    reSendOTPCode = jest.fn().mockImplementation(async (body) =>
+    reSendOTPCode = jest.fn().mockImplementation(async () =>
       Promise.resolve({
         response: {
           result: ' response.result,',
@@ -37,7 +36,7 @@ describe('useOtp when onValidateOTP fetch is successfully', () => {
       })
     );
 
-    validateOTOCode = jest.fn().mockImplementation(async (body) =>
+    validateOTOCode = jest.fn().mockImplementation(async () =>
       Promise.resolve({
         response: {
           result: ' response.result,',
@@ -105,7 +104,7 @@ describe('useOtp when onValidateOTP fetch is error ', () => {
     otp = '123456';
     wasResend = false;
 
-    reSendOTPCode = jest.fn().mockImplementation(async (body) =>
+    reSendOTPCode = jest.fn().mockImplementation(async () =>
       Promise.resolve({
         response: {
           result: ' response.result,',
@@ -115,7 +114,7 @@ describe('useOtp when onValidateOTP fetch is error ', () => {
       })
     );
 
-    validateOTOCode = jest.fn().mockImplementation(async (body) =>
+    validateOTOCode = jest.fn().mockImplementation(async () =>
       Promise.resolve({
         response: {
           result: ' response.result,',
@@ -126,7 +125,7 @@ describe('useOtp when onValidateOTP fetch is error ', () => {
     );
 
     timer = 60;
-    const { onValidateOTP, onResendOTP } = useOtp({
+    const { onValidateOTP } = useOtp({
       setIsLoading,
       dataTU,
       otp,
@@ -180,7 +179,7 @@ describe('useOtp when onResendOTP fetch is successfully', () => {
     otp = '123456';
     wasResend = false;
 
-    reSendOTPCode = jest.fn().mockImplementation(async (body) =>
+    reSendOTPCode = jest.fn().mockImplementation(async () =>
       Promise.resolve({
         response: {
           result: ' response.result,',
@@ -190,7 +189,7 @@ describe('useOtp when onResendOTP fetch is successfully', () => {
       })
     );
 
-    validateOTOCode = jest.fn().mockImplementation(async (body) =>
+    validateOTOCode = jest.fn().mockImplementation(async () =>
       Promise.resolve({
         response: {
           result: ' response.result,',
@@ -258,7 +257,7 @@ describe('useOtp when onResendOTP fetch is error ', () => {
     otp = '123456';
     wasResend = false;
 
-    reSendOTPCode = jest.fn().mockImplementation(async (body) =>
+    reSendOTPCode = jest.fn().mockImplementation(async () =>
       Promise.resolve({
         response: {
           result: ' response.result,',
@@ -268,7 +267,7 @@ describe('useOtp when onResendOTP fetch is error ', () => {
       })
     );
 
-    validateOTOCode = jest.fn().mockImplementation(async (body) =>
+    validateOTOCode = jest.fn().mockImplementation(async () =>
       Promise.resolve({
         response: {
           result: ' response.result,',
