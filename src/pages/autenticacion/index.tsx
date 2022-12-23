@@ -35,8 +35,8 @@ function Authentication() {
       commercialPurposes: dataUser.commercial_terms,
     };
     const response = await getQuestions(body);
-    if (!response.error) {
-      setDataQuestions(response.response.data);
+    if (!response?.error) {
+      setDataQuestions(response?.response?.data);
       router.push(routes.validacionIdentidad);
       return;
     }

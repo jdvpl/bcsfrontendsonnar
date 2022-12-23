@@ -7,6 +7,7 @@ interface stepsProps {
   percentage?: number;
   title?: string;
   className?: string;
+  classTitle?: string;
 }
 function Stepper({
   steps,
@@ -14,14 +15,15 @@ function Stepper({
   percentage,
   title = '',
   className = '',
+  classTitle = ''
 }: stepsProps) {
   const renderSteps = new Array(steps).fill(0);
   return (
     <NoSSRWrapper>
       <div className={className}>
         <p
-          className="text-[16px] leading-4 text-primario-900 font-semibold"
-          data-testid="titleStep"
+          className={`text-[16px] leading-4 text-primario-900 font-semibold"
+          data-testid="titleStep ${classTitle}`}
         >
           {title}
         </p>

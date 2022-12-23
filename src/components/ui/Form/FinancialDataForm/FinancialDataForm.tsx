@@ -50,18 +50,18 @@ const FinancialDataForm = () => {
       data.contractType = null;
     }
     setFinancialDataForm(data);
-    router.push(routes.sarlaft)
+    router.push(routes.creditData)
   }
 
   useValidationFinancialDataForm(occupation, enterprise, contractType, employeeYear, employeeMonth, monthlySalary, monthlyExpenses, realStateValue, debtValue, clearErrors, setError);
 
   return (
-    <div data-testid="FormQuotaTest" className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto">
-      <Alert message='Los aportes a salud y pensión son un criterio obligatorio para la aprobación del crédito.' colorMessage='text-[#2F6EAE]' />
+    <div data-testid="FormQuotaTest" className="w-[343px] md:mt-[30px] md:w-[517px] xl:w-[656px] mx-auto">
+      <Alert message='Los aportes a salud y pensión son un criterio obligatorio para la aprobación del crédito.' />
       <div className="w-full mt-3">
         <form onSubmit={handleSubmit(onSubmit)}>
 
-          <div className="w-full mt-4">
+          <div className="w-full mt-8">
             <ReactHookFormSelect
               onChange={(e: any) => {
                 setValue('occupation', e.target.value);
@@ -85,7 +85,7 @@ const FinancialDataForm = () => {
           {
             occupation === '14' ? (
               <>
-                <div className="flex flex-col mt-4">
+                <div className="flex flex-col mt-3">
                   <Controller
                     rules={{ required: occupation === '14' ? true : false }}
                     render={({ field }) => (
@@ -106,11 +106,11 @@ const FinancialDataForm = () => {
                         onChange={(e: any) => setValue('enterprise', e.target.value)}
                       />
                     )}
-                    name="contractType"
+                    name="enterprise"
                     control={control}
                   />
                 </div>
-                <div className="flex mt-4">
+                <div className="flex mt-3">
                   <ReactHookFormSelect
                     onChange={(e: any) => {
                       setValue('contractType', e.target.value);
@@ -196,8 +196,7 @@ const FinancialDataForm = () => {
               </>
             ) : null
           }
-
-          <div className="flex flex-col mt-4">
+          <div className="flex flex-col mt-3">
             <Controller
               rules={{ required: true }}
               render={({ field }) => (
@@ -214,7 +213,8 @@ const FinancialDataForm = () => {
                   id="monthlySalary"
                   inputMode="text"
                   dataTestId='monthlySalaryTest'
-                  label="Ingreso mensual"
+                  placeholder="Total de ingresos mensuales"
+                  label="Total de ingresos mensuales"
                   onChange={(e: any) => {
                     field.onChange(e.target.value.replace(/[^0-9]/g, ''));
                   }}
@@ -224,7 +224,7 @@ const FinancialDataForm = () => {
               control={control}
             />
           </div>
-          <div className="flex flex-col mt-4">
+          <div className="flex flex-col mt-3">
             <Controller
               rules={{ required: true }}
               render={({ field }) => (
@@ -251,7 +251,7 @@ const FinancialDataForm = () => {
               control={control}
             />
           </div>
-          <div className="flex flex-col mt-4">
+          <div className="flex flex-col mt-3">
             <Controller
               rules={{ required: true }}
               render={({ field }) => (
@@ -278,7 +278,7 @@ const FinancialDataForm = () => {
               control={control}
             />
           </div>
-          <div className="flex flex-col mt-4">
+          <div className="flex flex-col mt-3">
             <Controller
               rules={{ required: true }}
               render={({ field }) => (
@@ -305,7 +305,6 @@ const FinancialDataForm = () => {
               control={control}
             />
           </div>
-
           <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-10">
             <Button
               isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[375px]"

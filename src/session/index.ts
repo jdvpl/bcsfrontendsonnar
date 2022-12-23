@@ -32,6 +32,10 @@ export const SesionStorageKeys = {
     key: 'personalData',
     description: 'This key saves the data of form',
   },
+  personalInfoDataBack: {
+    key: 'personalDataInfo',
+    description: 'This key saves the data that we get from backend'
+  },
   financialDataForm: {
     key: 'fdf',
     description: 'This key saves the data of form',

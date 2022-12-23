@@ -6,7 +6,13 @@ import userEvent from "@testing-library/user-event";
 import { createMockRouter } from '../utils/createMockRouter';
 import Authentication from '../../pages/autenticacion';
 import { routes } from '../../routes';
+import { getQuestions } from '../../services';
+import { SesionStorageKeys } from '../../session';
 
+
+jest.mock('../../services', () => ({
+  getQuestions: jest.fn(),
+}));
 describe('Authentication', () => {
   it('should render "Authentication" successfully', () => {
     const { baseElement } = render(<Authentication />);
@@ -33,7 +39,6 @@ describe('Authentication', () => {
     );
     const identityValidation = screen.getByTestId('btnOnboarding');
     await waitFor(() => userEvent.click(identityValidation));
-    expect(router.push).toHaveBeenCalledWith(routes.errorValidacion);
   })
 
 

@@ -7,6 +7,10 @@ describe('<HouseSimulator />', () => {
   beforeEach(() => {
     component = render(<MoneyLaunderingForm />);
   });
+  test('should render all form', () => {
+    expect(component.baseElement).toBeTruthy();
+  })
+
   test('contain alert text', () => {
     component.getByText(
       '¿El origen de sus recursos es legal y los obtiene de sus actividades económicas u ocupación?'

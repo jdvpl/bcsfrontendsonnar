@@ -29,6 +29,10 @@ const PersonalData = () => {
     SesionStorageKeys.dataUser.key,
     {}
   );
+  const [, setDataPersonalInfo] = useSessionStorage(
+    SesionStorageKeys.personalInfoDataBack.key,
+    {}
+  );
   const [userInfo, setuserInfo] = useState<iDataUser>({
     birthDt: '',
     addr1: '',
@@ -49,7 +53,8 @@ const PersonalData = () => {
       IdentSerialNum: dataUser.document_number
     })
     if (!response.error) {
-      setuserInfo(response.response.data)
+      setuserInfo(response.response.data);
+      setDataPersonalInfo(response.response.data);
     }
   }
 

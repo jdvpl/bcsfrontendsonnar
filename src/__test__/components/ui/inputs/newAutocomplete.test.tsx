@@ -1,28 +1,64 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render, waitFor, screen } from '@testing-library/react';
 import React, { useState } from 'react'
 import NewAutoComplete from '../../../../components/ui/inputs/newAutoComplete';
+import userEvent from '@testing-library/user-event';
+import '@testing-library/jest-dom'
 
-describe('newAutoComplete', () => {
-  const initialBorder = '#B0C2CD';
 
-  test('should render "newAutoComplete" successfully', () => {
-    const { baseElement } = render(<NewAutoComplete />);
-    expect(baseElement).toBeTruthy();
+const mockHandler = jest.fn();
+const renderComponent = () =>
+  render(
+    <NewAutoComplete
+      label="NewAutoComplete"
+      name="NewAutoComplete"
+      onChange={mockHandler}
+    />
+  );
+describe('auto complete component', () => {
+  beforeEach(() => renderComponent());
+  it('Should render the component', async () => {
+    const componentWrapper = screen.getByTestId('searchAutocomplete');
+    const autoCompleteLabel = screen.getByLabelText(/newautocomplete/i);
+    const input = screen.getByRole('combobox', {
+      name: /newautocomplete/i,
+    });
+    const button = screen.getByRole('button', {
+      name: /open/i,
+    });
+    expect(input).toBeInTheDocument();
+    expect(componentWrapper).toBeInTheDocument();
+    expect(autoCompleteLabel).toBeInTheDocument();
+    expect(button).toBeInTheDocument();
   });
-  it('should render the value of color', () => {
-    const { baseElement } = render(<NewAutoComplete />);
-    React.useState = jest.fn().mockReturnValue([initialBorder, {}])
-    expect(baseElement.classList.length).toBe(0)
-  })
-  test('renders NewAutoComplete component and performs basic actions', () => {
-    const { getByRole } = render(<NewAutoComplete />);
-    const input = getByRole('combobox');
-    // Creamos un evento de cambio de texto y lo disparamos en el campo de entrada
-    fireEvent.change(input, { target: { value: 'BOGOTA - BOGOTA D.C.' } });
-    fireEvent.change(input, { target: { value: '05044' } });
-    fireEvent.keyUp(input, { target: { value: 'B' } });
-    // Comprobamos que el valor del campo de entrada haya cambiado
-    // expect(input).toBe('BOGOTA - BOGOTA D.C.');
-  });
+  it('should display select value', async () => {
+    const button = screen.getByRole('button', {
+      name: /open/i,
+    });
 
+    userEvent.click(button);
+
+    await waitFor(() => {
+      const cityOption = screen.getByText('APARTADO - ANTIOQUIA');
+      expect(cityOption).toBeInTheDocument();
+      userEvent.click(cityOption);
+    });
+    await waitFor(() =>
+      expect(
+        screen.getByRole('combobox', { name: 'NewAutoComplete' })
+      ).toHaveDisplayValue('APARTADO - ANTIOQUIA')
+    );
+  });
+  it('should display options when user types the field', async () => {
+    const input = screen.getByRole('combobox', {
+      name: /newautocomplete/i,
+    });
+
+    await waitFor(() => {
+      userEvent.type(input, 'bog');
+    });
+    await waitFor(() => {
+      const cityOption = screen.getByText('BOGOTA - BOGOTA D.C.');
+      expect(cityOption).toBeInTheDocument();
+    });
+  });
 });

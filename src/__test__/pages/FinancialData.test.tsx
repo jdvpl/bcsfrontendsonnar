@@ -44,7 +44,7 @@ describe('FinancialData', () => {
     expect(monthlySalaryTest.tagName).toMatch('INPUT')
     const btnFinancialData = screen.getByTestId('btnFinancialDataTest');
     await waitFor(() => userEvent.click(btnFinancialData));
-    expect(router.push).toHaveBeenCalledWith(routes.sarlaft);
+    expect(router.push).toHaveBeenCalledWith(routes.creditData);
   })
   test('should open the year and other inputs `Empleado`', async () => {
     const router = createMockRouter({});
@@ -90,6 +90,6 @@ describe('FinancialData', () => {
 
     const btnFinancialData = screen.getByTestId('btnFinancialDataTest');
     await waitFor(() => userEvent.click(btnFinancialData));
-    expect(router.push).toHaveBeenCalledWith(routes.sarlaft);
+    expect(router.push).toHaveBeenCalledWith(routes.creditData);
   })
 });

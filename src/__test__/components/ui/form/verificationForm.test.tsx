@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import React from 'react'
 import VerificationForm from '../../../../components/ui/Form/verificationForm';
 
@@ -7,6 +7,14 @@ describe('Terminos', () => {
   test('should render "Terminos" successfully', () => {
     const { baseElement } = render(<VerificationForm onSubmit={mkFn} />);
     expect(baseElement).toBeTruthy();
+  });
+  test('should render "Terminos" successfully', () => {
+    const { getByTestId } = render(<VerificationForm onSubmit={mkFn} />);
+    const newInputTest = getByTestId('newInputTest');
+    fireEvent.input(newInputTest, { target: { value: '' } })
+    fireEvent.change(newInputTest, { target: { value: '12345' } })
+    const inputPassword = getByTestId('input-password');
+    fireEvent.click(inputPassword)
   });
 
 });

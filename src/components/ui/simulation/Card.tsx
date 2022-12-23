@@ -35,7 +35,7 @@ export const Card: React.FC<CardProps> = ({
 }) => (
   <div className={`${className}`} id={id}>
     <div className="flex">
-      <div className="pr-[8px] ml-[2px]">
+      <div className="pr-[1px] ml-[2px]">
         <Image
           unoptimized
           src={urlsvg}
@@ -43,6 +43,7 @@ export const Card: React.FC<CardProps> = ({
           title={altsvg}
           width="16"
           height="16"
+          className='mx-2'
         />
       </div>
       <p className={classtitle}>{title}</p>

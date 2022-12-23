@@ -78,7 +78,7 @@ export const MoneyLaunderingForm = () => {
           </div>
         ))}
       </div>
-      <Button isLanding="w-full mt-[10px]" onClick={onSubmit}>
+      <Button isLanding="w-full mt-[10px]" onClick={onSubmit} data-testid="btnSarlaftAc">
         Continuar
       </Button>
     </div>

@@ -1,12 +1,16 @@
 import { render } from '@testing-library/react';
 import React from 'react';
 import MoneyLaunderingPage from '../../pages/preguntas-sarlaft';
+import '@testing-library/jest-dom'
 
 describe('<HouseSimulator />', () => {
   let component: any;
   beforeEach(() => {
     component = render(<MoneyLaunderingPage />);
   });
+  test('should render all form', () => {
+    expect(component.baseElement).toBeTruthy();
+  })
   test('contain alert text', () => {
     component.getByText(
       '¿El origen de sus recursos es legal y los obtiene de sus actividades económicas u ocupación?'

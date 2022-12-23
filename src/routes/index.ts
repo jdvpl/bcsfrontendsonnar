@@ -18,4 +18,5 @@ export const routes = {
   personalData: '/datos-personales',
   sarlaft: '/preguntas-sarlaft',
   finalcialData: '/datos-financieros',
+  creditData: '/datos-credito',
 };

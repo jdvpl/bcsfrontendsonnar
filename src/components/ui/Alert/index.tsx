@@ -5,10 +5,11 @@ import React from 'react'
 interface propAlert {
   message: string;
   colorMessage?: string;
+  bgBanner?: string;
 }
-const Alert: FC<propAlert> = ({ message, colorMessage = 'text-[#7594A8]' }) => (
+const Alert: FC<propAlert> = ({ message, colorMessage = 'text-[#7594A8]', bgBanner = 'bg-[#EBF8FE]' }) => (
   <div
-    className="relative px-4 py-2 mb-5 text-xs font-normal rounded text-[#2F6EAE] bg-[#EBF8FE]"
+    className={`relative px-4 py-2 mb-5 text-xs font-normal rounded text-[#2F6EAE] ${bgBanner}`}
     role="alert"
   >
     <span className="absolute top-[10px]  left-0 flex items-center px-3">

@@ -223,9 +223,7 @@ const DateOfBirth: React.FC<InputProps> = ({
     setValue('year', value.replace(/[^0-9]+/g, ''));
   };
   const fields = watch();
-  fields.year = dateDefault?.[0] || '';
-  fields.month = dateDefault?.[1] || '';
-  fields.day = dateDefault?.[2] || '';
+
 
   useEffect(() => {
     const date = `${fields.day}/${fields.month}/${fields.year}`;
@@ -242,11 +240,11 @@ const DateOfBirth: React.FC<InputProps> = ({
       onChangeDate?.(undefined);
       return;
     }
-    if (fields.year.length < 4) {
+    if (fields.year && fields.year?.length < 4) {
       onChangeDate?.(undefined);
       return;
     }
-    if (fields.year.length > 4) {
+    if (fields.year?.length > 4) {
       return;
     }
 

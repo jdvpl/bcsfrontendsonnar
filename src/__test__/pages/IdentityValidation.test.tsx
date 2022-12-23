@@ -1,7 +1,9 @@
 import 'jest-canvas-mock';
-import { render, screen } from '@testing-library/react';
+import { render, fireEvent, act } from '@testing-library/react';
 import React from 'react'
 import Index from '../../pages/validacion-identidad';
+import '@testing-library/jest-dom/extend-expect';
+
 
 describe('validacion-identidad', () => {
   it('should render "ValidacionSolicitud" successfully', () => {

@@ -71,6 +71,7 @@ function Simulator() {
         </div>
         <div className="flex gap-1 my-8 w-[343px] md:w-[517px] xl:w-[656px] mx-auto">
           <button
+            data-testid="houseTestBtn"
             type="button"
             className={
               simulatioTypeOption === 'house'

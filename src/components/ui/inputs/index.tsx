@@ -15,7 +15,7 @@ export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
    * @type string
    * @default ''
    */
-  endIcon?: string;
+  endIcon?: IconListAvailable;
 
   /**
    *  Help text displayed in the lower part of the text box
@@ -94,6 +94,7 @@ function Input({
 
   const inputStyles = `
   ${startIcon ? 'pl-8' : ''}
+  ${endIcon ? 'pr-8' : ''}
   h-12 bg-[transparent] block py-2 px-3 w-full text-sm leading-none
     ${error ? 'text-complementario-100' : 'text-primario-900'}
     bg-transparent border-[0.03125rem] rounded-md

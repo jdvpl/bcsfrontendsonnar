@@ -56,7 +56,7 @@ const PersonalDataBasic = ({ userInfo }: any) => {
   return (
     <div data-testid="FormQuotaTest" className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto">
       <div className="w-full mt-3">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} data-testid="personaldataTest">
           <div className="mt-4 grid gap-2">
             <span className="text-[10px] col-span-6 text-complementario-100">
               Fecha de nacimiento:
@@ -117,6 +117,7 @@ const PersonalDataBasic = ({ userInfo }: any) => {
                     value={field.value}
                     tabIndex={0}
                     id="yearDt"
+                    data-testid="yearDtTest"
                     inputMode="numeric"
                     maxLength={4}
                     label="Año"
@@ -159,7 +160,7 @@ const PersonalDataBasic = ({ userInfo }: any) => {
               error={!!errors.gender}
               control={control}
               left="right4"
-              dataTestId="typeHouseSalaryTest"
+              dataTestId="genderTest"
               name="gender"
               className="w-100"
               margin="normal"
@@ -188,6 +189,7 @@ const PersonalDataBasic = ({ userInfo }: any) => {
                         tabIndex={0}
                         disabled={userInfo.cellPhone ? true : false}
                         id="phone"
+                        data-testid="phoneTest"
                         inputMode="text"
                         placeholder='Número de celular'
                         label="Número de celular"
@@ -216,6 +218,8 @@ const PersonalDataBasic = ({ userInfo }: any) => {
                         value={field.value}
                         tabIndex={0}
                         id="email"
+                        data-testid="emailTest"
+
                         inputMode="email"
                         placeholder='Correo electrónico'
                         label="Correo electrónico"
@@ -268,6 +272,7 @@ const PersonalDataBasic = ({ userInfo }: any) => {
                     value={field.value}
                     tabIndex={0}
                     id="currentAddress"
+                    data-testid="currentAddres"
                     inputMode="text"
                     placeholder='Dirección de vivienda actual'
                     label="Dirección de vivienda actual"

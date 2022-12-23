@@ -8,7 +8,6 @@ import Alert from '../Alert';
 import Button from '../Button';
 import Input from '../inputs';
 import DateOfBirth from '../inputs/dateOfBirth';
-import NewInput from '../inputs/newInput';
 import ReactHookFormSelect from '../Select/newSelect';
 import useValidations from './useValidationsSalary';
 
@@ -63,7 +62,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
     >
       <Alert message={errorMessageAlert} />
       <div className="w-full mt-3">
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} data-testid="formTestId">
           <ReactHookFormSelect
             onChange={(e: any) => {
               setValue('typeHouse', e.target.value);
@@ -76,7 +75,6 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
             control={control}
             left="right4"
             valueLength=""
-            dataTestId="typeHouseSalaryTest"
             name="typeHouse"
             className="w-100"
             margin="normal"
@@ -102,6 +100,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                   tabIndex={0}
                   id="monthlySalary"
                   inputMode="text"
+                  data-testid="monthlySalaryTest"
                   required
                   label="Ingreso mensual"
                   onChange={(e: any) => {
@@ -131,6 +130,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
                   value={convertToColombianPesos(Math.round(field.value))}
                   tabIndex={0}
                   id="amountQuota"
+                  data-testid="amountQuotaTest"
                   inputMode="text"
                   required
                   disabled={!(monthlySalary > 0)}
@@ -198,7 +198,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit }) => {
               type="submit"
               name="openQuotaSimulation"
               className="mb-10"
-              data-testid="btn-openQuotaSimulation"
+              data-testid="btnOpenQuotaSimulation"
               tabIndex={0}
               disabled={!(isValid && Object.entries(errors).length === 0)}
               id="btn-next"
