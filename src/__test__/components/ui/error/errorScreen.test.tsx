@@ -15,7 +15,7 @@ describe('ErrorScreen', () => {
     const router = createMockRouter({});
     render(
       <RouterContext.Provider value={router}>
-        <ErrorScreen urlsvg="" title={undefined} text={undefined} textbtn="" ImgClass={''} />
+        <ErrorScreen btnactivate urlsvg="" title={undefined} text={undefined} textbtn="" ImgClass={''} />
       </RouterContext.Provider>
     );
     const getbackRouteTest = screen.getByTestId('getbackRouteTest');
@@ -25,7 +25,7 @@ describe('ErrorScreen', () => {
     const router = createMockRouter({});
     render(
       <RouterContext.Provider value={router}>
-        <ErrorScreen urlsvg="" title={undefined} text={undefined} textbtn="" ImgClass={''} />
+        <ErrorScreen btnactivate urlsvg="" title={undefined} text={undefined} textbtn="" ImgClass={''} />
       </RouterContext.Provider>
     );
     await waitFor(() => userEvent.click(screen.getByTestId('btnOnboarding')))

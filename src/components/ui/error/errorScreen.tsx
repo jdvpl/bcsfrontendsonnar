@@ -16,6 +16,7 @@ interface CardProps {
   text: React.ReactNode;
   textbtn: string;
   ImgClass: string;
+  btnactivate?:boolean;
 }
 
 export const ErrorLayout: React.FC<CardProps> = ({
@@ -24,7 +25,8 @@ export const ErrorLayout: React.FC<CardProps> = ({
   title,
   text,
   textbtn,
-  ImgClass
+  ImgClass,
+  btnactivate
 }) => {
   const router = useRouter();
   return (
@@ -43,6 +45,7 @@ export const ErrorLayout: React.FC<CardProps> = ({
       <div className="m-auto lg:w-[528px]">
         <div className={ImgClass}>
           <img
+            data-testid='ImageError'
             role="imageError"
             src={urlsvg}
             alt={altsvg}
@@ -54,16 +57,20 @@ export const ErrorLayout: React.FC<CardProps> = ({
         </Typography>
         <Typography variant='bodyM4' className='text-center mt-3 text-primario-900 font-[18px]'>{text}</Typography>
         <div className="flex justify-center mt-8 mb-[20px]">
+          { btnactivate ?
           <Button
-            isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] "
-            type="submit"
-            name="abrirCuenta"
-            data-testid="btnOnboarding"
-            onClick={() => router.push(routes.startProccess)}
-            id="btn-next"
-          >
-            {textbtn}
-          </Button>
+          isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] "
+          type="submit"
+          name="Inicio"
+          data-testid="btnOnboarding"
+          onClick={() => router.push(routes.startProccess)}
+          id="btn-next"
+        >
+          {textbtn}
+        </Button>
+        :null
+        }
+          
         </div>
       </div>
 

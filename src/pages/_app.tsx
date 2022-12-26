@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import '../styles/globals.css';
 import Script from 'next/script';
 import { AplicationProvider } from '../context/AplicationContext';
+import Mantenimiento from './mantenimiento';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const [initialRenderComplete, setInitialRenderComplete] = useState<boolean>(false);
@@ -12,6 +13,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
 
   if (!initialRenderComplete) return <></>;
 
+  const maintenance = process.env.MAINTENANCE || 'false';
   return (
     <>
     <Script
@@ -32,7 +34,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           }}
         />
-      <Component {...pageProps} />
+        {maintenance === 'true' ? <Mantenimiento/> : <Component {...pageProps} />}
     </AplicationProvider>
     </>
   );
