@@ -1,7 +1,8 @@
 import { useRouter } from 'next/router';
-import React, { FC, ReactNode, useState } from 'react';
+import React, { FC, ReactNode, useState, useRef, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { basePath } from '../../../next.config';
+import ConsultancyTutorial from '../../components/custom/tutorial/ConsultancyTutorial/ConsultancyTutorial';
 import Close from '../../components/svg/Close';
 import LogoBcs from '../../components/svg/LogoBcs';
 import LogoForm from '../../components/svg/LogoForm';
@@ -15,6 +16,8 @@ const ConditionalWrapper: FC<any> = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
 const Consultancy = () => {
+  const prevTutorialStepRef = useRef(null);
+  const nextTutorialStepRef = useRef(null);
   const [itemActive, setItemActive] = useState('');
   const [activeIndex, setActiveIndex] = useState(0);
   const [actualStep, setActualStep] = useState<number>(1);
@@ -37,6 +40,13 @@ const Consultancy = () => {
 
   return (
     <>
+      {nextTutorialStepRef && prevTutorialStepRef ? (
+        <ConsultancyTutorial
+          nextTutorialStepRef={nextTutorialStepRef}
+          prevTutorialStepRef={prevTutorialStepRef}
+        />
+      ) : null}
+
       {itemActive !== '' ? (
         <div
           className="bg-complementario-900/50 w-[100%] h-[300vh] fixed top-0 left-0"
@@ -44,7 +54,8 @@ const Consultancy = () => {
         />
       ) : null}
 
-      <div className="w-[90%] xs:w-[340px] md:w-[90%] m-auto">
+      {/* Header */}
+      <div className="w-[90%] xs:w-[95%] md:w-[90%] m-auto">
         <div className="flex justify-between lg:w-[1080px] mx-auto mb-[38px] xs:mt-[36px] md:mt-[64px] lg:mb-[82px] lg:mt-[59px] lg:h-[29px] h-[18px]">
           <div className="hidden lg:block">
             <LogoBcs />
@@ -59,7 +70,7 @@ const Consultancy = () => {
           </div>
         </div>
 
-        <div className="lg:w-[825px] mx-auto md:w-[528px] w-[full] xs:w-[340px]">
+        <div className="lg:w-[825px] mx-auto md:w-[528px] w-[full] xs:w-full">
           <Typography
             variant="h2"
             className="lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center leading-5"
@@ -76,15 +87,17 @@ const Consultancy = () => {
         </div>
       </div>
 
-      <div className="lg:w-[1127px] md:w-[528px] xs:flex-col md:flex-row w-[90%] xs:w-[340px] lg:gap-x-[120px] gap-x-[34px] mx-auto flex items-center mb-[77px]">
+      {/* Content */}
+      <div className="lg:w-[1127px] md:w-[528px] xs:flex-col md:flex-row w-[95%] xs:w-[95%] lg:gap-x-[120px] gap-x-[34px] mx-auto flex items-center mb-[77px]">
         <img
           className="w-[100%] xs:max-w-[340px] xs:h-[180px] md:hidden object-contain"
           src={`${basePath}/images/consultancy/${actualStep}.svg`}
         />
 
         <div
-          className={`${itemActive !== '' ? 'sm:ml-[-95px]' : ''
-            } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
+          className={`${
+            itemActive !== '' ? 'sm:ml-[-95px]' : ''
+          } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
           style={{
             backgroundImage: `url(${basePath}/images/consultancy/${actualStep}.svg)`,
             backgroundRepeat: 'no-repeat',
@@ -139,6 +152,8 @@ const Consultancy = () => {
         >
           <>
             <div
+              data-testid="prevTutorialStep"
+              ref={prevTutorialStepRef}
               onClick={prevStep}
               className="md:order-1 cursor-pointer  flex xs:gap-x-3 items-center xs:justify-center xs:flex-row md:flex-col lg:w-[150px]"
             >
@@ -154,6 +169,7 @@ const Consultancy = () => {
             </div>
 
             <div
+              ref={nextTutorialStepRef}
               onClick={nextStep}
               className="md:order-3 cursor-pointer  flex xs:gap-x-3 items-center flex-row md:flex-col lg:w-[150px]"
             >
@@ -177,9 +193,11 @@ const Consultancy = () => {
         ) : null}
       </div>
 
+      {/* Link to Home */}
       <div
-        className={`w-full text-center mb-[80px] xs:hidden md:block${actualStep === 1 || actualStep === 4 ? 'hidden' : ''
-          }`}
+        className={`w-full text-center mb-[80px] xs:hidden md:block${
+          actualStep === 1 || actualStep === 4 ? 'hidden' : ''
+        }`}
       >
         <a
           href={`${basePath}`}
@@ -190,6 +208,6 @@ const Consultancy = () => {
       </div>
     </>
   );
-}
+};
 
 export default Consultancy;
