@@ -6,8 +6,8 @@ import useConsultancyTutorial from './useConsultancyTutorial';
 function ConsultancyTutorial({ nextTutorialStepRef, prevTutorialStepRef }: any) {
   const { isOpen, renderBody, actualTutorialStep, onHandleModal } =
     useConsultancyTutorial({ nextTutorialStepRef, prevTutorialStepRef });
-  console.log({nextTutorialStepRef});
-  console.log({prevTutorialStepRef});
+  console.log({ nextTutorialStepRef });
+  console.log({ prevTutorialStepRef });
   return (
     <>
       {isOpen ? (
@@ -17,7 +17,7 @@ function ConsultancyTutorial({ nextTutorialStepRef, prevTutorialStepRef }: any) 
         >
           {/* Header */}
           <div
-            className={`w-full mt-[62px] xl:pl-[118px] xl:pr-[142px] md:pl-[106px] md:pr-[107px] xs:pl-[17px] xs:pr-[16px] flex items-center justify-between h-[60px] md:mb-[282px] xl:[217px] ${
+            className={`w-full xl:mt-[62px] md:mt-[68px] xs:mt-[36px] mt-[36px] xl:pl-[118px] xl:pr-[142px] md:pl-[106px] md:pr-[107px] xs:pl-[17px] xs:pr-[16px] flex items-center justify-between h-[60px] md:mb-[282px] xl:[217px] ${
               actualTutorialStep === 0 || actualTutorialStep === 5
                 ? 'xs:mb-[205px] sm:mb-[217px]'
                 : 'xs:mb-[86px] sm:mb-[86px]'
