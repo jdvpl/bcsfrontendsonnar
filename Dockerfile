@@ -8,6 +8,8 @@ FROM alpine
 ADD ./out /var/www/ \ 
     ./nginx.default.conf /etc/nginx/http.d/default.conf
 
+RUN ls -lh /var/www
+
 #EXPOSE 80
 
 #STOPSIGNAL SIGQUIT
