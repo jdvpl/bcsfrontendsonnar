@@ -12,17 +12,8 @@ import { SesionStorageKeys } from '../../session';
 import Stepper from '../../components/ui/Stepper';
 import { routes } from '../../routes';
 
-
-
 function ResumenApplication() {
-  const [insuranceCheck] = useSessionStorage(
-    SesionStorageKeys.dataFormSimulation.key,
-    ''
-  );
-  const [valuesMortgage] = useSessionStorage(
-    SesionStorageKeys.mortgageValues.key,
-    ''
-  );
+  const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
 
   const router = useRouter();
 
@@ -32,7 +23,7 @@ function ResumenApplication() {
         <div className="mt-4  hidden lg:block">
           <LogoBcs />
         </div>
-        <div className="mt-4 w-[180px] lg:w-[303px] mb-[24px] mr-[16px] mb-[24px]">
+        <div className="mt-4 w-[180px] lg:w-[303px] mb-[24px] mr-[16px]">
           <LogoForm />
         </div>
       </div>
@@ -47,7 +38,7 @@ function ResumenApplication() {
       </div>
       <div className=" xs:w-[290px] sm:w-[343px]  lg:w-[684px] md:w-[584px] m-auto">
         <Typography variant="h2" className="mt-8 mb-[52px] text-center">
-        Revise los datos de su solicitud
+          Revise los datos de su solicitud
         </Typography>
         <div>
           <Typography
@@ -58,21 +49,21 @@ function ResumenApplication() {
           </Typography>
         </div>
 
-          <ReviewApplication
-            financedValue={`${convertToColombianPesos(
-              Math.floor(valuesMortgage.financeValue)
-            )}`}
-            termFinance={`${valuesMortgage.termFinance} años`}
-            rate={`1,6% NV - 23% EA`}
-            lifeInsurance={`$44.000`}
-            fireInsurance={`$44.000`}
-            insuranceCheck={insuranceCheck}
-          />
+        <ReviewApplication
+          financedValue={`${convertToColombianPesos(
+            Math.floor(valuesMortgage.financeValue)
+          )}`}
+          termFinance={`${valuesMortgage.termFinance} años`}
+          rate={`1,6% NV - 23% EA`}
+          lifeInsurance={`$44.000`}
+          fireInsurance={`$44.000`}
+          insuranceCheck={valuesMortgage?.insuranceCheck}
+        />
 
         <div className="flex flex-col items-center gap-y-5">
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] mt-[24px] shadow-none"
-            onClick={()=>router.push(routes.approvalDataPage)}
+            onClick={() => router.push(routes.approvalDataPage)}
             name="solicitarCredito"
             data-testid="btn-next"
             tabIndex={0}
@@ -82,7 +73,7 @@ function ResumenApplication() {
           </Button>
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[15px] shadow-none"
-            onClick={()=>router.push(routes.home)}
+            onClick={() => router.push(routes.home)}
             name="solicitarCredito"
             data-testid="btn-exit"
             tabIndex={0}
