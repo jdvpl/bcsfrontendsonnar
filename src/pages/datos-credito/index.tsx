@@ -37,7 +37,7 @@ function CreditData() {
 
       <Typography
         variant="h2"
-        className="text-center  leading-[22px] mb-[52px] md:text-[28px] xs:text-[20px] font-bold text-primario-900"
+        className="text-center  md:leading-[30px] xs:leading-[22px]  mb-[52px] md:text-[28px] xs:text-[20px] font-bold text-primario-900"
       >
         Defina las condiciones <br /> del crédito a solicitar
       </Typography>

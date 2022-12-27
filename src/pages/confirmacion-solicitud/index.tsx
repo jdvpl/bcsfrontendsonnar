@@ -38,7 +38,7 @@ const ApplicationApproval = () => {
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA] font-semibold rounded-[8px] m-auto"
             title="Monto aprobado"
             value={`$ 105.000`}
-            text="text-[32px] pl-[8px] pt-2 flex items-baseline"
+            text="text-[32px] pl-[16px] pt-2 flex items-baseline"
             urlsvg=""
             classtitle="h-[18px] pt-[16px] text-[16px] pl-0"
             subvalue="pesos"
@@ -55,7 +55,7 @@ const ApplicationApproval = () => {
             value={"15 años"}
             text="text-[20px] pl-[18px] font-semibold"
             urlsvg={`${basePath}/images/Calendar.svg`}
-            classtitle="h-[14px] text-[13px] ml-2"
+            classtitle="h-[14px] text-[13px]"
             tooltiptext=""
           />
         </div>

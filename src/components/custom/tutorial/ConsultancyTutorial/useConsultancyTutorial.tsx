@@ -8,7 +8,7 @@ export default function useConsultancyTutorial({
   nextTutorialStepRef,
   prevTutorialStepRef,
 }: any) {
-  const [timer, setTimer] = useState(10);
+  const [timer, setTimer] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
   const [actualTutorialStep, setActualTutorialStep] = useState(0);
   const intervalRef = useRef<number>();
@@ -51,7 +51,7 @@ export default function useConsultancyTutorial({
           <>
             <Typography
               variant="h2"
-              className="text-center mx-auto text-white xs:text-[20px] md:text-[28px] xl:text-[28px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
+              className="xl:leading-[34px] md:leading-[30px] xs:leading-[22px] text-center mx-auto text-white xs:text-[18px] md:text-[26px] xl:text-[30px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
             >
               Acompáñenos en un corto recorrido antes de iniciar la asesoría y conozca
               cómo navegar en ella.
@@ -61,7 +61,7 @@ export default function useConsultancyTutorial({
                 data-testid="nextStep"
                 disabled={!(timer === 0)}
                 onClick={handelActualStep}
-                isLanding="sm:w-[343px] xs:w-[284.17px]"
+                isLanding="sm:w-[343px] xs:w-[284.17px] font-semibold"
               >
                 Continuar
               </Button>
@@ -111,17 +111,17 @@ export default function useConsultancyTutorial({
             >
               <div className="bg-white w-[90px] h-[90px] absolute translate-y-[100%] left-[33px] rotate-45"></div>
               <div
-                className={`bg-white rounded-lg w-[253px]  pt-[41px] pb-[31px] absolute flex flex-col items-center  gap-y-[28px] h-[171px]`}
+                className={`bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute flex flex-col items-center  gap-y-[28px] h-[171px]`}
               >
                 <p
                   data-testid="text-next-step"
-                  className="text-[18px] w-full pl-[30px] font-semibold leading-[20px] text-primario-900"
+                  className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900"
                 >
                   Para salir de la asesoría haga clic aquí.
                 </p>
                 <button
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-centermx-auto"
+                  className="text-primario-20 w-fit text-center font-semibold mx-auto"
                 >
                   Siguiente
                 </button>
@@ -138,14 +138,14 @@ export default function useConsultancyTutorial({
             >
               <div className="bg-white w-[90px] h-[90px] absolute top-[50%] translate-y-1/2 bottom-0 left-0 rotate-45"></div>
               <div
-                className={`bg-white rounded-lg w-[253px]  pt-[41px] pb-[31px] absolute  md:flex flex-col items-center gap-y-[28px] h-[171px]`}
+                className={`bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute  md:flex flex-col items-center gap-y-[28px] h-[171px]`}
               >
-                <p className="text-[18px] w-full pl-[30px] font-semibold leading-[20px] text-primario-900">
+                <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
                   Para salir de la asesoría haga clic aquí.
                 </p>
                 <button
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-centermx-auto"
+                  className="text-primario-20 w-fit text-center font-semibold mx-auto"
                 >
                   Siguiente
                 </button>
@@ -181,14 +181,14 @@ export default function useConsultancyTutorial({
             >
               <div className="bg-white w-[90px] h-[90px] absolute rotate-45 translate-y-[100%] right-[33px]"></div>
               <div
-                className={`z-[100]  bg-white rounded-lg w-[253px]  pt-[41px] pb-[31px] absolute flex flex-col items-center justify-center gap-y-[28px] h-[171px]`}
+                className={`z-[100]  bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute flex flex-col items-center justify-center gap-y-[28px] h-[171px]`}
               >
-                <p className="text-[18px] w-full pl-[30px] font-semibold leading-[20px] text-primario-900">
+                <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
                   Para continuar con la asesoría haga clic aquí.
                 </p>
                 <button
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-centermx-auto"
+                  className="text-primario-20 w-fit text-center font-semibold mx-auto"
                 >
                   Siguiente
                 </button>
@@ -204,14 +204,14 @@ export default function useConsultancyTutorial({
             >
               <div className="bg-white w-[90px] h-[90px] absolute top-[50%] translate-y-1/2 bottom-0 right-0 rotate-45"></div>
               <div
-                className={`z-[100] sm:hidden bg-white rounded-lg w-[253px]  pt-[41px] pb-[31px] absolute  md:flex flex-col items-center justify-center gap-y-[28px] h-[171px]`}
+                className={`z-[100] sm:hidden bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute  md:flex flex-col items-center justify-center gap-y-[28px] h-[171px]`}
               >
-                <p className="text-[18px] w-full pl-[30px] font-semibold leading-[20px] text-primario-900">
+                <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
                   Para continuar con la asesoría haga clic aquí.
                 </p>
                 <button
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-centermx-auto"
+                  className="text-primario-20 w-fit text-center font-semibold mx-auto"
                 >
                   Siguiente
                 </button>
@@ -245,14 +245,14 @@ export default function useConsultancyTutorial({
             <div className="relative xs:hidden md:flex md:order-2">
               <div className="bg-white w-[90px] h-[90px] absolute z-9 translate-y-[50%] left-[0px] rotate-45"></div>
               <div
-                className={`bg-white rounded-lg w-[253px] z-10 pt-[41px] pb-[31px] flex flex-col items-center  gap-y-[28px] h-[171px]`}
+                className={`bg-white rounded-lg w-[253px] z-10 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center  gap-y-[28px] h-[171px]`}
               >
-                <p className="text-[18px] w-full pl-[30px] font-semibold leading-[20px] text-primario-900">
+                <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
                   Seleccione cada botón para conocer el detalle de su enunciado.
                 </p>
                 <button
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-centermx-auto"
+                  className="text-primario-20 w-fit text-center font-semibold mx-auto"
                 >
                   Siguiente
                 </button>
@@ -263,14 +263,14 @@ export default function useConsultancyTutorial({
             <div className="relative md:hidden xs:flex- md:order-2 xs:order-1">
               <div className="bg-white w-[90px] h-[90px] absolute z-9 translate-y-[100%] translate-x-[-50%] left-[50%] rotate-45"></div>
               <div
-                className={`bg-white rounded-lg w-[253px] z-40 pt-[41px] pb-[31px] flex flex-col items-center gap-y-[28px] h-[171px]`}
+                className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center gap-y-[28px] h-[171px]`}
               >
-                <p className="pb-[0px] text-[18px] w-full pl-[30px] pr-[20px] z-40 font-semibold leading-[20px] text-primario-900">
+                <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
                   Seleccione cada botón para conocer el detalle de su enunciado.
                 </p>
                 <button
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-centermx-auto z-40"
+                  className="text-primario-20 w-fit text-center font-semibold mx-auto z-40"
                 >
                   Siguiente
                 </button>
@@ -287,16 +287,16 @@ export default function useConsultancyTutorial({
                 <div className="bg-white w-[90px] h-[90px] absolute z-9 translate-y-[100%] translate-x-[-50%] left-[50%] rotate-45"></div>
 
                 <div
-                  className={`bg-white rounded-lg w-[253px] z-40 pt-[41px] pb-[31px] flex flex-col items-center gap-y-[28px] h-[171px]`}
+                  className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center gap-y-[28px] h-[171px]`}
                 >
-                  <p className="pb-[0px] text-[18px] w-full pl-[30px] pr-[20px] z-40 font-semibold leading-[20px] text-primario-900">
+                  <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
                     Para cerrar la ventana, haga clic aquí.
                   </p>
                   <button
                     onClick={handelActualStep}
-                    className="text-primario-20 w-fit text-centermx-auto z-40"
+                    className="text-primario-20 w-fit text-center font-semibold mx-auto z-40"
                   >
-                    Siguiente
+                    Terminar
                   </button>
                 </div>
               </div>
@@ -333,16 +333,16 @@ export default function useConsultancyTutorial({
                   <div className="xs:hidden md:block md:order-2 xs:order-1 absolute top-[-240px] right-0">
                     <div className="bg-white w-[90px] h-[90px] absolute z-9 translate-y-[100%] translate-x-[-85%] left-[85%] rotate-45"></div>
                     <div
-                      className={`bg-white rounded-lg w-[253px] z-40 pt-[41px] pb-[31px] flex flex-col items-center gap-y-[28px] h-[171px]`}
+                      className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center gap-y-[28px] h-[171px]`}
                     >
-                      <p className="pb-[0px] text-[18px] w-full pl-[30px] pr-[20px] z-40 font-semibold leading-[20px] text-primario-900">
+                      <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
                         Para cerrar la ventana, haga clic aquí.
                       </p>
                       <button
                         onClick={handelActualStep}
-                        className="text-primario-20 w-fit text-centermx-auto z-40"
+                        className="text-primario-20 w-fit text-center font-semibold mx-auto z-40"
                       >
-                        Siguiente
+                        Terminar
                       </button>
                     </div>
                   </div>
@@ -371,12 +371,13 @@ export default function useConsultancyTutorial({
             </div>
             <Typography
               variant="h2"
-              className="text-center mx-auto text-white xs:text-[20px] md:text-[28px] xl:text-[28px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
+              className="xl:leading-[34px] md:leading-[30px] xs:leading-[22px] text-center mx-auto text-white xs:text-[18px] md:text-[26px] xl:text-[30px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
             >
-              El recorrido ha terminado. ¡Está listo para continuar!
+              El recorrido ha terminado.
+              <br /> ¡Está listo para continuar!
             </Typography>
             <div className="w-[full] flex flex-col items-center xl:mt-[48px] md:mt-[60px] sm:mt-[46px] xs:mt-[36px]">
-              <Button onClick={onHandleModal} isLanding="sm:w-[343px] xs:w-[284.17px]">
+              <Button onClick={onHandleModal} isLanding="sm:w-[343px] xs:w-[284.17px] font-semibold">
                 Iniciar asesoría
               </Button>
             </div>
