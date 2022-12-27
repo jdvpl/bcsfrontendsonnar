@@ -1,17 +1,15 @@
-FROM alpine
+FROM alpine:3.16
 
-# RUN set -ex; \
-#     apk add nginx nginx-mod-http-headers-more; \
-#     ln -sf /dev/stdout /var/log/nginx/access.log; \
-#     ln -sf /dev/stderr /var/log/nginx/error.log
+RUN set -ex; \
+    apk add nginx nginx-mod-http-headers-more; \
+    ln -sf /dev/stdout /var/log/nginx/access.log; \
+    ln -sf /dev/stderr /var/log/nginx/error.log
 
-COPY ./out /var/www/ 
-COPY ./nginx.default.conf /etc/nginx/http.d/default.conf
+ADD ./out /var/www/
+ADD ./nginx.default.conf /etc/nginx/http.d/default.conf
 
-RUN ls -lh /var/www
+EXPOSE 80
 
-#EXPOSE 80
-
-#STOPSIGNAL SIGQUIT
+STOPSIGNAL SIGQUIT
 
 CMD ["nginx", "-g", "daemon off;"]
