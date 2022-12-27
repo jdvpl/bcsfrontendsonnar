@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine
 
 # RUN set -ex; \
 #     apk add nginx nginx-mod-http-headers-more; \
@@ -8,7 +8,7 @@ FROM alpine:3.16
 ADD ./out /var/www/ \ 
     ./nginx.default.conf /etc/nginx/http.d/default.conf
 
-EXPOSE 80
+#EXPOSE 80
 
 #STOPSIGNAL SIGQUIT
 
