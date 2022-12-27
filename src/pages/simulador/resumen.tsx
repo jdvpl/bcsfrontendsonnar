@@ -141,32 +141,7 @@ function Resumen() {
             dataPdf={getDataPdfInfo}
           />
         ) : null}
-        {simulationTypeOption === 'house' && !insuranceCheck.insuranceCheck ? (
-          <ReviewHouse
-            monthlyCoute={`${convertToColombianPesos(
-              Math.floor(valuesSimulation.monthlyCoute)
-            )}`}
-            financedValue={`${convertToColombianPesos(
-              Math.floor(valuesSimulation.financeValue)
-            )}`}
-            termFinance={`${valuesSimulation.termFinance} años`}
-            rate={`${valuesSimulation?.rate?.toString()?.replace('.', ',')}% EA`}
-            dataPdf={getDataPdfInfo}
-          />
-        ) : null}
-        {simulationTypeOption === 'salary' && !insuranceCheck.insuranceCheck ? (
-          <ReviewSalary
-            financedValue={`${convertToColombianPesos(
-              Math.floor(valuesSimulation.financeValue)
-            )}`}
-            amountQuota={`${convertToColombianPesos(
-              Math.floor(valuesSimulation.amountQuota)
-            )}`}
-            termFinance={`${valuesSimulation.termFinance} años`}
-            rate={`${valuesSimulation?.rate?.toString()?.replace('.', ',')}% EA`}
-            dataPdf={getDataPdfInfo}
-          />
-        ) : null}
+
         <div className="flex flex-col items-center gap-y-5">
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] shadow-none"

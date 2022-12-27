@@ -39,5 +39,9 @@ export const SesionStorageKeys = {
   financialDataForm: {
     key: 'fdf',
     description: 'This key saves the data of form',
+  },
+  simulationValues: {
+    key: 'simulationValues',
+    description: 'This key save the data of credit data form'
   }
 };

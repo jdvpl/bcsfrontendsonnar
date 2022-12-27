@@ -9,17 +9,16 @@ import { convertToColombianPesos } from '../../../../utils';
 import { yearsAvailable } from '../../../../lib/simulator';
 import useValidations from './useCreditData';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
+import { SesionStorageKeys } from '../../../../session';
+import { useRouter } from 'next/router';
+import { routes } from '../../../../routes';
 
 export function CreditDataForm() {
   const [choseHouse, setChoseHouse] = useState(false);
   const [insuranceCheck, setInsuranceCheck] = useState(true);
   const [percentageFinance, setPercentageFinance] = useState(0.7);
-  // const dataForm = {
-  //   houseValue: 10000000,
-  //   financeValue: 1000000,
-  //   termFinance: 10,
-  // };
-  const [dataForm] = useSessionStorage('simulationValues', {});
+  const [dataForm, setDataForm] = useSessionStorage(SesionStorageKeys.simulationValues.key, {});
+  const router = useRouter();
 
   const changeHouse = (value: boolean) => {
     setChoseHouse(value);
@@ -49,7 +48,8 @@ export function CreditDataForm() {
   };
   const onSubmit = () => {
     // eslint-disable-next-line no-console
-    console.log(typeHouse, houseValue, financeValue, termFinance);
+    setDataForm({ typeHouse, houseValue, financeValue, termFinance, insuranceCheck })
+    router.push(routes.approvalDataPage)
   };
 
   const { automationFinanceValue } = useValidations(
@@ -103,7 +103,7 @@ export function CreditDataForm() {
       {/* Form When Person chose Hose */}
       <div className="flex flex-col items-center gap-y-[12px] w-full">
         {choseHouse ? (
-          <div data-testid="InputTypeHouse">
+          <div data-testid="InputTypeHouse" className='w-full'>
             <ReactHookFormSelect
               onChange={(e: any) => setValue('typeHouse', e.target.value)}
               placeholder="Tipo de vivienda"
@@ -117,8 +117,8 @@ export function CreditDataForm() {
               margin="normal"
               rules={{ required: true }}
             >
-              <MenuItem value="nueva">Nueva</MenuItem>
-              <MenuItem value="usada">Usada</MenuItem>
+              <MenuItem value="new">Nueva</MenuItem>
+              <MenuItem value="used">Usada</MenuItem>
             </ReactHookFormSelect>
           </div>
         ) : null}
@@ -137,6 +137,7 @@ export function CreditDataForm() {
               tabIndex={0}
               id="houseValue"
               inputMode="text"
+              data-testid="houseValueTest"
               required
               label="Valor aproximado de la vivienda"
               type="text"
@@ -162,6 +163,7 @@ export function CreditDataForm() {
                 value={convertToColombianPesos(field.value)}
                 tabIndex={0}
                 id="valueFinance"
+                data-testid="valueFinanceTest"
                 inputMode="text"
                 required
                 label="Valor a financiar"
@@ -222,7 +224,7 @@ export function CreditDataForm() {
 
       {/* Form when person not chose Hose */}
 
-      <Button isLanding="w-full md:w-[375px] mx-auto mt-[32px]" onClick={onSubmit}>
+      <Button isLanding="w-full md:w-[375px] mx-auto mt-[32px]" onClick={onSubmit} data-testid="btnSubmitDataForm">
         Continuar
       </Button>
     </div>

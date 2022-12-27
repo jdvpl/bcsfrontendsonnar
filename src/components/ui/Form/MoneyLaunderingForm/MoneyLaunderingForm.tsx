@@ -3,7 +3,7 @@ import Button from '../../Button';
 import { ToolTipInfo } from '../../Tooltip';
 import { InfoIco } from '../../Tooltip/info';
 import Typography from '../../Typography';
-import useMoneyLaundering from './useMoneyLaundering';
+import useMoneyLaundering from '../../../../hooks/useMoneyLaundering';
 const MoneyLaunderingOptions = [
   {
     name: 'incomeSource',

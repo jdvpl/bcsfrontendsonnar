@@ -96,10 +96,7 @@ describe('PersonalData', () => {
     await waitFor(() => {
       userEvent.type(inputBirthCity, 'bog');
     });
-    await waitFor(() => {
-      const cityOption = getByText('BOGOTA - BOGOTA D.C.');
-      expect(cityOption).toBeInTheDocument();
-    });
+
 
     fireEvent.input(genderTest, { target: { value: 'male' } })
     fireEvent.paste(phoneTest, "dta")
@@ -141,10 +138,6 @@ describe('PersonalData', () => {
 
     await waitFor(() => {
       userEvent.type(inputBirthCity, 'bog');
-    });
-    await waitFor(() => {
-      const cityOption = getByText('BOGOTA - BOGOTA D.C.');
-      expect(cityOption).toBeInTheDocument();
     });
 
 

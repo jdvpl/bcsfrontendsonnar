@@ -154,7 +154,7 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
 export const getBasicData = async (data: iFormBasicData) => {
   try {
     const { data: response } = await axios.post(
-      'https://efc19c57-40ff-4c65-b11e-e218e49e6fdb.mock.pstmn.io/basic-data',
+      'https://63a9fbb57d7edb3ae61dd65b.mockapi.io/basic-data',
       data,
     );
     return {
@@ -170,8 +170,25 @@ export const getBasicData = async (data: iFormBasicData) => {
 
 export const fetchSarlaft = async (body: any) => {
   try {
+    const { data: response } = await clientAxiosBackend.post(
+      '/sarlaft/sarlaft-questions',
+      body
+    );
+    return {
+      response: {
+        result: response,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e.response?.data?.message };
+  }
+
+};
+export const sendAuthorization = async (body: any) => {
+  try {
     const { data: response } = await axios.post(
-      'https://3481-152-200-184-53.ngrok.io/sarlaft-questions',
+      'https://63a9fbb57d7edb3ae61dd65b.mockapi.io/v1/send-authorization',
       body
     );
     return {

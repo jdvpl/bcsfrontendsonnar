@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { basePath } from '../../../../../next.config';
-import { useSessionStorage } from '../../../../hooks/useSessionStorage';
-import { routes } from '../../../../routes';
-import { fetchSarlaft } from '../../../../services';
-import { SesionStorageKeys } from '../../../../session';
+import { basePath } from '../../next.config';
+import { useSessionStorage } from './useSessionStorage';
+import { routes } from '../routes';
+import { fetchSarlaft } from '../services';
+import { SesionStorageKeys } from '../session';
 
 export default function useMoneyLaundering() {
   const router = useRouter();
@@ -30,7 +30,7 @@ export default function useMoneyLaundering() {
     if (!response?.error) {
       switch (response.response.result.customer_status) {
         case 'ALLOWED':
-          router.push('/' + routes.ratings);
+          router.push(routes.finalcialData);
           break;
         case 'RESTRICTED':
           router.push(routes.errorValidacion);

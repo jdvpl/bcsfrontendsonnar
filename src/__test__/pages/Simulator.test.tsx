@@ -59,6 +59,46 @@ describe('All tests of formQuota', () => {
     await waitFor(() => userEvent.click(btnOpenQuotaSimulation));
     expect(router.push).toHaveBeenCalledTimes(0);
   })
+  test('should fill each one of the field on house similation', async () => {
+    const router = createMockRouter({});
+    const { getByTestId } = render(
+      <RouterContext.Provider value={router}>
+        <Simulator />
+      </RouterContext.Provider>
+    )
+
+    const selectBtn = document.getElementsByName("typeHouse")[0];
+    const rentValueTest = getByTestId('rentValueTest')
+    const valueFinanceTest = getByTestId('valueFinanceTest')
+    const termFinance = document.getElementsByName("termFinance")[0];
+
+    const day = document.getElementsByName('day')[0];
+    const month = document.getElementsByName('month')[0];
+    const year = getByTestId('yearDateOfBithTest');
+
+    fireEvent.input(selectBtn, { target: { value: 'vis' } });
+    fireEvent.change(selectBtn, { target: { value: 'novis' } });
+
+    fireEvent.change(rentValueTest, { target: { value: '200000000' } });
+    fireEvent.input(rentValueTest, { target: { value: '150000000' } });
+    fireEvent.paste(rentValueTest, "data");
+
+    fireEvent.change(valueFinanceTest, { target: { value: '200000000' } });
+    fireEvent.input(valueFinanceTest, { target: { value: '150000000' } });
+    fireEvent.paste(valueFinanceTest, "data");
+
+    fireEvent.input(termFinance, { target: { value: '8' } });
+    fireEvent.change(termFinance, { target: { value: '10' } });
+
+    fireEvent.change(day, { target: { value: '08' } });
+    fireEvent.change(month, { target: { value: '08' } });
+    fireEvent.change(year, { target: { value: '1999' } });
+
+    const btnOpenQuotaSimulation = getByTestId('btnOpenQuotaSimulation')
+
+    await waitFor(() => userEvent.click(btnOpenQuotaSimulation));
+    expect(router.push).toHaveBeenCalledTimes(0);
+  })
 
   test('does not call setdataFormResponse or useRouter.push if sendSimulationData returns an error', async () => {
     const sendSimulationDataMock = jest.fn(() => ({

@@ -5,6 +5,7 @@ import { SesionStorageKeys } from '../../session';
 import LogoBcs from '../../components/svg/LogoBcs';
 import { routes } from '../../routes';
 import React from 'react'
+import { sendAuthorization } from '../../services';
 function InicioSolicitud() {
   const router = useRouter();
 
@@ -15,10 +16,11 @@ function InicioSolicitud() {
   const onSubmit = async (formData: FormData) => {
     const labels = { policy_and_terms_label: 'Acepta tratamiento de datos personales y consulta en centrales de riesgo', commercial_terms_label: 'Autoriza que su información sea utilizada con fines comerciales' }
     const data = { ...formData, ...labels }
-    console.log(data); //TODO: this data is sent to the endpoint
-
+    const response = await sendAuthorization(data)
     setDataUser(formData);
-    router.push(routes.authentication)
+    if (!response.error) {
+      router.push(routes.authentication)
+    }
   }
 
   return (

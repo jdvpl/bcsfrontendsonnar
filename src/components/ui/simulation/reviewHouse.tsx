@@ -31,7 +31,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px] "
         title="Cuota mensual total con seguros"
         value={monthlyCouteInsurance?.toString()}
-        text="text-[32px] pl-[23px] pt-2 flex items-baseline"
+        text="text-[32px] pl-[8px] pt-2 flex items-baseline"
         urlsvg=""
         classtitle="h-[18px] pt-[16px] text-[16px]"
         subvalue="pesos"
@@ -44,7 +44,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#F3F4F6]  mb-[16px] font-semibold rounded-[8px] "
       title="Cuota mensual sin seguros"
       value={monthlyCoute?.toString()}
-      text="text-[32px] pl-[23px] pt-2 flex items-baseline"
+      text="text-[32px] pl-[8px] pt-2 flex items-baseline"
       urlsvg=""
       classtitle="h-[18px] pt-[16px] text-[16px]"
       subvalue="pesos"
@@ -57,7 +57,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       value={lifeInsurance?.toString()}
       text="text-[20px] pl-[18px] font-semibold"
       urlsvg={`${basePath}/images/Insurage.svg`}
-      classtitle="h-[14px] text-[13px]"
+      classtitle="h-[14px] text-[13px] ml-2"
       tooltip
       id="lifeInsuranceHouse"
       tooltiptext={
@@ -73,7 +73,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       value={fireInsurance?.toString()}
       text="text-[20px] pl-[18px] font-semibold"
       urlsvg={`${basePath}/images/Home.svg`}
-      classtitle="h-[14px] text-[13px]"
+      classtitle="h-[14px] text-[13px] ml-2"
       tooltip
       id="fireInsuranceHouse"
       tooltiptext={
@@ -90,7 +90,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       value={termFinance?.toString()}
       text="text-[20px] pl-[18px] font-semibold"
       urlsvg={`${basePath}/images/Calendar.svg`}
-      classtitle="h-[14px] text-[13px]"
+      classtitle="h-[14px] text-[13px] ml-2"
       tooltiptext=""
     />
     <Card
@@ -99,7 +99,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       value={rate}
       text="text-[20px] pl-[18px] font-semibold"
       urlsvg={`${basePath}/images/Charts.svg`}
-      classtitle="h-[14px] text-[13px]"
+      classtitle="h-[14px] text-[13px] ml-2"
       tooltip
       tooltiptext={
         <p className="text-white">

@@ -1,14 +1,14 @@
 export const routes = {
   home: '/',
   startProccess: '/inicio-solicitud',
-  ratings: 'calificacion-solicitud',
+  ratings: '/calificacion-solicitud',
   otp: 'validacion-otp',
   validacionIdentidad: '/validacion-identidad',
   validacionBiometrica: '/validacion-biometrica',
   validacionErrorValidacionIdentidad: '/validacion/error-validacionIdentidad/',
   validacionErrorPreguntas: 'validacion/error-validacion-identidad-preguntas',
   validacionErrorIntentos: 'validacion/error-numero-intentos',
-  validacionErrorBloqueo:'validacion/error-bloqueo',
+  validacionErrorBloqueo: 'validacion/error-bloqueo',
   errorValidacion: '/validacion/error/',
   validacionErrorDiario: '/validacion/error-validacionDiario/',
   validacionBlock: '/validacion/error-validacionBlock/',
@@ -22,4 +22,6 @@ export const routes = {
   sarlaft: '/preguntas-sarlaft',
   finalcialData: '/datos-financieros',
   creditData: '/datos-credito',
+  summaryApprovalPage: '/',
+  approvalDataPage: '/confirmacion-solicitud'
 };

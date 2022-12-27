@@ -133,6 +133,7 @@ function HouseSimulator() {
                 tabIndex={0}
                 id="houseValue"
                 inputMode="text"
+                data-testid="rentValueTest"
                 required
                 label="Valor de Vivienda"
                 onChange={(e: any) => {
@@ -163,6 +164,7 @@ function HouseSimulator() {
                   tabIndex={0}
                   id="valueFinance"
                   inputMode="text"
+                  data-testid="valueFinanceTest"
                   required
                   label="Valor a financiar"
                   onChange={(e: any) => {
@@ -192,6 +194,7 @@ function HouseSimulator() {
             left="right4"
             valueLength=""
             name="termFinance"
+            data-testid="termFinance"
             className="col-span-6"
             margin="normal"
             rules={{ required: true }}
@@ -263,6 +266,7 @@ function HouseSimulator() {
                 tabIndex={0}
                 id="year"
                 inputMode="numeric"
+                data-testid="yearDateOfBithTest"
                 maxLength={4}
                 label="Año"
               />
@@ -273,6 +277,7 @@ function HouseSimulator() {
         <Button
           type="submit"
           className="mb-10"
+          data-testid="btnOpenQuotaSimulation"
           disabled={!(isValid && Object.entries(errors).length === 0)}
         >
           Simular
