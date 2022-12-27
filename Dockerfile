@@ -5,8 +5,8 @@ FROM alpine
 #     ln -sf /dev/stdout /var/log/nginx/access.log; \
 #     ln -sf /dev/stderr /var/log/nginx/error.log
 
-ADD ./out /var/www/ \ 
-    ./nginx.default.conf /etc/nginx/http.d/default.conf
+COPY ./out /var/www/ 
+COPY ./nginx.default.conf /etc/nginx/http.d/default.conf
 
 RUN ls -lh /var/www
 
