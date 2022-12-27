@@ -51,4 +51,17 @@ describe('<Resumen-Solicitud/>', () => {
     const fireInsurance = screen.queryByTestId('fireInsurance');
     expect(fireInsurance).not.toBeInTheDocument();
   });
+  it('Render InsuranceCheck', async () => {
+    const props = {
+      financedValue: '0',
+      fireInsurance: '0',
+      lifeInsurance: '0',
+      termFinance: '0',
+      rate: '0',
+      insuranceCheck: false,
+    };
+    render(<ReviewApplication {...props} />);
+    const fireInsurance = screen.queryByTestId('fireInsurance');
+    expect(fireInsurance).not.toBeInTheDocument();
+  });
 });

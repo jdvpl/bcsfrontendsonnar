@@ -6,8 +6,6 @@ import useConsultancyTutorial from './useConsultancyTutorial';
 function ConsultancyTutorial({ nextTutorialStepRef, prevTutorialStepRef }: any) {
   const { isOpen, renderBody, actualTutorialStep, onHandleModal } =
     useConsultancyTutorial({ nextTutorialStepRef, prevTutorialStepRef });
-  console.log({ nextTutorialStepRef });
-  console.log({ prevTutorialStepRef });
   return (
     <>
       {isOpen ? (

@@ -377,7 +377,7 @@ export default function useConsultancyTutorial({
               <br /> ¡Está listo para continuar!
             </Typography>
             <div className="w-[full] flex flex-col items-center xl:mt-[48px] md:mt-[60px] sm:mt-[46px] xs:mt-[36px]">
-              <Button onClick={onHandleModal} isLanding="sm:w-[343px] xs:w-[284.17px]">
+              <Button onClick={onHandleModal} isLanding="sm:w-[343px] xs:w-[284.17px] font-semibold">
                 Iniciar asesoría
               </Button>
             </div>

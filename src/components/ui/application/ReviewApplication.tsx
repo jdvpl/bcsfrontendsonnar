@@ -31,7 +31,6 @@ function ReviewApplication({
   return (
     <div className="flex flex-col items-center ">
       <Card
-        data-testid="financedValue"
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[98px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
         title="Monto Total"
         value={financedValue?.toString()}
@@ -46,7 +45,6 @@ function ReviewApplication({
         description="Descripción"
       />
       <Card
-        data-testid="rate"
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[98px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
         title="Tasa"
         value={rate}
@@ -59,7 +57,6 @@ function ReviewApplication({
         description="Descripción"
       />
       <Card
-        data-testid="termFinance"
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[98px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
         title="Plazo"
         value={termFinance?.toString()}
