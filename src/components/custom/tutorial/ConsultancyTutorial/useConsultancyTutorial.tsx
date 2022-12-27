@@ -10,7 +10,7 @@ export default function useConsultancyTutorial({
 }: any) {
   const [timer, setTimer] = useState(1);
   const [isOpen, setIsOpen] = useState(true);
-  const [actualTutorialStep, setActualTutorialStep] = useState(5);
+  const [actualTutorialStep, setActualTutorialStep] = useState(0);
   const intervalRef = useRef<number>();
 
   const onHandleModal = () => {
