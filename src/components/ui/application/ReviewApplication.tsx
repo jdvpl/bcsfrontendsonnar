@@ -22,9 +22,16 @@ function ReviewApplication({
   insuranceCheck = true,
 }: ReviewApplicationProps) {
   const [insurance, setInsurance] = useState<Boolean>(insuranceCheck);
+  const handleInsurance = () => {
+    setInsurance(false);
+  };
+  const goBack = () => {
+    router.back();
+  };
   return (
     <div className="flex flex-col items-center ">
       <Card
+        data-testid="financedValue"
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[98px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
         title="Monto Total"
         value={financedValue?.toString()}
@@ -35,10 +42,11 @@ function ReviewApplication({
         tooltiptext=""
         endicon
         urlsvgendicon={`${basePath}/images/PenEdit.svg`}
-        clickEdit={() => router.back()}
+        clickEdit={goBack}
         description="Descripción"
       />
       <Card
+        data-testid="rate"
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[98px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
         title="Tasa"
         value={rate}
@@ -51,6 +59,7 @@ function ReviewApplication({
         description="Descripción"
       />
       <Card
+        data-testid="termFinance"
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[98px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
         title="Plazo"
         value={termFinance?.toString()}
@@ -60,11 +69,12 @@ function ReviewApplication({
         tooltiptext=""
         endicon
         urlsvgendicon={`${basePath}/images/PenEdit.svg`}
-        clickEdit={() => router.back()}
+        clickEdit={goBack}
         description="Descripción"
       />
       {insurance ? (
         <Card
+          data-testid="lifeInsurance"
           className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[98px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
           title="Seguro de vida"
           value={lifeInsurance?.toString()}
@@ -74,12 +84,13 @@ function ReviewApplication({
           tooltiptext=""
           endicon
           urlsvgendicon={`${basePath}/images/Delete.svg`}
-          clickEdit={() => setInsurance(false)}
+          clickEdit={handleInsurance}
           description="Descripción"
         />
       ) : null}
       {insurance ? (
         <Card
+          data-testid="fireInsurance"
           className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[98px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
           title="Seguro de Incendio, Rayo y Terremoto"
           value={fireInsurance?.toString()}
@@ -89,7 +100,7 @@ function ReviewApplication({
           tooltiptext=""
           endicon
           urlsvgendicon={`${basePath}/images/Delete.svg`}
-          clickEdit={() => setInsurance(false)}
+          clickEdit={handleInsurance}
           description="Descripción"
         />
       ) : null}
