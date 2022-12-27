@@ -44,12 +44,14 @@ const ApplicationApproval = () => {
             subvalue="pesos"
             textsub="30"
             tooltiptext=""
+            urlsvgendicon=""
           />
         </div>
         <div className="mt-3">
           <Card
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[12px] pl-[16px] rounded-[8px] mb-[12px] font-light m-auto"
             title="Plazo"
+            urlsvgendicon=""
             value={"15 años"}
             text="text-[20px] pl-[18px] font-semibold"
             urlsvg={`${basePath}/images/Calendar.svg`}

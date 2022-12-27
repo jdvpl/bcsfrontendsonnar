@@ -52,7 +52,7 @@ describe('<CreditDataForm/>', () => {
 
     fireEvent.click(btnSubmitDataForm)
 
-    expect(router.push).toHaveBeenCalledWith(routes.approvalDataPage)
+    expect(router.push).toHaveBeenCalledWith(routes.ResumenSolicitud)
   });
 
 });

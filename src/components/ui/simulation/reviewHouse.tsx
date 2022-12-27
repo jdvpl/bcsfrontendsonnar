@@ -37,6 +37,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         subvalue="pesos"
         textsub="30"
         tooltiptext=""
+        urlsvgendicon=""
       />
     ) : null}
 
@@ -50,6 +51,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       subvalue="pesos"
       textsub="30"
       tooltiptext=""
+      urlsvgendicon=""
     />
     <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
@@ -60,6 +62,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       classtitle="h-[14px] text-[13px] ml-2"
       tooltip
       id="lifeInsuranceHouse"
+      urlsvgendicon=""
       tooltiptext={
         <p className="flex text-white">
           Seguro diseñado para proteger a sus asegurados en caso de presentarse muerte,
@@ -76,6 +79,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       classtitle="h-[14px] text-[13px] ml-2"
       tooltip
       id="fireInsuranceHouse"
+      urlsvgendicon=""
       tooltiptext={
         <p className="flex text-white">
           Póliza que protege al inmueble hipotecado al Banco contra las pérdidas y daños
@@ -89,6 +93,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       title="Plazo"
       value={termFinance?.toString()}
       text="text-[20px] pl-[18px] font-semibold"
+      urlsvgendicon=""
       urlsvg={`${basePath}/images/Calendar.svg`}
       classtitle="h-[14px] text-[13px] ml-2"
       tooltiptext=""
@@ -99,7 +104,8 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       value={rate}
       text="text-[20px] pl-[18px] font-semibold"
       urlsvg={`${basePath}/images/Charts.svg`}
-      classtitle="h-[14px] text-[13px] ml-2"
+      urlsvgendicon=""
+      classtitle="h-[14px] text-[13px]"
       tooltip
       tooltiptext={
         <p className="text-white">

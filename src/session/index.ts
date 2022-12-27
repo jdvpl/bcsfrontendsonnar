@@ -40,8 +40,8 @@ export const SesionStorageKeys = {
     key: 'fdf',
     description: 'This key saves the data of form',
   },
-  simulationValues: {
-    key: 'simulationValues',
+  mortgageValues: {
+    key: 'MortgageValues',
     description: 'This key save the data of credit data form'
   }
 };

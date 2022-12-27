@@ -12,12 +12,14 @@ import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import { useRouter } from 'next/router';
 import { routes } from '../../../../routes';
+import { json } from 'stream/consumers';
 
 export function CreditDataForm() {
   const [choseHouse, setChoseHouse] = useState(false);
   const [insuranceCheck, setInsuranceCheck] = useState(true);
   const [percentageFinance, setPercentageFinance] = useState(0.7);
-  const [dataForm, setDataForm] = useSessionStorage(SesionStorageKeys.simulationValues.key, {});
+  const [dataForm] = useSessionStorage(SesionStorageKeys.dataFormSimulation.key, {});
+  const [, setDataForm] = useSessionStorage(SesionStorageKeys.mortgageValues.key, {});
   const router = useRouter();
 
   const changeHouse = (value: boolean) => {
@@ -49,7 +51,7 @@ export function CreditDataForm() {
   const onSubmit = () => {
     // eslint-disable-next-line no-console
     setDataForm({ typeHouse, houseValue, financeValue, termFinance, insuranceCheck })
-    router.push(routes.approvalDataPage)
+    router.push(routes.ResumenSolicitud)
   };
 
   const { automationFinanceValue } = useValidations(

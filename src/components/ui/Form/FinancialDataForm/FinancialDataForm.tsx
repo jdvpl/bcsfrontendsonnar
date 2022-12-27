@@ -129,9 +129,13 @@ const FinancialDataForm = () => {
                     margin="normal"
                     rules={{ required: occupation === '14' ? true : false }}
                   >
-                    <MenuItem value="01">Indefinido</MenuItem>
+                    <MenuItem value="01">Término indefinido</MenuItem>
                     <MenuItem value="02">Término fijo</MenuItem>
+                    <MenuItem value="03">Prestación de servicios</MenuItem>
+                    <MenuItem value="04">Temporal-En misión</MenuItem>
+                    <MenuItem value="05">Carrera administrativa</MenuItem>
                     <MenuItem value="06">Libre nombramiento y remoción</MenuItem>
+                    <MenuItem value="02">Provisional</MenuItem>
                   </ReactHookFormSelect>
                 </div>
                 <span className="text-[10px] col-span-6 text-complementario-100">

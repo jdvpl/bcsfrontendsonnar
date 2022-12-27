@@ -23,5 +23,6 @@ export const routes = {
   finalcialData: '/datos-financieros',
   creditData: '/datos-credito',
   summaryApprovalPage: '/',
-  approvalDataPage: '/confirmacion-solicitud'
+  approvalDataPage: '/confirmacion-solicitud',
+  ResumenSolicitud: '/resumen-solicitud'
 };

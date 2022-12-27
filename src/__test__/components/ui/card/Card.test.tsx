@@ -16,6 +16,7 @@ describe('<Card/>', () => {
         subvalue="pesos"
         textsub="30"
         tooltiptext=""
+        urlsvgendicon=''
       />
     );
   });
