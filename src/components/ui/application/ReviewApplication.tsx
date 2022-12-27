@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Card from '../../../components/ui/simulation/Card';
 import { basePath } from '../../../../next.config';
-import router from 'next/router';
-
+import { useReviewApplication } from './useReviewApplication';
 interface ReviewApplicationProps {
   financedValue: string;
   fireInsurance?: string;
@@ -21,16 +20,11 @@ function ReviewApplication({
   rate,
   insuranceCheck = true,
 }: ReviewApplicationProps) {
-  const [insurance, setInsurance] = useState<Boolean>(insuranceCheck);
-  const handleInsurance = () => {
-    setInsurance(false);
-  };
-  const goBack = () => {
-    router.back();
-  };
+  const { insurance, handleInsurance, goBack } = useReviewApplication(insuranceCheck);
   return (
     <div className="flex flex-col items-center ">
       <Card
+        data-testid="financedValue"
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[98px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
         title="Monto Total"
         value={financedValue?.toString()}
