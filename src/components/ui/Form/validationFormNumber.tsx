@@ -3,10 +3,10 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import Button from '../Button';
-import { FormContainer } from './FormContainer';
-import { Heading } from '../Headers';
+import FormContainer from './FormContainer';
+import Heading from '../Headers';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
-import { ContainerButtonForm } from './ContainerButtonForm';
+import  ContainerButtonForm  from './ContainerButtonForm';
 import { SesionStorageKeys } from '../../../session';
 import { sendNumber } from '../../../services';
 import { routes } from '../../../routes';
@@ -33,7 +33,6 @@ export interface FormData {
 const KEY = process.env.KEYENCRYPTADIGITAL;
 
 export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
-  console.log(JSON.stringify(questions));
   const [dataTU, setDataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const [, setEncript] = useSessionStorage(SesionStorageKeys.dataTuEncripPhone.key, '');
   const [, setProcessBiometry] = useSessionStorage(
@@ -91,8 +90,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
       });
       setEncript(formData.number);
       setTimeout(() => proccessResponse(routes.otp), 1000);
-    } else {
-      if (response.status === 403) {
+    } else if (response.status === 403) {
         const code = response.response.internal_code;
         switch (code) {
           case 'VQ-01':
@@ -118,7 +116,6 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
       } else {
         router.push('/validacion/error/');
       }
-    }
   };
   return (
     <motion.div

@@ -5,21 +5,19 @@ import { AplicationContext } from '../../../context/AplicationContext';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import AnimationComponent from '../../../components/commons/Animation';
 import Stepper from '../../../components/ui/Stepper/index';
-import { Heading } from '../../../components/form/heading';
+import Heading from '../../../components/form/heading';
 import { basePath } from '../../../../next.config';
 import useAES from '../../../hooks/useAES';
-import { ContainerButtonForm } from '../../../components/form/containerButtonForm';
 import { urlAndUtms } from '../../../utils/RouterUtmsUrl';
-import { Layout } from '../../../components/layouts/layout';
-import { NavTitle } from '../../../components/commons/NavTitle';
+import Layout from '../../../components/layouts/layout';
+import NavTitle from '../../../components/commons/NavTitle';
+import ContainerButtonForm from '../../../components/ui/Form/ContainerButtonForm';
 
 const KEY = process.env.KEYKYCHASH;
 
 const RevisionImagenes: React.FC = () => {
   const router = useRouter();
   const { selfies, setSelfieSonriendo, setSelfieNormal } = useContext(AplicationContext);
-  console.log('1', selfies.sonriendo.image);
-  console.log('2', selfies.sonriendo.image_alive);
   const [showAnimation, setShowAnimation] = useState(false);
   const [, setIsLoading] = useState(true);
   const [validated, setValidated] = useState(false);

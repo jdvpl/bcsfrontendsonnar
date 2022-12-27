@@ -8,7 +8,6 @@ import {
   Font
 } from "@react-pdf/renderer";
 import { basePath } from "../../../../next.config";
-import { convertToColombianPesos } from "../../../utils";
 import ViewTable from "./ViewTable";
 // Create styles
 Font.register({ family: 'Roboto', src: `${basePath}/fonts/RobotoBold.ttf` });
@@ -17,6 +16,10 @@ Font.register({ family: 'RobotoLight', src: `${basePath}/fonts/RobotoLight.ttf` 
 const styles = StyleSheet.create({
   mainView: {
     width: "100%"
+  },
+
+  colgL1: {
+    width: '8.33333333%'
   },
 
   colLg10: {
@@ -84,7 +87,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "#F3F4F6",
     padding: 8,
-    width: '32%',
+    width: '33%',
     borderRadius: '8%',
     display: 'flex',
     justifyContent: 'center'
@@ -93,7 +96,7 @@ const styles = StyleSheet.create({
     fontSize: '10px'
   },
   cardHeaderBody: {
-    fontSize: '13px',
+    fontSize: '12px',
     marginTop: 5,
   },
   mb10: {
@@ -116,6 +119,20 @@ const styles = StyleSheet.create({
   },
   textLight: {
     fontFamily: 'RobotoLight'
+  },
+  leftImageSigned: {
+    position: 'absolute',
+    bottom: "33%",
+    width: "30%",
+    right: '30%',
+    objectFit: "cover"
+  },
+  rightImageSigned: {
+    position: 'absolute',
+    bottom: "40%",
+    width: '100%',
+    height: '30%',
+    objectFit: 'cover'
   }
 });
 interface iPdfProps {
@@ -124,7 +141,7 @@ interface iPdfProps {
 interface itableProps {
   children: any, col: any, th: any
 }
-const PDFDocumentData = ({ infoData }: iPdfProps) => {
+function PDFDocumentData({ infoData }: iPdfProps) {
   const data = infoData?.quotes;
   const quantiyPages = infoData?.quotes?.length;
   const numberOfPages = Array(quantiyPages - 1).fill(0)
@@ -135,59 +152,68 @@ const PDFDocumentData = ({ infoData }: iPdfProps) => {
           <View>
             <Image src={`${basePath}/images/PDF.png`} />
           </View>
-          <View style={[styles.colLg10, styles.mAuto]}>
-            <Text style={[styles.textSize, styles.textLight]}>
-              El {" "}
-              <Text style={styles.em}>Banco Caja Social</Text>{" "}
-              lo acompaña en su sueño de comprar vivienda, por esta razón disponemos de nuestro simulador para que conozca los valores aproximados de su crédito hipotecario.
-            </Text>
-            <Text style={[styles.mt5, styles.textSize, styles.textLight]}>
-              Tenga en cuenta que los valores presentados en el simulador son únicamente informativos y no constituyen ningún tipo de asesoría, ni obligan al Banco en su calidad de emisor.
-            </Text>
-            <Text style={[styles.my20, styles.textDetailText, styles.em]}>
-              Detalle del crédito
-            </Text>
-            <View style={[styles.row, styles.justifyBetween, styles.mb10]}>
-              {/* aproximatefinance */}
-              <View style={[styles.card]}>
-                <Text style={[styles.cardHeaderText, styles.textLight]}>
-                  Valor financiado aproximado
-                </Text>
-                <Text style={[styles.cardHeaderBody, styles.em]}>
-                  {convertToColombianPesos(infoData.approximateFinancedValue)} pesos
-                </Text>
-              </View>
-              {/* second */}
-              <View style={[styles.card]}>
-                <View style={[styles.row]}>
-                  <Image src={`${basePath}/images/calendar.png`} style={styles.icon} />
-                  <View>
-                    <Text style={[styles.cardHeaderText, styles.textLight]}>
-                      Plazo
-                    </Text>
-                    <Text style={[styles.cardHeaderBody, styles.em]}>
-                      {infoData.term} años
-                    </Text>
+
+          <View style={[styles.row, styles.justifyBetween,]}>
+            <View style={[styles.colgL1,]}>
+              <Image src={`${basePath}/images/signPdfleft.png`} style={styles.leftImageSigned} />
+            </View>
+            <View style={[styles.colLg10, styles.mAuto]}>
+              <Text style={[styles.textSize, styles.textLight]}>
+                El {" "}
+                <Text style={styles.em}>Banco Caja Social</Text>{" "}
+                lo acompaña en su sueño de comprar vivienda, por esta razón disponemos de nuestro simulador para que conozca los valores aproximados de su crédito hipotecario.
+              </Text>
+              <Text style={[styles.mt5, styles.textSize, styles.textLight]}>
+                Tenga en cuenta que los valores presentados en el simulador son únicamente informativos y no constituyen ningún tipo de asesoría, ni obligan al Banco en su calidad de emisor.
+              </Text>
+              <Text style={[styles.my20, styles.textDetailText, styles.em]}>
+                Detalle del crédito
+              </Text>
+              <View style={[styles.row, styles.justifyBetween, styles.mb10]}>
+                {/* aproximatefinance */}
+                <View style={[styles.card]}>
+                  <Text style={[styles.cardHeaderText, styles.textLight]}>
+                    Valor financiado aproximado
+                  </Text>
+                  <Text style={[styles.cardHeaderBody, styles.em]}>
+                    {infoData.approximateFinancedValue} pesos
+                  </Text>
+                </View>
+                {/* second */}
+                <View style={[styles.card]}>
+                  <View style={[styles.row]}>
+                    <Image src={`${basePath}/images/calendar.png`} style={styles.icon} />
+                    <View>
+                      <Text style={[styles.cardHeaderText, styles.textLight]}>
+                        Plazo
+                      </Text>
+                      <Text style={[styles.cardHeaderBody, styles.em]}>
+                        {infoData.term} años
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                {/* third */}
+                <View style={[styles.card]}>
+                  <View style={[styles.row]}>
+                    <Image src={`${basePath}/images/charts.png`} style={styles.icon} />
+                    <View>
+                      <Text style={[styles.cardHeaderText, styles.textLight]}>
+                        Tasa
+                      </Text>
+                      <Text style={[styles.cardHeaderBody, styles.em]}>
+                        {infoData.rate}
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
-              {/* third */}
-              <View style={[styles.card]}>
-                <View style={[styles.row]}>
-                  <Image src={`${basePath}/images/charts.png`} style={styles.icon} />
-                  <View>
-                    <Text style={[styles.cardHeaderText, styles.textLight]}>
-                      Tasa
-                    </Text>
-                    <Text style={[styles.cardHeaderBody, styles.em]}>
-                      {infoData.rate}
-                    </Text>
-                  </View>
-                </View>
+              <View>
+                <ViewTable data={data} position={0} />
               </View>
             </View>
-            <View>
-              <ViewTable data={data} position={0} />
+            <View style={[styles.colgL1]}>
+              <Image src={`${basePath}/images/rightSignedImage.png`} style={styles.rightImageSigned} />
             </View>
           </View>
         </View>
@@ -196,14 +222,25 @@ const PDFDocumentData = ({ infoData }: iPdfProps) => {
         numberOfPages.map((k, i: number) => (
           <Page size="A4" orientation="portrait">
             <Image src={`${basePath}/images/BannerHeader.png`} />
-            <View style={[styles.colLg10, styles.mAuto]}>
-              <ViewTable data={data} position={i + 1} />
+            <View style={[styles.row, styles.justifyBetween]}>
+              <View style={[styles.colgL1]}>
+                <Image src={`${basePath}/images/signPdfleft.png`} style={styles.leftImageSigned} />
+              </View>
+              {/* table */}
+              <View style={[styles.colLg10, styles.mAuto]}>
+                <ViewTable data={data} position={i + 1} />
+              </View>
+              {/*  */}
+              <View style={[styles.colgL1]}>
+                <Image src={`${basePath}/images/rightSignedImage.png`} style={styles.rightImageSigned} />
+              </View>
             </View>
+
           </Page>
         ))
       }
     </Document>
   );
-};
+}
 
 export default PDFDocumentData;

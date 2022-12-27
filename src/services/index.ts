@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { OTPCodeRequest, ValidateOTC } from '../components/custom/otp';
 import { clientAxiosKYC } from '../config/AxiosKYC';
 import { clientAxiosBackend } from '../config/AxiosMortgage';
@@ -5,7 +6,8 @@ import useAES from '../hooks/useAES';
 import { headersBack } from './HeaderBack';
 import { headersKYC } from './HeadersKYC';
 import { iFormDataSimulation } from '../interfaces';
-import axios from 'axios';
+import { iFormBasicData } from '../interfaces/basicDataProps';
+
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
 export const getQuestions = async (data: any) => {
@@ -134,9 +136,8 @@ export const sendSimulationData = async (data: iFormDataSimulation) => {
 };
 export const getDataPDF = async (data: iFormDataSimulation) => {
   try {
-    const { data: response } = await axios.post(
-      // '/simulator/generatepdf'
-      'https://dev.bancocajasocialsa.org/bcs-mortgage/simulator/simulator/generatepdf',
+    const { data: response } = await clientAxiosBackend.post(
+      '/simulator/simulator/generatepdf',
       data,
       headersBack
     );
@@ -147,7 +148,57 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
       error: false,
     };
   } catch (e: any) {
-    console.log(e);
     return { error: true, response: e?.response?.data?.message };
   }
+};
+export const getBasicData = async (data: iFormBasicData) => {
+  try {
+    const { data: response } = await axios.post(
+      'https://63a9fbb57d7edb3ae61dd65b.mockapi.io/basic-data',
+      data,
+    );
+    return {
+      response: {
+        data: response,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e?.response?.data?.message };
+  }
+};
+
+export const fetchSarlaft = async (body: any) => {
+  try {
+    const { data: response } = await clientAxiosBackend.post(
+      '/sarlaft/sarlaft-questions',
+      body
+    );
+    return {
+      response: {
+        result: response,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e.response?.data?.message };
+  }
+
+};
+export const sendAuthorization = async (body: any) => {
+  try {
+    const { data: response } = await axios.post(
+      'https://63a9fbb57d7edb3ae61dd65b.mockapi.io/v1/send-authorization',
+      body
+    );
+    return {
+      response: {
+        result: response,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e.response?.data?.message };
+  }
+
 };

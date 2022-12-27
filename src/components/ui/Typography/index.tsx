@@ -1,4 +1,4 @@
-import { HTMLAttributes } from 'react';
+import React, { HTMLAttributes } from 'react';
 import cn from 'classnames';
 
 export type TagType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span';
@@ -9,25 +9,25 @@ export type SpanType = HTMLAttributes<HTMLSpanElement>;
 
 export type TypographyProps = (HeadingType | ParagraphType | SpanType) & {
   variant:
-    | 'h1'
-    | 'h2'
-    | 'h3'
-    | 'h4'
-    | 'h5'
-    | 'h6'
-    | 'bodyM1'
-    | 'bodyM2'
-    | 'bodyM3'
-    | 'bodyM4'
-    | 'bodyM5'
-    | 'bodyS1'
-    | 'bodyS2'
-    | 'bodyS3'
-    | 'caption1'
-    | 'caption2'
-    | 'caption3'
-    | 'caption4'
-    | 'overline';
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'bodyM1'
+  | 'bodyM2'
+  | 'bodyM3'
+  | 'bodyM4'
+  | 'bodyM5'
+  | 'bodyS1'
+  | 'bodyS2'
+  | 'bodyS3'
+  | 'caption1'
+  | 'caption2'
+  | 'caption3'
+  | 'caption4'
+  | 'overline';
 };
 
 const headings = ['h1', 'h2', 'h3', 'h4', 'h5'];
@@ -42,7 +42,7 @@ const paragraphs = [
   'bodyS3',
 ];
 const spans = ['caption1', 'caption2', 'caption3', 'caption4', 'overline'];
-export function Typography({
+function Typography({
   children,
   variant = 'bodyM1',
   className,
@@ -72,7 +72,7 @@ export function Typography({
   }) as TagType;
 
   return (
-    <Tag {...props} className={`${className} ${componentStyles()}`}>
+    <Tag {...props} className={`${className} ${componentStyles()}`} data-testid="typographyTest">
       {children}
     </Tag>
   );

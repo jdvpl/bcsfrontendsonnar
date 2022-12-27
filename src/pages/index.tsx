@@ -1,5 +1,6 @@
 import { deviceType } from 'react-device-detect';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useMediaQuery } from "react-responsive";
 import LogoBcsWhite from '../components/svg/LogoBcsWhite';
 import Typography from '../components/ui/Typography';
 import { useSessionStorage } from '../hooks/useSessionStorage';
@@ -9,13 +10,11 @@ import SelectiveCard from '../components/ui/Card/SelectiveCard';
 import { routes } from '../routes';
 import LogoBcs from '../components/svg/LogoBcs';
 import { Icons } from '../components/ui/icons';
-import { Questions } from '../components/ui/Accordion';
+import Questions from '../components/ui/Accordion';
 import { basePath } from '../../next.config';
-import React from 'react'
-import { useMediaQuery } from "react-responsive";
 
 export default function Home() {
-  const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, 'browser');
+  const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, deviceType);
   const isMobile = useMediaQuery({
     query: "(max-width:575px)"
   })
@@ -72,6 +71,7 @@ export default function Home() {
             icon="bcs-hand-mobile"
             size="text-[2.5rem]"
             color="text-primario-300"
+            data-testid="consultancyTestBtn"
             label={`Iniciar asesoría ${device !== 'mobile' ? 'interactiva' : ''}`}
             description="Aquí encontrará todo lo que debe saber para comprar una vivienda."
             pathTo={routes.consultancy}
@@ -83,6 +83,7 @@ export default function Home() {
             size="text-[2.5rem]"
             color="text-primario-300"
             label="Simule su crédito"
+            data-testid="simuladorTestBtn"
             description="Con nuestro simulador podrá calcular el valor del crédito y sus cuotas."
             pathTo={routes.simulador}
             className="sm:mt-4 xs:mt-4"
@@ -92,9 +93,10 @@ export default function Home() {
             icon="bcs-document-one"
             size="text-[2.5rem]"
             color="text-primario-300"
+            data-testid="SoliciteTest"
             label="Solicite su crédito"
             description="Obtenga la aprobación de su crédito en línea y compre la vivienda que desea."
-            pathTo={routes.startProccess}
+            pathTo={routes.onboarding}
             className="sm:mt-4 xs:mt-4"
             onclick
           />

@@ -1,12 +1,9 @@
 import Link from 'next/link';
 import React, { FC, useState } from 'react';
-import { ItemAccordion } from './ItemAccordion';
+import ItemAccordion from './ItemAccordion';
 
-export const Questions: FC = () => {
+const Questions: FC = () => {
   const [selected, setSelected] = useState<null | string>('');
-
-
-
   return (
     <section
       className="mb-[15vh] lg:mb-[10vh] flex flex-col items-center"
@@ -29,14 +26,14 @@ export const Questions: FC = () => {
             title="¿Cuales son los gastos adicionales al momento de comprar vivienda?"
             setSelected={(item: any) => selected === '1' ? setSelected(item + item) : setSelected(item)}
           >
-            <>
+            <div data-testid="itemATest1">
               Para el proceso de legalización es necesario contemplar los gastos de
               avalúo, estudio de títulos y escrituración. Si desea conocer más a cerca de
               estos conceptos, diríjase a nuestra{' '}
               <span className="text-primario-20 font-medium underline">
                 <Link href="/">asesoría interactiva.</Link>
               </span>
-            </>
+            </div>
           </ItemAccordion>
           <ItemAccordion
             id="2"
@@ -54,10 +51,12 @@ export const Questions: FC = () => {
             title="¿Debo elegir la vivienda antes o despues de pedir el crédito hipotecario?"
             setSelected={(item: any) => selected === '3' ? setSelected(item + item) : setSelected(item)}
           >
-            No existe un orden obligatorio, lo recomendable es que las personas primero
-            conozcan cuanto les puede prestar el banco y posteriormente con ese
-            presupuesto elegir una vivienda, sin embargo si se elige la vivienda primero
-            el proceso de compra sería exactamente el mismo.
+            <div data-testid="itemTest3">
+              No existe un orden obligatorio, lo recomendable es que las personas primero
+              conozcan cuanto les puede prestar el banco y posteriormente con ese
+              presupuesto elegir una vivienda, sin embargo si se elige la vivienda primero
+              el proceso de compra sería exactamente el mismo.
+            </div>
           </ItemAccordion>
 
           <ItemAccordion
@@ -66,17 +65,21 @@ export const Questions: FC = () => {
             title="¿Cuales son los factores que analiza el banco para aprobar un crédito hipotecario?"
             setSelected={(item: any) => selected === '4' ? setSelected(item + item) : setSelected(item)}
           >
-            Nosotros tenemos en cuenta los siguientes factores:
-            <ul className="list-disc ml-6 mt-3">
-              <li>Historial crediticio</li>
-              <li>Comportamiento de pago</li>
-              <li>Reporte centrales de riesgo</li>
-              <li>Capacidad de pago</li>
-              <li>Estabilidad laboral</li>
-            </ul>
+            <div data-testid="itemATest4">
+              Nosotros tenemos en cuenta los siguientes factores:
+              <ul className="list-disc ml-6 mt-3">
+                <li>Historial crediticio</li>
+                <li>Comportamiento de pago</li>
+                <li>Reporte centrales de riesgo</li>
+                <li>Capacidad de pago</li>
+                <li>Estabilidad laboral</li>
+              </ul>
+            </div>
           </ItemAccordion>
         </div>
       </div>
     </section>
   );
 };
+
+export default Questions

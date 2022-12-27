@@ -4,7 +4,7 @@ import { useState } from 'react';
 import cityData from '../../../lib/cities.json';
 import TextField from '@mui/material/TextField';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
-import { ExampleInfo } from '../../commons/ExampleInfo';
+import ExampleInfo from '../../commons/ExampleInfo';
 interface InputProps {
   placeholder?: string;
   type?: string;
@@ -54,9 +54,8 @@ const NewAutoComplete: React.FC<InputProps> = ({
 
       <div className="mt-[1px] position-relative" id={id} tabIndex={0}>
         <div
-          className={`position-absolute ${
-            internalState ? 'top-[18.5px]' : 'top-[17.5px]'
-          } left-[10px]`}
+          className={`position-absolute ${internalState ? 'top-[18.5px]' : 'top-[17.5px]'
+            } left-[10px]`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

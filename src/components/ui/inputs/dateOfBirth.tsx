@@ -26,10 +26,10 @@ const DateOfBirth: React.FC<InputProps> = ({
   defaultValues,
   id,
   onChangeDate,
+  disabled
 }) => {
   const dateDefault = defaultValues?.split('-');
   const [ageError, setAgeError] = useState<string | undefined>(undefined);
-
   const days = [
     {
       numero: '01',
@@ -224,6 +224,7 @@ const DateOfBirth: React.FC<InputProps> = ({
   };
   const fields = watch();
 
+
   useEffect(() => {
     const date = `${fields.day}/${fields.month}/${fields.year}`;
     const dateFormat = `${fields.year}-${parseInt(fields.month, 10) < 10 && fields.month.length < 2
@@ -233,18 +234,17 @@ const DateOfBirth: React.FC<InputProps> = ({
         ? `0${fields.day}`
         : fields.day
       }`;
-    if (!fields.year) {
-      return;
-    }
+
+
     if (fields.day === (0 || undefined) || fields.month === (0 || undefined)) {
       onChangeDate?.(undefined);
       return;
     }
-    if (fields.year.length < 4) {
+    if (fields.year && fields.year?.length < 4) {
       onChangeDate?.(undefined);
       return;
     }
-    if (fields.year.length > 4) {
+    if (fields.year?.length > 4) {
       return;
     }
 
@@ -273,9 +273,11 @@ const DateOfBirth: React.FC<InputProps> = ({
             name="day"
             className="w-100"
             label="Día"
+            dataTestId="dayDateOfBithTest"
             control={control}
-            defaultValue={fields.day || ''}
+            value={fields.day || ''}
             margin="normal"
+            disabled={disabled}
             onChange={(e: any) => setValue('day', e.target.value)}
           >
             {days.map((a) => (
@@ -295,9 +297,11 @@ const DateOfBirth: React.FC<InputProps> = ({
             className="w-100"
             label="Mes"
             control={control}
-            defaultValue={fields.month || ''}
+            // defaultValue={fields.month || ''}
             value={fields.month}
             margin="normal"
+            disabled={disabled}
+            dataTestId="monthDateOfBithTest"
             onChange={(e: any) => setValue('month', e.target.value)}
           >
             {months.map((a) => (
@@ -325,7 +329,9 @@ const DateOfBirth: React.FC<InputProps> = ({
                 valueLength
                 tabIndex={0}
                 type="text"
+                disabled={disabled}
                 inputMode="numeric"
+                dataTestId="yearDateOfBithTest"
                 maxLength={4}
                 id={`${id}-year`}
               />
@@ -338,7 +344,7 @@ const DateOfBirth: React.FC<InputProps> = ({
       </div>
       <div className="flex justify-end mr-[0.3rem] md:mr-[2rem] lg:mr-[6rem]">
         {ageError && (
-          <div className="mt-[5px]">
+          <div className="mt-[5px]" data-testid="messageErrorDateOfBirth">
             <MessageError message={ageError} />
           </div>
         )}

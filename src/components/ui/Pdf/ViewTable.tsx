@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet } from '@react-pdf/renderer'
 import HeadersTable from './HeadersTable';
 
-const ViewTable = ({ data, position }: any) => {
+function ViewTable({ data, position }: any) {
   const styles = StyleSheet.create({
     cellText: {
-      fontSize: '8px',
+      fontSize: '7px',
     },
     tableRow: {
       display: 'flex',
@@ -16,25 +16,28 @@ const ViewTable = ({ data, position }: any) => {
       alignContent: 'center',
       textAlign: 'center',
       flexWrap: 'wrap',
-      width: '12.5%', height: 30
+      marginLeft: '0.4%',
+      width: '12.5%',
+      height: 28,
     },
     table: {
       width: '100%',
       display: 'flex',
       flexDirection: 'column',
-      marginVertical: 1
     },
-    tableHeader: {
-      backgroundColor: '##005DA2'
+
+    cellRight: {
+      textAlign: 'right',
+      paddingRight: '3%'
     },
+
     bggrayCell: {
-      backgroundColor: '#F9F9FB'
+      backgroundColor: '#F9F9FB',
     },
     textBlue: {
-      color: '#005DA2'
-    }
-
-
+      color: '#005DA2',
+      fontSize: '6px'
+    },
   });
 
   return (
@@ -47,25 +50,25 @@ const ViewTable = ({ data, position }: any) => {
             <Text style={[styles.cellText, styles.textBlue]}>{info.term}</Text>
           </View>
           <View style={[styles.cell]}>
-            <Text style={[styles.cellText]}>{info.monthlyCapital}</Text>
+            <Text style={[styles.cellText, styles.cellRight]}>{info.monthlyCapital}</Text>
           </View>
           <View style={[styles.cell, styles.bggrayCell]}>
-            <Text style={[styles.cellText]}>{info.monthlyInterest}</Text>
+            <Text style={[styles.cellText, styles.cellRight]}>{info.monthlyInterest}</Text>
           </View>
           <View style={[styles.cell]}>
-            <Text style={[styles.cellText]}>{info.feeWithoutInsurance}</Text>
+            <Text style={[styles.cellText, styles.cellRight]}>{info.feeWithoutInsurance}</Text>
           </View>
           <View style={[styles.cell, styles.bggrayCell]}>
-            <Text style={[styles.cellText]}>{info.lifeInsurance}</Text>
+            <Text style={[styles.cellText, styles.cellRight]}>{info.lifeInsurance}</Text>
           </View>
           <View style={[styles.cell]}>
-            <Text style={[styles.cellText]}>{info.irtInsurance}</Text>
+            <Text style={[styles.cellText, styles.cellRight]}>{info.irtInsurance}</Text>
           </View>
           <View style={[styles.cell, styles.bggrayCell]}>
-            <Text style={[styles.cellText]}>{info.totalInsuranceFee}</Text>
+            <Text style={[styles.cellText, styles.cellRight]}>{info.totalInsuranceFee}</Text>
           </View>
           <View style={[styles.cell]}>
-            <Text style={[styles.cellText, styles.textBlue]}>{info.endingBalance}</Text>
+            <Text style={[styles.cellText, styles.textBlue, styles.cellRight]}>{info.endingBalance}</Text>
           </View>
         </View>
       ))}

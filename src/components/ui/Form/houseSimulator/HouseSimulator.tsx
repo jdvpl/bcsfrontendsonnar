@@ -19,12 +19,12 @@ import Alert from '../../Alert';
 function HouseSimulator() {
   const router = useRouter();
   const [percentageFinance, setPercentageFinance] = useState<number>(0.7);
-  const [insuranceCheck, setInsuranceCheck] = useState<boolean>(false);
+  const [insuranceCheck, setInsuranceCheck] = useState<boolean>(true);
   const [dataFormQuota, setDataFormQuota] = useSessionStorage(
     SesionStorageKeys.dataFormSimulation.key,
     {}
   );
-  const [dataFormResponse,setDataFormResponse] = useSessionStorage(
+  const [dataFormResponse, setDataFormResponse] = useSessionStorage(
     SesionStorageKeys.dataFormSimulationResponse.key,
     {}
   );
@@ -57,7 +57,7 @@ function HouseSimulator() {
   const automationFinanceValue = (value: number) => {
     if (value > 0) {
       setValue('financeValue', Math.round(value * 0.7));
-    }else{
+    } else {
       setValue('financeValue', 0);
     }
   };
@@ -98,7 +98,7 @@ function HouseSimulator() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} data-testid="houseSimulatorForTest">
       <div className="w-[343px] md:w-[517px] xl:w-[656px] m-auto flex items-center flex-col">
         <Alert message="Recuerde que la financiación del crédito hipotecario es hasta el 70% del valor comercial de la vivienda y la cuota inicial equivalente al 30% restante debe solventarla con recursos propios." />
         <div className="grid grid-cols-6 gap-y-4 gap-x-2 w-full mb-8">
@@ -113,35 +113,35 @@ function HouseSimulator() {
             name="typeHouse"
             className="col-span-6"
             margin="normal"
+            rules={{ required: true }}
           >
             <MenuItem value="novis">No VIS</MenuItem>
             <MenuItem value="vis">VIS</MenuItem>
           </ReactHookFormSelect>
 
           <Controller
-            render={({ field }) => {
-              return (
-                <Input
-                  containerClassName="col-span-6"
-                  type="text"
-                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                    e.preventDefault();
-                  }}
-                  error={!!errors.typeHouse}
-                  helperText={errors.typeHouse?.message}
-                  value={convertToColombianPesos(field.value)}
-                  tabIndex={0}
-                  id="houseValue"
-                  inputMode="text"
-                  required
-                  label="Valor de Vivienda"
-                  onChange={(e: any) => {
-                    automationFinanceValue(e.target.value.replace(/[^0-9]/g, ''));
-                    field.onChange(e.target.value.replace(/[^0-9]/g, ''));
-                  }}
-                />
-              );
-            }}
+            render={({ field }) => (
+              <Input
+                containerClassName="col-span-6"
+                type="text"
+                onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                  e.preventDefault();
+                }}
+                error={!!errors.typeHouse}
+                helperText={errors.typeHouse?.message}
+                value={convertToColombianPesos(field.value)}
+                tabIndex={0}
+                id="houseValue"
+                inputMode="text"
+                data-testid="rentValueTest"
+                required
+                label="Valor de Vivienda"
+                onChange={(e: any) => {
+                  automationFinanceValue(e.target.value.replace(/[^0-9]/g, ''));
+                  field.onChange(e.target.value.replace(/[^0-9]/g, ''));
+                }}
+              />
+            )}
             name="houseValue"
             control={control}
           />
@@ -164,6 +164,7 @@ function HouseSimulator() {
                   tabIndex={0}
                   id="valueFinance"
                   inputMode="text"
+                  data-testid="valueFinanceTest"
                   required
                   label="Valor a financiar"
                   onChange={(e: any) => {
@@ -193,8 +194,10 @@ function HouseSimulator() {
             left="right4"
             valueLength=""
             name="termFinance"
+            data-testid="termFinance"
             className="col-span-6"
             margin="normal"
+            rules={{ required: true }}
           >
             {yearsAvailable.map((y, i) => (
               <MenuItem value={y} key={i}>
@@ -250,47 +253,31 @@ function HouseSimulator() {
             name="year"
             control={control}
             rules={{ required: true }}
-            render={({ field }) => {
-              return (
-                <Input
-                  containerClassName="col-span-2"
-                  type="text"
-                  onChange={(e) => {
-                    field.onChange(e.target.value);
-                  }}
-                  error={!!errors.day}
-                  helperText={errors?.day?.message}
-                  value={field.value}
-                  tabIndex={0}
-                  id="year"
-                  inputMode="numeric"
-                  maxLength={4}
-                  label="Año"
-                />
-              );
-            }}
+            render={({ field }) => (
+              <Input
+                containerClassName="col-span-2"
+                type="text"
+                onChange={(e) => {
+                  field.onChange(e.target.value);
+                }}
+                error={!!errors.day}
+                helperText={errors?.day?.message}
+                value={field.value}
+                tabIndex={0}
+                id="year"
+                inputMode="numeric"
+                data-testid="yearDateOfBithTest"
+                maxLength={4}
+                label="Año"
+              />
+            )}
           />
-        </div>
-
-        <div className="flex items-center gap-3 mb-8 w-full">
-          <input
-            type="checkbox"
-            tabIndex={0}
-            id="insuranceCheck"
-            className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"
-            inputMode="numeric"
-            onChange={(e) => setInsuranceCheck(e.target.checked)}
-          />
-
-          <span className="text-[12px] text-primario-900">
-            Deseo incluir en la simulación del crédito el valor de los seguros
-            correspondientes.
-          </span>
         </div>
 
         <Button
           type="submit"
           className="mb-10"
+          data-testid="btnOpenQuotaSimulation"
           disabled={!(isValid && Object.entries(errors).length === 0)}
         >
           Simular

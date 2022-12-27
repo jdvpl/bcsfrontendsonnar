@@ -1,13 +1,13 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { Layout } from '../../../components/layouts/layout';
-import { NavTitle } from '../../../components/commons/NavTitle';
+import Layout from '../../../components/layouts/layout';
+import NavTitle from '../../../components/commons/NavTitle';
 import Button from '../../../components/ui/Button/index';
 import { AplicationContext } from '../../../context/AplicationContext';
 import Stepper from '../../../components/ui/Stepper/index';
 import AnimationComponent from '../../../components/commons/Animation';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
-import { Heading } from '../../../components/form/heading';
+import Heading from '../../../components/form/heading';
 import { basePath } from '../../../../next.config';
 import useAES from '../../../hooks/useAES';
 import { urlAndUtms } from '../../../utils/RouterUtmsUrl/index';

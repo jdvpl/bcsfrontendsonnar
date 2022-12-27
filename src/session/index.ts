@@ -28,4 +28,20 @@ export const SesionStorageKeys = {
     key: 'simulationResponse',
     description: 'This key saves the data of the response from the simulation form.',
   },
+  dataBasicData: {
+    key: 'personalData',
+    description: 'This key saves the data of form',
+  },
+  personalInfoDataBack: {
+    key: 'personalDataInfo',
+    description: 'This key saves the data that we get from backend'
+  },
+  financialDataForm: {
+    key: 'fdf',
+    description: 'This key saves the data of form',
+  },
+  mortgageValues: {
+    key: 'MortgageValues',
+    description: 'This key save the data of credit data form'
+  }
 };

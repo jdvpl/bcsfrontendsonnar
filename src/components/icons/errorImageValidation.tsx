@@ -1,4 +1,6 @@
-export const ErrorImageValidation: React.FC = () => (
+import React from "react";
+
+const ErrorImageValidation: React.FC = () => (
   <svg
     data-testid="error"
     width="277"
@@ -175,3 +177,5 @@ export const ErrorImageValidation: React.FC = () => (
     </defs>
   </svg>
 );
+
+export default  ErrorImageValidation

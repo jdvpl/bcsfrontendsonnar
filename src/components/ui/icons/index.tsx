@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { IconListAvailable } from '../../../types';
 
 /* eslint-disable-next-line */

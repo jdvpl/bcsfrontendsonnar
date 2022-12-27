@@ -9,8 +9,7 @@ interface AnimationData {
 }
 
 function AnimationComponent({ show, loaded, valid }: AnimationData) {
-  return (
-    <div className={`fixed inset-0 z-[100]  bg-white ${show}`}>
+  return <div className={`fixed inset-0 z-[100]  bg-white ${show}`}>
       <div className="flex flex-col h-screen content-center inset-0 z-40 ">
         {loaded ? (
           valid && (
@@ -32,7 +31,7 @@ function AnimationComponent({ show, loaded, valid }: AnimationData) {
               </svg>
               <p
                 tabIndex={0}
-                role="paragraph"
+                role="paragraph" 
                 className="mx-auto sm:mx-[64px] my-[49px] font-normal text-[18px] leading-[20px] text-primario-900 text-center"
                 data-testid="success-message"
               >
@@ -49,7 +48,7 @@ function AnimationComponent({ show, loaded, valid }: AnimationData) {
               play
             />
             <p
-              tabIndex={0}
+              tabIndex={0} 
               role="paragraph"
               className="mx-auto sm:mx-[64px] my-[49px] font-normal text-[18px] leading-[20px] text-primario-900 text-center"
               data-testid="loading-message"
@@ -60,7 +59,6 @@ function AnimationComponent({ show, loaded, valid }: AnimationData) {
         )}
       </div>
     </div>
-  );
 }
 
 export default AnimationComponent;

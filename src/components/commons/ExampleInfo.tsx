@@ -1,4 +1,4 @@
-export const ExampleInfo: React.FC<{ example?: string }> = ({ example }) => (
+const ExampleInfo: React.FC<{ example?: string }> = ({ example }) => (
   <div className="flex items-center help pl-2 ">
     <svg
       width="12"
@@ -29,3 +29,5 @@ export const ExampleInfo: React.FC<{ example?: string }> = ({ example }) => (
     </p>
   </div>
 );
+
+export default ExampleInfo

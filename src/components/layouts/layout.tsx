@@ -9,7 +9,7 @@ interface LayoutProps extends childrenProps {
   className?: string;
   navTitle?: React.ReactNode;
 }
-export const Layout: React.FC<LayoutProps> = ({ className, navTitle, children }) => {
+const Layout: React.FC<LayoutProps> = ({ className, navTitle, children }) => {
   const initialState = {
     hidden: { opacity: 1, x: 0, y: 0 },
     enter: { opacity: 1, x: 0, y: 0 },
@@ -50,3 +50,5 @@ export const Layout: React.FC<LayoutProps> = ({ className, navTitle, children })
     </motion.div>
   );
 };
+
+export default Layout
