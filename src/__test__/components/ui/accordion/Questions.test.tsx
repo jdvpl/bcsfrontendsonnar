@@ -23,11 +23,9 @@ describe('<Questions/>', () => {
     // Comprobamos que el contenido del primer elemento se ha cerrado
     expect(queryByText('Para el proceso de legalización es necesario contemplar los gastos de avalúo, estudio de títulos y escrituración. Si desea conocer más a cerca de estos conceptos, diríjase a nuestra asesoría interactiva.')).toBeNull();
     expect(getByTestId('itemATest1')).toBeInTheDocument();
-
     fireEvent.click(itemHeader3);
     expect(getByTestId('itemTest3')).toBeInTheDocument();
     fireEvent.click(itemHeader4);
     expect(getByTestId('itemATest4')).toBeInTheDocument();
-
   });
 })
