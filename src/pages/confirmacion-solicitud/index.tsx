@@ -55,7 +55,7 @@ const ApplicationApproval = () => {
             value={"15 años"}
             text="text-[20px] pl-[18px] font-semibold"
             urlsvg={`${basePath}/images/Calendar.svg`}
-            classtitle="h-[14px] text-[13px] "
+            classtitle="h-[14px] text-[13px]"
             tooltiptext=""
           />
         </div>

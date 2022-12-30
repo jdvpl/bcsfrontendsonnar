@@ -19,7 +19,7 @@ interface CardProps {
   tooltiptext: React.ReactNode;
   id?: string;
   endicon?: boolean;
-  urlsvgendicon:string;
+  urlsvgendicon?:string;
   clickEdit?:any
   description?:string
 }
