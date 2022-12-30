@@ -3,7 +3,7 @@ import { FC } from 'react';
 /* eslint-disable-next-line */
 import Icons, { IconsProps } from '../icons';
 import Typography from '../Typography/index';
-import  dynamicClassesSelective  from './SelectiveClassnames';
+import dynamicClassesSelective from './SelectiveClassnames';
 
 export interface ISelectiveCardProps extends IconsProps {
   label?: string;
@@ -12,6 +12,7 @@ export interface ISelectiveCardProps extends IconsProps {
   className?: string;
   hasTitle?: boolean;
   onclick: boolean;
+  classNamesDescription?: string;
 }
 const SelectiveCard: FC<ISelectiveCardProps> = ({
   label,
@@ -23,6 +24,7 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
   className = '',
   hasTitle = true,
   onclick = true,
+  classNamesDescription = 'md:w-[224px]',
   ...props
 }) => {
   const router = useRouter();
@@ -53,7 +55,7 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
           )}
           <Typography
             variant="bodyS3"
-            className="hasTitle leading-[1.125rem]  text-[1rem] text-complementario-100 mt-2 group-hover:text-white font-ligth md:w-[224px]"
+            className={`hasTitle leading-[1.125rem]  text-[1rem] text-complementario-100 mt-2 group-hover:text-white font-ligth ${classNamesDescription}`}
           >
             {description}
           </Typography>

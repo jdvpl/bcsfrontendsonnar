@@ -10,9 +10,6 @@ describe('Terminos', () => {
   });
   test('should render "Terminos" successfully', () => {
     const { getByTestId } = render(<VerificationForm onSubmit={mkFn} />);
-    const newInputTest = getByTestId('newInputTest');
-    fireEvent.input(newInputTest, { target: { value: '' } })
-    fireEvent.change(newInputTest, { target: { value: '12345' } })
     const inputPassword = getByTestId('input-password');
     fireEvent.click(inputPassword)
   });

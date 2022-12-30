@@ -40,22 +40,42 @@ export const getQuestions = async (data: any) => {
  *   error: false,
  * }
  */
+// TODO sendQuestions KYC
+// export const sendQuestions = async (data: any) => {
+//   try {
+//     const dataInfo = await allResponse(data, KEY);
+//     const { data: response } = await clientAxiosKYC.post(
+//       '/customers/answer',
+//       { data: dataInfo },
+//       headersKYC
+//     );
+//     return {
+//       response: {
+//         result: response.result,
+//         data: await allResponseDecrypted(response.data, KEY),
+//       },
+//       error: false,
+//     };
+//   } catch (e: any) {
+//     return { error: true, response: e.response.data };
+//   }
+// };
 export const sendQuestions = async (data: any) => {
   try {
-    const dataInfo = await allResponse(data, KEY);
-    const { data: response } = await clientAxiosKYC.post(
-      '/customers/answer',
-      { data: dataInfo },
+    const { data: response } = await axios.post(
+      'https://7793-179-1-129-55.ngrok.io/api/users/answer',
+      data,
       headersKYC
     );
     return {
       response: {
-        result: response.result,
-        data: await allResponseDecrypted(response.data, KEY),
+        // result: response.result,
+        data: response,
       },
       error: false,
     };
   } catch (e: any) {
+    console.log(e)
     return { error: true, response: e.response.data };
   }
 };
@@ -154,7 +174,7 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
 export const getBasicData = async (data: iFormBasicData) => {
   try {
     const { data: response } = await axios.post(
-      'https://63a9fbb57d7edb3ae61dd65b.mockapi.io/basic-data',
+      'http://localhost:7000/api/users/basic-data',
       data,
     );
     return {

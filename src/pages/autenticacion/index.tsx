@@ -15,7 +15,7 @@ import AnimationComponent from '../../components/commons/Animation';
 
 function Authentication() {
   const router = useRouter();
-  const [, setDataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
+  const [, setDataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, {});
   const [dataUser,] = useSessionStorage(
     SesionStorageKeys.dataUser.key,
     {}
@@ -40,6 +40,7 @@ function Authentication() {
       router.push(routes.validacionIdentidad);
       return;
     }
+    console.log({ response })
     if (response.response?.status === 403) {
       setDataQuestions(response.response.data);
       const dataResponse: any = await response.response.json();

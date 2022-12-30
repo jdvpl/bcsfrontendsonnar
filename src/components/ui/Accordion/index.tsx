@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React, { FC, useState } from 'react';
+import { routes } from '../../../routes';
 import ItemAccordion from './ItemAccordion';
 
 const Questions: FC = () => {
@@ -27,11 +28,9 @@ const Questions: FC = () => {
             setSelected={(item: any) => selected === '1' ? setSelected(item + item) : setSelected(item)}
           >
             <div data-testid="itemATest1">
-              Para el proceso de legalización es necesario contemplar los gastos de
-              avalúo, estudio de títulos y escrituración. Si desea conocer más a cerca de
-              estos conceptos, diríjase a nuestra{' '}
+              Para el proceso de legalización es necesario contemplar los gastos de avalúo, estudio de títulos y escrituración. Si desea conocer más a cerca de estos conceptos, diríjase a nuestra {""}
               <span className="text-primario-20 font-medium underline">
-                <Link href="/">asesoría interactiva.</Link>
+                <Link href={routes.consultancy}>guía interactiva.</Link>
               </span>
             </div>
           </ItemAccordion>
@@ -41,9 +40,7 @@ const Questions: FC = () => {
             title="¿El banco me presta el 100% del valor de la vivienda?"
             setSelected={(item: any) => selected === '2' ? setSelected(item + item) : setSelected(item)}
           >
-            No, debido a la ley de vivienda el banco tiene permitido prestar para crédito
-            hipotecario hasta el 80% del valor total del inmueble para vivienda VIS y 70%
-            para vivienda NO VIS.
+            No, debido a la ley de vivienda el banco tiene permitido prestar para crédito hipotecario hasta el 80% del valor total del inmueble para vivienda VIS y 70% para vivienda NO VIS.
           </ItemAccordion>
           <ItemAccordion
             id="3"
@@ -52,20 +49,27 @@ const Questions: FC = () => {
             setSelected={(item: any) => selected === '3' ? setSelected(item + item) : setSelected(item)}
           >
             <div data-testid="itemTest3">
-              No existe un orden obligatorio, lo recomendable es que las personas primero
-              conozcan cuanto les puede prestar el banco y posteriormente con ese
-              presupuesto elegir una vivienda, sin embargo si se elige la vivienda primero
-              el proceso de compra sería exactamente el mismo.
+              No existe un orden obligatorio, lo recomendable es que las personas primero conozcan cuanto les puede prestar el banco  y posteriormente con ese presupuesto elegir una vivienda, sin embargo si se elige la vivienda primero el proceso de compra sería exactamente el mismo.
+            </div>
+          </ItemAccordion>
+          <ItemAccordion
+            id="4"
+            active={selected === '4'}
+            title="¿Puedo sumar ingresos con otra persona para solicitar el crédito hipotecario?"
+            setSelected={(item: any) => selected === '4' ? setSelected(item + item) : setSelected(item)}
+          >
+            <div data-testid="itemATest4">
+              Si, el Banco Caja Social permite sumar ingresos siempre y cuando la solicitud se realice en una oficina. En el caso de las solicitudes digitales por ahora solo es permitido un titular.
             </div>
           </ItemAccordion>
 
           <ItemAccordion
-            id="4"
-            active={selected === '4'}
+            id="5"
+            active={selected === '5'}
             title="¿Cuales son los factores que analiza el banco para aprobar un crédito hipotecario?"
-            setSelected={(item: any) => selected === '4' ? setSelected(item + item) : setSelected(item)}
+            setSelected={(item: any) => selected === '5' ? setSelected(item + item) : setSelected(item)}
           >
-            <div data-testid="itemATest4">
+            <div data-testid="itemATest5">
               Nosotros tenemos en cuenta los siguientes factores:
               <ul className="list-disc ml-6 mt-3">
                 <li>Historial crediticio</li>

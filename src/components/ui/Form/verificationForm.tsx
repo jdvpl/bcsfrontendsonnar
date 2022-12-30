@@ -13,11 +13,10 @@ import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import { motion } from 'framer-motion';
 import Button from '../Button';
 
-import  ContainerButtonForm  from './ContainerButtonForm';
+import ContainerButtonForm from './ContainerButtonForm';
+import Typography from '../Typography';
+import LogoForm from '../../svg/LogoForm';
 
-import NewInput from '../inputs/newInput';
-
-import  Heading  from '../Headers';
 
 interface FormProps {
   onSubmit: (data: VerificationFormProps) => void;
@@ -69,7 +68,7 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
       if (fields.password !== '') {
         setBorder('#798C98');
       } else if (fields.password === '') {
-        setBorder('#B0C2CD');
+        setBorder('#E9132B');
       }
     }
   }, [fields.password]);
@@ -82,37 +81,27 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
       transition={{ type: 'linear' }}
       className="h-full"
     >
+      <Typography variant="h2" className="text-center text-primario-900">
+        Bienvenido a
+      </Typography>
+      <figure itemProp="logo" className="flex justify-center">
+        <LogoForm />
+      </figure>
       <form
         data-testid="verificationForm"
         onSubmit={handleSubmit(onSubmit)}
         className="w-full bottom-0 mt-1"
       >
-        <Heading>
-          <span itemProp="relatedTo">Ingrese su clave de canal digital</span>
-        </Heading>
-        <p className="text-center w-full mx-auto text-base leading-5 mt-3 text-primario-900 font-light">
-          Ingrese la contraseña que utiliza para
-          <br />
-          acceder a su app o portal web.
+
+        <p className="text-center w-full mx-auto text-base leading-5 mt-6 text-primario-900 font-light">
+          Por seguridad validaremos su identidad; ingrese la contraseña que
+          <span className="md:block">usa para accede a sus canales digitales</span>
         </p>
-        <div itemScope itemType="https://schema.org/Person">
-          <div className="w-100 mt-4 mb-3">
-            <NewInput
-              id="userName"
-              type="text"
-              inputMode="text"
-              maxLength={10}
-              {...register('userName', {
-                required: true,
-              })}
-              label="Usuario"
-              defaultValue={defaultValues?.userName || undefined}
-              valueLength
-            />
-          </div>
+        <div itemScope itemType="https://schema.org/Person" className='mt-8'>
+
           <div className="w-100" id="pass-container">
             <FormControl sx={{ m: 1, width: '100%' }} variant="outlined">
-              <InputLabel htmlFor="input-password">Clave</InputLabel>
+              <InputLabel htmlFor="input-password">Contraseña</InputLabel>
               <OutlinedInput
                 sx={{
                   color: '#00253D',
@@ -194,6 +183,7 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
             data-testid="btn-save-data"
             name="btn-save-data"
             id="btn-save-data"
+            className='md:mt-[150px]'
           >
             Continuar
           </Button>

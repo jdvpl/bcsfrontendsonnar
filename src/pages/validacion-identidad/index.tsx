@@ -61,7 +61,9 @@ const Index: React.FC = () => {
           break;
       }
     } else if (!response.error) {
+      console.log(response)
       const { step } = response.response.data;
+      console.log({ step })
       if (step === 'AUTH') {
         setDataValid(true);
       } else if (step === 'VQ') {
@@ -69,6 +71,10 @@ const Index: React.FC = () => {
       }
     }
   };
+
+  const loginAccount = (dataSend: any) => {
+    console.log({ dataSend })
+  }
   return (
     <>
       <Head>
@@ -77,7 +83,9 @@ const Index: React.FC = () => {
       <InactivityWarper>
         <Layout navTitle={<NavTitle noBack />}>
           {loading && <AnimationComponent show="" valid={loading} loaded={false} />}
-          <Stepper steps={4} actualStep={1} title="Validación de identidad" />
+          {!dataValid &&
+            < Stepper steps={4} actualStep={1} title="Validación de identidad" />
+          }
           {data && !dataNumber && !dataValid && (
             <AnimatePresence>
               <ValidationForm
@@ -90,7 +98,7 @@ const Index: React.FC = () => {
             </AnimatePresence>
           )}
           <AnimatePresence>
-            {dataValid ? <VerificationForm onSubmit={(dataLogin: any) => {}} /> : ''}
+            {dataValid ? <VerificationForm onSubmit={(dataLogin: any) => { loginAccount(dataLogin) }} /> : ''}
           </AnimatePresence>
           <AnimatePresence>
             {dataNumber && <ValidationFormNumber questions={dataNumber} />}
