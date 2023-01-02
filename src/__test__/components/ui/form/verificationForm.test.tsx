@@ -17,7 +17,9 @@ describe('Terminos', () => {
     const { getByTestId } = render(<VerificationForm onSubmit={mkFn} />);
     const inputPass = document.getElementsByName("password")[0];
     const btnSubmit = getByTestId('btn-save-data');
+    const togglePasword = getByTestId('togglePasword')
     fireEvent.input(inputPass, { target: { value: 'Testa365' } })
+    fireEvent.click(togglePasword)
     fireEvent.click(btnSubmit)
   });
 

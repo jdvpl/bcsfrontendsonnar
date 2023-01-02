@@ -61,9 +61,7 @@ const Index: React.FC = () => {
           break;
       }
     } else if (!response.error) {
-      console.log(response)
       const { step } = response.response.data;
-      console.log({ step })
       if (step === 'AUTH') {
         setDataValid(true);
       } else if (step === 'VQ') {

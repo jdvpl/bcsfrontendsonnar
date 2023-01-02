@@ -159,6 +159,7 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
                     <IconButton
                       aria-label="toggle password visibility"
                       onClick={handleClickShowPassword}
+                      data-testid="togglePasword"
                       onMouseDown={handleMouseDownPassword}
                       edge="end"
                     >
