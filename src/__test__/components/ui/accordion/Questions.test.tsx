@@ -11,6 +11,7 @@ describe('<Questions/>', () => {
     const itemHeader3 = getByText('¿Debo elegir la vivienda antes o despues de pedir el crédito hipotecario?')
 
     const itemHeader4 = getByText('¿Cuales son los factores que analiza el banco para aprobar un crédito hipotecario?')
+    const itemHeader5 = getByText('¿Cuales son los factores que analiza el banco para aprobar un crédito hipotecario?');
     fireEvent.click(itemHeader1);
     expect(getByTestId('itemATest1')).toBeInTheDocument();
 
@@ -27,5 +28,7 @@ describe('<Questions/>', () => {
     expect(getByTestId('itemTest3')).toBeInTheDocument();
     fireEvent.click(itemHeader4);
     expect(getByTestId('itemATest4')).toBeInTheDocument();
+    fireEvent.click(itemHeader5);
+    expect(getByTestId('itemATest5')).toBeInTheDocument();
   });
 })
