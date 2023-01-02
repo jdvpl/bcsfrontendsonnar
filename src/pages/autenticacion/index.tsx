@@ -40,7 +40,6 @@ function Authentication() {
       router.push(routes.validacionIdentidad);
       return;
     }
-    console.log({ response })
     if (response.response?.status === 403) {
       setDataQuestions(response.response.data);
       const dataResponse: any = await response.response.json();
