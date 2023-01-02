@@ -44,8 +44,9 @@ export const getQuestions = async (data: any) => {
 // export const sendQuestions = async (data: any) => {
 //   try {
 //     const dataInfo = await allResponse(data, KEY);
-//     const { data: response } = await clientAxiosKYC.post(
-//       '/customers/answer',
+//     const { data: response } = await axios.post(
+//       // '/customers/answer',
+//       'https://e7da-161-18-184-76.ngrok.io/composer/answer',
 //       { data: dataInfo },
 //       headersKYC
 //     );
@@ -63,7 +64,7 @@ export const getQuestions = async (data: any) => {
 export const sendQuestions = async (data: any) => {
   try {
     const { data: response } = await axios.post(
-      'https://7793-179-1-129-55.ngrok.io/api/users/answer',
+      'https://51e3-179-1-129-55.ngrok.io/api/users/answer',
       data,
       headersKYC
     );
@@ -78,7 +79,7 @@ export const sendQuestions = async (data: any) => {
     console.log(e)
     return { error: true, response: e.response.data };
   }
-};
+}
 export const sendNumber = async (data: any) => {
   try {
     const dataInfo = await allResponse(data, KEY);
@@ -208,7 +209,7 @@ export const fetchSarlaft = async (body: any) => {
 export const sendAuthorization = async (body: any) => {
   try {
     const { data: response } = await axios.post(
-      'https://63a9fbb57d7edb3ae61dd65b.mockapi.io/v1/send-authorization',
+      'https://e5897c23-d1ed-438c-9c84-74ae24568d56.mock.pstmn.io/v1/send-authorization',
       body
     );
     return {

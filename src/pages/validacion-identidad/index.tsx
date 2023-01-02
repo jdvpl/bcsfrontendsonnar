@@ -73,7 +73,7 @@ const Index: React.FC = () => {
   };
 
   const loginAccount = (dataSend: any) => {
-    console.log({ dataSend })
+    // console.log({ dataSend })
   }
   return (
     <>

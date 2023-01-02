@@ -4,14 +4,22 @@ import VerificationForm from '../../../../components/ui/Form/verificationForm';
 
 const mkFn = jest.fn()
 describe('Terminos', () => {
-  test('should render "Terminos" successfully', () => {
+  test('should render "VerificationForm" successfully', () => {
     const { baseElement } = render(<VerificationForm onSubmit={mkFn} />);
     expect(baseElement).toBeTruthy();
   });
-  test('should render "Terminos" successfully', () => {
+  test('should render "VerificationForm" successfully', () => {
     const { getByTestId } = render(<VerificationForm onSubmit={mkFn} />);
     const inputPassword = getByTestId('input-password');
     fireEvent.click(inputPassword)
   });
+  test('should render "VerificationForm" button', () => {
+    const { getByTestId } = render(<VerificationForm onSubmit={mkFn} />);
+    const inputPass = document.getElementsByName("password")[0];
+    const btnSubmit = getByTestId('btn-save-data');
+    fireEvent.input(inputPass, { target: { value: 'Testa365' } })
+    fireEvent.click(btnSubmit)
+  });
+
 
 });
