@@ -236,7 +236,7 @@ describe('ConsultancyTutorial', () => {
   test('', async () => {
     const nextTutorialStepRef = '';
     const prevTutorialStepRef = '';
-    let caseResult = ``;
+    const caseResult = ``;
     const { result, unmount } = renderHook(() =>
       useConsultancyTutorial({ nextTutorialStepRef, prevTutorialStepRef })
     );

@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import ResumenSolicitud from '../../pages/resumen-solicitud/index';
 import userEvent from '@testing-library/user-event';
 import router from 'next/router';
-import { routes } from '../../routes';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
+import { routes } from '../../routes';
+import ResumenSolicitud from '../../pages/resumen-solicitud/index';
 import { createMockRouter } from '../utils/createMockRouter';
 import ReviewApplication from '../../components/ui/application/ReviewApplication';
 

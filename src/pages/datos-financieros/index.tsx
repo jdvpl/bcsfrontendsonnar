@@ -7,7 +7,7 @@ import HeaderForm from '../../components/ui/Headers/HeaderForm'
 import Stepper from '../../components/ui/Stepper'
 import Typography from '../../components/ui/Typography'
 
-const FinancialData = () => {
+function FinancialData() {
   return (
     <div data-testid="PersonalDataTest">
       <HeaderForm />

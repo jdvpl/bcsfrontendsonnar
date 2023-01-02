@@ -11,7 +11,7 @@ import { useSessionStorage } from '../../hooks/useSessionStorage'
 import { routes } from '../../routes'
 import { SesionStorageKeys } from '../../session'
 
-const ApplicationApproval = () => {
+function ApplicationApproval() {
   const [dataInfo,] = useSessionStorage(
     SesionStorageKeys.personalInfoDataBack.key,
     {}
@@ -37,7 +37,7 @@ const ApplicationApproval = () => {
           <Card
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA] font-semibold rounded-[8px] m-auto"
             title="Monto aprobado"
-            value={`$ 105.000`}
+            value="$ 105.000"
             text="text-[32px] pl-[16px] pt-2 flex items-baseline"
             urlsvg=""
             classtitle="h-[18px] pt-[16px] text-[16px] pl-0"
@@ -52,7 +52,7 @@ const ApplicationApproval = () => {
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[12px] pl-[16px] rounded-[8px] mb-[12px] font-light m-auto"
             title="Plazo"
             urlsvgendicon=""
-            value={"15 años"}
+            value="15 años"
             text="text-[20px] pl-[18px] font-semibold"
             urlsvg={`${basePath}/images/Calendar.svg`}
             classtitle="h-[14px] text-[13px]"

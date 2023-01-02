@@ -1,10 +1,10 @@
 import React from 'react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-import { CreditDataForm } from '../../../../../components/ui/Form/CreditData/CreditDataForm';
 import userEvent from '@testing-library/user-event';
-import { createMockRouter } from '../../../../utils/createMockRouter';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
+import { CreditDataForm } from '../../../../../components/ui/Form/CreditData/CreditDataForm';
+import { createMockRouter } from '../../../../utils/createMockRouter';
 import { routes } from '../../../../../routes';
 
 describe('<CreditDataForm/>', () => {

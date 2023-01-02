@@ -1,8 +1,8 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, waitFor } from '@testing-library/react';
-import ConsultancyTutorial from '../../../../components/custom/tutorial/ConsultancyTutorial/ConsultancyTutorial';
 import userEvent from '@testing-library/user-event';
+import ConsultancyTutorial from '../../../../components/custom/tutorial/ConsultancyTutorial/ConsultancyTutorial';
 
 describe('ConsultancyTutorial', () => {
   test('should render "ConsultancyTutorial" successfully', () => {
@@ -13,12 +13,10 @@ describe('ConsultancyTutorial', () => {
   });
   test('should handleModal close tutorial', async () => {
     render(
-      <>
-        <ConsultancyTutorial
+      <ConsultancyTutorial
           nextTutorialStepRef="{nextTutorialStepRef}"
           prevTutorialStepRef="{prevTutorialStepRef}"
         />
-      </>
     );
     const buttonClose = screen.queryByTestId('button-close-tutorial-container');
     await waitFor(() => userEvent.click(buttonClose!));

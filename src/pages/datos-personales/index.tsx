@@ -16,12 +16,11 @@ import { iDataUser } from '../../interfaces/dataUserBasic';
 import PersonalDataBasic from '../../components/ui/Form/PersonalDataBasic';
 
 
-const PersonalData = () => {
+function PersonalData() {
   const [showModal, setShowModal] = useState<boolean>(true);
   const [componentModal, setComponentModal] = useState<HowItemProps>({
     children: <Advisory setShowModal={setShowModal} />,
-    title: <span>¿Recibió <span className="md:inline sm:inline xs:block">acompañamiento</span> <span className="block">
-    </span>para acceder a esta plataforma?</span>,
+    title: <span>¿Recibió <span className="md:inline sm:inline xs:block">acompañamiento</span> <span className="block" />para acceder a esta plataforma?</span>,
     id: '',
   });
 

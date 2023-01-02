@@ -54,9 +54,9 @@ function ResumenApplication() {
             Math.floor(valuesMortgage.financeValue)
           )}`}
           termFinance={`${valuesMortgage.termFinance} años`}
-          rate={`1,6% NV - 23% EA`}
-          lifeInsurance={`$44.000`}
-          fireInsurance={`$44.000`}
+          rate="1,6% NV - 23% EA"
+          lifeInsurance="$44.000"
+          fireInsurance="$44.000"
           insuranceCheck={valuesMortgage?.insuranceCheck}
         />
 

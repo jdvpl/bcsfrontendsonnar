@@ -11,7 +11,7 @@ export interface FormData {
   advisoryType: string;
   otherAdvisoryType?: string;
 }
-const AdvisoryForm = ({ setShowModal }: any) => {
+function AdvisoryForm({ setShowModal }: any) {
   const optionsMenu = [
     { value: 'campaign', label: 'Campaña' },
     { value: 'bank_advisor', label: 'Asesor banco' },

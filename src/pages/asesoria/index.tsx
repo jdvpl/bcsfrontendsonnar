@@ -15,7 +15,7 @@ import useConsultancy from './useConsultancy';
 const ConditionalWrapper: FC<any> = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
-const Consultancy = () => {
+function Consultancy() {
   const prevTutorialStepRef = useRef(null);
   const nextTutorialStepRef = useRef(null);
   const [itemActive, setItemActive] = useState('');
@@ -208,6 +208,6 @@ const Consultancy = () => {
       </div>
     </>
   );
-};
+}
 
 export default Consultancy;

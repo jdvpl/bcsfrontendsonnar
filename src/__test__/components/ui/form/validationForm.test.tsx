@@ -1,8 +1,9 @@
 import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { ValidationForm, Question, FormProps } from '../../../../components/ui/Form/ValidationForm';
 import { debug } from 'console';
+import { ValidationForm, Question, FormProps } from '../../../../components/ui/Form/ValidationForm';
+
 const fn = jest.fn()
 describe('Visibility of the ValidationForm', () => {
   const onSubmit = jest.fn();

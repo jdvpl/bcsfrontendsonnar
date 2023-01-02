@@ -1,6 +1,8 @@
 import React, { useEffect, ClipboardEvent, useState } from 'react';
 import { MenuItem } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
+import { json } from 'stream/consumers';
 import Button from '../../Button';
 import ReactHookFormSelect from '../../Select/newSelect';
 import { SimulationData } from '../../../../interfaces';
@@ -10,9 +12,7 @@ import { yearsAvailable } from '../../../../lib/simulator';
 import useValidations from './useCreditData';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
-import { useRouter } from 'next/router';
 import { routes } from '../../../../routes';
-import { json } from 'stream/consumers';
 
 export function CreditDataForm() {
   const [choseHouse, setChoseHouse] = useState(false);
@@ -44,9 +44,9 @@ export function CreditDataForm() {
   const renderPercentage = () => {
     if (Math.floor(percentageFinance * 100) > 100) {
       return `> 100`;
-    } else {
+    } 
       return Math.floor(percentageFinance * 100);
-    }
+    
   };
   const onSubmit = () => {
     // eslint-disable-next-line no-console

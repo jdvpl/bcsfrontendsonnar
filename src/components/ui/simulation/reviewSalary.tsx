@@ -37,7 +37,17 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       textsub="30"
       tooltiptext=""
     />
-
+    <Card
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
+      title="Cuota mensual sin seguros"
+      value={amountQuota?.toString()}
+      text="text-[20px] pl-[18px] font-semibold flex items-baseline"
+      urlsvg={`${basePath}/images/Money.svg`}
+      classtitle="h-[14px] text-[13px] ml-2"
+      subvalue="pesos"
+      textsub="20"
+      tooltiptext=""
+    />
     <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
       title="Cuota mensual total con seguros"
@@ -50,7 +60,38 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       id="lifeInsuranceSalary"
       tooltiptext=""
     />
+    <Card
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] text-[14px] font-light"
+      title="Plazo"
+      value={termFinance?.toString()}
+      text="text-[20px] pl-[18px] font-semibold flex items-baseline"
+      urlsvg={`${basePath}/images/Calendar.svg`}
+      classtitle="h-[14px] text-[13px] ml-2"
+      tooltiptext=""
+    />
 
+<Card
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[116px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+      title="Tasa"
+      value={rate}
+      text="text-[20px] pl-[18px] font-semibold"
+      urlsvg={`${basePath}/images/Charts.svg`}
+      urlsvgendicon=""
+      classtitle="h-[14px] text-[13px]"
+      tooltiptext=""
+      description
+      descriptionHtml={
+        <p className="pl-[25px]">
+          <p className="flex">
+            <p className="font-bold text-[14px] mr-1">Tasa %MV: </p><span className="text-[14px]">Tasa nóminal mes
+            vencido</span>
+          </p>
+          <p className="flex">
+            <p className="font-bold text-[14px]  mr-1">Tasa EA:</p><span className="text-[14px]">Tasa efectiva anual</span>
+          </p>
+        </p>
+      }
+    />
     <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
       title="Seguro de vida"
@@ -75,7 +116,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       urlsvg={`${basePath}/images/Home.svg`}
       classtitle="h-[14px] text-[14px] ml-2"
       id="fireInsuranceSalary"
-      tooltip={true}
+      tooltip
       tooltiptext={
         <p className="flex text-white">
           Póliza que protege al inmueble hipotecado al Banco contra las pérdidas y daños
@@ -85,50 +126,9 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       }
     />
 
-    <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
-      title="Cuota mensual sin seguros"
-      value={amountQuota?.toString()}
-      text="text-[20px] pl-[18px] font-semibold flex items-baseline"
-      urlsvg={`${basePath}/images/Money.svg`}
-      classtitle="h-[14px] text-[13px] ml-2"
-      subvalue="pesos"
-      textsub="20"
-      tooltiptext=""
-    />
+    
 
-    <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] text-[14px] font-light"
-      title="Plazo"
-      value={termFinance?.toString()}
-      text="text-[20px] pl-[18px] font-semibold flex items-baseline"
-      urlsvg={`${basePath}/images/Calendar.svg`}
-      classtitle="h-[14px] text-[13px] ml-2"
-      tooltiptext=""
-    />
-
-    <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
-      title="Tasa"
-      value={rate?.toString()}
-      text="text-[20px] pl-[18px] font-semibold"
-      urlsvg={`${basePath}/images/Charts.svg`}
-      classtitle="h-[14px] text-[13px] ml-2"
-      tooltip
-      tooltiptext={
-        <p className="text-white">
-          La tasa de interés es el precio que se debe pagar por utilizar una cantidad de
-          dinero durante un tiempo determinado.
-          <br />
-          <p className="flex text-white">
-            <p className="font-bold text-white">Tasa %MV:</p>Tasa nóminal mes vencido
-          </p>
-          <p className="flex text-white">
-            <p className="font-bold text-white">Tasa EA:</p>Tasa efectiva anual
-          </p>
-        </p>
-      }
-    />
+    
 
     <div className="xs:w-[290px] sm:w-[343px] md:w-[448px] flex justify-end mb-[20px] mt-[20px]">
       {dataPdf?.quotes?.length > 0 ? <BtnPdfDownloader pdf={dataPdf} /> : null}

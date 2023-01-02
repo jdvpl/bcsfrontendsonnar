@@ -21,7 +21,8 @@ interface CardProps {
   endicon?: boolean;
   urlsvgendicon?:string;
   clickEdit?:any
-  description?:string
+  description?:boolean,
+  descriptionHtml?:React.ReactNode
 }
 export const Card: React.FC<CardProps> = ({
   className,
@@ -39,7 +40,8 @@ export const Card: React.FC<CardProps> = ({
   endicon,
   urlsvgendicon,
   clickEdit,
-  description
+  description,
+  descriptionHtml
 }) => (
   <div className={`${className}`} id={id}>
     <div className="flex relative">
@@ -93,7 +95,7 @@ export const Card: React.FC<CardProps> = ({
     </div>
     {
       description?
-      <p className='pr-[1px] ml-[26px] mr-[8px] text-[14px] color-[#00253D]'>{description}</p>
+      <div>{descriptionHtml}</div>
       :null
     }
   </div>

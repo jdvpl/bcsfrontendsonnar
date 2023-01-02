@@ -1,12 +1,12 @@
 import React from 'react';
-import useValidations from '../../../../../components/ui/Form/CreditData/useCreditData';
 import { renderHook } from '@testing-library/react-hooks';
+import useValidations from '../../../../../components/ui/Form/CreditData/useCreditData';
 import { maxHouseValueNoVis } from '../../../../../lib/simulator';
 
 describe('useValidations is successfully', () => {
-  let houseValue: any = 10000000;
-  let financeValue: any = 1000000;
-  let termFinance: any = 1000000;
+  const houseValue: any = 10000000;
+  const financeValue: any = 1000000;
+  const termFinance: any = 1000000;
   let clearErrors: any;
   let setError: any;
   let setPercentageFinance: any;
@@ -45,9 +45,9 @@ describe('useValidations is successfully', () => {
 });
 
 describe('useValidations is successfully', () => {
-  let houseValue: any = maxHouseValueNoVis * 2;
-  let financeValue: any = maxHouseValueNoVis * 3;
-  let termFinance: any = 10;
+  const houseValue: any = maxHouseValueNoVis * 2;
+  const financeValue: any = maxHouseValueNoVis * 3;
+  const termFinance: any = 10;
   let clearErrors: any;
   let setError: any;
   let setPercentageFinance: any;

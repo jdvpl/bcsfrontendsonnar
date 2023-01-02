@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router';
+import React from 'react'
 import { FormData, RegisterForm } from '../../components/ui/Form';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../session';
 import LogoBcs from '../../components/svg/LogoBcs';
 import { routes } from '../../routes';
-import React from 'react'
 import { sendAuthorization } from '../../services';
+
 function InicioSolicitud() {
   const router = useRouter();
 
