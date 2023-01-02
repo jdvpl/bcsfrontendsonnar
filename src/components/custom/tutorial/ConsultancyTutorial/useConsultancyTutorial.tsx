@@ -53,8 +53,8 @@ export default function useConsultancyTutorial({
               variant="h2"
               className="xl:leading-[34px] md:leading-[30px] xs:leading-[22px] text-center mx-auto text-white xs:text-[18px] md:text-[26px] xl:text-[30px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
             >
-              Acompáñenos en un corto recorrido antes de iniciar la asesoría y conozca
-              cómo navegar en ella.
+              Acompáñenos en un corto recorrido antes de iniciar la guía interactiva y
+              conozca cómo navegar en ella.
             </Typography>
             <div className="w-[full] flex flex-col items-center xl:mt-[48px] md:mt-[60px] sm:mt-[46px] xs:mt-[36px]">
               <Button
@@ -117,7 +117,7 @@ export default function useConsultancyTutorial({
                   data-testid="text-next-step"
                   className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900"
                 >
-                  Para salir de la asesoría haga clic aquí.
+                  Para salir de la guía interactiva haga clic aquí.
                 </p>
                 <button
                   onClick={handelActualStep}
@@ -141,7 +141,7 @@ export default function useConsultancyTutorial({
                 className={`bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute  md:flex flex-col items-center gap-y-[28px] h-[171px]`}
               >
                 <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
-                  Para salir de la asesoría haga clic aquí.
+                  Para salir de la guía interactiva haga clic aquí.
                 </p>
                 <button
                   onClick={handelActualStep}
@@ -184,7 +184,7 @@ export default function useConsultancyTutorial({
                 className={`z-[100]  bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute flex flex-col items-center justify-center gap-y-[28px] h-[171px]`}
               >
                 <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
-                  Para continuar con la asesoría haga clic aquí.
+                  Para continuar con la guía interactiva haga clic aquí.
                 </p>
                 <button
                   onClick={handelActualStep}
@@ -207,7 +207,7 @@ export default function useConsultancyTutorial({
                 className={`z-[100] sm:hidden bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute  md:flex flex-col items-center justify-center gap-y-[28px] h-[171px]`}
               >
                 <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
-                  Para continuar con la asesoría haga clic aquí.
+                  Para continuar con la guía interactiva haga clic aquí.
                 </p>
                 <button
                   onClick={handelActualStep}
@@ -377,7 +377,10 @@ export default function useConsultancyTutorial({
               <br /> ¡Está listo para continuar!
             </Typography>
             <div className="w-[full] flex flex-col items-center xl:mt-[48px] md:mt-[60px] sm:mt-[46px] xs:mt-[36px]">
-              <Button onClick={onHandleModal} isLanding="sm:w-[343px] xs:w-[284.17px] font-semibold">
+              <Button
+                onClick={onHandleModal}
+                isLanding="sm:w-[343px] xs:w-[284.17px] font-semibold"
+              >
                 Iniciar asesoría
               </Button>
             </div>

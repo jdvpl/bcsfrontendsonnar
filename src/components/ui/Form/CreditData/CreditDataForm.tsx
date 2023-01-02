@@ -50,8 +50,8 @@ export function CreditDataForm() {
   };
   const onSubmit = () => {
     // eslint-disable-next-line no-console
-    setDataForm({ typeHouse, houseValue, financeValue, termFinance, insuranceCheck })
-    router.push(routes.ResumenSolicitud)
+    setDataForm({ typeHouse, houseValue, financeValue, termFinance, insuranceCheck });
+    router.push(routes.ResumenSolicitud);
   };
 
   const { automationFinanceValue } = useValidations(
@@ -105,7 +105,7 @@ export function CreditDataForm() {
       {/* Form When Person chose Hose */}
       <div className="flex flex-col items-center gap-y-[12px] w-full">
         {choseHouse ? (
-          <div data-testid="InputTypeHouse" className='w-full'>
+          <div data-testid="InputTypeHouse" className="w-full">
             <ReactHookFormSelect
               onChange={(e: any) => setValue('typeHouse', e.target.value)}
               placeholder="Tipo de vivienda"
@@ -202,6 +202,15 @@ export function CreditDataForm() {
             </MenuItem>
           ))}
         </ReactHookFormSelect>
+
+        <Input
+          type="text"
+          classNameInput="text-complementario-60"
+          value="Pesos"
+          inputMode="text"
+          disabled
+          label="Tipo de amortización"
+        />
       </div>
 
       <button
@@ -226,7 +235,11 @@ export function CreditDataForm() {
 
       {/* Form when person not chose Hose */}
 
-      <Button isLanding="w-full md:w-[375px] mx-auto mt-[32px]" onClick={onSubmit} data-testid="btnSubmitDataForm">
+      <Button
+        isLanding="w-full md:w-[375px] mx-auto mt-[32px]"
+        onClick={onSubmit}
+        data-testid="btnSubmitDataForm"
+      >
         Continuar
       </Button>
     </div>

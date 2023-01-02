@@ -1,5 +1,6 @@
+import React from 'react';
 import { basePath } from '../../next.config';
-import { routes } from '../routes';
+import { routes } from '../routes/index';
 
 export const initialOptions = [
   [
@@ -15,11 +16,14 @@ export const initialOptions = [
           <p className="font-medium my-3">
             Existen dos formas de adquirir una vivienda nueva:
           </p>
-          <div style={{paddingLeft:"20px"}}>
+          <div style={{ paddingLeft: '20px' }}>
             <ol className="list-decimal mb-3 list-inside">
               <li>
                 <span className="font-semibold text-primario-900">Sobre planos: </span>
-                <p className="inline-block font-medium">{" "}Cuando aún está en construcción.</p>
+                <p className="inline-block font-medium">
+                  {' '}
+                  Cuando aún está en construcción.
+                </p>
               </li>
               <li>
                 <span className="font-semibold text-primario-900">Edificado: </span>
@@ -78,11 +82,12 @@ export const initialOptions = [
           <p className="font-medium my-3">
             Las{' '}
             <span className="font-semibold text-primario-900">
-              Viviendas de Interés Social {" "}
+              Viviendas de Interés Social{' '}
             </span>
-            son aquellas que su precio no supera los 135 ó 150 SMMLV, dicho monto varía
-            según la ubicación de la vivienda. Gracias a su valor las personas con
-            ingresos entre 2 y 4 SMMLV pueden acceder a una vivienda nueva.
+            son aquellas que su precio no supera los 135 ó 150 <strong>SMMLV*</strong>,
+            dicho monto varía según la ubicación de la vivienda. Gracias a su valor las
+            personas con ingresos entre 2 y 4 <strong>SMMLV*</strong> pueden acceder a una
+            vivienda nueva.
           </p>
 
           <p className="font-medium my-3">
@@ -90,9 +95,14 @@ export const initialOptions = [
             estipulados,
             <span className="font-semibold text-primario-900">
               {' '}
-              puede postularse a los subsidios{" "}
+              puede postularse a los subsidios{' '}
             </span>
             que brinda tanto el Gobierno como las Cajas de Compensación.
+          </p>
+          <br />
+          <p className="font-medium md:mt-[28px]">
+            <span className="font-semibold">*SMMLV:</span> Salario Mínimo Mensual Legal
+            Vigente.
           </p>
         </div>
       ),
@@ -104,12 +114,21 @@ export const initialOptions = [
         <div>
           <p className="font-medium my-3">
             Las <span className="font-semibold text-primario-900">Viviendas No VIS </span>
-            son aquellas que su precio supera los 135 ó 150 SMMLV, dicho monto varía según
-            la ubicación de la vivienda.
+            son aquellas que su precio supera los 135 ó 150 <strong>SMMLV*</strong>, dicho
+            monto varía según la ubicación de la vivienda.
           </p>
           <p className="font-medium my-3">
-            Están diseñadas para familias con ingresos mayores 4 SMMLV, pueden ser nuevas
-            o usadas y normalmente son desde estrato 3 en adelante.
+            Están diseñadas para familias con ingresos mayores 4 <strong>SMMLV*</strong>,
+            pueden ser nuevas o usadas y normalmente son desde estrato 3 en adelante.
+          </p>
+          <p className="font-medium my-3">
+            Actualmente quien compre una vivienda No VIS y cumpla con los requisitos
+            estipulados, puede postularse a los subsidios del Gobierno Frech No VIS y
+            Ecobertura.
+          </p>
+          <p className="font-medium">
+            <span className="font-semibold">*SMMLV:</span> Salario Mínimo Mensual Legal
+            Vigente.
           </p>
         </div>
       ),
@@ -122,13 +141,21 @@ export const initialOptions = [
       content: () => (
         <div>
           <p className="font-medium my-3">
-            Corresponde al 30% del valor total de la vivienda y debe pagarlo el comprador
-            con recursos propios, ya sea con ahorros, cesantías o con subsidios en caso
-            que sea beneficiario de estos.
-          </p>
-          <p className="font-medium my-3">
-            Para vivienda nueva normalmente se dan entre 1 a 2 años para pagar este dinero
-            y para vivienda usada su pago debe ser inmediato.
+            <p className="font-medium my-3">
+              Corresponde a un porcentaje del valor total de la vivienda y debe pagarlo el
+              comprador con recursos propios, ya sea con ahorros, cesantías o con
+              subsidios en caso que sea beneficiario de estos.
+            </p>
+            <p className="font-medium my-3">
+              Para vivienda nueva normalmente se dan entre 1 a 2 años para pagar este
+              dinero y para vivienda usada su pago debe ser inmediato.
+            </p>
+            <p className="font-medium my-3">
+              La cuota inicial por ley varía de acuerdo con el tipo de inmueble, para
+              vivienda VIS es el 20% y para viviendas No VIS es el 30%. Tenga en cuenta
+              que este porcentaje puede variar según las políticas de la entidad
+              financiera o la constructora.
+            </p>
           </p>
         </div>
       ),
@@ -139,21 +166,11 @@ export const initialOptions = [
       content: () => (
         <div>
           <p className="font-medium my-3">
-            Corresponde al 70% del valor total de la vivienda y puede ser solventado a
-            través de un crédito hipotecario.
-          </p>
-          <p className="font-medium my-3">
-            <a
-              className="font-semibold text-primario-900 underline"
-            href={basePath + routes?.startProccess}
-            >
-              Solicite su crédito digital aquí
-            </a>{' '}
-            y reciba su aprobación en línea.
-          </p>
-          <p className="font-medium my-3">
-            Si prefiere el canal tradicional, comuníquese con nuestra línea amiga xxxxx o
-            visité nuestras oficinas.
+            Crédito hipotecario Es un producto financiero diseñado especialmente para la
+            compra de vivienda. Su porcentaje máximo de financiación por ley varÍa según
+            el tipo de vivienda, para VIS es del 80% del valor total del inmueble y para
+            No VIS es del 70%, esta solicitud debe realizarla el comprador a su entidad de
+            confianza.
           </p>
         </div>
       ),
@@ -165,8 +182,8 @@ export const initialOptions = [
         <div>
           <p className="font-medium my-3">
             Luego de obtener la aprobación de su crédito, presente la carta que le
-            proporcionó el Banco al vendedor, para realizar el proceso de compra o
-            separación del inmueble.
+            proporcionó el Banco al vendedor de la vivienda y con esta realice el proceso
+            de compra o separación del inmueble.
           </p>
         </div>
       ),
@@ -184,6 +201,10 @@ export const initialOptions = [
             del inmueble para determinar su valor comercial y garantizar que el comprador
             pagará lo justo por la vivienda.
           </p>
+          <p className="font-medium my-3">
+            El costo este proceso varía según la entidad financiera y lo debe asumir el
+            comprador.
+          </p>
         </div>
       ),
     },
@@ -193,15 +214,14 @@ export const initialOptions = [
       content: () => (
         <div>
           <p className="font-medium my-3">
-            Al finalizar el avalúo es necesario realizar el estudio de titulos, el cual es
-            hecho por un abogado externo que asigna el Banco y este determina a través de
-            un documento si la situación jurídica del inmueble es válida para respaldar el
-            crédito. Dicho proceso se realiza para evitar que el comprador adquiera un
-            predio con inconvenientes.
+            Es realizado por un abogado que asigna el Banco para determinar si la
+            situación jurídica del inmueble es válida para respaldar el crédito. Dicho
+            proceso se realiza para evitar que el comprador adquiera un predio con
+            inconvenientes.
           </p>
           <p className="font-medium my-3">
-            El costo apróximado de este proceso es del 0,12% del valor comercial del
-            inmueble.
+            El costo este proceso varía según la entidad financiera y lo debe asumir el
+            comprador.
           </p>
         </div>
       ),
@@ -217,7 +237,8 @@ export const initialOptions = [
             del predio y así formalmente el inmueble quedará a su nombre.
           </p>
           <p className="font-medium my-3">
-            El costo de este proceso es del 0,54% del valor comercial del inmueble.
+            El costo de este proceso es aproximadamente del 5% del valor comercial del
+            inmueble y lo debe asumir el comprador y el vendedor.
           </p>
         </div>
       ),
@@ -244,4 +265,11 @@ export const stepperTitles = [
   '¿Cómo pagar la vivienda?',
   'Legalización de una vivienda',
   'Reciba su vivienda',
+];
+
+export const titleSection = [
+  'Conozca los tipos de vivienda y las ventajas de cada una',
+  'Organice sus finanzas y planifique el pago de su vivienda',
+  'Tenga en cuenta los siguientes gastos adicionales',
+  '¡Felicitaciones, ha logrado su meta!',
 ];

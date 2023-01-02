@@ -25,7 +25,7 @@ function ConsultancyTutorial({ nextTutorialStepRef, prevTutorialStepRef }: any) 
               variant="h2"
               className="text-white xs:text-[14px] sm:text-[18px] xl:text-[28px]"
             >
-              Instructivo asesoría
+              Instructivo guía interactiva
             </Typography>
             <button
               data-testid="button-close-tutorial-container"
