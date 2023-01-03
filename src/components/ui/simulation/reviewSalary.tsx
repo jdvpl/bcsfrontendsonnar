@@ -37,22 +37,12 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       textsub="30"
       tooltiptext=""
     />
-    <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
-      title="Cuota mensual sin seguros"
-      value={amountQuota?.toString()}
-      text="text-[20px] pl-[18px] font-semibold flex items-baseline"
-      urlsvg={`${basePath}/images/Money.svg`}
-      classtitle="h-[14px] text-[13px] ml-2"
-      subvalue="pesos"
-      textsub="20"
-      tooltiptext=""
-    />
+    
     <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
       title="Cuota mensual total con seguros"
       value={amountQuotatotal?.toString()}
-      text="text-[20px] pl-[18px] font-semibold flex items-baseline"
+      text="text-[20px] pl-[23px] font-semibold flex items-baseline"
       urlsvg={`${basePath}/images/Money.svg`}
       classtitle="h-[14px] text-[13px] ml-2"
       subvalue="pesos"
@@ -64,7 +54,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] text-[14px] font-light"
       title="Plazo"
       value={termFinance?.toString()}
-      text="text-[20px] pl-[18px] font-semibold flex items-baseline"
+      text="text-[20px] pl-[23px] font-semibold flex items-baseline"
       urlsvg={`${basePath}/images/Calendar.svg`}
       classtitle="h-[14px] text-[13px] ml-2"
       tooltiptext=""
@@ -72,22 +62,22 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
 
 <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[116px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
-      title="Tasa"
+      title="Tasa aproximada"
       value={rate}
-      text="text-[20px] pl-[18px] font-semibold"
+      text="text-[20px] pl-[23px] font-semibold"
       urlsvg={`${basePath}/images/Charts.svg`}
       urlsvgendicon=""
-      classtitle="h-[14px] text-[13px]"
+      classtitle="h-[14px] text-[13px] ml-2"
       tooltiptext=""
       description
       descriptionHtml={
-        <p className="pl-[25px]">
+        <p className="pl-[33px]">
           <p className="flex">
-            <p className="font-bold text-[14px] mr-1">Tasa %MV: </p><span className="text-[14px]">Tasa nóminal mes
+            <p className="font-bold text-[14px] mr-1">MV: </p><span className="text-[14px]">Tasa nóminal mes
             vencido</span>
           </p>
           <p className="flex">
-            <p className="font-bold text-[14px]  mr-1">Tasa EA:</p><span className="text-[14px]">Tasa efectiva anual</span>
+            <p className="font-bold text-[14px]  mr-1">EA:</p><span className="text-[14px]">Tasa efectiva anual</span>
           </p>
         </p>
       }
@@ -96,7 +86,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
       title="Seguro de vida"
       value={lifeInsurance?.toString()}
-      text="text-[20px] pl-[18px] font-semibold"
+      text="text-[20px] pl-[23px] font-semibold"
       urlsvg={`${basePath}/images/Insurage.svg`}
       classtitle="h-[14px] text-[14px] ml-2"
       tooltip
@@ -112,7 +102,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
       title="Seguro de Incendio, Rayo y Terremoto"
       value={fireInsurance?.toString()}
-      text="text-[20px] pl-[18px] font-semibold"
+      text="text-[20px] pl-[23px] font-semibold"
       urlsvg={`${basePath}/images/Home.svg`}
       classtitle="h-[14px] text-[14px] ml-2"
       id="fireInsuranceSalary"

@@ -53,11 +53,11 @@ function ReviewApplication({
       descriptionHtml={
         <p className="pl-[27px]">
           <p className="flex">
-            <p className="font-bold text-[14px] mr-1">Tasa %MV: </p><span className="text-[14px]">Tasa nóminal mes
+            <p className="font-bold text-[14px] mr-1">MV:</p><span className="text-[14px]">Tasa nóminal mes
             vencido</span>
           </p>
           <p className="flex">
-            <p className="font-bold text-[14px]  mr-1">Tasa EA:</p><span className="text-[14px]">Tasa efectiva anual</span>
+            <p className="font-bold text-[14px]  mr-1">EA:</p><span className="text-[14px]">Tasa efectiva anual</span>
           </p>
         </p>
       }

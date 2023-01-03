@@ -11,6 +11,7 @@ const nextConfig = {
     MAINTENANCE: process.env.MAINTENANCE,
     KEYKYCHASH: process.env.KEYKYCHASH,
     KEYSESSIONSTORAGE: process.env.KEYSESSIONSTORAGE,
+    KEYCOMPOSERSARLAFT:process.env.KEYCOMPOSERSARLAFT
   },
   images: {
     loader: 'akamai',

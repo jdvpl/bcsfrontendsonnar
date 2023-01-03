@@ -12,6 +12,7 @@ import LogoBcs from '../components/svg/LogoBcs';
 import { Icons } from '../components/ui/icons';
 import Questions from '../components/ui/Accordion';
 import { basePath } from '../../next.config';
+import TagManager from 'react-gtm-module';
 
 export default function Home() {
   const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, deviceType);
@@ -26,9 +27,21 @@ export default function Home() {
   })
   useEffect(
     () => () => {
-      setDevice(deviceType);
+      setDevice(deviceType)   
     },
     [device]
+  );
+  useEffect(
+    () => () => {
+      TagManager.dataLayer({
+        dataLayer: {
+          Category: 'init_landing',
+          Action: 'landing',
+          Label: 'landing',
+        },
+      });  
+    },
+    []
   );
 
   return (

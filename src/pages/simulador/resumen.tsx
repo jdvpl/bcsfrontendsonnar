@@ -66,9 +66,8 @@ function Resumen() {
             variant="bodyS3"
             className="text-center xs:w-[290px] sm:w-[343px] md:w-[656px] lg:mt-[52px] pmx-3 text-primario-900"
           >
-            Los valores presentados en el simulador son únicamente informativos y no
-            constituyen ningún tipo de asesoría, ni obligan al Banco en su calidad de
-            emisor.
+            Los valores presentados en el simulador son aproximados y únicamente informativos, 
+no constituyen ningún tipo de asesoría, ni obligan al Banco en su calidad de emisor.
           </Typography>
         </div>
         <div className="flex gap-1 my-5">
