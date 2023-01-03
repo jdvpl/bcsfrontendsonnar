@@ -23,7 +23,7 @@ describe('NewInput', () => {
   });
   it('displays error message when error prop is provided', () => {
     const { getByTestId, getByText } = render(
-      <NewInput dataTestId="newInputTest" error={true} errorText="Error message" />
+      <NewInput dataTestId="newInputTest" error errorText="Error message" />
     );
     expect(getByTestId('newInputTest')).toBeInTheDocument();
     expect(getByText('Error message')).toBeInTheDocument();

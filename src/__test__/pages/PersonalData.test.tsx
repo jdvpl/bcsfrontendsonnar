@@ -1,7 +1,7 @@
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import React from 'react'
-import PersonalData from '../../pages/datos-personales';
 import userEvent from '@testing-library/user-event';
+import PersonalData from '../../pages/datos-personales';
 import '@testing-library/jest-dom'
 import PersonalDataBasic from '../../components/ui/Form/PersonalDataBasic';
 import { RouterContext } from 'next/dist/shared/lib/router-context';

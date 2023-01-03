@@ -4,7 +4,7 @@ import { SesionStorageKeys } from '../../session'
 import Button from '../ui/Button'
 import AdvisoryForm from './AdvisoryForm'
 
-const Advisory = ({ setShowModal }: any) => {
+function Advisory({ setShowModal }: any) {
   const [showMessage, setshowMessage] = useState<boolean>(true)
   const [dataUser, setDataUser] = useSessionStorage(
     SesionStorageKeys.dataUser.key,

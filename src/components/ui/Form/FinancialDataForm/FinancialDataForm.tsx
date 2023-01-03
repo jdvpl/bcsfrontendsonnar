@@ -3,19 +3,19 @@ import React, {
   ClipboardEvent,
 } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { useRouter } from 'next/router';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import Button from '../../Button';
 import Input from '../../inputs';
 import ReactHookFormSelect from '../../Select/newSelect';
-import { useRouter } from 'next/router';
 import { iFinancialData } from '../../../../interfaces/iFinancialData';
 import { convertToColombianPesos } from '../../../../utils';
 import Alert from '../../Alert';
 import useValidationFinancialDataForm from './useValidationFinancialDataForm';
 import { routes } from '../../../../routes';
 
-const FinancialDataForm = () => {
+function FinancialDataForm() {
   const router = useRouter();
   const {
     handleSubmit,
@@ -87,7 +87,7 @@ const FinancialDataForm = () => {
               <>
                 <div className="flex flex-col mt-3">
                   <Controller
-                    rules={{ required: occupation === '14' ? true : false }}
+                    rules={{ required: occupation === '14' }}
                     render={({ field }) => (
                       <Input
                         helperText={errors.enterprise?.message}
@@ -127,7 +127,7 @@ const FinancialDataForm = () => {
                     name="contractType"
                     className="w-100"
                     margin="normal"
-                    rules={{ required: occupation === '14' ? true : false }}
+                    rules={{ required: occupation === '14' }}
                   >
                     <MenuItem value="01">Término indefinido</MenuItem>
                     <MenuItem value="02">Término fijo</MenuItem>
@@ -144,7 +144,7 @@ const FinancialDataForm = () => {
                 <div className='grid gap-2 grid-cols-2 mt-2'>
                   <div >
                     <Controller
-                      rules={{ required: occupation === '14' ? true : false }}
+                      rules={{ required: occupation === '14' }}
                       render={({ field }) => (
                         <Input
                           type="text"
@@ -171,7 +171,7 @@ const FinancialDataForm = () => {
                   </div>
                   <div>
                     <Controller
-                      rules={{ required: occupation === '14' ? true : false }}
+                      rules={{ required: occupation === '14' }}
                       render={({ field }) => (
                         <Input
                           type="text"
@@ -206,7 +206,7 @@ const FinancialDataForm = () => {
               render={({ field }) => (
                 <Input
                   helperText={errors.monthlySalaryE?.message ? errors.monthlySalaryE?.message : 'Registre el ingreso principal de su actividad económica.'}
-                  helperTextOption={errors.monthlySalaryE?.message ? false : true}
+                  helperTextOption={!errors.monthlySalaryE?.message}
                   type="text"
                   error={!!errors.monthlySalaryE}
                   onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
@@ -327,6 +327,6 @@ const FinancialDataForm = () => {
       </div>
     </div>
   );
-};
+}
 
 export default FinancialDataForm;

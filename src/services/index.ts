@@ -10,6 +10,8 @@ import { iFormBasicData } from '../interfaces/basicDataProps';
 
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
+const KEYCOMPOSERSARLAFT= process.env.KEYCOMPOSERSARLAFT
+
 export const getQuestions = async (data: any) => {
   try {
     const dataInfo = await allResponse(data, KEY);
@@ -191,16 +193,17 @@ export const getBasicData = async (data: iFormBasicData) => {
 
 export const fetchSarlaft = async (body: any) => {
   try {
+    const bodyencript = allResponse(body,KEYCOMPOSERSARLAFT)
     const { data: response } = await clientAxiosBackend.post(
       '/sarlaft/sarlaft-questions',
-      body
+      bodyencript
     );
     return {
       response: {
-        result: response,
+        result: await allResponseDecrypted(response,KEYCOMPOSERSARLAFT),
       },
       error: false,
-    };
+    };    
   } catch (e: any) {
     return { error: true, response: e.response?.data?.message };
   }

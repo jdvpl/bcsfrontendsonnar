@@ -9,13 +9,13 @@ import LogoForm from '../../components/svg/LogoForm';
 import { Icons } from '../../components/ui/icons';
 import Stepper from '../../components/ui/Stepper';
 import Typography from '../../components/ui/Typography';
-import { stepperTitles } from '../../lib/consultancy';
+import { stepperTitles, titleSection } from '../../hooks/consultancy';
 import useConsultancy from './useConsultancy';
 
 const ConditionalWrapper: FC<any> = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
-const Consultancy = () => {
+function Consultancy() {
   const prevTutorialStepRef = useRef(null);
   const nextTutorialStepRef = useRef(null);
   const [itemActive, setItemActive] = useState('');
@@ -75,7 +75,7 @@ const Consultancy = () => {
             variant="h2"
             className="lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center leading-5"
           >
-            Esto es lo primero que debe saber para comprar una vivienda
+            {titleSection[actualStep - 1]}
           </Typography>
           <Stepper
             steps={4}
@@ -208,6 +208,6 @@ const Consultancy = () => {
       </div>
     </>
   );
-};
+}
 
 export default Consultancy;

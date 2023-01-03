@@ -1,7 +1,8 @@
-import { initialOptions } from '../../lib/consultancy';
+import React from 'react'
+import { initialOptions } from '../../hooks/consultancy';
 import { routes } from '../../routes';
 import Button from '../../components/ui/Button';
-import React from 'react'
+
 export default function useConsultancy({
   actualStep,
   setActualStep,
@@ -38,8 +39,7 @@ export default function useConsultancy({
     setItemActive('');
   };
 
-  const renderContent = () => {
-    return (
+  const renderContent = () => (
       <div className="lg:w-[411px] text-[14px]">
         <span className="font-semibold text-primario-900 lg:text-[20px] text-[16px]">
           {itemActive}
@@ -47,9 +47,8 @@ export default function useConsultancy({
         {initialOptions[actualStep - 1]?.[activeIndex]?.content()}
       </div>
     );
-  };
 
-  const OptionList = () => {
+  function OptionList() {
     return (
       <>
         {initialOptions[actualStep - 1]?.map((option: any, index: number) => (
@@ -74,7 +73,7 @@ export default function useConsultancy({
         ))}
       </>
     );
-  };
+  }
 
   return {
     nextStep,

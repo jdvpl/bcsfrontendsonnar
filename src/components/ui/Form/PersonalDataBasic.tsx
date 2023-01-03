@@ -5,6 +5,7 @@ import React, {
   FC
 } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { useRouter } from 'next/router';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { iPersonalData } from '../../../interfaces/dataUserBasic';
 import { days, months } from '../../../lib/dates';
@@ -13,10 +14,9 @@ import Button from '../Button';
 import Input from '../inputs';
 import NewAutoComplete from '../inputs/newAutoComplete';
 import ReactHookFormSelect from '../Select/newSelect';
-import { useRouter } from 'next/router';
 import { routes } from '../../../routes'
 
-const PersonalDataBasic = ({ userInfo }: any) => {
+function PersonalDataBasic({ userInfo }: any) {
   const router = useRouter();
   const {
     handleSubmit,
@@ -104,8 +104,7 @@ const PersonalDataBasic = ({ userInfo }: any) => {
               name="yearDt"
               control={control}
               rules={{ required: true }}
-              render={({ field }) => {
-                return (
+              render={({ field }) => (
                   <Input
                     containerClassName="col-span-2"
                     type="text"
@@ -122,8 +121,7 @@ const PersonalDataBasic = ({ userInfo }: any) => {
                     maxLength={4}
                     label="Año"
                   />
-                )
-              }}
+                )}
             />
           </div>
 
@@ -173,9 +171,8 @@ const PersonalDataBasic = ({ userInfo }: any) => {
             <>
               <div className="flex flex-col mt-4">
                 <Controller
-                  rules={{ required: userInfo.cellPhone ? false : true }}
-                  render={({ field }) => {
-                    return (
+                  rules={{ required: !userInfo.cellPhone }}
+                  render={({ field }) => (
                       <Input
                         helperText="Debe inicar con 3  y un máximo de 10 caracteres"
                         helperTextOption
@@ -187,7 +184,7 @@ const PersonalDataBasic = ({ userInfo }: any) => {
                         value={field.value}
                         defaultValue={field.value}
                         tabIndex={0}
-                        disabled={userInfo.cellPhone ? true : false}
+                        disabled={!!userInfo.cellPhone}
                         id="phone"
                         data-testid="phoneTest"
                         inputMode="text"
@@ -195,22 +192,20 @@ const PersonalDataBasic = ({ userInfo }: any) => {
                         label="Número de celular"
                         onChange={(e: any) => setValue('phone', e.target.value)}
                       />
-                    )
-                  }}
+                    )}
                   name="phone"
                   control={control}
                 />
               </div>
               <div className="flex flex-col mt-4">
                 <Controller
-                  rules={{ required: userInfo.emailAddr ? false : true }}
-                  render={({ field }) => {
-                    return (
+                  rules={{ required: !userInfo.emailAddr }}
+                  render={({ field }) => (
                       <Input
                         helperText="Ejemplo: correo@dominio.com"
                         helperTextOption
                         type="email"
-                        disabled={userInfo.emailAddr ? true : false}
+                        disabled={!!userInfo.emailAddr}
                         error={!!errors.email}
                         onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                           e.preventDefault();
@@ -225,8 +220,7 @@ const PersonalDataBasic = ({ userInfo }: any) => {
                         label="Correo electrónico"
                         onChange={(e: any) => setValue('email', e.target.value)}
                       />
-                    )
-                  }}
+                    )}
                   name="email"
                   control={control}
                 />
@@ -259,9 +253,8 @@ const PersonalDataBasic = ({ userInfo }: any) => {
           </div>
           <div className="flex flex-col mt-4">
             <Controller
-              rules={{ required: userInfo.addr1 ? false : true }}
-              render={({ field }) => {
-                return (
+              rules={{ required: !userInfo.addr1 }}
+              render={({ field }) => (
                   <Input
                     type="text"
                     startIcon='bcs-location'
@@ -278,8 +271,7 @@ const PersonalDataBasic = ({ userInfo }: any) => {
                     label="Dirección de vivienda actual"
                     onChange={(e: any) => setValue('currentAddress', e.target.value)}
                   />
-                )
-              }}
+                )}
               name="currentAddress"
               control={control}
             />
@@ -302,6 +294,6 @@ const PersonalDataBasic = ({ userInfo }: any) => {
       </div >
     </div >
   );
-};
+}
 
 export default PersonalDataBasic;

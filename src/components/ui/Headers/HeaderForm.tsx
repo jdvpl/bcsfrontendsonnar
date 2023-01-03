@@ -4,7 +4,7 @@ import LogoBcs from '../../svg/LogoBcs'
 import LogoForm from '../../svg/LogoForm'
 import Icons from '../icons';
 
-const HeaderForm = () => {
+function HeaderForm() {
   const router = useRouter();
   return (
     <div className="container flex lg:mt-[0] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-between  ">

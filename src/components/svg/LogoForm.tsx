@@ -1,4 +1,5 @@
 import React from 'react'
+
 function LogoForm() {
   return <svg
     height="32"

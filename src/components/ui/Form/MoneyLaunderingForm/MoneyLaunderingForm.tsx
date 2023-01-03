@@ -4,6 +4,7 @@ import { ToolTipInfo } from '../../Tooltip';
 import { InfoIco } from '../../Tooltip/info';
 import Typography from '../../Typography';
 import useMoneyLaundering from '../../../../hooks/useMoneyLaundering';
+
 const MoneyLaunderingOptions = [
   {
     name: 'incomeSource',
@@ -23,7 +24,7 @@ const MoneyLaunderingOptions = [
     toolTip: '',
   },
 ];
-export const MoneyLaunderingForm = () => {
+export function MoneyLaunderingForm() {
   const { moneyLaundering, changeMoneyLaundering, onSubmit } = useMoneyLaundering();
   return (
     <div>
@@ -59,7 +60,7 @@ export const MoneyLaunderingForm = () => {
                 <span className="font-semibold text-gris-100">Si</span>
                 <div className="ml-[15px] w-[25px] h-[25px] border border-complementario-100 flex justify-center items-center rounded-full">
                   {moneyLaundering[option?.name] ? (
-                    <div className="w-[10px] h-[10px] bg-primario-400 rounded-full option-selected"></div>
+                    <div className="w-[10px] h-[10px] bg-primario-400 rounded-full option-selected" />
                   ) : null}
                 </div>
               </div>
@@ -70,7 +71,7 @@ export const MoneyLaunderingForm = () => {
                 <span className="font-semibold text-gris-100">No</span>
                 <div className="ml-[15px] w-[25px] h-[25px] border border-complementario-100 flex justify-center items-center rounded-full">
                   {!moneyLaundering[option?.name] ? (
-                    <div className="w-[10px] h-[10px] bg-primario-400 rounded-full"></div>
+                    <div className="w-[10px] h-[10px] bg-primario-400 rounded-full" />
                   ) : null}
                 </div>
               </div>
@@ -83,4 +84,4 @@ export const MoneyLaunderingForm = () => {
       </Button>
     </div>
   );
-};
+}

@@ -1,6 +1,8 @@
 import React, { useEffect, ClipboardEvent, useState } from 'react';
 import { MenuItem } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
+import { useRouter } from 'next/router';
+import { json } from 'stream/consumers';
 import Button from '../../Button';
 import ReactHookFormSelect from '../../Select/newSelect';
 import { SimulationData } from '../../../../interfaces';
@@ -10,9 +12,7 @@ import { yearsAvailable } from '../../../../lib/simulator';
 import useValidations from './useCreditData';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
-import { useRouter } from 'next/router';
 import { routes } from '../../../../routes';
-import { json } from 'stream/consumers';
 
 export function CreditDataForm() {
   const [choseHouse, setChoseHouse] = useState(false);
@@ -44,14 +44,13 @@ export function CreditDataForm() {
   const renderPercentage = () => {
     if (Math.floor(percentageFinance * 100) > 100) {
       return `> 100`;
-    } else {
-      return Math.floor(percentageFinance * 100);
     }
+    return Math.floor(percentageFinance * 100);
   };
   const onSubmit = () => {
     // eslint-disable-next-line no-console
-    setDataForm({ typeHouse, houseValue, financeValue, termFinance, insuranceCheck })
-    router.push(routes.ResumenSolicitud)
+    setDataForm({ typeHouse, houseValue, financeValue, termFinance, insuranceCheck });
+    router.push(routes.ResumenSolicitud);
   };
 
   const { automationFinanceValue } = useValidations(
@@ -105,7 +104,7 @@ export function CreditDataForm() {
       {/* Form When Person chose Hose */}
       <div className="flex flex-col items-center gap-y-[12px] w-full">
         {choseHouse ? (
-          <div data-testid="InputTypeHouse" className='w-full'>
+          <div data-testid="InputTypeHouse" className="w-full">
             <ReactHookFormSelect
               onChange={(e: any) => setValue('typeHouse', e.target.value)}
               placeholder="Tipo de vivienda"
@@ -202,10 +201,20 @@ export function CreditDataForm() {
             </MenuItem>
           ))}
         </ReactHookFormSelect>
+
+        <Input
+          type="text"
+          classNameInput="text-complementario-60"
+          labelColor="text-primario-20"
+          value="Pesos"
+          inputMode="text"
+          disabled
+          label="Tipo de amortización"
+        />
       </div>
 
       <button
-        className="flex items-center gap-3 w-full mt-[34px] cursor-pointer"
+        className="flex items-start gap-3 w-full mt-[32px] cursor-pointer"
         onClick={() => setInsuranceCheck(!insuranceCheck)}
       >
         <input
@@ -226,7 +235,11 @@ export function CreditDataForm() {
 
       {/* Form when person not chose Hose */}
 
-      <Button isLanding="w-full md:w-[375px] mx-auto mt-[32px]" onClick={onSubmit} data-testid="btnSubmitDataForm">
+      <Button
+        isLanding="w-full md:w-[375px] mx-auto mt-[32px]"
+        onClick={onSubmit}
+        data-testid="btnSubmitDataForm"
+      >
         Continuar
       </Button>
     </div>
