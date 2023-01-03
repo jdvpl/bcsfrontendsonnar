@@ -35,13 +35,13 @@ export const initialOptions = [
           <ol className="list-decimal mb-3 list-inside ml-2 special-list">
             <li className="my-3 ">
               <span className="font-medium">
-                Este tipo de vivienda permite pagar la cuota inicial en un amplio plazo
+                Este tipo de vivienda permite pagar la cuota inicial en un amplio plazo.
               </span>
             </li>
             <li className="my-3 ">
               <span className="font-medium">
                 Su valorización es rápida, normalmente estas nuevas viviendas están
-                ubicadas en zonas de gran proyección urbanística
+                ubicadas en zonas de gran proyección urbanística.
               </span>
             </li>
           </ol>
@@ -61,7 +61,7 @@ export const initialOptions = [
           <ol className="list-decimal mb-3 list-inside ml-2 special-list">
             <li className="my-3">
               <span className="font-medium">
-                La entrega de una vivienda usada es casi inmediata
+                La entrega de una vivienda usada es casi inmediata.
               </span>
             </li>
             <li className="my-3">
@@ -85,7 +85,7 @@ export const initialOptions = [
               Viviendas de Interés Social{' '}
             </span>
             son aquellas que su precio no supera los 135 ó 150 <strong>SMMLV*</strong>,
-            dicho monto varía según la ubicación de la vivienda. Gracias a su valor las
+            dicho monto varia según la ubicación de la vivienda. Gracias a su valor las
             personas con ingresos entre 2 y 4 <strong>SMMLV*</strong> pueden acceder a una
             vivienda nueva.
           </p>
@@ -115,7 +115,7 @@ export const initialOptions = [
           <p className="font-medium my-3">
             Las <span className="font-semibold text-primario-900">Viviendas No VIS </span>
             son aquellas que su precio supera los 135 ó 150 <strong>SMMLV*</strong>, dicho
-            monto varía según la ubicación de la vivienda.
+            monto varia según la ubicación de la vivienda.
           </p>
           <p className="font-medium my-3">
             Están diseñadas para familias con ingresos mayores 4 <strong>SMMLV*</strong>,
@@ -151,7 +151,7 @@ export const initialOptions = [
               dinero y para vivienda usada su pago debe ser inmediato.
             </p>
             <p className="font-medium my-3">
-              La cuota inicial por ley varía de acuerdo con el tipo de inmueble, para
+              La cuota inicial por ley varia de acuerdo con el tipo de inmueble, para
               vivienda VIS es el 20% y para viviendas No VIS es el 30%. Tenga en cuenta
               que este porcentaje puede variar según las políticas de la entidad
               financiera o la constructora.
@@ -166,11 +166,10 @@ export const initialOptions = [
       content: () => (
         <div>
           <p className="font-medium my-3">
-            Crédito hipotecario Es un producto financiero diseñado especialmente para la
-            compra de vivienda. Su porcentaje máximo de financiación por ley varÍa según
-            el tipo de vivienda, para VIS es del 80% del valor total del inmueble y para
-            No VIS es del 70%, esta solicitud debe realizarla el comprador a su entidad de
-            confianza.
+            Es un producto financiero diseñado especialmente para la compra de vivienda.
+            Su porcentaje máximo de financiación por ley varia según el tipo de vivienda,
+            para VIS es del 80% del valor total del inmueble y para No VIS es del 70%,
+            esta solicitud debe realizarla el comprador a su entidad de confianza.
           </p>
         </div>
       ),
@@ -202,7 +201,7 @@ export const initialOptions = [
             pagará lo justo por la vivienda.
           </p>
           <p className="font-medium my-3">
-            El costo este proceso varía según la entidad financiera y lo debe asumir el
+            El costo este proceso varia según la entidad financiera y lo debe asumir el
             comprador.
           </p>
         </div>
@@ -220,7 +219,7 @@ export const initialOptions = [
             inconvenientes.
           </p>
           <p className="font-medium my-3">
-            El costo este proceso varía según la entidad financiera y lo debe asumir el
+            El costo este proceso varia según la entidad financiera y lo debe asumir el
             comprador.
           </p>
         </div>

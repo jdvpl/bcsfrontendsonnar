@@ -73,7 +73,7 @@ function Consultancy() {
         <div className="lg:w-[825px] mx-auto md:w-[528px] w-[full] xs:w-full">
           <Typography
             variant="h2"
-            className="lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center leading-5"
+            className="lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center leading-[22px]"
           >
             {titleSection[actualStep - 1]}
           </Typography>

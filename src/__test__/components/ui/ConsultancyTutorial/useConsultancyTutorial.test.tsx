@@ -68,7 +68,7 @@ describe('ConsultancyTutorial', () => {
       caseResult = result.current.renderBody();
     });
     expect(caseResult.props.children[0].props.children).toBe(
-      'Acompáñenos en un corto recorrido antes de iniciar la guía interactiva y conozca cómo navegar en ella.'
+      'Acompáñenos en un corto recorrido antes de iniciar la guía interactiva y conozca como navegar en ella.'
     );
   });
   test('should render text when call renderBody when case 2 ', async () => {

@@ -56,7 +56,7 @@ export default function useConsultancyTutorial({
               className="xl:leading-[34px] md:leading-[30px] xs:leading-[22px] text-center mx-auto text-white xs:text-[18px] md:text-[26px] xl:text-[30px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
             >
               Acompáñenos en un corto recorrido antes de iniciar la guía interactiva y
-              conozca cómo navegar en ella.
+              conozca como navegar en ella.
             </Typography>
             <div className="w-[full] flex flex-col items-center xl:mt-[48px] md:mt-[60px] sm:mt-[46px] xs:mt-[36px]">
               <Button
@@ -381,7 +381,7 @@ export default function useConsultancyTutorial({
                 onClick={onHandleModal}
                 isLanding="sm:w-[343px] xs:w-[284.17px] font-semibold"
               >
-                Iniciar asesoría
+                Iniciar guía interactiva
               </Button>
             </div>
           </>
