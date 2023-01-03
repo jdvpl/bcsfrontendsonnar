@@ -6,12 +6,12 @@ describe('<Questions/>', () => {
   it('expands and collapses the correct accordion item when clicked', () => {
     const { getByText, queryByText, getByTestId } = render(<Questions />);
 
-    const itemHeader1 = getByText('¿Cuales son los gastos adicionales al momento de comprar vivienda?')
+    const itemHeader1 = getByText('¿Cuáles son los gastos adicionales al momento de comprar vivienda?')
 
-    const itemHeader3 = getByText('¿Debo elegir la vivienda antes o despues de pedir el crédito hipotecario?')
+    const itemHeader3 = getByText('¿Debo elegir la vivienda antes o después de pedir el crédito hipotecario?')
 
-    const itemHeader4 = getByText('¿Cuales son los factores que analiza el banco para aprobar un crédito hipotecario?')
-    const itemHeader5 = getByText('¿Cuales son los factores que analiza el banco para aprobar un crédito hipotecario?');
+    const itemHeader4 = getByText('¿Cuáles son los factores que analiza el banco para aprobar un crédito hipotecario?')
+    const itemHeader5 = getByText('¿Cuáles son los factores que analiza el banco para aprobar un crédito hipotecario?');
     fireEvent.click(itemHeader1);
     expect(getByTestId('itemATest1')).toBeInTheDocument();
 
