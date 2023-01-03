@@ -11,7 +11,7 @@ import { dataUser } from '../__test__/__mocks__/StartProces';
 
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
-const KEYSARLAFT= process.env.KEYSARLAFT
+const KEYSARLAFT = process.env.KEYSARLAFT
 
 export const getQuestions = async (data: any) => {
   try {
@@ -178,7 +178,7 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
 export const getBasicData = async (data: iFormBasicData) => {
   try {
     const { data: response } = await axios.post(
-      'http://localhost:7000/api/users/basic-data',
+      'https://a92a-191-156-190-87.ngrok.io/api/users/basic-data',
       data,
     );
     return {
@@ -194,18 +194,18 @@ export const getBasicData = async (data: iFormBasicData) => {
 
 export const fetchSarlaft = async (body: any) => {
   try {
-    const bodyencript = await allResponse(body,KEYSARLAFT)
+    const bodyencript = await allResponse(body, KEYSARLAFT)
     const { data: response } = await clientAxiosBackend.post(
       '/sarlaft/sarlaft-questions',
-      {data:bodyencript}
+      { data: bodyencript }
     );
-    const data = await allResponseDecrypted(response.data,KEYSARLAFT)
+    const data = await allResponseDecrypted(response.data, KEYSARLAFT)
     return {
       response: {
         result: data,
       },
       error: false,
-    };    
+    };
   } catch (e: any) {
     return { error: true, response: e.response?.data?.message };
   }
