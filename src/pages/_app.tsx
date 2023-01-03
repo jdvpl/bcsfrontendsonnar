@@ -4,11 +4,22 @@ import '../styles/globals.css';
 import Script from 'next/script';
 import { AplicationProvider } from '../context/AplicationContext';
 import Mantenimiento from './mantenimiento';
+import TagManager from 'react-gtm-module';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const [initialRenderComplete, setInitialRenderComplete] = useState<boolean>(false);
+  const tagManagerArgs = {
+    gtmId: "GTM-TZ6CJXV",
+    dataLayer: {
+      userId: "001",
+      userProject: "first ID",
+    },
+  };
   useEffect(() => {
     setInitialRenderComplete(true);
+  }, []);
+  useEffect(() => {
+  TagManager.initialize(tagManagerArgs);
   }, []);
 
   if (!initialRenderComplete) return <></>;

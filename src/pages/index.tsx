@@ -31,17 +31,17 @@ export default function Home() {
     },
     [device]
   );
-  useEffect(
-    () => () => {
+  useEffect(() => {
       TagManager.dataLayer({
         dataLayer: {
-          Category: 'init_landing',
-          Action: 'landing',
-          Label: 'landing',
+          event:'Landing',
+          category: 'init_landing',
+          action: 'landing',
+          label: 'landing',
         },
-      });  
-    },
-    []
+      }); 
+
+  },[]
   );
 
   return (
