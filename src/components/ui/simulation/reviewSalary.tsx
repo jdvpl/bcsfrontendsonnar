@@ -73,7 +73,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       descriptionHtml={
         <p className="pl-[33px]">
           <p className="flex">
-            <p className="font-bold text-[14px] mr-1">MV: </p><span className="text-[14px]">Tasa nóminal mes
+            <p className="font-bold text-[14px] mr-1">MV: </p><span className="text-[14px]">Tasa nominal mes
             vencido</span>
           </p>
           <p className="flex">

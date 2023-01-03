@@ -7,10 +7,11 @@ import { headersBack } from './HeaderBack';
 import { headersKYC } from './HeadersKYC';
 import { iFormDataSimulation } from '../interfaces';
 import { iFormBasicData } from '../interfaces/basicDataProps';
+import { dataUser } from '../__test__/__mocks__/StartProces';
 
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
-const KEYCOMPOSERSARLAFT= process.env.KEYCOMPOSERSARLAFT
+const KEYSARLAFT= process.env.KEYSARLAFT
 
 export const getQuestions = async (data: any) => {
   try {
@@ -172,14 +173,15 @@ export const getBasicData = async (data: iFormBasicData) => {
 
 export const fetchSarlaft = async (body: any) => {
   try {
-    const bodyencript = allResponse(body,KEYCOMPOSERSARLAFT)
+    const bodyencript = await allResponse(body,KEYSARLAFT)
     const { data: response } = await clientAxiosBackend.post(
       '/sarlaft/sarlaft-questions',
-      bodyencript
+      {data:bodyencript}
     );
+    const data = await allResponseDecrypted(response.data,KEYSARLAFT)
     return {
       response: {
-        result: await allResponseDecrypted(response,KEYCOMPOSERSARLAFT),
+        result: data,
       },
       error: false,
     };    
