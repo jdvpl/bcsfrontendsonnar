@@ -44,9 +44,8 @@ export function CreditDataForm() {
   const renderPercentage = () => {
     if (Math.floor(percentageFinance * 100) > 100) {
       return `> 100`;
-    } 
-      return Math.floor(percentageFinance * 100);
-    
+    }
+    return Math.floor(percentageFinance * 100);
   };
   const onSubmit = () => {
     // eslint-disable-next-line no-console
@@ -206,6 +205,7 @@ export function CreditDataForm() {
         <Input
           type="text"
           classNameInput="text-complementario-60"
+          labelColor="text-primario-20"
           value="Pesos"
           inputMode="text"
           disabled
@@ -214,7 +214,7 @@ export function CreditDataForm() {
       </div>
 
       <button
-        className="flex items-center gap-3 w-full mt-[34px] cursor-pointer"
+        className="flex items-start gap-3 w-full mt-[32px] cursor-pointer"
         onClick={() => setInsuranceCheck(!insuranceCheck)}
       >
         <input

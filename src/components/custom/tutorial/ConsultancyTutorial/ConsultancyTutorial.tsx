@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import Close from '../../../svg/Close';
 import Typography from '../../../ui/Typography';
 import useConsultancyTutorial from './useConsultancyTutorial';

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { IconListAvailable } from '../../../types';
 import { HelperText } from './HelperText';
 
@@ -9,6 +9,7 @@ export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
    * @default ''
    */
   startIcon?: IconListAvailable;
+  labelColor?: string;
 
   /**
    * Icon on the right side of the text box
@@ -65,6 +66,7 @@ export interface InputProps extends React.ComponentPropsWithoutRef<'input'> {
 function Input({
   label,
   classNameInput,
+  labelColor = 'text-complementario-100',
   containerClassName,
   error = false,
   helperText,
@@ -78,14 +80,14 @@ function Input({
   const labelStyles = `
   peer-placeholder-shown:z-[-1] peer-focus:z-0 z-0
 
-  peer-placeholder-shown:text-complementario-90 absolute text-sm
+  peer-placeholder-shown:${labelColor} absolute text-sm
 
-  ${error ? 'text-rojo-100' : 'text-complementario-100 '}
+  ${error ? 'text-rojo-100' : `${labelColor}`}
 
   duration-300 transform -translate-y-4 scale-75 top-2
   origin-[0] bg-white px-2 peer-focus:px-2
 
-  ${error ? 'peer-focus:text-rojo-100 ' : 'peer-focus:text-complementario-100 '}
+  ${error ? 'peer-focus:text-rojo-100 ' : `peer-focus:${labelColor}`}
 
   peer-placeholder-shown:scale-100
   peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-6
@@ -98,9 +100,10 @@ function Input({
   h-12 bg-[transparent] block py-2 px-3 w-full text-sm leading-none
     ${error ? 'text-complementario-100' : 'text-primario-900'}
     bg-transparent border-[0.03125rem] rounded-md
-    ${error
-      ? 'border-rojo-100 focus:border-rojo-100'
-      : 'border-[#798c98a6] focus:border-primario-20'
+    ${
+      error
+        ? 'border-rojo-100 focus:border-rojo-100'
+        : 'border-[#798c98a6] focus:border-primario-20'
     }
     appearance-none  peer focus:border focus:outline-none`;
 
@@ -136,13 +139,11 @@ function Input({
         </label>
       </div>
       {helperText && error && <HelperText error={error} text={helperText} />}
-      {helperText && helperTextOption && !error && <HelperText error={false} text={helperText} />}
+      {helperText && helperTextOption && !error && (
+        <HelperText error={false} text={helperText} />
+      )}
     </div>
   );
 }
 
 export default Input;
-
-
-
-

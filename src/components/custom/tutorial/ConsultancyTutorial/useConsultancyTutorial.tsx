@@ -8,12 +8,14 @@ export default function useConsultancyTutorial({
   nextTutorialStepRef,
   prevTutorialStepRef,
 }: any) {
-  const [timer, setTimer] = useState(1);
+  const [timer, setTimer] = useState(10);
   const [isOpen, setIsOpen] = useState(true);
   const [actualTutorialStep, setActualTutorialStep] = useState(0);
   const intervalRef = useRef<number>();
 
   const onHandleModal = () => {
+    clearStylesPrevStep();
+    clearStylesNextStep();
     setIsOpen(!isOpen);
   };
   const clearStylesPrevStep = () => {
@@ -72,12 +74,10 @@ export default function useConsultancyTutorial({
                 Omitir
               </button>
 
-              {timer > 0 ? (
-                <div className="flex gap-[5px]">
-                  <Icons icon="bcs-clock" iconclassNames="text-white text-[14px]" />{' '}
-                  <span className="text-white text-[14px]"> {timer} Segundos</span>
-                </div>
-              ) : null}
+              <div className="flex gap-[5px]">
+                <Icons icon="bcs-clock" iconclassNames="text-white text-[14px]" />{' '}
+                <span className="text-white text-[14px]"> {timer} Segundos</span>
+              </div>
             </div>
           </>
         );
@@ -115,7 +115,7 @@ export default function useConsultancyTutorial({
               >
                 <p
                   data-testid="text-next-step"
-                  className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900"
+                  className="z-40 text-[18px]  text-center mx-auto font-semibold leading-[20px] text-primario-900"
                 >
                   Para salir de la guía interactiva haga clic aquí.
                 </p>
@@ -140,7 +140,7 @@ export default function useConsultancyTutorial({
               <div
                 className={`bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute  md:flex flex-col items-center gap-y-[28px] h-[171px]`}
               >
-                <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
+                <p className="z-40 text-[18px]  text-center mx-auto font-semibold leading-[20px] text-primario-900">
                   Para salir de la guía interactiva haga clic aquí.
                 </p>
                 <button
@@ -183,7 +183,7 @@ export default function useConsultancyTutorial({
               <div
                 className={`z-[100]  bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute flex flex-col items-center justify-center gap-y-[28px] h-[171px]`}
               >
-                <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
+                <p className="z-40 text-[18px]  text-center mx-auto font-semibold leading-[20px] text-primario-900">
                   Para continuar con la guía interactiva haga clic aquí.
                 </p>
                 <button
@@ -206,7 +206,7 @@ export default function useConsultancyTutorial({
               <div
                 className={`z-[100] sm:hidden bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute  md:flex flex-col items-center justify-center gap-y-[28px] h-[171px]`}
               >
-                <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
+                <p className="z-40 text-[18px] p-0  text-center mx-auto font-semibold leading-[20px] text-primario-900">
                   Para continuar con la guía interactiva haga clic aquí.
                 </p>
                 <button
@@ -245,9 +245,9 @@ export default function useConsultancyTutorial({
             <div className="relative xs:hidden md:flex md:order-2">
               <div className="bg-white w-[90px] h-[90px] absolute z-9 translate-y-[50%] left-[0px] rotate-45"></div>
               <div
-                className={`bg-white rounded-lg w-[253px] z-10 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center  gap-y-[28px] h-[171px]`}
+                className={`bg-white rounded-lg w-[253px] z-10 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center h-[171px]`}
               >
-                <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
+                <p className="z-40 text-[18px] w-[199px] mb-[20px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
                   Seleccione cada botón para conocer el detalle de su enunciado.
                 </p>
                 <button
@@ -263,9 +263,9 @@ export default function useConsultancyTutorial({
             <div className="relative md:hidden xs:flex- md:order-2 xs:order-1">
               <div className="bg-white w-[90px] h-[90px] absolute z-9 translate-y-[100%] translate-x-[-50%] left-[50%] rotate-45"></div>
               <div
-                className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center gap-y-[28px] h-[171px]`}
+                className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center h-[171px]`}
               >
-                <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
+                <p className="z-40 text-[18px] mb-[10px] w-[200px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
                   Seleccione cada botón para conocer el detalle de su enunciado.
                 </p>
                 <button
@@ -287,9 +287,9 @@ export default function useConsultancyTutorial({
                 <div className="bg-white w-[90px] h-[90px] absolute z-9 translate-y-[100%] translate-x-[-50%] left-[50%] rotate-45"></div>
 
                 <div
-                  className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center gap-y-[28px] h-[171px]`}
+                  className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center  h-[171px]`}
                 >
-                  <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
+                  <p className="z-40 text-[18px] w-[200px] mb-[40px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
                     Para cerrar la ventana, haga clic aquí.
                   </p>
                   <button
@@ -335,7 +335,7 @@ export default function useConsultancyTutorial({
                     <div
                       className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center gap-y-[28px] h-[171px]`}
                     >
-                      <p className="z-40 text-[18px] w-[208px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
+                      <p className="z-40 text-[18px] w-[200px] text-center mx-auto font-semibold leading-[20px] text-primario-900">
                         Para cerrar la ventana, haga clic aquí.
                       </p>
                       <button
