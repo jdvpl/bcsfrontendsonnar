@@ -7,7 +7,7 @@ const Questions: FC = () => {
   const [selected, setSelected] = useState<null | string>('');
   return (
     <section
-      className="mb-[15vh] lg:mb-[10vh] flex flex-col items-center"
+      className="mb-[15vh] lg:mb-[10vh] flex flex-col m-auto lg:w-[920px]"
       itemScope
       itemType="https://schema.org/FAQPage"
     >
@@ -24,7 +24,7 @@ const Questions: FC = () => {
           <ItemAccordion
             id="1"
             active={selected === '1'}
-            title="¿Cuales son los gastos adicionales al momento de comprar vivienda?"
+            title="¿Cuáles son los gastos adicionales al momento de comprar vivienda?"
             setSelected={(item: any) => selected === '1' ? setSelected(item + item) : setSelected(item)}
           >
             <div data-testid="itemATest1">
@@ -45,7 +45,7 @@ const Questions: FC = () => {
           <ItemAccordion
             id="3"
             active={selected === '3'}
-            title="¿Debo elegir la vivienda antes o despues de pedir el crédito hipotecario?"
+            title="¿Debo elegir la vivienda antes o después de pedir el crédito hipotecario?"
             setSelected={(item: any) => selected === '3' ? setSelected(item + item) : setSelected(item)}
           >
             <div data-testid="itemTest3">
@@ -66,7 +66,7 @@ const Questions: FC = () => {
           <ItemAccordion
             id="5"
             active={selected === '5'}
-            title="¿Cuales son los factores que analiza el banco para aprobar un crédito hipotecario?"
+            title="¿Cuáles son los factores que analiza el banco para aprobar un crédito hipotecario?"
             setSelected={(item: any) => selected === '5' ? setSelected(item + item) : setSelected(item)}
           >
             <div data-testid="itemATest5">

@@ -13,6 +13,7 @@ export interface ISelectiveCardProps extends IconsProps {
   hasTitle?: boolean;
   onclick: boolean;
   classNamesDescription?: string;
+  titleClasses?: string;
 }
 const SelectiveCard: FC<ISelectiveCardProps> = ({
   label,
@@ -25,6 +26,7 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
   hasTitle = true,
   onclick = true,
   classNamesDescription = 'md:w-[224px]',
+  titleClasses = '',
   ...props
 }) => {
   const router = useRouter();
@@ -48,7 +50,7 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
           {hasTitle && (
             <Typography
               variant="bodyM2"
-              className="text-[1rem] lg:mt-[14px] lg:mb-[18px] leading-[1.125rem] text-primario-900 m-0 tracking-normal font-semibold font-heading group-hover:text-white"
+              className={` text-[1rem] lg:mt-[14px] lg:mb-[18px] leading-[1.125rem] text-primario-900 m-0 tracking-normal font-semibold font-heading group-hover:text-white ${titleClasses}`}
             >
               {label}
             </Typography>

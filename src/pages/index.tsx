@@ -43,29 +43,29 @@ export default function Home() {
           {isBrowser ? <LogoBcs /> : null}
           {isTablet ? <LogoBcsWhite /> : null}
         </div>
-        <div className="xs:pt-3 sm:pt-3 md:flex md:justify-end md:mr-[7rem] lg:flex lg:justify-center lg:mt-[6rem] lg:pl-[20rem] xxl:mt-[9rem] md:mt-[4rem]">
+        <div className="xs:pt-3 sm:pt-3 md:flex md:justify-end md:mr-[7rem] lg:flex lg:justify-center lg:mt-[6rem] lg:pl-[23.5rem] md:pl-[20.5rem] xxl:mt-[9rem] md:mt-[4rem]">
           <div className="md:flex md:flex-col firtTitle">
             <p className="text-white font-normal xs:text-[24px] sm:text-[24px] leading-[30px] font-heading xs:ml-7 sm:ml-7 xs:mb-1 sm:mb-1 ">
               Bienvenido a
+              <figure itemProp="logo" className="mt-4 md:mt-1 m-0 p-0 w-full">
+                <LogoViviendaWhite />
+              </figure>
             </p>
-            <figure itemProp="logo" className="xs:ml-4 sm:ml-5 md:ml-4  m-0 p-0 ">
-              <LogoViviendaWhite />
-            </figure>
           </div>
         </div>
         {/* title */}
 
-        <div className="xs:flex sm:flex xs:justify-end sm:justify-end xs:pr-2 sm:pr-6 xs:pt-2 md:pr-[4.5rem] md:mt-5 xs:mt-5 lg:mt-[6px] sm:pt-5 lg:flex lg:justify-center lg:pl-[26rem] paragraphContent">
+        <div className="xs:flex sm:flex xs:justify-end sm:justify-end xs:pr-2 sm:pr-6 xs:pt-2 md:pr-[4.5rem] md:mt-1 xs:mt-5 lg:mt-[6px] sm:pt-5 lg:flex lg:justify-center lg:pl-[26rem] paragraphContent">
           <div className="flex flex-col">
-            <h4 className="text-white xs:w-[170px] sm:w-[170px] md:w-[265px] lg:w-[394px] font-semibold text-[20px] leading-6 wcontainerHeader">
+            <h4 className="text-white xs:w-[170px] sm:w-[170px] md:w-[265px] lg:w-[394px] font-semibold text-[24px] md:text-[20px] leading-6 wcontainerHeader">
               ¿Desea comprar vivienda?
             </h4>
-            <p className="text-white xs:w-[170px] sm:w-[170px] md:w-[320px] lg:w-[394px]  font-light text-[18px] leading-5 mt-3 wcontainerHeader">
+            <p className="text-white xs:w-[170px] sm:w-[170px] md:w-[233px] lg:w-[394px]  font-light leading-[26px] mf:leading-[20px] mt-3 wcontainerHeader text-[22px] md:text-[18px] md:mr-20 lg:mr-0">
               Aquí le ayudaremos a lograr sus sueños, sin hacer largas filas, ni papeleos extensos.
             </p>
           </div>
         </div>
-        <div className="container cntainerCards mx-auto mt-10 md:w-[90%] lg:w-[70%] xxl:w-[60%] md:grid md:grid-cols-3 md:mt-[5rem] gap-4 lg:mt-[5rem] xxl:mt-[12rem]">
+        <div className="container cntainerCards mx-auto mt-10  lg:w-[920px]  md:grid md:grid-cols-3 md:mt-[5rem] gap-4 lg:mt-[5rem] xxl:mt-[12rem] md:w-[580px]">
           <SelectiveCard
             icon="bcs-hand-simbol"
             size="text-[2.5rem]"
@@ -75,7 +75,8 @@ export default function Home() {
             description="Recorra la guía interactiva y conozca todo lo que debe saber para comprar un inmueble."
             pathTo={routes.consultancy}
             className="sm:mt-4 xs:mt-4"
-            classNamesDescription='md:w-[190px] lg:w-[250px]'
+            titleClasses="md:text-[14px] lg:text-[16px]"
+            classNamesDescription='md:w-[166px] lg:w-[250px] md:text-[12px] lg:text-[16px]'
             onclick
           />
           <SelectiveCard
@@ -87,7 +88,8 @@ export default function Home() {
             description="Con nuestro simulador podrá calcular el valor del crédito y sus cuotas."
             pathTo={routes.simulador}
             className="sm:mt-4 xs:mt-4"
-            classNamesDescription='md:w-[190px] lg:w-[250px]'
+            titleClasses="md:text-[14px] lg:text-[16px]"
+            classNamesDescription='md:w-[166px] lg:w-[250px] md:text-[12px] lg:text-[16px]'
             onclick
           />
           <SelectiveCard
@@ -96,81 +98,94 @@ export default function Home() {
             color="text-primario-300"
             data-testid="SoliciteTest"
             label="Solicite su crédito"
-            description="Obtenga la aprobación de su crédito en línea y compre la vivienda que desea."
+            description="Obtenga la aprobación de su crédito hipotecario y compre la vivienda que desea."
             pathTo={routes.onboarding}
-            classNamesDescription='md:w-[190px] lg:w-[250px]'
+            titleClasses="md:text-[14px] lg:text-[16px]"
+            classNamesDescription='md:w-[166px] lg:w-[250px] md:text-[12px] lg:text-[16px]'
             className="sm:mt-4 xs:mt-4"
             onclick
           />
         </div>
       </div>
-      <div className="xs:mt-[20rem] sm:mt-[20rem] md:mt-[87px] lg:mt-[42px] bg-gris-90 pb-10">
-        <Typography
-          variant="h2"
-          className="text-center sm:my-[3rem] xs:my-[3rem] lg:mt-[42px] xl-mt-[42px] md:pt-[80px] lg:pt-[80px] lg:mb-[64px] pt-20"
-        >
-          Requisitos
-        </Typography>
-        <div className="md:grid md:grid-cols-9 gap-3 md:w-10/12 lg:w-4/5 container place-items-center lg:mb-[40px]">
-          <SelectiveCard
-            description="Tener entre 18 y 69 años."
-            onclick={false}
-            hasTitle={false}
-            icon="bcs-document-18"
-            color="text-primario-300"
-            size="text-[1.6rem]"
-            className="col-span-4 sm:mb-3 xs:mb-3 md:mb-0"
-          />
-          <div className="md:h-[46px] bg-complementario-70 md:w-[2px] md:pb-4" />
+      <div className="xs:mt-[20rem] sm:mt-[20rem] md:mt-[87px] lg:mt-[42px] bg-gris-90 pb-10 ">
+        <div className="lg:w-[920px]  md:w-[580px]  m-auto">
+          <Typography
+            variant="h2"
+            className="text-center sm:my-[3rem] xs:my-[3rem] lg:mt-[42px] xl-mt-[42px] md:pt-[80px] lg:pt-[80px] lg:mb-[64px] pt-20"
+          >
+            Requisitos
+          </Typography>
 
-          <SelectiveCard
-            description="Pagar salud y pensión."
-            onclick={false}
-            hasTitle={false}
-            icon="bcs-hand-money"
-            color="text-primario-300"
-            size="text-[2rem]"
-            className="col-span-4 sm:mb-3 xs:mb-3 md:mb-0"
-          />
+          <div className="flex sm:flex-col md:flex-row lg:flex-row   lg:mb-[40px]  justify-between ">
+            <div className="lg:w-[437px] md:w-[281px]">
+              <SelectiveCard
+                description="Tener entre 18 y 69 años."
+                onclick={false}
+                hasTitle={false}
+                icon="bcs-document-18"
+                color="text-primario-300"
+                size="text-[1.6rem]"
+                className="sm:mb-3 xs:mb-3 md:mb-0 "
+              />
+            </div>
+            <div className="mt-[10px] md:h-[46px] bg-complementario-70 md:w-[2px] md:pb-4 " />
+            <div className="lg:w-[437px] md:w-[281px]">
+              <SelectiveCard
+                description="Pagar salud y pensión."
+                onclick={false}
+                hasTitle={false}
+                icon="bcs-hand-money"
+                color="text-primario-300"
+                size="text-[2rem]"
+                className=" sm:mb-3 xs:mb-3 md:mb-0 "
+              />
+            </div>
+          </div>
+          <div className="flex sm:flex-col md:flex-row lg:flex-row lg:mb-[40px]  justify-between ">
 
-          <SelectiveCard
-            description="Ser asalariado o pensionado."
-            onclick={false}
-            hasTitle={false}
-            icon="bcs-user-job"
-            color="text-primario-300"
-            size="text-[2rem]"
-            className="col-span-4 sm:mb-3 xs:mb-3 md:mb-0"
-          />
-          <div className="md:h-[46px] bg-complementario-70 md:w-[2px] md:pb-4 md:align-middle align-middle" />
-          <SelectiveCard
-            description="Tener el celular a la mano."
-            onclick={false}
-            hasTitle={false}
-            icon="bcs-mobile-grade"
-            color="text-primario-300"
-            size="text-[2rem]"
-            className="col-span-4 sm:mb-3 xs:mb-3 md:mb-0"
-          />
+            <div className="lg:w-[437px] md:w-[281px]">
+              <SelectiveCard
+                description="Ser asalariado o pensionado."
+                onclick={false}
+                hasTitle={false}
+                icon="bcs-user-job"
+                color="text-primario-300"
+                size="text-[2rem]"
+                className=" sm:mb-3 xs:mb-3 md:mb-0 "
+              />
+            </div>
+            <div className="md:h-[46px] mt-[10px] bg-complementario-70 md:w-[2px] md:pb-4 " />
+            <div className="lg:w-[437px] md:w-[281px]">
+              <SelectiveCard
+                description="Tener el celular a la mano."
+                onclick={false}
+                hasTitle={false}
+                icon="bcs-mobile-grade"
+                color="text-primario-300"
+                size="text-[2rem]"
+                className="sm:mb-3 xs:mb-3 md:mb-0 w-full mr-10"
+              />
+            </div>
+          </div>
         </div>
       </div>
       {/* steps  */}
       <div className="container bg-white relative">
         <Typography variant="h2" className="text-center my-20 lg:mt-[84px] lg:mb-[64px]">
           En 4 pasos solicite su{' '}
-          <span className="md:block">Crédito de Vivienda Digital</span>
+          <span className="md:block">Crédito Hipotecario</span>
         </Typography>
 
-        <div className="grid sm:grid-cols-2 xs:grid-cols-2 md:grid-cols-4 gap-1 justify-items-center ">
+        <div className="grid sm:grid-cols-2 xs:grid-cols-2 md:grid-cols-4 gap-3 justify-items-center  m-auto lg:w-[920px] md:w-[580px] ">
 
-          <div className='bg-gris-90 rounded-md sm:w-[186px] w-full md:w-[149px] lg:w-[250px]'>
+          <div className='bg-gris-90 rounded-md sm:w-[186px] md:w-[136px] lg:w-[222px] lg:h-[220px] '>
             <div className=" sm:w-[88px] xs:w-[88px] sm:h-[96px] xs:h-[96px] m-auto flex justify-center  px-5 pt-5 ">
               <Icons icon="bcs-push" size="text-[2.5rem]" color="text-primario-300" />
             </div>
 
             <Typography
               variant="bodyS3"
-              className=" text-complementario-100 text-center flex justify-center m-auto flex-col sm:w-[148px] xs:w-[148px] lg:w-[155px]"
+              className=" text-complementario-100 text-center flex justify-center m-auto flex-col sm:w-[148px] xs:w-[148px] lg:w-[155px] md:text-[14px] lg:text-[16px]"
             >
               Ingrese a <span className="xs:block sm:block">“Solicitar Crédito”</span>
             </Typography>
@@ -186,7 +201,7 @@ export default function Home() {
             </div>
           </div>
           {/* second card */}
-          <div className='bg-gris-90 rounded-md w-full md:w-[149px] lg:w-[250px]'>
+          <div className='bg-gris-90 rounded-md w-full md:w-[136px] lg:w-[222px]'>
             <div className="sm:w-[88px] xs:w-[88px] sm:h-[96px] xs:h-[96px] m-auto flex justify-center rounded-md p-5">
               <Icons
                 icon="bcs-women-check"
@@ -197,7 +212,7 @@ export default function Home() {
 
             <Typography
               variant="bodyS3"
-              className=" text-complementario-100 text-center flex justify-center m-auto flex-col sm:w-[92px] xs:w-[92px]"
+              className=" text-complementario-100 text-center flex justify-center m-auto flex-col sm:w-[92px] xs:w-[92px] md:text-[14px] lg:text-[16px]"
             >
               Valide <span className="xs:block sm:block">su identidad</span>
             </Typography>
@@ -213,7 +228,7 @@ export default function Home() {
             </div>
           </div>
           {/* card 3 */}
-          <div className='bg-gris-90 rounded-md w-full md:w-[149px] lg:w-[250px]'>
+          <div className='bg-gris-90 rounded-md w-full md:w-[136px] lg:w-[222px]'>
             <div className="sm:w-[88px] xs:w-[88px] sm:h-[96px] xs:h-[96px] m-auto flex justify-center rounded-md p-5">
               <Icons
                 icon="bcs-hand-mobile"
@@ -224,7 +239,7 @@ export default function Home() {
 
             <Typography
               variant="bodyS3"
-              className=" text-complementario-100 text-center flex justify-center m-auto flex-col sm:w-[92px] xs:w-[92px]"
+              className=" text-complementario-100 text-center flex justify-center m-auto flex-col sm:w-[92px] xs:w-[92px] md:text-[14px] lg:text-[16px]"
             >
               Diligencie <span className="block">el formulario</span>
             </Typography>
@@ -239,7 +254,7 @@ export default function Home() {
               {/* number */}
             </div>
           </div>
-          <div className='bg-gris-90 rounded-md  w-full md:w-[149px] lg:w-[250px]'>
+          <div className='bg-gris-90 rounded-md  w-full md:w-[136px] lg:w-[222px]'>
             <div className="sm:w-[88px] xs:w-[88px] sm:h-[96px] xs:h-[96px] m-auto flex justify-center rounded-md p-5">
               <Icons
                 icon="bcs-mobile-check"
@@ -250,7 +265,7 @@ export default function Home() {
 
             <Typography
               variant="bodyS3"
-              className="text-complementario-100 text-center flex justify-center flex-col"
+              className="text-complementario-100 text-center flex justify-center flex-col md:text-[14px] lg:text-[16px]"
             >
               Obtenga <span className="block">la aprobación</span>
             </Typography>
@@ -283,13 +298,11 @@ export default function Home() {
           </div>
 
           <div className="listInitial lg:w-[378px] relative block mx-5 top-[-140px] md:top-0 ">
-            <ul>
-              <li className="text-[20px] font-light leading-[22px] mt-[64px] text-complementario-100">
+            <ul className=''>
+              <li className="text-[20px] font-light leading-[22px] lg:mt-[111px] md:mt-20 text-complementario-100">
                 Aprobación inmediata en línea
               </li>
-              <li className="text-[20px] font-light leading-[22px] mt-8 text-complementario-100">
-                Extensión del subsidio FRECH durante toda la vigencia del crédito
-              </li>
+
               <li className="text-[20px] font-light leading-[22px] mt-8 text-complementario-100">
                 Sin documentación física
               </li>
@@ -305,7 +318,7 @@ export default function Home() {
         </div>
       </div>
       {/* questions */}
-      <div className="mx-3 md:mx-[92px] lg:mt-[10px]">
+      <div className=" md:mx-[92px] lg:mt-[10px] ">
         <Questions />
       </div>
     </div>
