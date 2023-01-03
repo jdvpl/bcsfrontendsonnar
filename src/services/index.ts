@@ -64,7 +64,7 @@ export const getQuestions = async (data: any) => {
 export const sendQuestions = async (data: any) => {
   try {
     const { data: response } = await axios.post(
-      'https://51e3-179-1-129-55.ngrok.io/api/users/answer',
+      'https://a92a-191-156-190-87.ngrok.io/api/users/answer',
       data,
       headersKYC
     );
