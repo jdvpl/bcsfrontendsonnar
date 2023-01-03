@@ -11,12 +11,8 @@ import Layout from '../../components/layouts/layout';
 import AnimationComponent from '../../components/commons/Animation';
 import NavTitle from '../../components/commons/NavTitle';
 import { SesionStorageKeys } from '../../session';
-
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
 import { onSubmitResponse } from '../../utils/functions';
-
-
-
 interface Quest {
   items: Question[];
 }
@@ -28,14 +24,10 @@ const Index: React.FC = () => {
   const [dataValid, setDataValid] = useState(false);
   const [progress, setprogress] = useState('');
   const [loading, setIsLoading] = useState(false);
-
   const data: Quest = dataQuestions;
-
   useEffect(() => {
     setprogress('25%');
   }, []);
-
-
   const loginAccount = (dataSend: any) => {
     // console.log({ dataSend })
   }
