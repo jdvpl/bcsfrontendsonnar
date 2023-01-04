@@ -1265,3 +1265,9 @@ input[type='checkbox']:checked {
     margin-top: 7rem;
   }
 }
+
+
+.loginPass .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root{
+  width: 80px;
+    background: white;
+}

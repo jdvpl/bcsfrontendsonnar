@@ -90,9 +90,8 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
       <form
         data-testid="verificationForm"
         onSubmit={handleSubmit(onSubmit)}
-        className="w-full bottom-0 mt-1"
+        className="w-full bottom-0 mt-1 loginPass"
       >
-
         <p className="text-center w-full mx-auto text-base leading-5 mt-6 text-primario-900 font-light">
           Por seguridad validaremos su identidad; ingrese la contraseña que
           <span className="md:block">usa para accede a sus canales digitales</span>
