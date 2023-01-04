@@ -20,6 +20,7 @@ describe('Terminos', () => {
     const togglePasword = getByTestId('togglePasword')
     fireEvent.input(inputPass, { target: { value: 'Testa365' } })
     fireEvent.click(togglePasword)
+    fireEvent.mouseDown(togglePasword)
     fireEvent.click(btnSubmit)
   });
 

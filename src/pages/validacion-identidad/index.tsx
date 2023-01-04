@@ -12,7 +12,7 @@ import AnimationComponent from '../../components/commons/Animation';
 import NavTitle from '../../components/commons/NavTitle';
 import { SesionStorageKeys } from '../../session';
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
-import { onSubmitResponse } from '../../utils/functions';
+import { onSubmitResponse } from '../../func/functions';
 interface Quest {
   items: Question[];
 }

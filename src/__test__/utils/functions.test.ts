@@ -1,5 +1,5 @@
 import { routes } from "../../routes";
-import { onSubmitResponse } from "../../utils/functions";
+import { onSubmitResponse } from "../../func/functions";
 
 const data = {
   document_type: 'CC',
