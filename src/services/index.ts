@@ -190,7 +190,7 @@ export const fetchSarlaft = async (body: any) => {
   }
 
 };
-export const sendAuthorization = async (body: any) => {
+export const riskBoxes = async (body: any) => {
   try {
     const { data: response } = await axios.post(
       'https://63a9fbb57d7edb3ae61dd65b.mockapi.io/v1/send-authorization',
@@ -207,3 +207,5 @@ export const sendAuthorization = async (body: any) => {
   }
 
 };
+
+

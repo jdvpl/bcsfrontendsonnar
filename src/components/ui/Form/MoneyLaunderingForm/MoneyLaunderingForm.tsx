@@ -14,13 +14,13 @@ const MoneyLaunderingOptions = [
   },
   {
     name: 'isPep',
-    label: '¿Es una persona politicamente expuesta?',
+    label: '¿Es una persona políticamente expuesta?',
     toolTip:
       'Políticamente expuesto es aquella persona que tiene o tuvo una función pública relevante.',
   },
   {
     name: 'legalRepresentation',
-    label: '¿Es funcionario con representación Legal en el Banco Caja Socia?',
+    label: '¿Es funcionario o familiar de un administrador o representante legal en el Banco Caja Social?',
     toolTip: '',
   },
 ];
