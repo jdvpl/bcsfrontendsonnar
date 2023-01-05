@@ -1,0 +1,2189 @@
+[
+    {
+        "idOffice": "0528",
+        "nameOffice": "Acacias",
+        "Zone": "Zona Andina",
+        "city": "ACACIAS",
+        "address": "Calle 15 # 17-31  Centro",
+        "idCity": "50006",
+        "parentid": "50000"
+    },
+    {
+        "idOffice": "0241",
+        "nameOffice": "Apartado",
+        "Zone": "Zona Antioquia Norte",
+        "city": "APARTADO",
+        "address": "Calle 99C  # 100-82 LC 109-111 Centro Comercial Plaza del Rio - Apartadó (Ant.)",
+        "idCity": "05045",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0431",
+        "nameOffice": "Arauca",
+        "Zone": "Zona Andina",
+        "city": "ARAUCA",
+        "address": "Calle 20 # 20- 43 Centro ",
+        "idCity": "81001",
+        "parentid": "81000"
+    },
+    {
+        "idOffice": "0091",
+        "nameOffice": "Armenia Plaza",
+        "Zone": "Zona Eje Cafetero",
+        "city": "ARMENIA",
+        "address": "Carrera 14 # 20 - 12 Plaza de Bolivar ",
+        "idCity": "63001",
+        "parentid": "63000"
+    },
+    {
+        "idOffice": "0426",
+        "nameOffice": "Calle 21 Armenia",
+        "Zone": "Zona Eje Cafetero",
+        "city": "ARMENIA",
+        "address": "Calle 21 # 16- 04 ",
+        "idCity": "63001",
+        "parentid": "63000"
+    },
+    {
+        "idOffice": "0504",
+        "nameOffice": "Barrancabermeja",
+        "Zone": "Zona Oriente",
+        "city": "BARRANCABERMEJA",
+        "address": "Calle 49 # 11- 01 ",
+        "idCity": "68081",
+        "parentid": "68000"
+    },
+    {
+        "idOffice": "0632",
+        "nameOffice": "Alto Prado",
+        "Zone": "Zona Costa",
+        "city": "BARRANQUILLA",
+        "address": "Carrera 53 No. 74 - 170",
+        "idCity": "08001",
+        "parentid": "08000"
+    },
+    {
+        "idOffice": "0107",
+        "nameOffice": "Barranquilla",
+        "Zone": "Zona Costa",
+        "city": "BARRANQUILLA",
+        "address": "Calle 39 43 84 ",
+        "idCity": "08001",
+        "parentid": "08000"
+    },
+    {
+        "idOffice": "0417",
+        "nameOffice": "Boulevard 58",
+        "Zone": "Zona Costa",
+        "city": "BARRANQUILLA",
+        "address": "Carrera58 # 75-12",
+        "idCity": "08001",
+        "parentid": "08000"
+    },
+    {
+        "idOffice": "0415",
+        "nameOffice": "Calle 72",
+        "Zone": "Zona Costa",
+        "city": "BARRANQUILLA",
+        "address": "Carrera 43 71 63",
+        "idCity": "08001",
+        "parentid": "08000"
+    },
+    {
+        "idOffice": "0407",
+        "nameOffice": "Calle 84",
+        "Zone": "Zona Costa",
+        "city": "BARRANQUILLA",
+        "address": "Calle 84 Carrera 50 Esquina",
+        "idCity": "08001",
+        "parentid": "08000"
+    },
+    {
+        "idOffice": "0259",
+        "nameOffice": "Metrocentro",
+        "Zone": "Zona Costa",
+        "city": "BARRANQUILLA",
+        "address": "Calle 45 # 1- 84 Local 1- 02 CC Metrocentro ",
+        "idCity": "08001",
+        "parentid": "08000"
+    },
+    {
+        "idOffice": "0449",
+        "nameOffice": "Portal del Prado",
+        "Zone": "Zona Costa",
+        "city": "BARRANQUILLA",
+        "address": "Calle 53 No 46 – 192 LOCAL103 – 105 C.CIAL PORTAL DEL PRADO",
+        "idCity": "08001",
+        "parentid": "08000"
+    },
+    {
+        "idOffice": "0162",
+        "nameOffice": "Bello",
+        "Zone": "Zona Antioquia Norte",
+        "city": "BELLO",
+        "address": "Carrera 49 49 03",
+        "idCity": "05088",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0464",
+        "nameOffice": "Puerta del Norte",
+        "Zone": "Zona Antioquia Norte",
+        "city": "BELLO",
+        "address": "Diagonal 55 No. 34-167 locales 2060 – 2061 Centro  Comercial PUERTA DEL NORTE, Bello Antioquia",
+        "idCity": "05088",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0634",
+        "nameOffice": "Alcazares",
+        "Zone": "Zona Bogotá Chapinero",
+        "city": "BOGOTA",
+        "address": "Calle 68 # 24- 04",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0039",
+        "nameOffice": "Avenida Chile",
+        "Zone": "Zona Bogotá Chapinero",
+        "city": "BOGOTA",
+        "address": "Calle 72 # 10- 83",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0149",
+        "nameOffice": "Calle 100",
+        "Zone": "Zona Bogotá Chapinero",
+        "city": "BOGOTA",
+        "address": "Calle 100 # 8A- 55 Local 154 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0007",
+        "nameOffice": "Castellana",
+        "Zone": "Zona Bogotá Chapinero",
+        "city": "BOGOTA",
+        "address": "Trasversal 55 # 98 A- 66 Local 110-111",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0135",
+        "nameOffice": "Centro Andino",
+        "Zone": "Zona Bogotá Chapinero",
+        "city": "BOGOTA",
+        "address": "Carrera 11 # 82 - 40 Local 140 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0104",
+        "nameOffice": "Centro Comercial Galerias",
+        "Zone": "Zona Bogotá Chapinero",
+        "city": "BOGOTA",
+        "address": "Centro Comercial Galerías (Piso 3 - Local 57 y 58).",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0002",
+        "nameOffice": "Chapinero",
+        "Zone": "Zona Bogotá Chapinero",
+        "city": "BOGOTA",
+        "address": "Calle 59 No. 10 -68",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0631",
+        "nameOffice": "Chico",
+        "Zone": "Zona Bogotá Chapinero",
+        "city": "BOGOTA",
+        "address": "Carrera 15 # 90 - 20 Local 108 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0106",
+        "nameOffice": "Marly",
+        "Zone": "Zona Bogotá Chapinero",
+        "city": "BOGOTA",
+        "address": "Carrera 13 # 53- 31 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0147",
+        "nameOffice": "Metropolis",
+        "Zone": "Zona Bogotá Chapinero",
+        "city": "BOGOTA",
+        "address": "Avenida Carrera 68 75A 50 Local 101 y 102  Centro Comercial Metropolis",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0166",
+        "nameOffice": "Nogal",
+        "Zone": "Zona Bogotá Chapinero",
+        "city": "BOGOTA",
+        "address": "Carrera 7 # 77- 83 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0105",
+        "nameOffice": "Parque Nacional",
+        "Zone": "Zona Bogotá Chapinero",
+        "city": "BOGOTA",
+        "address": "Carrera 13 # 38- 61 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0006",
+        "nameOffice": "Siete de Agosto",
+        "Zone": "Zona Bogotá Chapinero",
+        "city": "BOGOTA",
+        "address": "Carrera 24 # 63 D- 52 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0420",
+        "nameOffice": "Titan",
+        "Zone": "Zona Bogotá Chapinero",
+        "city": "BOGOTA",
+        "address": "Avenida Carrera 72 # 80- 94 Local 109 C.C Titan Plaza ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0108",
+        "nameOffice": "Unicentro",
+        "Zone": "Zona Bogotá Chapinero",
+        "city": "BOGOTA",
+        "address": "Carrera 15 # 123- 30 Local 1-167",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0641",
+        "nameOffice": "Alamos",
+        "Zone": "Zona Bogotá Noroccidental",
+        "city": "BOGOTA",
+        "address": "Transversal 93 64 - 60",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0272",
+        "nameOffice": "Avenida Ciudad de Cali",
+        "Zone": "Zona Bogotá Noroccidental",
+        "city": "BOGOTA",
+        "address": "Avenida Calle 72 # 86- 60 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0163",
+        "nameOffice": "Calle 80",
+        "Zone": "Zona Bogotá Noroccidental",
+        "city": "BOGOTA",
+        "address": "Avenida Calle 80 # 73A- 25 Local 1 CC San Francisco",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0638",
+        "nameOffice": "Centro Suba",
+        "Zone": "Zona Bogotá Noroccidental",
+        "city": "BOGOTA",
+        "address": "Avenida 140# 91- 19 Local 4 101",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0470",
+        "nameOffice": "Diverplaza",
+        "Zone": "Zona Bogotá Noroccidental",
+        "city": "BOGOTA",
+        "address": "Calle 71 B 100 - 11 LC 203 Alamos Bogotá  Diverautos",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0012",
+        "nameOffice": "Estrada",
+        "Zone": "Zona Bogotá Noroccidental",
+        "city": "BOGOTA",
+        "address": "Avenida Calle 72 68g - 80",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0506",
+        "nameOffice": "La Gaitana",
+        "Zone": "Zona Bogotá Noroccidental",
+        "city": "BOGOTA",
+        "address": "Calle 139 # 111B- 12",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0119",
+        "nameOffice": "Las Ferias",
+        "Zone": "Zona Bogotá Noroccidental",
+        "city": "BOGOTA",
+        "address": "Avenida Calle 72 # 70- 69 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0053",
+        "nameOffice": "Plaza Imperial",
+        "Zone": "Zona Bogotá Noroccidental",
+        "city": "BOGOTA",
+        "address": "Calle 146A # 106- 20 Local 2- 128 CC Plaza imperial ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0642",
+        "nameOffice": "Portal de La 80",
+        "Zone": "Zona Bogotá Noroccidental",
+        "city": "BOGOTA",
+        "address": "Avenida Calle 80 # 100- 52 Local 14 al 16 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0118",
+        "nameOffice": "Puente Largo",
+        "Zone": "Zona Bogotá Noroccidental",
+        "city": "BOGOTA",
+        "address": "Calle 106 # 43a- 44",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0132",
+        "nameOffice": "Quirigua",
+        "Zone": "Zona Bogotá Noroccidental",
+        "city": "BOGOTA",
+        "address": "Transversal 94  # 80 C- 51",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0044",
+        "nameOffice": "Rincon de Suba",
+        "Zone": "Zona Bogotá Noroccidental",
+        "city": "BOGOTA",
+        "address": "Transversal 91  130 39 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0027",
+        "nameOffice": "Santa Helenita",
+        "Zone": "Zona Bogotá Noroccidental",
+        "city": "BOGOTA",
+        "address": "Avenida Calle 72 # 80- 46",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0136",
+        "nameOffice": "Tabora",
+        "Zone": "Zona Bogotá Noroccidental",
+        "city": "BOGOTA",
+        "address": "Avenida Calle 72 # 76- 08 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0148",
+        "nameOffice": "Cedritos",
+        "Zone": "Zona Bogotá Nororiental",
+        "city": "BOGOTA",
+        "address": "Avenida 19 # 148 - 60 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0114",
+        "nameOffice": "Centro Comercial Niza",
+        "Zone": "Zona Bogotá Nororiental",
+        "city": "BOGOTA",
+        "address": "Carrera 70 D # 127 - 70 Local 73 int 8 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0167",
+        "nameOffice": "Colina Campestre",
+        "Zone": "Zona Bogotá Nororiental",
+        "city": "BOGOTA",
+        "address": "Avenida Calle 138 # 58- 01 Locales 9 al 15 C.C Portoalegre",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0122",
+        "nameOffice": "Contador",
+        "Zone": "Zona Bogotá Nororiental",
+        "city": "BOGOTA",
+        "address": "Avenida 19 # 137 - 02",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0398",
+        "nameOffice": "Parque la Colina",
+        "Zone": "Zona Bogotá Nororiental",
+        "city": "BOGOTA",
+        "address": "Avenida Boyacá con Calle 146-  local LC306 - Bogotá \n Centro comercial Parque La Colina",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0151",
+        "nameOffice": "Pepe Sierra",
+        "Zone": "Zona Bogotá Nororiental",
+        "city": "BOGOTA",
+        "address": "Avenida 19 # 116- 03 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0045",
+        "nameOffice": "Prado Veraniego",
+        "Zone": "Zona Bogotá Nororiental",
+        "city": "BOGOTA",
+        "address": "Autopista Norte # 128B- 41 Local 2C.Cial La Rosseta",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0043",
+        "nameOffice": "San Cristobal",
+        "Zone": "Zona Bogotá Nororiental",
+        "city": "BOGOTA",
+        "address": "Calle 162# 7f- 69",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0181",
+        "nameOffice": "Santa Barbara",
+        "Zone": "Zona Bogotá Nororiental",
+        "city": "BOGOTA",
+        "address": "Carrera 15 # 118- 93",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0441",
+        "nameOffice": "Santafé",
+        "Zone": "Zona Bogotá Nororiental",
+        "city": "BOGOTA",
+        "address": "Autopista Norte Calle 185 CC Santafé Local - 2-83 Plaza Venezuela ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0640",
+        "nameOffice": "Teleport",
+        "Zone": "Zona Bogotá Nororiental",
+        "city": "BOGOTA",
+        "address": "Calle 113 # 7- 21 Local 102 Edificio Teleport",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0232",
+        "nameOffice": "Toberin",
+        "Zone": "Zona Bogotá Nororiental",
+        "city": "BOGOTA",
+        "address": "Calle 166 # 22- 78 Local 1 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0035",
+        "nameOffice": "Casablanca",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Carrera 80 No 51 a 15 Sur ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0025",
+        "nameOffice": "Ciudad Montes",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Calle 8 SUR 35 a 68",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0193",
+        "nameOffice": "Corabastos",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Avenida Carrera 80 # 2- 51 Local 102 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0471",
+        "nameOffice": "El Ensueño",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Carrera 51 #59c Sur-93, Bogotá Loc 143\nCentro Comercial Gran Plaza El Ensueño",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0446",
+        "nameOffice": "La Felicidad",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Centro Comercial Multiplaza la Felicidad Av Boyacá Calle 13",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0472",
+        "nameOffice": "Paseo Villa del Rio",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Diagonal 57 C Sur 62 60 Local 213 Bogotá Centro comercial Paseo Villa del Rio",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0142",
+        "nameOffice": "Pastranita",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Carrera 80 N 48ª23 SUR ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0419",
+        "nameOffice": "Plaza de las Américas",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Carrera 71D 6 94 LC 1133",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0150",
+        "nameOffice": "Plazoleta Plaza de las Américas ",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Carrera 71D 6 94 LC 1114-1116",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0029",
+        "nameOffice": "Primavera",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Avenida Calle  6 No 40 91",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0137",
+        "nameOffice": "Santa Isabel",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Calle 1 F No. 26 A - 10",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0024",
+        "nameOffice": "Tejar",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Avenida 1 de Mayo 51D -15",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0143",
+        "nameOffice": "Trinidad Galán",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Carrera 56 # 4B- 26",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0021",
+        "nameOffice": "Trinidad Galan Calle 3a",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Carrera 56 # 2 B- 68 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0019",
+        "nameOffice": "Venecia",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Diagonal 45B SUR 53 47 (Nueva)",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0635",
+        "nameOffice": "Venecia Av. 68",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Diagonal 49 SUR # 53-07",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0113",
+        "nameOffice": "Zona Industrial",
+        "Zone": "Zona Bogotá Eje Industrial",
+        "city": "BOGOTA",
+        "address": "Avenida Calle 13 # 62-  64",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0017",
+        "nameOffice": "Avenida 26",
+        "Zone": "Zona Bogotá Occidental",
+        "city": "BOGOTA",
+        "address": "Calle 26 No  27  06",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0157",
+        "nameOffice": "Avenida El Dorado",
+        "Zone": "Zona Bogotá Occidental",
+        "city": "BOGOTA",
+        "address": "Avenida El Dorado 69 A 51",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0702",
+        "nameOffice": "Centro Empresarial Calle 26   ",
+        "Zone": "Zona Bogotá Occidental",
+        "city": "BOGOTA",
+        "address": "Avenida Calle 26 59 15 Local 6 Y 7",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0477",
+        "nameOffice": "El Edén",
+        "Zone": "Zona Bogotá Occidental",
+        "city": "BOGOTA",
+        "address": "Avenida Carrera 72 No. 12B -48 – El Edén Centro Comercial – Bogotá – Local 2-087a ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0145-2",
+        "nameOffice": "Extensión San Martín",
+        "Zone": "Zona Bogotá Occidental",
+        "city": "BOGOTA",
+        "address": "Carrera 7 # 26 - 16\\20 Local 01",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0191",
+        "nameOffice": "Hayuelos",
+        "Zone": "Zona Bogotá Occidental",
+        "city": "BOGOTA",
+        "address": "Calle 20 No. 82-52 Local 2-111/2-112",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0003",
+        "nameOffice": "Las Aguas",
+        "Zone": "Zona Bogotá Occidental",
+        "city": "BOGOTA",
+        "address": "Avenida Calle 19 # 3- 58",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0127",
+        "nameOffice": "Modelia",
+        "Zone": "Zona Bogotá Occidental",
+        "city": "BOGOTA",
+        "address": "Carrera 75 No. 23f 47",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0125",
+        "nameOffice": "Pablo VI",
+        "Zone": "Zona Bogotá Occidental",
+        "city": "BOGOTA",
+        "address": "Avenida Calle 53 No. 52 Bis 16",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0112",
+        "nameOffice": "Park Way",
+        "Zone": "Zona Bogotá Occidental",
+        "city": "BOGOTA",
+        "address": "Avenida 22 40 - 74",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0036",
+        "nameOffice": "Quinta Paredes",
+        "Zone": "Zona Bogotá Occidental",
+        "city": "BOGOTA",
+        "address": "Calle 22B 40B - 10 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0018",
+        "nameOffice": "Ricaurte",
+        "Zone": "Zona Bogotá Occidental",
+        "city": "BOGOTA",
+        "address": "Carrera 27 # 12B- 43 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0270",
+        "nameOffice": "Salitre",
+        "Zone": "Zona Bogotá Occidental",
+        "city": "BOGOTA",
+        "address": "Carrera 68B 24 39 Local 101 Centro Comercial Salitre Plaza",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0145",
+        "nameOffice": "San Martín",
+        "Zone": "Zona Bogotá Occidental",
+        "city": "BOGOTA",
+        "address": "Carrera 7 # 31A- 10 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0146",
+        "nameOffice": "Terminal de Transporte",
+        "Zone": "Zona Bogotá Occidental",
+        "city": "BOGOTA",
+        "address": "Calle 33B Numero 69 -59 Modulo 3 Local 244",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0033",
+        "nameOffice": "Bosa",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "BOGOTA",
+        "address": "Calle 65 Sur # 78 L- 53 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0138",
+        "nameOffice": "Bosa Centro",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "BOGOTA",
+        "address": "Calle 65 Sur # 80- 04",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0033-2",
+        "nameOffice": "Bosa La Grande (Extensión Bosa)",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "BOGOTA",
+        "address": "Calle 65 Sur # 79 C- 05 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0444",
+        "nameOffice": "Bosa Porvenir",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "BOGOTA",
+        "address": "Calle 54 F Sur # 94- 18 Local 160 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0009",
+        "nameOffice": "Kennedy",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "BOGOTA",
+        "address": "Carrera 77 No 36 -05 sur",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0121",
+        "nameOffice": "Kennedy Plaza",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "BOGOTA",
+        "address": "Calle 35 sur #78 a 08",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0637",
+        "nameOffice": "Parque Fontibón",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "BOGOTA",
+        "address": "Carrera 100 # 18- 12 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0049",
+        "nameOffice": "Patio Bonito",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "BOGOTA",
+        "address": "Avenida Ciudad de Cali No 42 B 51 Sur Local 102 Centro comercial Milenio Plaza",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0468",
+        "nameOffice": "Tintal",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "BOGOTA",
+        "address": "Avenida Carrera 86 No. 6 – 37 Piso 1. Locales 163 y 164   Centro Comercial Tintal Plaza.",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0054",
+        "nameOffice": "Altavista",
+        "Zone": "Zona Bogotá Suroriental",
+        "city": "BOGOTA",
+        "address": "Carrera 1 65D 58 Sur local 1-91 centro comercial Altavista",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0028",
+        "nameOffice": "Avenida Caracas",
+        "Zone": "Zona Bogotá Suroriental",
+        "city": "BOGOTA",
+        "address": "Calle 47 sur 18 13",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0625",
+        "nameOffice": "Carrera Decima",
+        "Zone": "Zona Bogotá Suroriental",
+        "city": "BOGOTA",
+        "address": "Carrera 10 # 17- 96 ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0013",
+        "nameOffice": "Centro Mayor",
+        "Zone": "Zona Bogotá Suroriental",
+        "city": "BOGOTA",
+        "address": "Autopista Sur N° 38A -20 sur locales 2-035y 2-036  CC. Centro Mayor",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0271",
+        "nameOffice": "Ciudad Tunal",
+        "Zone": "Zona Bogotá Suroriental",
+        "city": "BOGOTA",
+        "address": "Avenida Carrera 24 48 93 Sur Entrada 9 Local S1 - 56 Centro Comercial Ciudad Tunal ",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0140",
+        "nameOffice": "Ingles",
+        "Zone": "Zona Bogotá Suroriental",
+        "city": "BOGOTA",
+        "address": "Carrera 27   41 14 sur",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0015",
+        "nameOffice": "La Victoria",
+        "Zone": "Zona Bogotá Suroriental",
+        "city": "BOGOTA",
+        "address": "Carrera 4 este 39 a 40 sur",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0011",
+        "nameOffice": "Plaza de Bolivar",
+        "Zone": "Zona Bogotá Suroriental",
+        "city": "BOGOTA",
+        "address": "Carrera 7 # 12- 05",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0026",
+        "nameOffice": "Quiroga",
+        "Zone": "Zona Bogotá Suroriental",
+        "city": "BOGOTA",
+        "address": "Calle 31 B Sur N. 23 C 26",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0020",
+        "nameOffice": "Restrepo",
+        "Zone": "Zona Bogotá Suroriental",
+        "city": "BOGOTA",
+        "address": "Carrera 17 16 02 Sur",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0627",
+        "nameOffice": "Restrepo Valvanera",
+        "Zone": "Zona Bogotá Suroriental",
+        "city": "BOGOTA",
+        "address": "Calle 17 Sur 18-03",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0040",
+        "nameOffice": "San Francisco",
+        "Zone": "Zona Bogotá Suroriental",
+        "city": "BOGOTA",
+        "address": "Carrera 19D 64 08 Sur",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0042",
+        "nameOffice": "Santa Librada",
+        "Zone": "Zona Bogotá Suroriental",
+        "city": "BOGOTA",
+        "address": "Avenida Carrera 1 74 C 36 Sur",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0129",
+        "nameOffice": "Veinte de Julio",
+        "Zone": "Zona Bogotá Suroriental",
+        "city": "BOGOTA",
+        "address": "Carrera  6  # 25 c 34 sur",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0010",
+        "nameOffice": "Veinte de Julio Cra 5",
+        "Zone": "Zona Bogotá Suroriental",
+        "city": "BOGOTA",
+        "address": "Carrera 5 25C 95 Sur",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0004",
+        "nameOffice": "Villa Javier",
+        "Zone": "Zona Bogotá Suroriental",
+        "city": "BOGOTA",
+        "address": "Calle 11 Sur 5 A - 38",
+        "idCity": "11001",
+        "parentid": "11000"
+    },
+    {
+        "idOffice": "0093",
+        "nameOffice": "Asturias",
+        "Zone": "Zona Oriente",
+        "city": "BUCARAMANGA",
+        "address": "Carrera 33 # 105 - 46 Edif Plaza de Mercado Satelite del Sur Bucaramanga ",
+        "idCity": "68001",
+        "parentid": "68000"
+    },
+    {
+        "idOffice": "0421",
+        "nameOffice": "Bucaramanga principal",
+        "Zone": "Zona Oriente",
+        "city": "BUCARAMANGA",
+        "address": "Calle 35 # 17- 03",
+        "idCity": "68001",
+        "parentid": "68000"
+    },
+    {
+        "idOffice": "0502",
+        "nameOffice": "Cabecera del llano",
+        "Zone": "Zona Oriente",
+        "city": "BUCARAMANGA",
+        "address": "Calle 48 # 29- 06",
+        "idCity": "68001",
+        "parentid": "68000"
+    },
+    {
+        "idOffice": "0529",
+        "nameOffice": "Carrera 33",
+        "Zone": "Zona Oriente",
+        "city": "BUCARAMANGA",
+        "address": "Carrera 33 # 42- 94 ",
+        "idCity": "68001",
+        "parentid": "68000"
+    },
+    {
+        "idOffice": "0092",
+        "nameOffice": "La Triada",
+        "Zone": "Zona Oriente",
+        "city": "BUCARAMANGA",
+        "address": "Calle 35 # 19-41 Local 101",
+        "idCity": "68001",
+        "parentid": "68000"
+    },
+    {
+        "idOffice": "0345",
+        "nameOffice": "Buenaventura",
+        "Zone": "Zona Occidente",
+        "city": "BUENAVENTURA",
+        "address": "Calle 1 # 2A- 55 Centro ",
+        "idCity": "76109",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0080",
+        "nameOffice": "Buga",
+        "Zone": "Zona Occidente",
+        "city": "BUGA",
+        "address": "Carrera 13 # 5- 62 ",
+        "idCity": "76113",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0523",
+        "nameOffice": "Cajica",
+        "Zone": "Zona Bogotá Nororiental",
+        "city": "CAJICA",
+        "address": "Calle 2 N, 4-39  Local 103 CC. Alejandría",
+        "idCity": "25126",
+        "parentid": "25000"
+    },
+    {
+        "idOffice": "0475",
+        "nameOffice": "Caldas",
+        "Zone": "Zona Antioquia Sur",
+        "city": "CALDAS",
+        "address": "Calle 129 Sur No. 51 -02 Torre Girasoles                                                                                                                                                                                      ",
+        "idCity": "05129",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0075",
+        "nameOffice": "Alfonso Lopez",
+        "Zone": "Zona Cali",
+        "city": "CALI",
+        "address": "Carrera 8 # 78- 12 ",
+        "idCity": "76001",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0338",
+        "nameOffice": "Avenida Colombia",
+        "Zone": "Zona Cali",
+        "city": "CALI",
+        "address": "Avenida Colombia # 3- 89 ",
+        "idCity": "76001",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0342",
+        "nameOffice": "Avenida Estacion",
+        "Zone": "Zona Cali",
+        "city": "CALI",
+        "address": "Avenida 6 # 23N - 07  Esquina",
+        "idCity": "76001",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0343",
+        "nameOffice": "Calle Novena",
+        "Zone": "Zona Cali",
+        "city": "CALI",
+        "address": "Calle 9 # 31A- 50 Barrio el Cedro",
+        "idCity": "76001",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0336",
+        "nameOffice": "Cosmocentro",
+        "Zone": "Zona Cali",
+        "city": "CALI",
+        "address": "Avenida Roosvel # 50- 80 Piso 2 ",
+        "idCity": "76001",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0339",
+        "nameOffice": "Floresta",
+        "Zone": "Zona Cali",
+        "city": "CALI",
+        "address": "Calle 33 A- 17 C- 01 ",
+        "idCity": "76001",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0467",
+        "nameOffice": "Jardín Plaza",
+        "Zone": "Zona Cali",
+        "city": "CALI",
+        "address": "Centro comercial Jardín Plaza Primer piso locales 0 al 9.  Carrera 98 No 16 200",
+        "idCity": "76001",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0503",
+        "nameOffice": "La Casona",
+        "Zone": "Zona Cali",
+        "city": "CALI",
+        "address": "Carrera 27 # 103- 71 ",
+        "idCity": "76001",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0070",
+        "nameOffice": "La Ermita",
+        "Zone": "Zona Cali",
+        "city": "CALI",
+        "address": "Calle 13 # 4- 25 Piso 1 Local 102 Edificio Carvanal ",
+        "idCity": "76001",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0341",
+        "nameOffice": "La Independencia",
+        "Zone": "Zona Cali",
+        "city": "CALI",
+        "address": "Calle 27 # 37- 17 Barrio EL Jardin",
+        "idCity": "76001",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0179",
+        "nameOffice": "La Luna",
+        "Zone": "Zona Cali",
+        "city": "CALI",
+        "address": "Calle 16 # 24- 43 ",
+        "idCity": "76001",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0074",
+        "nameOffice": "Troncal",
+        "Zone": "Zona Cali",
+        "city": "CALI",
+        "address": "Carrera 8 # 34 - 83 ",
+        "idCity": "76001",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0340",
+        "nameOffice": "Unicentro Cali",
+        "Zone": "Zona Cali",
+        "city": "CALI",
+        "address": "Calle 5 Carrera 100 Local 228 Ciudadela Comercial Unicentro Cali ",
+        "idCity": "76001",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0445",
+        "nameOffice": "Calima",
+        "Zone": "Zona Occidente",
+        "city": "CALI",
+        "address": "Carrera 1 # 66- 49 Local 209 2 piso CC. Calima ",
+        "idCity": "76001",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0346",
+        "nameOffice": "Chipichape",
+        "Zone": "Zona Occidente",
+        "city": "CALI",
+        "address": "Avenida 6A # 37- 25 Local 412A Bodega 4",
+        "idCity": "76001",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0458",
+        "nameOffice": "Único Cali",
+        "Zone": "Zona Occidente",
+        "city": "CALI",
+        "address": "Carrera 3 # 47 D- 88 ",
+        "idCity": "76001",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0451",
+        "nameOffice": "Bocagrande",
+        "Zone": "Zona Costa",
+        "city": "CARTAGENA",
+        "address": "Avenida San Martin # 6- 134 Local 1 y 2 Bocagrande",
+        "idCity": "13001",
+        "parentid": "13000"
+    },
+    {
+        "idOffice": "0450",
+        "nameOffice": "Cartagena",
+        "Zone": "Zona Costa",
+        "city": "CARTAGENA",
+        "address": "Centro Avenida Venezuela # 9- 95 ",
+        "idCity": "13001",
+        "parentid": "13000"
+    },
+    {
+        "idOffice": "0110",
+        "nameOffice": "La Matuna",
+        "Zone": "Zona Costa",
+        "city": "CARTAGENA",
+        "address": "Centro Avenida escallon 35 A - 19 ",
+        "idCity": "13001",
+        "parentid": "13000"
+    },
+    {
+        "idOffice": "0412",
+        "nameOffice": "Ronda Real",
+        "Zone": "Zona Costa",
+        "city": "CARTAGENA",
+        "address": "Diagonal 31# 54- 25 C.C Ronda Real",
+        "idCity": "13001",
+        "parentid": "13000"
+    },
+    {
+        "idOffice": "0274",
+        "nameOffice": "Santa Lucia",
+        "Zone": "Zona Costa",
+        "city": "CARTAGENA",
+        "address": "Diagonal 31 # 71 - 157 Santa Lucia",
+        "idCity": "13001",
+        "parentid": "13000"
+    },
+    {
+        "idOffice": "0507",
+        "nameOffice": "Cartago",
+        "Zone": "Zona Eje Cafetero",
+        "city": "CARTAGO",
+        "address": "Carrera 4 # 11- 100",
+        "idCity": "76147",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0514",
+        "nameOffice": "Cerete",
+        "Zone": "Zona Antioquia Norte",
+        "city": "CERETE",
+        "address": "Calle 12 # 13 - 17 Barrio Centro ",
+        "idCity": "23162",
+        "parentid": "23000"
+    },
+    {
+        "idOffice": "0171",
+        "nameOffice": "Chia",
+        "Zone": "Zona Bogotá Nororiental",
+        "city": "CHIA",
+        "address": "Avenida Pradilla No 3-40 local 127 Centro Comercial Aleros",
+        "idCity": "25175",
+        "parentid": "25000"
+    },
+    {
+        "idOffice": "0087",
+        "nameOffice": "Chinchina",
+        "Zone": "Zona Eje Cafetero",
+        "city": "CHINCHINA",
+        "address": "Carrera 9 10 27 CHINCHINA CALDAS ",
+        "idCity": "17174",
+        "parentid": "17000"
+    },
+    {
+        "idOffice": "0541",
+        "nameOffice": "Chiquinquira",
+        "Zone": "Zona Andina",
+        "city": "CHIQUINQUIRA",
+        "address": "Calle 16 8 - 31 ",
+        "idCity": "15176",
+        "parentid": "15000"
+    },
+    {
+        "idOffice": "0432",
+        "nameOffice": "Avenida Cero",
+        "Zone": "Zona Oriente",
+        "city": "CUCUTA",
+        "address": "Avenida 0 # 16- 26 La playa",
+        "idCity": "54001",
+        "parentid": "54000"
+    },
+    {
+        "idOffice": "0097",
+        "nameOffice": "Avenida Cuarta Cucuta",
+        "Zone": "Zona Oriente",
+        "city": "CUCUTA",
+        "address": "Avenida 4 # 11- 30 Antiguo Bch Centro",
+        "idCity": "54001",
+        "parentid": "54000"
+    },
+    {
+        "idOffice": "0430",
+        "nameOffice": "Calle 10 Cucuta",
+        "Zone": "Zona Oriente",
+        "city": "CUCUTA",
+        "address": "Calle 10 # 3- 91 Centro",
+        "idCity": "54001",
+        "parentid": "54000"
+    },
+    {
+        "idOffice": "0548",
+        "nameOffice": "Unicentro Cucuta",
+        "Zone": "Zona Oriente",
+        "city": "CUCUTA",
+        "address": "Calle 20N 0  50 Local 1-47 CC Unicentro Cucuta",
+        "idCity": "54001",
+        "parentid": "54000"
+    },
+    {
+        "idOffice": "0459",
+        "nameOffice": "Dosquebradas",
+        "Zone": "Zona Eje Cafetero",
+        "city": "DOSQUEBRADAS",
+        "address": "Carrera 16 No. 27-37 ",
+        "idCity": "66170",
+        "parentid": "66000"
+    },
+    {
+        "idOffice": "0630",
+        "nameOffice": "Parque Libertadores Duitama",
+        "Zone": "Zona Andina",
+        "city": "DUITAMA",
+        "address": "Calle 15 # 15 -02",
+        "idCity": "15238",
+        "parentid": "15000"
+    },
+    {
+        "idOffice": "0062",
+        "nameOffice": "Envigado",
+        "Zone": "Zona Antioquia Sur",
+        "city": "ENVIGADO",
+        "address": "Carrera 42 No. 37 sur 4 Envigado",
+        "idCity": "05266",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0098",
+        "nameOffice": "Espinal",
+        "Zone": "Zona Central",
+        "city": "ESPINAL",
+        "address": "Calle 9 # 4- 75 Barrio Centro ",
+        "idCity": "73268",
+        "parentid": "73000"
+    },
+    {
+        "idOffice": "0050",
+        "nameOffice": "Facatativa",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "FACATATIVA",
+        "address": "Calle 7 # 2- 29 ",
+        "idCity": "25269",
+        "parentid": "25000"
+    },
+    {
+        "idOffice": "0103",
+        "nameOffice": "Florencia",
+        "Zone": "Zona Andina",
+        "city": "FLORENCIA",
+        "address": "Carrera 11 NR 14-20",
+        "idCity": "18001",
+        "parentid": "18000"
+    },
+    {
+        "idOffice": "0519",
+        "nameOffice": "Cañaveral",
+        "Zone": "Zona Oriente",
+        "city": "FLORIDABLANCA",
+        "address": "Calle 30 # 25- 05 Centro Comercial Cañaveral",
+        "idCity": "68276",
+        "parentid": "68000"
+    },
+    {
+        "idOffice": "0439",
+        "nameOffice": "Funza",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "Funza",
+        "address": "Centro Comercial Micentro Funza Carrera 13 17A-11 Loc 2-17 al 2-22",
+        "idCity": "25286",
+        "parentid": "25000"
+    },
+    {
+        "idOffice": "0158",
+        "nameOffice": "Avenida Las Palmas Fusagasuga",
+        "Zone": "Zona Central",
+        "city": "FUSAGASUGA",
+        "address": "Av Las Palmas No. 8-06 ",
+        "idCity": "25290",
+        "parentid": "25000"
+    },
+    {
+        "idOffice": "0438",
+        "nameOffice": "Fusagasuga",
+        "Zone": "Zona Central",
+        "city": "FUSAGASUGA",
+        "address": "Avenida Palmas # 6 - 39 ",
+        "idCity": "25290",
+        "parentid": "25000"
+    },
+    {
+        "idOffice": "0102",
+        "nameOffice": "Garzon",
+        "Zone": "Zona Central",
+        "city": "GARZON",
+        "address": "Calle 6 Carrera 9 Esquina Edificio del Café",
+        "idCity": "41298",
+        "parentid": "41000"
+    },
+    {
+        "idOffice": "0100",
+        "nameOffice": "Girardot 2",
+        "Zone": "Zona Central",
+        "city": "GIRARDOT",
+        "address": "Carrera 10 # 16- 48 ",
+        "idCity": "25307",
+        "parentid": "25000"
+    },
+    {
+        "idOffice": "0397",
+        "nameOffice": "Girón",
+        "Zone": "Zona Oriente",
+        "city": "GIRON",
+        "address": "Calle 43 No. 23 - 57/67",
+        "idCity": "68307",
+        "parentid": "68000"
+    },
+    {
+        "idOffice": "0515",
+        "nameOffice": "Granada",
+        "Zone": "Zona Andina",
+        "city": "GRANADA",
+        "address": "Carrera 14 # 15 75 LOCAL 104",
+        "idCity": "50313",
+        "parentid": "50000"
+    },
+    {
+        "idOffice": "0527",
+        "nameOffice": "Honda",
+        "Zone": "Zona Central",
+        "city": "HONDA",
+        "address": "Calle 13 # 11- 23 ",
+        "idCity": "73349",
+        "parentid": "73000"
+    },
+    {
+        "idOffice": "0521",
+        "nameOffice": "Avenida Quinta",
+        "Zone": "Zona Central",
+        "city": "IBAGUE",
+        "address": "Carrera 5 # 30 B- 59 San Simon ",
+        "idCity": "73001",
+        "parentid": "73000"
+    },
+    {
+        "idOffice": "0099",
+        "nameOffice": "Calle 12",
+        "Zone": "Zona Central",
+        "city": "IBAGUE",
+        "address": "Calle 12 # 2- 59 ",
+        "idCity": "73001",
+        "parentid": "73000"
+    },
+    {
+        "idOffice": "0463",
+        "nameOffice": "El Jordan",
+        "Zone": "Zona Central",
+        "city": "IBAGUE",
+        "address": "Carrera 5 # 61- 20 El Jordan ",
+        "idCity": "73001",
+        "parentid": "73000"
+    },
+    {
+        "idOffice": "0509",
+        "nameOffice": "Ipiales",
+        "Zone": "Zona Occidente",
+        "city": "IPIALES",
+        "address": "Carrera 6 # 14- 77 ",
+        "idCity": "52356",
+        "parentid": "52000"
+    },
+    {
+        "idOffice": "0155",
+        "nameOffice": "Itagui",
+        "Zone": "Zona Antioquia Sur",
+        "city": "ITAGUI",
+        "address": "Carrera 50 49-05",
+        "idCity": "05360",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0203",
+        "nameOffice": "Itagui Cll 50",
+        "Zone": "Zona Antioquia Sur",
+        "city": "ITAGUI",
+        "address": "Calle 50  49  49",
+        "idCity": "05360",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0526",
+        "nameOffice": "Carrera 3 La Dorada",
+        "Zone": "Zona Central",
+        "city": "LA DORADA",
+        "address": "Carrera 3 # 14- 01 Centro ",
+        "idCity": "17380",
+        "parentid": "17000"
+    },
+    {
+        "idOffice": "0534",
+        "nameOffice": "La Mesa",
+        "Zone": "Zona Central",
+        "city": "LA MESA",
+        "address": "Calle 4A # 21- 48 C.C Mitania ",
+        "idCity": "25386",
+        "parentid": "25000"
+    },
+    {
+        "idOffice": "0186",
+        "nameOffice": "La Virginia",
+        "Zone": "Zona Eje Cafetero",
+        "city": "LA VIRGINIA",
+        "address": "Carrera 8 # 8- 20 Centro ",
+        "idCity": "66400",
+        "parentid": "66000"
+    },
+    {
+        "idOffice": "0168",
+        "nameOffice": "Madrid",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "MADRID",
+        "address": "Calle 7 # 10 - 02 ",
+        "idCity": "25430",
+        "parentid": "25000"
+    },
+    {
+        "idOffice": "0524",
+        "nameOffice": "Avenida Santander",
+        "Zone": "Zona Eje Cafetero",
+        "city": "MANIZALES",
+        "address": "Carrera 23 # 61- 08 ",
+        "idCity": "17001",
+        "parentid": "17000"
+    },
+    {
+        "idOffice": "0457",
+        "nameOffice": "Gilberto Alzate",
+        "Zone": "Zona Eje Cafetero",
+        "city": "MANIZALES",
+        "address": "Carrera 18 No. 21-55",
+        "idCity": "17001",
+        "parentid": "17000"
+    },
+    {
+        "idOffice": "0084",
+        "nameOffice": "La Catedral",
+        "Zone": "Zona Eje Cafetero",
+        "city": "MANIZALES",
+        "address": "Carrera 23 # 22- 64 ",
+        "idCity": "17001",
+        "parentid": "17000"
+    },
+    {
+        "idOffice": "0525",
+        "nameOffice": "Manizales Parque Bolivar",
+        "Zone": "Zona Eje Cafetero",
+        "city": "MANIZALES",
+        "address": "Calle 22 # 21- 08 ",
+        "idCity": "17001",
+        "parentid": "17000"
+    },
+    {
+        "idOffice": "0086",
+        "nameOffice": "Parque Caldas",
+        "Zone": "Zona Eje Cafetero",
+        "city": "MANIZALES",
+        "address": "Carrera 23 # 27- 54",
+        "idCity": "17001",
+        "parentid": "17000"
+    },
+    {
+        "idOffice": "0543",
+        "nameOffice": "Mariquita",
+        "Zone": "Zona Central",
+        "city": "MARIQUITA",
+        "address": "Carrera 5 # 6 - 78 ",
+        "idCity": "73443",
+        "parentid": "73000"
+    },
+    {
+        "idOffice": "0061",
+        "nameOffice": "America",
+        "Zone": "Zona Antioquia Norte",
+        "city": "MEDELLIN",
+        "address": "Cra 81 37D 59",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0060",
+        "nameOffice": "Avenida Oriental",
+        "Zone": "Zona Antioquia Norte",
+        "city": "MEDELLIN",
+        "address": "Carrera 46 No. 52 130",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0064",
+        "nameOffice": "Castilla",
+        "Zone": "Zona Antioquia Norte",
+        "city": "MEDELLIN",
+        "address": "Carrera 68 N° 96 - 86 BARRIO CASTILLA",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0201",
+        "nameOffice": "Centro Coltejer",
+        "Zone": "Zona Antioquia Norte",
+        "city": "MEDELLIN",
+        "address": "Calle 52 # 47 - 42 Local 201-202",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0465",
+        "nameOffice": "Florida",
+        "Zone": "Zona Antioquia Norte",
+        "city": "MEDELLIN",
+        "address": "Calle 71 No. 65 – 150   \nCentro comercial Florida",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0220",
+        "nameOffice": "Los Sauces",
+        "Zone": "Zona Antioquia Norte",
+        "city": "MEDELLIN",
+        "address": "Calle 50 65 97",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0208",
+        "nameOffice": "Manrique",
+        "Zone": "Zona Antioquia Norte",
+        "city": "MEDELLIN",
+        "address": "Carrera 45 73- 53",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0058",
+        "nameOffice": "Parque Berrio",
+        "Zone": "Zona Antioquia Norte",
+        "city": "MEDELLIN",
+        "address": "Carrera .51 N°50-61 Parque Berrio",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0059",
+        "nameOffice": "San Ignacio",
+        "Zone": "Zona Antioquia Norte",
+        "city": "MEDELLIN",
+        "address": "Carrera 43 47-56 LOCAL 129 Medellin",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0063",
+        "nameOffice": "Belen",
+        "Zone": "Zona Antioquia Sur",
+        "city": "MEDELLIN",
+        "address": "Carrera 76 # 31-33",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0204",
+        "nameOffice": "Carrera 70",
+        "Zone": "Zona Antioquia Sur",
+        "city": "MEDELLIN",
+        "address": "Carrera 70 42 10",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0212",
+        "nameOffice": "Central Mayorista",
+        "Zone": "Zona Antioquia Sur",
+        "city": "MEDELLIN",
+        "address": "Calle 85 48 01 Bloque 18 local 2 ",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0210",
+        "nameOffice": "Los Molinos",
+        "Zone": "Zona Antioquia Sur",
+        "city": "MEDELLIN",
+        "address": "Calle 30N 82A 26 CC. LOS MOLINOS LC 2167",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0211",
+        "nameOffice": "Poblado",
+        "Zone": "Zona Antioquia Sur",
+        "city": "MEDELLIN",
+        "address": "Carrera 38 # 9a- 36 ",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0222",
+        "nameOffice": "San Diego",
+        "Zone": "Zona Antioquia Sur",
+        "city": "MEDELLIN",
+        "address": "Calle 34 43 66 LOCAL 1569",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0216",
+        "nameOffice": "Tesoro",
+        "Zone": "Zona Antioquia Sur",
+        "city": "MEDELLIN",
+        "address": "Carrera 25 A NUMERO 1 A SUR 45 LOCAL 1130",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0218",
+        "nameOffice": "Unicentro Medellin",
+        "Zone": "Zona Antioquia Sur",
+        "city": "MEDELLIN",
+        "address": "Carrera 66 B 34 a 76 local 059",
+        "idCity": "05001",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0436",
+        "nameOffice": "Melgar",
+        "Zone": "Zona Central",
+        "city": "MELGAR",
+        "address": "Carrera 25 # 06 - 07 Esquina Brr/Centro ",
+        "idCity": "73449",
+        "parentid": "73000"
+    },
+    {
+        "idOffice": "0545",
+        "nameOffice": "Monteria",
+        "Zone": "Zona Antioquia Norte",
+        "city": "MONTERIA",
+        "address": "Calle 30 # 2- 04 Centro ",
+        "idCity": "23001",
+        "parentid": "23000"
+    },
+    {
+        "idOffice": "0448",
+        "nameOffice": "Mosquera",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "MOSQUERA",
+        "address": "Carrera 3 # 15 a- 57 local 129- 130 cc ecoplaza",
+        "idCity": "25473",
+        "parentid": "25000"
+    },
+    {
+        "idOffice": "0101",
+        "nameOffice": "Neiva",
+        "Zone": "Zona Central",
+        "city": "NEIVA",
+        "address": "Calle 8 # 5 - 76 ",
+        "idCity": "41001",
+        "parentid": "41000"
+    },
+    {
+        "idOffice": "0517",
+        "nameOffice": "Quirinal",
+        "Zone": "Zona Central",
+        "city": "NEIVA",
+        "address": "Calle 17 # 6 - 69 ",
+        "idCity": "41001",
+        "parentid": "41000"
+    },
+    {
+        "idOffice": "0096",
+        "nameOffice": "Ocaña",
+        "Zone": "Zona Oriente",
+        "city": "OCANA",
+        "address": "Carrera 13 # 10- 01 ",
+        "idCity": "54498",
+        "parentid": "54000"
+    },
+    {
+        "idOffice": "0344",
+        "nameOffice": "Carrera 27 Palmira",
+        "Zone": "Zona Occidente",
+        "city": "PALMIRA",
+        "address": "Calle 30 # 27 - 46 ",
+        "idCity": "76520",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0435",
+        "nameOffice": "Calle 20 Pasto",
+        "Zone": "Zona Occidente",
+        "city": "PASTO",
+        "address": "Calle 20 # 25- 07 ",
+        "idCity": "52001",
+        "parentid": "52000"
+    },
+    {
+        "idOffice": "0082",
+        "nameOffice": "Carrera 25 Pasto",
+        "Zone": "Zona Occidente",
+        "city": "PASTO",
+        "address": "Carrera 25 # 20- 69 Local 101 Edificio Calle Real ",
+        "idCity": "52001",
+        "parentid": "52000"
+    },
+    {
+        "idOffice": "0094",
+        "nameOffice": "Avenida 30 de Agosto",
+        "Zone": "Zona Eje Cafetero",
+        "city": "PEREIRA",
+        "address": "Avenida 30 de Agosto # 35- 38 ",
+        "idCity": "66001",
+        "parentid": "66000"
+    },
+    {
+        "idOffice": "0533",
+        "nameOffice": "Cuba",
+        "Zone": "Zona Eje Cafetero",
+        "city": "PEREIRA",
+        "address": "Carrera 25 # 68B- 38",
+        "idCity": "66001",
+        "parentid": "66000"
+    },
+    {
+        "idOffice": "0508",
+        "nameOffice": "Parque la Arboleda",
+        "Zone": "Zona Eje Cafetero",
+        "city": "PEREIRA",
+        "address": "Centro Comercial Parque La  Arboleda - Av. Circunvalar No. 5 – 20 Local 427",
+        "idCity": "66001",
+        "parentid": "66000"
+    },
+    {
+        "idOffice": "0511",
+        "nameOffice": "Pereira",
+        "Zone": "Zona Eje Cafetero",
+        "city": "PEREIRA",
+        "address": "Carrera 7 # 19- 32 ",
+        "idCity": "66001",
+        "parentid": "66000"
+    },
+    {
+        "idOffice": "0460",
+        "nameOffice": "Piedecuesta",
+        "Zone": "Zona Oriente",
+        "city": "PIEDECUESTA",
+        "address": "Carrera 15 # 3AN- 40 Local 246b Piso 2Centro Comercial  Delacuesta",
+        "idCity": "68547",
+        "parentid": "68000"
+    },
+    {
+        "idOffice": "0473",
+        "nameOffice": "Pitalito",
+        "Zone": "Zona Central",
+        "city": "PITALITO",
+        "address": "Calle 6 # 4 – 64/82 ",
+        "idCity": "41551",
+        "parentid": "41000"
+    },
+    {
+        "idOffice": "0462",
+        "nameOffice": "La Esmeralda",
+        "Zone": "Zona Occidente",
+        "city": "POPAYAN",
+        "address": "Carrera 17 # 7B- 06 ",
+        "idCity": "19001",
+        "parentid": "19000"
+    },
+    {
+        "idOffice": "0083",
+        "nameOffice": "Popayan",
+        "Zone": "Zona Occidente",
+        "city": "POPAYAN",
+        "address": "Calle 4 # 10 - 07 Edificio El Ariete",
+        "idCity": "19001",
+        "parentid": "19000"
+    },
+    {
+        "idOffice": "0068",
+        "nameOffice": "Rionegro",
+        "Zone": "Zona Antioquia Sur",
+        "city": "RIONEGRO",
+        "address": "Carrera 50 49 08 Rionegro",
+        "idCity": "05615",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0223",
+        "nameOffice": "Centro Comercial Mayorca",
+        "Zone": "Zona Antioquia Sur",
+        "city": "SABANETA",
+        "address": "Centro Comercial Mayorca Etapa II Piso 5 local 5005.\nCra 48 No 40 Sur 128",
+        "idCity": "05631",
+        "parentid": "05000"
+    },
+    {
+        "idOffice": "0067",
+        "nameOffice": "San Andres",
+        "Zone": "Zona Antioquia Sur",
+        "city": "SAN ANDRES",
+        "address": "Carrera 2 - Calle 4 con Av. Providencia",
+        "idCity": "88001",
+        "parentid": "88000"
+    },
+    {
+        "idOffice": "0423",
+        "nameOffice": "San Gil",
+        "Zone": "Zona Oriente",
+        "city": "SAN GIL",
+        "address": "Carrera 9 # 10- 92",
+        "idCity": "68679",
+        "parentid": "68000"
+    },
+    {
+        "idOffice": "0396",
+        "nameOffice": "Avenida Los Estudiantes",
+        "Zone": "Zona Costa",
+        "city": "SANTA MARTA",
+        "address": "Carrera 12 No 22-05 Intersección Avenida Santa Rita  con Avenidas Los Estudiantes .",
+        "idCity": "47001",
+        "parentid": "47000"
+    },
+    {
+        "idOffice": "0411",
+        "nameOffice": "Santa Marta",
+        "Zone": "Zona Costa",
+        "city": "SANTA MARTA",
+        "address": "Calle 15 # 2- 48 Centro ",
+        "idCity": "47001",
+        "parentid": "47000"
+    },
+    {
+        "idOffice": "0474",
+        "nameOffice": "Guacarí",
+        "Zone": "Zona Antioquia Norte",
+        "city": "SINCELEJO",
+        "address": "Centro Comercial Guacarí\nAv Mariscal - Calle 28 No. 25B – 97",
+        "idCity": "70001",
+        "parentid": "70000"
+    },
+    {
+        "idOffice": "0447",
+        "nameOffice": "Ciudad Verde",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "SOACHA",
+        "address": "Carrera 38  # 17-219 CC PRADO VERDE L 117",
+        "idCity": "25754",
+        "parentid": "25000"
+    },
+    {
+        "idOffice": "0131",
+        "nameOffice": "Mercurio",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "SOACHA",
+        "address": "Carrera 7 # 32 - 35 locales 147-150",
+        "idCity": "25754",
+        "parentid": "25000"
+    },
+    {
+        "idOffice": "0130",
+        "nameOffice": "Soacha Parque",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "SOACHA",
+        "address": "Cra. 7 # 14-02/10",
+        "idCity": "25754",
+        "parentid": "25000"
+    },
+    {
+        "idOffice": "0476",
+        "nameOffice": "Unisur",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "SOACHA",
+        "address": "Carrera 4 # 28- 10 Local 1054",
+        "idCity": "25754",
+        "parentid": "25000"
+    },
+    {
+        "idOffice": "0051",
+        "nameOffice": "Ventura Terreros",
+        "Zone": "Zona Bogotá Suroccidental",
+        "city": "SOACHA",
+        "address": "Carrera 1 #38-53 Soacha Centro Comercial Ventura Terreros local B-03. ",
+        "idCity": "25754",
+        "parentid": "25000"
+    },
+    {
+        "idOffice": "0628",
+        "nameOffice": "Parque de la Villa Sogamoso",
+        "Zone": "Zona Andina",
+        "city": "SOGAMOSO",
+        "address": "Carrera 10 No. 11 66",
+        "idCity": "15759",
+        "parentid": "15000"
+    },
+    {
+        "idOffice": "0540",
+        "nameOffice": "Sogamoso",
+        "Zone": "Zona Andina",
+        "city": "SOGAMOSO",
+        "address": "Carrera 11 N° 12-32 local 112 Centro comercial esquina del sol",
+        "idCity": "15759",
+        "parentid": "15000"
+    },
+    {
+        "idOffice": "0416",
+        "nameOffice": "Soledad",
+        "Zone": "Zona Costa",
+        "city": "SOLEDAD",
+        "address": "Calle 18 19 59",
+        "idCity": "08758",
+        "parentid": "08000"
+    },
+    {
+        "idOffice": "0347",
+        "nameOffice": "Calle Sarmiento Tulua",
+        "Zone": "Zona Occidente",
+        "city": "TULUA",
+        "address": "Calle 27# 25- 22 ",
+        "idCity": "76834",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0636",
+        "nameOffice": "Plaza Boyacá Tulua",
+        "Zone": "Zona Occidente",
+        "city": "TULUA",
+        "address": "Carrera 25 # 25- 30 ",
+        "idCity": "76834",
+        "parentid": "76000"
+    },
+    {
+        "idOffice": "0546",
+        "nameOffice": "Avenida Norte Tunja ",
+        "Zone": "Zona Andina",
+        "city": "TUNJA ",
+        "address": "Carrera 6 A 37 17",
+        "idCity": "15001",
+        "parentid": "15000"
+    },
+    {
+        "idOffice": "0629",
+        "nameOffice": "Tunja",
+        "Zone": "Zona Andina",
+        "city": "TUNJA ",
+        "address": "Carrera 10 21 15 TUNJA",
+        "idCity": "15001",
+        "parentid": "15000"
+    },
+    {
+        "idOffice": "0184",
+        "nameOffice": "Tuquerres",
+        "Zone": "Zona Occidente",
+        "city": "TUQUERRES",
+        "address": "Carrera 14 # 15- 30 Edificio Azufral ",
+        "idCity": "52838",
+        "parentid": "52000"
+    },
+    {
+        "idOffice": "0518",
+        "nameOffice": "Valledupar",
+        "Zone": "Zona Costa",
+        "city": "VALLEDUPAR",
+        "address": "Calle 16 # 10- 07 ",
+        "idCity": "20001",
+        "parentid": "20000"
+    },
+    {
+        "idOffice": "0052",
+        "nameOffice": "Avenida 40",
+        "Zone": "Zona Andina",
+        "city": "VILLAVICENCIO",
+        "address": "Avenida 40 35a 65 ",
+        "idCity": "50001",
+        "parentid": "50000"
+    },
+    {
+        "idOffice": "0057",
+        "nameOffice": "Plazoleta Centauros Villavicencio",
+        "Zone": "Zona Andina",
+        "city": "VILLAVICENCIO",
+        "address": "Carrera 31 37-68 Centro",
+        "idCity": "50001",
+        "parentid": "50000"
+    },
+    {
+        "idOffice": "0512",
+        "nameOffice": "Yopal",
+        "Zone": "Zona Andina",
+        "city": "YOPAL",
+        "address": "Calle 9 # 21- 55 ",
+        "idCity": "85001",
+        "parentid": "85000"
+    },
+    {
+        "idOffice": "0047",
+        "nameOffice": "Zipaquira",
+        "Zone": "Zona Andina",
+        "city": "ZIPAQUIRA",
+        "address": "Carrera 10 5 97 ",
+        "idCity": "25899",
+        "parentid": "25000"
+    }
+]

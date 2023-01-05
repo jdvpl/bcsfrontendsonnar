@@ -13,6 +13,7 @@ import useValidations from './useCreditData';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import { routes } from '../../../../routes';
+import dataOffices from '../../../../lib/officies.json';
 
 export function CreditDataForm() {
   const [choseHouse, setChoseHouse] = useState(false);
@@ -222,6 +223,36 @@ export function CreditDataForm() {
           </div>
         </div>
 
+        {choseHouse ? (
+          <ReactHookFormSelect
+            onChange={(e: any) => setValue('termFinance', e.target.value)}
+            placeholder="Sucursal"
+            label="Sucursal"
+            defaultValue=""
+            control={control}
+            left="right4"
+            valueLength=""
+            name="termFinance"
+            className="col-span-6"
+            margin="normal"
+            rules={{ required: true }}
+          >
+            {dataOffices?.map((option) => (
+              <MenuItem value={option?.idOffice} key={option?.idOffice}>
+                {`${option?.address
+                  ?.toLowerCase()
+                  .replace(/\b\w/g, (l: string) => l.toUpperCase())}
+                ${option?.nameOffice
+                  ?.toLowerCase()
+                  .replace(/\b\w/g, (l: string) => l.toUpperCase())}
+                - ${option?.city
+                  ?.toLowerCase()
+                  .replace(/\b\w/g, (l: string) => l.toUpperCase())}
+                `}
+              </MenuItem>
+            ))}
+          </ReactHookFormSelect>
+        ) : null}
       </div>
 
       <button
