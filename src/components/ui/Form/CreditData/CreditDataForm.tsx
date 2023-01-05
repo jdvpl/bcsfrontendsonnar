@@ -1,5 +1,5 @@
 import React, { useEffect, ClipboardEvent, useState } from 'react';
-import { MenuItem } from '@mui/material';
+import { MenuItem, Typography } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import { json } from 'stream/consumers';
@@ -71,59 +71,26 @@ export function CreditDataForm() {
 
   return (
     <div className="flex flex-col items-center">
-      {/* Card Chose Housing */}
-      <div className="cardShadow h-[71px] mb-[36px] rounded-xl py-[26px] px-[24px] w-full">
-        <div className="flex">
-          <button
-            className="flex cursor-pointer"
-            onClick={() => changeHouse(true)}
-            data-testid="Button-Yes"
-          >
-            <span className="font-semibold text-gris-100 mr-[10px]">Si</span>
-            <div className="w-[25px] h-[25px] border border-complementario-100 flex justify-center items-center rounded-full">
-              {choseHouse ? (
-                <div className="w-[10px] h-[10px] bg-primario-400 rounded-full"> </div>
-              ) : null}
-            </div>
-          </button>
-          <button
-            data-testid="Button-No"
-            className="flex ml-[117px] cursor-pointer"
-            onClick={() => changeHouse(false)}
-          >
-            <span className="font-semibold text-gris-100">No</span>
-            <div className="ml-[15px] w-[25px] h-[25px] border border-complementario-100 flex justify-center items-center rounded-full">
-              {!choseHouse ? (
-                <div className="w-[10px] h-[10px] bg-primario-400 rounded-full"> </div>
-              ) : null}
-            </div>
-          </button>
-        </div>
-      </div>
-
       {/* Form When Person chose Hose */}
-      <div className="flex flex-col items-center gap-y-[12px] w-full">
-        {choseHouse ? (
-          <div data-testid="InputTypeHouse" className="w-full">
-            <ReactHookFormSelect
-              onChange={(e: any) => setValue('typeHouse', e.target.value)}
-              placeholder="Tipo de vivienda"
-              label="Tipo de vivienda"
-              defaultValue="usada"
-              control={control}
-              left="right4"
-              valueLength=""
-              name="typeHouse"
-              className=""
-              margin="normal"
-              rules={{ required: true }}
-            >
-              <MenuItem value="new">Nueva</MenuItem>
-              <MenuItem value="used">Usada</MenuItem>
-            </ReactHookFormSelect>
-          </div>
-        ) : null}
-
+      <div className="flex flex-col items-center gap-y-[12px] w-full mb-[32px]">
+        <div data-testid="InputTypeHouse" className="w-full">
+          <ReactHookFormSelect
+            onChange={(e: any) => setValue('typeHouse', e.target.value)}
+            placeholder="Tipo de vivienda"
+            label="Tipo de vivienda"
+            defaultValue="usada"
+            control={control}
+            left="right4"
+            valueLength=""
+            name="typeHouse"
+            className=""
+            margin="normal"
+            rules={{ required: true }}
+          >
+            <MenuItem value="new">Nueva</MenuItem>
+            <MenuItem value="used">Usada</MenuItem>
+          </ReactHookFormSelect>
+        </div>
         <Controller
           render={({ field }) => (
             <Input
@@ -211,10 +178,54 @@ export function CreditDataForm() {
           disabled
           label="Tipo de amortización"
         />
+
+        <div className="w-full pt-[20px]">
+          <Typography
+            variant="body1"
+            className="w-full Montserrat text-primario-900 text-[16px] leading-[18px]"
+          >
+            Elija como continuar el proceso
+          </Typography>
+        </div>
+
+        {/* Card Chose Housing */}
+        <div className="cardShadow h-[71px] rounded-xl py-[26px] px-[24px] w-full">
+          <div className="flex">
+            <button
+              className="flex cursor-pointer"
+              onClick={() => changeHouse(true)}
+              data-testid="Button-Yes"
+            >
+              <span className="font-semibold text-gris-100 mr-[10px]">Sucursal</span>
+              <div className="w-[25px] h-[25px] border border-complementario-100 flex justify-center items-center rounded-full">
+                {choseHouse ? (
+                  <div className="w-[10px] h-[10px] bg-complementario-100 rounded-full">
+                    {' '}
+                  </div>
+                ) : null}
+              </div>
+            </button>
+            <button
+              data-testid="Button-No"
+              className="flex ml-[117px] cursor-pointer"
+              onClick={() => changeHouse(false)}
+            >
+              <span className="font-semibold text-gris-100">Asesor</span>
+              <div className="ml-[15px] w-[25px] h-[25px] border border-complementario-100 flex justify-center items-center rounded-full">
+                {!choseHouse ? (
+                  <div className="w-[10px] h-[10px] bg-complementario-100 rounded-full">
+                    {' '}
+                  </div>
+                ) : null}
+              </div>
+            </button>
+          </div>
+        </div>
+
       </div>
 
       <button
-        className="flex items-start gap-3 w-full mt-[32px] cursor-pointer"
+        className="flex items-start gap-3 w-full cursor-pointer"
         onClick={() => setInsuranceCheck(!insuranceCheck)}
       >
         <input

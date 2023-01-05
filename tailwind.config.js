@@ -14,7 +14,7 @@ module.exports = {
       md: '721px',
       lg: '1024px',
       xl: '1280px',
-      xxl:'1536px'
+      xxl: '1536px'
     },
     fontFamily: {
       sans: ['Roboto', 'sans-serif'],

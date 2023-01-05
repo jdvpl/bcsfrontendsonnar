@@ -41,12 +41,6 @@ function CreditData() {
       >
         Defina las condiciones <br /> del crédito a solicitar
       </Typography>
-      <Typography
-        variant="bodyS3"
-        className=" text-primario-900 mb-[36px] w-[288px] xs:w-[288px] sm:w-[343px] md:w-[550px] lg:w-[686px] mx-auto"
-      >
-        ¿Ya elegió la vivienda a comprar?
-      </Typography>
 
       <div className="w-[288px] xs:w-[288px] sm:w-[343px] md:w-[550px] lg:w-[686px] mx-auto">
         <CreditDataForm />

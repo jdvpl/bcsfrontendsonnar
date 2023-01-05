@@ -43,11 +43,11 @@ function ResumenApplication() {
             play
           />
           <Typography
+            style={{ fontFamily: 'Montserrat' }}
             variant="bodyM3"
-            className="text-lg text-center font-medium leading-5 xl:w-[366px] md:w-[263px] sm:w-[231px] xs:w-[236px]"
+            className="Montserrat font-semibold  text-[16px] tracking-wide	text-center leading-5 xl:w-[366px] md:w-[273px] sm:w-[251px] xs:w-[256px]"
           >
-            Tener vivienda propia <br className="xs:block md:hidden" /> pronto <br /> será
-            una realidad
+            Tener vivienda propia pronto <br /> será una realidad
           </Typography>
         </div>
       ) : null}
