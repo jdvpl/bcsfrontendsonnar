@@ -80,7 +80,7 @@ export const sendQuestions = async (data: any) => {
     };
   } catch (e: any) {
     console.log(e)
-    return { error: true, response: e.response.data };
+    return { error: true, response: e.response?.data };
   }
 }
 export const sendNumber = async (data: any) => {

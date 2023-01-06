@@ -13,7 +13,7 @@ export const onSubmitResponse = async (initData: InitDataSend, dataTU: any, rout
   };
   const response = await sendQuestions(body);
   if (response.error) {
-    const code = response.response.internal_code;
+    const code = response.response?.internal_code;
     switch (code) {
       case 'VQ-01':
         router.push(routes.startProccess);
