@@ -13,5 +13,6 @@ it('redirects to the correct route with error code VQ-02', async () => {
 
   // Act
   await onSubmitResponse(data, data, router, jest.fn(), jest.fn());
+
   // Assert
 });

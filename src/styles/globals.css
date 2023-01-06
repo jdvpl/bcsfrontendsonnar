@@ -2,6 +2,7 @@
 @import './sdks.css';
 @import './tooltip.css';
 @import "./modal.css";
+@import "./fonts.css";
 
 @font-face {
   font-family: 'bcs';

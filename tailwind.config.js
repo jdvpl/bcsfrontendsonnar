@@ -19,6 +19,11 @@ module.exports = {
     fontFamily: {
       sans: ['Roboto', 'sans-serif'],
       heading: ['Roboto', 'sans-serif'],
+      monserratLight:['MontserratLight','sans-serif'],
+      montserratSemiBold:['MontserratSemiBold','sans-serif'],
+      poppinsLight:['PoppinsLight','sans-serif'],
+      poppinsBold:['PoppinsBold','sans-serif'],
+      poppinsSemiBold:['PoppinsSemiBold','sans-serif']
     },
     colors: {
       primario: {
