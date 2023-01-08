@@ -7,7 +7,6 @@ import ReviewApplication from '../../components/ui/application/ReviewApplication
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import Button from '../../components/ui/Button/index';
 import { convertToColombianPesos } from '../../utils/index';
-// import { urlAndUtms } from '../../utils/RouterUtmsUrl';
 import { SesionStorageKeys } from '../../session';
 import Stepper from '../../components/ui/Stepper';
 import { routes } from '../../routes';
@@ -20,7 +19,7 @@ function ResumenApplication() {
 
   return (
     <div>
-      {isLoading ? <ResumenApplication /> : null}
+      {isLoading ? <ApplicationLoader /> : null}
       <div className="container flex lg:mt-[0] xs:w-[343px] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-end">
         <div className="mt-4  hidden lg:block">
           <LogoBcs />

@@ -8,6 +8,8 @@ import { routes } from '../../routes';
 import ResumenSolicitud from '../../pages/resumen-solicitud/index';
 import { createMockRouter } from '../utils/createMockRouter';
 import ReviewApplication from '../../components/ui/application/ReviewApplication';
+import "jest-canvas-mock";
+
 
 describe('<Resumen-Solicitud/>', () => {
   it('should render successfully', () => {
