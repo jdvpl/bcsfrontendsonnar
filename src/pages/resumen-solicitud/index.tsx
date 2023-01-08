@@ -11,12 +11,24 @@ import { SesionStorageKeys } from '../../session';
 import Stepper from '../../components/ui/Stepper';
 import { routes } from '../../routes';
 import { ApplicationLoader } from '../../components/ui/Loaders/ApplicationLoader';
+import { riskBoxes } from '../../services/index';
 
 function ResumenApplication() {
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
   const [isLoading, setLoading] = useState(false);
   const router = useRouter();
 
+  const onSubmit = async () => {
+    setLoading(true);
+    const response = await riskBoxes({});
+    if (!response.error) {
+      router.push(routes.approvalDataPage);
+      setLoading(false);
+    } else {
+      setLoading(false);
+    }
+  };
+  
   return (
     <div>
       {isLoading ? <ApplicationLoader /> : null}
@@ -64,7 +76,7 @@ function ResumenApplication() {
         <div className="flex flex-col items-center gap-y-5">
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] mt-[24px] shadow-none"
-            onClick={() => router.push(routes.approvalDataPage)}
+            onClick={onSubmit}
             name="solicitarCredito"
             data-testid="btn-next"
             tabIndex={0}
