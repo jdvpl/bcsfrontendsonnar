@@ -7,50 +7,20 @@ import ReviewApplication from '../../components/ui/application/ReviewApplication
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import Button from '../../components/ui/Button/index';
 import { convertToColombianPesos } from '../../utils/index';
+// import { urlAndUtms } from '../../utils/RouterUtmsUrl';
 import { SesionStorageKeys } from '../../session';
 import Stepper from '../../components/ui/Stepper';
 import { routes } from '../../routes';
-import Lottie from 'react-lottie-player';
-import lottieJson from '../../../public/animations/houseAnimation.json';
-import { riskBoxes } from '../../services';
+import { ApplicationLoader } from '../../components/ui/Loaders/ApplicationLoader';
 
 function ResumenApplication() {
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
-  const [isLoading, setLoading] = useState(true);
-
+  const [isLoading, setLoading] = useState(false);
   const router = useRouter();
-
-  const onSubmit = async () => {
-    setLoading(true);
-    const response = await riskBoxes({});
-    if (!response.error) {
-      router.push(routes.approvalDataPage);
-      setLoading(false);
-    } else {
-      setLoading(false);
-    }
-    // // setTimeout(() => {}, 2000);
-  };
 
   return (
     <div>
-      {isLoading ? (
-        <div className="bg-white fixed top-0 left-0 w-screen h-screen z-10 flex flex-col justify-center items-center">
-          <Lottie
-            loop
-            animationData={lottieJson}
-            className="mx-auto xl:w-[378px] xl:mb-8 md:w-[376.91px] md:mb-[26px] sm:w-[321.92px] sm:mb-[17px] mb-6 w-[287.56px]"
-            play
-          />
-          <Typography
-            style={{ fontFamily: 'Montserrat' }}
-            variant="bodyM3"
-            className="Montserrat font-semibold  text-[16px] tracking-wide	text-center leading-5 xl:w-[366px] md:w-[273px] sm:w-[251px] xs:w-[256px]"
-          >
-            Tener vivienda propia pronto <br /> será una realidad
-          </Typography>
-        </div>
-      ) : null}
+      {isLoading ? <ResumenApplication /> : null}
       <div className="container flex lg:mt-[0] xs:w-[343px] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-end">
         <div className="mt-4  hidden lg:block">
           <LogoBcs />
@@ -95,7 +65,7 @@ function ResumenApplication() {
         <div className="flex flex-col items-center gap-y-5">
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] mt-[24px] shadow-none"
-            onClick={onSubmit}
+            onClick={() => router.push(routes.approvalDataPage)}
             name="solicitarCredito"
             data-testid="btn-next"
             tabIndex={0}

@@ -190,6 +190,24 @@ export const fetchSarlaft = async (body: any) => {
   }
 
 };
+export const sendAuthorization = async (body: any) => {
+  try {
+    const { data: response } = await axios.post(
+      'https://63a9fbb57d7edb3ae61dd65b.mockapi.io/v1/send-authorization',
+      body
+    );
+    return {
+      response: {
+        result: response,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e.response?.data?.message };
+  }
+
+};
+
 export const riskBoxes = async (body: any) => {
   try {
     const { data: response } = await axios.post(
