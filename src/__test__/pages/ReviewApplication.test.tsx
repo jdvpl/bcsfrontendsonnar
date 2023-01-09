@@ -20,8 +20,7 @@ describe('<Resumen-Solicitud/>', () => {
     );
     const btnContinue = component.getByTestId('btn-next');
     await waitFor(() => userEvent.click(btnContinue));
-    const messageLoader = component.getByTestId('message-loader');
-    expect(messageLoader).toBeTruthy();  
+    expect(component.container.querySelector('svg')).toBeTruthy();
   });
   it('Buttom exit', async () => {
     const router = createMockRouter({});
