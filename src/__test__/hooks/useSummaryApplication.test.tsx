@@ -3,7 +3,7 @@ import { act, renderHook } from '@testing-library/react-hooks';
 import useSummaryApplication from '../../hooks/useReviewApplication';
 
 describe('useSummaryApplication', () => {
-  test.only('should render text when call renderBody when case 0 ', async () => {
+  test('should render text when call renderBody when case 0 ', async () => {
     const { result } = renderHook(() => useSummaryApplication());
     act(() => {
       result.current.onSubmit();
