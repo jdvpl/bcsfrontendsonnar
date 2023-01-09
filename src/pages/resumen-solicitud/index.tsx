@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import LogoBcs from '../../components/svg/LogoBcs';
 import LogoForm from '../../components/svg/LogoForm';
@@ -11,24 +11,13 @@ import { SesionStorageKeys } from '../../session';
 import Stepper from '../../components/ui/Stepper';
 import { routes } from '../../routes';
 import { ApplicationLoader } from '../../components/ui/Loaders/ApplicationLoader';
-import { riskBoxes } from '../../services/index';
+import useSummaryApplication from '../../hooks/useReviewApplication';
 
 function ResumenApplication() {
-  const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
-  const [isLoading, setLoading] = useState(false);
-  const router = useRouter();
 
-  const onSubmit = async () => {
-    setLoading(true);
-    const response = await riskBoxes({});
-    if (!response.error) {
-      router.push(routes.approvalDataPage);
-      setLoading(false);
-    } else {
-      setLoading(false);
-    }
-  };
-  
+  const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
+  const { isLoading, onSubmit, router } = useSummaryApplication();
+
   return (
     <div>
       {isLoading ? <ApplicationLoader /> : null}
