@@ -14,9 +14,9 @@ import { ApplicationLoader } from '../../components/ui/Loaders/ApplicationLoader
 import useSummaryApplication from '../../hooks/useReviewApplication';
 
 function ResumenApplication() {
-
+  const router = useRouter();
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
-  const { isLoading, onSubmit, router } = useSummaryApplication();
+  const { isLoading, onSubmit } = useSummaryApplication(router);
 
   return (
     <div>
