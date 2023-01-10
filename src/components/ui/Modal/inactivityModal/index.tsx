@@ -103,6 +103,8 @@ export function InactivityModal() {
           <button
             id="reSend"
             type="button"
+            role="btnGotoHome"
+            data-testid="btnGotoHome"
             onClick={getOutToHome}
             className={`text-center cursor-pointer text-[18px] text-primario-20 text-base leading-[14px] -tracking-[0.2px] font-semibold
                     disabled:text-azul_gris-40 disabled:font-normal disabled:text-sm disabled:leading-[18px] mb-[41px]`}

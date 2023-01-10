@@ -5,11 +5,6 @@ import { RouterContext } from 'next/dist/shared/lib/router-context';
 import userEvent from "@testing-library/user-event";
 import { createMockRouter } from '../utils/createMockRouter';
 import Authentication from '../../pages/autenticacion';
-import { routes } from '../../routes';
-import { getQuestions } from '../../services';
-import { SesionStorageKeys } from '../../session';
-
-
 jest.mock('../../services', () => ({
   getQuestions: jest.fn(),
 }));

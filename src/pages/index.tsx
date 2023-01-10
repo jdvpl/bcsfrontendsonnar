@@ -249,7 +249,7 @@ export default function Home() {
                 <div className="flex flex-col  ">
                   <div className="h-[3px] bg-primario-300 w-[36px] rounded-md" />
                   <Typography variant="h4" className=" text-primario-300 text-center mt-5 text-[22px]">
-
+                    2
                   </Typography>
                 </div>
                 {/* number */}

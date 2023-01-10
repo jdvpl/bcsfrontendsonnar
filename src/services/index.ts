@@ -198,7 +198,7 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
 export const getBasicData = async (data: iFormBasicData) => {
   try {
     const { data: response } = await axios.post(
-      'https://a92a-191-156-190-87.ngrok.io/api/users/basic-data',
+      'http://172.31.99.67:7000/api/users/basic-data',
       data,
     );
     return {
