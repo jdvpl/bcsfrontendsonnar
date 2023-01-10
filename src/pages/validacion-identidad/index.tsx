@@ -13,8 +13,6 @@ import NavTitle from '../../components/commons/NavTitle';
 import { SesionStorageKeys } from '../../session';
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
 import { loginAccount, onSubmitResponse } from '../../hooks/functions';
-import { loginAccountSendRequest } from '../../services';
-import { routes } from '../../routes';
 interface Quest {
   items: Question[];
 }
