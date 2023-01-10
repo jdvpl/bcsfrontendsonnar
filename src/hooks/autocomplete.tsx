@@ -1,10 +1,10 @@
 /* eslint-disable */
 import React from 'react';
 import { useState } from 'react';
-import cityData from '../../../lib/cities.json';
+import cityData from '../lib/cities.json';
 import TextField from '@mui/material/TextField';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
-import ExampleInfo from '../../commons/ExampleInfo';
+import ExampleInfo from '../components/commons/ExampleInfo';
 interface InputProps {
   placeholder?: string;
   type?: string;
@@ -49,7 +49,6 @@ const AutoCompleteCustom: React.FC<InputProps> = ({
       id="select-autocomplete"
       data-testid={'searchAutocomplete'}
       itemScope
-      itemType="http://schema.org/Person"
       className="flex flex-col justify-start"
     >
       {/* eslint-disable-line no-use-before-define */}
