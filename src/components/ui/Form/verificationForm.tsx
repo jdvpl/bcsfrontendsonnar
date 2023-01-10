@@ -16,6 +16,7 @@ import Button from '../Button';
 import ContainerButtonForm from './ContainerButtonForm';
 import Typography from '../Typography';
 import LogoForm from '../../svg/LogoForm';
+import useVerificationForm from '../../../hooks/useVerificationForm';
 
 
 interface FormProps {
@@ -63,15 +64,7 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
     event.preventDefault();
   };
   const fields = watch();
-  useEffect(() => {
-    if (fields.password) {
-      if (fields.password !== '') {
-        setBorder('#798C98');
-      } else if (fields.password === '') {
-        setBorder('#E9132B');
-      }
-    }
-  }, [fields.password]);
+  useVerificationForm(fields, setBorder)
   return (
     <motion.div
       initial="hidden"
