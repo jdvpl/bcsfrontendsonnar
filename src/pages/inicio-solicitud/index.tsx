@@ -20,7 +20,14 @@ function InicioSolicitud() {
     const response = await sendAuthorization(data)
     setDataUser(formData);
     if (!response.error) {
-      router.push(routes.authentication)
+      console.log(response.response)
+      if (response.response.result) {
+        router.push(routes.authentication)
+      } else {
+        router.push(routes.validacionErrorValidacionIdentidad);
+      }
+    } else {
+      router.push(routes.validacionErrorValidacionIdentidad);
     }
   }
 

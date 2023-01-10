@@ -213,8 +213,8 @@ export const fetchSarlaft = async (body: any) => {
 };
 export const sendAuthorization = async (body: any) => {
   try {
-    const { data: response } = await axios.post(
-      'https://e5897c23-d1ed-438c-9c84-74ae24568d56.mock.pstmn.io/v1/send-authorization',
+    const { data: response } = await clientAxiosBackend.post(
+      '/customer/DataProcessing',
       body
     );
     return {
