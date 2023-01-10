@@ -242,7 +242,7 @@ export function CreditDataForm() {
           </div>
         </div>
         {choseOffice ? (
-          <div className="w-full">
+          <div className="w-full" data-testid="InputOffices">
             <Controller
               control={control}
               name="office"

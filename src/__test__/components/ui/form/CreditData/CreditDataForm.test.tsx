@@ -20,13 +20,13 @@ describe('<CreditDataForm/>', () => {
     const InputTypeHouse = screen.queryByTestId('InputTypeHouse');
     expect(InputTypeHouse!).toBeInTheDocument();
   });
-  // it('should render house type  when choseHouse is false ', async () => {
-  //   const { container } = render(<CreditDataForm />);
-  //   const ButtonNo = screen.getByTestId('Button-No');
-  //   await waitFor(() => userEvent.click(ButtonNo));
-  //   const InputTypeHouse = screen.queryByTestId('InputTypeHouse');
-  //   expect(InputTypeHouse!).not.toBeInTheDocument();
-  // });
+  it('should render house type  when choseHouse is false ', async () => {
+    const { container } = render(<CreditDataForm />);
+    const ButtonYes = screen.getByTestId('Button-Yes');
+    await waitFor(() => userEvent.click(ButtonYes));
+    const InputTypeHouse = screen.queryByTestId('InputOffices');
+    expect(InputTypeHouse!).toBeInTheDocument();
+  });
   it('should render house type  when choseHouse is false and fill fields ', async () => {
 
     const router = createMockRouter({});
