@@ -14,13 +14,14 @@ const MoneyLaunderingOptions = [
   },
   {
     name: 'isPep',
-    label: '¿Es una persona politicamente expuesta?',
+    label: '¿Es una persona políticamente expuesta?',
     toolTip:
       'Políticamente expuesto es aquella persona que tiene o tuvo una función pública relevante.',
   },
   {
     name: 'legalRepresentation',
-    label: '¿Es funcionario con representación Legal en el Banco Caja Socia?',
+    label:
+      '¿Es funcionario o familiar de un administrador o representante legal en el Banco Caja Social?',
     toolTip: '',
   },
 ];
@@ -33,7 +34,7 @@ export function MoneyLaunderingForm() {
           <div className="cardShadow min-h-[96px] w-full mb-3 rounded-md px-6 py-3">
             <Typography
               variant="bodyS3"
-              className="text-complementario-100 font-light mb-[12px]"
+              className="text-complementario-100 font-light mb-[12px] md:max-w-full max-w-[95%]"
             >
               {option?.label}
               {option?.toolTip !== '' ? (
@@ -44,7 +45,7 @@ export function MoneyLaunderingForm() {
                   icon={
                     <div
                       id="-group"
-                      className="relative  w-5 h-4 flex flex-col items-center group"
+                      className="relative -bottom-[3px] w-5 h-4"
                     >
                       <InfoIco />
                     </div>
@@ -79,7 +80,7 @@ export function MoneyLaunderingForm() {
           </div>
         ))}
       </div>
-      <Button isLanding="w-full mt-[10px]" onClick={onSubmit} data-testid="btnSarlaftAc">
+      <Button isLanding="w-full mt-[20px]" onClick={onSubmit} data-testid="btnSarlaftAc">
         Continuar
       </Button>
     </div>

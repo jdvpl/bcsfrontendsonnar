@@ -16,4 +16,5 @@ export interface SimulationData {
   year?: string;
   day?: string;
   month?: string;
+  office?: string;
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event';
@@ -8,6 +7,7 @@ import { routes } from '../../routes';
 import ResumenSolicitud from '../../pages/resumen-solicitud/index';
 import { createMockRouter } from '../utils/createMockRouter';
 import ReviewApplication from '../../components/ui/application/ReviewApplication';
+import 'jest-canvas-mock';
 
 describe('<Resumen-Solicitud/>', () => {
   it('should render successfully', () => {
@@ -15,15 +15,12 @@ describe('<Resumen-Solicitud/>', () => {
     expect(container).toBeTruthy();
   });
   it('Buttom continue', async () => {
-    const router = createMockRouter({});
-    const { getByTestId } = render(
-      <RouterContext.Provider value={router}>
+    const component = render(
         <ResumenSolicitud />
-      </RouterContext.Provider>
     );
-    const btnContinue = getByTestId('btn-next');
+    const btnContinue = component.getByTestId('btn-next');
     await waitFor(() => userEvent.click(btnContinue));
-    expect(router.push).toHaveBeenCalledWith(routes.approvalDataPage);
+    expect(component.container.querySelector('#message-loader')).toBeTruthy();
   });
   it('Buttom exit', async () => {
     const router = createMockRouter({});

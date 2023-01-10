@@ -36,7 +36,7 @@ function MoneyLaunderingPage() {
 
       <Typography
         variant="h2"
-        className="text-center md:mb-[100px] sm:mb-[84px] xs:mb-[48px] mb-[48px] md:text-[28px] xs:text-[20px] font-bold text-primario-900"
+        className="text-center md:mb-[42px] sm:mb-[33px] xs:mb-[36px] mb-[36px] md:text-[28px] xs:text-[20px] font-bold text-primario-900"
       >
         Confirme la siguiente información
       </Typography>

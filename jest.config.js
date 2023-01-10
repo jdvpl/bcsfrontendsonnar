@@ -6,6 +6,7 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   moduleDirectories: ['node_modules', '<rootDir>/'],
   testEnvironment: 'jest-environment-jsdom',
+  setupFilesAfterEnv: ['jest-canvas-mock'],
   collectCoverageFrom: ['<rootDir>/src/components/**',
     '<rootDir>/src/pages/**',
     '<rootDir>/src/hooks/**',
