@@ -13,7 +13,7 @@ const Questions: FC = () => {
     >
       <h2
         id="questions"
-        className="text-center min-w-[291px] mb-[60px] mt-[60px]  md:mb-[79px] md:mt-[80px] w-full text-[30px] leading-[34px]  lg:text-[28px] lg:leading-[34px] font-poppinsSemiBold"
+        className="text-center min-w-[291px] mb-[60px] mt-[60px]  md:mb-[79px] md:mt-[80px] w-full text-[30px] leading-[34px]  lg:text-[32px] lg:leading-[34px] font-poppinsBold"
         role="paragraph"
         tabIndex={0}
       >
@@ -29,8 +29,8 @@ const Questions: FC = () => {
           >
             <div data-testid="itemATest1">
               Para el proceso de legalización es necesario contemplar los gastos de avalúo, estudio de títulos y escrituración. Si desea conocer más a cerca de estos conceptos, diríjase a nuestra {""}
-              <span className="text-primario-20 font-medium underline">
-                <Link href={routes.consultancy}>guía interactiva.</Link>
+              <span className="text-secundario-100 font-medium ">
+                <Link href={routes.consultancy}><span className='border-b-[1px] cursor-pointer border-b-secundario-100'>guía interactiva.</span></Link>
               </span>
             </div>
           </ItemAccordion>
