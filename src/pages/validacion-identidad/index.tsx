@@ -13,6 +13,8 @@ import NavTitle from '../../components/commons/NavTitle';
 import { SesionStorageKeys } from '../../session';
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
 import { onSubmitResponse } from '../../hooks/functions';
+import { loginAccountSendRequest } from '../../services';
+import { routes } from '../../routes';
 interface Quest {
   items: Question[];
 }
@@ -28,8 +30,16 @@ const Index: React.FC = () => {
   useEffect(() => {
     setprogress('25%');
   }, []);
-  const loginAccount = (dataSend: any) => {
-    // console.log({ dataSend })
+  const loginAccount = async (dataSend: any) => {
+    setIsLoading(true);
+    const data = { password: dataSend.password, documentType: dataTU.document_type, documentNumber: dataTU.document_number }
+    const response = await loginAccountSendRequest(data);
+    if (!response.error) {
+      setIsLoading(false);
+      router.push(routes.otp)
+    } else {
+      router.push(routes.validacionErrorValidacionIdentidad)
+    }
   }
   return (
     <>
