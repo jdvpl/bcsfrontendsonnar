@@ -2,8 +2,8 @@ import { render, waitFor, screen } from '@testing-library/react';
 import React, { useState } from 'react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import AutoCompleteCustom from '../../../../components/ui/inputs/autocomplete';
 import offices from '../../../../lib/officies.json';
+import AutoCompleteCustom from '../../../../hooks/autocomplete';
 const mockHandler = jest.fn();
 const renderComponent = () =>
   render(

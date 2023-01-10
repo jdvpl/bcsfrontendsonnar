@@ -14,8 +14,8 @@ import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import { routes } from '../../../../routes';
 import dataOffices from '../../../../lib/officies.json';
-import AutoCompleteCustom from '../../inputs/autocomplete';
 import { getOffices } from '../../../../services';
+import AutoCompleteCustom from '../../../../hooks/autocomplete';
 
 export function CreditDataForm() {
   const [choseOffice, setChoseOffice] = useState(false);
