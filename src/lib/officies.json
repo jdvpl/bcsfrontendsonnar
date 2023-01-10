@@ -9,24 +9,6 @@
         "parentid": "50000"
     },
     {
-        "idOffice": "0241",
-        "nameOffice": "Apartado",
-        "Zone": "Zona Antioquia Norte",
-        "city": "APARTADO",
-        "address": "Calle 99C  # 100-82 LC 109-111 Centro Comercial Plaza del Rio - Apartadó (Ant.)",
-        "idCity": "05045",
-        "parentid": "05000"
-    },
-    {
-        "idOffice": "0431",
-        "nameOffice": "Arauca",
-        "Zone": "Zona Andina",
-        "city": "ARAUCA",
-        "address": "Calle 20 # 20- 43 Centro ",
-        "idCity": "81001",
-        "parentid": "81000"
-    },
-    {
         "idOffice": "0091",
         "nameOffice": "Armenia Plaza",
         "Zone": "Zona Eje Cafetero",
@@ -1071,15 +1053,6 @@
         "parentid": "68000"
     },
     {
-        "idOffice": "0345",
-        "nameOffice": "Buenaventura",
-        "Zone": "Zona Occidente",
-        "city": "BUENAVENTURA",
-        "address": "Calle 1 # 2A- 55 Centro ",
-        "idCity": "76109",
-        "parentid": "76000"
-    },
-    {
         "idOffice": "0080",
         "nameOffice": "Buga",
         "Zone": "Zona Occidente",
@@ -1503,15 +1476,6 @@
         "parentid": "50000"
     },
     {
-        "idOffice": "0527",
-        "nameOffice": "Honda",
-        "Zone": "Zona Central",
-        "city": "HONDA",
-        "address": "Calle 13 # 11- 23 ",
-        "idCity": "73349",
-        "parentid": "73000"
-    },
-    {
         "idOffice": "0521",
         "nameOffice": "Avenida Quinta",
         "Zone": "Zona Central",
@@ -1645,15 +1609,6 @@
         "address": "Carrera 23 # 27- 54",
         "idCity": "17001",
         "parentid": "17000"
-    },
-    {
-        "idOffice": "0543",
-        "nameOffice": "Mariquita",
-        "Zone": "Zona Central",
-        "city": "MARIQUITA",
-        "address": "Carrera 5 # 6 - 78 ",
-        "idCity": "73443",
-        "parentid": "73000"
     },
     {
         "idOffice": "0061",
@@ -1807,15 +1762,6 @@
         "address": "Carrera 66 B 34 a 76 local 059",
         "idCity": "05001",
         "parentid": "05000"
-    },
-    {
-        "idOffice": "0436",
-        "nameOffice": "Melgar",
-        "Zone": "Zona Central",
-        "city": "MELGAR",
-        "address": "Carrera 25 # 06 - 07 Esquina Brr/Centro ",
-        "idCity": "73449",
-        "parentid": "73000"
     },
     {
         "idOffice": "0545",
@@ -1978,15 +1924,6 @@
         "address": "Centro Comercial Mayorca Etapa II Piso 5 local 5005.\nCra 48 No 40 Sur 128",
         "idCity": "05631",
         "parentid": "05000"
-    },
-    {
-        "idOffice": "0067",
-        "nameOffice": "San Andres",
-        "Zone": "Zona Antioquia Sur",
-        "city": "SAN ANDRES",
-        "address": "Carrera 2 - Calle 4 con Av. Providencia",
-        "idCity": "88001",
-        "parentid": "88000"
     },
     {
         "idOffice": "0423",
