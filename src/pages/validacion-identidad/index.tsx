@@ -12,7 +12,7 @@ import AnimationComponent from '../../components/commons/Animation';
 import NavTitle from '../../components/commons/NavTitle';
 import { SesionStorageKeys } from '../../session';
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
-import { onSubmitResponse } from '../../hooks/functions';
+import { loginAccount, onSubmitResponse } from '../../hooks/functions';
 import { loginAccountSendRequest } from '../../services';
 import { routes } from '../../routes';
 interface Quest {
@@ -30,17 +30,6 @@ const Index: React.FC = () => {
   useEffect(() => {
     setprogress('25%');
   }, []);
-  const loginAccount = async (dataSend: any) => {
-    setIsLoading(true);
-    const data = { password: dataSend.password, documentType: dataTU.document_type, documentNumber: dataTU.document_number }
-    const response = await loginAccountSendRequest(data);
-    if (!response.error) {
-      setIsLoading(false);
-      router.push(routes.otp)
-    } else {
-      router.push(routes.validacionErrorValidacionIdentidad)
-    }
-  }
   return (
     <>
       <Head>
@@ -64,7 +53,7 @@ const Index: React.FC = () => {
             </AnimatePresence>
           )}
           <AnimatePresence>
-            {dataValid ? <VerificationForm onSubmit={(dataLogin: any) => { loginAccount(dataLogin) }} /> : ''}
+            {dataValid ? <VerificationForm onSubmit={(dataLogin: any) => { loginAccount(dataLogin, setIsLoading, dataTU, router) }} /> : ''}
           </AnimatePresence>
           <AnimatePresence>
             {dataNumber && <ValidationFormNumber questions={dataNumber} />}
