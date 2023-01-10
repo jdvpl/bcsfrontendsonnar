@@ -33,6 +33,7 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
   const classNames = dynamicClassesSelective(hasTitle, className);
   return (
     <div
+      data-testId="selectiveCardTest"
       {...props}
       className={classNames.mainClasesParentDiv}
       {...(onclick ? { onClick: () => router.push(pathTo) } : {})}

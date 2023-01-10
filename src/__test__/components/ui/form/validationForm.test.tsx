@@ -2,7 +2,6 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { ValidationForm, Question, FormProps } from '../../../../components/ui/Form/ValidationForm';
-import VerificationForm from '../../../../components/ui/Form/verificationForm';
 
 const fn = jest.fn()
 describe('Visibility of the ValidationForm', () => {
