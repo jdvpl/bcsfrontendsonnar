@@ -10,6 +10,7 @@ import { convertToColombianPesos } from '../../utils/index';
 import { SesionStorageKeys } from '../../session';
 import Stepper from '../../components/ui/Stepper';
 import { routes } from '../../routes';
+import Alert from '../../components/ui/Alert/index'
 import { ApplicationLoader } from '../../components/ui/Loaders/ApplicationLoader';
 import useSummaryApplication from '../../hooks/useReviewApplication';
 
@@ -35,22 +36,16 @@ function ResumenApplication() {
           actualStep={4}
           percentage={100}
           className="lg:w-[684px] md:w-[456px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px]"
-          title="Datos personales"
+          title="Resumen de la solicitud"
         />
       </div>
       <div className=" xs:w-[290px] sm:w-[343px]  lg:w-[684px] md:w-[584px] m-auto">
-        <Typography variant="h2" className="mt-8 mb-[52px] text-center">
-          Revise los datos de su solicitud
+        <Typography variant="h2" className="mt-8 mb-[40px] text-center">
+        Conozca la oferta que hemos
+        <br/>
+        diseñado para usted
         </Typography>
-        <div>
-          <Typography
-            variant="bodyS3"
-            className="text-center xs:w-[290px] sm:w-[343px] md:w-[656px] lg:mt-[52px] pmx-3 text-primario-900 pb-7"
-          >
-            Resumen de la solicitud:
-          </Typography>
-        </div>
-
+        <Alert message='La tasa de su crédito será la que se encuentre vigente en el momento del desembolso.' />
         <ReviewApplication
           financedValue={`${convertToColombianPesos(
             Math.floor(valuesMortgage.financeValue)
@@ -71,7 +66,7 @@ function ResumenApplication() {
             tabIndex={0}
             id="btn-next"
           >
-            Enviar solicitud
+            Acepto la oferta
           </Button>
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[15px] shadow-none"
