@@ -2,7 +2,6 @@ import React, { useEffect, ClipboardEvent, useState } from 'react';
 import { MenuItem, Typography } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
-import { json } from 'stream/consumers';
 import Button from '../../Button';
 import ReactHookFormSelect from '../../Select/newSelect';
 import { SimulationData } from '../../../../interfaces';
@@ -13,22 +12,16 @@ import useValidations from './useCreditData';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import { routes } from '../../../../routes';
-import dataOffices from '../../../../lib/officies.json';
-import { getOffices } from '../../../../services';
 import AutoCompleteCustom from '../../../../hooks/autocomplete';
+import creditForm from '../../../../hooks/creditForm';
 
 export function CreditDataForm() {
-  const [choseOffice, setChoseOffice] = useState(false);
   const [insuranceCheck, setInsuranceCheck] = useState(true);
   const [percentageFinance, setPercentageFinance] = useState(0.7);
   const [dataForm] = useSessionStorage(SesionStorageKeys.dataFormSimulation.key, {});
   const [, setDataForm] = useSessionStorage(SesionStorageKeys.mortgageValues.key, {});
   const [offices, setOffices] = useState<any>([]);
   const router = useRouter();
-
-  const changeOffice = (value: boolean) => {
-    setChoseOffice(value);
-  };
 
   const {
     // handleSubmit,
@@ -39,6 +32,8 @@ export function CreditDataForm() {
     setValue,
     formState: { errors },
   } = useForm<SimulationData>({ mode: 'onChange' });
+
+  const { changeOffice, choseOffice } = creditForm({ setOffices });
 
   const typeHouse = watch('typeHouse', 'nueva');
   const houseValue = watch('houseValue', dataForm?.houseValue || 0);
@@ -80,13 +75,6 @@ export function CreditDataForm() {
     setValue('financeValue', dataForm?.financeValue || 0);
     setValue('houseValue', dataForm?.houseValue || 0);
     setValue('termFinance', dataForm?.termFinance || 0);
-    getOffices().then((response) => {
-      if (!response.error) {
-        setOffices(response?.response?.result);
-      } else {
-        setOffices(dataOffices);
-      }
-    });
   }, []);
 
   return (
