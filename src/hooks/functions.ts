@@ -1,5 +1,5 @@
 import { routes } from "../routes";
-import { sendAuthorization, sendQuestions } from "../services";
+import { loginAccountSendRequest, sendAuthorization, sendQuestions } from "../services";
 import { FormData } from '../components/ui/Form'
 
 interface InitDataSend {
@@ -53,5 +53,18 @@ export const onSubmitStartProcess = async (formData: FormData, setDataUser: any,
     }
   } else {
     router.push(routes.validacionErrorValidacionIdentidad);
+  }
+}
+
+
+export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any, router: any) => {
+  setIsLoading(true);
+  const data = { password: dataSend.password, documentType: dataTU.document_type, documentNumber: dataTU.document_number }
+  const response = await loginAccountSendRequest(data);
+  if (!response.error) {
+    setIsLoading(false);
+    router.push(routes.otp)
+  } else {
+    router.push(routes.validacionErrorValidacionIdentidad)
   }
 }
