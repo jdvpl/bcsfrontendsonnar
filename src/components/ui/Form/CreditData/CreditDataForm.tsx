@@ -215,7 +215,7 @@ export function CreditDataForm() {
             </button>
             <button
               data-testid="Button-No"
-              className="flex ml-[117px] cursor-pointer"
+              className="flex md:ml-[117px] xs:ml-[35px] ml-[35px] cursor-pointer"
               onClick={() => changeOffice(false)}
             >
               <span className="font-semibold text-gris-100">Asesor</span>
