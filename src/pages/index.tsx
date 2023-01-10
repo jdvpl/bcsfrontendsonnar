@@ -46,7 +46,7 @@ export default function Home() {
 
   return (
     <div data-testid="landingPage" className="overflow-hidden landingPage">
-      <div className="lg:bg-[url('../public/images/backgroundLg.svg')] xl:bg-[url('../public/images/backgroundLg.svg')] xxl:bg-[url('../public/images/backgroundLg.svg')] md:bg-[url('../public/images/backgroundMd.svg')] sm:bg-[url('../public/images/backgroundSm.svg')] bg-[url('../public/images/backgroundSm.svg')] bg-no-repeat  -z-30 bg-cover xs:bg-bottom sm:bg-bottom md:bg-bottom lg:bg-center xl:bg-bottom xs:h-[540px] sm:h-[580px] md:h-[650px] lg:h-[755px] xl:h-[715px] xxl:bg-top xxl:h-[910px] bgImageLanding">
+      <div className="lg:bg-[url('../public/images/backgroundLg.svg')] xl:bg-[url('../public/images/backgroundLg.svg')] xxl:bg-[url('../public/images/backgroundLg.svg')] md:bg-[url('../public/images/backgroundMd.svg')] sm:bg-[url('../public/images/backgroundSm.svg')] bg-[url('../public/images/backgroundSm.svg')] bg-no-repeat  -z-30 bg-cover xs:bg-bottom sm:bg-bottom md:bg-bottom lg:bg-center xl:bg-bottom xs:h-[540px] sm:h-[580px] md:h-[750px] lg:h-[755px] xl:h-[715px] xxl:bg-top xxl:h-[910px] bgImageLanding">
         <div
           className=" container flex justify-start items-baseline xs:pt-3 xs:pl-2 sm:pt-3 ms:pl-2 md:pl-6 md:pt-6 lg:pt-5 lg:pl-10 xl:pt-5 xxl:pl-0 xxl:ml-20 iconHeader"
           itemScope
@@ -73,7 +73,7 @@ export default function Home() {
             <h4 className="text-white xs:w-[170px] sm:w-[170px] md:w-[265px] lg:w-[394px] font-semibold lg:text-[24px] md:text-[20px] leading-6 wcontainerHeader font-poppinsLight">
               ¿Desea comprar vivienda?
             </h4>
-            <p className="text-white xs:w-[170px] sm:w-[170px] md:w-[233px] lg:w-[354px]  font-light leading-[26px] mf:leading-[20px] mt-3 wcontainerHeader text-[22px] md:text-[18px] md:mr-20 lg:mr-0 font-monserratLight">
+            <p className="text-white xs:w-[170px] sm:w-[170px] md:w-[275px] lg:w-[354px]  font-light leading-[26px] mf:leading-[20px] mt-3 wcontainerHeader text-[22px] md:text-[18px] md:mr-[40px] lg:mr-0 font-monserratLight">
               Aquí le ayudaremos a lograr sus sueños, sin hacer largas filas, ni papeleos extensos.
             </p>
           </div>
@@ -249,7 +249,7 @@ export default function Home() {
                 <div className="flex flex-col  ">
                   <div className="h-[3px] bg-primario-300 w-[36px] rounded-md" />
                   <Typography variant="h4" className=" text-primario-300 text-center mt-5 text-[22px]">
-                    2
+
                   </Typography>
                 </div>
                 {/* number */}

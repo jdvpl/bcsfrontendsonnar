@@ -1266,6 +1266,18 @@ input[type='checkbox']:checked {
     margin-top: 7rem;
   }
 }
+@media (min-width:744px) and (max-width:750px) {
+  .landingPage .firtTitle{
+    margin-left: 0.5rem;
+    position: relative;
+  }  
+}
+@media (min-width:751px) and (max-width:770px) {
+  .landingPage .firtTitle{
+    margin-left: 1rem;
+    position: relative;
+  }  
+}
 
 
 .loginPass .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root{

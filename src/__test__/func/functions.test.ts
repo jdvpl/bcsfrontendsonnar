@@ -1,5 +1,5 @@
 import { routes } from "../../routes";
-import { onSubmitResponse } from "../../func/functions";
+import { onSubmitResponse } from "../../hooks/functions";
 
 describe('onSubmitResponse', () => {
   let initData: any;
