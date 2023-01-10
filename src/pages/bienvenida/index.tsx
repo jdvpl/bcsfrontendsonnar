@@ -1,13 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router';
 import { basePath } from '../../../next.config';
 import Typography from '../../components/ui/Typography';
 import Button from '../../components/ui/Button'
 import { routes } from '../../routes';
 import Header from '../../components/ui/Headers/Header';
+import TagManager from 'react-gtm-module';
 
 function Bienvenida() {
   const router = useRouter();
+  useEffect(() => {
+    TagManager.dataLayer({
+      dataLayer: {
+        event:'Onboarding',
+        category: 'load_onboarding',
+        action: 'entry_Onboarding',
+        label: 'Onboarding',
+      },
+    }); 
+
+},[]
+);
   return (
     <div>
       <Header />

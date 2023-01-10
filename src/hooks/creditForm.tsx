@@ -3,7 +3,7 @@ import { getOffices } from '../services/index';
 import dataOffices from '../lib/cities.json';
 
 export default function creditForm({ setOffices }: any) {
-  const [choseOffice, setChoseOffice] = useState(false);
+  const [choseOffice, setChoseOffice] = useState(true);
 
   const changeOffice = (value: boolean) => {
     setChoseOffice(value);

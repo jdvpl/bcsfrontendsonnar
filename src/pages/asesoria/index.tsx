@@ -11,6 +11,7 @@ import Stepper from '../../components/ui/Stepper';
 import Typography from '../../components/ui/Typography';
 import { stepperTitles, titleSection } from '../../hooks/consultancy';
 import useConsultancy from './useConsultancy';
+import TagManager from 'react-gtm-module';
 
 const ConditionalWrapper: FC<any> = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
@@ -37,6 +38,18 @@ function Consultancy() {
       isMobile,
       itemActive,
     });
+    useEffect(() => {
+      TagManager.dataLayer({
+        dataLayer: {
+          event:'Guia-Interactiva',
+          category: 'init_guia',
+          action: 'entry_guia',
+          label: 'guia_interactiva',
+        },
+      }); 
+
+  },[]
+  );
 
   return (
     <>

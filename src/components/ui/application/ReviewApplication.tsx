@@ -4,7 +4,7 @@ import { basePath } from '../../../../next.config';
 import { useReviewApplication } from './useReviewApplication';
 
 interface ReviewApplicationProps {
-  financedValue: string;
+  financedValue?: string;
   fireInsurance?: string;
   lifeInsurance?: string;
   termFinance: string;
@@ -26,23 +26,30 @@ function ReviewApplication({
     <div className="flex flex-col items-center ">
       <Card
         data-testid="financedValue"
-        className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[98px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+        className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[79px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
         title="Monto Total"
-        value={financedValue?.toString()}
+        value="$100.000.000 pesos"
         text="text-[20px] pl-[18px] font-semibold"
         urlsvg={`${basePath}/images/Money.svg`}
         classtitle="h-[14px] text-[13px]"
         id="amountotal"
         tooltiptext=""
-        endicon
-        urlsvgendicon={`${basePath}/images/PenEdit.svg`}
-        clickEdit={goBack}
-        description
-        descriptionHtml={<p className='pr-[1px] ml-[26px] mr-[8px] text-[14px] color-[#00253D]'>Description</p>}
+      />
+      <Card
+        className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px] "
+        title="Cuota mensual aproximada"
+        value="$850.000"
+        text="text-[32px] pl-[16px] pt-2 flex items-baseline"
+        urlsvg=""
+        classtitle="h-[18px] pt-[16px] text-[16px]"
+        subvalue="pesos"
+        textsub="30"
+        tooltiptext=""
+        urlsvgendicon=""
       />
       <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[116px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
-      title="Tasa"
+      title="Tasa aproximada"
       value={rate}
       text="text-[20px] pl-[18px] font-semibold"
       urlsvg={`${basePath}/images/Charts.svg`}
