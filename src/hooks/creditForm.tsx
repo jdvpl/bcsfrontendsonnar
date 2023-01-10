@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getOffices } from '../services/index';
-import dataOffices from '../lib/cities.json';
+import dataOffices from '../lib/officies.json';
 
 export default function creditForm({ setOffices }: any) {
   const [choseOffice, setChoseOffice] = useState(true);
@@ -9,13 +9,14 @@ export default function creditForm({ setOffices }: any) {
     setChoseOffice(value);
   };
   useEffect(() => {
-    getOffices().then((response) => {
-      if (!response.error) {
-        setOffices(response?.response?.result);
-      } else {
-        setOffices(dataOffices);
-      }
-    });
-  },[]);
+    setOffices(dataOffices);
+    // getOffices().then((response) => {
+    //   if (!response.error) {
+    //     setOffices(response?.response?.result);
+    //   } else {
+    //     setOffices(dataOffices);
+    //   }
+    // });
+  }, []);
   return { changeOffice, choseOffice };
 }
