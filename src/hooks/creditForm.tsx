@@ -16,6 +16,6 @@ export default function creditForm({ setOffices }: any) {
         setOffices(dataOffices);
       }
     });
-  });
+  },[]);
   return { changeOffice, choseOffice };
 }

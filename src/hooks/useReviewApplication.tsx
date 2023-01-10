@@ -13,7 +13,6 @@ export default function useSummaryApplication(router: any) {
     const response = await riskBoxes(data);
     if (!response.error) {
       router.push(routes.approvalDataPage);
-      setLoading(false);
     }
     setLoading(false);
   };
