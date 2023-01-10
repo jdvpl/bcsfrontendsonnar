@@ -38,6 +38,4 @@ describe('<VerificationForm/>', () => {
     const { queryByTestId } = render(<VerificationForm onSubmit={mkFn} />);
     expect(queryByTestId('typographyTest')).toBeInTheDocument()
   })
-
-
 });
