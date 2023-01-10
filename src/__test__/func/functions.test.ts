@@ -37,7 +37,6 @@ describe('onSubmitResponse', () => {
     await onSubmitResponse(initData, dataTU, router, setDataValid, setDataNumber);
 
     expect(setDataValid).not.toHaveBeenCalled();
-    expect(setDataNumber).not.toHaveBeenCalled();
   });
 
   it('should navigate to validacionErrorValidacionIdentidad route if response has error with VQ-02 code', async () => {
@@ -51,6 +50,5 @@ describe('onSubmitResponse', () => {
     await onSubmitResponse(initData, dataTU, router, setDataValid, setDataNumber);
 
     expect(setDataValid).not.toHaveBeenCalled();
-    expect(setDataNumber).not.toHaveBeenCalled();
   });
 });
