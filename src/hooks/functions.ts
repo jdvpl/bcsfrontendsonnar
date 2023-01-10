@@ -1,5 +1,6 @@
 import { routes } from "../routes";
-import { sendQuestions } from "../services";
+import { sendAuthorization, sendQuestions } from "../services";
+import { FormData } from '../components/ui/Form'
 
 interface InitDataSend {
   document_type: string;
@@ -36,3 +37,21 @@ export const onSubmitResponse = async (initData: InitDataSend, dataTU: any, rout
     }
   }
 };
+
+
+export const onSubmitStartProcess = async (formData: FormData, setDataUser: any, router: any) => {
+  const labels = { policy_and_terms_label: 'Acepta tratamiento de datos personales y consulta en centrales de riesgo', commercial_terms_label: 'Autoriza que su información sea utilizada con fines comerciales' }
+  const data = { ...formData, ...labels }
+  const response = await sendAuthorization(data)
+  setDataUser(formData);
+  if (!response.error) {
+    console.log(response.response)
+    if (response.response.result) {
+      router.push(routes.authentication)
+    } else {
+      router.push(routes.validacionErrorValidacionIdentidad);
+    }
+  } else {
+    router.push(routes.validacionErrorValidacionIdentidad);
+  }
+}
