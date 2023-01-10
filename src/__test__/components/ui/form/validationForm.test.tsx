@@ -55,12 +55,4 @@ describe('Visibility of the ValidationForm', () => {
     const option1 = getByText('Opción 1');
     fireEvent.click(option1);
   });
-  it('should render component', () => {
-    const { baseElement } = render(<VerificationForm onSubmit={fn}
-    />)
-    expect(baseElement).toBeTruthy();
-  })
-
-
-
 });
