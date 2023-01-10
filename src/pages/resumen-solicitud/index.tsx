@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import LogoBcs from '../../components/svg/LogoBcs';
 import LogoForm from '../../components/svg/LogoForm';
@@ -7,18 +7,20 @@ import ReviewApplication from '../../components/ui/application/ReviewApplication
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import Button from '../../components/ui/Button/index';
 import { convertToColombianPesos } from '../../utils/index';
-import { urlAndUtms } from '../../utils/RouterUtmsUrl';
 import { SesionStorageKeys } from '../../session';
 import Stepper from '../../components/ui/Stepper';
 import { routes } from '../../routes';
+import { ApplicationLoader } from '../../components/ui/Loaders/ApplicationLoader';
+import useSummaryApplication from '../../hooks/useReviewApplication';
 
 function ResumenApplication() {
-  const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
-
   const router = useRouter();
+  const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
+  const { isLoading, onSubmit } = useSummaryApplication(router);
 
   return (
     <div>
+      {isLoading ? <ApplicationLoader /> : null}
       <div className="container flex lg:mt-[0] xs:w-[343px] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-end">
         <div className="mt-4  hidden lg:block">
           <LogoBcs />
@@ -63,7 +65,7 @@ function ResumenApplication() {
         <div className="flex flex-col items-center gap-y-5">
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] mt-[24px] shadow-none"
-            onClick={() => router.push(routes.approvalDataPage)}
+            onClick={onSubmit}
             name="solicitarCredito"
             data-testid="btn-next"
             tabIndex={0}

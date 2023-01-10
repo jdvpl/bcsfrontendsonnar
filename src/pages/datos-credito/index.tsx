@@ -30,8 +30,8 @@ function CreditData() {
           steps={4}
           actualStep={3}
           percentage={100}
-          className="lg:w-[684px] md:w-[456px] xs:w-full mx-auto lg:mb-[64px] xs:mb-[40px] md:mb-[40px]"
-          title="Datos del crédito"
+          className="lg:w-[684px] md:w-[528px] xs:w-full mx-auto lg:mb-[64px] xs:mb-[40px] md:mb-[40px]"
+          title="Personalización del crédito"
         />
       </div>
 
@@ -39,13 +39,7 @@ function CreditData() {
         variant="h2"
         className="text-center  md:leading-[30px] xs:leading-[22px]  mb-[52px] md:text-[28px] xs:text-[20px] font-bold text-primario-900"
       >
-        Defina las condiciones <br /> del crédito a solicitar
-      </Typography>
-      <Typography
-        variant="bodyS3"
-        className=" text-primario-900 mb-[36px] w-[288px] xs:w-[288px] sm:w-[343px] md:w-[550px] lg:w-[686px] mx-auto"
-      >
-        ¿Ya elegió la vivienda a comprar?
+        Defina las condiciones <br className="lg:hidden xs:block" />de su crédito
       </Typography>
 
       <div className="w-[288px] xs:w-[288px] sm:w-[343px] md:w-[550px] lg:w-[686px] mx-auto">

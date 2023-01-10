@@ -17,11 +17,11 @@ describe('<HouseSimulator />', () => {
     );
   });
   test('contain alert text', () => {
-    component.getByText('¿Es una persona politicamente expuesta?');
+    component.getByText('¿Es una persona políticamente expuesta?');
   });
   test('contain alert text', () => {
     component.getByText(
-      '¿Es funcionario con representación Legal en el Banco Caja Socia?'
+      '¿Es funcionario o familiar de un administrador o representante legal en el Banco Caja Social?'
     );
   });
   test('Render simulation button', () => {
