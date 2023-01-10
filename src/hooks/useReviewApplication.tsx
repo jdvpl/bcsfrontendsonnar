@@ -6,7 +6,7 @@ import { useSessionStorage } from './useSessionStorage';
 
 export default function useSummaryApplication(router: any) {
   const [isLoading, setLoading] = useState<boolean>(false);
-  const [data, setDataForm] = useSessionStorage(SesionStorageKeys.mortgageValues.key, {});
+  const [data] = useSessionStorage(SesionStorageKeys.mortgageValues.key, {});
 
   const onSubmit = async () => {
     setLoading(true);
