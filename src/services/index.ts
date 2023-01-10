@@ -226,4 +226,21 @@ export const riskBoxes = async (body: any) => {
 
 };
 
+export const getOffices = async () => {
+  try {
+    const { data: response } = await axios.get(
+      'https://63a9fbb57d7edb3ae61dd65b.mockapi.io/v1/offices',
+    );
+    return {
+      response: {
+        result: response?.response,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e.response?.data?.message };
+  }
+
+};
+
 

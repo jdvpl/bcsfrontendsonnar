@@ -14,17 +14,20 @@ import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import { routes } from '../../../../routes';
 import dataOffices from '../../../../lib/officies.json';
+import AutoCompleteCustom from '../../inputs/autocomplete';
+import { getOffices } from '../../../../services';
 
 export function CreditDataForm() {
-  const [choseHouse, setChoseHouse] = useState(false);
+  const [choseOffice, setChoseOffice] = useState(false);
   const [insuranceCheck, setInsuranceCheck] = useState(true);
   const [percentageFinance, setPercentageFinance] = useState(0.7);
   const [dataForm] = useSessionStorage(SesionStorageKeys.dataFormSimulation.key, {});
   const [, setDataForm] = useSessionStorage(SesionStorageKeys.mortgageValues.key, {});
+  const [offices, setOffices] = useState<any>([]);
   const router = useRouter();
 
-  const changeHouse = (value: boolean) => {
-    setChoseHouse(value);
+  const changeOffice = (value: boolean) => {
+    setChoseOffice(value);
   };
 
   const {
@@ -41,6 +44,7 @@ export function CreditDataForm() {
   const houseValue = watch('houseValue', dataForm?.houseValue || 0);
   const financeValue = watch('financeValue', dataForm?.financeValue || 0);
   const termFinance = watch('termFinance', dataForm?.termFinance || 0);
+  const office = watch('office', dataForm?.office || 0);
 
   const renderPercentage = () => {
     if (Math.floor(percentageFinance * 100) > 100) {
@@ -50,7 +54,15 @@ export function CreditDataForm() {
   };
   const onSubmit = () => {
     // eslint-disable-next-line no-console
-    setDataForm({ typeHouse, houseValue, financeValue, termFinance, insuranceCheck });
+    setDataForm({
+      typeHouse,
+      houseValue,
+      financeValue,
+      termFinance,
+      insuranceCheck,
+      choseOffice,
+      office,
+    });
     router.push(routes.ResumenSolicitud);
   };
 
@@ -68,6 +80,13 @@ export function CreditDataForm() {
     setValue('financeValue', dataForm?.financeValue || 0);
     setValue('houseValue', dataForm?.houseValue || 0);
     setValue('termFinance', dataForm?.termFinance || 0);
+    getOffices().then((response) => {
+      if (!response.error) {
+        setOffices(response?.response?.result);
+      } else {
+        setOffices(dataOffices);
+      }
+    });
   }, []);
 
   return (
@@ -174,7 +193,7 @@ export function CreditDataForm() {
           type="text"
           classNameInput="text-complementario-60"
           labelColor="text-primario-20"
-          value="Pesos"
+          defaultValue="Pesos"
           inputMode="text"
           disabled
           label="Tipo de amortización"
@@ -190,16 +209,16 @@ export function CreditDataForm() {
         </div>
 
         {/* Card Chose Housing */}
-        <div className="cardShadow h-[71px] rounded-xl py-[26px] px-[24px] w-full">
+        <div className="cardShadow h-[71px] rounded-xl pt-[26px] mb-[6px] px-[24px] w-full">
           <div className="flex">
             <button
               className="flex cursor-pointer"
-              onClick={() => changeHouse(true)}
+              onClick={() => changeOffice(true)}
               data-testid="Button-Yes"
             >
               <span className="font-semibold text-gris-100 mr-[10px]">Sucursal</span>
               <div className="w-[25px] h-[25px] border border-complementario-100 flex justify-center items-center rounded-full">
-                {choseHouse ? (
+                {choseOffice ? (
                   <div className="w-[10px] h-[10px] bg-complementario-100 rounded-full">
                     {' '}
                   </div>
@@ -209,11 +228,11 @@ export function CreditDataForm() {
             <button
               data-testid="Button-No"
               className="flex ml-[117px] cursor-pointer"
-              onClick={() => changeHouse(false)}
+              onClick={() => changeOffice(false)}
             >
               <span className="font-semibold text-gris-100">Asesor</span>
               <div className="ml-[15px] w-[25px] h-[25px] border border-complementario-100 flex justify-center items-center rounded-full">
-                {!choseHouse ? (
+                {!choseOffice ? (
                   <div className="w-[10px] h-[10px] bg-complementario-100 rounded-full">
                     {' '}
                   </div>
@@ -222,36 +241,31 @@ export function CreditDataForm() {
             </button>
           </div>
         </div>
-
-        {choseHouse ? (
-          <ReactHookFormSelect
-            onChange={(e: any) => setValue('termFinance', e.target.value)}
-            placeholder="Sucursal"
-            label="Sucursal"
-            defaultValue=""
-            control={control}
-            left="right4"
-            valueLength=""
-            name="termFinance"
-            className="col-span-6"
-            margin="normal"
-            rules={{ required: true }}
-          >
-            {dataOffices?.map((option) => (
-              <MenuItem value={option?.idOffice} key={option?.idOffice}>
-                {`${option?.address
-                  ?.toLowerCase()
-                  .replace(/\b\w/g, (l: string) => l.toUpperCase())}
-                ${option?.nameOffice
-                  ?.toLowerCase()
-                  .replace(/\b\w/g, (l: string) => l.toUpperCase())}
-                - ${option?.city
-                  ?.toLowerCase()
-                  .replace(/\b\w/g, (l: string) => l.toUpperCase())}
-                `}
-              </MenuItem>
-            ))}
-          </ReactHookFormSelect>
+        {choseOffice ? (
+          <div className="w-full">
+            <Controller
+              control={control}
+              name="office"
+              rules={{ required: true }}
+              defaultValue={undefined}
+              render={({ field: { onChange } }) => (
+                <AutoCompleteCustom
+                  id="currentCity"
+                  defaultValue={undefined}
+                  placeholder="Oficina de preferencia"
+                  label="Sucursal"
+                  arrayOptions={offices}
+                  onChange={(e: any) => {
+                    if (e?.idOffice) {
+                      return onChange(e?.idOffice);
+                    }
+                    return onChange(undefined);
+                  }}
+                  zIndex={30}
+                />
+              )}
+            />
+          </div>
         ) : null}
       </div>
 
@@ -274,8 +288,6 @@ export function CreditDataForm() {
           correspondientes.
         </span>
       </button>
-
-      {/* Form when person not chose Hose */}
 
       <Button
         isLanding="w-full md:w-[375px] mx-auto mt-[32px]"
