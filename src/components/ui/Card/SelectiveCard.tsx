@@ -14,6 +14,7 @@ export interface ISelectiveCardProps extends IconsProps {
   onclick: boolean;
   classNamesDescription?: string;
   titleClasses?: string;
+  active?: boolean;
 }
 const SelectiveCard: FC<ISelectiveCardProps> = ({
   label,

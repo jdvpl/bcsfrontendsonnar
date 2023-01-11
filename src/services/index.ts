@@ -198,7 +198,7 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
 export const getBasicData = async (data: iFormBasicData) => {
   try {
     const { data: response } = await axios.post(
-      'http://172.31.99.67:7000/api/users/basic-data',
+      'https://backgeneratepdf-production.up.railway.app/api/users/basic-data',
       data,
     );
     return {
