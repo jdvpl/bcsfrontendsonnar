@@ -28,10 +28,13 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
   onclick = true,
   classNamesDescription = 'md:w-[224px]',
   titleClasses = '',
+  active = false,
   ...props
 }) => {
   const router = useRouter();
-  const classNames = dynamicClassesSelective(hasTitle, className);
+  const classNames = dynamicClassesSelective(hasTitle, className, active);
+  const activeClasses = active ? 'text-white' : 'text-primario-900'
+  const activeClassesDesc = active ? 'text-white' : 'text-complementario-100'
   return (
     <div
       data-testId="selectiveCardTest"
@@ -52,14 +55,14 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
           {hasTitle && (
             <Typography
               variant="bodyM2"
-              className={` text-[1rem] lg:mt-[14px] lg:mb-[18px] leading-[1.125rem] text-primario-900 m-0 tracking-normal font-semibold  group-hover:text-white ${titleClasses}`}
+              className={` text-[1rem] lg:mt-[14px] lg:mb-[18px] leading-[1.125rem]  m-0 tracking-normal font-semibold  group-hover:text-white ${titleClasses} ${activeClasses}`}
             >
               {label}
             </Typography>
           )}
           <Typography
             variant="bodyS3"
-            className={`hasTitle leading-[1.125rem]  text-[1rem] text-complementario-100 mt-2 group-hover:text-white font-ligth ${classNamesDescription}`}
+            className={`hasTitle leading-[1.125rem]  text-[1rem]  mt-2 group-hover:text-white font-ligth ${classNamesDescription} ${activeClassesDesc}`}
           >
             {description}
           </Typography>

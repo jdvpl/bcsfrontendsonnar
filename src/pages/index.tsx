@@ -80,6 +80,34 @@ export default function Home() {
         </div>
         <div className="container cntainerCards mx-auto mt-10  lg:w-[920px]  md:grid md:grid-cols-3 md:mt-[5rem] gap-4 lg:mt-[5rem] xxl:mt-[12rem] md:w-[580px] sm:mt-[6.5rem] ">
           <SelectiveCard
+            icon="bcs-document-one"
+            size="text-[2.5rem]"
+            color="text-white"
+            data-testid="SoliciteTest"
+            label="Solicite su crédito"
+            description="Obtenga la aprobación de su crédito hipotecario y compre la vivienda que desea."
+            pathTo={routes.onboarding}
+            titleClasses="md:text-[14px] lg:text-[16px] font-poppinsSemiBold font-semibold text-white"
+            classNamesDescription='md:w-[166px] lg:w-[224px] md:text-[12px] lg:text-[16px]  font-monserratLight lg:pb-5 md:pb-1'
+            className="sm:mt-4 xs:mt-4 sm:w-[345px] lg:w-[292px] md:w-[186px]"
+            onclick
+            active
+          />
+
+          <SelectiveCard
+            icon="bcs-hand-mobile"
+            size="text-[2.5rem] mb-1"
+            color="text-primario-300"
+            label="Simule su crédito"
+            data-testid="simuladorTestBtn"
+            description="Calcule el valor del crédito y sus cuotas."
+            pathTo={routes.simulador}
+            className="sm:mt-4 xs:mt-4 sm:w-[345px] lg:w-[292px] md:w-[186px]"
+            titleClasses="md:text-[14px] lg:text-[16px] font-poppinsSemiBold font-semibold mt-0 "
+            classNamesDescription='md:w-[166px] lg:w-[224px] md:text-[12px] lg:text-[16px] font-monserratLight md:pb-9'
+            onclick
+          />
+          <SelectiveCard
             icon="bcs-hand-simbol"
             size="text-[2.5rem]"
             color="text-primario-300"
@@ -92,32 +120,7 @@ export default function Home() {
             classNamesDescription='md:w-[166px] lg:w-[250px] md:text-[12px] lg:text-[16px] font-monserratLight'
             onclick
           />
-          <SelectiveCard
-            icon="bcs-hand-mobile"
-            size="text-[2.5rem] mb-1"
-            color="text-primario-300"
-            label="Simule su crédito"
-            data-testid="simuladorTestBtn"
-            description="Calcule el valor del crédito y sus cuotas."
-            pathTo={routes.simulador}
-            className="sm:mt-4 xs:mt-4 sm:w-[345px] lg:w-[292px] md:w-[186px]"
-            titleClasses="md:text-[14px] lg:text-[16px] font-poppinsSemiBold font-semibold mt-0 "
-            classNamesDescription='md:w-[166px] lg:w-[216px] md:text-[12px] lg:text-[16px] font-monserratLight md:pb-9'
-            onclick
-          />
-          <SelectiveCard
-            icon="bcs-document-one"
-            size="text-[2.5rem]"
-            color="text-primario-300"
-            data-testid="SoliciteTest"
-            label="Solicite su crédito"
-            description="Obtenga la aprobación de su crédito hipotecario y compre la vivienda que desea."
-            pathTo={routes.onboarding}
-            titleClasses="md:text-[14px] lg:text-[16px] font-poppinsSemiBold font-semibold "
-            classNamesDescription='md:w-[166px] lg:w-[250px] md:text-[12px] lg:text-[16px]  font-monserratLight lg:pb-5 md:pb-1'
-            className="sm:mt-4 xs:mt-4 sm:w-[345px] lg:w-[292px] md:w-[186px]"
-            onclick
-          />
+
         </div>
       </div>
       <div className="xs:mt-[20rem] sm:mt-[20rem] md:mt-[0px] lg:mt-[42px] bg-gris-90 pb-10 ">
