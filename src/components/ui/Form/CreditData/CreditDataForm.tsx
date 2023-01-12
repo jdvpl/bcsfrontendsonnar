@@ -35,7 +35,7 @@ export function CreditDataForm() {
 
   const { changeOffice, choseOffice } = creditForm({ setOffices });
 
-  const typeHouse = watch('typeHouse', 'nueva');
+  const typeHouse = watch('typeHouse', 'new');
   const houseValue = watch('houseValue', dataForm?.houseValue || 0);
   const financeValue = watch('financeValue', dataForm?.financeValue || 0);
   const termFinance = watch('termFinance', dataForm?.termFinance || 0);
@@ -75,7 +75,44 @@ export function CreditDataForm() {
     setValue('financeValue', dataForm?.financeValue || 0);
     setValue('houseValue', dataForm?.houseValue || 0);
     setValue('termFinance', dataForm?.termFinance || 0);
+    setValue('typeHouse', 'new');
   }, []);
+
+  const isValid = () => {
+    let formIsValid = !(Object.entries(errors).length === 0);
+    const body = {
+      typeHouse,
+      houseValue,
+      financeValue,
+      termFinance,
+      insuranceCheck,
+      choseOffice,
+      office,
+    };
+
+    var values = Object.values(body);
+    for (var i = 0; i < values.length; i++) {
+      if (
+        (values[i] === null ||
+          values[i] === undefined ||
+          values[i] === '' ||
+          values[i] === 0) &&
+        choseOffice === true
+      ) {
+        formIsValid = true;
+        break;
+      } else if (
+        (values[i] === null ||
+          values[i] === undefined ||
+          values[i] === '' ||
+          values[i] === 0) &&
+        i !== 6
+      ) {
+        formIsValid = true;
+      }
+    }
+    return formIsValid;
+  };
 
   return (
     <div className="flex flex-col items-center">
@@ -234,7 +271,6 @@ export function CreditDataForm() {
             <Controller
               control={control}
               name="office"
-              rules={{ required: true }}
               defaultValue={undefined}
               render={({ field: { onChange } }) => (
                 <AutoCompleteCustom
@@ -281,6 +317,7 @@ export function CreditDataForm() {
         isLanding="w-full md:w-[375px] mx-auto mt-[32px]"
         onClick={onSubmit}
         data-testid="btnSubmitDataForm"
+        disabled={isValid()}
       >
         Continuar
       </Button>
