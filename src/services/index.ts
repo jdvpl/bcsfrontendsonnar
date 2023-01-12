@@ -87,7 +87,7 @@ export const loginAccountSendRequest = async (data: any) => {
 export const sendQuestions = async (data: any) => {
   try {
     const { data: response } = await axios.post(
-      'https://271e-152-200-184-53.ngrok.io/api/users/answer',
+      'https://backgeneratepdf-production.up.railway.app/api/users/answer',
       data,
       headersKYC
     );
