@@ -281,7 +281,7 @@ export function CreditDataForm() {
                   arrayOptions={offices}
                   onChange={(e: any) => {
                     if (e?.idOffice) {
-                      return onChange(e?.idOffice);
+                      return onChange(e);
                     }
                     return onChange(undefined);
                   }}
