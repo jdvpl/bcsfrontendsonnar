@@ -167,22 +167,23 @@ export const initialOptions = [
         <div>
           <p className="font-medium my-3">
             Es un producto financiero diseñado especialmente para la compra de vivienda.
-            Su porcentaje máximo de financiación por ley varia según el tipo de vivienda,
-            para VIS es del 80% del valor total del inmueble y para No VIS es del 70%,
-            esta solicitud debe realizarla el comprador a su entidad de confianza.
+            Su porcentaje máximo de financiación por ley varía según el tipo de vivienda,
+            para VIS es máximo del 80% del valor total del inmueble y para No VIS es del
+            70%. La solicitud de este producto debe realizarla el comprador ante una
+            entidad financiera.
           </p>
         </div>
       ),
     },
     {
-      label: 'Compra del inmueble',
+      label: 'Formalizar la compra',
       value: '3',
       content: () => (
         <div>
           <p className="font-medium my-3">
-            Luego de obtener la aprobación de su crédito, presente la carta que le
-            proporcionó el Banco al vendedor de la vivienda y con esta realice el proceso
-            de compra o separación del inmueble.
+            Luego de obtener la aprobación de su crédito, presente al vendedor del
+            inmueble la carta que le proporcionó el banco, de esta manera concreta su
+            intención de compra.
           </p>
         </div>
       ),
