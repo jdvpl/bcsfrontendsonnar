@@ -13,11 +13,11 @@ stages:
       pool:
         vmImage: ubuntu-latest
       steps:
-        - task: npmAuthenticate@0
-          inputs:
-            workingFile: '.npmrc'
-            customEndpoint: 'id-commons-registry'
-          displayName: 'Npm: login'
+        # - task: npmAuthenticate@0
+        # inputs:
+        #   workingFile: '.npmrc'
+        #   customEndpoint: 'id-commons-registry'
+        # displayName: 'Npm: login'
         - script: "npm ci"
           displayName: 'Npm: install'
         - script: "npm run build"
