@@ -44,26 +44,26 @@ export const getQuestions = async (data: any) => {
  * }
  */
 // TODO sendQuestions KYC
-// export const sendQuestions = async (data: any) => {
-//   try {
-//     const dataInfo = await allResponse(data, KEY);
-//     const { data: response } = await axios.post(
-//       // '/customers/answer',
-//       'https://e7da-161-18-184-76.ngrok.io/composer/answer',
-//       { data: dataInfo },
-//       headersKYC
-//     );
-//     return {
-//       response: {
-//         result: response.result,
-//         data: await allResponseDecrypted(response.data, KEY),
-//       },
-//       error: false,
-//     };
-//   } catch (e: any) {
-//     return { error: true, response: e.response.data };
-//   }
-// };
+export const sendQuestions = async (data: any) => {
+  try {
+    const dataInfo = await allResponse(data, KEY);
+    const { data: response } = await clientAxiosBackend.post(
+      // '/customers/answer',
+      '/api-composer/composer/answer',
+      { data: dataInfo },
+      headersKYC
+    );
+    return {
+      response: {
+        result: response.result,
+        data: await allResponseDecrypted(response.data, KEY),
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e.response?.data };
+  }
+};
 export const loginAccountSendRequest = async (data: any) => {
   try {
     const dataInfo = await allResponse(data, KEY);
@@ -84,25 +84,25 @@ export const loginAccountSendRequest = async (data: any) => {
     return { error: true, response: e.response.data };
   }
 };
-export const sendQuestions = async (data: any) => {
-  try {
-    const { data: response } = await axios.post(
-      'https://backgeneratepdf-production.up.railway.app/api/users/answer',
-      data,
-      headersKYC
-    );
-    return {
-      response: {
-        // result: response.result,
-        data: response,
-      },
-      error: false,
-    };
-  } catch (e: any) {
-    console.log(e)
-    return { error: true, response: e.response?.data };
-  }
-}
+// export const sendQuestions = async (data: any) => {
+//   try {
+//     const { data: response } = await axios.post(
+//       'https://backgeneratepdf-production.up.railway.app/api/users/answer',
+//       data,
+//       headersKYC
+//     );
+//     return {
+//       response: {
+//         // result: response.result,
+//         data: response,
+//       },
+//       error: false,
+//     };
+//   } catch (e: any) {
+//     console.log(e)
+//     return { error: true, response: e.response?.data };
+//   }
+// }
 export const sendNumber = async (data: any) => {
   try {
     const dataInfo = await allResponse(data, KEY);
