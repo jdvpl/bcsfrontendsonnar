@@ -10,5 +10,10 @@ describe('<useVerificationForm/>', () => {
     const { rerender } = renderHook(() => useVerificationForm({ password: "password" }, setBorder));
     expect(setBorder).toHaveBeenCalledWith("#798C98");
   });
+  test("set border to #E9132B when password is empty", () => {
+    const setBorder = jest.fn();
+    const { result } = renderHook(() => useVerificationForm({ password: "" }, setBorder));
+    expect(setBorder).not.toHaveBeenCalledWith("#E9132B");
+  });
 })
 
