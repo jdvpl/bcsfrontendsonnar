@@ -1,3 +1,5 @@
+const { basePath } = require('./next.config');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
@@ -156,6 +158,12 @@ module.exports = {
           '0px 4px 8px rgba(0, 84, 145, 0.1), 0px 8px 16px rgba(0, 84, 145, 0.16), 0px 16px 28px -1px rgba(0, 84, 145, 0.1)',
         'blue-100':
           '0px 0px 4px 3px rgba(180, 211, 237, 1), 0px 0px 1px 4px rgba(180, 211, 237, 1)',
+      },
+      backgroundImage:{
+        'requirements-lg':`url('${basePath}/images/requirements.png')`,
+        'landing-lg':`url('${basePath}/images/landingLg.png')`,
+        'landing-md':`url('${basePath}/images/landingMd.png')`,
+        'landing-sm':`url('${basePath}/images/landingSm.png')`,
       },
       transformOrigin: {
         0: '0%',
