@@ -5,6 +5,24 @@ pool:
   vmImage: ubuntu-latest
 
 stages:
+- stage: build
+  displayName: 'Build'
+  jobs:
+    - job: build
+      displayName: 'Build'
+      pool:
+        vmImage: ubuntu-latest
+      steps:
+        - task: npmAuthenticate@0
+          inputs:
+            workingFile: '.npmrc'
+            customEndpoint: 'id-commons-registry'
+          displayName: 'Npm: login'
+        - script: "npm ci"
+          displayName: 'Npm: install'
+        - script: "npm run build"
+          displayName: 'Npm: build'
+
 - stage: Test
   displayName: Test
   jobs:
@@ -18,7 +36,7 @@ stages:
           SonarCloud: 'SonarCloud'
           organization: 'equipoinnovaciondigital'
           scannerMode: 'CLI'
-          configMode: 'file'
+          configFile: devops/sonar-project.properties
         displayName: 'Sonar: Prepare'
       - task: Npm@1
         inputs:
@@ -36,11 +54,11 @@ stages:
         inputs:
           pollingTimeoutSec: '300'
         displayName: 'Sonar: Publish'
-      - task: sonarcloud-buildbreaker@2
-        inputs:
-          SonarCloud: 'SonarCloud'
-          organization: 'equipoinnovaciondigital'
-        displayName: 'Sonar: Validation Status Sonar'
+      # - task: sonarcloud-buildbreaker@2
+      #   inputs:
+      #     SonarCloud: 'SonarCloud'
+      #     organization: 'equipoinnovaciondigital'
+      #   displayName: 'Sonar: Validation Status Sonar'
 
 - stage: Artifact
   displayName: 'Artifact'

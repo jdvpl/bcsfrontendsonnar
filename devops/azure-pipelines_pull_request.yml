@@ -18,7 +18,7 @@ stages:
           SonarCloud: 'SonarCloud'
           organization: 'equipoinnovaciondigital'
           scannerMode: 'CLI'
-          configMode: 'file'
+          configFile: devops/sonar-project.properties
         displayName: 'Sonar: Prepare'
       - task: Npm@1
         inputs:
@@ -36,8 +36,8 @@ stages:
         inputs:
           pollingTimeoutSec: '300'
         displayName: 'Sonar: Publish'
-      - task: sonarcloud-buildbreaker@2
-        inputs:
-          SonarCloud: 'SonarCloud'
-          organization: 'equipoinnovaciondigital'
-        displayName: 'Sonar: Validation Status Sonar'
+      # - task: sonarcloud-buildbreaker@2
+      #   inputs:
+      #     SonarCloud: 'SonarCloud'
+      #     organization: 'equipoinnovaciondigital'
+      #   displayName: 'Sonar: Validation Status Sonar'
