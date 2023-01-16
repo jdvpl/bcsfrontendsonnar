@@ -34,10 +34,10 @@ export default function Home() {
   useEffect(() => {
       TagManager.dataLayer({
         dataLayer: {
-          event:'Landing',
-          category: 'init_landing',
-          action: 'landing',
-          label: 'landing',
+          event:'load_landing',
+          category: 'load_page',
+          action: 'load_landing',
+          label: 'load_landing',
         },
       }); 
 

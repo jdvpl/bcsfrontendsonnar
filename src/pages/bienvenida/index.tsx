@@ -12,10 +12,10 @@ function Bienvenida() {
   useEffect(() => {
     TagManager.dataLayer({
       dataLayer: {
-        event:'Onboarding',
-        category: 'load_onboarding',
-        action: 'entry_Onboarding',
-        label: 'Onboarding',
+        event:'load_onboarding',
+        category: 'load_page',
+        action: 'load_onboarding',
+        label: 'load_onboarding',
       },
     }); 
 
