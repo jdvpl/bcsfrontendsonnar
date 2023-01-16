@@ -87,12 +87,12 @@ function ApplicationApproval() {
             id="btn-next"
           >
             <span className="font-semibold text-[18px]">
-              <Icons icon="bcs-arrow-one-down" /> Carta de aprobación
+              <Icons icon="bcs-arrow-one-down" /> Carta de preaprobación
             </span>
           </Button>
         </div>
         {/* <div className="sm:w-[350px] w-[293px] md:w-[398px] lg:w-[448px] m-auto">
-          <Alert message="La carta de aprobación de su crédito y los próximos pasos serán enviados su correo registrado." />
+          <Alert message="La carta de preaprobación de su crédito y los próximos pasos serán enviados su correo registrado." />
         </div> */}
         <div className="mt-8 md:w-[440px] sm:w-[343px] w-[293px] m-auto">
           <Typography
@@ -106,7 +106,7 @@ function ApplicationApproval() {
         <div className="listInitial md:w-[440px] sm:w-[343px] w-[293px] m-auto mt-8">
           <ul className="">
             <li className="mt-3 text-lg font-light">
-              Enviaremos la carta de aprobación a su correo.
+              Enviaremos la carta de preaprobación a su correo.
             </li>
             <li className="mt-3 text-lg font-light">
               Uno de nuestros asesores lo contactará para acompañarlo en los próximos
