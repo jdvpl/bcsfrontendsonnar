@@ -3,7 +3,7 @@ import { FC } from 'react';
 /* eslint-disable-next-line */
 import Icons, { IconsProps } from '../icons';
 import Typography from '../Typography/index';
-import  dynamicClassesSelective  from './SelectiveClassnames';
+import dynamicClassesSelective from './SelectiveClassnames';
 
 export interface ISelectiveCardProps extends IconsProps {
   label?: string;
@@ -12,6 +12,9 @@ export interface ISelectiveCardProps extends IconsProps {
   className?: string;
   hasTitle?: boolean;
   onclick: boolean;
+  classNamesDescription?: string;
+  titleClasses?: string;
+  active?: boolean;
 }
 const SelectiveCard: FC<ISelectiveCardProps> = ({
   label,
@@ -23,12 +26,18 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
   className = '',
   hasTitle = true,
   onclick = true,
+  classNamesDescription = 'md:w-[224px]',
+  titleClasses = '',
+  active = false,
   ...props
 }) => {
   const router = useRouter();
-  const classNames = dynamicClassesSelective(hasTitle, className);
+  const classNames = dynamicClassesSelective(hasTitle, className, active);
+  const activeClasses = active ? 'text-white' : 'text-primario-900'
+  const activeClassesDesc = active ? 'text-white' : 'text-complementario-100'
   return (
     <div
+      data-testId="selectiveCardTest"
       {...props}
       className={classNames.mainClasesParentDiv}
       {...(onclick ? { onClick: () => router.push(pathTo) } : {})}
@@ -46,14 +55,14 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
           {hasTitle && (
             <Typography
               variant="bodyM2"
-              className="text-[1rem] lg:mt-[14px] lg:mb-[18px] leading-[1.125rem] text-primario-900 m-0 tracking-normal font-semibold font-heading group-hover:text-white"
+              className={` lg:mt-[14px] lg:mb-[18px] leading-[1.125rem]  m-0 tracking-normal font-semibold  group-hover:text-white ${titleClasses} ${activeClasses}`}
             >
               {label}
             </Typography>
           )}
           <Typography
             variant="bodyS3"
-            className="hasTitle leading-[1.125rem]  text-[1rem] text-complementario-100 mt-2 group-hover:text-white font-ligth md:w-[224px]"
+            className={`hasTitle leading-[1.125rem]  text-[1rem]  mt-2 group-hover:text-white font-ligth ${classNamesDescription} ${activeClassesDesc}`}
           >
             {description}
           </Typography>

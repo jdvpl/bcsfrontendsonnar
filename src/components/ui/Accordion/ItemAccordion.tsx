@@ -37,7 +37,7 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
     >
       <h2
         id={`title-question-${id}`}
-        className={` font-semibold text-base leading-[18px] text-[16px] ${active ? 'py-[21px]' : 'py-4'
+        className={`font-montserratSemiBold font-semibold text-base leading-[18px] text-[16px] ${active ? 'py-[21px]' : 'py-4'
           }  head-accordiom-color text-complementario-100`}
         itemProp="name"
       >
@@ -75,7 +75,7 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
     >
       <div
         id={`description-question-${id}`}
-        className="px-[16px] py-4  text-base leading-5 font-light text-complementario-100"
+        className="px-[16px] py-4 font-monserratLight text-base leading-5 font-light text-complementario-100"
         itemProp="text"
         role="paragraph"
         tabIndex={0}

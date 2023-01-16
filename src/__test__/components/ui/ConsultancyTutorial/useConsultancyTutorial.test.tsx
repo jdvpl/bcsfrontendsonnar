@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { act, renderHook } from '@testing-library/react-hooks';
 import useConsultancyTutorial from '../../../../components/custom/tutorial/ConsultancyTutorial/useConsultancyTutorial';
-
+import React from 'react'
 describe('ConsultancyTutorial', () => {
   test('isOpen state change to False when call onHandleModal to first time ', async () => {
     const nextTutorialStepRef = '';

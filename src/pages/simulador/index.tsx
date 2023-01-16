@@ -65,8 +65,7 @@ function Simulator() {
             variant="bodyS3"
             className="text-center mt-[40px] md:mt-[54px] lg:mt-[52px] pmx-3 text-primario-900"
           >
-            A través de nuestro simulador podrá realizar los cálculos necesarios para
-            conocer los valores aproximados relacionados con el crédito de vivienda.
+            A través de nuestro simulador podrá realizar los cálculos necesarios para conocer los valores aproximados relacionados con el crédito de vivienda con amortización en pesos.
           </Typography>
         </div>
         <div className="flex gap-1 my-8 w-[343px] md:w-[517px] xl:w-[656px] mx-auto">

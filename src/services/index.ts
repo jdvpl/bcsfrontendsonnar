@@ -7,11 +7,10 @@ import { headersBack } from './HeaderBack';
 import { headersKYC } from './HeadersKYC';
 import { iFormDataSimulation } from '../interfaces';
 import { iFormBasicData } from '../interfaces/basicDataProps';
-import { dataUser } from '../__test__/__mocks__/StartProces';
 
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
-const KEYSARLAFT= process.env.KEYSARLAFT
+const KEYSARLAFT = process.env.KEYSARLAFT
 
 export const getQuestions = async (data: any) => {
   try {
@@ -43,11 +42,33 @@ export const getQuestions = async (data: any) => {
  *   error: false,
  * }
  */
+// TODO sendQuestions KYC
 export const sendQuestions = async (data: any) => {
   try {
     const dataInfo = await allResponse(data, KEY);
-    const { data: response } = await clientAxiosKYC.post(
-      '/customers/answer',
+    const { data: response } = await clientAxiosBackend.post(
+      // '/customers/answer',
+      '/api-composer/composer/answer',
+      { data: dataInfo },
+      headersKYC
+    );
+    return {
+      response: {
+        result: response.result,
+        data: await allResponseDecrypted(response.data, KEY),
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e.response?.data };
+  }
+};
+export const loginAccountSendRequest = async (data: any) => {
+  try {
+    const dataInfo = await allResponse(data, KEY);
+    const { data: response } = await clientAxiosBackend.post(
+      // '/customers/answer',
+      '/customer/user-auth',
       { data: dataInfo },
       headersKYC
     );
@@ -62,6 +83,25 @@ export const sendQuestions = async (data: any) => {
     return { error: true, response: e.response.data };
   }
 };
+// export const sendQuestions = async (data: any) => {
+//   try {
+//     const { data: response } = await axios.post(
+//       'https://backgeneratepdf-production.up.railway.app/api/users/answer',
+//       data,
+//       headersKYC
+//     );
+//     return {
+//       response: {
+//         // result: response.result,
+//         data: response,
+//       },
+//       error: false,
+//     };
+//   } catch (e: any) {
+//     console.log(e)
+//     return { error: true, response: e.response?.data };
+//   }
+// }
 export const sendNumber = async (data: any) => {
   try {
     const dataInfo = await allResponse(data, KEY);
@@ -157,7 +197,7 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
 export const getBasicData = async (data: iFormBasicData) => {
   try {
     const { data: response } = await axios.post(
-      'https://63a9fbb57d7edb3ae61dd65b.mockapi.io/basic-data',
+      'https://backgeneratepdf-production.up.railway.app/api/users/basic-data',
       data,
     );
     return {
@@ -173,18 +213,18 @@ export const getBasicData = async (data: iFormBasicData) => {
 
 export const fetchSarlaft = async (body: any) => {
   try {
-    const bodyencript = await allResponse(body,KEYSARLAFT)
+    const bodyencript = await allResponse(body, KEYSARLAFT)
     const { data: response } = await clientAxiosBackend.post(
       '/sarlaft/sarlaft-questions',
-      {data:bodyencript}
+      { data: bodyencript }
     );
-    const data = await allResponseDecrypted(response.data,KEYSARLAFT)
+    const data = await allResponseDecrypted(response.data, KEYSARLAFT)
     return {
       response: {
         result: data,
       },
       error: false,
-    };    
+    };
   } catch (e: any) {
     return { error: true, response: e.response?.data?.message };
   }
@@ -192,8 +232,8 @@ export const fetchSarlaft = async (body: any) => {
 };
 export const sendAuthorization = async (body: any) => {
   try {
-    const { data: response } = await axios.post(
-      'https://63a9fbb57d7edb3ae61dd65b.mockapi.io/v1/send-authorization',
+    const { data: response } = await clientAxiosBackend.post(
+      '/customer/DataProcessing',
       body
     );
     return {
@@ -229,7 +269,7 @@ export const riskBoxes = async (body: any) => {
 export const getOffices = async () => {
   try {
     const { data: response } = await axios.get(
-      'https://63a9fbb57d7edb3ae61dd65b.mockapi.io/v1/offices',
+      'https://backgeneratepdf-production.up.railway.app/api/users/offices',
     );
     return {
       response: {

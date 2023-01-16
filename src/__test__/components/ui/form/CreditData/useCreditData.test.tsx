@@ -35,11 +35,9 @@ describe('useValidations is successfully', () => {
     expect(clearErrors.mock.calls.length).toBe(7);
   });
   it('setError should call 2 time', async () => {
-    console.log(setError.mock.calls.length);
     expect(setError.mock.calls.length).toBe(2);
   });
   it('setPercentageFinance should call 1 time', async () => {
-    console.log(setPercentageFinance.mock.calls.length);
     expect(setPercentageFinance.mock.calls.length).toBe(1);
   });
 });

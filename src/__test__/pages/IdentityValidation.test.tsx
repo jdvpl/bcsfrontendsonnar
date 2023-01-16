@@ -19,4 +19,6 @@ describe('validacion-identidad', () => {
     const component = render(<Index />);
     component.getByText('Paso 1 de 4')
   });
+
+
 });
