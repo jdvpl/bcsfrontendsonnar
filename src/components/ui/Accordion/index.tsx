@@ -7,7 +7,7 @@ const Questions: FC = () => {
   const [selected, setSelected] = useState<null | string>('');
   return (
     <section
-      className="mb-[15vh] lg:mb-[10vh] flex flex-col m-auto lg:w-[920px]"
+      className="mb-[15vh] lg:mb-[10vh] flex flex-col m-auto lg:w-[920px] md:w-[587px] sm:w-[343px] w-[286px]"
       itemScope
       itemType="https://schema.org/FAQPage"
     >

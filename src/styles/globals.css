@@ -1273,7 +1273,7 @@ input[type='checkbox']:checked {
 }
 @media (min-width:744px) and (max-width:750px) {
   .landingPage .firtTitle{
-    margin-left: 0.5rem;
+    margin-left: 0rem;
     position: relative;
   }  
 }

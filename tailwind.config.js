@@ -161,6 +161,7 @@ module.exports = {
       },
       backgroundImage:{
         'requirements-lg':`url('${basePath}/images/requirements.png')`,
+        'requirements-sm':`url('${basePath}/images/requirementssm.png')`,
         'landing-lg':`url('${basePath}/images/landingLg.png')`,
         'landing-md':`url('${basePath}/images/landingMd.png')`,
         'landing-sm':`url('${basePath}/images/landingSm.png')`,
