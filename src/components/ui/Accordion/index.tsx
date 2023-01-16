@@ -13,7 +13,7 @@ const Questions: FC = () => {
     >
       <h2
         id="questions"
-        className="text-center min-w-[291px] mb-[60px] mt-[60px]  md:mb-[79px] md:mt-[80px] w-full text-[30px] leading-[34px]  lg:text-[32px] lg:leading-[34px] font-poppinsBold"
+        className="text-center min-w-[291px] lg:mb-[48px] mt-[80px]  md:mb-[48px] md:mt-[80px] w-full text-[30px] leading-[34px]  mb-[45px] lg:text-[32px] lg:leading-[34px] font-poppinsBold"
         role="paragraph"
         tabIndex={0}
       >

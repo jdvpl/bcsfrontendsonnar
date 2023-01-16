@@ -7,7 +7,6 @@ import { headersBack } from './HeaderBack';
 import { headersKYC } from './HeadersKYC';
 import { iFormDataSimulation } from '../interfaces';
 import { iFormBasicData } from '../interfaces/basicDataProps';
-import { dataUser } from '../__test__/__mocks__/StartProces';
 
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;

@@ -25,7 +25,8 @@ module.exports = {
       montserratSemiBold:['MontserratSemiBold','sans-serif'],
       poppinsLight:['PoppinsLight','sans-serif'],
       poppinsBold:['PoppinsBold','sans-serif'],
-      poppinsSemiBold:['PoppinsSemiBold','sans-serif']
+      poppinsSemiBold:['PoppinsSemiBold','sans-serif'],
+      poppinsExtraLight:['PoppinsExtraLight','sans-serif'],
     },
     colors: {
       primario: {
@@ -166,6 +167,7 @@ module.exports = {
         'landing-lg':`url('${basePath}/images/landingLg.png')`,
         'landing-md':`url('${basePath}/images/landingMd.png')`,
         'landing-sm':`url('${basePath}/images/landingSm.png')`,
+        'landing-xs':`url('${basePath}/images/landingXs.png')`,
       },
       transformOrigin: {
         0: '0%',

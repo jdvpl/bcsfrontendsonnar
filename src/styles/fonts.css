@@ -24,3 +24,8 @@
   src: url('font/MontserratSemiBold.ttf') format('truetype');
   font-style: normal;
 }
+@font-face {
+  font-family: 'PoppinsExtraLight';
+  src: url('font/PoppinsExtraLight.ttf') format('truetype');
+  font-style: normal;
+}
