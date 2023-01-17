@@ -34,12 +34,12 @@ function ApplicationApproval() {
           className="text-center mt-3 text-primario-900 text-[18px] font-semibold leading-[20px]"
         >
           Su crédito hipotecario
-          <span className="block">ha sido aprobado</span>
+          <span className="block">ha sido preaprobado</span>
         </Typography>
         <div className="mt-[44px]">
           <Card
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA] font-semibold rounded-[8px] m-auto"
-            title="Monto aprobado"
+            title="Monto preaprobado"
             value="$ 105.000"
             text="text-[32px] pl-[16px] pt-2 flex items-baseline"
             urlsvg=""
@@ -65,10 +65,10 @@ function ApplicationApproval() {
         {valuesMortgage?.choseOffice ? (
           <div className="mt-3">
             <Card
-              className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[12px] pl-[16px] rounded-[8px] mb-[12px] font-light m-auto"
+              className="xs:w-[290px] sm:w-[343px] md:w-[448px]  min-h-[76px]  bg-[#F3F4F6] pt-[12px] pb-[12px] pl-[16px] rounded-[8px] mb-[12px] font-light m-auto"
               title="Continuación proceso"
               urlsvgendicon=""
-              value={valuesMortgage?.office?.nameOffice}
+              value={`${valuesMortgage?.office?.address?.toLowerCase().replace(/\b\w/g, (l: string) => l.toUpperCase())} - ${valuesMortgage?.office?.city?.toLowerCase().replace(/\b\w/g, (l: string) => l.toUpperCase())} ` }
               text="text-[20px] pl-[18px] font-semibold"
               urlsvg={`${basePath}/images/location.svg`}
               classtitle="h-[14px] text-[13px]"
@@ -106,7 +106,7 @@ function ApplicationApproval() {
         <div className="listInitial md:w-[440px] sm:w-[343px] w-[293px] m-auto mt-8">
           <ul className="">
             <li className="mt-3 text-lg font-light">
-              Enviaremos la carta de preaprobación a su correo.
+              Descargue la carta de preaprobación.
             </li>
             <li className="mt-3 text-lg font-light">
               Uno de nuestros asesores lo contactará para acompañarlo en los próximos
