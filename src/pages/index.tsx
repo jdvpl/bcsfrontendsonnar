@@ -32,21 +32,21 @@ export default function Home() {
     [device]
   );
   useEffect(() => {
-      TagManager.dataLayer({
-        dataLayer: {
-          event:'load_landing',
-          category: 'load_page',
-          action: 'load_landing',
-          label: 'load_landing',
-        },
-      }); 
+    TagManager.dataLayer({
+      dataLayer: {
+        event: 'load_landing',
+        category: 'load_page',
+        action: 'load_landing',
+        label: 'load_landing',
+      },
+    });
 
   }, []
   );
 
   return (
     <div data-testid="landingPage" className="overflow-hidden landingPage">
-      <div className={`lg:bg-landing-lg xl:bg-bg-landing-lg xxl:bg-bg-landing-lg md:bg-landing-md sm:bg-landing-sm bg-landing-xs bg-no-repeat  -z-30 bg-cover xs:bg-bottom sm:bg-bottom md:bg-bottom lg:bg-center xl:bg-bottom xs:h-[413px] sm:h-[413px]  md:h-[607px] lg:h-[647px] xl:h-[647px] xxl:bg-top xxl:h-[901px] bgImageLanding`}>
+      <div className={`lg:bg-landing-lg xl:bg-bg-landing-lg xxl:bg-bg-landing-lg md:bg-landing-md sm:bg-landing-sm bg-landing-xs bg-no-repeat  -z-30 bg-cover xs:bg-bottom sm:bg-bottom md:bg-bottom lg:bg-center xl:bg-bottom xs:h-[413px] sm:h-[413px]  md:h-[607px] lg:h-[667px] xl:h-[685px] xxl:bg-top xxl:h-[901px] bgImageLanding`}>
         <div
           className=" container flex justify-start items-baseline xs:pt-3 xs:pl-2 sm:pt-3 ms:pl-2 md:pl-6 md:pt-6 lg:pt-5 lg:pl-10 xl:pt-5 xxl:pl-0 xxl:ml-20 iconHeader"
           itemScope
@@ -222,10 +222,10 @@ export default function Home() {
                 Preaprobación inmediata en línea
               </li>
 
-              <li className="ld:text-[20px] text-[16px] font-light leading-[22px] mt-3 text-complementario-100">
+              <li className="lg:text-[20px] text-[16px] font-light leading-[22px] mt-3 text-complementario-100">
                 Sin documentación física
               </li>
-              <li className="ld:text-[20px] text-[16px] font-light leading-[22px] mt-3 text-complementario-100">
+              <li className="lg:text-[20px] text-[16px] font-light leading-[22px] mt-3 text-complementario-100">
                 Para clientes y no clientes
               </li>
               <li className="lg:text-[20px] text-[16px] font-normal leading-[22px] mt-3 text-complementario-100 ">
