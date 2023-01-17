@@ -10,8 +10,44 @@ import { iFormBasicData } from '../interfaces/basicDataProps';
 
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
-const KEYSARLAFT = process.env.KEYSARLAFT
+const KEYSARLAFT = process.env.KEYSARLAFT;
 
+
+//? this save the authorization data.
+/**
+ * It sends a POST request to the backend with the body of the request being the body parameter
+ * @param {any} body - any - the body of the request.
+ * @returns An object with two properties: response and error.
+ */
+export const sendAuthorization = async (body: any) => {
+  try {
+    const { data: response } = await clientAxiosBackend.post(
+      '/customer/DataProcessing',
+      body
+    );
+    return {
+      response: {
+        result: response,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e.response?.data?.message };
+  }
+};
+//? this endpoint get each question from kyc
+/**
+ * It takes in a data object, encrypts it, sends it to the KYC API, decrypts the response, and returns
+ * the decrypted response
+ * @param {any} data - The data to be sent to the server.
+ * @returns {
+ *   response: {
+ *     result: response.result,
+ *     data: await allResponseDecrypted(response.data, KEY),
+ *   },
+ *   error: false,
+ * }
+ */
 export const getQuestions = async (data: any) => {
   try {
     const dataInfo = await allResponse(data, KEY);
@@ -230,23 +266,7 @@ export const fetchSarlaft = async (body: any) => {
   }
 
 };
-export const sendAuthorization = async (body: any) => {
-  try {
-    const { data: response } = await clientAxiosBackend.post(
-      '/customer/DataProcessing',
-      body
-    );
-    return {
-      response: {
-        result: response,
-      },
-      error: false,
-    };
-  } catch (e: any) {
-    return { error: true, response: e.response?.data?.message };
-  }
 
-};
 
 export const riskBoxes = async (body: any) => {
   try {
