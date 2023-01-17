@@ -35,6 +35,8 @@ export const onSubmitResponse = async (initData: InitDataSend, dataTU: any, rout
     } else if (step === 'VQ') {
       setDataNumber(response.response.data);
     }
+  } else {
+    router.push(routes.errorValidacion)
   }
 };
 

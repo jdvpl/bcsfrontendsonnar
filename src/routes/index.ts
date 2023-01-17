@@ -9,7 +9,7 @@ export const routes = {
   validacionErrorPreguntas: 'validacion/error-validacion-identidad-preguntas',
   validacionErrorIntentos: 'validacion/error-numero-intentos',
   validacionErrorBloqueo: 'validacion/error-bloqueo',
-  errorValidacion: '/validacion/error/',
+  errorValidacion: '/validacion/error-validacion/',
   validacionErrorDiario: '/validacion/error-validacionDiario/',
   validacionBlock: '/validacion/error-validacionBlock/',
   inactivityScreen: '/inactividad',
