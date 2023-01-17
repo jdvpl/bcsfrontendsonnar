@@ -196,14 +196,10 @@ export const initialOptions = [
       content: () => (
         <div>
           <p className="font-medium my-3">
-            Para iniciar con el proceso de legalización, el Banco debe realizar un avalúo,
+            Para iniciar con el proceso de legalización, el banco debe realizar un avalúo,
             el cual es elaborado por un perito autorizado, quien verifica las condiciones
             del inmueble para determinar su valor comercial y garantizar que el comprador
             pagará lo justo por la vivienda.
-          </p>
-          <p className="font-medium my-3">
-            El costo este proceso varia según la entidad financiera y lo debe asumir el
-            comprador.
           </p>
         </div>
       ),
@@ -214,14 +210,15 @@ export const initialOptions = [
       content: () => (
         <div>
           <p className="font-medium my-3">
-            Es realizado por un abogado que asigna el Banco para determinar si la
-            situación jurídica del inmueble es válida para respaldar el crédito. Dicho
-            proceso se realiza para evitar que el comprador adquiera un predio con
-            inconvenientes.
+            Al finalizar el avalúo es necesario realizar el estudio de títulos, el cual es
+            hecho por un abogado externo que asigna el banco y este determina a través de
+            un documento si la situación jurídica del inmueble es válida para respaldar el
+            crédito. Dicho proceso se realiza para evitar que el comprador adquiera un
+            predio con inconvenientes.
           </p>
           <p className="font-medium my-3">
-            El costo este proceso varia según la entidad financiera y lo debe asumir el
-            comprador.
+            El costo aproximado de este proceso es del 0,12% del valor comercial del
+            inmueble.
           </p>
         </div>
       ),
