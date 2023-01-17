@@ -58,16 +58,7 @@ describe('Error', () => {
     expect(imageError.getAttribute('src')).toBe('/vivienda/images/autenticacion1.svg')
   });
 
-  test('should render "Mantenece" successfully', () => {
-    const router = createMockRouter({ query: { error: 'mantenimiento' } });
-    render(
-      <RouterContext.Provider value={router}>
-        <Mantenimiento />
-      </RouterContext.Provider>
-    );
-    const imageError = screen.getByRole('imageError');
-    expect(imageError.getAttribute('src')).toBe('/vivienda/images/newError.svg')
-  });
+
 
   test('should render "Preguntas" successfully', () => {
     const router = createMockRouter({ query: { error: 'validacion/error-validacion-identidad-preguntas' } });

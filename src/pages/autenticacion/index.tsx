@@ -15,7 +15,7 @@ import AnimationComponent from '../../components/commons/Animation';
 
 function Authentication() {
   const router = useRouter();
-  const [, setDataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
+  const [, setDataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, {});
   const [dataUser,] = useSessionStorage(
     SesionStorageKeys.dataUser.key,
     {}

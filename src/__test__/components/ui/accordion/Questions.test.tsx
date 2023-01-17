@@ -6,11 +6,12 @@ describe('<Questions/>', () => {
   it('expands and collapses the correct accordion item when clicked', () => {
     const { getByText, queryByText, getByTestId } = render(<Questions />);
 
-    const itemHeader1 = getByText('¿Cuales son los gastos adicionales al momento de comprar vivienda?')
+    const itemHeader1 = getByText('¿Cuáles son los gastos adicionales al momento de comprar vivienda?')
 
-    const itemHeader3 = getByText('¿Debo elegir la vivienda antes o despues de pedir el crédito hipotecario?')
+    const itemHeader3 = getByText('¿Debo elegir la vivienda antes o después de pedir el crédito hipotecario?')
 
-    const itemHeader4 = getByText('¿Cuales son los factores que analiza el banco para aprobar un crédito hipotecario?')
+    const itemHeader4 = getByText('¿Cuáles son los factores que analiza el banco para aprobar un crédito hipotecario?')
+    const itemHeader5 = getByText('¿Cuáles son los factores que analiza el banco para aprobar un crédito hipotecario?');
     fireEvent.click(itemHeader1);
     expect(getByTestId('itemATest1')).toBeInTheDocument();
 
@@ -23,11 +24,11 @@ describe('<Questions/>', () => {
     // Comprobamos que el contenido del primer elemento se ha cerrado
     expect(queryByText('Para el proceso de legalización es necesario contemplar los gastos de avalúo, estudio de títulos y escrituración. Si desea conocer más a cerca de estos conceptos, diríjase a nuestra asesoría interactiva.')).toBeNull();
     expect(getByTestId('itemATest1')).toBeInTheDocument();
-
     fireEvent.click(itemHeader3);
     expect(getByTestId('itemTest3')).toBeInTheDocument();
     fireEvent.click(itemHeader4);
     expect(getByTestId('itemATest4')).toBeInTheDocument();
-
+    fireEvent.click(itemHeader5);
+    expect(getByTestId('itemATest5')).toBeInTheDocument();
   });
 })

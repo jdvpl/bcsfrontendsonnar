@@ -1,4 +1,4 @@
 export interface iFormBasicData {
-  GovIssueIdentType: string;
-  IdentSerialNum: string;
+  govIssueIdentType: string;
+  identSerialNum: string;
 }

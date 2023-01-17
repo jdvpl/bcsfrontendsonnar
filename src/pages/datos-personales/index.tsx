@@ -48,8 +48,8 @@ function PersonalData() {
 
   const getBasicDataUser = async () => {
     const response = await getBasicData({
-      GovIssueIdentType: dataUser.document_type,
-      IdentSerialNum: dataUser.document_number
+      govIssueIdentType: dataUser.document_type,
+      identSerialNum: dataUser.document_number
     })
     if (!response.error) {
       setuserInfo(response.response.data);
