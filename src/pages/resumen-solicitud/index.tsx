@@ -10,7 +10,7 @@ import { convertToColombianPesos } from '../../utils/index';
 import { SesionStorageKeys } from '../../session';
 import Stepper from '../../components/ui/Stepper';
 import { routes } from '../../routes';
-import Alert from '../../components/ui/Alert/index'
+import Alert from '../../components/ui/Alert/index';
 import { ApplicationLoader } from '../../components/ui/Loaders/ApplicationLoader';
 import useSummaryApplication from '../../hooks/useReviewApplication';
 
@@ -41,11 +41,11 @@ function ResumenApplication() {
       </div>
       <div className=" xs:w-[290px] sm:w-[343px]  lg:w-[684px] md:w-[584px] m-auto">
         <Typography variant="h2" className="mt-8 mb-[40px] text-center">
-        Conozca la oferta que hemos
-        <br/>
-        diseñado para usted
+          Conozca la oferta que hemos
+          <br />
+          diseñado para usted
         </Typography>
-        <Alert message='La tasa de su crédito será la que se encuentre vigente en el momento del desembolso.' />
+        <Alert message="La tasa de su crédito será la que se encuentre vigente en el momento del desembolso." />
         <ReviewApplication
           financedValue={`${convertToColombianPesos(
             Math.floor(valuesMortgage.financeValue)

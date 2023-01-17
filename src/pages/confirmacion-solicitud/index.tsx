@@ -10,6 +10,7 @@ import Typography from '../../components/ui/Typography';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { routes } from '../../routes';
 import { SesionStorageKeys } from '../../session';
+import { convertToColombianPesos } from '../../utils';
 
 function ApplicationApproval() {
   const [dataInfo] = useSessionStorage(SesionStorageKeys.personalInfoDataBack.key, {});
@@ -19,6 +20,7 @@ function ApplicationApproval() {
   return (
     <div>
       <Header />
+      <pre>{JSON.stringify(valuesMortgage, null, 2)}</pre>
       <div className="m-auto lg:w-[528px]">
         <div className="mt-[60px] lg:w-[455px] lg:h-[300px] md:w-[455px] md:h-[300px] sm:w-[303px] sm:h-[200px] xs:h-[200px] xs:w-[303px] m-auto ">
           <img src={`${basePath}/images/approvalSvg.svg`} alt="" />
@@ -40,7 +42,7 @@ function ApplicationApproval() {
           <Card
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA] font-semibold rounded-[8px] m-auto"
             title="Monto preaprobado"
-            value="$ 105.000"
+            value={`${convertToColombianPesos(valuesMortgage?.financeValue)}`}
             text="text-[32px] pl-[16px] pt-2 flex items-baseline"
             urlsvg=""
             classtitle="h-[18px] pt-[16px] text-[16px] pl-0"
@@ -68,7 +70,13 @@ function ApplicationApproval() {
               className="xs:w-[290px] sm:w-[343px] md:w-[448px]  min-h-[76px]  bg-[#F3F4F6] pt-[12px] pb-[12px] pl-[16px] rounded-[8px] mb-[12px] font-light m-auto"
               title="Continuación proceso"
               urlsvgendicon=""
-              value={`${valuesMortgage?.office?.address?.toLowerCase().replace(/\b\w/g, (l: string) => l.toUpperCase())} - ${valuesMortgage?.office?.city?.toLowerCase().replace(/\b\w/g, (l: string) => l.toUpperCase())} ` }
+              value={`${valuesMortgage?.office?.address
+                ?.toLowerCase()
+                .replace(/\b\w/g, (l: string) =>
+                  l.toUpperCase()
+                )} - ${valuesMortgage?.office?.city
+                ?.toLowerCase()
+                .replace(/\b\w/g, (l: string) => l.toUpperCase())} `}
               text="text-[20px] pl-[18px] font-semibold"
               urlsvg={`${basePath}/images/location.svg`}
               classtitle="h-[14px] text-[13px]"
