@@ -167,22 +167,23 @@ export const initialOptions = [
         <div>
           <p className="font-medium my-3">
             Es un producto financiero diseñado especialmente para la compra de vivienda.
-            Su porcentaje máximo de financiación por ley varia según el tipo de vivienda,
-            para VIS es del 80% del valor total del inmueble y para No VIS es del 70%,
-            esta solicitud debe realizarla el comprador a su entidad de confianza.
+            Su porcentaje máximo de financiación por ley varía según el tipo de vivienda,
+            para VIS es máximo del 80% del valor total del inmueble y para No VIS es del
+            70%. La solicitud de este producto debe realizarla el comprador ante una
+            entidad financiera.
           </p>
         </div>
       ),
     },
     {
-      label: 'Compra del inmueble',
+      label: 'Formalizar la compra',
       value: '3',
       content: () => (
         <div>
           <p className="font-medium my-3">
-            Luego de obtener la aprobación de su crédito, presente la carta que le
-            proporcionó el Banco al vendedor de la vivienda y con esta realice el proceso
-            de compra o separación del inmueble.
+            Luego de obtener la aprobación de su crédito, presente al vendedor del
+            inmueble la carta que le proporcionó el banco, de esta manera concreta su
+            intención de compra.
           </p>
         </div>
       ),
@@ -195,14 +196,10 @@ export const initialOptions = [
       content: () => (
         <div>
           <p className="font-medium my-3">
-            Para iniciar con el proceso de legalización, el Banco debe realizar un avalúo,
+            Para iniciar con el proceso de legalización, el banco debe realizar un avalúo,
             el cual es elaborado por un perito autorizado, quien verifica las condiciones
             del inmueble para determinar su valor comercial y garantizar que el comprador
             pagará lo justo por la vivienda.
-          </p>
-          <p className="font-medium my-3">
-            El costo este proceso varia según la entidad financiera y lo debe asumir el
-            comprador.
           </p>
         </div>
       ),
@@ -213,14 +210,15 @@ export const initialOptions = [
       content: () => (
         <div>
           <p className="font-medium my-3">
-            Es realizado por un abogado que asigna el Banco para determinar si la
-            situación jurídica del inmueble es válida para respaldar el crédito. Dicho
-            proceso se realiza para evitar que el comprador adquiera un predio con
-            inconvenientes.
+            Al finalizar el avalúo es necesario realizar el estudio de títulos, el cual es
+            hecho por un abogado externo que asigna el banco y este determina a través de
+            un documento si la situación jurídica del inmueble es válida para respaldar el
+            crédito. Dicho proceso se realiza para evitar que el comprador adquiera un
+            predio con inconvenientes.
           </p>
           <p className="font-medium my-3">
-            El costo este proceso varia según la entidad financiera y lo debe asumir el
-            comprador.
+            El costo aproximado de este proceso es del 0,12% del valor comercial del
+            inmueble.
           </p>
         </div>
       ),

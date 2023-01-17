@@ -17,6 +17,7 @@ interface CardProps {
   textbtn: string;
   ImgClass: string;
   btnactivate?:boolean;
+  btnaction?:any;
 }
 
 export const ErrorLayout: React.FC<CardProps> = ({
@@ -26,7 +27,8 @@ export const ErrorLayout: React.FC<CardProps> = ({
   text,
   textbtn,
   ImgClass,
-  btnactivate
+  btnactivate,
+  btnaction
 }) => {
   const router = useRouter();
   return (
@@ -63,7 +65,7 @@ export const ErrorLayout: React.FC<CardProps> = ({
           type="submit"
           name="Inicio"
           data-testid="btnOnboarding"
-          onClick={() => router.push(routes.startProccess)}
+          onClick={btnaction}
           id="btn-next"
         >
           {textbtn}
