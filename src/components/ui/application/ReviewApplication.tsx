@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from "../simulation/Card";
+import Card from '../simulation/Card';
 import { basePath } from '../../../../next.config';
 import { useReviewApplication } from './useReviewApplication';
 
@@ -28,7 +28,7 @@ function ReviewApplication({
         data-testid="financedValue"
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[79px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
         title="Monto Total"
-        value="$100.000.000 pesos"
+        value={`${financedValue} pesos`}
         text="text-[20px] pl-[18px] font-semibold"
         urlsvg={`${basePath}/images/Money.svg`}
         classtitle="h-[14px] text-[13px]"
@@ -48,27 +48,28 @@ function ReviewApplication({
         urlsvgendicon=""
       />
       <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[116px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
-      title="Tasa aproximada"
-      value={rate}
-      text="text-[20px] pl-[18px] font-semibold"
-      urlsvg={`${basePath}/images/Charts.svg`}
-      urlsvgendicon=""
-      classtitle="h-[14px] text-[13px]"
-      tooltiptext=""
-      description
-      descriptionHtml={
-        <p className="pl-[27px]">
-          <p className="flex">
-            <p className="font-bold text-[14px] mr-1">MV:</p><span className="text-[14px]">Tasa nominal mes
-            vencido</span>
+        className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[116px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+        title="Tasa aproximada"
+        value={rate}
+        text="text-[20px] pl-[18px] font-semibold"
+        urlsvg={`${basePath}/images/Charts.svg`}
+        urlsvgendicon=""
+        classtitle="h-[14px] text-[13px]"
+        tooltiptext=""
+        description
+        descriptionHtml={
+          <p className="pl-[27px]">
+            <p className="flex">
+              <p className="font-bold text-[14px] mr-1">MV:</p>
+              <span className="text-[14px]">Tasa nominal mes vencido</span>
+            </p>
+            <p className="flex">
+              <p className="font-bold text-[14px]  mr-1">EA:</p>
+              <span className="text-[14px]">Tasa efectiva anual</span>
+            </p>
           </p>
-          <p className="flex">
-            <p className="font-bold text-[14px]  mr-1">EA:</p><span className="text-[14px]">Tasa efectiva anual</span>
-          </p>
-        </p>
-      }
-    />
+        }
+      />
       <Card
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[98px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
         title="Plazo"
@@ -81,7 +82,11 @@ function ReviewApplication({
         urlsvgendicon={`${basePath}/images/PenEdit.svg`}
         clickEdit={goBack}
         description
-        descriptionHtml={<p className='pr-[1px] ml-[26px] mr-[8px] text-[14px] color-[#00253D]'>Description</p>}
+        descriptionHtml={
+          <p className="pr-[1px] ml-[26px] mr-[8px] text-[14px] color-[#00253D]">
+            Description
+          </p>
+        }
       />
       {insurance ? (
         <Card
@@ -97,7 +102,11 @@ function ReviewApplication({
           urlsvgendicon={`${basePath}/images/Delete.svg`}
           clickEdit={handleInsurance}
           description
-          descriptionHtml={<p className='pr-[1px] ml-[26px] mr-[8px] text-[14px] color-[#00253D]'>Description</p>}
+          descriptionHtml={
+            <p className="pr-[1px] ml-[26px] mr-[8px] text-[14px] color-[#00253D]">
+              Description
+            </p>
+          }
         />
       ) : null}
       {insurance ? (
@@ -114,7 +123,11 @@ function ReviewApplication({
           urlsvgendicon={`${basePath}/images/Delete.svg`}
           clickEdit={handleInsurance}
           description
-          descriptionHtml={<p className='pr-[1px] ml-[26px] mr-[8px] text-[14px] color-[#00253D]'>Description</p>}
+          descriptionHtml={
+            <p className="pr-[1px] ml-[26px] mr-[8px] text-[14px] color-[#00253D]">
+              Description
+            </p>
+          }
         />
       ) : null}
     </div>
