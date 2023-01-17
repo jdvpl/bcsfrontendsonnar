@@ -222,10 +222,10 @@ export default function Home() {
                 Preaprobación inmediata en línea
               </li>
 
-              <li className="ld:text-[20px] text-[16px] font-light leading-[22px] mt-3 text-complementario-100">
+              <li className="lg:text-[20px] text-[16px] font-light leading-[22px] mt-3 text-complementario-100">
                 Sin documentación física
               </li>
-              <li className="ld:text-[20px] text-[16px] font-light leading-[22px] mt-3 text-complementario-100">
+              <li className="lg:text-[20px] text-[16px] font-light leading-[22px] mt-3 text-complementario-100">
                 Para clientes y no clientes
               </li>
               <li className="lg:text-[20px] text-[16px] font-normal leading-[22px] mt-3 text-complementario-100 ">
