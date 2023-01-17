@@ -20,7 +20,6 @@ function ApplicationApproval() {
   return (
     <div>
       <Header />
-      <pre>{JSON.stringify(valuesMortgage, null, 2)}</pre>
       <div className="m-auto lg:w-[528px]">
         <div className="mt-[60px] lg:w-[455px] lg:h-[300px] md:w-[455px] md:h-[300px] sm:w-[303px] sm:h-[200px] xs:h-[200px] xs:w-[303px] m-auto ">
           <img src={`${basePath}/images/approvalSvg.svg`} alt="" />
