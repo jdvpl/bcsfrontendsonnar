@@ -41,10 +41,10 @@ function Consultancy() {
     useEffect(() => {
       TagManager.dataLayer({
         dataLayer: {
-          event:'Guia-Interactiva',
-          category: 'init_guia',
-          action: 'entry_guia',
-          label: 'guia_interactiva',
+          event:'load_guide',
+          category: 'load',
+          action: 'load_guide',
+          label: 'load_guide',
         },
       }); 
 

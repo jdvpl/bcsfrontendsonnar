@@ -8,6 +8,7 @@ import ErrorValidacion from '../../pages/validacion/error-validacion'
 import Mantenimiento from '../../pages/mantenimiento';
 import Preguntas from '../../pages/validacion/error-validacion-identidad-preguntas'
 import Biometria from '../../pages/validacion/error-validacion-biometrica'
+import Rechazo from '../../pages/validacion/rechazo-solicitud'
 import { createMockRouter } from '../utils/createMockRouter';
 import '@testing-library/jest-dom'
 
@@ -68,6 +69,17 @@ describe('Error', () => {
     );
     const imageError = screen.getByRole('imageError');
     expect(imageError.getAttribute('src')).toBe('/vivienda/images/preautenticacion2.svg')
+  });
+
+  test('should render "Rechazo" successfully', () => {
+    const router = createMockRouter({ query: { error: 'validacion/rechazo-solicitud' } });
+    render(
+      <RouterContext.Provider value={router}>
+        <Rechazo />
+      </RouterContext.Provider>
+    );
+    const imageError = screen.getByRole('imageError');
+    expect(imageError.getAttribute('src')).toBe('/vivienda/images/rechazo.svg')
   });
 
   test('should render "Biometria" successfully', () => {
