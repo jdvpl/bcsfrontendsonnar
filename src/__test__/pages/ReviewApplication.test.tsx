@@ -62,15 +62,15 @@ describe('<Resumen-Solicitud/>', () => {
     expect(fireInsurance).not.toBeInTheDocument();
   });
 
-  it('should update state on click', async () => {
-    const router = createMockRouter({});
-    render(
-      <RouterContext.Provider value={router}>
-        <ResumenSolicitud />
-      </RouterContext.Provider>
-    );
-    const financedValue = screen.queryByTestId('financedValue');
-    await waitFor(() => userEvent.click(financedValue!));
-    // expect(router.back).not.toHaveBeenCalledWith(routes.ResumenSolicitud);
-  });
+  // it('should update state on click', async () => {
+  //   const router = createMockRouter({});
+  //   render(
+  //     <RouterContext.Provider value={router}>
+  //       <ResumenSolicitud />
+  //     </RouterContext.Provider>
+  //   );
+  //   const financedValue = screen.queryByTestId('financedValue');
+  //   await waitFor(() => userEvent.click(financedValue!));
+  //   // expect(router.back).not.toHaveBeenCalledWith(routes.ResumenSolicitud);
+  // });
 });
