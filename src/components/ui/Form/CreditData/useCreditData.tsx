@@ -80,7 +80,7 @@ export default function useValidations(
     validatefinanceValue();
     calculatePercentageFinance();
     validateTypeHouse();
-  }, [houseValue, financeValue, termFinance]);
+  }, [houseValue, financeValue, termFinance,typeHouse]);
 
   return {
     handleClearErrors,
