@@ -196,7 +196,6 @@ describe('ConsultancyTutorial', () => {
       caseResult = result.current.renderBody();
     });
 
-    // console.log(caseResult.props.children.props.className);
     expect(caseResult.props.children.props.className).toBe(
       'h-full w-full flex md:flex-row xs:flex-col justify-center items-center gap-[10px]'
     );
@@ -228,7 +227,6 @@ describe('ConsultancyTutorial', () => {
       caseResult = result.current.renderBody();
     });
 
-    // console.log(caseResult.props.children[0].props.className);
     expect(caseResult.props.children[0].props.className).toBe(
       'w-[48px] h-[48px] rounded-full mx-auto border-white border-[1px] flex justify-center items-center mb-[45px]'
     );

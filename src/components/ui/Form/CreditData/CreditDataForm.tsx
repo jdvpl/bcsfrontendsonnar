@@ -35,11 +35,13 @@ export function CreditDataForm() {
 
   const { changeOffice, choseOffice } = creditForm({ setOffices });
 
-  const typeHouse = watch('typeHouse', 'new');
+  const houseStatus = watch('houseStatus', 'new');
+  const typeHouse = watch('typeHouse', 'novis');
   const houseValue = watch('houseValue', dataForm?.houseValue || 0);
   const financeValue = watch('financeValue', dataForm?.financeValue || 0);
   const termFinance = watch('termFinance', dataForm?.termFinance || 0);
   const office = watch('office', dataForm?.office || 0);
+  const stratum = watch('stratum', 0);
 
   const renderPercentage = () => {
     if (Math.floor(percentageFinance * 100) > 100) {
@@ -51,17 +53,20 @@ export function CreditDataForm() {
     // eslint-disable-next-line no-console
     setDataForm({
       typeHouse,
+      houseStatus,
       houseValue,
       financeValue,
       termFinance,
       insuranceCheck,
       choseOffice,
       office,
+      stratum,
     });
     router.push(routes.ResumenSolicitud);
   };
 
   const { automationFinanceValue } = useValidations(
+    typeHouse,
     houseValue,
     financeValue,
     termFinance,
@@ -75,7 +80,9 @@ export function CreditDataForm() {
     setValue('financeValue', dataForm?.financeValue || 0);
     setValue('houseValue', dataForm?.houseValue || 0);
     setValue('termFinance', dataForm?.termFinance || 0);
-    setValue('typeHouse', 'new');
+    setValue('typeHouse', 'novis');
+    setValue('houseStatus', 'used');
+    setValue('stratum', 0);
   }, []);
 
   const isValid = () => {
@@ -88,6 +95,7 @@ export function CreditDataForm() {
       insuranceCheck,
       choseOffice,
       office,
+      stratum,
     };
 
     var values = Object.values(body);
@@ -118,7 +126,10 @@ export function CreditDataForm() {
     <div className="flex flex-col items-center">
       {/* Form When Person chose Hose */}
       <div className="flex flex-col items-center gap-y-[12px] w-full mb-[32px]">
-        <div data-testid="InputTypeHouse" className="w-full">
+        <div
+          data-testid="InputTypeHouse"
+          className="w-full grid grid-cols-1 md:grid-cols-2 gap-4"
+        >
           <ReactHookFormSelect
             onChange={(e: any) => setValue('typeHouse', e.target.value)}
             placeholder="Tipo de vivienda"
@@ -128,6 +139,22 @@ export function CreditDataForm() {
             left="right4"
             valueLength=""
             name="typeHouse"
+            className=""
+            margin="normal"
+            rules={{ required: true }}
+          >
+            <MenuItem value="novis">No VIS</MenuItem>
+            <MenuItem value="vis">VIS</MenuItem>
+          </ReactHookFormSelect>
+          <ReactHookFormSelect
+            onChange={(e: any) => setValue('houseStatus', e.target.value)}
+            placeholder="Estado de la vivienda"
+            label="Estado de la vivienda"
+            defaultValue="usada"
+            control={control}
+            left="right4"
+            valueLength=""
+            name="houseStatus"
             className=""
             margin="normal"
             rules={{ required: true }}
@@ -194,25 +221,46 @@ export function CreditDataForm() {
           </div>
         </div>
 
-        <ReactHookFormSelect
-          onChange={(e: any) => setValue('termFinance', e.target.value)}
-          placeholder="Plazo"
-          label="Plazo"
-          defaultValue=""
-          control={control}
-          left="right4"
-          valueLength=""
-          name="termFinance"
-          className="col-span-6"
-          margin="normal"
-          rules={{ required: true }}
-        >
-          {yearsAvailable?.map((y) => (
-            <MenuItem value={y} key={y}>
-              {y} años
-            </MenuItem>
-          ))}
-        </ReactHookFormSelect>
+        <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-4">
+          <ReactHookFormSelect
+            onChange={(e: any) => setValue('termFinance', e.target.value)}
+            placeholder="Plazo"
+            label="Plazo"
+            defaultValue=""
+            control={control}
+            left="right4"
+            valueLength=""
+            name="termFinance"
+            className="w-full"
+            margin="normal"
+            rules={{ required: true }}
+          >
+            {yearsAvailable?.map((y) => (
+              <MenuItem value={y} key={y}>
+                {y} años
+              </MenuItem>
+            ))}
+          </ReactHookFormSelect>
+          <ReactHookFormSelect
+            onChange={(e: any) => setValue('stratum', e.target.value)}
+            placeholder="Estrato de la vivienda"
+            label="Estrato de la vivienda"
+            defaultValue=""
+            control={control}
+            left="right4"
+            valueLength=""
+            name="stratum"
+            className="w-full"
+            margin="normal"
+            rules={{ required: true }}
+          >
+            {[1, 2, 3, 4, 5, 6]?.map((y) => (
+              <MenuItem value={y} key={y}>
+                {y}
+              </MenuItem>
+            ))}
+          </ReactHookFormSelect>
+        </div>
 
         <Input
           type="text"
@@ -224,17 +272,16 @@ export function CreditDataForm() {
           label="Tipo de amortización"
         />
 
-        <div className="w-full pt-[20px]">
-          <Typography
-            variant="body1"
-            className="w-full Montserrat text-primario-900 text-[16px] leading-[18px]"
-          >
-            Elija como continuar el proceso
-          </Typography>
-        </div>
-
         {/* Card Chose Housing */}
-        <div className="cardShadow h-[71px] rounded-xl pt-[26px] mb-[6px] px-[24px] w-full">
+        <div className="cardShadow min-h-[106px] rounded-xl pt-[24px] pb-[27px] mb-[6px] px-[24px] w-full flex flex-col gap-4">
+          <div>
+            <Typography
+              variant="body1"
+              className="w-full Montserrat text-primario-900 text-[16px] leading-[18px]"
+            >
+              Elija como continuar el proceso
+            </Typography>
+          </div>
           <div className="flex">
             <button
               className="flex cursor-pointer"

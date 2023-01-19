@@ -83,7 +83,6 @@ const ValidationMessage: React.FC = () => {
       setShowAnimation(false);
       setValidated(false);
     } else if (isMobile || isTablet || window.innerWidth <= 1000) {
-      console.log("is mobile")
     }
   }, []);
 
