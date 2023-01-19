@@ -83,7 +83,7 @@ function HouseSimulator() {
       termFinance: formData?.termFinance,
       percentageFinance,
       insuranceCheck,
-      dateOfBirth: `${day}-${month}-${year}`,
+      dateOfBirth: `${year}-${month}-${day}`,
       simulationType: 'house',
       monthlySalary: 0,
       amountQuota: 0,

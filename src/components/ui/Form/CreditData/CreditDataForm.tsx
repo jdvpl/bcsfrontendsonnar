@@ -273,7 +273,7 @@ export function CreditDataForm() {
         />
 
         {/* Card Chose Housing */}
-        <div className="cardShadow h-[106px] rounded-xl pt-[24px] pb-[27px] mb-[6px] px-[24px] w-full flex flex-col gap-4">
+        <div className="cardShadow min-h-[106px] rounded-xl pt-[24px] pb-[27px] mb-[6px] px-[24px] w-full flex flex-col gap-4">
           <div>
             <Typography
               variant="body1"
