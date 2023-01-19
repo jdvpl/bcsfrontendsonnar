@@ -238,7 +238,6 @@ function PersonalDataBasic({ userInfo }: any) {
                 <NewAutoComplete
                   id="currentCity"
                   defaultValue={undefined}
-                  placeholder="Ciudad de residencia"
                   label="Ciudad de residencia"
                   onChange={(e: any) => {
                     if (e?.id) {
