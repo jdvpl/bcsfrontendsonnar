@@ -47,7 +47,6 @@ export const onSubmitStartProcess = async (formData: FormData, setDataUser: any,
   const response = await sendAuthorization(data)
   setDataUser(formData);
   if (!response.error) {
-    console.log(response.response)
     if (response.response.result) {
       router.push(routes.authentication)
     } else {

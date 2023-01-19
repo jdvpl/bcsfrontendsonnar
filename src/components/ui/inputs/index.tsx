@@ -106,7 +106,6 @@ function Input({
       : 'border-[#798c98a6] focus:border-primario-20'
     }
     appearance-none  peer focus:border focus:outline-none`;
-  console.log({ value: props.value })
   return (
     <div className={`${containerClassName} justify-center flex flex-col w-full`}>
       <div className="relative z-0 w-full">

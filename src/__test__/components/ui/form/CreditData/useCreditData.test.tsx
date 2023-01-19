@@ -11,6 +11,7 @@ describe('useValidations is successfully', () => {
   let setError: any;
   let setPercentageFinance: any;
   let setValue: any;
+  const houseType = 'vis';
 
   beforeEach(async () => {
     clearErrors = jest.fn();
@@ -21,6 +22,7 @@ describe('useValidations is successfully', () => {
 
     const component = renderHook(() =>
       useValidations(
+        houseType,
         houseValue,
         financeValue,
         termFinance,
@@ -50,6 +52,8 @@ describe('useValidations is successfully', () => {
   let setError: any;
   let setPercentageFinance: any;
   let setValue: any;
+  const houseType = 'vis';
+
 
   beforeEach(async () => {
     clearErrors = jest.fn();
@@ -60,6 +64,7 @@ describe('useValidations is successfully', () => {
 
     const component = renderHook(() =>
       useValidations(
+        houseType,
         houseValue,
         financeValue,
         termFinance,

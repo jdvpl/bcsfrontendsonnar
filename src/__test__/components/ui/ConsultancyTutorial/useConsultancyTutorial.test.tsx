@@ -228,7 +228,6 @@ describe('ConsultancyTutorial', () => {
       caseResult = result.current.renderBody();
     });
 
-    // console.log(caseResult.props.children[0].props.className);
     expect(caseResult.props.children[0].props.className).toBe(
       'w-[48px] h-[48px] rounded-full mx-auto border-white border-[1px] flex justify-center items-center mb-[45px]'
     );

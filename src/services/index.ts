@@ -134,7 +134,6 @@ export const loginAccountSendRequest = async (data: any) => {
 //       error: false,
 //     };
 //   } catch (e: any) {
-//     console.log(e)
 //     return { error: true, response: e.response?.data };
 //   }
 // }
