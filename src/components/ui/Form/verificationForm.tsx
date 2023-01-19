@@ -23,6 +23,8 @@ interface FormProps {
   onSubmit: (data: VerificationFormProps) => void;
   isLoading?: boolean;
   defaultValues?: VerificationFormProps;
+  initialBorder: any;
+  setBorder: any;
 }
 
 export interface VerificationFormProps {
@@ -30,7 +32,8 @@ export interface VerificationFormProps {
   password: string;
 }
 
-const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
+const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues, initialBorder,
+  setBorder }) => {
   const {
     register,
     handleSubmit,
@@ -48,7 +51,6 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
     showPassword: false,
     showPassword2: false,
   });
-  const [initialBorder, setBorder] = useState('#B0C2CD');
   const variants = {
     hidden: { opacity: 1, x: 350, y: 0 },
     enter: { opacity: 1, x: 0, y: 0 },
@@ -93,7 +95,7 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
 
           <div className="w-100" id="pass-container">
             <FormControl sx={{ m: 1, width: '100%' }} variant="outlined">
-              <InputLabel htmlFor="input-password">Contraseña</InputLabel>
+              <InputLabel htmlFor="input-password" className=''>Contraseña</InputLabel>
               <OutlinedInput
                 sx={{
                   color: '#00253D',

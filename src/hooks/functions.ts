@@ -59,14 +59,22 @@ export const onSubmitStartProcess = async (formData: FormData, setDataUser: any,
 }
 
 
-export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any, router: any) => {
+export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any, router: any, setBorder: any) => {
   setIsLoading(true);
   const data = { password: dataSend.password, documentType: dataTU.document_type, documentNumber: dataTU.document_number }
   const response = await loginAccountSendRequest(data);
   if (!response.error) {
-    setIsLoading(false);
     router.push(routes.otp)
+    setIsLoading(false);
   } else {
-    router.push(routes.validacionErrorValidacionIdentidad)
+    const code = response.response.internal_code;
+    switch (code) {
+      case 'AUTH-01':
+        setBorder('#E9132B')
+        break;
+      default:
+        break;
+    }
+    setIsLoading(false);
   }
 }

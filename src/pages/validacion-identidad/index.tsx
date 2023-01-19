@@ -24,6 +24,8 @@ const Index: React.FC = () => {
   const [dataValid, setDataValid] = useState(false);
   const [progress, setprogress] = useState('');
   const [loading, setIsLoading] = useState(false);
+  const [initialBorder, setBorder] = useState('#B0C2CD');
+
   const data: Quest = dataQuestions;
   useEffect(() => {
     setprogress('25%');
@@ -51,7 +53,8 @@ const Index: React.FC = () => {
             </AnimatePresence>
           )}
           <AnimatePresence>
-            {dataValid ? <VerificationForm onSubmit={(dataLogin: any) => { loginAccount(dataLogin, setIsLoading, dataTU, router) }} /> : ''}
+            {dataValid ? <VerificationForm initialBorder={initialBorder}
+              setBorder={setBorder} onSubmit={(dataLogin: any) => { loginAccount(dataLogin, setIsLoading, dataTU, router, setBorder) }} /> : ''}
           </AnimatePresence>
           <AnimatePresence>
             {dataNumber && <ValidationFormNumber questions={dataNumber} />}
