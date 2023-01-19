@@ -1,3 +1,5 @@
+import React from "react";
+
 function LogoViviendaWhite() {
   return <svg width="100%"
     height="39" viewBox="0 0 446 50" fill="none" xmlns="http://www.w3.org/2000/svg">

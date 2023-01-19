@@ -105,23 +105,23 @@ function PersonalDataBasic({ userInfo }: any) {
               control={control}
               rules={{ required: true }}
               render={({ field }) => (
-                  <Input
-                    containerClassName="col-span-2"
-                    type="text"
-                    onChange={(e) => {
-                      field.onChange(e.target.value);
-                    }}
-                    error={!!errors.dayDt}
-                    helperText={errors?.dayDt?.message}
-                    value={field.value}
-                    tabIndex={0}
-                    id="yearDt"
-                    data-testid="yearDtTest"
-                    inputMode="numeric"
-                    maxLength={4}
-                    label="Año"
-                  />
-                )}
+                <Input
+                  containerClassName="col-span-2"
+                  type="text"
+                  onChange={(e) => {
+                    field.onChange(e.target.value);
+                  }}
+                  error={!!errors.dayDt}
+                  helperText={errors?.dayDt?.message}
+                  value={field.value}
+                  tabIndex={0}
+                  id="yearDt"
+                  data-testid="yearDtTest"
+                  inputMode="numeric"
+                  maxLength={4}
+                  label="Año"
+                />
+              )}
             />
           </div>
 
@@ -173,26 +173,26 @@ function PersonalDataBasic({ userInfo }: any) {
                 <Controller
                   rules={{ required: !userInfo.cellPhone }}
                   render={({ field }) => (
-                      <Input
-                        helperText="Debe inicar con 3  y un máximo de 10 caracteres"
-                        helperTextOption
-                        type="text"
-                        error={!!errors.phone}
-                        onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                          e.preventDefault();
-                        }}
-                        value={field.value}
-                        defaultValue={field.value}
-                        tabIndex={0}
-                        disabled={!!userInfo.cellPhone}
-                        id="phone"
-                        data-testid="phoneTest"
-                        inputMode="text"
-                        placeholder='Número de celular'
-                        label="Número de celular"
-                        onChange={(e: any) => setValue('phone', e.target.value)}
-                      />
-                    )}
+                    <Input
+                      helperText="Debe inicar con 3  y un máximo de 10 caracteres"
+                      helperTextOption
+                      type="text"
+                      error={!!errors.phone}
+                      onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                        e.preventDefault();
+                      }}
+                      value={field.value}
+                      defaultValue={field.value}
+                      tabIndex={0}
+                      disabled={!!userInfo.cellPhone}
+                      id="phone"
+                      data-testid="phoneTest"
+                      inputMode="text"
+                      placeholder='Número de celular'
+                      label="Número de celular"
+                      onChange={(e: any) => setValue('phone', e.target.value)}
+                    />
+                  )}
                   name="phone"
                   control={control}
                 />
@@ -201,26 +201,26 @@ function PersonalDataBasic({ userInfo }: any) {
                 <Controller
                   rules={{ required: !userInfo.emailAddr }}
                   render={({ field }) => (
-                      <Input
-                        helperText="Ejemplo: correo@dominio.com"
-                        helperTextOption
-                        type="email"
-                        disabled={!!userInfo.emailAddr}
-                        error={!!errors.email}
-                        onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                          e.preventDefault();
-                        }}
-                        value={field.value}
-                        tabIndex={0}
-                        id="email"
-                        data-testid="emailTest"
+                    <Input
+                      helperText="Ejemplo: correo@dominio.com"
+                      helperTextOption
+                      type="email"
+                      disabled={!!userInfo.emailAddr}
+                      error={!!errors.email}
+                      onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                        e.preventDefault();
+                      }}
+                      value={field.value}
+                      tabIndex={0}
+                      id="email"
+                      data-testid="emailTest"
 
-                        inputMode="email"
-                        placeholder='Correo electrónico'
-                        label="Correo electrónico"
-                        onChange={(e: any) => setValue('email', e.target.value)}
-                      />
-                    )}
+                      inputMode="email"
+                      placeholder='Correo electrónico'
+                      label="Correo electrónico"
+                      onChange={(e: any) => setValue('email', e.target.value)}
+                    />
+                  )}
                   name="email"
                   control={control}
                 />
@@ -255,23 +255,23 @@ function PersonalDataBasic({ userInfo }: any) {
             <Controller
               rules={{ required: !userInfo.addr1 }}
               render={({ field }) => (
-                  <Input
-                    type="text"
-                    startIcon='bcs-location'
-                    error={!!errors.email}
-                    onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                      e.preventDefault();
-                    }}
-                    value={field.value}
-                    tabIndex={0}
-                    id="currentAddress"
-                    data-testid="currentAddres"
-                    inputMode="text"
-                    placeholder='Dirección de vivienda actual'
-                    label="Dirección de vivienda actual"
-                    onChange={(e: any) => setValue('currentAddress', e.target.value)}
-                  />
-                )}
+                <Input
+                  type="text"
+                  startIcon='bcs-location'
+                  error={!!errors.email}
+                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                    e.preventDefault();
+                  }}
+                  value={field.value}
+                  tabIndex={0}
+                  id="currentAddress"
+                  data-testid="currentAddres"
+                  inputMode="text"
+                  placeholder='Dirección de vivienda actual'
+                  label="Dirección de vivienda actual"
+                  onChange={(e: any) => setValue('currentAddress', e.target.value)}
+                />
+              )}
               name="currentAddress"
               control={control}
             />

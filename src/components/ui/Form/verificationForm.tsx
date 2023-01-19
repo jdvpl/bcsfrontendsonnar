@@ -77,7 +77,7 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
       <Typography variant="h2" className="text-center text-primario-900">
         Bienvenido a
       </Typography>
-      <figure itemProp="logo" className="flex justify-center">
+      <figure itemProp="logo" className="flex justify-center lg:w-[300px] md:w-[240px] w-[250px] m-auto">
         <LogoForm />
       </figure>
       <form
@@ -85,7 +85,7 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
         onSubmit={handleSubmit(onSubmit)}
         className="w-full bottom-0 mt-1 loginPass"
       >
-        <p className="text-center w-full mx-auto text-base leading-5 mt-6 text-primario-900 font-light">
+        <p className="text-center w-full mx-auto text-base leading-5 lg:mt-3 md:mt-3 text-primario-900 font-light">
           Por seguridad validaremos su identidad; ingrese la contraseña que
           <span className="md:block">usa para accede a sus canales digitales</span>
         </p>
