@@ -58,7 +58,7 @@ export const onSubmitStartProcess = async (formData: FormData, setDataUser: any,
 }
 
 
-export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any, router: any, setBorder: any) => {
+export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any, router: any, setBorder: any, setmessagePassword: any, setlockedUser: any) => {
   setIsLoading(true);
   const data = { password: dataSend.password, documentType: dataTU.document_type, documentNumber: dataTU.document_number }
   const response = await loginAccountSendRequest(data);
@@ -69,7 +69,13 @@ export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any
     const code = response.response.internal_code;
     switch (code) {
       case 'AUTH-01':
-        setBorder('#E9132B')
+        setBorder('#E9132B');
+        setmessagePassword('Contraseña incorrecta intente nuevamente');
+        break;
+      case 'AUTH-02':
+        setBorder('#E9132B');
+        setmessagePassword('Usuario bloqueado');
+        setlockedUser(true);
         break;
       default:
         break;

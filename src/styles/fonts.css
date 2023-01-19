@@ -5,6 +5,11 @@
   font-style: normal;
 }
 @font-face {
+  font-family: 'MontserratRegular';
+  src: url('font/MontserratRegular.ttf') format('truetype');
+  font-style: normal;
+}
+@font-face {
   font-family: 'PoppinsLight';
   src: url('font/PoppinsLight.ttf') format('truetype');
   font-style: normal;

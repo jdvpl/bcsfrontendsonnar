@@ -24,7 +24,9 @@ const Index: React.FC = () => {
   const [dataValid, setDataValid] = useState(false);
   const [progress, setprogress] = useState('');
   const [loading, setIsLoading] = useState(false);
-  const [initialBorder, setBorder] = useState('#B0C2CD');
+  const [initialBorder, setBorder] = useState('#00253D');
+  const [messagePassword, setmessagePassword] = useState('');
+  const [lockedUser, setlockedUser] = useState(false)
 
   const data: Quest = dataQuestions;
   useEffect(() => {
@@ -33,7 +35,7 @@ const Index: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Validación de identidad - BCS Viviendamiga Digital</title>
+        <title>Validación de identidad - BCS Credito Hipotecario</title>
       </Head>
       <InactivityWarper>
         <Layout navTitle={<NavTitle noBack />}>
@@ -53,8 +55,8 @@ const Index: React.FC = () => {
             </AnimatePresence>
           )}
           <AnimatePresence>
-            {dataValid ? <VerificationForm initialBorder={initialBorder}
-              setBorder={setBorder} onSubmit={(dataLogin: any) => { loginAccount(dataLogin, setIsLoading, dataTU, router, setBorder) }} /> : ''}
+            {dataValid ? <VerificationForm initialBorder={initialBorder} messagePassword={messagePassword} lockedUser={lockedUser}
+              setBorder={setBorder} onSubmit={(dataLogin: any) => { loginAccount(dataLogin, setIsLoading, dataTU, router, setBorder, setmessagePassword, setlockedUser) }} /> : ''}
           </AnimatePresence>
           <AnimatePresence>
             {dataNumber && <ValidationFormNumber questions={dataNumber} />}

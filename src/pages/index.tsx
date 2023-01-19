@@ -1,6 +1,5 @@
 import { deviceType } from 'react-device-detect';
 import React, { useEffect } from 'react';
-import { useMediaQuery } from "react-responsive";
 import LogoBcsWhite from '../components/svg/LogoBcsWhite';
 import Typography from '../components/ui/Typography';
 import { useSessionStorage } from '../hooks/useSessionStorage';
@@ -13,18 +12,12 @@ import Questions from '../components/ui/Accordion';
 import { basePath } from '../../next.config';
 import TagManager from 'react-gtm-module';
 import Step from '../components/ui/Card/Step';
+import useMediaQueryMortgage from '../hooks/useMediaQuery';
 
 export default function Home() {
   const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, deviceType);
-  const isMobile = useMediaQuery({
-    query: "(max-width:575px)"
-  })
-  const isTablet = useMediaQuery({
-    query: "(min-width: 576px) and (max-width: 1023px)"
-  })
-  const isBrowser = useMediaQuery({
-    query: "(min-width: 1024px) "
-  })
+
+  const { isBrowser, isMobile, isTablet } = useMediaQueryMortgage();
   useEffect(
     () => () => {
       setDevice(deviceType)

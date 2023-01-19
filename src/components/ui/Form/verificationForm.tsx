@@ -17,6 +17,7 @@ import ContainerButtonForm from './ContainerButtonForm';
 import Typography from '../Typography';
 import LogoForm from '../../svg/LogoForm';
 import useVerificationForm from '../../../hooks/useVerificationForm';
+import { HelperText } from '../inputs/HelperText';
 
 
 interface FormProps {
@@ -25,6 +26,8 @@ interface FormProps {
   defaultValues?: VerificationFormProps;
   initialBorder: any;
   setBorder: any;
+  messagePassword?: any;
+  lockedUser?: boolean;
 }
 
 export interface VerificationFormProps {
@@ -33,7 +36,7 @@ export interface VerificationFormProps {
 }
 
 const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues, initialBorder,
-  setBorder }) => {
+  setBorder, messagePassword, lockedUser }) => {
   const {
     register,
     handleSubmit,
@@ -88,20 +91,22 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues, initia
         className="w-full bottom-0 mt-1 loginPass"
       >
         <p className="text-center w-full mx-auto text-base leading-5 lg:mt-3 md:mt-3 text-primario-900 font-light">
-          Por seguridad validaremos su identidad; ingrese la contraseña que
-          <span className="md:block">usa para accede a sus canales digitales</span>
+          Ingrese la contraseña que utiliza para acceder a su app o portal web.
         </p>
         <div itemScope itemType="https://schema.org/Person" className='mt-8'>
 
           <div className="w-100" id="pass-container">
             <FormControl sx={{ m: 1, width: '100%' }} variant="outlined">
-              <InputLabel htmlFor="input-password" className=''>Contraseña</InputLabel>
+              <InputLabel htmlFor="input-password" className={`${initialBorder === '#E9132B' ? 'passLoginRed' : 'passLoginBlack'}`}>Contraseña</InputLabel>
               <OutlinedInput
                 sx={{
                   color: '#00253D',
                   fontSize: '14px',
                   '.MuiFormLabel-root': {
                     fontSize: '14px',
+                  },
+                  '.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root': {
+                    color: 'red !important'
                   },
                   '.MuiFormControl-root': {
                     margin: '0px !important',
@@ -145,6 +150,7 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues, initia
                     alphanumeric: (value) =>
                       /^[a-zA-Z0-9]+$/.test(value) || 'alphanumeric',
                   },
+
                   required: true,
                 })}
                 type={values.showPassword ? 'text' : 'password'}
@@ -168,9 +174,17 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues, initia
                 label="Clave"
               />
             </FormControl>
+            {initialBorder === '#E9132B' && <HelperText text={messagePassword} error={true} />}
           </div>
         </div>
-
+        {
+          lockedUser && <div className='mt-4'>
+            <a href="https://www.bancocajasocial.com/portalserver/bcs-public/olvido-su-contrasena" target="_blank" className='hover:underline text-primario-200 text-[16px] font-normal leading-[18px] font-montserratRegular'>¿Olvido su contraseña?</a>
+            <p className='mt-4 text-[14px] font-monserratLight'>
+              Las personas que ya tienen cuenta con el Banco Caja Social, han creado anteriormente una contraseña para acceder a nuestros canales
+            </p>
+          </div>
+        }
         <ContainerButtonForm>
           <Button
             disabled={!isValid}
