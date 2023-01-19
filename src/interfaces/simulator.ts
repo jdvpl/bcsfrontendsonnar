@@ -9,7 +9,7 @@ export interface SimulationData {
   percentageFinance: number;
   percentageQuota: number;
   financeValue: number;
-  financeValueE?:number;
+  financeValueE?: number;
   termFinance: number;
   insuranceCheck: boolean;
   dateOfBirth: string;
@@ -17,4 +17,6 @@ export interface SimulationData {
   day?: string;
   month?: string;
   office?: string;
+  stratum?: number;
+  houseStatus?: string;
 }
