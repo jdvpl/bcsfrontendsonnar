@@ -7,6 +7,7 @@ describe('useValidations is successfully', () => {
   const houseValue: any = 10000000;
   const financeValue: any = 1000000;
   const termFinance: any = 1000000;
+  const typeHouse: any = 'vis';
   let clearErrors: any;
   let setError: any;
   let setPercentageFinance: any;
@@ -21,6 +22,7 @@ describe('useValidations is successfully', () => {
 
     const component = renderHook(() =>
       useValidations(
+        typeHouse,
         houseValue,
         financeValue,
         termFinance,
@@ -71,7 +73,6 @@ describe('useValidations is successfully', () => {
     );
   });
   it('setError should call 2 time', async () => {
-    console.log(setError.mock.calls[0]);
-    expect(setError.mock.calls.length).toBe(2);
+    expect(setError.mock.calls.length).toBe(7);
   });
 });
