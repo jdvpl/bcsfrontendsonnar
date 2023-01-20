@@ -114,7 +114,7 @@ no constituyen ningún tipo de asesoría, ni obligan al Banco en su calidad de e
             termFinance={`${valuesSimulation.termFinance} años`}
             rate={`${valuesSimulation?.rate?.toString()?.replace('.', ',')}% EA`}
             lifeInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
-            fireInsurance={`${convertToColombianPesos(valuesSimulation.lifeInsurance)}`}
+            fireInsurance={`${convertToColombianPesos(valuesSimulation.fireInsurance)}`}
             dataPdf={getDataPdfInfo}
           />
         ) : null}
