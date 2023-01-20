@@ -64,7 +64,6 @@ export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any
   const response = await loginAccountSendRequest(data);
   if (!response.error) {
     if (response.response.data.state === "OK") {
-      setIsLoading(false);
       await setDataTU({
         ...dataTU,
         personalData: {
@@ -73,6 +72,7 @@ export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any
         },
         encriptPhone: { encriptPhone: response.response.data?.phone || '3209●●●●38' },
       });
+      setIsLoading(false);
       router.push(routes.otp)
     }
   } else {
