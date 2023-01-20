@@ -40,7 +40,6 @@ describe('InicioSolicitud', () => {
   test('should test the valid Document', async () => {
     const router = createMockRouter({});
     const setState = jest.fn();
-
     render(
       <RouterContext.Provider value={router}>
         <InicioSolicitud />
