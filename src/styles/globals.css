@@ -1,8 +1,8 @@
 @charset "UTF-8";
 @import './sdks.css';
 @import './tooltip.css';
-@import "./modal.css";
-@import "./fonts.css";
+@import './modal.css';
+@import './fonts.css';
 
 @font-face {
   font-family: 'bcs';
@@ -17,7 +17,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Roboto:wght@100&display=swap');
 
 .Montserrat {
-  font-family: "Montserrat", sans-serif !important;
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 * {
@@ -1204,90 +1204,89 @@ input[type='checkbox']:checked {
   box-shadow: 0px 0px 2px rgba(0, 37, 61, 0.12), 0px 1px 4px rgba(0, 37, 61, 0.06);
 }
 
-@media (min-width:500px) and (max-width:549px) {
-  .landingPage .firtTitle{
+@media (min-width: 500px) and (max-width: 549px) {
+  .landingPage .firtTitle {
     margin-left: 5rem;
     position: relative;
   }
-  .landingPage .paragraphContent{
+  .landingPage .paragraphContent {
     margin-right: 5.3rem !important;
     margin-top: 0 !important;
   }
-  .landingPage .bgImageLanding{
+  .landingPage .bgImageLanding {
     height: 600px !important;
   }
 }
-@media (min-width:550px) and (max-width:599px) {
-  .landingPage .firtTitle{
+@media (min-width: 550px) and (max-width: 599px) {
+  .landingPage .firtTitle {
     margin-left: 5rem;
     position: relative;
   }
-  .landingPage .iconHeader{
+  .landingPage .iconHeader {
     margin-left: 2rem;
   }
-  .landingPage .paragraphContent{
+  .landingPage .paragraphContent {
     margin-right: 6.3rem !important;
     margin-top: 0 !important;
   }
-  .landingPage .bgImageLanding{
+  .landingPage .bgImageLanding {
     height: 700px !important;
   }
 }
-@media (min-width:601px) and (max-width:650px) {
-  .landingPage .firtTitle{
+@media (min-width: 601px) and (max-width: 650px) {
+  .landingPage .firtTitle {
     margin-left: 12rem;
     position: relative;
   }
-  .landingPage .iconHeader{
+  .landingPage .iconHeader {
     margin-left: 3rem;
   }
-  .landingPage .paragraphContent{
+  .landingPage .paragraphContent {
     margin-right: 8.5rem !important;
     margin-top: 0 !important;
   }
-  .landingPage .bgImageLanding{
+  .landingPage .bgImageLanding {
     height: 700px !important;
   }
 }
-@media (min-width:651px) and (max-width:720px) {
-  .landingPage .firtTitle{
+@media (min-width: 651px) and (max-width: 720px) {
+  .landingPage .firtTitle {
     margin-left: 14rem;
     position: relative;
   }
-  .landingPage .iconHeader{
+  .landingPage .iconHeader {
     margin-left: 5rem;
   }
-  .landingPage .paragraphContent{
+  .landingPage .paragraphContent {
     margin-right: 7.5rem !important;
     margin-top: 0 !important;
   }
-  .landingPage .bgImageLanding{
+  .landingPage .bgImageLanding {
     height: 770px !important;
   }
-  .landingPage .wcontainerHeader{
+  .landingPage .wcontainerHeader {
     width: 250px;
   }
-  .landingPage .cntainerCards{
+  .landingPage .cntainerCards {
     margin-top: 7rem;
   }
 }
-@media (min-width:744px) and (max-width:750px) {
-  .landingPage .firtTitle{
+@media (min-width: 744px) and (max-width: 750px) {
+  .landingPage .firtTitle {
     margin-left: 0rem;
     position: relative;
-  }  
+  }
 }
-@media (min-width:751px) and (max-width:770px) {
-  .landingPage .firtTitle{
+@media (min-width: 751px) and (max-width: 770px) {
+  .landingPage .firtTitle {
     margin-left: 1rem;
     position: relative;
-  }  
+  }
 }
 
-
-.loginPass .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root{
+.loginPass .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root {
   width: 80px;
-    background: white;
+  background: white;
 }
 
 .bgBenefits{
@@ -1299,8 +1298,6 @@ input[type='checkbox']:checked {
 .passLoginBlack{
   color: #00253D !important;
 }
-
-
 
 .verificationForm .ast, li {
   margin:0;
