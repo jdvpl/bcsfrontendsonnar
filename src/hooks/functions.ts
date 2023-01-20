@@ -58,14 +58,23 @@ export const onSubmitStartProcess = async (formData: FormData, setDataUser: any,
 }
 
 
-export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any, router: any, setBorder: any, setmessagePassword: any, setlockedUser: any) => {
+export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any, router: any, setBorder: any, setmessagePassword: any, setlockedUser: any, setDataTU: any) => {
   setIsLoading(true);
   const data = { password: dataSend.password, documentType: dataTU.document_type, documentNumber: dataTU.document_number }
   const response = await loginAccountSendRequest(data);
   if (!response.error) {
-    console.log({ response })
-    router.push(routes.otp)
-    setIsLoading(false);
+    if (response.response.data.state === "OK") {
+      setIsLoading(false);
+      await setDataTU({
+        ...dataTU,
+        personalData: {
+          celular: response.response.data?.phone || '3209●●●●38',
+          phoneNumber: response.response.data?.number || 'ada144a2-66e5-45cb-840d-e25339b171a5',
+        },
+        encriptPhone: { encriptPhone: response.response.data?.phone || '3209●●●●38' },
+      });
+      router.push(routes.otp)
+    }
   } else {
     const code = response.response.internal_code;
     switch (code) {

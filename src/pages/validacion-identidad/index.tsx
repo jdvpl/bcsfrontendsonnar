@@ -19,7 +19,7 @@ interface Quest {
 const Index: React.FC = () => {
   const router = useRouter();
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
-  const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
+  const [dataTU, setDataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const [dataNumber, setDataNumber] = useState<any | null>(null);
   const [dataValid, setDataValid] = useState(false);
   const [progress, setprogress] = useState('');
@@ -56,7 +56,7 @@ const Index: React.FC = () => {
           )}
           <AnimatePresence>
             {dataValid ? <VerificationForm initialBorder={initialBorder} messagePassword={messagePassword} lockedUser={lockedUser}
-              setBorder={setBorder} onSubmit={(dataLogin: any) => { loginAccount(dataLogin, setIsLoading, dataTU, router, setBorder, setmessagePassword, setlockedUser) }} /> : ''}
+              setBorder={setBorder} onSubmit={(dataLogin: any) => { loginAccount(dataLogin, setIsLoading, dataTU, router, setBorder, setmessagePassword, setlockedUser, setDataTU) }} /> : ''}
           </AnimatePresence>
           <AnimatePresence>
             {dataNumber && <ValidationFormNumber questions={dataNumber} />}

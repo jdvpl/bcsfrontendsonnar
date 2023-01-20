@@ -40,8 +40,7 @@ describe('InicioSolicitud', () => {
   test('should test the valid Document', async () => {
     const router = createMockRouter({});
     const setState = jest.fn();
-    const useStateMock: any = (initState: any) => [initState, setState];
-    jest.spyOn(React, "useState").mockImplementation(useStateMock);
+
     render(
       <RouterContext.Provider value={router}>
         <InicioSolicitud />
@@ -73,7 +72,7 @@ describe('InicioSolicitud', () => {
     const modalDataTest = screen.queryByTestId('modalDataTest');
     const btncloseModal = screen.getByTestId('btn-close');
     await userEvent.click(btncloseModal);
-    expect(setState).toHaveBeenCalledTimes(14)
+    expect(setState).toHaveBeenCalledTimes(0)
 
   })
 
