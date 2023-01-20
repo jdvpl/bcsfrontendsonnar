@@ -1316,3 +1316,7 @@ input[type='checkbox']:checked {
   content: "*";
   padding-right: 1rem; 
 }
+
+svg {
+  transform:  none !important;
+}

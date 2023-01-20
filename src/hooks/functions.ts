@@ -63,6 +63,7 @@ export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any
   const data = { password: dataSend.password, documentType: dataTU.document_type, documentNumber: dataTU.document_number }
   const response = await loginAccountSendRequest(data);
   if (!response.error) {
+    console.log({ response })
     router.push(routes.otp)
     setIsLoading(false);
   } else {
