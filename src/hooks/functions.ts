@@ -71,6 +71,8 @@ export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any
       case 'AUTH-01':
         setBorder('#E9132B');
         setmessagePassword('Contraseña incorrecta intente nuevamente');
+        setlockedUser(true);
+
         break;
       case 'AUTH-02':
         setBorder('#E9132B');

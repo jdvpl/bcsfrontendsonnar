@@ -18,6 +18,7 @@ import Typography from '../Typography';
 import LogoForm from '../../svg/LogoForm';
 import useVerificationForm from '../../../hooks/useVerificationForm';
 import { HelperText } from '../inputs/HelperText';
+import useMediaQueryResponsive from '../../../hooks/useMediaQuery';
 
 
 interface FormProps {
@@ -65,6 +66,7 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues, initia
       showPassword: !values.showPassword,
     });
   };
+  const { heightHeader } = useMediaQueryResponsive()
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
@@ -77,13 +79,13 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues, initia
       exit="exit"
       variants={variants}
       transition={{ type: 'linear' }}
-      className="h-full"
+      className="h-full verificationForm"
     >
       <Typography variant="h2" className="text-center text-primario-900">
         Bienvenido a
       </Typography>
-      <figure itemProp="logo" className="flex justify-center lg:w-[300px] md:w-[240px] w-[250px] m-auto">
-        <LogoForm />
+      <figure itemProp="logo" className="flex justify-center lg:w-[300px] md:w-[240px] w-[250px] m-auto mt-4">
+        <LogoForm height={heightHeader} />
       </figure>
       <form
         data-testid="verificationForm"
@@ -180,9 +182,14 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues, initia
         {
           lockedUser && <div className='mt-4'>
             <a href="https://www.bancocajasocial.com/portalserver/bcs-public/olvido-su-contrasena" target="_blank" className='hover:underline text-primario-200 text-[16px] font-normal leading-[18px] font-montserratRegular'>¿Olvido su contraseña?</a>
-            <p className='mt-4 text-[14px] font-monserratLight'>
-              Las personas que ya tienen cuenta con el Banco Caja Social, han creado anteriormente una contraseña para acceder a nuestros canales
-            </p>
+            <ul className='mt-4 text-[14px] font-monserratLight ast'>
+              <li>
+                Si usted tiene o ha tenido productos con el Banco Caja Social, ya cuenta con una contraseña para acceder el canal digital
+              </li>
+              <li>
+                No ingresar claves de tarjetas
+              </li>
+            </ul>
           </div>
         }
         <ContainerButtonForm>

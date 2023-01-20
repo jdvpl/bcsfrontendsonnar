@@ -1299,3 +1299,20 @@ input[type='checkbox']:checked {
 .passLoginBlack{
   color: #00253D !important;
 }
+
+
+
+.verificationForm .ast, li {
+  margin:0;
+  padding:0;
+ list-style:none      
+}
+
+.verificationForm .ast ~ li {
+  padding-left:20px; 
+}
+
+.verificationForm .ast li:before {
+  content: "*";
+  padding-right: 1rem; 
+}

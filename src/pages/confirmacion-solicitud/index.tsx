@@ -42,7 +42,7 @@ function ApplicationApproval() {
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA] font-semibold rounded-[8px] m-auto"
             title="Monto preaprobado"
             value={`${convertToColombianPesos(valuesMortgage?.financeValue)}`}
-            text="text-[32px] pl-[16px] pt-2 flex items-baseline"
+            text="md:text-[32px] text-[25px] pl-[16px] pt-2 flex items-baseline"
             urlsvg=""
             classtitle="h-[18px] pt-[16px] text-[16px] pl-0"
             subvalue="pesos"
@@ -74,8 +74,8 @@ function ApplicationApproval() {
                 .replace(/\b\w/g, (l: string) =>
                   l.toUpperCase()
                 )} - ${valuesMortgage?.office?.city
-                ?.toLowerCase()
-                .replace(/\b\w/g, (l: string) => l.toUpperCase())} `}
+                  ?.toLowerCase()
+                  .replace(/\b\w/g, (l: string) => l.toUpperCase())} `}
               text="text-[20px] pl-[18px] font-semibold"
               urlsvg={`${basePath}/images/location.svg`}
               classtitle="h-[14px] text-[13px]"

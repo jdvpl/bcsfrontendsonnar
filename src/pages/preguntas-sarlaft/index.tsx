@@ -1,30 +1,15 @@
 import React from 'react';
-import { basePath } from '../../../next.config';
-import LogoBcs from '../../components/svg/LogoBcs';
-import LogoForm from '../../components/svg/LogoForm';
 import { MoneyLaunderingForm } from '../../components/ui/Form/MoneyLaunderingForm/MoneyLaunderingForm';
-import Icons from '../../components/ui/icons';
+import HeaderForm from '../../components/ui/Headers/HeaderForm';
 import Stepper from '../../components/ui/Stepper';
 import Typography from '../../components/ui/Typography';
 
 function MoneyLaunderingPage() {
   return (
     <div className="w-[90%] md:w-[90%] m-auto mb-[100px]">
-      <div className="flex justify-between lg:w-[1080px] mx-auto mb-[38px] xs:mt-[36px] md:mt-[64px] lg:mb-[82px] lg:mt-[59px] lg:h-[29px] h-[18px]">
-        <div className="hidden lg:block">
-          <LogoBcs />
-        </div>
-        <div className="lg:hidden cursor-pointer">
-          <a href={basePath}>
-            <Icons icon="bcs-arrow-one-left" />
-          </a>
-        </div>
-        <div className="lg:w-[280px] w-[180px]">
-          <LogoForm />
-        </div>
-      </div>
+      <HeaderForm />
 
-      <div className="lg:w-[825px] mx-auto md:w-[528px] mb-[64px] xs:mb-[40px] xs:w-[288px] sm:w-[343px]">
+      <div className="lg:w-[825px] mx-auto md:w-[528px] mb-[64px] xs:mb-[40px] xs:w-[288px] sm:w-[343px] mt-9">
         <Stepper
           steps={4}
           actualStep={1}
