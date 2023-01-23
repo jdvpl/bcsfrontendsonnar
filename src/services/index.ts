@@ -144,7 +144,7 @@ export const sendNumber = async (data: any) => {
 export const validateOTOCode = async (data: ValidateOTC) => {
   try {
     const dataInfo = await allResponse(data, KEY);
-    const { data: response } = await clientAxiosKYC.post(
+    const { data: response } = await clientAxiosMock.post(
       '/identity-user/pin',
       { data: dataInfo },
       headersKYC
@@ -163,7 +163,7 @@ export const validateOTOCode = async (data: ValidateOTC) => {
 export const reSendOTPCode = async (data: OTPCodeRequest) => {
   try {
     const dataInfo = await allResponse(data, KEY);
-    const { data: response } = await clientAxiosKYC.post(
+    const { data: response } = await clientAxiosMock.post(
       '/identity-user/resend',
       { data: dataInfo },
       headersKYC
