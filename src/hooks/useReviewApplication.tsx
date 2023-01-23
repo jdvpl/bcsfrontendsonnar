@@ -12,7 +12,7 @@ export default function useSummaryApplication(router: any) {
     setLoading(true);
     const response = await riskBoxes(data);
     if (!response.error) {
-      router.push(routes.approvalDataPage);
+      router?.push(routes.approvalDataPage);
     }
     setLoading(false);
   };
