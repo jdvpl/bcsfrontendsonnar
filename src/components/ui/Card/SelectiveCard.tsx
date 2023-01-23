@@ -4,6 +4,7 @@ import { FC } from 'react';
 import Icons, { IconsProps } from '../icons';
 import Typography from '../Typography/index';
 import dynamicClassesSelective from './SelectiveClassnames';
+import React from 'react'
 
 export interface ISelectiveCardProps extends IconsProps {
   label?: string;
@@ -37,7 +38,7 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
   const activeClassesDesc = active ? 'text-white' : 'text-complementario-100'
   return (
     <div
-      data-testId="selectiveCardTest"
+      data-testid="selectiveCardTest"
       {...props}
       className={classNames.mainClasesParentDiv}
       {...(onclick ? { onClick: () => router.push(pathTo) } : {})}

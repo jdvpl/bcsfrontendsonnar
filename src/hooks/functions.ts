@@ -58,14 +58,40 @@ export const onSubmitStartProcess = async (formData: FormData, setDataUser: any,
 }
 
 
-export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any, router: any) => {
+export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any, router: any, setBorder: any, setmessagePassword: any, setlockedUser: any, setDataTU: any) => {
   setIsLoading(true);
   const data = { password: dataSend.password, documentType: dataTU.document_type, documentNumber: dataTU.document_number }
   const response = await loginAccountSendRequest(data);
   if (!response.error) {
-    setIsLoading(false);
-    router.push(routes.otp)
+    if (response.response.data.state === "OK") {
+      await setDataTU({
+        ...dataTU,
+        personalData: {
+          celular: response.response.data?.phone || '3209●●●●38',
+          phoneNumber: response.response.data?.number || 'ada144a2-66e5-45cb-840d-e25339b171a5',
+        },
+        encriptPhone: { encriptPhone: response.response.data?.phone || '3209●●●●38' },
+      });
+      setIsLoading(false);
+      router.push(routes.otp)
+    }
   } else {
-    router.push(routes.validacionErrorValidacionIdentidad)
+    const code = response.response.internal_code;
+    switch (code) {
+      case 'AUTH-01':
+        setBorder('#E9132B');
+        setmessagePassword('Contraseña incorrecta intente nuevamente');
+        setlockedUser(true);
+
+        break;
+      case 'AUTH-02':
+        setBorder('#E9132B');
+        setmessagePassword('Usuario bloqueado');
+        setlockedUser(true);
+        break;
+      default:
+        break;
+    }
+    setIsLoading(false);
   }
 }

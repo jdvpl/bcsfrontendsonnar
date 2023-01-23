@@ -1289,10 +1289,31 @@ input[type='checkbox']:checked {
   background: white;
 }
 
-.bgBenefits {
-  background: linear-gradient(90deg, #f1f4fc -50.48%, rgba(241, 244, 252, 0) 100%);
+.bgBenefits{
+  background: linear-gradient(90deg, #F1F4FC -50.48%, rgba(241, 244, 252, 0) 100%);
+}
+.passLoginRed{
+  color: #E9132B !important;
+}
+.passLoginBlack{
+  color: #00253D !important;
+}
+
+.verificationForm .ast, li {
+  margin:0;
+  padding:0;
+ list-style:none      
+}
+
+.verificationForm .ast ~ li {
+  padding-left:20px; 
+}
+
+.verificationForm .ast li:before {
+  content: "*";
+  padding-right: 1rem; 
 }
 
 svg {
-  transform: none !important;
+  transform:  none !important;
 }

@@ -1,30 +1,24 @@
-import { deviceType } from 'react-device-detect';
+import { SelectiveHomeCards } from './../components/ui/Home/SelectiveHomeCards';
 import React, { useEffect } from 'react';
-import { useMediaQuery } from "react-responsive";
-import LogoBcsWhite from '../components/svg/LogoBcsWhite';
-import Typography from '../components/ui/Typography';
-import { useSessionStorage } from '../hooks/useSessionStorage';
-import { SesionStorageKeys } from '../session';
-import LogoViviendaWhite from '../components/svg/LogoViviendaWhite';
-import SelectiveCard from '../components/ui/Card/SelectiveCard';
-import { routes } from '../routes';
-import LogoBcs from '../components/svg/LogoBcs';
-import Questions from '../components/ui/Accordion';
-import { basePath } from '../../next.config';
+import { deviceType } from 'react-device-detect';
 import TagManager from 'react-gtm-module';
+import { basePath } from '../../next.config';
+import LogoBcs from '../components/svg/LogoBcs';
+import LogoBcsWhite from '../components/svg/LogoBcsWhite';
+import LogoViviendaWhite from '../components/svg/LogoViviendaWhite';
+import Questions from '../components/ui/Accordion';
+import SelectiveCard from '../components/ui/Card/SelectiveCard';
 import Step from '../components/ui/Card/Step';
+import Typography from '../components/ui/Typography';
+import useMediaQueryResponsive from '../hooks/useMediaQuery';
+import { useSessionStorage } from '../hooks/useSessionStorage';
+import { routes } from '../routes';
+import { SesionStorageKeys } from '../session';
 
 export default function Home() {
   const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, deviceType);
-  const isMobile = useMediaQuery({
-    query: "(max-width:575px)"
-  })
-  const isTablet = useMediaQuery({
-    query: "(min-width: 576px) and (max-width: 1023px)"
-  })
-  const isBrowser = useMediaQuery({
-    query: "(min-width: 1024px) "
-  })
+
+  const { isBrowser, isMobile, isTablet, heightHeader, isSafari } = useMediaQueryResponsive();
   useEffect(
     () => () => {
       setDevice(deviceType)
@@ -43,7 +37,9 @@ export default function Home() {
 
   }, []
   );
+  const titleClasses = isSafari ? 'xs:pt-8 sm:pt-[46px] md:flex md:justify-end md:mr-[7rem] lg:flex lg:justify-center lg:mt-[3rem] lg:ml-[34rem] ml:ml-[18rem] md:ml-[15.5rem] xxl:mt-[3rem] md:mt-0 xxl:ml-[23rem] xl:ml-[33.5rem]' : 'xs:pt-8 sm:pt-[46px] md:flex md:justify-end md:mr-[7rem] lg:flex lg:justify-center lg:mt-[3rem] lg:ml-[43rem] ml:ml-[18rem] md:ml-[23.5rem] xxl:mt-[3rem] md:mt-[4rem] xxl:ml-[23rem] xl:ml-[43.5rem]';
 
+  const headerDescriptionClasess = isSafari ? 'xs:flex sm:flex  md:justify-end xs:pr-2 sm:pr-6 xs:pt-2 md:pr-[6rem] md:mt-1 xs:mt-5 lg:mt-[6px]  lg:flex lg:justify-center lg:ml-[40rem] paragraphContent ml-5' : 'xs:flex sm:flex  md:justify-end xs:pr-2 sm:pr-6 xs:pt-2 md:pr-[2rem] md:mt-1 xs:mt-5 lg:mt-[6px]  lg:flex lg:justify-center lg:ml-[40rem] paragraphContent ml-5'
   return (
     <div data-testid="landingPage" className="overflow-hidden landingPage">
       <div className={`lg:bg-landing-lg xl:bg-bg-landing-lg xxl:bg-bg-landing-lg md:bg-landing-md sm:bg-landing-sm bg-landing-xs bg-no-repeat  -z-30 bg-cover xs:bg-bottom sm:bg-bottom md:bg-bottom lg:bg-center xl:bg-bottom xs:h-[413px] sm:h-[413px]  md:h-[607px] lg:h-[667px] xl:h-[685px] xxl:bg-top xxl:h-[901px] bgImageLanding`}>
@@ -56,19 +52,19 @@ export default function Home() {
           {isBrowser ? <LogoBcs /> : null}
           {isTablet ? <LogoBcsWhite /> : null}
         </div>
-        <div className="xs:pt-8 sm:pt-[46px] md:flex md:justify-end md:mr-[7rem] lg:flex lg:justify-center lg:mt-[3rem] lg:ml-[14rem] md:pl-[23.5rem] xxl:mt-[3rem] md:mt-[4rem]">
+        <div className={titleClasses}>
           <div className="md:flex md:flex-col firtTitle">
             <p className="text-white xs:text-[22px] sm:text-[22px] leading-[30px]  xs:ml-5 sm:ml-5 xs:mb-1 sm:mb-1 font-poppinsExtraLight">
               Bienvenido a
               <figure itemProp="logo" className="mt-3 md:mt-1 m-0 p-0 w-full sm:pr-[60px] xs:pr-[50px] md:pr-0">
-                <LogoViviendaWhite />
+                <LogoViviendaWhite height={heightHeader} width={isSafari ? '300' : "100%"} />
               </figure>
             </p>
           </div>
         </div>
         {/* title */}
 
-        <div className="xs:flex sm:flex  md:justify-end xs:pr-2 sm:pr-6 xs:pt-2 md:pr-[2rem] md:mt-1 xs:mt-5 lg:mt-[6px]  lg:flex lg:justify-center lg:ml-[40rem] paragraphContent ml-5">
+        <div className={headerDescriptionClasess}>
           <div className="flex flex-col">
             <h4 className="text-white  md:w-[285px] lg:w-[394px] font-semibold lg:text-[24px] md:text-[20px] leading-6 wcontainerHeader font-poppinsSemiBold sm:text-[18px]">
               ¿Desea comprar vivienda?
@@ -78,49 +74,7 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="container cntainerCards mx-auto lg:w-[920px]  md:grid md:grid-cols-3 grid grid-cols-3 md:mt-[5rem] gap-2 lg:mt-[5rem] xxl:mt-[12rem] md:w-[580px] sm:mt-5 mt-5 xs:w-[295px] sm:w-[350px]">
-          <SelectiveCard
-            icon="bcs-document-one"
-            size={`${isMobile ? 'text-[1.2rem]' : 'text-[2.5rem]'}`}
-            color="text-white"
-            data-testid="SoliciteTest"
-            label="Solicite su crédito"
-            description="Obtenga la preaprobación de su crédito hipotecario y compre la vivienda que desea."
-            pathTo={routes.onboarding}
-            titleClasses="md:text-[13px] lg:text-[14px] text-[12px] text-center font-montserratSemiBold font-semibold text-white w-full leading-[14px] md:pb-0 sm:pb-6 pb-6"
-            classNamesDescription='md:w-[166px] lg:w-[224px] md:text-[12px] lg:text-[16px]  font-monserratLight lg:pb-5 md:pb-1 lg:pb-2 md:block hidden'
-            className="sm:mt-4 xs:mt-4 sm:w-[109px] lg:w-[292px] md:w-[189px] md:h-[178px] lg:h-[198px] h-[110px] w-[95px]"
-            onclick
-            active
-          />
-
-          <SelectiveCard
-            icon="bcs-hand-mobile"
-            size={`${isMobile ? 'text-[1.2rem]' : 'text-[2.5rem]'}`}
-            color="text-primario-300"
-            label="Simule su crédito"
-            data-testid="simuladorTestBtn"
-            description="Calcule el valor del crédito y sus cuotas."
-            pathTo={routes.simulador}
-            className="sm:mt-4 xs:mt-4 sm:w-[109px] lg:w-[292px] md:w-[189px] md:h-[178px] lg:h-[198px] h-[110px] w-[95px]"
-            titleClasses="md:text-[13px] lg:text-[14px] text-[12px] text-center md:w-full font-montserratSemiBold font-semibold text-white w-full leading-[14px] md:pb-0 sm:pb-6 pb-6"
-            classNamesDescription='md:w-[143px] lg:w-[210px] md:text-[12px] lg:text-[16px]  font-monserratLight lg:pb-5 md:pb-9 lg:pb-11 md:block hidden'
-            onclick
-          />
-          <SelectiveCard
-            icon="bcs-hand-simbol"
-            size={`${isMobile ? 'text-[1.2rem]' : 'text-[2.5rem]'}`}
-            color="text-primario-300"
-            data-testid="consultancyTestBtn"
-            label={`Aprenda sobre vivienda  `}
-            description="Recorra la guía interactiva y conozca todo lo que debe saber para comprar un inmueble."
-            pathTo={routes.consultancy}
-            className="sm:mt-4 xs:mt-4 sm:w-[109px] lg:w-[292px] md:w-[189px] md:h-[178px] lg:h-[198px] h-[110px] w-[95px] "
-            titleClasses="md:text-[13px] lg:text-[14px] text-[12px] text-center font-montserratSemiBold font-semibold text-white w-full leading-[14px]"
-            classNamesDescription='md:w-[166px] lg:w-[224px] md:text-[12px] lg:text-[16px]  font-monserratLight lg:pb-5 md:pb-1 lg:pb-2 md:block hidden'
-            onclick
-          />
-        </div>
+        <SelectiveHomeCards isMobile={isMobile} />
       </div>
       <div className="md:mt-[80px] lg:mt-0 sm:mt-[118px] mt-[116px] h-[510px] bg-requirements-sm lg:bg-requirements-lg bg-no-repeat bg-cover md:h-[330px] md:bg-requirements-md ">
         <div className="lg:w-[1100px] md:w-[585px] m-auto mb-5">

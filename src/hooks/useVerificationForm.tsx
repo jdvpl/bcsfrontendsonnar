@@ -11,4 +11,5 @@ export default function useVerificationForm(fields: any, setBorder: any) {
       }
     }
   }, [fields.password]);
+
 }

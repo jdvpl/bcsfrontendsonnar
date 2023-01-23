@@ -343,7 +343,7 @@ const DateOfBirth: React.FC<InputProps> = ({
 
       </div>
       <div className="flex justify-end mr-[0.3rem] md:mr-[2rem] lg:mr-[6rem]">
-        {ageError && (
+        {ageError && fields.year && (
           <div className="mt-[5px]" data-testid="messageErrorDateOfBirth">
             <MessageError message={ageError} />
           </div>

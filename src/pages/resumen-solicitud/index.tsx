@@ -13,6 +13,7 @@ import { routes } from '../../routes';
 import Alert from '../../components/ui/Alert/index';
 import { ApplicationLoader } from '../../components/ui/Loaders/ApplicationLoader';
 import useSummaryApplication from '../../hooks/useReviewApplication';
+import HeaderForm from '../../components/ui/Headers/HeaderForm';
 
 function ResumenApplication() {
   const router = useRouter();
@@ -22,20 +23,13 @@ function ResumenApplication() {
   return (
     <div>
       {isLoading ? <ApplicationLoader /> : null}
-      <div className="container flex lg:mt-[0] xs:w-[343px] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-end">
-        <div className="mt-4  hidden lg:block">
-          <LogoBcs />
-        </div>
-        <div className="mt-4 w-[180px] lg:w-[303px] mb-[24px] mr-[16px]">
-          <LogoForm />
-        </div>
-      </div>
-      <div className="lg:w-[825px] mx-auto md:w-[528px] mb-[64px] xs:mb-[40px] xs:w-[288px] sm:w-[343px]">
+      <HeaderForm />
+      <div className="lg:w-[825px] mx-auto md:w-[528px] mb-[64px] xs:mb-[40px] xs:w-[288px] sm:w-[343px] mt-9">
         <Stepper
           steps={4}
           actualStep={4}
           percentage={100}
-          className="lg:w-[684px] md:w-[456px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px]"
+          className="lg:w-[684px] md:w-[528px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px]"
           title="Resumen de la solicitud"
         />
       </div>

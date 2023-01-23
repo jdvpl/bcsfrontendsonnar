@@ -4,28 +4,29 @@ import React from 'react'
 import VerificationForm from '../../../../components/ui/Form/verificationForm';
 
 const mkFn = jest.fn()
+const mkSeBorder = jest.fn().mockResolvedValue("#f000")
 describe('<VerificationForm/>', () => {
   test('should render "VerificationForm" successfully', () => {
-    const { baseElement } = render(<VerificationForm onSubmit={mkFn} />);
+    const { baseElement } = render(<VerificationForm onSubmit={mkFn} initialBorder={"#0000"} setBorder={mkSeBorder} />);
     expect(baseElement).toBeTruthy();
   });
   test('should render "VerificationForm" successfully', () => {
-    const { getByTestId } = render(<VerificationForm onSubmit={mkFn} />);
+    const { getByTestId } = render(<VerificationForm onSubmit={mkFn} initialBorder={"#0000"} setBorder={mkSeBorder} />);
     const inputPassword = getByTestId('input-password');
     fireEvent.click(inputPassword)
   });
   test('should render "VerificationForm" button', () => {
-    const { getByTestId } = render(<VerificationForm onSubmit={mkFn} />);
+    const { getByTestId } = render(<VerificationForm onSubmit={mkFn} initialBorder={"#0000"} setBorder={mkSeBorder} />);
     const inputPass = document.getElementsByName("password")[0];
     const btnSubmit = getByTestId('btn-save-data');
     const togglePasword = getByTestId('togglePasword')
-    fireEvent.input(inputPass, { target: { value: 'Testa365' } })
+    fireEvent.input(inputPass, { target: { value: 'Prueba20' } })
     fireEvent.click(togglePasword)
     fireEvent.mouseDown(togglePasword)
     fireEvent.click(btnSubmit)
   });
   test('should render "VerificationForm" button with input blanck', () => {
-    const { getByTestId } = render(<VerificationForm onSubmit={mkFn} />);
+    const { getByTestId } = render(<VerificationForm onSubmit={mkFn} initialBorder={"#0000"} setBorder={mkSeBorder} />);
     const inputPass = document.getElementsByName("password")[0];
     const btnSubmit = getByTestId('btn-save-data');
     const togglePasword = getByTestId('togglePasword')
@@ -35,7 +36,7 @@ describe('<VerificationForm/>', () => {
     fireEvent.click(btnSubmit)
   });
   test('should find a tag h2', () => {
-    const { queryByTestId } = render(<VerificationForm onSubmit={mkFn} />);
+    const { queryByTestId } = render(<VerificationForm onSubmit={mkFn} initialBorder={"#0000"} setBorder={mkSeBorder} />);
     expect(queryByTestId('typographyTest')).toBeInTheDocument()
   })
 });

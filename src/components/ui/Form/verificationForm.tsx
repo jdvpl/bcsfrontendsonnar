@@ -17,12 +17,18 @@ import ContainerButtonForm from './ContainerButtonForm';
 import Typography from '../Typography';
 import LogoForm from '../../svg/LogoForm';
 import useVerificationForm from '../../../hooks/useVerificationForm';
+import { HelperText } from '../inputs/HelperText';
+import useMediaQueryResponsive from '../../../hooks/useMediaQuery';
 
 
 interface FormProps {
   onSubmit: (data: VerificationFormProps) => void;
   isLoading?: boolean;
   defaultValues?: VerificationFormProps;
+  initialBorder: any;
+  setBorder: any;
+  messagePassword?: any;
+  lockedUser?: boolean;
 }
 
 export interface VerificationFormProps {
@@ -30,7 +36,8 @@ export interface VerificationFormProps {
   password: string;
 }
 
-const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
+const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues, initialBorder,
+  setBorder, messagePassword, lockedUser }) => {
   const {
     register,
     handleSubmit,
@@ -48,7 +55,6 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
     showPassword: false,
     showPassword2: false,
   });
-  const [initialBorder, setBorder] = useState('#B0C2CD');
   const variants = {
     hidden: { opacity: 1, x: 350, y: 0 },
     enter: { opacity: 1, x: 0, y: 0 },
@@ -60,6 +66,7 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
       showPassword: !values.showPassword,
     });
   };
+  const { heightHeader } = useMediaQueryResponsive()
   const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
   };
@@ -72,34 +79,36 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
       exit="exit"
       variants={variants}
       transition={{ type: 'linear' }}
-      className="h-full"
+      className="h-full verificationForm"
     >
       <Typography variant="h2" className="text-center text-primario-900">
         Bienvenido a
       </Typography>
-      <figure itemProp="logo" className="flex justify-center">
-        <LogoForm />
+      <figure itemProp="logo" className="flex justify-center lg:w-[300px] md:w-[240px] w-[250px] m-auto mt-4">
+        <LogoForm height={heightHeader} />
       </figure>
       <form
         data-testid="verificationForm"
         onSubmit={handleSubmit(onSubmit)}
         className="w-full bottom-0 mt-1 loginPass"
       >
-        <p className="text-center w-full mx-auto text-base leading-5 mt-6 text-primario-900 font-light">
-          Por seguridad validaremos su identidad; ingrese la contraseña que
-          <span className="md:block">usa para accede a sus canales digitales</span>
+        <p className="text-center w-full mx-auto text-base leading-5 lg:mt-3 md:mt-3 text-primario-900 font-light">
+          Ingrese la contraseña que utiliza para acceder a su app o portal web.
         </p>
         <div itemScope itemType="https://schema.org/Person" className='mt-8'>
 
           <div className="w-100" id="pass-container">
             <FormControl sx={{ m: 1, width: '100%' }} variant="outlined">
-              <InputLabel htmlFor="input-password">Contraseña</InputLabel>
+              <InputLabel htmlFor="input-password" className={`${initialBorder === '#E9132B' ? 'passLoginRed' : 'passLoginBlack'}`}>Contraseña</InputLabel>
               <OutlinedInput
                 sx={{
                   color: '#00253D',
                   fontSize: '14px',
                   '.MuiFormLabel-root': {
                     fontSize: '14px',
+                  },
+                  '.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root': {
+                    color: 'red !important'
                   },
                   '.MuiFormControl-root': {
                     margin: '0px !important',
@@ -143,6 +152,7 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
                     alphanumeric: (value) =>
                       /^[a-zA-Z0-9]+$/.test(value) || 'alphanumeric',
                   },
+
                   required: true,
                 })}
                 type={values.showPassword ? 'text' : 'password'}
@@ -166,9 +176,22 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
                 label="Clave"
               />
             </FormControl>
+            {initialBorder === '#E9132B' && <HelperText text={messagePassword} error={true} />}
           </div>
         </div>
-
+        {
+          lockedUser && <div className='mt-4'>
+            <a href="https://www.bancocajasocial.com/portalserver/bcs-public/olvido-su-contrasena" target="_blank" className='hover:underline text-primario-200 text-[16px] font-normal leading-[18px] font-montserratRegular'>¿Olvido su contraseña?</a>
+            <ul className='mt-4 text-[14px] font-monserratLight ast'>
+              <li>
+                Si usted tiene o ha tenido productos con el Banco Caja Social, ya cuenta con una contraseña para acceder el canal digital
+              </li>
+              <li>
+                No ingresar claves de tarjetas
+              </li>
+            </ul>
+          </div>
+        }
         <ContainerButtonForm>
           <Button
             disabled={!isValid}

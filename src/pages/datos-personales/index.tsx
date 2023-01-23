@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import LogoBcs from '../../components/svg/LogoBcs';
-import LogoForm from '../../components/svg/LogoForm';
 import Typography from '../../components/ui/Typography';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
-import { iFormDataSimulation } from '../../interfaces/formSimulation';
 import { SesionStorageKeys } from '../../session';
-import { routes } from '../../routes';
 import { HowItemProps } from '../../components/ui/Form';
 import Modal from '../../components/ui/Modal';
 import Advisory from '../../components/commons/Advisory';
@@ -14,7 +9,7 @@ import Stepper from '../../components/ui/Stepper';
 import { getBasicData } from '../../services';
 import { iDataUser } from '../../interfaces/dataUserBasic';
 import PersonalDataBasic from '../../components/ui/Form/PersonalDataBasic';
-
+import HeaderForm from '../../components/ui/Headers/HeaderForm'
 
 function PersonalData() {
   const [showModal, setShowModal] = useState<boolean>(true);
@@ -74,21 +69,14 @@ function PersonalData() {
           heightModal='lg:h-[50%]'
         />
       )}
-      <div className="container flex lg:mt-[0] sm:w-[343px] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-end">
-        <div className="mt-4 hidden lg:block">
-          <LogoBcs />
-        </div>
-        <div className="mt-4 w-[180px] md:w-[180px] lg:w-[280px]">
-          <LogoForm />
-        </div>
-      </div>
+      <HeaderForm />
 
-      <div className="lg:w-[684px] md:w-[584px] w-[343px] m-auto">
+      <div className="lg:w-[684px] md:w-[528px] w-[343px] m-auto mt-9">
         <Stepper
           steps={4}
           actualStep={1}
           percentage={50}
-          className="lg:w-[684px] md:w-[456px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px] text-left"
+          className="lg:w-[684px] md:w-[528px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px] text-left"
           title="Datos personales"
         />
         <Typography variant="h2" className="mt-8 text-center">
