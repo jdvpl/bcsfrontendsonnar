@@ -1,4 +1,4 @@
-import { SelectiveHomeCards } from './../components/ui/Home/SelectiveHomeCards';
+import SelectiveHomeCards from './../components/ui/Home/SelectiveHomeCards';
 import React, { useEffect } from 'react';
 import { deviceType } from 'react-device-detect';
 import TagManager from 'react-gtm-module';
