@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   FormControl,
   IconButton,
@@ -7,20 +7,16 @@ import {
   InputLabel,
   OutlinedInput,
 } from '@mui/material';
-
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined';
 import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
 import { motion } from 'framer-motion';
 import Button from '../Button';
-
 import ContainerButtonForm from './ContainerButtonForm';
 import Typography from '../Typography';
 import LogoForm from '../../svg/LogoForm';
 import useVerificationForm from '../../../hooks/useVerificationForm';
 import { HelperText } from '../inputs/HelperText';
 import useMediaQueryResponsive from '../../../hooks/useMediaQuery';
-
-
 interface FormProps {
   onSubmit: (data: VerificationFormProps) => void;
   isLoading?: boolean;
@@ -30,19 +26,16 @@ interface FormProps {
   messagePassword?: any;
   lockedUser?: boolean;
 }
-
 export interface VerificationFormProps {
   userName: string;
   password: string;
 }
-
 const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues, initialBorder,
   setBorder, messagePassword, lockedUser }) => {
   const {
     register,
     handleSubmit,
     watch,
-
     formState: { isValid },
   } = useForm<VerificationFormProps>({
     mode: 'onChange',
