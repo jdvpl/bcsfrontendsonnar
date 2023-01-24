@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderHook } from '@testing-library/react-hooks';
+import { act, renderHook } from '@testing-library/react-hooks';
 import useValidations from '../../../../../components/ui/Form/CreditData/useValidations';
 import { maxHouseValueNoVis } from '../../../../../lib/simulator';
 
@@ -80,4 +80,17 @@ describe('useValidations is successfully', () => {
   it('setError should call 2 time', async () => {
     expect(setError.mock.calls.length).toBe(2);
   });
+
 });
+
+describe('', () => {
+  it('should calculate percentage finance correctly', () => {
+    const { result } = renderHook(() => useValidations('novis', 200, 140, 0, jest.fn(), jest.fn(), jest.fn(), jest.fn()));
+    act(() => {
+      result.current.calculatePercentageFinance();
+    });
+    expect(result.current.percentageFinance).toEqual(undefined);
+  });
+
+})
+
