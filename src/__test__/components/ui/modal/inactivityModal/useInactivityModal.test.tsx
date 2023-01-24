@@ -7,7 +7,7 @@ import { createMockRouter } from '../../../../utils/createMockRouter';
 import { routes } from '../../../../../routes';
 
 const router = createMockRouter({});
-const wrapper = ({ children }) => (
+const wrapper = ({ children }: any) => (
   <RouterContext.Provider value={router}>{children}</RouterContext.Provider>
 );
 
@@ -54,5 +54,4 @@ describe('useInactivityModal', () => {
     });
     expect(router.push).toHaveBeenCalledWith(routes.home);
   });
-  
 });
