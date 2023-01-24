@@ -12,7 +12,7 @@ describe('useAuthentication', () => {
   let setDataQuestions: jest.Mock;
   let router: any;
   let dataUser: any;
-  let onSubmit;
+  let onSubmit: any;
 
   beforeEach(() => {
     setShowAnimation = jest.fn();
