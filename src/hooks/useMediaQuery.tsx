@@ -23,7 +23,7 @@ export default function useMediaQueryResponsive() {
   const isLG = useMediaQuery({
     query: "(min-width: 1024px)"
   })
-  const heightHeader = isXS ? '24' : isSM ? '24' : isMD ? '24' : isLG ? '34' : '34';
+  const heightHeader = isXS ? '24' : isSM ? '24' : isMD ? '24' : '34';
 
   return {
     isMobile,

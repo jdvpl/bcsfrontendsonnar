@@ -55,7 +55,7 @@ const NewAutoComplete: React.FC<InputProps> = ({
 
       <div className="mt-[1px] position-relative" id={id} tabIndex={0}>
         <div
-          className={`position-absolute h-full ${internalState ? 'top-[3px]' : 'top-[3px]'
+          className={`position-absolute h-full 'top-[3px]'
             } left-[7px] flex justify-center items-center `}
         >
           <Icons icon='bcs-search' size='text-[17px]' />
