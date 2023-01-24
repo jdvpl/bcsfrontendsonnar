@@ -1,6 +1,6 @@
 import React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
-import useValidations from '../../../../../components/ui/Form/CreditData/useCreditData';
+import useValidations from '../../../../../components/ui/Form/CreditData/useValidations';
 import { maxHouseValueNoVis } from '../../../../../lib/simulator';
 
 describe('useValidations is successfully', () => {
