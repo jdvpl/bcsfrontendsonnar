@@ -64,4 +64,39 @@ describe('Routes', () => {
   it('should have a simuladorResumen route', () => {
     expect(routes).toHaveProperty('simuladorResumen', '/simulador/resumen');
   })
+  it('should have a onboarding route', () => {
+    expect(routes).toHaveProperty('onboarding', '/bienvenida');
+  });
+
+  it('should have a authentication route', () => {
+    expect(routes).toHaveProperty('authentication', '/autenticacion');
+  });
+
+  it('should have a personalData route', () => {
+    expect(routes).toHaveProperty('personalData', '/datos-personales');
+  });
+
+  it('should have a sarlaft route', () => {
+    expect(routes).toHaveProperty('sarlaft', '/preguntas-sarlaft');
+  });
+
+  it('should have a finalcialData route', () => {
+    expect(routes).toHaveProperty('finalcialData', '/datos-financieros');
+  });
+
+  it('should have a creditData route', () => {
+    expect(routes).toHaveProperty('creditData', '/datos-credito');
+  });
+
+  it('should have a summaryApprovalPage route', () => {
+    expect(routes).toHaveProperty('summaryApprovalPage', '/');
+  });
+
+  it('should have a approvalDataPage route', () => {
+    expect(routes).toHaveProperty('approvalDataPage', '/confirmacion-solicitud');
+  });
+
+  it('should have a ResumenSolicitud route', () => {
+    expect(routes).toHaveProperty('ResumenSolicitud', '/resumen-solicitud');
+  });
 })
