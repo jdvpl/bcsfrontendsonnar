@@ -152,7 +152,6 @@ const VerificationForm: React.FC<FormProps> = ({ onSubmit, defaultValues, initia
                     alphanumeric: (value) =>
                       /^[a-zA-Z0-9]+$/.test(value) || 'alphanumeric',
                   },
-
                   required: true,
                 })}
                 type={values.showPassword ? 'text' : 'password'}
