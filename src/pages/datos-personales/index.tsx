@@ -13,7 +13,7 @@ import HeaderForm from '../../components/ui/Headers/HeaderForm'
 
 function PersonalData() {
   const [showModal, setShowModal] = useState<boolean>(true);
-  const [componentModal, setComponentModal] = useState<HowItemProps>({
+  const [componentModal,] = useState<HowItemProps>({
     children: <Advisory setShowModal={setShowModal} />,
     title: <span>¿Recibió <span className="md:inline sm:inline xs:block">acompañamiento</span> <span className="block" />para acceder a esta plataforma?</span>,
     id: '',

@@ -1,7 +1,4 @@
 import React from 'react';
-import { basePath } from '../../next.config';
-import { routes } from '../routes/index';
-
 export const initialOptions = [
   [
     {
