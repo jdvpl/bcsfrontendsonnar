@@ -1305,10 +1305,6 @@ input[type='checkbox']:checked {
  list-style:none      
 }
 
-.verificationForm .ast ~ li {
-  padding-left:20px; 
-}
-
 .verificationForm .ast li:before {
   content: "*";
   padding-right: 1rem; 

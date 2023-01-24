@@ -51,8 +51,5 @@ describe('useValidateAge', () => {
         shouldFocus: true,
       }
     );
-
   });
-
-
 });
