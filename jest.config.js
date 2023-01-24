@@ -9,12 +9,13 @@ const customJestConfig = {
   setupFilesAfterEnv: ['jest-canvas-mock'],
   collectCoverageFrom: ['<rootDir>/src/components/**',
     '<rootDir>/src/pages/**',
+    '<rootDir>/src/hooks/**',
     '<rootDir>/{!(),}.config.js',
     '!<rootDir>/src/components/svg/**',
     '!<rootDir>/src/pages/_**.tsx',
     '!<rootDir>/src/services/index.ts',
     '!<rootDir>/src/libraries/**',
     '!<rootDir>/src/config/**'],
-  modulePathIgnorePatterns: ["<rootDir>/src/pages/validacion-biometrica","<rootDir>/src/pages/simulador","<rootDir>/src/utils/RouterUtmsUrl","<rootDir>/src/pages/validacion","<rootDir>/src/components/ui/Pdf","<rootDir>/src/components/ui/simulation","<rootDir>/src/hooks"],
+  modulePathIgnorePatterns: ["<rootDir>/src/pages/validacion-biometrica","<rootDir>/src/utils/RouterUtmsUrl","<rootDir>/src/pages/validacion","<rootDir>/src/components/ui/Pdf"],
 };
 module.exports = createJestConfig(customJestConfig);
