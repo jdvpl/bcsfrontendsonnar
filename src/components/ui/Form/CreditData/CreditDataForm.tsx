@@ -8,12 +8,12 @@ import { SimulationData } from '../../../../interfaces';
 import Input from '../../inputs';
 import { convertToColombianPesos } from '../../../../utils';
 import { yearsAvailable } from '../../../../lib/simulator';
-import useValidations from './useCreditData';
+import useValidations from './useValidations';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import { routes } from '../../../../routes';
 import AutoCompleteCustom from '../../../../hooks/autocomplete';
-import creditForm from '../../../../hooks/creditForm';
+import useCreditForm from '../../../../hooks/useCreditForm';
 
 export function CreditDataForm() {
   const [insuranceCheck, setInsuranceCheck] = useState(true);
@@ -33,7 +33,7 @@ export function CreditDataForm() {
     formState: { errors },
   } = useForm<SimulationData>({ mode: 'onChange' });
 
-  const { changeOffice, choseOffice } = creditForm({ setOffices });
+  const { changeOffice, choseOffice } = useCreditForm({ setOffices });
 
   const houseStatus = watch('houseStatus', 'new');
   const typeHouse = watch('typeHouse', 'novis');
