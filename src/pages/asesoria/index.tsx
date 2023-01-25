@@ -9,7 +9,7 @@ import LogoForm from '../../components/svg/LogoForm';
 import { Icons } from '../../components/ui/icons';
 import Stepper from '../../components/ui/Stepper';
 import Typography from '../../components/ui/Typography';
-import { stepperTitles, titleSection } from '../../hooks/consultancy';
+import { stepperTitles, titleSection } from '../../lib/consultancy';
 import useConsultancy from './useConsultancy';
 import TagManager from 'react-gtm-module';
 

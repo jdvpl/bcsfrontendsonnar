@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import React from 'react'
-import { RateForm } from '../../../../components/ui/Form/ratingForm';
-import { RatingModal } from '../../../../components/ui/Modal/ratingModal';
+import { RateForm } from '../../../../../components/ui/Form/ratingForm';
+import { RatingModal } from '../../../../../components/ui/Modal/ratingModal';
 
 describe('<RatingModal />', () => {
   let component: any;

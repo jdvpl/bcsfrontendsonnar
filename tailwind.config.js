@@ -31,6 +31,7 @@ module.exports = {
       poppinsSemiBold:['PoppinsSemiBold','sans-serif'],
       poppinsExtraLight:['PoppinsExtraLight','sans-serif'],
       montserratRegular:['MontserratRegular','sans-serif'],
+      montserratMedium:['MontserratMedium','sans-serif'],
     },
     colors: {
       primario: {

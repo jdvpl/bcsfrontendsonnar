@@ -34,3 +34,8 @@
   src: url('font/PoppinsExtraLight.ttf') format('truetype');
   font-style: normal;
 }
+@font-face {
+  font-family: 'MontserratMedium';
+  src: url('font/MontserratMedium.ttf') format('truetype');
+  font-style: normal;
+}

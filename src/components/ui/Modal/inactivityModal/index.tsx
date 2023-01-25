@@ -7,84 +7,22 @@ import { clearSessionStorage } from '../../../../utils';
 import Button from '../../Button';
 import Icons from '../../icons';
 import Typography from '../../Typography';
+import useInactivityModal from './useInactivityModal';
 
 export function InactivityModal() {
-  const timeout = 180000;
-  const [remaining, setRemaining] = useState(timeout);
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [timer, setTimer] = useState<number>(30);
-  const [isIdle, setIsIdle] = useState(false);
-  const intervalRef = useRef<number>();
-  const router = useRouter();
-
-  const onCloseModal = (): void => {
-    reset();
-    setIsOpen(false);
-  };
-
-  const closeProcess = (): void => {
-    clearInterval(intervalRef.current);
-    clearSessionStorage();
-    router.push(routes.inactivityScreen);
-  };
-
-  const getOutToHome = (): void => {
-    clearInterval(intervalRef.current);
-    clearSessionStorage();
-    router.push(routes.home);
-  };
-
-  const handleOnActive = () => setIsIdle(false);
-  const handleOnIdle = () => setIsIdle(true);
-
-  const { reset, pause, getRemainingTime } = useIdleTimer({
-    timeout,
-    onActive: handleOnActive,
-    onIdle: handleOnIdle,
-  });
-
-  const handleExit = async (exit?: boolean) => {
-    pause();
-    closeProcess();
-  };
-
-  useEffect(() => {
-    setRemaining(getRemainingTime());
-    setInterval(() => {
-      setRemaining(getRemainingTime());
-    }, 1000);
-    return () => {
-      setRemaining(0);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (remaining === 0 && isIdle) {
-      setIsOpen(true);
-      setTimer(30);
-    }
-  }, [remaining, isIdle]);
-
-  useEffect(() => {
-    if (timer === 0 && isOpen) {
-      handleExit();
-      return () => clearInterval(intervalRef.current);
-    }
-    intervalRef.current = window.setInterval(() => {
-      setTimer((time) => time - 1);
-    }, 1000);
-    return () => clearInterval(intervalRef.current);
-  }, [setTimer, timer]);
+  const { onCloseModal, getOutToHome, isOpen, timer } = useInactivityModal();
 
   return (
     <div
       id="modal"
-      className={`bg-black/70 w-screen h-screen z-40 fixed top-0 left-0 flex justify-center content-center ${isOpen ? 'overflow-y-auto' : 'hidden'
-        }`}
+      className={`bg-black/70 w-screen h-screen z-40 fixed top-0 left-0 flex justify-center content-center ${
+        isOpen ? 'overflow-y-auto' : 'hidden'
+      }`}
     >
       <div
-        className={`${isOpen ? 'slideInUp' : 'slideOutDown'
-          } bg-white w-[343px] h-[428px] md:w-[528px] rounded-xl pt-[64px] md:mt-[94px] px-[16px] mt-[47px]`}
+        className={`${
+          isOpen ? 'slideInUp' : 'slideOutDown'
+        } bg-white w-[343px] h-[428px] md:w-[528px] rounded-xl pt-[64px] md:mt-[94px] px-[16px] mt-[47px]`}
       >
         <h3 className="text-gris-100 text-center w-[311px] mx-auto px-2 text-[24px]">
           Ha estado inactivo en los últimos minutos

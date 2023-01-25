@@ -9,6 +9,7 @@ const customJestConfig = {
   setupFilesAfterEnv: ['jest-canvas-mock'],
   collectCoverageFrom: ['<rootDir>/src/components/**',
     '<rootDir>/src/pages/**',
+    '<rootDir>/src/hooks/**',
     '<rootDir>/{!(),}.config.js',
     '!<rootDir>/src/components/svg/**',
     '!<rootDir>/src/pages/_**.tsx',
