@@ -67,13 +67,13 @@ export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any
       await setDataTU({
         ...dataTU,
         personalData: {
-          celular: response.response.data?.phone || '3209●●●●38',
-          phoneNumber: response.response.data?.number || 'ada144a2-66e5-45cb-840d-e25339b171a5',
+          celular: response.response.data?.phone,
+          phoneNumber: response.response.data?.number,
         },
-        encriptPhone: { encriptPhone: response.response.data?.phone || '3209●●●●38' },
+        encriptPhone: { encriptPhone: response.response.data?.phone },
       });
-      setIsLoading(false);
       router.push(routes.otp)
+      setIsLoading(false);
     }
   } else {
     const code = response.response.internal_code;
