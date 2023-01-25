@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LockeUsersMessage = ({ lockedUser }) => {
+const LockeUsersMessage = ({ lockedUser }: any) => {
   return lockedUser ? <div className='mt-2'>
     <a href="https://www.bancocajasocial.com/portalserver/bcs-public/olvido-su-contrasena" target="_blank" className='hover:underline text-primario-200 text-[14px] font-normal leading-[18px] font-montserratMedium'>¿Olvido su contraseña?</a>
     <ul className='mt-9 text-[14px] font-monserratLight ast'>
