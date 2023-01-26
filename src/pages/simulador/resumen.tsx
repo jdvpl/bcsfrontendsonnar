@@ -154,7 +154,7 @@ no constituyen ningún tipo de asesoría, ni obligan al Banco en su calidad de e
           </Button>
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] shadow-none"
-            onClick={() => urlAndUtms(router, '/simulador')}
+            onClick={() =>  urlAndUtms(router, '/simulador')}
             name="solicitarCredito"
             data-testid="btn-openAccount1"
             tabIndex={0}

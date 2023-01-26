@@ -13,6 +13,7 @@ import NavTitle from '../../components/commons/NavTitle';
 import { SesionStorageKeys } from '../../session';
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
 import { loginAccount, onSubmitResponse } from '../../hooks/functions';
+import TagManager from 'react-gtm-module';
 interface Quest {
   items: Question[];
 }
@@ -28,6 +29,18 @@ const Index: React.FC = () => {
   useEffect(() => {
     setprogress('25%');
   }, []);
+  useEffect(() => {
+    TagManager.dataLayer({
+      dataLayer: {
+        event:'load_anwsers',
+        category: 'load_page',
+        action: 'load_anwsers',
+        label: 'load_anwsers',
+      },
+    }); 
+
+},[]
+);
   return (
     <>
       <Head>
