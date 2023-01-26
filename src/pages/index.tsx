@@ -88,7 +88,7 @@ export default function Home() {
           <div className="grid lg:grid-cols-4 md:grid-cols-2 md:gap-3 justify-items-center">
             <div className="lg:w-[266px] md:w-[287px] sm:w-[338px] w-[289px]">
               <SelectiveCard
-                description="Tener entre 18 y 69 años."
+                description="Tener entre 18 y 70 años."
                 onclick={false}
                 hasTitle={false}
                 icon="bcs-document-18"

@@ -15,6 +15,7 @@ import Input from '../inputs';
 import NewAutoComplete from '../inputs/newAutoComplete';
 import ReactHookFormSelect from '../Select/newSelect';
 import { routes } from '../../../routes'
+import { HelperText } from '../inputs/HelperText';
 
 function PersonalDataBasic({ userInfo }: any) {
   const router = useRouter();
@@ -166,6 +167,8 @@ function PersonalDataBasic({ userInfo }: any) {
               <MenuItem value="female">Femenino</MenuItem>
               <MenuItem value="male">Masculino</MenuItem>
             </ReactHookFormSelect>
+
+            <HelperText error={false} text={"Seleccionar el mismo género indicado en su cédula"} />
           </div>
           {userInfo.isClient ? null : (
             <>
@@ -184,7 +187,6 @@ function PersonalDataBasic({ userInfo }: any) {
                       value={field.value}
                       defaultValue={field.value}
                       tabIndex={0}
-                      disabled={!!userInfo.cellPhone}
                       id="phone"
                       data-testid="phoneTest"
                       inputMode="text"
@@ -205,7 +207,6 @@ function PersonalDataBasic({ userInfo }: any) {
                       helperText="Ejemplo: correo@dominio.com"
                       helperTextOption
                       type="email"
-                      disabled={!!userInfo.emailAddr}
                       error={!!errors.email}
                       onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                         e.preventDefault();
@@ -255,12 +256,15 @@ function PersonalDataBasic({ userInfo }: any) {
               rules={{ required: !userInfo.addr1 }}
               render={({ field }) => (
                 <Input
+                  helperText='Ejemplo: Cra 76 sur # 00 - 00'
+                  helperTextOption
                   type="text"
                   startIcon='bcs-location'
-                  error={!!errors.email}
+                  error={!!errors.currentAddress}
                   onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                     e.preventDefault();
                   }}
+
                   value={field.value}
                   tabIndex={0}
                   id="currentAddress"
