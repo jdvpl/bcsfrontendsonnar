@@ -23,9 +23,20 @@ function PersonalDataBasic({ userInfo }: any) {
     clearErrors,
     control,
     setValue,
+    getFieldState,
     // register,
     formState: { errors, isValid },
   } = useForm<iPersonalData>({ mode: 'onChange' });
+
+  // const monthDt = watch('monthDt', '');
+  // const yearDt = watch('yearDt', '');
+  // const dayDt = watch('dayDt', '');
+  // const birthCity = watch('birthCity', '');
+  // const gender = watch('gender', '');
+  // const phone = watch('phone', '');
+  // const email = watch('email', '');
+  // const currentCity = watch('currentCity', '');
+  const currentAddress = watch('currentAddress', '');
 
   const [, setDataUser] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
 
@@ -46,27 +57,21 @@ function PersonalDataBasic({ userInfo }: any) {
     router.push(routes.sarlaft);
   };
 
-  const date = userInfo.birthDt.split('-');
-
-  // const currentAddress = watch('currentAddress', userInfo.addr1);
-
   useEffect(() => {
+    const date = userInfo.birthDt.split('-');
     setValue('yearDt', date[0]);
     setValue('monthDt', date[1]);
     setValue('dayDt', date[2]);
     setValue('phone', userInfo.cellPhone);
     setValue('email', userInfo.emailAddr);
-    // setValue('currentAddress', userInfo.addr1)
-  }, [date]);
-
-  // useValidateAge(day, month, year, clearErrors, setError);
+    setValue('currentAddress', userInfo.addr1);
+  }, [userInfo]);
 
   return (
     <div
       data-testid="FormQuotaTest"
       className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto"
     >
-      <pre>{JSON.stringify(userInfo, null, 2)}</pre>
       <div className="w-full mt-3">
         <form onSubmit={handleSubmit(onSubmit)} data-testid="personaldataTest">
           <div className="mt-4 grid gap-2">
@@ -121,7 +126,7 @@ function PersonalDataBasic({ userInfo }: any) {
                   containerClassName="col-span-2"
                   type="text"
                   onChange={(e) => {
-                    field.onChange(e.target.value);
+                    field.onChange(e?.target?.value?.replace(/[^0-9]+/g, ''));
                   }}
                   error={!!errors.dayDt}
                   helperText={errors?.dayDt?.message}
@@ -266,7 +271,7 @@ function PersonalDataBasic({ userInfo }: any) {
 
           <div className="flex flex-col mt-4">
             <Controller
-              rules={{ required:true }}
+              rules={{ required: true }}
               render={({ field }) => (
                 <Input
                   type="text"
@@ -276,7 +281,7 @@ function PersonalDataBasic({ userInfo }: any) {
                   onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                     e.preventDefault();
                   }}
-                  value={field.value}
+                  value={currentAddress}
                   tabIndex={0}
                   id="currentAddress"
                   data-testid="currentAddres"
@@ -284,7 +289,9 @@ function PersonalDataBasic({ userInfo }: any) {
                   placeholder="Dirección de vivienda actual"
                   label="Dirección de vivienda actual"
                   onChange={(e: any) => {
-                    const { isError, message } = validateAddress(e.target.value);
+                    const { isError, message } = validateAddress(
+                      e?.target?.value?.trim()
+                    );
                     if (isError) {
                       setValue('currentAddress', e.target.value);
                       setError('currentAddress', {
@@ -292,6 +299,7 @@ function PersonalDataBasic({ userInfo }: any) {
                         message,
                       });
                     } else {
+                      field.onChange(e.target.value);
                       setValue('currentAddress', e.target.value);
                       clearErrors('currentAddress');
                     }
@@ -302,8 +310,6 @@ function PersonalDataBasic({ userInfo }: any) {
               control={control}
             />
           </div>
-          <pre>{JSON.stringify(errors, null, 2)}</pre>
-          <pre>{JSON.stringify(isValid, null, 2)}</pre>
           <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-10">
             <Button
               isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[375px]"

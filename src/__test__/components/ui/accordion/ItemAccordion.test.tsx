@@ -10,7 +10,7 @@ describe('ItemAccordion component', () => {
     const setSelected = jest.fn();
     React.useState = jest.fn().mockReturnValue([initialState, setSelected])
     jest.spyOn(React, 'useState').mockImplementation(setSelected)
-    render(<ItemAccordion id="1" active={initialState === '1'} title="¿Cuales son los gastos adicionales al momento de comprar vivienda?">
+    render(<ItemAccordion id="1" active={initialState === '1'} title="¿Cuales son los gastos adicionales al momento de comprar vivienda?" setSelected={setSelected}>
       <>
         Para el proceso de legalización es necesario contemplar los gastos de
         avalúo, estudio de títulos y escrituración. Si desea conocer más a cerca de

@@ -33,7 +33,6 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
         id={`question-${id}`}
         onClick={handleSelected}
         onKeyDown={handleSelected}
-        // onFocus={handleSelected}
         role="button"
         tabIndex={0}
         className={`flex justify-between items-center cursor-pointer px-[20px] text-azul_gris-100 ${

@@ -31,7 +31,7 @@ export const parserPercentageDecimal = (number: number) =>
 
 export const validateAddress = (Address: string) => {
   let haveNumber = /\d/;
-  let pattern = /\W/;
+  let pattern = /[a-zA-Z!@#$%^&*()_+=-]/;
   if (Address !== '') {
     if (Address?.length > 40) {
       return {
@@ -47,12 +47,12 @@ export const validateAddress = (Address: string) => {
       };
     }
 
-    // if (!pattern.test(Address)) {
-    //   return {
-    //     isError: true,
-    //     message: 'La direccion debe contener caracteres ',
-    //   };
-    // }
+    if (!pattern.test(Address)) {
+      return {
+        isError: true,
+        message: 'La direccion debe contener caracteres ',
+      };
+    }
   }
 
   return {
