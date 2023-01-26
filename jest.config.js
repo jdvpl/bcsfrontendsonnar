@@ -16,6 +16,6 @@ const customJestConfig = {
     '!<rootDir>/src/services/index.ts',
     '!<rootDir>/src/libraries/**',
     '!<rootDir>/src/config/**'],
-  modulePathIgnorePatterns: ["<rootDir>/src/pages/validacion-biometrica","<rootDir>/src/pages/simulador","<rootDir>/src/components/ui/Pdf","<rootDir>/src/components/ui/simulation"],
+  modulePathIgnorePatterns: ["<rootDir>/src/pages/validacion-biometrica","<rootDir>/src/pages/simulador","<rootDir>/src/pages/validacion","<rootDir>/src/components/ui/Pdf","<rootDir>/src/components/ui/simulation"],
 };
 module.exports = createJestConfig(customJestConfig);
