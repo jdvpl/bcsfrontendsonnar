@@ -12,6 +12,7 @@ import NewAutoComplete from '../inputs/newAutoComplete';
 import ReactHookFormSelect from '../Select/newSelect';
 import { routes } from '../../../routes';
 import { validateAddress } from '../../../utils';
+import { HelperText } from '../inputs/HelperText';
 
 function PersonalDataBasic({ userInfo }: any) {
   const router = useRouter();
@@ -176,6 +177,8 @@ function PersonalDataBasic({ userInfo }: any) {
               <MenuItem value="female">Femenino</MenuItem>
               <MenuItem value="male">Masculino</MenuItem>
             </ReactHookFormSelect>
+
+            <HelperText error={false} text={"Seleccionar el mismo género indicado en su cédula"} />
           </div>
 
           {userInfo.isClient ? null : (
@@ -195,7 +198,6 @@ function PersonalDataBasic({ userInfo }: any) {
                       value={field.value}
                       defaultValue={field.value}
                       tabIndex={0}
-                      disabled={!!userInfo.cellPhone}
                       id="phone"
                       data-testid="phoneTest"
                       inputMode="text"
@@ -216,7 +218,6 @@ function PersonalDataBasic({ userInfo }: any) {
                       helperText="Ejemplo: correo@dominio.com"
                       helperTextOption
                       type="email"
-                      disabled={!!userInfo.emailAddr}
                       error={!!errors.email}
                       onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                         e.preventDefault();
@@ -266,6 +267,7 @@ function PersonalDataBasic({ userInfo }: any) {
               rules={{ required: true }}
               render={({ field }) => (
                 <Input
+                  helperTextOption
                   type="text"
                   startIcon="bcs-location"
                   error={!!errors.currentAddress}

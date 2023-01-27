@@ -57,7 +57,7 @@ function FinancialDataForm() {
 
   return (
     <div data-testid="FormQuotaTest" className="w-[343px] md:mt-[30px] md:w-[517px] xl:w-[656px] mx-auto">
-      <Alert message='Los aportes a salud y pensión son un criterio obligatorio para la aprobación del crédito.' />
+      <Alert message='Los aportes a salud y pensión son un criterio obligatorio para la preaprobación del crédito.' />
       <div className="w-full mt-3">
         <form onSubmit={handleSubmit(onSubmit)}>
 
