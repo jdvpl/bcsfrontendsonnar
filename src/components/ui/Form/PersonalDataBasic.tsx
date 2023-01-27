@@ -28,14 +28,6 @@ function PersonalDataBasic({ userInfo }: any) {
     formState: { errors, isValid },
   } = useForm<iPersonalData>({ mode: 'onChange' });
 
-  // const monthDt = watch('monthDt', '');
-  // const yearDt = watch('yearDt', '');
-  // const dayDt = watch('dayDt', '');
-  // const birthCity = watch('birthCity', '');
-  // const gender = watch('gender', '');
-  // const phone = watch('phone', '');
-  // const email = watch('email', '');
-  // const currentCity = watch('currentCity', '');
   const currentAddress = watch('currentAddress', '');
 
   const [, setDataUser] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
