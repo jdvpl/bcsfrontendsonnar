@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { maxHouseValueNoVis, minHouseValueVis, SMMLV } from '../../../../lib/simulator';
+import { maxHouseValueNoVis, maxHouseValueVis, minHouseValueNoVis, minHouseValueVis, SMMLV } from '../../../../lib/simulator';
 
 export default function useValidations(
+  typeHouse: string,
   houseValue: number,
   financeValue: number,
   termFinance: number,
@@ -20,13 +21,23 @@ export default function useValidations(
     clearErrors('year');
   };
   const validateTypeHouse = () => {
-    if (houseValue < minHouseValueVis && houseValue > 0) {
+    if (
+      (houseValue < minHouseValueVis || houseValue > maxHouseValueVis) &&
+      typeHouse === 'vis' &&
+      houseValue > 0
+    ) {
       setError('typeHouse', {
         type: 'error',
-        message: 'El valor de la vivienda debe ser minimo de 50 SMMLV.',
+        message: 'El valor de la vivienda VIS debe estar entre 50 y 150 SMMLV.',
       });
     }
-    if (houseValue > maxHouseValueNoVis && houseValue > 0) {
+    if (houseValue < minHouseValueNoVis && typeHouse === 'novis' && houseValue > 0) {
+      setError('typeHouse', {
+        type: 'error',
+        message: 'El valor mínimo de la vivienda debe ser de 150 SMMLV.',
+      });
+    }
+    if (houseValue > maxHouseValueNoVis && typeHouse === 'novis' && houseValue > 0) {
       setError('typeHouse', {
         type: 'error',
         message: 'El valor de la vivienda máximo debe ser de 1.400 SMMLV.',
@@ -69,7 +80,7 @@ export default function useValidations(
     validatefinanceValue();
     calculatePercentageFinance();
     validateTypeHouse();
-  }, [houseValue, financeValue, termFinance]);
+  }, [houseValue, financeValue, termFinance,typeHouse]);
 
   return {
     handleClearErrors,

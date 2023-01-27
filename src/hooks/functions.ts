@@ -36,6 +36,8 @@ export const onSubmitResponse = async (initData: InitDataSend, dataTU: any, rout
     } else if (step === 'VQ') {
       setDataNumber(response.response.data);
     }
+  } else {
+    router.push(routes.errorValidacion)
   }
 };
 
@@ -54,7 +56,6 @@ export const onSubmitStartProcess = async (formData: FormData, setDataUser: any,
   const response = await sendAuthorization(data)
   setDataUser(formData);
   if (!response.error) {
-    console.log(response.response)
     if (response.response.result) {
       router.push(routes.authentication)
     } else {
@@ -66,14 +67,40 @@ export const onSubmitStartProcess = async (formData: FormData, setDataUser: any,
 }
 
 
-export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any, router: any) => {
+export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any, router: any, setBorder: any, setmessagePassword: any, setlockedUser: any, setDataTU: any) => {
   setIsLoading(true);
   const data = { password: dataSend.password, documentType: dataTU.document_type, documentNumber: dataTU.document_number }
   const response = await loginAccountSendRequest(data);
   if (!response.error) {
-    setIsLoading(false);
-    router.push(routes.otp)
+    if (response.response.data.state === "OK") {
+      await setDataTU({
+        ...dataTU,
+        personalData: {
+          celular: response.response.data?.phone,
+          phoneNumber: response.response.data?.number,
+        },
+        encriptPhone: { encriptPhone: response.response.data?.phone },
+      });
+      router.push(routes.otp)
+      setIsLoading(false);
+    }
   } else {
-    router.push(routes.validacionErrorValidacionIdentidad)
+    const code = response.response.internal_code;
+    switch (code) {
+      case 'AUTH-01':
+        setBorder('#E9132B');
+        setmessagePassword('Contraseña incorrecta intente nuevamente');
+        setlockedUser(true);
+
+        break;
+      case 'AUTH-02':
+        setBorder('#E9132B');
+        setmessagePassword('Usuario bloqueado');
+        setlockedUser(true);
+        break;
+      default:
+        break;
+    }
+    setIsLoading(false);
   }
 }

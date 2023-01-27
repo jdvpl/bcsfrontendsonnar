@@ -92,7 +92,7 @@ function HouseSimulator() {
       termFinance: formData?.termFinance,
       percentageFinance,
       insuranceCheck,
-      dateOfBirth: `${day}-${month}-${year}`,
+      dateOfBirth: `${year}-${month}-${day}`,
       simulationType: 'house',
       monthlySalary: 0,
       amountQuota: 0,
@@ -267,7 +267,7 @@ function HouseSimulator() {
                 containerClassName="col-span-2"
                 type="text"
                 onChange={(e) => {
-                  field.onChange(e.target.value);
+                  field.onChange(e?.target?.value?.replace(/[^0-9]+/g, ''));
                 }}
                 error={!!errors.day}
                 helperText={errors?.day?.message}

@@ -10,9 +10,10 @@ import { convertToColombianPesos } from '../../utils/index';
 import { SesionStorageKeys } from '../../session';
 import Stepper from '../../components/ui/Stepper';
 import { routes } from '../../routes';
-import Alert from '../../components/ui/Alert/index'
+import Alert from '../../components/ui/Alert/index';
 import { ApplicationLoader } from '../../components/ui/Loaders/ApplicationLoader';
 import useSummaryApplication from '../../hooks/useReviewApplication';
+import HeaderForm from '../../components/ui/Headers/HeaderForm';
 
 function ResumenApplication() {
   const router = useRouter();
@@ -22,30 +23,23 @@ function ResumenApplication() {
   return (
     <div>
       {isLoading ? <ApplicationLoader /> : null}
-      <div className="container flex lg:mt-[0] xs:w-[343px] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-end">
-        <div className="mt-4  hidden lg:block">
-          <LogoBcs />
-        </div>
-        <div className="mt-4 w-[180px] lg:w-[303px] mb-[24px] mr-[16px]">
-          <LogoForm />
-        </div>
-      </div>
-      <div className="lg:w-[825px] mx-auto md:w-[528px] mb-[64px] xs:mb-[40px] xs:w-[288px] sm:w-[343px]">
+      <HeaderForm />
+      <div className="lg:w-[825px] mx-auto md:w-[528px] mb-[64px] xs:mb-[40px] xs:w-[288px] sm:w-[343px] mt-9">
         <Stepper
           steps={4}
           actualStep={4}
           percentage={100}
-          className="lg:w-[684px] md:w-[456px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px]"
+          className="lg:w-[684px] md:w-[528px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px]"
           title="Resumen de la solicitud"
         />
       </div>
       <div className=" xs:w-[290px] sm:w-[343px]  lg:w-[684px] md:w-[584px] m-auto">
         <Typography variant="h2" className="mt-8 mb-[40px] text-center">
-        Conozca la oferta que hemos
-        <br/>
-        diseñado para usted
+          Conozca la oferta que hemos
+          <br />
+          diseñado para usted
         </Typography>
-        <Alert message='La tasa de su crédito será la que se encuentre vigente en el momento del desembolso.' />
+        <Alert message="La tasa de su crédito será la que se encuentre vigente en el momento del desembolso." />
         <ReviewApplication
           financedValue={`${convertToColombianPesos(
             Math.floor(valuesMortgage.financeValue)

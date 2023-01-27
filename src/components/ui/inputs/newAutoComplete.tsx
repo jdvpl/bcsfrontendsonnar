@@ -1,10 +1,10 @@
 /* eslint-disable */
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import cityData from '../../../lib/cities.json';
 import TextField from '@mui/material/TextField';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import ExampleInfo from '../../commons/ExampleInfo';
+import Icons from '../icons';
 interface InputProps {
   placeholder?: string;
   type?: string;
@@ -53,23 +53,11 @@ const NewAutoComplete: React.FC<InputProps> = ({
       
       <div className="mt-[1px] position-relative" id={id} tabIndex={0}>
         <div
-          className={`position-absolute ${internalState ? 'top-[18.5px]' : 'top-[17.5px]'
-            } left-[10px]`}
+          className={`position-absolute h-full 'top-[3px]'
+            } left-[7px] flex justify-center items-center `}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M9.67865 9.40657L15.4898 15.5318C15.5786 15.6568 15.5786 15.8126 15.4898 15.9375C15.4308 15.9692 15.3718 16 15.2838 16C15.2248 16 15.1658 15.9692 15.1068 15.9375L9.32479 9.78143C9.32479 9.78143 9.29491 9.75061 9.29491 9.71896C8.35129 10.6253 7.112 11.1876 5.72566 11.1876C2.80515 11.1876 0.445312 8.68767 0.445312 5.59379C0.445312 2.49992 2.80515 0 5.72566 0C8.64617 0 11.006 2.49992 11.006 5.59379C11.006 7.06242 10.4752 8.37528 9.61967 9.37575C9.64876 9.37575 9.67865 9.40657 9.67865 9.40657ZM5.72566 10.6567C8.38038 10.6567 10.5043 8.40671 10.5043 5.59357C10.5043 2.81292 8.38038 0.53125 5.72566 0.53125C3.10003 0.53125 0.947005 2.81292 0.947005 5.59357C0.947005 8.40671 3.10003 10.6567 5.72566 10.6567Z"
-              fill="#496374"
-            />
-          </svg>
+          <Icons icon='bcs-search' size='text-[17px]' />
+
         </div>
         <Autocomplete
           filterOptions={filterOptions}

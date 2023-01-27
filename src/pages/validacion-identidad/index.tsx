@@ -20,11 +20,15 @@ interface Quest {
 const Index: React.FC = () => {
   const router = useRouter();
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
-  const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
+  const [dataTU, setDataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const [dataNumber, setDataNumber] = useState<any | null>(null);
   const [dataValid, setDataValid] = useState(false);
   const [progress, setprogress] = useState('');
   const [loading, setIsLoading] = useState(false);
+  const [initialBorder, setBorder] = useState('#00253D');
+  const [messagePassword, setmessagePassword] = useState('');
+  const [lockedUser, setlockedUser] = useState(false)
+
   const data: Quest = dataQuestions;
   useEffect(() => {
     setprogress('25%');
@@ -44,7 +48,7 @@ const Index: React.FC = () => {
   return (
     <>
       <Head>
-        <title>Validación de identidad - BCS Viviendamiga Digital</title>
+        <title>Validación de identidad - BCS Credito Hipotecario</title>
       </Head>
       <InactivityWarper>
         <Layout navTitle={<NavTitle noBack />}>
@@ -64,7 +68,8 @@ const Index: React.FC = () => {
             </AnimatePresence>
           )}
           <AnimatePresence>
-            {dataValid ? <VerificationForm onSubmit={(dataLogin: any) => { loginAccount(dataLogin, setIsLoading, dataTU, router) }} /> : ''}
+            {dataValid ? <VerificationForm initialBorder={initialBorder} messagePassword={messagePassword} lockedUser={lockedUser}
+              setBorder={setBorder} onSubmit={(dataLogin: any) => { loginAccount(dataLogin, setIsLoading, dataTU, router, setBorder, setmessagePassword, setlockedUser, setDataTU) }} /> : ''}
           </AnimatePresence>
           <AnimatePresence>
             {dataNumber && <ValidationFormNumber questions={dataNumber} />}

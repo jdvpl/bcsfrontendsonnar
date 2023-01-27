@@ -11,50 +11,18 @@ import { sendSimulationData } from '../../services/index';
 import { routes } from '../../routes';
 import HouseSimulator from '../../components/ui/Form/houseSimulator/HouseSimulator';
 import TagManager from 'react-gtm-module';
+import useSimulator from './useSimulator';
 
-function Simulator() {
   const [dataFormQuota, setdataFormQuota] = useSessionStorage(
     SesionStorageKeys.dataFormSimulation.key,
     {}
   );
-  const [, setdataFormResponse] = useSessionStorage(
-    SesionStorageKeys.dataFormSimulationResponse.key,
-    {}
-  );
-
+  
   const router = useRouter();
   const [simulatioTypeOption, setsimulatioTypeOption] = useState<'house' | 'salary'>(
     'house'
   );
-  const onSubmit = async (formData: iFormDataSimulation) => {
-    TagManager.dataLayer({
-      dataLayer: {
-        event:'go_simulator',
-        category: 'action_funnel',
-        action: 'go_simulator',
-        label: 'go_simulator',
-      },
-    })
-    const body: iFormDataSimulation = {
-      simulationType: simulatioTypeOption,
-      typeHouse: formData.typeHouse,
-      termFinance: formData.termFinance,
-      insuranceCheck: true,
-      dateOfBirth: formData.dateOfBirth,
-      monthlySalary: +formData.monthlySalary,
-      amountQuota: +formData.amountQuota,
-      percentageQuota: formData.percentageQuota,
-      houseValue: 0,
-      percentageFinance: 0,
-      financeValue: 0,
-    };
-    setdataFormQuota(body);
-    const response = await sendSimulationData(body);
-    if (!response.error) {
-      setdataFormResponse(response.response.data);
-      router.push(routes.simuladorResumen);
-    }
-  };
+  
   useEffect(() => {
     TagManager.dataLayer({
       dataLayer: {
@@ -67,6 +35,9 @@ function Simulator() {
 
 }, []
 );
+
+function Simulator() {
+  const { simulatioTypeOption, setsimulatioTypeOption, onSubmit } = useSimulator();
   return (
     <div data-testid="simuladorTestC">
       <div className="container flex lg:mt-[0] sm:w-[343px] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-end">
@@ -86,7 +57,9 @@ function Simulator() {
             variant="bodyS3"
             className="text-center mt-[40px] md:mt-[54px] lg:mt-[52px] pmx-3 text-primario-900"
           >
-            A través de nuestro simulador podrá realizar los cálculos necesarios para conocer los valores aproximados relacionados con el crédito de vivienda con amortización en pesos.
+            A través de nuestro simulador podrá realizar los cálculos necesarios para
+            conocer los valores aproximados relacionados con el crédito de vivienda con
+            amortización en pesos.
           </Typography>
         </div>
         <div className="flex gap-1 my-8 w-[343px] md:w-[517px] xl:w-[656px] mx-auto">

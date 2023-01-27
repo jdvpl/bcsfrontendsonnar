@@ -12,7 +12,7 @@ import ViewTable from "./ViewTable";
 // Create styles
 Font.register({ family: 'Roboto', src: `${basePath}/fonts/RobotoBold.ttf` });
 Font.register({ family: 'RobotoLight', src: `${basePath}/fonts/RobotoLight.ttf` });
-
+import React from 'react'
 const styles = StyleSheet.create({
   mainView: {
     width: "100%"

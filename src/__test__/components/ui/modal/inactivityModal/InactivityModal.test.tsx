@@ -1,10 +1,10 @@
 import { fireEvent, render } from '@testing-library/react';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import React from 'react'
-import { InactivityModal } from '../../../../components/ui/Modal/inactivityModal/index';
-import { createMockRouter } from '../../../utils/createMockRouter';
+import { InactivityModal } from '../../../../../components/ui/Modal/inactivityModal/index';
+import { createMockRouter } from '../../../../utils/createMockRouter';
 import '@testing-library/jest-dom';
-import { routes } from '../../../../routes';
+import { routes } from '../../../../../routes';
 
 describe('<HouseSimuInactivityModallator />', () => {
 

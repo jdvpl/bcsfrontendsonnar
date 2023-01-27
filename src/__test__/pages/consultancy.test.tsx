@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import React from 'react';
-import { titleSection } from '../../hooks/consultancy';
+import { titleSection } from '../../lib/consultancy';
 import Consultancy from '../../pages/asesoria';
 
 describe('<Consultancy />', () => {

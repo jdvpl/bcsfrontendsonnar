@@ -2,6 +2,7 @@ import axios from 'axios';
 import { OTPCodeRequest, ValidateOTC } from '../components/custom/otp';
 import { clientAxiosKYC } from '../config/AxiosKYC';
 import { clientAxiosBackend } from '../config/AxiosMortgage';
+import { clientAxiosMock } from '../config/AxiosMock';
 import useAES from '../hooks/useAES';
 import { headersBack } from './HeaderBack';
 import { headersKYC } from './HeadersKYC';
@@ -10,8 +11,44 @@ import { iFormBasicData } from '../interfaces/basicDataProps';
 
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
-const KEYSARLAFT = process.env.KEYSARLAFT
+const KEYSARLAFT = process.env.KEYSARLAFT;
 
+
+//? this save the authorization data.
+/**
+ * It sends a POST request to the backend with the body of the request being the body parameter
+ * @param {any} body - any - the body of the request.
+ * @returns An object with two properties: response and error.
+ */
+export const sendAuthorization = async (body: any) => {
+  try {
+    const { data: response } = await clientAxiosBackend.post(
+      '/customer/DataProcessing',
+      body
+    );
+    return {
+      response: {
+        result: response,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e.response?.data?.message };
+  }
+};
+//? this endpoint get each question from kyc
+/**
+ * It takes in a data object, encrypts it, sends it to the KYC API, decrypts the response, and returns
+ * the decrypted response
+ * @param {any} data - The data to be sent to the server.
+ * @returns {
+ *   response: {
+ *     result: response.result,
+ *     data: await allResponseDecrypted(response.data, KEY),
+ *   },
+ *   error: false,
+ * }
+ */
 export const getQuestions = async (data: any) => {
   try {
     const dataInfo = await allResponse(data, KEY);
@@ -83,29 +120,11 @@ export const loginAccountSendRequest = async (data: any) => {
     return { error: true, response: e.response.data };
   }
 };
-// export const sendQuestions = async (data: any) => {
-//   try {
-//     const { data: response } = await axios.post(
-//       'https://backgeneratepdf-production.up.railway.app/api/users/answer',
-//       data,
-//       headersKYC
-//     );
-//     return {
-//       response: {
-//         // result: response.result,
-//         data: response,
-//       },
-//       error: false,
-//     };
-//   } catch (e: any) {
-//     console.log(e)
-//     return { error: true, response: e.response?.data };
-//   }
-// }
+
 export const sendNumber = async (data: any) => {
   try {
     const dataInfo = await allResponse(data, KEY);
-    const { data: response } = await clientAxiosKYC.post(
+    const { data: response } = await clientAxiosMock.post(
       '/identity-user/otp',
       { data: dataInfo },
       headersKYC
@@ -125,7 +144,7 @@ export const sendNumber = async (data: any) => {
 export const validateOTOCode = async (data: ValidateOTC) => {
   try {
     const dataInfo = await allResponse(data, KEY);
-    const { data: response } = await clientAxiosKYC.post(
+    const { data: response } = await clientAxiosMock.post(
       '/identity-user/pin',
       { data: dataInfo },
       headersKYC
@@ -144,7 +163,7 @@ export const validateOTOCode = async (data: ValidateOTC) => {
 export const reSendOTPCode = async (data: OTPCodeRequest) => {
   try {
     const dataInfo = await allResponse(data, KEY);
-    const { data: response } = await clientAxiosKYC.post(
+    const { data: response } = await clientAxiosMock.post(
       '/identity-user/resend',
       { data: dataInfo },
       headersKYC
@@ -196,8 +215,8 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
 };
 export const getBasicData = async (data: iFormBasicData) => {
   try {
-    const { data: response } = await axios.post(
-      'https://backgeneratepdf-production.up.railway.app/api/users/basic-data',
+    const { data: response } = await clientAxiosMock.post(
+      '/basic-data',
       data,
     );
     return {
@@ -230,23 +249,7 @@ export const fetchSarlaft = async (body: any) => {
   }
 
 };
-export const sendAuthorization = async (body: any) => {
-  try {
-    const { data: response } = await clientAxiosBackend.post(
-      '/customer/DataProcessing',
-      body
-    );
-    return {
-      response: {
-        result: response,
-      },
-      error: false,
-    };
-  } catch (e: any) {
-    return { error: true, response: e.response?.data?.message };
-  }
 
-};
 
 export const riskBoxes = async (body: any) => {
   try {
@@ -268,8 +271,8 @@ export const riskBoxes = async (body: any) => {
 
 export const getOffices = async () => {
   try {
-    const { data: response } = await axios.get(
-      'https://backgeneratepdf-production.up.railway.app/api/users/offices',
+    const { data: response } = await clientAxiosMock.get(
+      '/offices',
     );
     return {
       response: {
