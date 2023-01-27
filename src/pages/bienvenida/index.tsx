@@ -12,15 +12,15 @@ function Bienvenida() {
   useEffect(() => {
     TagManager.dataLayer({
       dataLayer: {
-        event:'load_onboarding',
+        event: 'load_onboarding',
         category: 'load_page',
         action: 'load_onboarding',
         label: 'load_onboarding',
       },
-    }); 
+    });
 
-},[]
-);
+  }, []
+  );
   return (
     <div>
       <Header />
@@ -28,20 +28,20 @@ function Bienvenida() {
         <div className="mt-20 lg:h-[300px] md:w-[292px] md:h-[300px] sm:w-[195px] sm:h-[200px] xs:h-[200px] xs:w-[195px] m-auto ">
           <img src={`${basePath}/images/onboarding.svg`} alt="" />
         </div>
-        <Typography variant='h3' className='text-center mt-[52px] text-primario-900 text-[24px] font-semibold'>
+        <Typography variant='h3' className='text-center mt-[52px] text-primario-900 text-[24px] font-semibold font-poppinsSemiBold  '>
           Cumpla su sueño {""}
           <span className="md:block sm:block xs:block lg:inline">
             de comprar vivienda
           </span>
         </Typography>
-        <Typography variant='h4' className='text-center lg:mt-10 md:mt-3 text-primario-900 text-[18px] font-bold mt-3 sm:font-semibold xs:font-semibold'>Requisitos de solicitud:</Typography>
-        <div className="listInitial flex justify-center">
+        <Typography variant='h4' className='text-center lg:mt-10 md:mt-3 text-primario-900 text-[18px] font-bold mt-3 sm:font-semibold xs:font-semibold font-montserratSemiBold'>Requisitos de solicitud:</Typography>
+        <div className="listInitial flex justify-center font-monserratLight text-[18px] text-primario-900">
           <ul className='md:mt-3'>
-            <li className='mt-3'>Tener entre 18 y 69 años</li>
+            <li className='mt-3'>Tener entre 18 y 70 años</li>
             <li className='mt-3'>Ser asalariado o pensionado</li>
             <li className='mt-3'>Estar al día con sus pagos</li>
             <li className='mt-3'>Pagar salud y pensión</li>
-            <li className='mt-3'>Solicitar individualmente</li>
+            <li className='mt-3'>Solicitar como único titular</li>
           </ul>
         </div>
         <div className="flex justify-center mt-8 mb-11 ">
