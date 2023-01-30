@@ -50,14 +50,9 @@ const NewAutoComplete: React.FC<InputProps> = ({
       itemType="http://schema.org/Person"
       className="flex mt-[16px] flex-col justify-start"
     >
-<<<<<<< HEAD
-      
-      <div className="mt-[1px] position-relative" id={id} tabIndex={0}>
-=======
       {/* eslint-disable-line no-use-before-define */}
 
       <div className="mt-[1px] position-relative" id={id}>
->>>>>>> bf88068ada910485a257776bba32f452e68a0a1f
         <div
           className={`position-absolute h-full 'top-[3px]'
             } left-[7px] flex justify-center items-center `}
