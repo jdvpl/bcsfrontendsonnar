@@ -58,7 +58,6 @@ const NewAutoComplete: React.FC<InputProps> = ({
             } left-[7px] flex justify-center items-center `}
         >
           <Icons icon='bcs-search' size='text-[17px]' />
-
         </div>
         <Autocomplete
           filterOptions={filterOptions}
