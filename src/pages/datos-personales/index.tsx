@@ -59,7 +59,7 @@ function PersonalData() {
     setShowModal(false)
   }
   return (
-    <div data-testid="PersonalDataTest">
+    <div data-testid="PersonalDataTest" >
       {showModal && (
         <Modal
           showModal={showModal}

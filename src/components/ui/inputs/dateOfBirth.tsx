@@ -190,7 +190,7 @@ const DateOfBirth: React.FC<InputProps> = ({
       numero: '08',
     },
     {
-      mes: 'September',
+      mes: 'Septiembre',
       numero: '09',
     },
     {

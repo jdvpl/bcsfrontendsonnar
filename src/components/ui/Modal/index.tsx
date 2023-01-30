@@ -59,7 +59,7 @@ function Modal({ compont, showModal = false, onClose, advisory = false, heightMo
               {/* header */}
               <div className="rounded-t p-0 m-0">
                 <div
-                  className="md:mt-[20px] md:mr-[20px] mr-[15px] float-right"
+                  className="md:mt-[20px] md:mr-[20px] mr-[15px] float-right mt-3"
                   role="button"
                   aria-hidden="true"
                   onClick={() => onClose()}

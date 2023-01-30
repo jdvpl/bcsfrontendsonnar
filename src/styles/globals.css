@@ -1314,3 +1314,13 @@ li {
 svg {
   transform: none !important;
 }
+
+
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+  padding-left: .2rem !important;
+}
+
+
+#personalDataForm .MuiPaper-elevation {
+  display: none !important;
+}

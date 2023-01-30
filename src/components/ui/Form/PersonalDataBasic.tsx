@@ -1,8 +1,8 @@
 import { MenuItem } from '@mui/material';
 import React, {
   ClipboardEvent,
-  useEffect,
-  FC
+  useRef,
+  useState
 } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useRouter } from 'next/router';
@@ -16,6 +16,10 @@ import NewAutoComplete from '../inputs/newAutoComplete';
 import ReactHookFormSelect from '../Select/newSelect';
 import { routes } from '../../../routes'
 import { HelperText } from '../inputs/HelperText';
+import OfficeBranch from '../../commons/OfficeBranch';
+import Modal from '../Modal';
+import usePersonalData from '../../../hooks/usePersonalData'
+
 
 function PersonalDataBasic({ userInfo }: any) {
   const router = useRouter();
@@ -33,6 +37,13 @@ function PersonalDataBasic({ userInfo }: any) {
     SesionStorageKeys.dataBasicData.key,
     {}
   );
+  const menuItemsRef = useRef(null);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [componentModal,] = useState({
+    children: <OfficeBranch setShowModal={setShowModal} />,
+    title: <span className='text-[2rem] font-poppinsSemiBold'>Si sus datos han cambiado actualicelos llamando a la línea amiga</span>,
+    id: '',
+  });
   const onSubmit = async (data: iPersonalData) => {
     const birthDate = `${data.yearDt}-${data.monthDt}-${data.dayDt}`;
     const birthCity = data.birthCity?.option;
@@ -42,28 +53,36 @@ function PersonalDataBasic({ userInfo }: any) {
     setDataUser(dataSend);
     router.push(routes.sarlaft)
   }
-  const date = userInfo.birthDt.split('-');
-  useEffect(() => {
-    setValue('yearDt', date[0]);
-    setValue('monthDt', date[1]);
-    setValue('dayDt', date[2]);
-    setValue('phone', userInfo.cellPhone)
-    setValue('email', userInfo.emailAddr)
-    setValue('currentAddress', userInfo.addr1)
-  }, [date])
 
+  usePersonalData(setValue, userInfo)
+  const showPopup = () => {
+    if (userInfo.isClient) {
+      setShowModal(true)
+    }
+  }
   // useValidateAge(day, month, year, clearErrors, setError);
-
+  const closeModal = () => {
+    setShowModal(false)
+  }
   return (
-    <div data-testid="FormQuotaTest" className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto">
-      <div className="w-full mt-3">
-        <form onSubmit={handleSubmit(onSubmit)} data-testid="personaldataTest">
+    <div data-testid="FormQuotaTest" className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto " id='personalDataForm'>
+      {showModal && (
+        <Modal
+          showModal={showModal}
+          onClose={() => closeModal()}
+          compont={componentModal}
+          advisory
+          heightModal='lg:h-[70%]'
+        />
+      )}
+      <div className="w-full mt-3" >
+        <form onSubmit={handleSubmit(onSubmit)} data-testid="personaldataTest" >
           <div className="mt-4 grid gap-2">
             <span className="text-[10px] col-span-6 text-complementario-100">
               Fecha de nacimiento:
             </span>
             <ReactHookFormSelect
-              className="col-span-2"
+              className={`col-span-2`}
               onChange={(e: any) => setValue('dayDt', e.target.value)}
               placeholder="Dia"
               label="Dia"
@@ -72,11 +91,14 @@ function PersonalDataBasic({ userInfo }: any) {
               left="right4"
               valueLength=""
               name="dayDt"
+              hideMenuItem={showModal}
               margin="normal"
+              onFocus={showPopup}
+              disabled={showModal}
               rules={{ required: true }}
             >
               {days?.map((element, i) => (
-                <MenuItem value={element?.number} key={i}>
+                <MenuItem value={element?.number} key={i} >
                   {element?.day}
                 </MenuItem>
               ))}
@@ -90,12 +112,15 @@ function PersonalDataBasic({ userInfo }: any) {
               control={control}
               left="right4"
               name="monthDt"
-              className="col-span-2"
+              className={`col-span-2 ${showModal ? 'hideMenu' : ''}`}
               margin="normal"
+              onFocus={showPopup}
+              disabled={showModal}
+              hideMenuItem={showModal}
               rules={{ required: true }}
             >
               {months.map((element, i) => (
-                <MenuItem value={element.number} key={i}>
+                <MenuItem value={element.number} key={i} >
                   {element.month}
                 </MenuItem>
               ))}
@@ -117,6 +142,8 @@ function PersonalDataBasic({ userInfo }: any) {
                   value={field.value}
                   tabIndex={0}
                   id="yearDt"
+                  disabled={showModal}
+                  onFocus={showPopup}
                   data-testid="yearDtTest"
                   inputMode="numeric"
                   maxLength={4}
@@ -264,12 +291,13 @@ function PersonalDataBasic({ userInfo }: any) {
                   onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                     e.preventDefault();
                   }}
-
+                  onFocus={showPopup}
                   value={field.value}
                   tabIndex={0}
                   id="currentAddress"
                   data-testid="currentAddres"
                   inputMode="text"
+                  disabled={showModal}
                   placeholder='Dirección de vivienda actual'
                   label="Dirección de vivienda actual"
                   onChange={(e: any) => setValue('currentAddress', e.target.value)}
