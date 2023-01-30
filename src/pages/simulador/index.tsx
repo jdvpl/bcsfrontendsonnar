@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import { useRouter } from 'next/router';
 import LogoBcs from '../../components/svg/LogoBcs';
 import LogoForm from '../../components/svg/LogoForm';
@@ -10,19 +10,11 @@ import { SesionStorageKeys } from '../../session';
 import { sendSimulationData } from '../../services/index';
 import { routes } from '../../routes';
 import HouseSimulator from '../../components/ui/Form/houseSimulator/HouseSimulator';
-import TagManager from 'react-gtm-module';
 import useSimulator from './useSimulator';
+import TagManager from 'react-gtm-module';
 
-  const [dataFormQuota, setdataFormQuota] = useSessionStorage(
-    SesionStorageKeys.dataFormSimulation.key,
-    {}
-  );
-  
-  const router = useRouter();
-  const [simulatioTypeOption, setsimulatioTypeOption] = useState<'house' | 'salary'>(
-    'house'
-  );
-  
+function Simulator() {
+  const { simulatioTypeOption, setsimulatioTypeOption, onSubmit } = useSimulator();
   useEffect(() => {
     TagManager.dataLayer({
       dataLayer: {
@@ -35,9 +27,6 @@ import useSimulator from './useSimulator';
 
 }, []
 );
-
-function Simulator() {
-  const { simulatioTypeOption, setsimulatioTypeOption, onSubmit } = useSimulator();
   return (
     <div data-testid="simuladorTestC">
       <div className="container flex lg:mt-[0] sm:w-[343px] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-end">

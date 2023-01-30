@@ -231,6 +231,7 @@ function HouseSimulator() {
             name="day"
             margin="normal"
             rules={{ required: true }}
+            spacing="mr-[6px]"
           >
             {days?.map((element, i) => (
               <MenuItem value={element?.number} key={i}>
@@ -250,6 +251,7 @@ function HouseSimulator() {
             className="col-span-2"
             margin="normal"
             rules={{ required: true }}
+            spacing="mr-[6px]"
           >
             {months.map((element, i) => (
               <MenuItem value={element.number} key={i}>

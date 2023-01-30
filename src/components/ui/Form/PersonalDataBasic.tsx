@@ -74,6 +74,7 @@ function PersonalDataBasic({ userInfo }: any) {
               name="dayDt"
               margin="normal"
               rules={{ required: true }}
+              spacing="mr-[6px]"
             >
               {days?.map((element, i) => (
                 <MenuItem value={element?.number} key={i}>
@@ -90,9 +91,10 @@ function PersonalDataBasic({ userInfo }: any) {
               control={control}
               left="right4"
               name="monthDt"
-              className="col-span-2"
+              className="col-span-3 "
               margin="normal"
               rules={{ required: true }}
+              spacing="mr-[6px]"
             >
               {months.map((element, i) => (
                 <MenuItem value={element.number} key={i}>
@@ -107,7 +109,7 @@ function PersonalDataBasic({ userInfo }: any) {
               rules={{ required: true }}
               render={({ field }) => (
                 <Input
-                  containerClassName="col-span-2"
+                  containerClassName="col-span-1"
                   type="text"
                   onChange={(e) => {
                     field.onChange(e.target.value);
@@ -163,6 +165,7 @@ function PersonalDataBasic({ userInfo }: any) {
               name="gender"
               className="w-100"
               margin="normal"
+              spacing="mr-[-10px]"
             >
               <MenuItem value="female">Femenino</MenuItem>
               <MenuItem value="male">Masculino</MenuItem>
