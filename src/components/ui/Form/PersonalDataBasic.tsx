@@ -70,7 +70,6 @@ function PersonalDataBasic({ userInfo }: any) {
       setShowModal(true)
     }
   }
-  // useValidateAge(day, month, year, clearErrors, setError);
   const closeModal = () => {
     setShowModal(false)
   }
