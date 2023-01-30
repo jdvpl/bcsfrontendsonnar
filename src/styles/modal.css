@@ -1,9 +1,10 @@
 .two {
   transform: scale(1);
+  background:#3b7be956;
 }
 
 .two .modal-background {
-  background: rgba(0, 0, 0, 0);
+  background:#3b7be956;
   animation: fadeIn 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
@@ -40,14 +41,16 @@
   top: 0;
   left: 0;
   transform: scale(0);
+  
 }
 
 #modal-container.two {
   transform: scale(1);
+  background:#3b7be956;
 }
 
 #modal-container.two .modal-background {
-  background: rgba(0, 0, 0, 0);
+  background:#3b7be956;
   animation: fadeIn 2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
@@ -70,7 +73,7 @@
 
 #modal-container .modal-background {
   display: table-cell;
-  background: rgba(0, 0, 0, 0.8);
+  background:#37415156;
   text-align: center;
   vertical-align: middle;
 }

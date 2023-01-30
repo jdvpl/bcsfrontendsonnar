@@ -71,7 +71,7 @@ function PersonalData() {
       )}
       <HeaderForm />
 
-      <div className="lg:w-[684px] md:w-[528px] w-[343px] m-auto mt-9">
+      <div className="lg:w-[684px] md:w-[528px] sm:w-[343px] w-[288px] m-auto mt-9">
         <Stepper
           steps={4}
           actualStep={1}
@@ -82,7 +82,7 @@ function PersonalData() {
         <Typography variant="h2" className="mt-8 text-center">
           {userInfo.firstName || 'Hola'}, {userInfo.isClient ? 'confirme sus datos personales' : 'ingrese sus datos personales'}
         </Typography>
-        <div className="flex gap-1 my-8 w-[343px] md:w-[517px] xl:w-[656px] mx-auto">
+        <div className="flex gap-1 my-8 lg:w-[684px] md:w-[528px] sm:w-[343px] w-[288px] mx-auto">
           <PersonalDataBasic userInfo={userInfo} />
         </div>
 

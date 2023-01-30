@@ -8,7 +8,7 @@ function OfficeBranch({ setShowModal }: any) {
     setShowModal(false)
   }
   return (
-    <div className='m-auto flex-col mt-10 font-monserratLight'>
+    <div className='m-auto flex-col mt-8 font-monserratLight mx-5'>
 
       <p>Bogotá (601) 307 7060</p>
       <p>Resto del país a la línea gratuita</p>

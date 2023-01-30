@@ -46,14 +46,14 @@ function Modal({ compont, showModal = false, onClose, advisory = false, heightMo
   return (
     <section
       id="modal-container"
-      className={`fixed inset-0 z-40 ${show}`}
+      className={`fixed inset-0 z-40 ${show} `}
       role="tabpanel"
       data-testid="modalDataTest"
       tabIndex={0}
     >
       <div className="modal-background">
         <div className="modal justify-center items-center lg:items-center md:items-center flex overflow-x-hidden fixed inset-0 z-10 outline-none focus:outline-none">
-          <div className={`relative ${heightModal} md:h-[63%] h-[83%]   w-full  mx-auto max-w-3xl lg:max-w-[684px]`}>
+          <div className={`relative ${heightModal} md:h-[63%] h-[83%]   w-[300px]  mx-auto max-w-3xl lg:w-[684px] md:w-[530px] sm:w-[343px]`}>
             {/* content */}
             <div className="border-0 sm:rounded-b-none md:rounded-lg rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
               {/* header */}
@@ -84,7 +84,7 @@ function Modal({ compont, showModal = false, onClose, advisory = false, heightMo
                 </div>
                 {compont && (
                   <h3
-                    className="text-center font-bold md:mt-[60px] md:pt-0 lg:mt-[60px] pt-[40px] text-primario-900 text-[22px] px-[16px] sm:px-[55px] lg:text-[28px] lg:leading-[30px] leading-none"
+                    className="text-center md:mt-[60px] md:pt-0 lg:mt-[60px] pt-[40px] text-primario-900 text-[22px] px-[16px] sm:px-[55px] lg:leading-[30px] leading-none font-poppinsSemiBold md:text-[32px]"
                     id={`${compont?.id}-title`}
                   >
                     {compont?.title}
