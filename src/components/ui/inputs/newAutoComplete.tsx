@@ -52,13 +52,12 @@ const NewAutoComplete: React.FC<InputProps> = ({
     >
       {/* eslint-disable-line no-use-before-define */}
 
-      <div className="mt-[1px] position-relative" id={id} tabIndex={0}>
+      <div className="mt-[1px] position-relative" id={id}>
         <div
           className={`position-absolute h-full 'top-[3px]'
             } left-[7px] flex justify-center items-center `}
         >
           <Icons icon='bcs-search' size='text-[17px]' />
-
         </div>
         <Autocomplete
           filterOptions={filterOptions}
@@ -89,6 +88,7 @@ const NewAutoComplete: React.FC<InputProps> = ({
             fontSize: '14px',
             '.MuiFormLabel-root': {
               fontSize: '14px',
+              width:"fit-content",
             },
             ',MuiInputLabel-outlined': {
               fontSize: '14px',

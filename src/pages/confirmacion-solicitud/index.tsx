@@ -63,7 +63,7 @@ function ApplicationApproval() {
             tooltiptext=""
           />
         </div>
-        {valuesMortgage?.choseOffice ? (
+        {!valuesMortgage?.choseOffice ? (
           <div className="mt-3">
             <Card
               className="xs:w-[290px] sm:w-[343px] md:w-[448px]  min-h-[76px]  bg-[#F3F4F6] pt-[12px] pb-[12px] pl-[16px] rounded-[8px] mb-[12px] font-light m-auto"
@@ -83,6 +83,15 @@ function ApplicationApproval() {
             />
           </div>
         ) : null}
+        <div>
+        <Typography
+            variant="bodyM3"
+            className="w-[288px] sm:w-[343px] text-center mt-3 text-primario-900 text-[18px] font-normal leading-[20px] m-auto"
+          >
+            A continuación obtenga su carta 
+            de preaprobado y el plan de pagos
+        </Typography>
+        </div>
         <div className="mt-8 flex justify-center">
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[438px]"

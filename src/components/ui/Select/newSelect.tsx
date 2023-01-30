@@ -17,6 +17,7 @@ const ReactHookFormSelect: React.FC<any> = ({
   margin,
   rules,
   helperText,
+  spacing,
   error = false,
   hideMenuItem = false,
   ...props
@@ -39,7 +40,7 @@ const ReactHookFormSelect: React.FC<any> = ({
   }, []);
   return (
     <FormControl {...props} fullWidth className={`position-relative ${props?.className}`}>
-      <div className={`position-absolute ${left} top-1/3`}>
+      <div className={`position-absolute ${left} ${spacing} top-1/3`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"

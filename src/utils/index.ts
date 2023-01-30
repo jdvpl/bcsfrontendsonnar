@@ -28,3 +28,35 @@ export const calculateAge = (dob: string): number => {
 
 export const parserPercentageDecimal = (number: number) =>
   Math.round((number + Number.EPSILON) * 100) / 100;
+
+export const validateAddress = (Address: string) => {
+  let haveNumber = /\d/;
+  let pattern = /[a-zA-Z!@#$%^&*()_+=-]/;
+  if (Address !== '') {
+    if (Address?.length > 40) {
+      return {
+        isError: true,
+        message: 'La direccion no puede superar los 40 caracteres',
+      };
+    }
+
+    if (!haveNumber.test(Address)) {
+      return {
+        isError: true,
+        message: 'La direccion debe contener almenos un numero',
+      };
+    }
+
+    if (!pattern.test(Address)) {
+      return {
+        isError: true,
+        message: 'La direccion debe contener caracteres ',
+      };
+    }
+  }
+
+  return {
+    isError: false,
+    message: '',
+  };
+};

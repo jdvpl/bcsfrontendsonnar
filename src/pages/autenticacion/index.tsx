@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
 import { deviceType } from 'react-device-detect';
 import LogoBcs from '../../components/svg/LogoBcs'
@@ -10,6 +10,7 @@ import Icons from '../../components/ui/icons';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../session';
 import AnimationComponent from '../../components/commons/Animation';
+import TagManager from 'react-gtm-module';
 import useAuthentication from '../../hooks/useAuthentication'
 
 function Authentication() {
@@ -22,7 +23,18 @@ function Authentication() {
   const [showAnimation, setShowAnimation] = useState(false);
   const [validated, setValidated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    TagManager.dataLayer({
+      dataLayer: {
+        event:'load_onboarding_auth',
+        category: 'load_page',
+        action: 'load_onboarding_auth',
+        label: 'load_onboarding_auth',
+      },
+    }); 
 
+},[]
+);
   const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router)
   return (
     <div>

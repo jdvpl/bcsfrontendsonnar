@@ -19,10 +19,11 @@ import { HelperText } from '../inputs/HelperText';
 import OfficeBranch from '../../commons/OfficeBranch';
 import Modal from '../Modal';
 import usePersonalData from '../../../hooks/usePersonalData'
-
+import { validateAddress } from '../../../utils'
 
 function PersonalDataBasic({ userInfo }: any) {
   const router = useRouter();
+
   const {
     handleSubmit,
     watch,
@@ -30,13 +31,10 @@ function PersonalDataBasic({ userInfo }: any) {
     clearErrors,
     control,
     setValue,
-    register,
+    getFieldState,
+    // register,
     formState: { errors, isValid },
   } = useForm<iPersonalData>({ mode: 'onChange' });
-  const [, setDataUser] = useSessionStorage(
-    SesionStorageKeys.dataBasicData.key,
-    {}
-  );
   const menuItemsRef = useRef(null);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [componentModal,] = useState({
@@ -44,12 +42,24 @@ function PersonalDataBasic({ userInfo }: any) {
     title: <span className='text-[2rem] font-poppinsSemiBold'>Si sus datos han cambiado actualicelos llamando a la línea amiga</span>,
     id: '',
   });
+
+  const currentAddress = watch('currentAddress', '');
+
+  const [, setDataUser] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
+
   const onSubmit = async (data: iPersonalData) => {
     const birthDate = `${data.yearDt}-${data.monthDt}-${data.dayDt}`;
     const birthCity = data.birthCity?.option;
     const currentCity = data.currentCity?.option;
-
-    const dataSend = { birthDate, birthCity, currentCity, phone: data.phone, gender: data.gender, currentAddress: data.currentAddress, email: data.email }
+    const dataSend = {
+      birthDate,
+      birthCity,
+      currentCity,
+      phone: data.phone,
+      gender: data.gender,
+      currentAddress: data.currentAddress,
+      email: data.email,
+    };
     setDataUser(dataSend);
     router.push(routes.sarlaft)
   }
@@ -96,6 +106,7 @@ function PersonalDataBasic({ userInfo }: any) {
               onFocus={showPopup}
               disabled={showModal}
               rules={{ required: true }}
+              spacing="mr-[6px]"
             >
               {days?.map((element, i) => (
                 <MenuItem value={element?.number} key={i} >
@@ -118,6 +129,7 @@ function PersonalDataBasic({ userInfo }: any) {
               disabled={showModal}
               hideMenuItem={showModal}
               rules={{ required: true }}
+              spacing="mr-[6px]"
             >
               {months.map((element, i) => (
                 <MenuItem value={element.number} key={i} >
@@ -135,7 +147,7 @@ function PersonalDataBasic({ userInfo }: any) {
                   containerClassName="col-span-2"
                   type="text"
                   onChange={(e) => {
-                    field.onChange(e.target.value);
+                    field.onChange(e?.target?.value?.replace(/[^0-9]+/g, ''));
                   }}
                   error={!!errors.dayDt}
                   helperText={errors?.dayDt?.message}
@@ -176,6 +188,7 @@ function PersonalDataBasic({ userInfo }: any) {
               )}
             />
           </div>
+
           <div className="w-full mt-4">
             <ReactHookFormSelect
               onChange={(e: any) => {
@@ -190,6 +203,7 @@ function PersonalDataBasic({ userInfo }: any) {
               name="gender"
               className="w-100"
               margin="normal"
+              spacing="mr-[-10px]"
             >
               <MenuItem value="female">Femenino</MenuItem>
               <MenuItem value="male">Masculino</MenuItem>
@@ -197,6 +211,7 @@ function PersonalDataBasic({ userInfo }: any) {
 
             <HelperText error={false} text={"Seleccionar el mismo género indicado en su cédula"} />
           </div>
+
           {userInfo.isClient ? null : (
             <>
               <div className="flex flex-col mt-4">
@@ -217,7 +232,7 @@ function PersonalDataBasic({ userInfo }: any) {
                       id="phone"
                       data-testid="phoneTest"
                       inputMode="text"
-                      placeholder='Número de celular'
+                      placeholder="Número de celular"
                       label="Número de celular"
                       onChange={(e: any) => setValue('phone', e.target.value)}
                     />
@@ -242,9 +257,8 @@ function PersonalDataBasic({ userInfo }: any) {
                       tabIndex={0}
                       id="email"
                       data-testid="emailTest"
-
                       inputMode="email"
-                      placeholder='Correo electrónico'
+                      placeholder="Correo electrónico"
                       label="Correo electrónico"
                       onChange={(e: any) => setValue('email', e.target.value)}
                     />
@@ -278,12 +292,13 @@ function PersonalDataBasic({ userInfo }: any) {
               )}
             />
           </div>
+
           <div className="flex flex-col mt-4">
             <Controller
-              rules={{ required: !userInfo.addr1 }}
+              rules={{ required: true }}
               render={({ field }) => (
                 <Input
-                  helperText='Ejemplo: Cra 76 sur # 00 - 00'
+                  helperText={errors?.currentAddress?.message ? errors?.currentAddress?.message : `Ejemplo: Cra 76 sur # 00 - 00`}
                   helperTextOption
                   type="text"
                   startIcon='bcs-location'
@@ -292,7 +307,8 @@ function PersonalDataBasic({ userInfo }: any) {
                     e.preventDefault();
                   }}
                   onFocus={showPopup}
-                  value={field.value}
+                  value={currentAddress}
+
                   tabIndex={0}
                   id="currentAddress"
                   data-testid="currentAddres"
@@ -300,7 +316,22 @@ function PersonalDataBasic({ userInfo }: any) {
                   disabled={showModal}
                   placeholder='Dirección de vivienda actual'
                   label="Dirección de vivienda actual"
-                  onChange={(e: any) => setValue('currentAddress', e.target.value)}
+                  onChange={(e: any) => {
+                    const { isError, message } = validateAddress(
+                      e?.target?.value?.trim()
+                    );
+                    if (isError) {
+                      setValue('currentAddress', e.target.value);
+                      setError('currentAddress', {
+                        type: 'text',
+                        message,
+                      });
+                    } else {
+                      field.onChange(e.target.value);
+                      setValue('currentAddress', e.target.value);
+                      clearErrors('currentAddress');
+                    }
+                  }}
                 />
               )}
               name="currentAddress"
@@ -322,8 +353,8 @@ function PersonalDataBasic({ userInfo }: any) {
             </Button>
           </div>
         </form>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 }
 

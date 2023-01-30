@@ -15,6 +15,7 @@ import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import { routes } from '../../../../routes';
 import Alert from '../../Alert';
+import TagManager from 'react-gtm-module';
 
 function HouseSimulator() {
   const router = useRouter();
@@ -76,6 +77,14 @@ function HouseSimulator() {
   );
 
   const onSubmit = async (formData: SimulationData) => {
+    TagManager.dataLayer({
+      dataLayer: {
+        event:'go_simulator',
+        category: 'action_funnel',
+        action: 'go_simulator',
+        label: 'go_simulator',
+      },
+    })
     const body: iFormDataSimulation = {
       typeHouse: formData?.typeHouse,
       houseValue: Math.floor(formData.houseValue),
@@ -222,6 +231,7 @@ function HouseSimulator() {
             name="day"
             margin="normal"
             rules={{ required: true }}
+            spacing="mr-[6px]"
           >
             {days?.map((element, i) => (
               <MenuItem value={element?.number} key={i}>
@@ -241,6 +251,7 @@ function HouseSimulator() {
             className="col-span-2"
             margin="normal"
             rules={{ required: true }}
+            spacing="mr-[6px]"
           >
             {months.map((element, i) => (
               <MenuItem value={element.number} key={i}>

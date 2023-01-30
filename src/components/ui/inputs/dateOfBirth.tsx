@@ -279,6 +279,7 @@ const DateOfBirth: React.FC<InputProps> = ({
             margin="normal"
             disabled={disabled}
             onChange={(e: any) => setValue('day', e.target.value)}
+            spacing="mr-[6px]"
           >
             {days.map((a) => (
               <MenuItem key={a.dia + 5} value={a.numero}>
@@ -303,6 +304,7 @@ const DateOfBirth: React.FC<InputProps> = ({
             disabled={disabled}
             dataTestId="monthDateOfBithTest"
             onChange={(e: any) => setValue('month', e.target.value)}
+            spacing="mr-[6px]"
           >
             {months.map((a) => (
               <MenuItem key={a.mes + 2} value={a.numero}>
