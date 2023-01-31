@@ -89,6 +89,7 @@ const NewAutoComplete: React.FC<InputProps> = ({
             '.MuiFormLabel-root': {
               fontSize: '14px',
               width:"fit-content",
+              left: "18px important"
             },
             ',MuiInputLabel-outlined': {
               fontSize: '14px',
