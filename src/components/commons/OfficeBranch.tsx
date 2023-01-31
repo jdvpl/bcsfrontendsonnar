@@ -14,7 +14,7 @@ function OfficeBranch({ setShowModal }: any) {
       <p>Resto del país a la línea gratuita</p>
       <p>01 8000 910 038</p>
       <p>Desde celular #233</p>
-      <p className='font-montserratSemiBold mt-4'>Ó diríjase a una sucursal </p>
+      <p className='font-montserratSemiBold mt-4'>O diríjase a una sucursal </p>
 
       <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-[50px] pb-[40px]">
         <Button
