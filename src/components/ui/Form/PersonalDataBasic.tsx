@@ -1,5 +1,5 @@
 import { MenuItem } from '@mui/material';
-import React, { ClipboardEvent, useEffect, FC } from 'react';
+import React, { ClipboardEvent, useEffect, useRef, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
@@ -11,8 +11,11 @@ import Input from '../inputs';
 import NewAutoComplete from '../inputs/newAutoComplete';
 import ReactHookFormSelect from '../Select/newSelect';
 import { routes } from '../../../routes';
-import { validateAddress } from '../../../utils';
 import { HelperText } from '../inputs/HelperText';
+import OfficeBranch from '../../commons/OfficeBranch';
+import Modal from '../Modal';
+import usePersonalData from '../../../hooks/usePersonalData';
+import { calculateAge, isValidDate, validateAddress } from '../../../utils';
 
 function PersonalDataBasic({ userInfo }: any) {
   const router = useRouter();
@@ -28,8 +31,22 @@ function PersonalDataBasic({ userInfo }: any) {
     // register,
     formState: { errors, isValid },
   } = useForm<iPersonalData>({ mode: 'onChange' });
+  const menuItemsRef = useRef(null);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [componentModal] = useState({
+    children: <OfficeBranch setShowModal={setShowModal} />,
+    title: (
+      <span className="md:text-[2rem] font-poppinsSemiBold">
+        Si sus datos han cambiado actualicelos llamando a la línea amiga
+      </span>
+    ),
+    id: '',
+  });
 
   const currentAddress = watch('currentAddress', '');
+  const yearDt = watch('yearDt', '');
+  const dayDt = watch('dayDt', '');
+  const monthDt = watch('monthDt', '');
 
   const [, setDataUser] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
 
@@ -50,21 +67,62 @@ function PersonalDataBasic({ userInfo }: any) {
     router.push(routes.sarlaft);
   };
 
+  usePersonalData(setValue, userInfo);
+  const showPopup = () => {
+    if (userInfo.isClient) {
+      setShowModal(true);
+    }
+  };
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   useEffect(() => {
-    const date = userInfo.birthDt.split('-');
-    setValue('yearDt', date[0]);
-    setValue('monthDt', date[1]);
-    setValue('dayDt', date[2]);
-    setValue('phone', userInfo.cellPhone);
-    setValue('email', userInfo.emailAddr);
-    setValue('currentAddress', userInfo.addr1);
-  }, [userInfo]);
+    clearErrors('dayDt');
+    if (dayDt && monthDt && yearDt.length === 4) {
+      const age = calculateAge(`${dayDt}/${monthDt}/${yearDt}`);
+      if (age < 19 || age > 71) {
+        setError(
+          'dayDt',
+          {
+            type: 'error',
+            message: 'Fecha inválida',
+          },
+          {
+            shouldFocus: true,
+          }
+        );
+      }
+      if (!isValidDate(parseInt(yearDt), parseInt(monthDt), parseInt(dayDt))) {
+        setError(
+          'dayDt',
+          {
+            type: 'error',
+            message: 'Fecha inválida',
+          },
+          {
+            shouldFocus: true,
+          }
+        );
+      }
+    }
+  }, [yearDt, dayDt, monthDt]);
 
   return (
     <div
       data-testid="FormQuotaTest"
-      className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto"
+      className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto "
+      id="personalDataForm"
     >
+      {showModal && (
+        <Modal
+          showModal={showModal}
+          onClose={() => closeModal()}
+          compont={componentModal}
+          advisory
+          heightModal="lg:h-[70%]"
+        />
+      )}
       <div className="w-full mt-3">
         <form onSubmit={handleSubmit(onSubmit)} data-testid="personaldataTest">
           <div className="mt-4 grid gap-2">
@@ -72,7 +130,7 @@ function PersonalDataBasic({ userInfo }: any) {
               Fecha de nacimiento:
             </span>
             <ReactHookFormSelect
-              className="col-span-2"
+              className={`col-span-2`}
               onChange={(e: any) => setValue('dayDt', e.target.value)}
               placeholder="Dia"
               label="Dia"
@@ -81,7 +139,10 @@ function PersonalDataBasic({ userInfo }: any) {
               left="right4"
               valueLength=""
               name="dayDt"
+              hideMenuItem={showModal}
               margin="normal"
+              onFocus={showPopup}
+              disabled={showModal}
               rules={{ required: true }}
               spacing="mr-[6px]"
             >
@@ -100,8 +161,11 @@ function PersonalDataBasic({ userInfo }: any) {
               control={control}
               left="right4"
               name="monthDt"
-              className="col-span-3 "
+              className={`col-span-2 ${showModal ? 'hideMenu' : ''}`}
               margin="normal"
+              onFocus={showPopup}
+              disabled={showModal}
+              hideMenuItem={showModal}
               rules={{ required: true }}
               spacing="mr-[6px]"
             >
@@ -118,16 +182,18 @@ function PersonalDataBasic({ userInfo }: any) {
               rules={{ required: true }}
               render={({ field }) => (
                 <Input
-                  containerClassName="col-span-1"
+                  containerClassName="col-span-2"
                   type="text"
                   onChange={(e) => {
                     field.onChange(e?.target?.value?.replace(/[^0-9]+/g, ''));
                   }}
                   error={!!errors.dayDt}
                   helperText={errors?.dayDt?.message}
-                  value={field.value}
+                  value={yearDt}
                   tabIndex={0}
                   id="yearDt"
+                  disabled={showModal}
+                  onFocus={showPopup}
                   data-testid="yearDtTest"
                   inputMode="numeric"
                   maxLength={4}
@@ -181,7 +247,10 @@ function PersonalDataBasic({ userInfo }: any) {
               <MenuItem value="male">Masculino</MenuItem>
             </ReactHookFormSelect>
 
-            <HelperText error={false} text={"Seleccionar el mismo género indicado en su cédula"} />
+            <HelperText
+              error={false}
+              text={'Seleccionar el mismo género indicado en su cédula'}
+            />
           </div>
 
           {userInfo.isClient ? null : (
@@ -242,7 +311,7 @@ function PersonalDataBasic({ userInfo }: any) {
             </>
           )}
 
-          <div className="w-full mt-4">
+          <div className="w-full mt-1">
             <Controller
               control={control}
               name="currentCity"
@@ -270,19 +339,25 @@ function PersonalDataBasic({ userInfo }: any) {
               rules={{ required: true }}
               render={({ field }) => (
                 <Input
+                  helperText={
+                    errors?.currentAddress?.message
+                      ? errors?.currentAddress?.message
+                      : `Ejemplo: Cra 76 sur # 00 - 00`
+                  }
                   helperTextOption
                   type="text"
                   startIcon="bcs-location"
                   error={!!errors.currentAddress}
-                  helperText={errors?.currentAddress?.message}
                   onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                     e.preventDefault();
                   }}
+                  onFocus={showPopup}
                   value={currentAddress}
                   tabIndex={0}
                   id="currentAddress"
                   data-testid="currentAddres"
                   inputMode="text"
+                  disabled={showModal}
                   placeholder="Dirección de vivienda actual"
                   label="Dirección de vivienda actual"
                   onChange={(e: any) => {
