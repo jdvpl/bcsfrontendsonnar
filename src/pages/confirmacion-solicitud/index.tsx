@@ -86,7 +86,7 @@ function ApplicationApproval() {
         <div>
         <Typography
             variant="bodyM3"
-            className="w-[288px] sm:w-[343px] text-center mt-3 text-primario-900 text-[18px] font-normal leading-[20px] m-auto"
+            className="w-[288px] sm:w-[343px] text-center mt-[25px] text-primario-900 text-[18px]  font-normal leading-[20px] m-auto"
           >
             A continuación obtenga su carta 
             de preaprobado y el plan de pagos
