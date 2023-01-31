@@ -242,7 +242,7 @@ function PersonalDataBasic({ userInfo }: any) {
 
             <HelperText
               error={false}
-              text={'Seleccionar el mismo género indicado en su cédula'}
+              text={'Seleccionar el mismo género indicado en su documento de identidad'}
             />
           </div>
 
