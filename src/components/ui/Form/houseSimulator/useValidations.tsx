@@ -6,7 +6,7 @@ import {
   minHouseValueVis,
   SMMLV,
 } from '../../../../lib/simulator';
-import { calculateAge } from '../../../../utils';
+import { calculateAge, isValidDate } from '../../../../utils';
 
 export default function useValidations(
   typeHouse: string,
@@ -58,7 +58,19 @@ export default function useValidations(
   const validateAge = () => {
     if (day && month && year) {
       const age = calculateAge(`${day}/${month}/${year}`);
-      if (age < 19 || age > 69) {
+      if (age < 19 || age > 71) {
+        setError(
+          'day',
+          {
+            type: 'error',
+            message: 'Fecha inválida',
+          },
+          {
+            shouldFocus: true,
+          }
+        );
+      }
+      if (!isValidDate(parseInt(year), parseInt(month), parseInt(day))) {
         setError(
           'day',
           {

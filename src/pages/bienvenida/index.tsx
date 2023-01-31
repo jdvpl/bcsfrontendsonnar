@@ -52,6 +52,7 @@ function Bienvenida() {
             data-testid="btnOnboardingtest"
             onClick={() => router.push(routes.startProccess)}
             id="btn-next"
+            className='font-montserratMedium'
           >
             Iniciar solicitud
           </Button>

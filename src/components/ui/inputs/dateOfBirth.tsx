@@ -5,7 +5,7 @@ import { Label } from '../Label';
 import { MessageError } from './messageError';
 import NewInput from './newInput';
 import ReactHookFormSelect from '../Select/newSelect';
-import { calculateAge } from '../../../utils';
+import { calculateAge, isValidDate } from '../../../utils';
 
 interface InputProps {
   placeholder?: string;
@@ -26,7 +26,7 @@ const DateOfBirth: React.FC<InputProps> = ({
   defaultValues,
   id,
   onChangeDate,
-  disabled
+  disabled,
 }) => {
   const dateDefault = defaultValues?.split('-');
   const [ageError, setAgeError] = useState<string | undefined>(undefined);
@@ -190,7 +190,7 @@ const DateOfBirth: React.FC<InputProps> = ({
       numero: '08',
     },
     {
-      mes: 'September',
+      mes: 'Septiembre',
       numero: '09',
     },
     {
@@ -224,17 +224,17 @@ const DateOfBirth: React.FC<InputProps> = ({
   };
   const fields = watch();
 
-
   useEffect(() => {
     const date = `${fields.day}/${fields.month}/${fields.year}`;
-    const dateFormat = `${fields.year}-${parseInt(fields.month, 10) < 10 && fields.month.length < 2
-      ? `0${fields.month}`
-      : fields.month
-      }-${parseInt(fields.day, 10) < 10 && fields.day.length < 2
+    const dateFormat = `${fields.year}-${
+      parseInt(fields.month, 10) < 10 && fields.month.length < 2
+        ? `0${fields.month}`
+        : fields.month
+    }-${
+      parseInt(fields.day, 10) < 10 && fields.day.length < 2
         ? `0${fields.day}`
         : fields.day
-      }`;
-
+    }`;
 
     if (fields.day === (0 || undefined) || fields.month === (0 || undefined)) {
       onChangeDate?.(undefined);
@@ -248,12 +248,18 @@ const DateOfBirth: React.FC<InputProps> = ({
       return;
     }
 
-    if (calculateAge(date) >= 18 && calculateAge(date) <= 69) {
+    if (calculateAge(date) >= 18 && calculateAge(date) <= 70) {
       setAgeError(undefined);
       onChangeDate?.(dateFormat);
     } else {
       setAgeError('Fecha inválida');
       onChangeDate?.(undefined);
+    }
+
+    if (
+      !isValidDate(parseInt(fields.year), parseInt(fields.month), parseInt(fields.day))
+    ) {
+      setAgeError('Fecha Invalida');
     }
   }, [fields.day, fields.month, fields.year]);
 
@@ -342,7 +348,6 @@ const DateOfBirth: React.FC<InputProps> = ({
             control={control}
           />
         </div>
-
       </div>
       <div className="flex justify-end mr-[0.3rem] md:mr-[2rem] lg:mr-[6rem]">
         {ageError && fields.year && (
