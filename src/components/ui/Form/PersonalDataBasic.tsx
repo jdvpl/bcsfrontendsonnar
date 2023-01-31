@@ -35,7 +35,6 @@ function PersonalDataBasic({ userInfo }: any) {
     // register,
     formState: { errors, isValid },
   } = useForm<iPersonalData>({ mode: 'onChange' });
-  const menuItemsRef = useRef(null);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [componentModal,] = useState({
     children: <OfficeBranch setShowModal={setShowModal} />,
