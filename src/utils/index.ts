@@ -60,3 +60,10 @@ export const validateAddress = (Address: string) => {
     message: '',
   };
 };
+
+export const isValidDate = (year: number, month: number, day: number): boolean => {
+  let date = new Date(year, month - 1, day);
+  return (
+    date.getFullYear() === year && date.getMonth() + 1 === month && date.getDate() === day
+  );
+};

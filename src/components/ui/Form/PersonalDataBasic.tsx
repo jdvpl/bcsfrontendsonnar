@@ -1,9 +1,5 @@
 import { MenuItem } from '@mui/material';
-import React, {
-  ClipboardEvent,
-  useRef,
-  useState
-} from 'react';
+import React, { ClipboardEvent, useEffect, useRef, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
@@ -14,12 +10,12 @@ import Button from '../Button';
 import Input from '../inputs';
 import NewAutoComplete from '../inputs/newAutoComplete';
 import ReactHookFormSelect from '../Select/newSelect';
-import { routes } from '../../../routes'
+import { routes } from '../../../routes';
 import { HelperText } from '../inputs/HelperText';
 import OfficeBranch from '../../commons/OfficeBranch';
 import Modal from '../Modal';
-import usePersonalData from '../../../hooks/usePersonalData'
-import { validateAddress } from '../../../utils'
+import usePersonalData from '../../../hooks/usePersonalData';
+import { calculateAge, isValidDate, validateAddress } from '../../../utils';
 
 function PersonalDataBasic({ userInfo }: any) {
   const router = useRouter();
@@ -43,6 +39,9 @@ function PersonalDataBasic({ userInfo }: any) {
   });
 
   const currentAddress = watch('currentAddress', '');
+  const yearDt = watch('yearDt', '');
+  const dayDt = watch('dayDt', '');
+  const monthDt = watch('monthDt', '');
 
   const [, setDataUser] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
 
@@ -60,18 +59,52 @@ function PersonalDataBasic({ userInfo }: any) {
       email: data.email,
     };
     setDataUser(dataSend);
-    router.push(routes.sarlaft)
-  }
+    router.push(routes.sarlaft);
+  };
 
-  usePersonalData(setValue, userInfo)
+  usePersonalData(setValue, userInfo);
   const showPopup = () => {
     if (userInfo.isClient) {
-      setShowModal(true)
+      setShowModal(true);
     }
-  }
+  };
   const closeModal = () => {
-    setShowModal(false)
-  }
+    setShowModal(false);
+  };
+
+  useEffect(() => {
+    clearErrors('dayDt');
+    if (dayDt && monthDt && yearDt.length === 4) {
+      const age = calculateAge(`${dayDt}/${monthDt}/${yearDt}`);
+      if (age < 19 || age > 71) {
+        setError(
+          'dayDt',
+          {
+            type: 'error',
+            message: 'Fecha inválida',
+          },
+          {
+            shouldFocus: true,
+          }
+        );
+      }
+      if (!isValidDate(parseInt(yearDt), parseInt(monthDt), parseInt(dayDt))) {
+        setError(
+          'dayDt',
+          {
+            type: 'error',
+            message: 'Fecha inválida',
+          },
+          {
+            shouldFocus: true,
+          }
+        );
+      }
+    }
+  }, [yearDt, dayDt, monthDt]);
+
+  usePersonalData(setValue, userInfo)
+
   return (
     <div data-testid="FormQuotaTest" className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto " id='personalDataForm'>
       {showModal && (
@@ -80,11 +113,11 @@ function PersonalDataBasic({ userInfo }: any) {
           onClose={() => closeModal()}
           compont={componentModal}
           advisory
-          heightModal='lg:h-[70%]'
+          heightModal="lg:h-[70%]"
         />
       )}
-      <div className="w-full mt-3" >
-        <form onSubmit={handleSubmit(onSubmit)} data-testid="personaldataTest" >
+      <div className="w-full mt-3">
+        <form onSubmit={handleSubmit(onSubmit)} data-testid="personaldataTest">
           <div className="mt-4 grid gap-2">
             <span className="text-[10px] col-span-6 text-complementario-100">
               Fecha de nacimiento:
@@ -149,7 +182,7 @@ function PersonalDataBasic({ userInfo }: any) {
                   }}
                   error={!!errors.dayDt}
                   helperText={errors?.dayDt?.message}
-                  value={field.value}
+                  value={yearDt}
                   tabIndex={0}
                   id="yearDt"
                   disabled={showModal}
@@ -207,7 +240,10 @@ function PersonalDataBasic({ userInfo }: any) {
               <MenuItem value="male">Masculino</MenuItem>
             </ReactHookFormSelect>
 
-            <HelperText error={false} text={"Seleccionar el mismo género indicado en su cédula"} />
+            <HelperText
+              error={false}
+              text={'Seleccionar el mismo género indicado en su cédula'}
+            />
           </div>
 
           {userInfo.isClient ? null : (
@@ -296,7 +332,11 @@ function PersonalDataBasic({ userInfo }: any) {
               rules={{ required: true }}
               render={({ field }) => (
                 <Input
-                  helperText={errors?.currentAddress?.message ? errors?.currentAddress?.message : `Ejemplo: Cra 76 sur # 00 - 00`}
+                  helperText={
+                    errors?.currentAddress?.message
+                      ? errors?.currentAddress?.message
+                      : `Ejemplo: Cra 76 sur # 00 - 00`
+                  }
                   helperTextOption
                   type="text"
                   startIcon='bcs-location'
@@ -312,7 +352,7 @@ function PersonalDataBasic({ userInfo }: any) {
                   data-testid="currentAddres"
                   inputMode="text"
                   disabled={showModal}
-                  placeholder='Dirección de vivienda actual'
+                  placeholder="Dirección de vivienda actual"
                   label="Dirección de vivienda actual"
                   onChange={(e: any) => {
                     const { isError, message } = validateAddress(
