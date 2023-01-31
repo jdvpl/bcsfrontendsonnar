@@ -52,8 +52,8 @@ export const sendAuthorization = async (body: any) => {
 export const getQuestions = async (data: any) => {
   try {
     const dataInfo = await allResponse(data, KEY);
-    const { data: response } = await clientAxiosKYC.post(
-      '/customers/allow-lists',
+    const { data: response } = await clientAxiosBackend.post(
+      '/api-composer/composer/allow-list',
       { data: dataInfo },
       headersKYC
     );
