@@ -34,7 +34,7 @@ function PersonalDataBasic({ userInfo }: any) {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [componentModal,] = useState({
     children: <OfficeBranch setShowModal={setShowModal} />,
-    title: <span className='md:text-[2rem] font-poppinsSemiBold'>Si sus datos han cambiado actualicelos llamando a la línea amiga</span>,
+    title: <span className='md:text-[2rem] font-poppinsSemiBold'>Si sus datos han cambiado actualícelos llamando a la línea amiga</span>,
     id: '',
   });
 
