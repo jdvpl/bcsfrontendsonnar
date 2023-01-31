@@ -23,7 +23,7 @@ const KEYSARLAFT = process.env.KEYSARLAFT;
 export const sendAuthorization = async (body: any) => {
   try {
     const { data: response } = await clientAxiosBackend.post(
-      '/customer/DataProcessing',
+      '/customer/data-processing',
       body
     );
     return {
