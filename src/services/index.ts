@@ -23,7 +23,7 @@ const KEYSARLAFT = process.env.KEYSARLAFT;
 export const sendAuthorization = async (body: any) => {
   try {
     const { data: response } = await clientAxiosBackend.post(
-      '/customer/DataProcessing',
+      '/customer/data-processing',
       body
     );
     return {
@@ -52,8 +52,8 @@ export const sendAuthorization = async (body: any) => {
 export const getQuestions = async (data: any) => {
   try {
     const dataInfo = await allResponse(data, KEY);
-    const { data: response } = await clientAxiosKYC.post(
-      '/customers/allow-lists',
+    const { data: response } = await clientAxiosBackend.post(
+      '/api-composer/composer/allow-list',
       { data: dataInfo },
       headersKYC
     );
