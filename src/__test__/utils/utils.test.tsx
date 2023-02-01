@@ -1,5 +1,5 @@
 
-import { clearSessionStorage, convertToColombianPesos, calculateAge, parserPercentageDecimal } from '../../utils'
+import { clearSessionStorage, convertToColombianPesos, calculateAge, parserPercentageDecimal, validateAddress, isValidDate } from '../../utils'
 
 describe('clearSessionStorage', () => {
   it('should clear all items in session storage', () => {
@@ -48,4 +48,53 @@ describe('clearSessionStorage', () => {
     const decimal = parserPercentageDecimal(number);
     expect(decimal).toBe(-0.12);
   });
+  test('valid addres', () => {
+    const address = '1234 Main St';
+    const result = validateAddress(address);
+    expect(result).toEqual({ isError: false, message: '' });
+  });
+  test('address too long', () => {
+    const address = '12345678901234567890123456789012345678901';
+    const result = validateAddress(address);
+    expect(result).toEqual({
+      isError: true,
+      message: 'La direccion no puede superar los 40 caracteres',
+    });
+  });
+  test('address without number', () => {
+    const address = 'Main St';
+    const result = validateAddress(address);
+    expect(result).toEqual({
+      isError: true,
+      message: 'La direccion debe contener almenos un numero',
+    });
+  });
+
+  test('empty address', () => {
+    const address = '';
+    const result = validateAddress(address);
+    expect(result).toEqual({ isError: false, message: '' });
+  });
+  test('valid date', () => {
+    const year = 2021;
+    const month = 5;
+    const day = 15;
+    const result = isValidDate(year, month, day);
+    expect(result).toBe(true);
+  });
+  test('invalid month', () => {
+    const year = 2021;
+    const month = 13;
+    const day = 15;
+    const result = isValidDate(year, month, day);
+    expect(result).toBe(false);
+  });
+  test('invalid day', () => {
+    const year = 2021;
+    const month = 5;
+    const day = 32;
+    const result = isValidDate(year, month, day);
+    expect(result).toBe(false);
+  });
+
 });

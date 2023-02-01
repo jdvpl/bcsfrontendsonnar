@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import useAES from './useAES';
 
-const { decryptPass, encriptPass } = useAES();
 const KEY = process.env.KEYSESSIONSTORAGE ? process.env.KEYSESSIONSTORAGE : '';
 
 export function getSessionStorageOrDefault(
@@ -9,6 +8,7 @@ export function getSessionStorageOrDefault(
   defaultValue: Record<string, string> | string
 ) {
   let stored;
+  const { decryptPass } = useAES();
   if (typeof window !== 'undefined') {
     stored = sessionStorage.getItem(key);
   }
@@ -24,6 +24,7 @@ export function useSessionStorage(
   defaultValue: Record<string, string> | string
 ) {
   const [value, setValue] = useState(getSessionStorageOrDefault(key, defaultValue));
+  const { encriptPass } = useAES();
 
   useEffect(() => {
     const dataString = JSON.stringify(value);
