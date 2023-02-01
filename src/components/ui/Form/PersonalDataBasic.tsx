@@ -31,15 +31,10 @@ function PersonalDataBasic({ userInfo }: any) {
     // register,
     formState: { errors, isValid },
   } = useForm<iPersonalData>({ mode: 'onChange' });
-  const menuItemsRef = useRef(null);
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [componentModal] = useState({
+  const [componentModal,] = useState({
     children: <OfficeBranch setShowModal={setShowModal} />,
-    title: (
-      <span className="md:text-[2rem] font-poppinsSemiBold">
-        Si sus datos han cambiado actualicelos llamando a la línea amiga
-      </span>
-    ),
+    title: <span className='md:text-[2rem] font-poppinsSemiBold'>Si sus datos han cambiado actualícelos llamando a la línea amiga</span>,
     id: '',
   });
 
@@ -108,12 +103,10 @@ function PersonalDataBasic({ userInfo }: any) {
     }
   }, [yearDt, dayDt, monthDt]);
 
+  usePersonalData(setValue, userInfo)
+
   return (
-    <div
-      data-testid="FormQuotaTest"
-      className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto "
-      id="personalDataForm"
-    >
+    <div data-testid="FormQuotaTest" className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto " id='personalDataForm'>
       {showModal && (
         <Modal
           showModal={showModal}
@@ -147,7 +140,7 @@ function PersonalDataBasic({ userInfo }: any) {
               spacing="mr-[6px]"
             >
               {days?.map((element, i) => (
-                <MenuItem value={element?.number} key={i}>
+                <MenuItem value={element?.number} key={i} >
                   {element?.day}
                 </MenuItem>
               ))}
@@ -170,7 +163,7 @@ function PersonalDataBasic({ userInfo }: any) {
               spacing="mr-[6px]"
             >
               {months.map((element, i) => (
-                <MenuItem value={element.number} key={i}>
+                <MenuItem value={element.number} key={i} >
                   {element.month}
                 </MenuItem>
               ))}
@@ -249,7 +242,7 @@ function PersonalDataBasic({ userInfo }: any) {
 
             <HelperText
               error={false}
-              text={'Seleccionar el mismo género indicado en su cédula'}
+              text={'Seleccionar el mismo género indicado en su documento de identidad'}
             />
           </div>
 
@@ -346,13 +339,14 @@ function PersonalDataBasic({ userInfo }: any) {
                   }
                   helperTextOption
                   type="text"
-                  startIcon="bcs-location"
+                  startIcon='bcs-location'
                   error={!!errors.currentAddress}
                   onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                     e.preventDefault();
                   }}
                   onFocus={showPopup}
                   value={currentAddress}
+
                   tabIndex={0}
                   id="currentAddress"
                   data-testid="currentAddres"
