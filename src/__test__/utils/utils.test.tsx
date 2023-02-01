@@ -1,5 +1,6 @@
 
-import { clearSessionStorage, convertToColombianPesos, calculateAge, parserPercentageDecimal, validateAddress, isValidDate } from '../../utils'
+import { clearSessionStorage, convertToColombianPesos, calculateAge, parserPercentageDecimal, validateAddress, isValidDate, decryptPass, encriptPass } from '../../utils'
+import * as CryptoJS from 'crypto-js';
 
 describe('clearSessionStorage', () => {
   it('should clear all items in session storage', () => {
@@ -96,5 +97,23 @@ describe('clearSessionStorage', () => {
     const result = isValidDate(year, month, day);
     expect(result).toBe(false);
   });
-
+  it('should return decrypted password', () => {
+    const password = CryptoJS.AES.encrypt('password123', 'key123').toString();
+    const key = 'key123';
+    const decrypted = decryptPass(password, key);
+    expect(decrypted).toBe('password123');
+  });
+  it('should throw error with invalid credentials', () => {
+    const password = 'invalidPassword';
+    const key = 'invalidKey';
+    expect(() => {
+      decryptPass(password, key);
+    }).toThrow('Invalid credentials');
+  });
+  it('should return encrypted password', () => {
+    const password = 'password123';
+    const key = 'key123';
+    const encrypted = encriptPass(password, key);
+    expect(encrypted).toBeTruthy();
+  });
 });
