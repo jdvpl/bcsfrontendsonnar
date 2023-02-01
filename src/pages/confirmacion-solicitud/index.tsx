@@ -102,8 +102,8 @@ function ApplicationApproval() {
             tabIndex={0}
             id="btn-next"
           >
-            <span className="font-semibold text-[18px]">
-              <Icons icon="bcs-arrow-one-down" /> Carta de preaprobación
+            <span className="font-medium font-monserratLight text-[18px]">
+              <Icons icon="bcs-arrow-one-down" /> Descargar documentos
             </span>
           </Button>
         </div>
