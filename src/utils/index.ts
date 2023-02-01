@@ -1,4 +1,5 @@
 import { differenceInYears, parse } from 'date-fns';
+import * as CryptoJS from 'crypto-js';
 
 export const clearSessionStorage = () => {
   sessionStorage.clear();
@@ -67,3 +68,16 @@ export const isValidDate = (year: number, month: number, day: number): boolean =
     date.getFullYear() === year && date.getMonth() + 1 === month && date.getDate() === day
   );
 };
+
+
+export const decryptPass = (password: string, key: string) => {
+  const bytes = CryptoJS.AES.decrypt(password, key);
+
+  if (bytes.sigBytes < 0) {
+    throw new Error('Invalid credentials');
+  }
+  return bytes.toString(CryptoJS.enc.Utf8);
+};
+
+export const encriptPass = (password: string, key: string) =>
+  CryptoJS.AES.encrypt(password, key).toString();
