@@ -11,6 +11,8 @@ const customJestConfig = {
     '<rootDir>/src/pages/**',
     '<rootDir>/src/hooks/**',
     '<rootDir>/src/utils/**',
+    '<rootDir>/src/routes/**',
+    '<rootDir>/src/session/**',
     '<rootDir>/{!(),}.config.js',
     '!<rootDir>/src/components/svg/**',
     '!<rootDir>/src/pages/_**.tsx',
