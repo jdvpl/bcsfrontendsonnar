@@ -7,11 +7,14 @@ describe('Servics', () => {
     const response = { data: { result: 'success' } };
     (axios.post as jest.Mock).mockResolvedValue(response);
     const body = {
-      data:
-        "U2FsdGVkX19nt6H2WqVxwSZ2oVYMz28FRYIJRRadV18VgAnEpJ0zckmjpcIltPG0ntM4+xqp4gurVw2TvzxyOAP0jhWSVb8WrRA3qkepZHDPL/nHsRMLIMcCfX8rGyELjrn55oUc9RPeMGd3Su6dkQNtcytz4dCwjYXH+GRMkpTyXVLlt0+Oz+DapvmZqHba"
+      commercial_terms: false,
+      commercial_terms_label: "Autoriza que su información sea utilizada con fines comerciales",
+      document_number: "1077870326",
+      document_type: "CC",
+      policy_and_terms: true,
+      policy_and_terms_label: "Acepta tratamiento de datos personales y consulta en centrales de riesgo"
     }
     const result = await sendAuthorization(body);
-    console.log(result)
     expect(result).toEqual({
       error: true,
       response: undefined,
