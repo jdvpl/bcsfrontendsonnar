@@ -4,7 +4,7 @@ import { routes } from '../../routes';
 import Button from '../ui/Button'
 
 
-function ExitModal({ setshowModalExit: setshowModalExit }: any) {
+function ExitModal({ setshowModalExit }: any) {
   const closeModal = () => {
     setshowModalExit(false)
   }

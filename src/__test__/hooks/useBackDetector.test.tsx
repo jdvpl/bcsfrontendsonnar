@@ -21,7 +21,7 @@ describe('useBackDetector', () => {
 
     jest.spyOn(require('next/router'), 'useRouter').mockImplementation(mockUseRouter);
 
-    renderHook(() => useBackDetector(fn, '/datos-personales'),);
+    renderHook(() => useBackDetector(fn, '/datos-personales/#'),);
 
     expect(window.location.hash).toBe('#/');
   });
