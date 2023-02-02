@@ -284,7 +284,7 @@ export const getOffices = async () => {
 
 };
 
-export const delKeysRedis =async (body: any) => {
+export const delKeysRedis = async (body: any) => {
   try {
     const { data: response } = await clientAxiosCommons.post(
       '/delete-keys',
@@ -296,10 +296,10 @@ export const delKeysRedis =async (body: any) => {
       },
       error: false,
     };
-  } catch (e:any) {
+  } catch (e: any) {
     return { error: true, response: e.response?.data?.message };
   }
-  
+
 }
 
 

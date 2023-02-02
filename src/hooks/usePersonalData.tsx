@@ -5,7 +5,8 @@ export default function usePersonalData(setValue: any, userInfo: any,
   setError: any,
   clearErrors: any, dayDt: any,
   monthDt: any,
-  yearDt: any) {
+  yearDt: any,
+) {
 
   const date = userInfo.birthDt.split('-');
   useEffect(() => {
