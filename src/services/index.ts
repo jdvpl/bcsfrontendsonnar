@@ -7,6 +7,7 @@ import { headersBack } from './HeaderBack';
 import { headersKYC } from './HeadersKYC';
 import { iFormDataSimulation } from '../interfaces';
 import { iFormBasicData } from '../interfaces/basicDataProps';
+import { clientAxiosCommons } from '../config/AxiosDeleteKeys';
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
 const KEYSARLAFT = process.env.KEYSARLAFT;
@@ -282,5 +283,23 @@ export const getOffices = async () => {
   }
 
 };
+
+export const delKeysRedis = async (body: any) => {
+  try {
+    const { data: response } = await clientAxiosCommons.post(
+      '/delete-keys',
+      body
+    );
+    return {
+      response: {
+        result: response?.response,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e.response?.data?.message };
+  }
+
+}
 
 

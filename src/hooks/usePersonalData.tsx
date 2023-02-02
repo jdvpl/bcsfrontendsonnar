@@ -49,5 +49,4 @@ export default function usePersonalData(setValue: any, userInfo: any,
     }
   }, [yearDt, dayDt, monthDt]);
 
-
 }

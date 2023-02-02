@@ -81,7 +81,7 @@ function Input({
   peer-placeholder-shown:z-[-1] peer-focus:z-0 z-0
 
   peer-placeholder-shown:${labelColor} absolute text-sm
-
+  peer-focus:text-primario-20
   ${error ? 'text-rojo-100' : `${labelColor}`}
 
   duration-300 transform -translate-y-4 scale-75 top-2

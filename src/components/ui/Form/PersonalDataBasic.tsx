@@ -57,6 +57,8 @@ function PersonalDataBasic({ userInfo }: any) {
       birthDate,
       birthCity,
       currentCity,
+      hasAdviser: data?.currentCity?.hasAdviser,
+      nameAdviser: data?.currentCity?.nameAdviser,
       phone: data.phone,
       gender: data.gender,
       currentAddress: data.currentAddress,
@@ -301,7 +303,12 @@ function PersonalDataBasic({ userInfo }: any) {
                   label="Ciudad de residencia"
                   onChange={(e: any) => {
                     if (e?.id) {
-                      return onChange({ item: e.name, option: e.id });
+                      return onChange({
+                        item: e.name,
+                        option: e.id,
+                        hasAdviser: e?.hasAdviser,
+                        nameAdviser: e?.nameAdviser,
+                      });
                     }
                     return onChange(undefined);
                   }}

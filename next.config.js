@@ -13,7 +13,8 @@ const nextConfig = {
     KEYSESSIONSTORAGE: process.env.KEYSESSIONSTORAGE,
     KEYSARLAFT:process.env.KEYSARLAFT,
     TAGMANAGER:process.env.TAGMANAGER,
-    APIURLMORTGAGE:process.env.APIURLMORTGAGE
+    APIURLMORTGAGE:process.env.APIURLMORTGAGE,
+    COMMONSAPIURL:process.env.COMMONSAPIURL
   },
   images: {
     loader: 'akamai',

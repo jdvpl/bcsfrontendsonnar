@@ -63,7 +63,7 @@ function ApplicationApproval() {
             tooltiptext=""
           />
         </div>
-        {!valuesMortgage?.choseOffice ? (
+        {valuesMortgage?.choseOffice ? (
           <div className="mt-3">
             <Card
               className="xs:w-[290px] sm:w-[343px] md:w-[448px]  min-h-[76px]  bg-[#F3F4F6] pt-[12px] pb-[12px] pl-[16px] rounded-[8px] mb-[12px] font-light m-auto"
@@ -102,8 +102,8 @@ function ApplicationApproval() {
             tabIndex={0}
             id="btn-next"
           >
-            <span className="font-semibold text-[18px]">
-              <Icons icon="bcs-arrow-one-down" /> Carta de preaprobación
+            <span className="font-medium font-monserratLight text-[18px]">
+              <Icons icon="bcs-arrow-one-down" /> Descargar documentos
             </span>
           </Button>
         </div>

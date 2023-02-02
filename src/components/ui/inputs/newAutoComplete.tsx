@@ -57,7 +57,7 @@ const NewAutoComplete: React.FC<InputProps> = ({
           className={`position-absolute h-full 'top-[3px]'
             } left-[7px] flex justify-center items-center `}
         >
-          <Icons icon='bcs-search' size='text-[17px]' />
+          <Icons icon="bcs-search" size="text-[17px]" />
         </div>
         <Autocomplete
           filterOptions={filterOptions}
@@ -72,7 +72,13 @@ const NewAutoComplete: React.FC<InputProps> = ({
           data-testid={'searchAutocompleteInput'}
           onChange={(_, value: any) => {
             if (value) {
-              onChange?.({ id: value.id, name: value.name, parentId: value.parentid });
+              onChange?.({
+                id: value.id,
+                name: value.name,
+                parentId: value.parentid,
+                hasAdviser: value?.hasAdviser,
+                nameAdviser: value?.nameAdviser,
+              });
               setBorder('#798C98');
               setInternalState(value);
             } else {
@@ -88,8 +94,8 @@ const NewAutoComplete: React.FC<InputProps> = ({
             fontSize: '14px',
             '.MuiFormLabel-root': {
               fontSize: '14px',
-              width:"fit-content",
-              left: "18px !important"
+              width: 'fit-content',
+              // left: '18px !important',
             },
             ',MuiInputLabel-outlined': {
               fontSize: '14px',

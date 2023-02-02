@@ -8,8 +8,10 @@ import Button from '../../components/ui/Button/index';
 import ImageLoader from '../../components/ui/Loaders/imageLoader';
 import ErrorLayout from '../../components/layouts/errorLayout';
 import { AplicationContext } from '../../context/AplicationContext';
+import useDeleteKeys from '../../hooks/useDeleteKeys';
 
 const ErrorValidacionDiario: React.FC = () => {
+  useDeleteKeys()
   const {
     setEligirFoto,
     setFotoDelantera,
