@@ -20,6 +20,7 @@ export function CreditDataForm() {
   const [percentageFinance, setPercentageFinance] = useState(0.7);
   const [dataForm] = useSessionStorage(SesionStorageKeys.dataFormSimulation.key, {});
   const [, setDataForm] = useSessionStorage(SesionStorageKeys.mortgageValues.key, {});
+  const [personalData] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
   const [offices, setOffices] = useState<any>([]);
   const router = useRouter();
 
@@ -297,20 +298,22 @@ export function CreditDataForm() {
                 ) : null}
               </div>
             </button>
-            <button
-              data-testid="Button-No"
-              className="flex md:ml-[117px] xs:ml-[35px] ml-[35px] cursor-pointer"
-              onClick={() => changeOffice(false)}
-            >
-              <span className="font-semibold text-gris-100">Asesor</span>
-              <div className="ml-[15px] w-[25px] h-[25px] border border-complementario-100 flex justify-center items-center rounded-full">
-                {!choseOffice ? (
-                  <div className="w-[10px] h-[10px] bg-complementario-100 rounded-full">
-                    {' '}
-                  </div>
-                ) : null}
-              </div>
-            </button>
+            {personalData?.hasAdviser ? (
+              <button
+                data-testid="Button-No"
+                className="flex md:ml-[117px] xs:ml-[35px] ml-[35px] cursor-pointer"
+                onClick={() => changeOffice(false)}
+              >
+                <span className="font-semibold text-gris-100">Asesor</span>
+                <div className="ml-[15px] w-[25px] h-[25px] border border-complementario-100 flex justify-center items-center rounded-full">
+                  {!choseOffice ? (
+                    <div className="w-[10px] h-[10px] bg-complementario-100 rounded-full">
+                      {' '}
+                    </div>
+                  ) : null}
+                </div>
+              </button>
+            ) : null}
           </div>
         </div>
         {choseOffice ? (

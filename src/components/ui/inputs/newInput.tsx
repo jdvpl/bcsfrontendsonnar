@@ -91,7 +91,7 @@ const NewInput = forwardRef<HTMLInputElement, InputProps>(
             htmlFor="floating_text"
             className={`peer-placeholder-shown:z-[-1] peer-focus:z-0 z-0  absolute text-sm ${disabled ? 'native-azul_gris-100' : 'native-secondary-300'
               }  duration-300 peer-placeholder-shown:color-desactivado ${internalState ? 'color-activado' : 'color-desactivado'
-              } transform -translate-y-5 scale-75 top-2 origin-[0] bg-white px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-6 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-5 left-1.5`}
+              } transform -translate-y-5 scale-75 top-3 origin-[0] bg-white px-2 peer-focus:px-2  peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-6 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-5 left-1.5`}
           >
             {label}
           </label>
