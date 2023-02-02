@@ -290,7 +290,7 @@ function PersonalDataBasic({ userInfo }: any) {
             </>
           )}
 
-          <div className="w-full mt-1">
+          <div className="w-full mt-4">
             <Controller
               control={control}
               name="currentCity"

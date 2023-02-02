@@ -3,9 +3,9 @@ import { Controller, useForm } from 'react-hook-form';
 import { MenuItem } from '@mui/material';
 import { Label } from '../Label';
 import { MessageError } from './messageError';
-import NewInput from './newInput';
 import ReactHookFormSelect from '../Select/newSelect';
 import { calculateAge, isValidDate } from '../../../utils';
+import Input from '.';
 
 interface InputProps {
   placeholder?: string;
@@ -324,7 +324,7 @@ const DateOfBirth: React.FC<InputProps> = ({
           <Controller
             rules={{ required: true, minLength: 5, maxLength: 4 }}
             render={({ field }) => (
-              <NewInput
+              <Input
                 label="Año"
                 {...register('year', {
                   maxLength: 4,
@@ -334,7 +334,6 @@ const DateOfBirth: React.FC<InputProps> = ({
                 })}
                 {...field}
                 value={fields.year || ''}
-                valueLength
                 tabIndex={0}
                 type="text"
                 disabled={disabled}

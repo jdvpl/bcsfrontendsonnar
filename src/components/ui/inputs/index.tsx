@@ -77,35 +77,25 @@ function Input({
   helperTextOption = false,
   ...props
 }: InputProps) {
-  const labelStyles = `
-  peer-placeholder-shown:z-[-1] peer-focus:z-0 z-0
-
+  const labelStyles = `peer-placeholder-shown:z-[-1] peer-focus:z-0 z-0
   peer-placeholder-shown:${labelColor} absolute text-sm
-  peer-focus:text-primario-20
   ${error ? 'text-rojo-100' : `${labelColor}`}
 
   duration-300 transform -translate-y-4 scale-75 top-2
   origin-[0] bg-white px-2 peer-focus:px-2
-  ${startIcon ? props?.value ? "left-1" : 'left-5 peer-focus:left-1' : 'left-1'}
   
-  ${error ? 'peer-focus:text-rojo-100 ' : `peer-focus:${labelColor}`}
-
+  ${error ? 'peer-focus:text-rojo-100 ' : `peer-focus:text-primario-100`} ml-2
   peer-placeholder-shown:scale-100
+  peer-focus:ml-2
+  peer-focus:pl-1
   peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-6
-   peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-[19px] -translate-y-[19px]
-  `;
+   peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-[19px] -translate-y-[19px]`;
 
   const inputStyles = `
-  ${startIcon ? 'pl-8' : ''}
-  ${endIcon ? 'pr-8' : ''}
-  h-12 bg-[transparent] block py-2 px-3 w-full text-sm leading-none
-    ${error ? 'text-complementario-100' : 'text-primario-900'}
-    bg-transparent border-[0.03125rem] rounded-md
-    ${error
-      ? 'border-rojo-100 focus:border-rojo-100'
-      : 'border-[#798c98a6] focus:border-primario-20'
-    }
-    appearance-none  peer focus:border focus:outline-none`;
+    ${startIcon ? 'pl-8' : ''}
+    ${endIcon ? 'pr-8' : ''} h-12 bg-[transparent] block py-2 px-3 w-full text-sm leading-none
+    ${error ? 'text-complementario-100' : 'text-primario-900'} bg-transparent border-[0.03125rem] rounded-md
+    ${error ? 'border-rojo-100 focus:border-rojo-100 hover:border-rojo-100': 'border-[#798c98a6] hover:border-primario-100 focus:border-primario-100'} appearance-none  peer focus:border focus:outline-none`;
   return (
     <div className={`${containerClassName} justify-center flex flex-col w-full`}>
       <div className="relative z-0 w-full">

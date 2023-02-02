@@ -7,11 +7,12 @@ interface InitDataSend {
   document_type: string;
   document_number: string;
 }
-export const onSubmitResponse = async (initData: InitDataSend, dataTU: any, router: any, setDataValid: any, setDataNumber: any) => {
+export const onSubmitResponse = async (initData: InitDataSend, dataTU: any, router: any, setDataValid: any, setDataNumber: any, processId:string) => {
   const body = {
     document_type: dataTU?.document_type,
     document_number: dataTU?.document_number,
     items: initData,
+    processId
   };
   const response = await sendQuestions(body);
   if (response.error) {
