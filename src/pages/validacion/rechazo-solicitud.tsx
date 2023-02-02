@@ -3,9 +3,11 @@ import { ErrorLayout } from "../../components/ui/error/errorScreen"
 import { basePath } from '../../../next.config';
 import { routes } from '../../routes';
 import router from 'next/router';
+import useDeleteKeys from '../../hooks/useDeleteKeys';
 
 
 export default function Error() {
+  useDeleteKeys()
     return (
       <div>
          <ErrorLayout btnactivate altsvg='warning' title={<p>No es posible continuar<br />su solicitud de crédito</p>} text={<p>Diríjase a una sucursal del Banco<br/>
