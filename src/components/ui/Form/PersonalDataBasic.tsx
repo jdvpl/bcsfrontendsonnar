@@ -1,5 +1,5 @@
 import { MenuItem } from '@mui/material';
-import React, { ClipboardEvent, useEffect, useRef, useState } from 'react';
+import React, { ClipboardEvent, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
@@ -13,9 +13,11 @@ import ReactHookFormSelect from '../Select/newSelect';
 import { routes } from '../../../routes';
 import { HelperText } from '../inputs/HelperText';
 import OfficeBranch from '../../commons/OfficeBranch';
+import ExitModal from '../../commons/ExitModal';
 import Modal from '../Modal';
 import usePersonalData from '../../../hooks/usePersonalData';
 import { validateAddress } from '../../../utils';
+import { useBackDetector } from '../../../hooks/useBackDetector'
 
 function PersonalDataBasic({ userInfo }: any) {
   const router = useRouter();
@@ -31,9 +33,15 @@ function PersonalDataBasic({ userInfo }: any) {
     formState: { errors, isValid },
   } = useForm<iPersonalData>({ mode: 'onChange' });
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [showModalExit, setshowModalExit] = useState(false);
   const [componentModal,] = useState({
     children: <OfficeBranch setShowModal={setShowModal} />,
     title: <span className='md:text-[2rem] font-poppinsSemiBold'>Si sus datos han cambiado actualícelos llamando a la línea amiga</span>,
+    id: '',
+  });
+  const [componentModalExit,] = useState({
+    children: <ExitModal setshowModalExit={setshowModalExit} />,
+    title: <span className='md:text-[28px] font-poppinsSemiBold'>Está a punto de abandonar su solicitud</span>,
     id: '',
   });
   const currentAddress = watch('currentAddress', '');
@@ -66,6 +74,12 @@ function PersonalDataBasic({ userInfo }: any) {
   const closeModal = () => {
     setShowModal(false);
   };
+  const closeModalExit = () => {
+    setshowModalExit(false);
+  };
+  useBackDetector(() => {
+    setshowModalExit(true)
+  }, router.asPath)
   return (
     <div data-testid="FormQuotaTest" className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto " id='personalDataForm'>
       {showModal && (
@@ -73,6 +87,15 @@ function PersonalDataBasic({ userInfo }: any) {
           showModal={showModal}
           onClose={() => closeModal()}
           compont={componentModal}
+          advisory
+          heightModal="lg:h-[70%]"
+        />
+      )}
+      {showModalExit && (
+        <Modal
+          showModal={showModalExit}
+          onClose={() => closeModalExit()}
+          compont={componentModalExit}
           advisory
           heightModal="lg:h-[70%]"
         />
@@ -203,7 +226,7 @@ function PersonalDataBasic({ userInfo }: any) {
 
             <HelperText
               error={false}
-              text={'Seleccionar el mismo género indicado en su documento de identidad'}
+              text={'Seleccionar el mismo género indicado en su documento'}
             />
           </div>
 

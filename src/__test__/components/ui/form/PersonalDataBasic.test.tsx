@@ -2,6 +2,8 @@ import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import PersonalDataBasic from '../../../../components/ui/Form/PersonalDataBasic';
 import '@testing-library/jest-dom/extend-expect';
+import { createMockRouter } from '../../../utils/createMockRouter';
+import { RouterContext } from 'next/dist/shared/lib/router-context';
 
 describe('<PersonalDataBasic/>', () => {
   it('should render successfully', () => {
@@ -14,7 +16,10 @@ describe('<PersonalDataBasic/>', () => {
       "firstName": "Juan",
       "isClient": false
     }
-    const { baseElement } = render(<PersonalDataBasic userInfo={userInfo} />);
+    const router = createMockRouter({});
+    const { baseElement } = render(<RouterContext.Provider value={router} >
+      <PersonalDataBasic userInfo={userInfo} />
+    </RouterContext.Provider >);
     expect(baseElement).toBeTruthy();
   });
   it('should show modal if is a client', () => {
@@ -27,7 +32,11 @@ describe('<PersonalDataBasic/>', () => {
       "firstName": "Juan",
       "isClient": true
     }
-    const { getByTestId, queryByTestId } = render(<PersonalDataBasic userInfo={userInfo} />);
+    const router = createMockRouter({});
+
+    const { getByTestId, queryByTestId } = render(<RouterContext.Provider value={router} >
+      <PersonalDataBasic userInfo={userInfo} />
+    </RouterContext.Provider >);
     const yearDtTest = getByTestId('yearDtTest');
     fireEvent.focus(yearDtTest);
     const modalDataTest = queryByTestId('modalDataTest');
