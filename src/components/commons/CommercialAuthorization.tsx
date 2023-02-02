@@ -16,7 +16,7 @@ function CommercialAuthorization() {
         <p>
           •&nbsp;
           <span className="font-bold">Hacer estudios</span> sobre sus gustos, hábitos e
-          intereses..
+          intereses.
         </p>
       </li>
       <li className="mt-4">
