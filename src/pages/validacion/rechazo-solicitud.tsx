@@ -1,7 +1,6 @@
 import React from 'react'
 import { ErrorLayout } from "../../components/ui/error/errorScreen"
 import { basePath } from '../../../next.config';
-import { routes } from '../../routes';
 import router from 'next/router';
 import useDeleteKeys from '../../hooks/useDeleteKeys';
 
