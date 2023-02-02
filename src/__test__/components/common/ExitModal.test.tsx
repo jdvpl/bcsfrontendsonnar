@@ -7,14 +7,11 @@ describe('ExitModal component', () => {
     const { baseElement } = render(<ExitModal setshowModalExit={jest.fn()} />);
     expect(baseElement).toBeTruthy();
   });
-
   test('ExitModal component should trigger closeModal on button click', () => {
     const setshowModalExit = jest.fn();
     const { getByTestId } = render(<ExitModal setshowModalExit={setshowModalExit} />);
-
     const button = getByTestId('advisoryFormtest');
     fireEvent.click(button);
-
     expect(setshowModalExit).toHaveBeenCalledWith(false);
   })
 });
