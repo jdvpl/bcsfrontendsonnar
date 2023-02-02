@@ -116,7 +116,7 @@ function AdvisoryForm({ setShowModal }: any) {
 
           <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-[50px] pb-[40px]">
             <Button
-              isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[375px]"
+              isLanding="w-full xs:w-[250px] sm:w-[253px] md:w-[253px] lg:w-[343px]"
               type="submit"
               data-testid="advisoryFormtest"
               disabled={disable}

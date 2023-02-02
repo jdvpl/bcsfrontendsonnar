@@ -14,12 +14,12 @@ function ExitModal({ setshowModalExit }: any) {
   return (
     <div className='m-auto flex-col mt-8 font-monserratLight mx-5'>
 
-      <p className="text-center font-poppinsLight text-[24px]">
+      <p className="text-center font-poppinsLight md:text-[24px] text-[18px] leading-5 md:mx-0 mx-[40px]">
         ¿Desea continuar con el proceso?
       </p>
       <div className="flex flex-col justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-[48px] pb-[40px]">
         <Button
-          isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[375px]"
+          isLanding="w-full xs:w-[250px] sm:w-[253px] md:w-[253px] lg:w-[343px]"
           type="submit"
           data-testid="advisoryFormtest"
           id="btn-next"
