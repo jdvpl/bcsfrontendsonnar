@@ -24,7 +24,7 @@ const ReactHookFormSelect: React.FC<any> = ({
 }) => {
   const labelId = `${name}-label`;
 
-  const [initialBorder, setBorder] = useState('#B0C2CD');
+  const [initialBorder, setBorder] = useState('#798c98a6');
   const [initialIcon, setInitialIcon] = useState(
     `M15.5316 0.829999C15.6257 0.705105 15.8131 0.705105 15.9063 0.829999C16.0312 0.924086 16.0312 1.07979 15.9063 1.20468L8.19119 9.20125C8.12875 9.23205 8.0663 9.26369 8.00385 9.26369C7.9414 9.26369 7.84815 9.23205 7.81651 9.20125L0.0705653 1.20468C-0.0235218 1.07979 -0.0235218 0.924086 0.0705653 0.829999C0.19546 0.705105 0.351161 0.705105 0.476055 0.829999L8.00385 8.63839L15.5316 0.829999Z`
   );
@@ -39,8 +39,8 @@ const ReactHookFormSelect: React.FC<any> = ({
     );
   }, []);
   return (
-    <FormControl {...props} fullWidth className={`position-relative ${props?.className}`}>
-      <div className={`position-absolute ${left} ${spacing} top-1/3`}>
+    <FormControl {...props} fullWidth className={`relative ${props?.className}`}>
+      <div className={`absolute ${left} ${spacing} top-1/3`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -58,6 +58,7 @@ const ReactHookFormSelect: React.FC<any> = ({
         id={labelId}
         sx={{
           color: error && '#ce1126',
+          left:-4
         }}
       >
         {label}
@@ -128,7 +129,6 @@ const ReactHookFormSelect: React.FC<any> = ({
               labelId={labelId}
               label={label}
             >
-
               {children}
             </Select>
           )}

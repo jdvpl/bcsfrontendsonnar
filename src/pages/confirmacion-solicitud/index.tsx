@@ -66,7 +66,7 @@ function ApplicationApproval() {
         {valuesMortgage?.choseOffice ? (
           <div className="mt-3">
             <Card
-              className="xs:w-[290px] sm:w-[343px] md:w-[448px]  min-h-[76px]  bg-[#F3F4F6] pt-[12px] pb-[12px] pl-[16px] rounded-[8px] mb-[12px] font-light m-auto"
+              className="xs:w-[290px] sm:w-[343px] md:w-[448px]  min-h-[76px]  bg-[#F3F4F6] pt-[12px] pb-[12px] pl-[16px] pr-[16px] rounded-[8px] mb-[12px] font-light m-auto"
               title="Continuación proceso"
               urlsvgendicon=""
               value={`${valuesMortgage?.office?.address

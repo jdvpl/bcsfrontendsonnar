@@ -14,10 +14,11 @@ export default function useDeleteKeys() {
         document_type: data?.document_type,
         document_number: data?.document_number,
       };
-    {
-        data?.document_number ?
-        delKeysRedis(body):null
+
+    if(data?.document_number){
+      delKeysRedis(body)
     }
+    
     sessionStorage.clear()
   
   });

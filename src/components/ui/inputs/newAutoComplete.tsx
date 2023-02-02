@@ -37,7 +37,7 @@ const NewAutoComplete: React.FC<InputProps> = ({
   const filterOptions = (options: any, state: any) => {
     return defaultFilterOptions(options, state).slice(0, OPTIONS_LIMIT);
   };
-  const [initialBorder, setBorder] = useState('#B0C2CD');
+  const [initialBorder, setBorder] = useState('#798c98a6');
   const [internalState, setInternalState] = useState('');
 
   const arrayCitys: any[] = cityData.details;
@@ -48,11 +48,11 @@ const NewAutoComplete: React.FC<InputProps> = ({
       data-testid={'searchAutocomplete'}
       itemScope
       itemType="http://schema.org/Person"
-      className="flex mt-[16px] flex-col justify-start"
+      className="flex flex-col justify-start"
     >
       {/* eslint-disable-line no-use-before-define */}
 
-      <div className="mt-[1px] position-relative" id={id}>
+      <div className="position-relative" id={id}>
         <div
           className={`position-absolute h-full 'top-[3px]'
             } left-[7px] flex justify-center items-center `}
@@ -94,10 +94,21 @@ const NewAutoComplete: React.FC<InputProps> = ({
             fontSize: '14px',
             '.MuiFormLabel-root': {
               fontSize: '14px',
-              width: 'fit-content',
-              // left: '18px !important',
+              width: 'fit-content !important',
             },
-            ',MuiInputLabel-outlined': {
+            '&.Mui-focused .MuiFormLabel-root': {
+              fontSize: '14px',
+              width: 'fit-content !important',
+              color: '#0072c8',
+              paddingLeft: '4px',
+              margin: '0px',
+              left: '-4px',
+            },
+            '&:hover .MuiOutlinedInput-notchedOutline': {
+              borderColor: '#2972C8',
+              borderWidth: '1px',
+            },
+            '.MuiInputLabel-outlined': {
               fontSize: '14px',
             },
             '.MuiOutlinedInput-notchedOutline': {
@@ -106,6 +117,10 @@ const NewAutoComplete: React.FC<InputProps> = ({
             },
             '.MuiInputBase-root': {
               paddingTop: '6px !important',
+              borderColor: initialBorder,
+            },
+            '&.Mui-focused .MuiInputBase-root': {
+              borderColor: 'red',
             },
             '.MuiOutlinedInput-root': {
               paddingTop: '6px !important',
@@ -117,11 +132,11 @@ const NewAutoComplete: React.FC<InputProps> = ({
               borderWidth: '1px !important',
             },
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#0072C8',
+              borderColor: '#2972C8',
               borderWidth: '1px !important',
             },
-            '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#0072C8 !important',
+            '&:hover .MuiOutlinedInput-notchedOutline > label': {
+              borderColor: '#2972C8 !important',
               borderWidth: '1px',
             },
             '.MuiOutlinedInput-notchedOutline > span': {

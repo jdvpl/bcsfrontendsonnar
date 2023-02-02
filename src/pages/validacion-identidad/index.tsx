@@ -61,7 +61,7 @@ const Index: React.FC = () => {
               <ValidationForm
                 questions={data?.items}
                 onSubmit={(dataSend: any) => {
-                  onSubmitResponse(dataSend, dataTU, router, setDataValid, setDataNumber);
+                  onSubmitResponse(dataSend, dataTU, router, setDataValid, setDataNumber,dataQuestions?.processId);
                   setprogress('75%');
                 }}
               />
