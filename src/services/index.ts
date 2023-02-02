@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { OTPCodeRequest, ValidateOTC } from '../components/custom/otp';
-import { clientAxiosKYC } from '../config/AxiosKYC';
 import { clientAxiosBackend } from '../config/AxiosMortgage';
 import { clientAxiosMock } from '../config/AxiosMock';
 import useAES from '../hooks/useAES';
@@ -8,11 +7,9 @@ import { headersBack } from './HeaderBack';
 import { headersKYC } from './HeadersKYC';
 import { iFormDataSimulation } from '../interfaces';
 import { iFormBasicData } from '../interfaces/basicDataProps';
-
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
 const KEYSARLAFT = process.env.KEYSARLAFT;
-
 
 //? this save the authorization data.
 /**

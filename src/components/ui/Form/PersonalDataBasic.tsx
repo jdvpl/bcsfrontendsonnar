@@ -15,7 +15,7 @@ import { HelperText } from '../inputs/HelperText';
 import OfficeBranch from '../../commons/OfficeBranch';
 import Modal from '../Modal';
 import usePersonalData from '../../../hooks/usePersonalData';
-import { calculateAge, isValidDate, validateAddress } from '../../../utils';
+import { validateAddress } from '../../../utils';
 
 function PersonalDataBasic({ userInfo }: any) {
   const router = useRouter();
@@ -27,7 +27,6 @@ function PersonalDataBasic({ userInfo }: any) {
     clearErrors,
     control,
     setValue,
-    getFieldState,
     // register,
     formState: { errors, isValid },
   } = useForm<iPersonalData>({ mode: 'onChange' });
@@ -37,14 +36,11 @@ function PersonalDataBasic({ userInfo }: any) {
     title: <span className='md:text-[2rem] font-poppinsSemiBold'>Si sus datos han cambiado actualícelos llamando a la línea amiga</span>,
     id: '',
   });
-
   const currentAddress = watch('currentAddress', '');
   const yearDt = watch('yearDt', '');
   const dayDt = watch('dayDt', '');
   const monthDt = watch('monthDt', '');
-
   const [, setDataUser] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
-
   const onSubmit = async (data: iPersonalData) => {
     const birthDate = `${data.yearDt}-${data.monthDt}-${data.dayDt}`;
     const birthCity = data.birthCity?.option;
@@ -61,8 +57,7 @@ function PersonalDataBasic({ userInfo }: any) {
     setDataUser(dataSend);
     router.push(routes.sarlaft);
   };
-
-  usePersonalData(setValue, userInfo);
+  usePersonalData(setValue, userInfo, setError, clearErrors, dayDt, monthDt, yearDt);
   const showPopup = () => {
     if (userInfo.isClient) {
       setShowModal(true);
@@ -71,40 +66,6 @@ function PersonalDataBasic({ userInfo }: any) {
   const closeModal = () => {
     setShowModal(false);
   };
-
-  useEffect(() => {
-    clearErrors('dayDt');
-    if (dayDt && monthDt && yearDt.length === 4) {
-      const age = calculateAge(`${dayDt}/${monthDt}/${yearDt}`);
-      if (age < 19 || age > 71) {
-        setError(
-          'dayDt',
-          {
-            type: 'error',
-            message: 'Fecha inválida',
-          },
-          {
-            shouldFocus: true,
-          }
-        );
-      }
-      if (!isValidDate(parseInt(yearDt), parseInt(monthDt), parseInt(dayDt))) {
-        setError(
-          'dayDt',
-          {
-            type: 'error',
-            message: 'Fecha inválida',
-          },
-          {
-            shouldFocus: true,
-          }
-        );
-      }
-    }
-  }, [yearDt, dayDt, monthDt]);
-
-  usePersonalData(setValue, userInfo)
-
   return (
     <div data-testid="FormQuotaTest" className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto " id='personalDataForm'>
       {showModal && (
