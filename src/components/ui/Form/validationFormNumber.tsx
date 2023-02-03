@@ -9,28 +9,22 @@ import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import ContainerButtonForm from './ContainerButtonForm';
 import { SesionStorageKeys } from '../../../session';
 import useValidationFormNumber from '../../../hooks/useValidationFormNumber'
-
 interface FormProps {
   isLoading?: boolean;
   defaultValues?: string;
   questions: Question;
 }
-
 export interface Question {
   description: string;
   options: Answer[];
 }
-
 interface Answer {
   id: string | number;
   option: string;
 }
-
 export interface FormData {
   number: number | string;
 }
-const KEY = process.env.KEYENCRYPTADIGITAL;
-
 export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
   const [dataTU, setDataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const [, setEncript] = useSessionStorage(SesionStorageKeys.dataTuEncripPhone.key, '');
@@ -38,7 +32,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
     SesionStorageKeys.dataProcessBiometry.key,
     ''
   );
-  const [loaded, setLoaded] = useState(false);
+  const [, setLoaded] = useState(false);
   const router = useRouter();
   const {
     handleSubmit,
@@ -51,7 +45,6 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
   } = useForm<FormData>({
     mode: 'onChange',
   });
-
   const inputValues = watch('number');
   const variants = {
     hidden: { opacity: 1, x: 350, y: 0 },
@@ -65,7 +58,6 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
     }
     clearErrors('number');
   }, [clearErrors, inputValues, setError]);
-
   const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry)
   return (
     <motion.div
