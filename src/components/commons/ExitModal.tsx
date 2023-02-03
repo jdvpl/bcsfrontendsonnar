@@ -21,7 +21,7 @@ function ExitModal({ setshowModalExit }: any) {
         <Button
           isLanding="w-full xs:w-[250px] sm:w-[253px] md:w-[253px] lg:w-[343px]"
           type="submit"
-          data-testid="advisoryFormtest"
+          data-testid="continueBtn"
           id="btn-next"
           onClick={closeModal}
         >
@@ -33,7 +33,7 @@ function ExitModal({ setshowModalExit }: any) {
             isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[375px] shadow-none"
             onClick={() => gotoHomePage()}
             name="solicitarCredito"
-            data-testid="btn-closeModal"
+            data-testid="btn-closeModalExit"
             tabIndex={0}
             id="btn-next"
             variant="secondary"

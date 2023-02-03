@@ -19,7 +19,6 @@ export default function useValidations(
   stratum: any,
   router: any,
   errors: any,
-
 ) {
   const handleClearErrors = () => {
     clearErrors('typeHouse');

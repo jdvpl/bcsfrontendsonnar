@@ -64,10 +64,10 @@ export function CreditDataForm() {
   useEffect(() => {
     setValue('financeValue', dataForm?.financeValue || 0);
     setValue('houseValue', dataForm?.houseValue || 0);
-    setValue('termFinance', dataForm?.termFinance || 0);
+    setValue('termFinance', dataForm?.termFinance || undefined);
     setValue('typeHouse', 'novis');
     setValue('houseStatus', 'used');
-    setValue('stratum', 0);
+    setValue('amortizationType', 'Pesos')
   }, []);
   return (
     <div className="flex flex-col items-center">
@@ -209,16 +209,25 @@ export function CreditDataForm() {
           </ReactHookFormSelect>
         </div>
 
-        <Input
-          type="text"
-          classNameInput="text-complementario-60"
-          labelColor="text-primario-20"
-          defaultValue="Pesos"
-          inputMode="text"
-          disabled
+        <ReactHookFormSelect
+          onChange={(e: any) => setValue('amortizationType', e.target.value)}
+          placeholder="Tipo de amortización"
           label="Tipo de amortización"
-        />
-
+          defaultValue="Pesos"
+          control={control}
+          left="right4"
+          name="amortizationType"
+          className="w-full"
+          margin="normal"
+          rules={{ required: true }}
+        >
+          <MenuItem value="Pesos">
+            Pesos
+          </MenuItem>
+          <MenuItem value="uvr" disabled>
+            UVR
+          </MenuItem>
+        </ReactHookFormSelect>
         {/* Card Chose Housing */}
         <div className="cardShadow min-h-[106px] rounded-xl pt-[24px] pb-[27px] mb-[6px] px-[24px] w-full flex flex-col gap-4">
           <div>

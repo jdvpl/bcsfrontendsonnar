@@ -4,13 +4,11 @@ import { clientAxiosBackend } from '../config/AxiosMortgage';
 import { clientAxiosMock } from '../config/AxiosMock';
 import useAES from '../hooks/useAES';
 import { headersBack } from './HeaderBack';
-import { headersKYC } from './HeadersKYC';
 import { iFormDataSimulation } from '../interfaces';
 import { iFormBasicData } from '../interfaces/basicDataProps';
-import { clientAxiosCommons } from '../config/AxiosDeleteKeys';
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
-const KEYSARLAFT = process.env.KEYSARLAFT;
+const KEYKYCHASH = process.env.KEYKYCHASH;
 
 //? this save the authorization data.
 /**
@@ -53,7 +51,7 @@ export const getQuestions = async (data: any) => {
     const { data: response } = await clientAxiosBackend.post(
       '/api-composer/composer/allow-list',
       { data: dataInfo },
-      headersKYC
+      headersBack
     );
     return {
       response: {
@@ -85,7 +83,7 @@ export const sendQuestions = async (data: any) => {
       // '/customers/answer',
       '/api-composer/composer/answer',
       { data: dataInfo },
-      headersKYC
+      headersBack
     );
     return {
       response: {
@@ -105,7 +103,7 @@ export const loginAccountSendRequest = async (data: any) => {
       // '/customers/answer',
       '/customer/user-auth',
       { data: dataInfo },
-      headersKYC
+      headersBack
     );
     return {
       response: {
@@ -125,7 +123,7 @@ export const sendNumber = async (data: any) => {
     const { data: response } = await clientAxiosMock.post(
       '/identity-user/otp',
       { data: dataInfo },
-      headersKYC
+      headersBack
     );
     return {
       response: {
@@ -145,7 +143,7 @@ export const validateOTOCode = async (data: ValidateOTC) => {
     const { data: response } = await clientAxiosMock.post(
       '/identity-user/pin',
       { data: dataInfo },
-      headersKYC
+      headersBack
     );
     return {
       response: {
@@ -164,7 +162,7 @@ export const reSendOTPCode = async (data: OTPCodeRequest) => {
     const { data: response } = await clientAxiosMock.post(
       '/identity-user/resend',
       { data: dataInfo },
-      headersKYC
+      headersBack
     );
     return {
       response: {
@@ -230,12 +228,12 @@ export const getBasicData = async (data: iFormBasicData) => {
 
 export const fetchSarlaft = async (body: any) => {
   try {
-    const bodyencript = await allResponse(body, KEYSARLAFT)
+    const bodyencript = await allResponse(body, KEYKYCHASH)
     const { data: response } = await clientAxiosBackend.post(
       '/sarlaft/sarlaft-questions',
       { data: bodyencript }
     );
-    const data = await allResponseDecrypted(response.data, KEYSARLAFT)
+    const data = await allResponseDecrypted(response.data, KEYKYCHASH)
     return {
       response: {
         result: data,
@@ -286,8 +284,8 @@ export const getOffices = async () => {
 
 export const delKeysRedis = async (body: any) => {
   try {
-    const { data: response } = await clientAxiosCommons.post(
-      '/delete-keys',
+    const { data: response } = await clientAxiosBackend.post(
+      'commons/delete-keys',
       body
     );
     return {

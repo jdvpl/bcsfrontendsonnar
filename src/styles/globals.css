@@ -1325,4 +1325,5 @@ svg {
 .css-3kiwpu .MuiFormLabel-root {
   font-size: 14px;
   width: fit-content;
+  left: 20px !important ;
 }
