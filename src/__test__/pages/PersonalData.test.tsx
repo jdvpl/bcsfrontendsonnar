@@ -10,7 +10,79 @@ import { createMockRouter } from '../utils/createMockRouter';
 
 describe('PersonalData', () => {
 
+  it('<PersonalData/>', () => {
+    const router = createMockRouter({});
+    const { baseElement } = render(<RouterContext.Provider value={router} >
+      <PersonalData />
+    </RouterContext.Provider >);
+    expect(baseElement).toBeTruthy();
+  })
 
+  it('should Close Modal', async () => {
+    const router = createMockRouter({});
+    const { getByTestId } = render(<RouterContext.Provider value={router} >
+      <PersonalData />
+    </RouterContext.Provider >);
+    const btnCloseModal = getByTestId('btn-close');
+    const modalDataTest = getByTestId('modalDataTest');
+    await userEvent.click(btnCloseModal);
+    expect(modalDataTest).not.toBeInTheDocument()
+  });
+
+
+  it('should Close Modal KeyDowm', async () => {
+    const router = createMockRouter({});
+    const { getByTestId } = render(<RouterContext.Provider value={router} >
+      <PersonalData />
+    </RouterContext.Provider >)
+    const btnCloseModal = getByTestId('btn-close');
+    const modalDataTest = getByTestId('modalDataTest');
+    fireEvent.keyDown(btnCloseModal);
+    expect(modalDataTest).not.toBeInTheDocument()
+  });
+  it('should Close Modal with other button', async () => {
+    const router = createMockRouter({});
+    const { getByTestId } = render(<RouterContext.Provider value={router} >
+      <PersonalData />
+    </RouterContext.Provider >);
+    const btnCloseModal = getByTestId('btn-closeModal');
+    const modalDataTest = getByTestId('modalDataTest');
+    await userEvent.click(btnCloseModal);
+    expect(modalDataTest).not.toBeInTheDocument()
+  });
+  it('should open Form', async () => {
+    const router = createMockRouter({});
+    const { getByTestId } = render(<RouterContext.Provider value={router} >
+      <PersonalData />
+    </RouterContext.Provider >);
+    const btnOpenForm = getByTestId('btn-advisoryTest');
+    const modalDataTest = getByTestId('modalDataTest');
+    await userEvent.click(btnOpenForm);
+    const advisoryType = document.getElementsByName("advisoryType")[0];
+    const btnadvisoryFormtest = getByTestId('advisoryFormtest');
+    fireEvent.input(advisoryType, { target: { value: 'campaign' } });
+    await userEvent.click(btnadvisoryFormtest);
+    expect(modalDataTest).not.toBeInTheDocument()
+  });
+  it('should open Form', async () => {
+    const router = createMockRouter({});
+    const { getByTestId, queryByTestId } = render(<RouterContext.Provider value={router} >
+      <PersonalData />
+    </RouterContext.Provider >)
+    const btnOpenForm = getByTestId('btn-advisoryTest');
+    const modalDataTest = getByTestId('modalDataTest');
+    await userEvent.click(btnOpenForm);
+    const advisoryType = document.getElementsByName("advisoryType")[0];
+    const btnadvisoryFormtest = getByTestId('advisoryFormtest');
+    fireEvent.input(advisoryType, { target: { value: 'other' } });
+    const inputDocument = queryByTestId('otherAdvioryTypeTest');
+
+    fireEvent.input(inputDocument!, { target: { value: 'React' } });
+    fireEvent.paste(inputDocument!, "data");
+
+    await userEvent.click(btnadvisoryFormtest);
+    expect(modalDataTest).not.toBeInTheDocument()
+  });
 
   it('should fill form', async () => {
     const userInfo = {

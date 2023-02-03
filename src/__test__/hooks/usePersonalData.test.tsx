@@ -1,9 +1,12 @@
 import { useEffect } from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import usePersonalData from '../../hooks/usePersonalData'
+import { createMockRouter } from '../utils/createMockRouter';
 
 
 describe('usePersonalData', () => {
+  const router = createMockRouter({});
+  const setData = jest.fn();
   it('divides the birth date into year, month, and day', () => {
     const setValue = jest.fn();
     const userInfo = {
@@ -15,7 +18,8 @@ describe('usePersonalData', () => {
     const setError = jest.fn();
     const clearErrors = jest.fn();
 
-    renderHook(() => usePersonalData(setValue, userInfo, setError, clearErrors, '32', '01', '2000'));
+
+    renderHook(() => usePersonalData(setValue, userInfo, setError, clearErrors, '32', '01', '2000', router, setData));
 
     expect(setValue).toHaveBeenCalledWith('yearDt', '2000');
     expect(setValue).toHaveBeenCalledWith('monthDt', '01');
@@ -33,7 +37,7 @@ describe('usePersonalData', () => {
     const setError = jest.fn();
     const clearErrors = jest.fn();
 
-    renderHook(() => usePersonalData(setValue, userInfo, setError, clearErrors, '32', '01', '2000'));
+    renderHook(() => usePersonalData(setValue, userInfo, setError, clearErrors, '32', '01', '2000', router, setData));
 
     expect(setValue).toHaveBeenCalledWith('phone', '123456789');
     expect(setValue).toHaveBeenCalledWith('email', 'test@example.com');
@@ -49,7 +53,7 @@ describe('usePersonalData', () => {
     const setValue = jest.fn();
     const setError = jest.fn();
     const clearErrors = jest.fn();
-    const { result } = renderHook(() => usePersonalData(setValue, userInfo, setError, clearErrors, '32', '01', '2000'));
+    const { result } = renderHook(() => usePersonalData(setValue, userInfo, setError, clearErrors, '32', '01', '2000', router, setData));
     expect(setValue).toHaveBeenCalledWith('yearDt', '1980');
     expect(setValue).toHaveBeenCalledWith('monthDt', '01');
     expect(setValue).toHaveBeenCalledWith('dayDt', '01');
@@ -63,7 +67,7 @@ describe('usePersonalData', () => {
     const userInfo = { birthDt: '2000-01-01' };
     const setError = jest.fn();
     const clearErrors = jest.fn();
-    const { result } = renderHook(() => usePersonalData(setValue, userInfo, setError, clearErrors, '01', '01', '1800'));
+    const { result } = renderHook(() => usePersonalData(setValue, userInfo, setError, clearErrors, '01', '01', '1800', router, setData));
 
     expect(setError).toHaveBeenCalledWith(
       'dayDt',
@@ -81,7 +85,7 @@ describe('usePersonalData', () => {
     const userInfo = { birthDt: '2000-01-01' };
     const setError = jest.fn();
     const clearErrors = jest.fn();
-    const { result } = renderHook(() => usePersonalData(setValue, userInfo, setError, clearErrors, '32', '01', '2000'));
+    const { result } = renderHook(() => usePersonalData(setValue, userInfo, setError, clearErrors, '32', '01', '2000', router, setData));
 
     expect(setError).toHaveBeenCalledWith(
       'dayDt',
@@ -99,7 +103,7 @@ describe('usePersonalData', () => {
     const userInfo = { birthDt: '2000-01-01' };
     const setError = jest.fn();
     const clearErrors = jest.fn();
-    const { result } = renderHook(() => usePersonalData(setValue, userInfo, setError, clearErrors, '01', '01', '1800'));
+    const { result } = renderHook(() => usePersonalData(setValue, userInfo, setError, clearErrors, '01', '01', '1800', router, setData));
 
     expect(setError).toHaveBeenCalledWith(
       'dayDt',
@@ -123,7 +127,7 @@ describe('usePersonalData', () => {
     };
     const setError = jest.fn();
     const clearErrors = jest.fn();
-    const { result } = renderHook(() => usePersonalData(setValue, userInfo, setError, clearErrors, '02', '01', '2000'));
+    const { result } = renderHook(() => usePersonalData(setValue, userInfo, setError, clearErrors, '02', '01', '2000', router, setData));
 
     expect(setValue).toHaveBeenCalledWith('yearDt', '2000');
     expect(setValue).toHaveBeenCalledWith('monthDt', '01');
