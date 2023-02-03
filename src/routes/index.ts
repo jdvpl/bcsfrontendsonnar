@@ -12,6 +12,7 @@ export const routes = {
   errorValidacion: '/validacion/error-validacion/',
   validacionErrorDiario: '/validacion/error-validacionDiario/',
   validacionBlock: '/validacion/error-validacionBlock/',
+  errorCreditBankApplication: '/validacion/rechazo-solicitud',
   inactivityScreen: '/inactividad',
   simulador: '/simulador',
   simuladorResumen: '/simulador/resumen',

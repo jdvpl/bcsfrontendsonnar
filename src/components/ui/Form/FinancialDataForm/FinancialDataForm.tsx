@@ -50,7 +50,11 @@ function FinancialDataForm() {
       data.contractType = null;
     }
     setFinancialDataForm(data);
-    router.push(routes.creditData)
+    if (data.contractType === "06") {
+      router.push(routes.errorCreditBankApplication)
+    } else {
+      router.push(routes.creditData)
+    }
   }
 
   useValidationFinancialDataForm(occupation, enterprise, contractType, employeeYear, employeeMonth, monthlySalary, monthlyExpenses, realStateValue, debtValue, clearErrors, setError);

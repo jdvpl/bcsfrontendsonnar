@@ -20,7 +20,7 @@ function Advisory({ setShowModal }: any) {
       {showMessage ? (
         <div className='mt-[48px] flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 '>
           <Button
-            isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[343px] mb-[12px] shadow-none"
+            isLanding="w-full xs:w-[250px] sm:w-[253px] md:w-[253px] lg:w-[343px] mb-[12px] shadow-none"
             name="solicitarCredito"
             data-testid="btn-advisoryTest"
             tabIndex={0}
