@@ -19,4 +19,5 @@ export interface SimulationData {
   office?: string;
   stratum?: number;
   houseStatus?: string;
+  amortizationType?: string;
 }

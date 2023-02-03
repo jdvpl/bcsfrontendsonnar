@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { maxHouseValueNoVis, maxHouseValueVis, minHouseValueNoVis, minHouseValueVis, SMMLV } from '../../../../lib/simulator';
+import { routes } from '../../../../routes';
 
 export default function useValidations(
   typeHouse: string,
@@ -9,7 +10,15 @@ export default function useValidations(
   clearErrors: any,
   setError: any,
   setPercentageFinance: any,
-  setValue: any
+  setValue: any,
+  setDataForm: any,
+  houseStatus: any,
+  insuranceCheck: any,
+  choseOffice: any,
+  office: any,
+  stratum: any,
+  router: any,
+  errors: any,
 ) {
   const handleClearErrors = () => {
     clearErrors('typeHouse');
@@ -80,7 +89,60 @@ export default function useValidations(
     validatefinanceValue();
     calculatePercentageFinance();
     validateTypeHouse();
-  }, [houseValue, financeValue, termFinance,typeHouse]);
+  }, [houseValue, financeValue, termFinance, typeHouse]);
+
+  const onSubmit = () => {
+    // eslint-disable-next-line no-console
+    setDataForm({
+      typeHouse,
+      houseStatus,
+      houseValue,
+      financeValue,
+      termFinance,
+      insuranceCheck,
+      choseOffice,
+      office,
+      stratum,
+    });
+    router.push(routes.ResumenSolicitud);
+  };
+
+  const isValid = () => {
+    let formIsValid = !(Object.entries(errors).length === 0);
+    const body = {
+      typeHouse,
+      houseValue,
+      financeValue,
+      termFinance,
+      insuranceCheck,
+      choseOffice,
+      office,
+      stratum,
+    };
+
+    var values = Object.values(body);
+    for (var i = 0; i < values.length; i++) {
+      if (
+        (values[i] === null ||
+          values[i] === undefined ||
+          values[i] === '' ||
+          values[i] === 0) &&
+        choseOffice === true
+      ) {
+        formIsValid = true;
+        break;
+      } else if (
+        (values[i] === null ||
+          values[i] === undefined ||
+          values[i] === '' ||
+          values[i] === 0) &&
+        i !== 6
+      ) {
+        formIsValid = true;
+      }
+    }
+    return formIsValid;
+  };
 
   return {
     handleClearErrors,
@@ -88,5 +150,7 @@ export default function useValidations(
     validatefinanceValue,
     calculatePercentageFinance,
     automationFinanceValue,
+    onSubmit,
+    isValid
   };
 }

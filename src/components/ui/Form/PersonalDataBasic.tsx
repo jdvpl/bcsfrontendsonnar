@@ -49,25 +49,8 @@ function PersonalDataBasic({ userInfo }: any) {
   const dayDt = watch('dayDt', '');
   const monthDt = watch('monthDt', '');
   const [, setDataUser] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
-  const onSubmit = async (data: iPersonalData) => {
-    const birthDate = `${data.yearDt}-${data.monthDt}-${data.dayDt}`;
-    const birthCity = data.birthCity?.option;
-    const currentCity = data.currentCity?.option;
-    const dataSend = {
-      birthDate,
-      birthCity,
-      currentCity,
-      hasAdviser: data?.currentCity?.hasAdviser,
-      nameAdviser: data?.currentCity?.nameAdviser,
-      phone: data.phone,
-      gender: data.gender,
-      currentAddress: data.currentAddress,
-      email: data.email,
-    };
-    setDataUser(dataSend);
-    router.push(routes.sarlaft);
-  };
-  usePersonalData(setValue, userInfo, setError, clearErrors, dayDt, monthDt, yearDt);
+
+  const { onSubmit } = usePersonalData(setValue, userInfo, setError, clearErrors, dayDt, monthDt, yearDt, router, setDataUser);
   const showPopup = () => {
     if (userInfo.isClient) {
       setShowModal(true);

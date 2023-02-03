@@ -1,4 +1,6 @@
 import { useEffect } from "react";
+import { iPersonalData } from "../interfaces/dataUserBasic";
+import { routes } from "../routes";
 import { calculateAge, isValidDate } from "../utils";
 
 export default function usePersonalData(setValue: any, userInfo: any,
@@ -6,6 +8,8 @@ export default function usePersonalData(setValue: any, userInfo: any,
   clearErrors: any, dayDt: any,
   monthDt: any,
   yearDt: any,
+  router: any,
+  setDataUser: any
 ) {
 
   const date = userInfo.birthDt.split('-');
@@ -49,4 +53,24 @@ export default function usePersonalData(setValue: any, userInfo: any,
     }
   }, [yearDt, dayDt, monthDt]);
 
+
+  const onSubmit = async (data: iPersonalData) => {
+    const birthDate = `${data.yearDt}-${data.monthDt}-${data.dayDt}`;
+    const birthCity = data.birthCity?.option;
+    const currentCity = data.currentCity?.option;
+    const dataSend = {
+      birthDate,
+      birthCity,
+      currentCity,
+      hasAdviser: data?.currentCity?.hasAdviser,
+      nameAdviser: data?.currentCity?.nameAdviser,
+      phone: data.phone,
+      gender: data.gender,
+      currentAddress: data.currentAddress,
+      email: data.email,
+    };
+    setDataUser(dataSend);
+    router.push(routes.sarlaft);
+  };
+  return { onSubmit };
 }
