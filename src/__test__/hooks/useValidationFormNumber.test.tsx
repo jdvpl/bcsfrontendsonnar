@@ -245,6 +245,20 @@ describe('useValidationFormNumber', () => {
 
     expect(router.push).toHaveBeenCalledWith('/validacion-biometrica/');
   });
+  it('should redirect to `/validacion-biometrica/` when response status is 404 a', async () => {
+    const formData = { number: 123456 };
+    sendNumber.mockImplementation(() => Promise.resolve({
+      error: true,
+      status: 404,
+      response: {
+        internal_code: 'PF-09'
+      }
+    }));
+
+    await onSubmit(formData);
+
+    expect(router.push).toHaveBeenCalledWith('/validacion/error/');
+  });
 });
 
 
