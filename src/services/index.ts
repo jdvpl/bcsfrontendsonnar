@@ -6,6 +6,8 @@ import useAES from '../hooks/useAES';
 import { headersBack } from './HeaderBack';
 import { iFormDataSimulation } from '../interfaces';
 import { iFormBasicData } from '../interfaces/basicDataProps';
+import { useSessionStorage } from '../hooks/useSessionStorage';
+import { SesionStorageKeys } from '../session';
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
 const KEYKYCHASH = process.env.KEYKYCHASH;
