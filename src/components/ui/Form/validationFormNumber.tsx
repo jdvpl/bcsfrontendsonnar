@@ -8,8 +8,7 @@ import Heading from '../Headers';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import ContainerButtonForm from './ContainerButtonForm';
 import { SesionStorageKeys } from '../../../session';
-import { sendNumber } from '../../../services';
-import { routes } from '../../../routes';
+import useValidationFormNumber from '../../../hooks/useValidationFormNumber'
 
 interface FormProps {
   isLoading?: boolean;
@@ -39,7 +38,6 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
     SesionStorageKeys.dataProcessBiometry.key,
     ''
   );
-
   const [loaded, setLoaded] = useState(false);
   const router = useRouter();
   const {
@@ -53,11 +51,6 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
   } = useForm<FormData>({
     mode: 'onChange',
   });
-
-  const proccessResponse = (redirect: string) => {
-    setLoaded(true);
-    setTimeout(() => router.push(redirect), 1000);
-  };
 
   const inputValues = watch('number');
   const variants = {
@@ -73,51 +66,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
     clearErrors('number');
   }, [clearErrors, inputValues, setError]);
 
-  const onSubmit = async (formData: FormData) => {
-    const body = {
-      document_type: dataTU?.document_type,
-      document_number: dataTU?.document_number,
-      phone: formData.number,
-    };
-
-    const response = await sendNumber(body);
-    if (!response.error) {
-      setDataTU({
-        ...dataTU,
-        personalData: {
-          celular: response.response.data.phone,
-          phoneNumber: formData.number,
-        },
-      });
-      setEncript(formData.number);
-      setTimeout(() => proccessResponse(routes.otp), 1000);
-    } else if (response.status === 403) {
-      const code = response.response.internal_code;
-      switch (code) {
-        case 'VQ-01':
-          router.push('/');
-          break;
-        case 'VQ-03':
-          router.push('/validacion-biometrica/');
-          break;
-        case 'PF-00':
-          router.push('/validacion/error-validacionIdentidad/');
-          break;
-        case 'PF-02':
-          router.push('/validacion/error-validacionSucursal');
-          break;
-        case 'PF-03':
-          setProcessBiometry('no');
-          router.push('/validacion-biometrica/');
-          break;
-        default:
-          router.push('/validacion-biometrica/');
-          break;
-      }
-    } else {
-      router.push('/validacion/error/');
-    }
-  };
+  const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry)
   return (
     <motion.div
       initial="hidden"
