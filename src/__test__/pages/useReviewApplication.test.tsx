@@ -11,4 +11,5 @@ describe('ConsultancyTutorial', () => {
     });
     expect(result.current.insurance).toBe(false);
   });
+
 });

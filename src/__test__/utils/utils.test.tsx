@@ -76,6 +76,11 @@ describe('clearSessionStorage', () => {
     const result = validateAddress(address);
     expect(result).toEqual({ isError: false, message: '' });
   });
+  test('number address', () => {
+    const address = '9999999';
+    const result = validateAddress(address);
+    expect(result).toEqual({ isError: true, message: 'La direccion debe contener caracteres ' });
+  });
   test('valid date', () => {
     const year = 2021;
     const month = 5;

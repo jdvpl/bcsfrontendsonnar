@@ -11,7 +11,7 @@ export default function useSummaryApplication(router: any) {
   const onSubmit = async () => {
     setLoading(true);
     const response = await riskBoxes(data);
-    if (!response.error) {
+    if (!response?.error) {
       router?.push(routes.approvalDataPage);
     }
     setLoading(false);
