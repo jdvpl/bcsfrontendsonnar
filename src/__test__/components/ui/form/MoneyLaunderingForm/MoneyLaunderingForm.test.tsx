@@ -1,4 +1,5 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
+import { debug } from 'console';
 import React from 'react';
 import { MoneyLaunderingForm } from '../../../../../components/ui/Form/MoneyLaunderingForm/MoneyLaunderingForm';
 
@@ -31,3 +32,14 @@ describe('<HouseSimulator />', () => {
     expect(component.container.querySelectorAll('.cardShadow').length).toBe(3);
   });
 });
+
+describe('<MoneyLaunderingForm/>', () => {
+  test('should check "yes" option', async () => {
+    const { findAllByTestId } = render(<MoneyLaunderingForm />);
+    const firstOption = await findAllByTestId('firstOption')[0];
+    fireEvent.click(firstOption);
+    const firstOptionSelected = await findAllByTestId('firstOptionSelected')[0];
+    debug(firstOptionSelected)
+    // expect(firstOptionSelected).toBeInTheDocument();
+  })
+})

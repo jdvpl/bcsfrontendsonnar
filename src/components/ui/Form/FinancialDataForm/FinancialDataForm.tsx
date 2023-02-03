@@ -188,7 +188,7 @@ function FinancialDataForm() {
                           tabIndex={0}
                           id="employeeMonth"
                           dataTestId='employeeMonthTest'
-                          inputMode="text"
+                          inputMode="numeric"
                           required
                           label="Meses"
                           onChange={(e: any) => {
