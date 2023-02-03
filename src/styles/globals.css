@@ -1315,15 +1315,6 @@ svg {
   transform: none !important;
 }
 
-.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
-  padding-left: 0.2rem !important;
-}
-
 #personalDataForm .MuiPaper-elevation {
   display: none !important;
-}
-.css-3kiwpu .MuiFormLabel-root {
-  font-size: 14px;
-  width: fit-content;
-  left: 20px !important ;
 }
