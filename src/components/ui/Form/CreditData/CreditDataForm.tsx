@@ -11,7 +11,6 @@ import { yearsAvailable } from '../../../../lib/simulator';
 import useValidations from './useValidations';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
-import { routes } from '../../../../routes';
 import AutoCompleteCustom from '../../../../hooks/autocomplete';
 import useCreditForm from '../../../../hooks/useCreditForm';
 
@@ -33,9 +32,7 @@ export function CreditDataForm() {
     setValue,
     formState: { errors },
   } = useForm<SimulationData>({ mode: 'onChange' });
-
   const { changeOffice, choseOffice } = useCreditForm({ setOffices });
-
   const houseStatus = watch('houseStatus', 'new');
   const typeHouse = watch('typeHouse', 'novis');
   const houseValue = watch('houseValue', dataForm?.houseValue || 0);
@@ -43,30 +40,13 @@ export function CreditDataForm() {
   const termFinance = watch('termFinance', dataForm?.termFinance || 0);
   const office = watch('office', dataForm?.office || 0);
   const stratum = watch('stratum', 0);
-
   const renderPercentage = () => {
     if (Math.floor(percentageFinance * 100) > 100) {
       return `> 100`;
     }
     return Math.floor(percentageFinance * 100);
   };
-  const onSubmit = () => {
-    // eslint-disable-next-line no-console
-    setDataForm({
-      typeHouse,
-      houseStatus,
-      houseValue,
-      financeValue,
-      termFinance,
-      insuranceCheck,
-      choseOffice,
-      office,
-      stratum,
-    });
-    router.push(routes.ResumenSolicitud);
-  };
-
-  const { automationFinanceValue } = useValidations(
+  const { automationFinanceValue, onSubmit, isValid } = useValidations(
     typeHouse,
     houseValue,
     financeValue,
@@ -74,9 +54,13 @@ export function CreditDataForm() {
     clearErrors,
     setError,
     setPercentageFinance,
-    setValue
+    setValue,
+    setDataForm,
+    houseStatus,
+    insuranceCheck,
+    choseOffice,
+    office, stratum, router, errors
   );
-
   useEffect(() => {
     setValue('financeValue', dataForm?.financeValue || 0);
     setValue('houseValue', dataForm?.houseValue || 0);
@@ -85,44 +69,6 @@ export function CreditDataForm() {
     setValue('houseStatus', 'used');
     setValue('stratum', 0);
   }, []);
-
-  const isValid = () => {
-    let formIsValid = !(Object.entries(errors).length === 0);
-    const body = {
-      typeHouse,
-      houseValue,
-      financeValue,
-      termFinance,
-      insuranceCheck,
-      choseOffice,
-      office,
-      stratum,
-    };
-
-    var values = Object.values(body);
-    for (var i = 0; i < values.length; i++) {
-      if (
-        (values[i] === null ||
-          values[i] === undefined ||
-          values[i] === '' ||
-          values[i] === 0) &&
-        choseOffice === true
-      ) {
-        formIsValid = true;
-        break;
-      } else if (
-        (values[i] === null ||
-          values[i] === undefined ||
-          values[i] === '' ||
-          values[i] === 0) &&
-        i !== 6
-      ) {
-        formIsValid = true;
-      }
-    }
-    return formIsValid;
-  };
-
   return (
     <div className="flex flex-col items-center">
       {/* Form When Person chose Hose */}
