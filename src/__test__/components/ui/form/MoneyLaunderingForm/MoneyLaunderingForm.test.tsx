@@ -1,7 +1,7 @@
 import { render, fireEvent } from '@testing-library/react';
-import { debug } from 'console';
 import React from 'react';
 import { MoneyLaunderingForm } from '../../../../../components/ui/Form/MoneyLaunderingForm/MoneyLaunderingForm';
+import '@testing-library/jest-dom';
 
 describe('<HouseSimulator />', () => {
   let component: any;
@@ -35,11 +35,10 @@ describe('<HouseSimulator />', () => {
 
 describe('<MoneyLaunderingForm/>', () => {
   test('should check "yes" option', async () => {
-    const { findAllByTestId } = render(<MoneyLaunderingForm />);
-    const firstOption = await findAllByTestId('firstOption')[0];
+    const { queryAllByTestId, queryByTestId } = render(<MoneyLaunderingForm />);
+    const firstOption = queryAllByTestId('firstOption')[0];
     fireEvent.click(firstOption);
-    const firstOptionSelected = await findAllByTestId('firstOptionSelected')[0];
-    debug(firstOptionSelected)
-    // expect(firstOptionSelected).toBeInTheDocument();
+    const firstOptionSelected = queryByTestId('firstOptionSelected');
+    expect(firstOptionSelected!).toBeInTheDocument();
   })
 })
