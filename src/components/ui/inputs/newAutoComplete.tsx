@@ -166,7 +166,7 @@ const NewAutoComplete: React.FC<InputProps> = ({
                 '.MuiFormLabel-root': {
                   fontSize: '14px',
                   width: 'fit-content !important',
-                  paddingLeft: '20px',
+                  paddingLeft: params?.inputProps?.value ? '0px' : '20px',
                 },
                 '.MuiOutlinedInput-root': {
                   paddingLeft: '30px !important',
