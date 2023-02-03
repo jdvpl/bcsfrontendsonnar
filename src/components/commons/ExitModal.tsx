@@ -1,15 +1,16 @@
-import Router from 'next/router'
+import { useRouter } from 'next/router'
 import React from 'react'
 import { routes } from '../../routes';
 import Button from '../ui/Button'
 
 
 function ExitModal({ setshowModalExit }: any) {
+  const router = useRouter();
   const closeModal = () => {
     setshowModalExit(false)
   }
   const gotoHomePage = () => {
-    Router.replace(routes.home);
+    router.replace(routes.home);
   }
   return (
     <div className='m-auto flex-col mt-8 font-monserratLight mx-5'>
@@ -33,7 +34,7 @@ function ExitModal({ setshowModalExit }: any) {
             isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[375px] shadow-none"
             onClick={() => gotoHomePage()}
             name="solicitarCredito"
-            data-testid="btn-closeModalExit"
+            data-testid="closeModalExit"
             tabIndex={0}
             id="btn-next"
             variant="secondary"
