@@ -217,6 +217,34 @@ describe('useValidationFormNumber', () => {
 
     expect(router.push).toHaveBeenCalledWith('/validacion/error-validacionSucursal');
   });
+  it('should redirect to `/validacion-biometrica/` when response status is 403 and internal_code is `PF-03`', async () => {
+    const formData = { number: 123456 };
+    sendNumber.mockImplementation(() => Promise.resolve({
+      error: true,
+      status: 403,
+      response: {
+        internal_code: 'PF-03'
+      }
+    }));
+
+    await onSubmit(formData);
+
+    expect(router.push).toHaveBeenCalledWith('/validacion-biometrica/');
+  });
+  it('should redirect to `/validacion-biometrica/` when response status is 403 and internal_code is `PF-09`', async () => {
+    const formData = { number: 123456 };
+    sendNumber.mockImplementation(() => Promise.resolve({
+      error: true,
+      status: 403,
+      response: {
+        internal_code: 'PF-09'
+      }
+    }));
+
+    await onSubmit(formData);
+
+    expect(router.push).toHaveBeenCalledWith('/validacion-biometrica/');
+  });
 });
 
 
