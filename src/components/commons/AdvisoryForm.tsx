@@ -68,7 +68,7 @@ function AdvisoryForm({ setShowModal }: any) {
       </p>
       <div className='lg:w-[528px] md:w-[433px] sm:w-[312px] w-[259px] m-auto mt-[41px]'>
         <form onSubmit={handleSubmit(onHandleSubmit)}>
-          <div className=" mt-3 m-auto text-left">
+          <div className="mt-3 m-auto text-left">
             <ReactHookFormSelect
               onChange={(e: any) => setValue('advisoryType', e.target.value)}
               placeholder="Tipo de asesoría"
@@ -89,30 +89,32 @@ function AdvisoryForm({ setShowModal }: any) {
               ))}
             </ReactHookFormSelect>
           </div>
-          {advisoryTypeOption === 'other' ? <div className="flex flex-col mt-4">
-            <Controller
-              rules={{ required: advisoryTypeOption === 'other' }}
-              render={({ field }) => (
-                <Input
-                  helperText='Por favor escribe el tipo de asesoría'
-                  type="text"
-                  error={!!errors.otherAdvisoryType}
-                  dataTestId="otherAdvioryTypeTest"
-                  value={field.value}
-                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                    e.preventDefault();
-                  }}
-                  id="otherAdvisoryType"
-                  inputMode="text"
-                  label="¿Cuál?"
-                  onChange={
-                    (e: any) => setValue('otherAdvisoryType', e.target.value)}
-                />
-              )}
+          <div className="mt-3 m-auto text-left">
+            {advisoryTypeOption === 'other' ? <div >
+              <Controller
+                rules={{ required: advisoryTypeOption === 'other' }}
+                render={({ field }) => (
+                  <Input
+                    helperText='Por favor escribe el tipo de asesoría'
+                    type="text"
+                    error={!!errors.otherAdvisoryType}
+                    dataTestId="otherAdvioryTypeTest"
+                    value={field.value}
+                    onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                      e.preventDefault();
+                    }}
+                    id="otherAdvisoryType"
+                    inputMode="text"
+                    label="¿Cuál?"
+                    onChange={
+                      (e: any) => setValue('otherAdvisoryType', e.target.value)}
+                  />
+                )}
               name="otherAdvisoryType"
               control={control}
             />
           </div> : null}
+          </div>
 
           <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-[50px] pb-[40px]">
             <Button

@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import ExampleInfo from '../../commons/ExampleInfo';
 import Icons from '../icons';
+import { InputAdornment } from '@mui/material';
 interface InputProps {
   placeholder?: string;
   type?: string;
@@ -48,17 +49,11 @@ const NewAutoComplete: React.FC<InputProps> = ({
       data-testid={'searchAutocomplete'}
       itemScope
       itemType="http://schema.org/Person"
-      className="flex flex-col justify-start"
+      className="flex flex-col justify-start relative"
     >
       {/* eslint-disable-line no-use-before-define */}
-
-      <div className="position-relative" id={id}>
-        <div
-          className={`position-absolute h-full 'top-[3px]'
-            } left-[7px] flex justify-center items-center `}
-        >
-          <Icons icon="bcs-search" size="text-[17px]" />
-        </div>
+      <Icons icon="bcs-search" size="text-[17px] absolute left-2 top-3" />
+      <div className="" id={id}>
         <Autocomplete
           filterOptions={filterOptions}
           id={id}
@@ -139,6 +134,9 @@ const NewAutoComplete: React.FC<InputProps> = ({
               borderColor: '#2972C8 !important',
               borderWidth: '1px',
             },
+            '&:hover .MuiOutlinedInput-root': {
+              borderColor: '#2972C8 !important',
+            },
             '.MuiOutlinedInput-notchedOutline > span': {
               paddingLeft: '0px',
               paddingRight: '0px',
@@ -159,17 +157,21 @@ const NewAutoComplete: React.FC<InputProps> = ({
               right: '17px !important',
               top: '20px !important',
             },
-            ' .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root': {
-              left: '18px !important',
-            },
-            '.MuiAutocomplete-input': {
-              paddingLeft: '24px !important',
-            },
           }}
           renderInput={(params) => (
             <TextField
               defaultValue={defaultValue ? defaultValue?.name : undefined}
               {...params}
+              sx={{
+                '.MuiFormLabel-root': {
+                  fontSize: '14px',
+                  width: 'fit-content !important',
+                  paddingLeft: '20px',
+                },
+                '.MuiOutlinedInput-root': {
+                  paddingLeft: '30px !important',
+                },
+              }}
               label={label}
               itemProp="homeLocation"
             />
