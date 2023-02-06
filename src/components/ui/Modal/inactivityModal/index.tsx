@@ -1,9 +1,4 @@
-import { useRouter } from 'next/router';
-import React, { useState, useEffect, useRef } from 'react';
-import { set } from 'react-hook-form';
-import { useIdleTimer } from 'react-idle-timer';
-import { routes } from '../../../../routes';
-import { clearSessionStorage } from '../../../../utils';
+import React from 'react';
 import Button from '../../Button';
 import Icons from '../../icons';
 import Typography from '../../Typography';
@@ -11,18 +6,15 @@ import useInactivityModal from './useInactivityModal';
 
 export function InactivityModal() {
   const { onCloseModal, getOutToHome, isOpen, timer } = useInactivityModal();
-
   return (
     <div
       id="modal"
-      className={`bg-black/70 w-screen h-screen z-40 fixed top-0 left-0 flex justify-center content-center ${
-        isOpen ? 'overflow-y-auto' : 'hidden'
-      }`}
+      className={`bg-black/70 w-screen h-screen z-40 fixed top-0 left-0 flex justify-center content-center ${isOpen ? 'overflow-y-auto' : 'hidden'
+        }`}
     >
       <div
-        className={`${
-          isOpen ? 'slideInUp' : 'slideOutDown'
-        } bg-white w-[343px] h-[428px] md:w-[528px] rounded-xl pt-[64px] md:mt-[94px] px-[16px] mt-[47px]`}
+        className={`${isOpen ? 'slideInUp' : 'slideOutDown'
+          } bg-white w-[343px] h-[428px] md:w-[528px] rounded-xl pt-[64px] md:mt-[94px] px-[16px] mt-[47px]`}
       >
         <h3 className="text-gris-100 text-center w-[311px] mx-auto px-2 text-[24px]">
           Ha estado inactivo en los últimos minutos

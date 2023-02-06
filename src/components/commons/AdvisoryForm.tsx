@@ -19,13 +19,11 @@ function AdvisoryForm({ setShowModal }: any) {
     { value: 'other', label: 'Otro' },
   ]
   const {
-    register,
     handleSubmit,
     watch,
-    setError,
     control,
     setValue,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm<FormData>({ mode: 'onChange' });
   const advisoryTypeOption = watch('advisoryType');
   const otherAdvisoryType = watch('otherAdvisoryType');
@@ -110,10 +108,10 @@ function AdvisoryForm({ setShowModal }: any) {
                       (e: any) => setValue('otherAdvisoryType', e.target.value)}
                   />
                 )}
-              name="otherAdvisoryType"
-              control={control}
-            />
-          </div> : null}
+                name="otherAdvisoryType"
+                control={control}
+              />
+            </div> : null}
           </div>
 
           <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-[50px] pb-[40px]">

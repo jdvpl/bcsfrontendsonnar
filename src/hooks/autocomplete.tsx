@@ -1,10 +1,7 @@
 /* eslint-disable */
-import React from 'react';
-import { useState } from 'react';
-import cityData from '../lib/cities.json';
+import React, { useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
-import ExampleInfo from '../components/commons/ExampleInfo';
 interface InputProps {
   placeholder?: string;
   type?: string;
