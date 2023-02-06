@@ -48,6 +48,12 @@ export default function useValidationFinancialDataForm(
           message: 'Supera el límite de meses permitidos',
         });
       }
+      if (employeeYear && employeeMonth && (+employeeYear == 40 && +employeeMonth > 0)) {
+        setError('employeeYearE', {
+          type: 'error',
+          message: 'Supera el límite de años permitidos',
+        });
+      }
     }
   };
 

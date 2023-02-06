@@ -122,8 +122,8 @@ export const loginAccountSendRequest = async (data: any) => {
 export const sendNumber = async (data: any) => {
   try {
     const dataInfo = await allResponse(data, KEY);
-    const { data: response } = await clientAxiosMock.post(
-      '/identity-user/otp',
+    const { data: response } = await clientAxiosBackend.post(
+      '/api-composer/composer/answer-phone',
       { data: dataInfo },
       headersBack
     );
