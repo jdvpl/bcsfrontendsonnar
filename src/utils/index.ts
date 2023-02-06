@@ -1,5 +1,7 @@
 import { differenceInYears, parse } from 'date-fns';
 import * as CryptoJS from 'crypto-js';
+import { SesionStorageKeys } from '../session';
+import { getSessionStorageOrDefault } from '../hooks/useSessionStorage';
 
 export const clearSessionStorage = () => {
   sessionStorage.clear();
@@ -70,3 +72,11 @@ export const decryptPass = (password: string, key: string) => {
 };
 export const encriptPass = (password: string, key: string) =>
   CryptoJS.AES.encrypt(password, key).toString();
+
+export const getProcessId = () => {
+  const { processId } = getSessionStorageOrDefault(
+    SesionStorageKeys.DataQuestions.key,
+    'null'
+  );
+  return processId;
+};
