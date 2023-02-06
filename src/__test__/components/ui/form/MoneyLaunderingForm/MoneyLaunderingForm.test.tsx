@@ -1,6 +1,7 @@
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import React from 'react';
 import { MoneyLaunderingForm } from '../../../../../components/ui/Form/MoneyLaunderingForm/MoneyLaunderingForm';
+import '@testing-library/jest-dom';
 
 describe('<HouseSimulator />', () => {
   let component: any;
@@ -31,3 +32,13 @@ describe('<HouseSimulator />', () => {
     expect(component.container.querySelectorAll('.cardShadow').length).toBe(3);
   });
 });
+
+describe('<MoneyLaunderingForm/>', () => {
+  test('should check "yes" option', async () => {
+    const { queryAllByTestId, queryByTestId } = render(<MoneyLaunderingForm />);
+    const firstOption = queryAllByTestId('firstOption')[0];
+    fireEvent.click(firstOption);
+    const firstOptionSelected = queryByTestId('firstOptionSelected');
+    expect(firstOptionSelected!).toBeInTheDocument();
+  })
+})

@@ -1,15 +1,7 @@
-// import Image from 'next/image';
-import { useRouter } from 'next/router';
 import React from 'react'
-import LogoBcs from "../../svg/LogoBcs"
-import Icons from "../icons";
-import LogoForm from "../../svg/LogoForm"
 import Button from "../Button"
 import Typography from "../Typography";
-import { routes } from '../../../routes';
 import HeaderForm from '../Headers/HeaderForm';
-
-
 interface CardProps {
   urlsvg: string;
   altsvg?: string;
@@ -31,7 +23,6 @@ export const ErrorLayout: React.FC<CardProps> = ({
   btnactivate,
   btnaction
 }) => {
-  const router = useRouter();
   return (
     <div>
       <HeaderForm />

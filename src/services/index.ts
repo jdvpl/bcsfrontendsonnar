@@ -6,6 +6,8 @@ import useAES from '../hooks/useAES';
 import { headersBack } from './HeaderBack';
 import { iFormDataSimulation } from '../interfaces';
 import { iFormBasicData } from '../interfaces/basicDataProps';
+import { useSessionStorage } from '../hooks/useSessionStorage';
+import { SesionStorageKeys } from '../session';
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
 const KEYKYCHASH = process.env.KEYKYCHASH;
@@ -120,8 +122,8 @@ export const loginAccountSendRequest = async (data: any) => {
 export const sendNumber = async (data: any) => {
   try {
     const dataInfo = await allResponse(data, KEY);
-    const { data: response } = await clientAxiosMock.post(
-      '/identity-user/otp',
+    const { data: response } = await clientAxiosBackend.post(
+      '/api-composer/composer/answer-phone',
       { data: dataInfo },
       headersBack
     );

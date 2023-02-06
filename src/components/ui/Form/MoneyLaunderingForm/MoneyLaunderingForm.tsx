@@ -30,8 +30,8 @@ export function MoneyLaunderingForm() {
   return (
     <div>
       <div>
-        {MoneyLaunderingOptions?.map((option) => (
-          <div className="cardShadow min-h-[96px] w-full mb-3 rounded-md px-6 py-3">
+        {MoneyLaunderingOptions?.map((option, i) => (
+          <div key={i} className="cardShadow min-h-[96px] w-full mb-3 rounded-md px-6 py-3">
             <Typography
               variant="bodyS3"
               className="text-complementario-100 font-light mb-[12px] md:max-w-full max-w-[95%]"
@@ -55,17 +55,19 @@ export function MoneyLaunderingForm() {
             </Typography>
             <div className="flex">
               <div
+                data-testid="firstOption"
                 className="flex cursor-pointer"
                 onClick={() => changeMoneyLaundering(option?.name, true)}
               >
                 <span className="font-semibold text-gris-100">Si</span>
                 <div className="ml-[15px] w-[25px] h-[25px] border border-complementario-100 flex justify-center items-center rounded-full">
                   {moneyLaundering[option?.name] ? (
-                    <div className="w-[10px] h-[10px] bg-primario-400 rounded-full option-selected" />
+                    <div className="w-[10px] h-[10px] bg-primario-400 rounded-full option-selected" data-testid="firstOptionSelected" />
                   ) : null}
                 </div>
               </div>
               <div
+                data-testid="secondOption"
                 className="flex ml-[85px] cursor-pointer"
                 onClick={() => changeMoneyLaundering(option?.name, false)}
               >

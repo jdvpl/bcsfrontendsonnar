@@ -84,13 +84,13 @@ function ApplicationApproval() {
           </div>
         ) : null}
         <div>
-        <Typography
+          <Typography
             variant="bodyM3"
             className="w-[288px] sm:w-[343px] text-center mt-[25px] text-primario-900 text-[18px]  font-normal leading-[20px] m-auto"
           >
-            A continuación obtenga su carta 
+            A continuación obtenga su carta
             de preaprobado y el plan de pagos
-        </Typography>
+          </Typography>
         </div>
         <div className="mt-8 flex justify-center">
           <Button
@@ -142,7 +142,7 @@ function ApplicationApproval() {
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] shadow-none border-0 m-auto font-semibold"
             onClick={() => router.push(routes.ratings)}
             name="solicitarCredito"
-            data-testid="btn-openAccount1"
+            data-testid="btnGetOut"
             tabIndex={0}
             id="btn-next"
             variant="secondary"

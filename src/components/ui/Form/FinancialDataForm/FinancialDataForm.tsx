@@ -24,7 +24,6 @@ function FinancialDataForm() {
     clearErrors,
     control,
     setValue,
-    register,
     formState: { errors, isValid },
   } = useForm<iFinancialData>({ mode: 'onChange' });
 
@@ -148,7 +147,7 @@ function FinancialDataForm() {
                 <div className='grid gap-2 grid-cols-2 mt-2'>
                   <div >
                     <Controller
-                      rules={{ required: occupation === '14' }}
+                      rules={{ required: occupation === '14', maxLength: 2 }}
                       render={({ field }) => (
                         <Input
                           type="text"
@@ -157,10 +156,10 @@ function FinancialDataForm() {
                           onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                             e.preventDefault();
                           }}
-                          value={field.value || undefined}
+                          value={field.value || ''}
                           tabIndex={0}
                           id="employeeYear"
-                          inputMode="text"
+                          inputMode="numeric"
                           dataTestId='employeeYearTest'
                           required
                           label="Años"
@@ -184,11 +183,11 @@ function FinancialDataForm() {
                           onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                             e.preventDefault();
                           }}
-                          value={field.value || undefined}
+                          value={field.value || ''}
                           tabIndex={0}
                           id="employeeMonth"
                           dataTestId='employeeMonthTest'
-                          inputMode="text"
+                          inputMode="numeric"
                           required
                           label="Meses"
                           onChange={(e: any) => {
