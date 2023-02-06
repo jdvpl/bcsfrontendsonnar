@@ -13,11 +13,13 @@ export interface ValidateOTC {
   pin: string;
   document_number: string;
   document_type: string;
+  processId: string;
 }
 export interface OTPCodeRequest {
   document_type: string;
   document_number: string;
   phone: string;
+  processId: string;
 }
 
 export function Otp() {
@@ -30,6 +32,8 @@ export function Otp() {
   const intervalRef = useRef<number>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
+  const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
+
   const { onValidateOTP, onResendOTP } = useOtp({
     setIsLoading,
     dataTU,
@@ -42,6 +46,7 @@ export function Otp() {
     router,
     reSendOTPCode,
     validateOTOCode,
+    dataQuestions
   });
   useEffect(() => {
     if (otp?.length === 6) {
