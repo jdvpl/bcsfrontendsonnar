@@ -4,7 +4,7 @@ import { sendNumber } from "../services";
 export interface FormData {
   number: number | string;
 }
-const useValidationFormNumber = (dataTU: any, setDataTU: any, setEncript: any, setLoaded: any, router: any, setProcessBiometry: any) => {
+const useValidationFormNumber = (dataTU: any, setDataTU: any, setEncript: any, setLoaded: any, router: any, setProcessBiometry: any, dataQuestions: any) => {
   const proccessResponse = (redirect: string) => {
     setLoaded(true);
     setTimeout(() => router.push(redirect), 1000);
@@ -14,6 +14,7 @@ const useValidationFormNumber = (dataTU: any, setDataTU: any, setEncript: any, s
       document_type: dataTU?.document_type,
       document_number: dataTU?.document_number,
       phone: formData.number,
+      processId: dataQuestions.processId
     };
     const response = await sendNumber(body);
     if (!response.error) {

@@ -25,13 +25,16 @@ interface Answer {
 export interface FormData {
   number: number | string;
 }
+
 export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
   const [dataTU, setDataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
+  const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
   const [, setEncript] = useSessionStorage(SesionStorageKeys.dataTuEncripPhone.key, '');
   const [, setProcessBiometry] = useSessionStorage(
     SesionStorageKeys.dataProcessBiometry.key,
     ''
   );
+
   const [, setLoaded] = useState(false);
   const router = useRouter();
   const {
@@ -51,6 +54,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
     enter: { opacity: 1, x: 0, y: 0 },
     exit: { opacity: 0, x: 0 },
   };
+
   useEffect(() => {
     if (!inputValues) {
       setError('number', { message: 'asdasd' });
@@ -58,7 +62,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
     }
     clearErrors('number');
   }, [clearErrors, inputValues, setError]);
-  const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry)
+  const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry, dataQuestions)
   return (
     <motion.div
       initial="hidden"

@@ -13,6 +13,8 @@ jest.mock('../../services', () => ({
   }))
 }));
 
+const dataQuestions = { processId: 'PRE00000023' }
+
 jest.useFakeTimers();
 describe('useValidationFormNumber', () => {
 
@@ -34,14 +36,15 @@ describe('useValidationFormNumber', () => {
       number: '555-555-5555'
     };
 
-    const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry);
+    const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry, dataQuestions);
 
     await onSubmit(formData);
 
     expect(sendNumber).toHaveBeenCalledWith({
       document_type: 'CC',
       document_number: '12345678',
-      phone: '555-555-5555'
+      phone: '555-555-5555',
+      processId: 'PRE00000023'
     });
     expect(setDataTU).toHaveBeenCalledWith({
       ...dataTU,
@@ -74,7 +77,7 @@ describe("useValidationFormNumber", () => {
     number: "+1-555-555-5555",
   };
 
-  const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry);
+  const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry, dataQuestions);
 
   it("calls sendNumber with the correct parameters", async () => {
     await onSubmit(formData);
@@ -82,6 +85,7 @@ describe("useValidationFormNumber", () => {
       document_type: dataTU.document_type,
       document_number: dataTU.document_number,
       phone: formData.number,
+      processId: dataQuestions.processId
     });
   });
 
@@ -132,7 +136,8 @@ describe('useValidationFormNumber', () => {
     setEncript,
     setLoaded,
     router,
-    setProcessBiometry
+    setProcessBiometry,
+    dataQuestions
   );
 
   beforeEach(() => {
