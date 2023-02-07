@@ -142,8 +142,8 @@ export const sendNumber = async (data: any) => {
 export const validateOTOCode = async (data: ValidateOTC) => {
   try {
     const dataInfo = await allResponse(data, KEY);
-    const { data: response } = await clientAxiosMock.post(
-      '/identity-user/pin',
+    const { data: response } = await clientAxiosBackend.post(
+      '/api-composer/composer/validate-otp',
       { data: dataInfo },
       headersBack
     );
