@@ -6,8 +6,7 @@ import useAES from '../hooks/useAES';
 import { headersBack } from './HeaderBack';
 import { iFormDataSimulation } from '../interfaces';
 import { iFormBasicData } from '../interfaces/basicDataProps';
-import { useSessionStorage } from '../hooks/useSessionStorage';
-import { SesionStorageKeys } from '../session';
+import { getProcessId } from '../utils';
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
 const KEYKYCHASH = process.env.KEYKYCHASH;
@@ -100,7 +99,7 @@ export const sendQuestions = async (data: any) => {
 };
 export const loginAccountSendRequest = async (data: any) => {
   try {
-    const dataInfo = await allResponse(data, KEY);
+    const dataInfo = await allResponse({ ...data, processId: getProcessId() }, KEY);
     const { data: response } = await clientAxiosBackend.post(
       // '/customers/answer',
       '/customer/user-auth',
@@ -121,7 +120,7 @@ export const loginAccountSendRequest = async (data: any) => {
 
 export const sendNumber = async (data: any) => {
   try {
-    const dataInfo = await allResponse(data, KEY);
+    const dataInfo = await allResponse({ ...data, processId: getProcessId() }, KEY);
     const { data: response } = await clientAxiosBackend.post(
       '/api-composer/composer/answer-phone',
       { data: dataInfo },
@@ -160,7 +159,7 @@ export const validateOTOCode = async (data: ValidateOTC) => {
 };
 export const reSendOTPCode = async (data: OTPCodeRequest) => {
   try {
-    const dataInfo = await allResponse(data, KEY);
+    const dataInfo = await allResponse({ ...data, processId: getProcessId() }, KEY);
     const { data: response } = await clientAxiosMock.post(
       '/identity-user/resend',
       { data: dataInfo },
@@ -213,10 +212,10 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
 };
 export const getBasicData = async (data: iFormBasicData) => {
   try {
-    const { data: response } = await clientAxiosMock.post(
-      '/basic-data',
-      data,
-    );
+    const { data: response } = await clientAxiosMock.post('/basic-data', {
+      ...data,
+      processId: getProcessId(),
+    });
     return {
       response: {
         data: response,
@@ -230,7 +229,10 @@ export const getBasicData = async (data: iFormBasicData) => {
 
 export const fetchSarlaft = async (body: any) => {
   try {
-    const bodyencript = await allResponse(body, KEYKYCHASH)
+    const bodyencript = await allResponse(
+      { ...body, processId: getProcessId() },
+      KEYKYCHASH
+    );
     const { data: response } = await clientAxiosBackend.post(
       '/sarlaft/sarlaft-questions',
       { data: bodyencript }
@@ -245,15 +247,13 @@ export const fetchSarlaft = async (body: any) => {
   } catch (e: any) {
     return { error: true, response: e.response?.data?.message };
   }
-
 };
-
 
 export const riskBoxes = async (body: any) => {
   try {
     const { data: response } = await axios.post(
       'https://63a9fbb57d7edb3ae61dd65b.mockapi.io/v1/send-authorization',
-      body
+      { ...body, processId: getProcessId() }
     );
     return {
       response: {
@@ -264,7 +264,6 @@ export const riskBoxes = async (body: any) => {
   } catch (e: any) {
     return { error: true, response: e.response?.data?.message };
   }
-
 };
 
 export const getOffices = async () => {
