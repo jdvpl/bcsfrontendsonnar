@@ -79,7 +79,7 @@ export const getQuestions = async (data: any) => {
 // TODO sendQuestions KYC
 export const sendQuestions = async (data: any) => {
   try {
-    const dataInfo = await allResponse(data, KEY);
+    const dataInfo = await allResponse({...data,processId: getProcessId()}, KEY);
     const { data: response } = await clientAxiosBackend.post(
       // '/customers/answer',
       '/api-composer/composer/answer',
