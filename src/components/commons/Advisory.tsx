@@ -16,9 +16,9 @@ function Advisory({ setShowModal }: any) {
     setShowModal(false)
   }
   return (
-    <div className='m-auto flex-col '>
+    <div className='m-auto flex-col'>
       {showMessage ? (
-        <div className='mt-[48px] flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 '>
+        <div className='mt-[60px] lg:mt-[95px] md:mt-[72px] xs:mt-[60px] flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 '>
           <Button
             isLanding="w-full xs:w-[250px] sm:w-[253px] md:w-[253px] lg:w-[343px] mb-[12px] shadow-none"
             name="solicitarCredito"

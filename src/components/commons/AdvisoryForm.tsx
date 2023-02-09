@@ -16,6 +16,7 @@ function AdvisoryForm({ setShowModal }: any) {
     { value: 'campaign', label: 'Campaña' },
     { value: 'bank_advisor', label: 'Asesor banco' },
     { value: 'builder', label: 'Constructora' },
+    { value: 'real_estate', label: 'Inmobiliaria' },
     { value: 'other', label: 'Otro' },
   ]
   const {
@@ -61,7 +62,7 @@ function AdvisoryForm({ setShowModal }: any) {
 
   return (
     <div>
-      <p className="text-center mt-9">
+      <p className="text-center mt-9 font-montserratRegular font-normal text-primario-900">
         ¿Quién lo asesoró?
       </p>
       <div className='lg:w-[528px] md:w-[433px] sm:w-[312px] w-[259px] m-auto mt-[41px]'>
