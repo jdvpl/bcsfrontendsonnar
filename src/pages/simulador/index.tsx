@@ -9,7 +9,7 @@ import useSimulator from './useSimulator';
 import TagManager from 'react-gtm-module';
 
 function Simulator() {
-  const { simulatioTypeOption, setsimulatioTypeOption, onSubmit } = useSimulator();
+  const { simulatioTypeOption, setsimulatioTypeOption, onSubmit,isLoading } = useSimulator();
   useEffect(() => {
     TagManager.dataLayer({
       dataLayer: {
@@ -73,7 +73,7 @@ function Simulator() {
           </button>
         </div>
         {simulatioTypeOption === 'salary' && (
-          <FormQuota onSubmit={(formData: iFormDataSimulation) => onSubmit(formData)} />
+          <FormQuota isLoading={isLoading} onSubmit={(formData: iFormDataSimulation) => onSubmit(formData)} />
         )}
         {simulatioTypeOption === 'house' && <HouseSimulator />}
       </div>
