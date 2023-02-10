@@ -10,7 +10,7 @@ const CheckLoader = () => {
         animationData={checkAnimation}
         className="mx-auto w-[260px] h-[260px]"
         play
-        speed={0.8}
+        speed={1}
       />
       <h3 className="font-poppinsBold font-[24px] leading-[28px] text-center">
         Validación exitosa
