@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 import { basePath } from '../../../next.config';
 import { useRouter } from 'next/router';
