@@ -13,13 +13,14 @@ module.exports = {
     screens: {
       xs: '320px',
       sm: '375px',
-      'sm500':'550px',
-      ml:'550px',
-      'md650':'650px',
-      md: '721px',
-      lg: '1024px',
-      xl: '1280px',
-      xxl: '1536px'
+      smd:'430px',
+      smdd:'500px',
+      xmd:'550px',
+      md: '744px',
+      lg: '1080px',
+      xl: '1200px',
+      xxl: '1440px',
+      xxxl: '2560px',
     },
     fontFamily: {
       sans: ['Roboto', 'sans-serif'],
@@ -166,13 +167,22 @@ module.exports = {
           '0px 0px 4px 3px rgba(180, 211, 237, 1), 0px 0px 1px 4px rgba(180, 211, 237, 1)',
       },
       backgroundImage:{
-        'requirements-lg':`url('${basePath}/images/requirements.png')`,
+        'requirements-lg':`url('${basePath}/images/requirementslg.png')`,
+        'requirements-xl':`url('${basePath}/images/requirementsxl.png')`,
+        'requirements-xxl':`url('${basePath}/images/requirementsxxl.png')`,
+        'requirements-xxxl':`url('${basePath}/images/requirementsxxxl.png')`,
         'requirements-md':`url('${basePath}/images/requirementsmd.png')`,
         'requirements-sm':`url('${basePath}/images/requirementssm.png')`,
-        'landing-lg':`url('${basePath}/images/landingLg.png')`,
+
         'landing-md':`url('${basePath}/images/landingMd.png')`,
+        'landing-smd':`url('${basePath}/images/landingSmd.png')`,
         'landing-sm':`url('${basePath}/images/landingSm.png')`,
         'landing-xs':`url('${basePath}/images/landingXs.png')`,
+        'landing-xl':`url('${basePath}/images/landingxL.png')`,
+        'landing-xxl':`url('${basePath}/images/landingxxL.png')`,
+        'landing-xxxl':`url('${basePath}/images/landingxxxL.png')`,
+        'landing-lg':`url('${basePath}/images/landingLg.png')`,
+       
       },
       transformOrigin: {
         0: '0%',

@@ -6,7 +6,7 @@ export default function useMediaQueryResponsive() {
     query: "(max-width:575px)"
   })
   const isTablet = useMediaQuery({
-    query: "(min-width: 576px) and (max-width: 1023px)"
+    query: "(min-width: 576px) and (max-width: 1083px)"
   })
   const isBrowser = useMediaQuery({
     query: "(min-width: 1024px) "
@@ -18,12 +18,15 @@ export default function useMediaQueryResponsive() {
     query: "(min-width: 375px) and (max-width: 743px)"
   })
   const isMD = useMediaQuery({
-    query: "(min-width: 744px) and (max-width: 1023px)"
+    query: "(min-width: 744px) and (max-width: 1083px)"
   })
   const isLG = useMediaQuery({
-    query: "(min-width: 1024px)"
+    query: "(min-width: 1080px)"
   })
-  const heightHeader = isXS ? '24' : isSM ? '24' : isMD ? '24' : '34';
+  const isMedium = useMediaQuery({
+    query: "(min-width: 744px)"
+  })
+  const heightHeader = isXS ? '27' : isSM ? '27' : isMD ? '27' : '34';
 
   return {
     isMobile,
@@ -35,6 +38,6 @@ export default function useMediaQueryResponsive() {
     isLG,
     heightHeader,
     isSafari,
-    isEdge, isFirefox, isOpera
+    isEdge, isFirefox, isOpera, isMedium
   }
 }
