@@ -24,12 +24,14 @@ describe('useMediaQueryResponsive', () => {
       isXS: false,
       isSM: false,
       isMD: false,
+      isMedium: false,
       isLG: false,
       heightHeader: '34',
       isSafari,
       isEdge,
       isFirefox,
-      isOpera
+      isOpera,
+
     });
   });
   test('it should return the expected object browser', () => {
@@ -114,6 +116,6 @@ describe('useMediaQueryResponsive', () => {
     useMediaQuery.mockReturnValueOnce(false)
     useMediaQuery.mockReturnValueOnce(false)
     const result = useMediaQueryResponsive();
-    expect(result.heightHeader).toBe("24");
+    expect(result.heightHeader).toBe("34");
   });
 });
