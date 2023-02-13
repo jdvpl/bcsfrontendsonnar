@@ -22,7 +22,7 @@ const ReactHookFormSelect: React.FC<any> = ({
   hideMenuItem = false,
   ...props
 }) => {
-  const labelId = `${name}-label`;
+  const labelId = `${label}-label`;
 
   const [initialBorder, setBorder] = useState('#798c98a6');
   const [initialIcon, setInitialIcon] = useState(
@@ -58,7 +58,7 @@ const ReactHookFormSelect: React.FC<any> = ({
         id={labelId}
         sx={{
           color: error && '#ce1126',
-          left:-4
+          left:-4,
         }}
       >
         {label}
