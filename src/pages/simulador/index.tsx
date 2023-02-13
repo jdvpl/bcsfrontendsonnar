@@ -3,7 +3,6 @@ import LogoBcs from '../../components/svg/LogoBcs';
 import LogoForm from '../../components/svg/LogoForm';
 import FormQuota from '../../components/ui/Form/FormQuota';
 import Typography from '../../components/ui/Typography';
-import { iFormDataSimulation } from '../../interfaces/formSimulation';
 import HouseSimulator from '../../components/ui/Form/houseSimulator/HouseSimulator';
 import useSimulator from './useSimulator';
 import TagManager from 'react-gtm-module';

@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import React from 'react'
+import React from 'react';
 import HouseSimulator from '../../../../components/ui/Form/houseSimulator/HouseSimulator';
 
 describe('<HouseSimulator />', () => {
@@ -17,5 +17,14 @@ describe('<HouseSimulator />', () => {
   });
   test('Render 7 inputs ', () => {
     expect(component.container.querySelectorAll('input').length).toBe(7);
+  });
+});
+
+describe('<HoseSimulator/>', () => {
+  test('Render 7 inputs ', () => {
+    const component = render(<HouseSimulator />, {
+      isLoading: true,
+    });
+    component.container.querySelectorAll('svg');
   });
 });
