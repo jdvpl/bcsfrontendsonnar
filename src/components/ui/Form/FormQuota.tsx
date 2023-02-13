@@ -84,6 +84,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit, isLoading }) => {
                 className="w-100"
                 margin="normal"
                 required
+                data-testid="typeHouseTest"
               >
                 <MenuItem value="novis">No VIS</MenuItem>
                 <MenuItem value="vis" data-testid="typeSalaryVisTest">
