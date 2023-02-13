@@ -77,6 +77,22 @@ const Questions: FC = () => {
           </ItemAccordion>
 
           <ItemAccordion
+            id="6"
+            active={selected === '6'}
+            title="¿Cuáles son las condiciones si tomo un crédito hipotecario por canal digital?"
+            setSelected={setSelected}
+          >
+            <div data-testid="itemATest6">
+            Las condiciones que el Banco maneja en este momento son:
+              <ul className="list-disc ml-6 mt-3">
+                <li>Tipo de vivienda VIS y No VIS.</li>
+                <li>Aplica para vivienda nueva y usada.</li>
+                <li>Amortización solo en pesos.</li>
+                <li>Financiación sin subsidio a la tasa de interés.</li>
+              </ul>
+            </div>
+          </ItemAccordion>
+          <ItemAccordion
             id="5"
             active={selected === '5'}
             title="¿Cuáles son los factores que analiza el banco para aprobar un crédito hipotecario?"
