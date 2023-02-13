@@ -87,10 +87,8 @@ export const getProcessId = () => {
 export const axiosErrorMiddleware = (axiosInstance: AxiosInstance) => {
   return (error: AxiosError) => {
     if (error?.response?.status !== 200) {
-      console.log(error?.response?.status)
-      console.log({ error });
       if(error?.response?.status===500){
-        Router.push('/validacion//error-servicio')
+        Router.push('/validacion/error-servicio')
       }
     } 
     return Promise.reject(error);
