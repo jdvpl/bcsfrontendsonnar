@@ -73,7 +73,7 @@ function Simulator() {
           </button>
         </div>
         {simulatioTypeOption === 'salary' && (
-          <FormQuota isLoading={isLoading} onSubmit={(formData: iFormDataSimulation) => onSubmit(formData)} />
+          <FormQuota isLoading={isLoading} onSubmit={onSubmit} />
         )}
         {simulatioTypeOption === 'house' && <HouseSimulator />}
       </div>
