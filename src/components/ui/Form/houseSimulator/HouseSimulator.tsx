@@ -4,18 +4,15 @@ import { Controller, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import ReactHookFormSelect from '../../Select/newSelect';
 import Input from '../../inputs/index';
-import { convertToColombianPesos, parserPercentageDecimal } from '../../../../utils';
+import { convertToColombianPesos} from '../../../../utils';
 import { days, months } from '../../../../lib/dates';
 import Button from '../../Button';
-import { iFormDataSimulation, SimulationData } from '../../../../interfaces';
+import {  SimulationData } from '../../../../interfaces';
 import { yearsAvailable } from '../../../../lib/simulator';
 import useValidations from './useValidations';
-import { sendSimulationData } from '../../../../services';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
-import { routes } from '../../../../routes';
 import Alert from '../../Alert';
-import TagManager from 'react-gtm-module';
 import SimulatorLoader from '../../Loaders/SimulatorLoader';
 
 function HouseSimulator() {
@@ -65,7 +62,7 @@ function HouseSimulator() {
     }
   };
 
-  useValidations(
+  const { onSubmit } = useValidations({
     typeHouse,
     houseValue,
     financeValue,
@@ -75,41 +72,13 @@ function HouseSimulator() {
     month,
     year,
     clearErrors,
-    setError
-  );
-
-  const onSubmit = async (formData: SimulationData) => {
-    setIsLoading(true);
-    TagManager.dataLayer({
-      dataLayer: {
-        event: 'go_simulator',
-        category: 'action_funnel',
-        action: 'go_simulator',
-        label: 'go_simulator',
-      },
-    });
-    const body: iFormDataSimulation = {
-      typeHouse: formData?.typeHouse,
-      houseValue: Math.floor(formData.houseValue),
-      financeValue: formData.financeValue,
-      termFinance: formData?.termFinance,
-      percentageFinance,
-      insuranceCheck,
-      dateOfBirth: `${year}-${month}-${day}`,
-      simulationType: 'house',
-      monthlySalary: 0,
-      amountQuota: 0,
-      percentageQuota: 0.3,
-    };
-    const response = await sendSimulationData(body);
-    if (!response.error) {
-      router.push(routes.simuladorResumen);
-      setDataFormResponse(response?.response?.data);
-      setDataFormQuota(body);
-      setIsLoading(false);
-    }
-    setIsLoading(false);
-  };
+    setError,
+    setIsLoading,
+    percentageFinance,
+    insuranceCheck,
+    setDataFormResponse,
+    setDataFormQuota,
+  });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} data-testid="houseSimulatorForTest">

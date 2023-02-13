@@ -1,4 +1,7 @@
 import { useEffect } from 'react';
+import TagManager from 'react-gtm-module';
+import { iFormDataSimulation, SimulationData } from '../../../../interfaces';
+import Router from 'next/router';
 import {
   maxHouseValueNoVis,
   maxHouseValueVis,
@@ -7,19 +10,26 @@ import {
   SMMLV,
 } from '../../../../lib/simulator';
 import { calculateAge, isValidDate } from '../../../../utils';
+import { routes } from '../../../../routes';
+import { sendSimulationData } from '../../../../services';
 
-export default function useValidations(
-  typeHouse: string,
-  houseValue: number,
-  financeValue: number,
-  termFinance: number,
-  calculatePercentageFinance: any,
-  day: any,
-  month: any,
-  year: any,
-  clearErrors: any,
-  setError: any
-) {
+export default function useValidations({
+  typeHouse,
+  houseValue,
+  financeValue,
+  termFinance,
+  calculatePercentageFinance,
+  day,
+  month,
+  year,
+  clearErrors,
+  setError,
+  setIsLoading,
+  percentageFinance,
+  insuranceCheck,
+  setDataFormResponse,
+  setDataFormQuota,
+}: any) {
   const handleClearErrors = () => {
     clearErrors('typeHouse');
     clearErrors('houseValue');
@@ -100,6 +110,39 @@ export default function useValidations(
     }
   };
 
+  const onSubmit = async (formData: SimulationData) => {
+    setIsLoading(true);
+    TagManager.dataLayer({
+      dataLayer: {
+        event: 'go_simulator',
+        category: 'action_funnel',
+        action: 'go_simulator',
+        label: 'go_simulator',
+      },
+    });
+    const body: iFormDataSimulation = {
+      typeHouse: formData?.typeHouse,
+      houseValue: Math.floor(formData.houseValue),
+      financeValue: formData.financeValue,
+      termFinance: formData?.termFinance,
+      percentageFinance,
+      insuranceCheck,
+      dateOfBirth: `${year}-${month}-${day}`,
+      simulationType: 'house',
+      monthlySalary: 0,
+      amountQuota: 0,
+      percentageQuota: 0.3,
+    };
+    const response = await sendSimulationData(body);
+    if (!response.error) {
+      Router.push(routes.simuladorResumen);
+      setDataFormResponse(response?.response?.data);
+      setDataFormQuota(body);
+      setIsLoading(false);
+    }
+    setIsLoading(false);
+  };
+
   useEffect(() => {
     handleClearErrors();
     validateTypeHouse();
@@ -107,4 +150,6 @@ export default function useValidations(
     calculatePercentageFinance();
     validateAge();
   }, [typeHouse, houseValue, financeValue, termFinance, day, month, year]);
+
+  return { onSubmit };
 }

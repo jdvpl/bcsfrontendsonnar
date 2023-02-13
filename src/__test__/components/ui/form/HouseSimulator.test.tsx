@@ -1,5 +1,15 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
+import { RouterContext } from 'next/dist/shared/lib/router-context';
 import HouseSimulator from '../../../../components/ui/Form/houseSimulator/HouseSimulator';
+import { routes } from '../../../../routes';
+import { sendSimulationData } from '../../../../services';
+import { createMockRouter } from '../../../utils/createMockRouter';
+
+
+jest.mock('../../../../services', () => ({
+  sendSimulationData: jest.fn(),
+}));
+
 describe('<HouseSimulator />', () => {
   let component: any;
   beforeEach(() => {
