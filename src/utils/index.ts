@@ -2,6 +2,9 @@ import { differenceInYears, parse } from 'date-fns';
 import * as CryptoJS from 'crypto-js';
 import { SesionStorageKeys } from '../session';
 import { getSessionStorageOrDefault } from '../hooks/useSessionStorage';
+import { AxiosError, AxiosInstance } from 'axios';
+import Router from 'next/router'
+
 
 export const clearSessionStorage = () => {
   sessionStorage.clear();
@@ -79,4 +82,17 @@ export const getProcessId = () => {
     'null'
   );
   return processId;
+};
+
+export const axiosErrorMiddleware = (axiosInstance: AxiosInstance) => {
+  return (error: AxiosError) => {
+    if (error?.response?.status !== 200) {
+      console.log(error?.response?.status)
+      console.log({ error });
+      if(error?.response?.status===500){
+        Router.push('/validacion//error-servicio')
+      }
+    } 
+    return Promise.reject(error);
+  };
 };

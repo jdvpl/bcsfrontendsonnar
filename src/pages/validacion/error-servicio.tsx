@@ -3,15 +3,17 @@ import { basePath } from '../../../next.config';
 import { useRouter } from 'next/router';
 import { routes } from '../../routes';
 import ErrorLayout from '../../components/ui/error/errorScreen';
+import useDeleteKeys from '../../hooks/useDeleteKeys';
 
 export default function SiteDown() {
   const router = useRouter();
+  useDeleteKeys();
   return (
     <ErrorLayout
       btnactivate={true}
       altsvg="warning"
       title={<p className='mt-[88px]'>¡Ups! Algo salió mal</p>}
-      btnaction={() => router.push(routes.startProccess)}
+      btnaction={() => router.push(routes.home)}
       text={<p className='lg:mb-[124px] md:mb-[32px] sm:mb-[106px]  xs:mb-[106px] mb-[106px]'>Por favor inténtelo nuevamente</p>}
       urlsvg={`${basePath}/images/SiteDown.svg`}
       textbtn="Volver a intentar"
