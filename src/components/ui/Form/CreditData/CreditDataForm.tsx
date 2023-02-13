@@ -6,7 +6,7 @@ import Button from '../../Button';
 import ReactHookFormSelect from '../../Select/newSelect';
 import { SimulationData } from '../../../../interfaces';
 import Input from '../../inputs';
-import { convertToColombianPesos } from '../../../../utils';
+import { convertToColombianPesos, renderPercentage } from '../../../../utils';
 import { yearsAvailable } from '../../../../lib/simulator';
 import useValidations from './useValidations';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
@@ -40,12 +40,6 @@ export function CreditDataForm() {
   const termFinance = watch('termFinance', dataForm?.termFinance || 0);
   const office = watch('office', dataForm?.office || 0);
   const stratum = watch('stratum', 0);
-  const renderPercentage = () => {
-    if (Math.floor(percentageFinance * 100) > 100) {
-      return `> 100`;
-    }
-    return Math.floor(percentageFinance * 100);
-  };
   const { automationFinanceValue, onSubmit, isValid } = useValidations(
     typeHouse,
     houseValue,
@@ -167,7 +161,7 @@ export function CreditDataForm() {
           />
 
           <div className="rounded-md w-[78px] border-[0.1px] text-[14px] h-[48px] bg-complementario-80 border-complementario-20/50 flex justify-center items-center text-complementario-20">
-            {renderPercentage()}%
+            {renderPercentage(percentageFinance)}%
           </div>
         </div>
 

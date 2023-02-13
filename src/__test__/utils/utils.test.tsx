@@ -1,5 +1,5 @@
 
-import { clearSessionStorage, convertToColombianPesos, calculateAge, parserPercentageDecimal, validateAddress, isValidDate, decryptPass, encriptPass } from '../../utils'
+import { clearSessionStorage, convertToColombianPesos, calculateAge, parserPercentageDecimal, validateAddress, isValidDate, decryptPass, encriptPass, renderPercentage } from '../../utils'
 import * as CryptoJS from 'crypto-js';
 
 describe('clearSessionStorage', () => {
@@ -120,5 +120,19 @@ describe('clearSessionStorage', () => {
     const key = 'key123';
     const encrypted = encriptPass(password, key);
     expect(encrypted).toBeTruthy();
+  });
+  it('should return encrypted password', () => {
+    const password = 'password123';
+    const key = 'key123';
+    const encrypted = encriptPass(password, key);
+    expect(encrypted).toBeTruthy();
+  });
+  it('should return the percentage as a whole number', () => {
+    expect(renderPercentage(0.55)).toBe(55);
+    expect(renderPercentage(0.75)).toBe(75);
+  });
+
+  it('should return "> 100" when percentage is over 100', () => {
+    expect(renderPercentage(1.25)).toBe('> 100');
   });
 });

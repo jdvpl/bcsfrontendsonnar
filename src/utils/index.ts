@@ -3,8 +3,7 @@ import * as CryptoJS from 'crypto-js';
 import { SesionStorageKeys } from '../session';
 import { getSessionStorageOrDefault } from '../hooks/useSessionStorage';
 import { AxiosError, AxiosInstance } from 'axios';
-import Router from 'next/router'
-
+import Router from 'next/router';
 
 export const clearSessionStorage = () => {
   sessionStorage.clear();
@@ -87,10 +86,17 @@ export const getProcessId = () => {
 export const axiosErrorMiddleware = (axiosInstance: AxiosInstance) => {
   return (error: AxiosError) => {
     if (error?.response?.status !== 200) {
-      if(error?.response?.status===500){
-        Router.push('/validacion/error-servicio')
+      if (error?.response?.status === 500) {
+        Router.push('/validacion/error-servicio');
       }
-    } 
+    }
     return Promise.reject(error);
   };
+};
+
+export const renderPercentage = (percentageFinance: any) => {
+  if (Math.floor(percentageFinance * 100) > 100) {
+    return `> 100`;
+  }
+  return Math.floor(percentageFinance * 100);
 };
