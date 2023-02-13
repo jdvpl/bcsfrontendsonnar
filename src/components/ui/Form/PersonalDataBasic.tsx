@@ -10,13 +10,12 @@ import Button from '../Button';
 import Input from '../inputs';
 import NewAutoComplete from '../inputs/newAutoComplete';
 import ReactHookFormSelect from '../Select/newSelect';
-import { routes } from '../../../routes';
 import { HelperText } from '../inputs/HelperText';
 import OfficeBranch from '../../commons/OfficeBranch';
 import ExitModal from '../../commons/ExitModal';
 import Modal from '../Modal';
 import usePersonalData from '../../../hooks/usePersonalData';
-import { validateAddress } from '../../../utils';
+import { getCityById, validateAddress } from '../../../utils';
 import { useBackDetector } from '../../../hooks/useBackDetector'
 
 function PersonalDataBasic({ userInfo }: any) {
@@ -64,7 +63,7 @@ function PersonalDataBasic({ userInfo }: any) {
   };
   useBackDetector(() => {
     setshowModalExit(true)
-  }, router.asPath)
+  }, router.asPath);
   return (
     <div data-testid="FormQuotaTest" className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto " id='personalDataForm'>
       {showModal && (
@@ -164,30 +163,61 @@ function PersonalDataBasic({ userInfo }: any) {
               )}
             />
           </div>
+          {userInfo.isClient ?
+            <div className="flex flex-col mt-4">
+              <Controller
+                rules={{ required: !userInfo.isClient }}
+                render={() => (
+                  <Input
+                    type="text"
+                    startIcon='bcs-search'
+                    error={!!errors.birthCity}
+                    onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                      e.preventDefault();
+                    }}
+                    onClick={showPopup}
+                    value={getCityById(userInfo.birthCity)}
+                    tabIndex={0}
+                    id="birthCity"
+                    data-testid="birthCity"
+                    inputMode="text"
+                    disabled={showModal}
+                    name="birthCity"
+                    placeholder="Lugar de nacimiento"
+                    label="Lugar de nacimientol"
+                    onChange={(e: any) => setValue('birthCity', e.target.value)}
+                  />
+                )}
+                name="birthCity"
+                control={control}
+              />
+            </div>
+            :
+            <div className="w-full mt-4">
+              <Controller
+                control={control}
+                name="birthCity"
+                rules={{ required: true }}
+                defaultValue={undefined}
+                render={({ field: { onChange } }) => (
+                  <NewAutoComplete
+                    id="birthCity"
+                    defaultValue={undefined}
+                    placeholder="Lugar de nacimiento"
+                    label="Lugar de nacimiento"
+                    onChange={(e: any) => {
+                      if (e?.id) {
+                        return onChange({ item: e.name, option: e.id });
+                      }
+                      return onChange(undefined);
+                    }}
+                    zIndex={30}
+                  />
+                )}
+              />
+            </div>
+          }
 
-          <div className="w-full mt-4">
-            <Controller
-              control={control}
-              name="birthCity"
-              rules={{ required: true }}
-              defaultValue={undefined}
-              render={({ field: { onChange } }) => (
-                <NewAutoComplete
-                  id="birthCity"
-                  defaultValue={undefined}
-                  placeholder="Lugar de nacimiento"
-                  label="Lugar de nacimiento"
-                  onChange={(e: any) => {
-                    if (e?.id) {
-                      return onChange({ item: e.name, option: e.id });
-                    }
-                    return onChange(undefined);
-                  }}
-                  zIndex={30}
-                />
-              )}
-            />
-          </div>
 
           <div className="w-full mt-4">
             <ReactHookFormSelect
@@ -215,63 +245,64 @@ function PersonalDataBasic({ userInfo }: any) {
             />
           </div>
 
-          {userInfo.isClient ? null : (
-            <>
-              <div className="flex flex-col mt-4">
-                <Controller
-                  rules={{ required: !userInfo.cellPhone }}
-                  render={({ field }) => (
-                    <Input
-                      helperText="Debe inicar con 3  y un máximo de 10 caracteres"
-                      helperTextOption
-                      type="text"
-                      error={!!errors.phone}
-                      onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                        e.preventDefault();
-                      }}
-                      value={field.value}
-                      defaultValue={field.value}
-                      tabIndex={0}
-                      id="phone"
-                      data-testid="phoneTest"
-                      inputMode="text"
-                      placeholder="Número de celular"
-                      label="Número de celular"
-                      onChange={(e: any) => setValue('phone', e.target.value)}
-                    />
-                  )}
-                  name="phone"
-                  control={control}
+          <div className="flex flex-col mt-4">
+            <Controller
+              rules={{ required: !userInfo.cellPhone }}
+              render={({ field }) => (
+                <Input
+                  helperText="Debe inicar con 3  y un máximo de 10 caracteres"
+                  helperTextOption
+                  type="text"
+                  error={!!errors.phone}
+                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                    e.preventDefault();
+                  }}
+                  value={field.value}
+                  defaultValue={field.value}
+                  tabIndex={0}
+                  onFocus={showPopup}
+                  disabled={showModal}
+                  id="phone"
+                  data-testid="phoneTest"
+                  inputMode="text"
+                  placeholder="Número de celular"
+                  label="Número de celular"
+                  onChange={(e: any) => setValue('phone', e.target.value)}
                 />
-              </div>
-              <div className="flex flex-col mt-4">
-                <Controller
-                  rules={{ required: !userInfo.emailAddr }}
-                  render={({ field }) => (
-                    <Input
-                      helperText="Ejemplo: correo@dominio.com"
-                      helperTextOption
-                      type="email"
-                      error={!!errors.email}
-                      onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                        e.preventDefault();
-                      }}
-                      value={field.value}
-                      tabIndex={0}
-                      id="email"
-                      data-testid="emailTest"
-                      inputMode="email"
-                      placeholder="Correo electrónico"
-                      label="Correo electrónico"
-                      onChange={(e: any) => setValue('email', e.target.value)}
-                    />
-                  )}
-                  name="email"
-                  control={control}
+              )}
+              name="phone"
+              control={control}
+            />
+          </div>
+          <div className="flex flex-col mt-4">
+            <Controller
+              rules={{ required: !userInfo.emailAddr }}
+              render={({ field }) => (
+                <Input
+                  helperText="Ejemplo: correo@dominio.com"
+                  helperTextOption
+                  type="email"
+                  error={!!errors.email}
+                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                    e.preventDefault();
+                  }}
+                  disabled={showModal}
+                  value={field.value}
+                  tabIndex={0}
+                  id="email"
+                  onFocus={showPopup}
+                  data-testid="emailTest"
+                  inputMode="email"
+                  placeholder="Correo electrónico"
+                  label="Correo electrónico"
+                  onChange={(e: any) => setValue('email', e.target.value)}
                 />
-              </div>
-            </>
-          )}
+              )}
+              name="email"
+              control={control}
+            />
+          </div>
+
 
           <div className="w-full mt-4">
             <Controller
@@ -301,55 +332,56 @@ function PersonalDataBasic({ userInfo }: any) {
             />
           </div>
 
-          <div className="flex flex-col mt-4">
-            <Controller
-              rules={{ required: true }}
-              render={({ field }) => (
-                <Input
-                  helperText={
-                    errors?.currentAddress?.message
-                      ? errors?.currentAddress?.message
-                      : `Ejemplo: Cra 76 sur # 00 - 00`
-                  }
-                  helperTextOption
-                  type="text"
-                  startIcon='bcs-location'
-                  error={!!errors.currentAddress}
-                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                    e.preventDefault();
-                  }}
-                  onFocus={showPopup}
-                  value={currentAddress}
-
-                  tabIndex={0}
-                  id="currentAddress"
-                  data-testid="currentAddres"
-                  inputMode="text"
-                  disabled={showModal}
-                  placeholder="Dirección de vivienda actual"
-                  label="Dirección de vivienda actual"
-                  onChange={(e: any) => {
-                    const { isError, message } = validateAddress(
-                      e?.target?.value?.trim()
-                    );
-                    if (isError) {
-                      setValue('currentAddress', e.target.value);
-                      setError('currentAddress', {
-                        type: 'text',
-                        message,
-                      });
-                    } else {
-                      field.onChange(e.target.value);
-                      setValue('currentAddress', e.target.value);
-                      clearErrors('currentAddress');
+          {!userInfo.isClient &&
+            <div className="flex flex-col mt-4">
+              <Controller
+                rules={{ required: !userInfo.isClient }}
+                render={({ field }) => (
+                  <Input
+                    helperText={
+                      errors?.currentAddress?.message
+                        ? errors?.currentAddress?.message
+                        : `Ejemplo: Cra 76 sur # 00 - 00`
                     }
-                  }}
-                />
-              )}
-              name="currentAddress"
-              control={control}
-            />
-          </div>
+                    helperTextOption
+                    type="text"
+                    startIcon='bcs-location'
+                    error={!!errors.currentAddress}
+                    onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                      e.preventDefault();
+                    }}
+                    onFocus={showPopup}
+                    value={currentAddress}
+                    tabIndex={0}
+                    id="currentAddress"
+                    data-testid="currentAddres"
+                    inputMode="text"
+                    disabled={showModal}
+                    placeholder="Dirección de vivienda actual"
+                    label="Dirección de vivienda actual"
+                    onChange={(e: any) => {
+                      const { isError, message } = validateAddress(
+                        e?.target?.value?.trim()
+                      );
+                      if (isError) {
+                        setValue('currentAddress', e.target.value);
+                        setError('currentAddress', {
+                          type: 'text',
+                          message,
+                        });
+                      } else {
+                        field.onChange(e.target.value);
+                        setValue('currentAddress', e.target.value);
+                        clearErrors('currentAddress');
+                      }
+                    }}
+                  />
+                )}
+                name="currentAddress"
+                control={control}
+              />
+            </div>
+          }
           <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-10">
             <Button
               isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[375px]"
@@ -365,8 +397,8 @@ function PersonalDataBasic({ userInfo }: any) {
             </Button>
           </div>
         </form>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 }
 

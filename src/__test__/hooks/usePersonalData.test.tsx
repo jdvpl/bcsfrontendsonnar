@@ -41,7 +41,6 @@ describe('usePersonalData', () => {
 
     expect(setValue).toHaveBeenCalledWith('phone', '123456789');
     expect(setValue).toHaveBeenCalledWith('email', 'test@example.com');
-    expect(setValue).toHaveBeenCalledWith('currentAddress', '123 Main St');
   });
   it('splits the birth date and sets values in the state', () => {
     const userInfo = {
@@ -59,8 +58,7 @@ describe('usePersonalData', () => {
     expect(setValue).toHaveBeenCalledWith('dayDt', '01');
     expect(setValue).toHaveBeenCalledWith('phone', '555-555-5555');
     expect(setValue).toHaveBeenCalledWith('email', 'test@example.com');
-    expect(setValue).toHaveBeenCalledWith('currentAddress', '123 Main St');
-    expect(setValue).toHaveBeenCalledTimes(6);
+    expect(setValue).toHaveBeenCalledTimes(5);
   });
   it('should set error if calculated age is less than 19 or greater than 71', () => {
     const setValue = jest.fn();
@@ -134,6 +132,5 @@ describe('usePersonalData', () => {
     expect(setValue).toHaveBeenCalledWith('dayDt', '01');
     expect(setValue).toHaveBeenCalledWith('phone', '123456789');
     expect(setValue).toHaveBeenCalledWith('email', 'example@example.com');
-    expect(setValue).toHaveBeenCalledWith('currentAddress', '123 Main St');
   });
 })

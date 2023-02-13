@@ -80,7 +80,7 @@ function Input({
   const labelStyles = `peer-placeholder-shown:z-[-1] peer-focus:z-0 z-0
   peer-placeholder-shown:${labelColor} absolute text-sm
   ${error ? 'text-rojo-100' : `${labelColor}`}
-
+  ${startIcon ? 'pl-6' : ''}
   duration-300 transform -translate-y-4 scale-75 top-2
   origin-[0] bg-white px-2 peer-focus:px-2
   
@@ -95,7 +95,7 @@ function Input({
     ${startIcon ? 'pl-8' : ''}
     ${endIcon ? 'pr-8' : ''} h-12 bg-[transparent] block py-2 px-3 w-full text-sm leading-none
     ${error ? 'text-complementario-100' : 'text-primario-900'} bg-transparent border-[0.03125rem] rounded-md
-    ${error ? 'border-rojo-100 focus:border-rojo-100 hover:border-rojo-100': 'border-[#798c98a6] hover:border-primario-100 focus:border-primario-100'} appearance-none  peer focus:border focus:outline-none`;
+    ${error ? 'border-rojo-100 focus:border-rojo-100 hover:border-rojo-100' : 'border-[#798c98a6] hover:border-primario-100 focus:border-primario-100'} appearance-none  peer focus:border focus:outline-none`;
   return (
     <div className={`${containerClassName} justify-center flex flex-col w-full`}>
       <div className="relative z-0 w-full">

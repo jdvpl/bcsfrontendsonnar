@@ -38,10 +38,10 @@ export default function Home() {
   );
   const titleClasses = isSafari ? 'xs:flex sm:flex  md:justify-end xs:pr-2 sm:pr-6 xs:pt-2 md:pr-[6rem] md:mt-1 xs:mt-5 lg:mt-[100px]  lg:flex lg:justify-center lg:ml-[40rem] paragraphContent  ml-5 sm:ml-0' : 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-[2rem] md:mt-1 xs:mt-5 lg:mt-[100px]  lg:flex lg:justify-center lg:ml-[40rem] sm:ml-5 xs:ml-1 sm:ml-0 lg:mr-40 xl:mt-[150px]';
 
-  const headerDescriptionClasess = isSafari ? 'xs:flex sm:flex  md:justify-end xs:pr-2 sm:pr-6 xs:pt-2 md:pr-[6rem] md:mt-1 xs:mt-5 lg:mt-[6px]  lg:flex lg:justify-center lg:ml-[40rem] paragraphContent ml-5' : 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-0 md:mt-5 xs:mt-5 lg:mt-[6px]  lg:flex lg:justify-center lg:ml-[40rem]  ml-5';
+  const headerDescriptionClasess = isSafari ? 'xs:flex sm:flex  md:justify-end xs:pr-2 sm:pr-6 xs:pt-2 md:pr-[6rem] md:mt-1 xs:mt-5 lg:mt-[6px]  lg:flex lg:justify-center lg:ml-[40rem] paragraphContent ml-5' : 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-0 md:mt-5 xs:mt-5 lg:mt-[6px]  lg:flex lg:justify-center lg:ml-[40rem]  ml-5 xxl:pr-10';
   return (
     <div data-testid="landingPage" className="overflow-hidden landingPage">
-      <div className={`lg:bg-landing-lg xl:bg-bg-landing-xl xxl:bg-bg-landing-xxl md:bg-landing-md sm:bg-landing-sm smd:bg-landing-smd bg-landing-xs bg-no-repeat  -z-30 bg-cover xs:bg-bottom sm:bg-bottom md:bg-bottom lg:bg-center xl:bg-center xs:h-[419px] sm:h-[484px] smdd:h-[460px] smd:h-[484px]  md:h-[401px] lg:h-[596px] xl:h-[668px] xxl:bg-center xxl:h-[618px] bgImageLanding`}>
+      <div className={`lg:bg-landing-lg xl:bg-landing-xl xxl:bg-bg-landing-xxl xxxl:bg-landing-xxxl md:bg-landing-md sm:bg-landing-sm smd:bg-landing-smd bg-landing-xs bg-no-repeat  -z-30 bg-cover xs:bg-bottom sm:bg-bottom md:bg-bottom lg:bg-center xl:bg-center xs:h-[419px] sm:h-[484px] smdd:h-[460px] smd:h-[484px]  md:h-[401px] lg:h-[596px] xl:h-[668px] xxl:bg-center xxl:h-[638px] xxxl:h-[752px] bgImageLanding xxxl:bg-center`}>
         <div
           className="  flex justify-start items-baseline xs:pt-3 xs:pl-4 sm:pt-3 sm:pl-4 md:pl-6 md:pt-6 lg:pt-5 lg:pl-10 xl:pt-5 xxl:pl-0 xxl:ml-20 iconHeader"
           itemScope
@@ -65,18 +65,18 @@ export default function Home() {
 
         <div className={headerDescriptionClasess}>
           <div className="md:flex md:flex-col">
-            <h4 className="text-white  md:w-[285px] lg:w-[394px] font-semibold lg:text-[24px] md:text-[20px] leading-6 wcontainerHeader font-montserratSemiBold sm:text-[20px] xs:text-[20px] md:text-primario-900">
+            <h4 className="text-white  md:w-[285px] lg:w-[394px] font-semibold lg:text-[24px] md:text-[20px] leading-6 wcontainerHeader font-montserratSemiBold sm:text-[20px] xs:text-[20px] md:text-primario-900 xxl:text-[28px] ">
               ¿Desea comprar vivienda?
             </h4>
-            <p className="text-white md:text-primario-900 sm:w-[335px] w-[290px] md:w-[275px] lg:w-[415.5px] font-light leading-[22px] md:leading-[20px] mt-[10px] wcontainerHeader text-[16px] md:text-[18px] md:mr-[40px]  font-monserratLight sm:text-[16px] sm:leading-[18px] xs:text-[14px] xs:leading-4 lg:text-[18px]">
+            <p className="text-white md:text-primario-900 sm:w-[335px] w-[290px] md:w-[275px] lg:w-[415.5px] xxl:w-[380px] font-light leading-[22px] md:leading-[20px] mt-[10px] wcontainerHeader text-[16px] md:text-[18px] md:mr-[40px]  font-monserratLight sm:text-[16px] sm:leading-[18px] xs:text-[14px] xs:leading-4 lg:text-[18px] xxl:mt-8">
               Aquí le ayudaremos a lograr sus sueños, sin hacer largas filas, ni papeleos extensos.
             </p>
           </div>
         </div>
         <SelectiveHomeCards isMobile={isMobile} />
       </div>
-      <div className="md:mt-[215px] lg:mt-[226px] sm:mt-[118px] mt-[116px] h-[510px] bg-requirements-sm lg:bg-requirements-lg xl:bg-requirements-xl bg-no-repeat bg-cover md:h-[287px] md:bg-requirements-md lg:h-[380px] xl:h-[360px] xl:mt-[137px] pb-40">
-        <div className="lg:w-[1020px] md:w-[700px] m-auto ">
+      <div className="md:mt-[215px] lg:mt-[226px] sm:mt-[118px] mt-[116px] h-[510px] bg-requirements-sm lg:bg-requirements-lg xl:bg-requirements-xl xxl:bg-requirements-xxl xxxl:bg-requirements-xxxl bg-no-repeat bg-cover md:h-[327px] md:bg-requirements-md lg:h-[380px] xl:h-[360px] xl:mt-[137px] pb-40 xxl:h-[297px]">
+        <div className="lg:w-[1020px] xxl:w-[1100px]   md:w-[700px] m-auto xxl:mt-[260px]">
           <Typography
             variant="h2"
             className="text-center sm:my-[2.875rem] xs:my-[3rem] lg:mt-[42px] xl-mt-[42px] md:mt-[26px] font-poppinsBold sm:pt-[59px] mt-9 xl:mt-[59px]"
@@ -84,8 +84,8 @@ export default function Home() {
             Requisitos
           </Typography>
 
-          <div className="grid lg:grid-cols-2 md:grid-cols-2 md:gap-3 justify-items-center">
-            <div className="lg:w-[499px] md:w-[336px] sm:w-[338px] w-[289px]">
+          <div className="grid lg:grid-cols-2 xxl:grid-cols-4 md:grid-cols-2 md:gap-3 justify-items-center xxl:flex">
+            <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
               <SelectiveCard
                 description="Tener entre 18 y 70 años."
                 onclick={false}
@@ -93,11 +93,12 @@ export default function Home() {
                 icon="bcs-document-18"
                 color="text-complementario-100"
                 size="text-[1.6rem]"
-                className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] border-complementario-100"
-                classNamesDescription='ml-[10px] font-monserratLight mb-3 md:text-[15px] lg:text-[16px] lg:w-full xl:w-[102px] md:w-[102px]'
+                className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100"
+                classNamesDescription='ml-[5px] lg:w-[120px] md:w-[110px] font-monserratLight mb-3 md:text-[15px] lg:text-[16px]'
               />
             </div>
-            <div className="lg:w-[499px] md:w-[336px] sm:w-[338px] w-[289px]">
+            <div className='w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3'></div>
+            <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
               <SelectiveCard
                 description="Ser empleado o pensionado."
                 onclick={false}
@@ -105,11 +106,12 @@ export default function Home() {
                 icon="bcs-user-heart"
                 color="text-complementario-100"
                 size="text-[2rem]"
-                className="sm:mb-3 xs:mb-3 md:mb-0 border-[0.3px] border-complementario-100"
-                classNamesDescription='ml-[5px] lg:w-full md:w-[110px] font-monserratLight mb-3 md:text-[15px] lg:text-[16px]'
+                className="sm:mb-3 xs:mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
+                classNamesDescription='ml-[5px] lg:w-[120px] md:w-[110px] font-monserratLight mb-3 md:text-[15px] lg:text-[16px]'
               />
             </div>
-            <div className="lg:w-[499px] md:w-[336px] sm:w-[338px] w-[289px]">
+            <div className='w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3'></div>
+            <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
               <SelectiveCard
                 description="Pagar salud y pensión."
                 onclick={false}
@@ -117,11 +119,12 @@ export default function Home() {
                 icon="bcs-hand-money"
                 color="text-complementario-100"
                 size="text-[2rem]"
-                className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] border-complementario-100"
-                classNamesDescription='ml-[5px] lg:w-full md:w-[95px] font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[110px] sm:w-full'
+                className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
+                classNamesDescription='ml-[5px] lg:w-[120px] md:w-[110px] font-monserratLight mb-3 md:text-[15px] lg:text-[16px]'
               />
             </div>
-            <div className="lg:w-[499px] md:w-[336px] sm:w-[338px] w-[289px]">
+            <div className='w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3'></div>
+            <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
               <SelectiveCard
                 description="Tener el celular a la mano."
                 onclick={false}
@@ -129,8 +132,8 @@ export default function Home() {
                 icon="bcs-mobile-grade"
                 color="text-complementario-100"
                 size="text-[2rem]"
-                className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] border-complementario-100"
-                classNamesDescription='lg:w-full md:w-[115px] font-monserratLight mb-3 md:text-[15px] lg:text-[16px]'
+                className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
+                classNamesDescription='ml-[5px] lg:w-[120px] md:w-[110px] font-monserratLight mb-3 md:text-[15px] lg:text-[16px]'
               />
             </div>
           </div>

@@ -2,7 +2,7 @@ import { differenceInYears, parse } from 'date-fns';
 import * as CryptoJS from 'crypto-js';
 import { SesionStorageKeys } from '../session';
 import { getSessionStorageOrDefault } from '../hooks/useSessionStorage';
-
+import cities from '../lib/cities.json'
 export const clearSessionStorage = () => {
   sessionStorage.clear();
 };
@@ -80,3 +80,8 @@ export const getProcessId = () => {
   );
   return processId;
 };
+
+export const getCityById = (id: string) => {
+  const city = cities.details.filter((element) => element.id == id)[0]?.name;
+  return city
+}
