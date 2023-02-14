@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import TagManager from 'react-gtm-module';
 import { iFormDataSimulation, SimulationData } from '../../../../interfaces';
-import Router from 'next/router';
 import {
   maxHouseValueNoVis,
   maxHouseValueVis,
@@ -12,8 +11,9 @@ import {
 import { calculateAge, isValidDate } from '../../../../utils';
 import { routes } from '../../../../routes';
 import { sendSimulationData } from '../../../../services';
+import { useRouter } from 'next/router';
 
-export default function useValidations({
+export default function useHouseSimulator({
   typeHouse,
   houseValue,
   financeValue,
@@ -30,6 +30,7 @@ export default function useValidations({
   setDataFormResponse,
   setDataFormQuota,
 }: any) {
+  const router = useRouter();
   const handleClearErrors = () => {
     clearErrors('typeHouse');
     clearErrors('houseValue');
@@ -135,7 +136,7 @@ export default function useValidations({
     };
     const response = await sendSimulationData(body);
     if (!response.error) {
-      Router.push(routes.simuladorResumen);
+      router.push(routes.simuladorResumen);
       setDataFormResponse(response?.response?.data);
       setDataFormQuota(body);
       setIsLoading(false);

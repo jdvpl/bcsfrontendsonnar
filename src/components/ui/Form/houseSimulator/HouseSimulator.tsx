@@ -9,7 +9,7 @@ import { days, months } from '../../../../lib/dates';
 import Button from '../../Button';
 import {  SimulationData } from '../../../../interfaces';
 import { yearsAvailable } from '../../../../lib/simulator';
-import useValidations from './useValidations';
+import useHouseSimulator from './useHouseSimulator';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import Alert from '../../Alert';
@@ -62,7 +62,7 @@ function HouseSimulator() {
     }
   };
 
-  const { onSubmit } = useValidations({
+  const { onSubmit } = useHouseSimulator({
     typeHouse,
     houseValue,
     financeValue,
