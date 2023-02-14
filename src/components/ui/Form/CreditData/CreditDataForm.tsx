@@ -6,7 +6,7 @@ import Button from '../../Button';
 import ReactHookFormSelect from '../../Select/newSelect';
 import { SimulationData } from '../../../../interfaces';
 import Input from '../../inputs';
-import { convertToColombianPesos } from '../../../../utils';
+import { convertToColombianPesos, renderPercentage } from '../../../../utils';
 import { yearsAvailable } from '../../../../lib/simulator';
 import useValidations from './useValidations';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
@@ -40,12 +40,6 @@ export function CreditDataForm() {
   const termFinance = watch('termFinance', dataForm?.termFinance || 0);
   const office = watch('office', dataForm?.office || 0);
   const stratum = watch('stratum', 0);
-  const renderPercentage = () => {
-    if (Math.floor(percentageFinance * 100) > 100) {
-      return `> 100`;
-    }
-    return Math.floor(percentageFinance * 100);
-  };
   const { automationFinanceValue, onSubmit, isValid } = useValidations(
     typeHouse,
     houseValue,
@@ -59,7 +53,10 @@ export function CreditDataForm() {
     houseStatus,
     insuranceCheck,
     choseOffice,
-    office, stratum, router, errors
+    office,
+    stratum,
+    router,
+    errors
   );
   useEffect(() => {
     setValue('financeValue', dataForm?.financeValue || 0);
@@ -67,7 +64,7 @@ export function CreditDataForm() {
     setValue('termFinance', dataForm?.termFinance || undefined);
     setValue('typeHouse', 'novis');
     setValue('houseStatus', 'used');
-    setValue('amortizationType', 'Pesos')
+    setValue('amortizationType', 'Pesos');
   }, []);
   return (
     <div className="flex flex-col items-center">
@@ -164,7 +161,7 @@ export function CreditDataForm() {
           />
 
           <div className="rounded-md w-[78px] border-[0.1px] text-[14px] h-[48px] bg-complementario-80 border-complementario-20/50 flex justify-center items-center text-complementario-20">
-            {renderPercentage()}%
+            {renderPercentage(percentageFinance)}%
           </div>
         </div>
 
@@ -221,9 +218,7 @@ export function CreditDataForm() {
           margin="normal"
           rules={{ required: true }}
         >
-          <MenuItem value="Pesos">
-            Pesos
-          </MenuItem>
+          <MenuItem value="Pesos">Pesos</MenuItem>
           <MenuItem value="uvr" disabled>
             UVR
           </MenuItem>
@@ -231,75 +226,76 @@ export function CreditDataForm() {
         {/* Card Chose Housing */}
         <div className="cardShadow min-h-[106px] rounded-xl pt-[24px] pb-[27px] mb-[6px] px-[24px] w-full flex flex-col gap-4">
           <div>
-            <Typography
-              variant="body1"
-              className="w-full Montserrat text-primario-900 text-[16px] leading-[18px]"
+            <span
+              className="w-full font-montserratRegular font-semibold text-primario-900 text-[16px] leading-[18px]"
             >
               Elija como continuar el proceso
-            </Typography>
+            </span>
           </div>
-          <div className="flex">
+          <div className="flex flex-col gap-5">
             <button
               className="flex cursor-pointer"
               onClick={() => changeOffice(true)}
               data-testid="Button-Yes"
             >
-              <span className="font-semibold text-gris-100 mr-[10px]">Sucursal</span>
               <div className="w-[25px] h-[25px] border border-complementario-100 flex justify-center items-center rounded-full">
                 {choseOffice ? (
-                  <div className="w-[10px] h-[10px] bg-complementario-100 rounded-full">
-                    {' '}
-                  </div>
+                  <div className="w-[10px] h-[10px] bg-primario-200 rounded-full"> </div>
                 ) : null}
               </div>
+              <span className="font-normal text-primario-900 font-montserratRegular ml-[10px]">
+                Acercarme a una oficina
+              </span>
             </button>
+
+            {choseOffice ? (
+              <div className="w-full" data-testid="InputOffices">
+                <Controller
+                  control={control}
+                  name="office"
+                  defaultValue={undefined}
+                  render={({ field: { onChange } }) => (
+                    <AutoCompleteCustom
+                      id="currentCity"
+                      defaultValue={undefined}
+                      placeholder="Oficina de preferencia"
+                      label="Sucursal"
+                      arrayOptions={offices}
+                      onChange={(e: any) => {
+                        if (e?.idOffice) {
+                          return onChange(e);
+                        }
+                        return onChange(undefined);
+                      }}
+                      zIndex={30}
+                    />
+                  )}
+                />
+              </div>
+            ) : null}
+
             {personalData?.hasAdviser ? (
               <button
                 data-testid="Button-No"
-                className="flex md:ml-[117px] xs:ml-[35px] ml-[35px] cursor-pointer"
+                className="flex  cursor-pointer"
                 onClick={() => changeOffice(false)}
               >
-                <span className="font-semibold text-gris-100">Asesor</span>
-                <div className="ml-[15px] w-[25px] h-[25px] border border-complementario-100 flex justify-center items-center rounded-full">
+                <div className="mr-[15px] w-[25px] h-[25px] border border-complementario-100 flex justify-center items-center rounded-full">
                   {!choseOffice ? (
-                    <div className="w-[10px] h-[10px] bg-complementario-100 rounded-full">
+                    <div className="w-[10px] h-[10px] bg-primario-200 rounded-full">
                       {' '}
                     </div>
                   ) : null}
                 </div>
+                <span className="font-normal text-primario-900 font-montserratRegular">Asesor</span>
               </button>
             ) : null}
           </div>
         </div>
-        {choseOffice ? (
-          <div className="w-full" data-testid="InputOffices">
-            <Controller
-              control={control}
-              name="office"
-              defaultValue={undefined}
-              render={({ field: { onChange } }) => (
-                <AutoCompleteCustom
-                  id="currentCity"
-                  defaultValue={undefined}
-                  placeholder="Oficina de preferencia"
-                  label="Sucursal"
-                  arrayOptions={offices}
-                  onChange={(e: any) => {
-                    if (e?.idOffice) {
-                      return onChange(e);
-                    }
-                    return onChange(undefined);
-                  }}
-                  zIndex={30}
-                />
-              )}
-            />
-          </div>
-        ) : null}
       </div>
 
       <button
-        className="flex items-start gap-3 w-full cursor-pointer"
+        className="flex items-center gap-3 w-full cursor-pointer"
         onClick={() => setInsuranceCheck(!insuranceCheck)}
       >
         <input
@@ -312,7 +308,7 @@ export function CreditDataForm() {
           onChange={(e) => setInsuranceCheck(e.target.checked)}
         />
 
-        <span className="text-[12px] text-primario-900 text-left cursor-pointer">
+        <span className="text-[12px] font-montserratRegular leading-[14px] text-primario-900 text-left cursor-pointer">
           Deseo incluir en la simulación del crédito el valor de los seguros
           correspondientes.
         </span>

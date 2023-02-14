@@ -8,7 +8,7 @@ export function RatingModal() {
   return (
     <div
       id="modal"
-      className={`bg-black/70 w-screen h-screen fixed top-0 flex justify-center content-center ${
+      className={`bg-black/70 z-50 w-screen h-screen fixed top-0 flex justify-center content-center ${
         isOpen && 'overflow-y-auto'
       }`}
     >

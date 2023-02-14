@@ -12,7 +12,7 @@ const wrapper = ({ children }: any) => (
   <RouterContext.Provider value={router}>{children}</RouterContext.Provider>
 );
 
-fetchSarlaft
+(fetchSarlaft as jest.Mock)
   .mockReturnValueOnce({
     response: {
       result: {

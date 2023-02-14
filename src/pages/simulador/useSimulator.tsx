@@ -7,6 +7,7 @@ import { sendSimulationData } from '../../services/index';
 import { routes } from '../../routes';
 
 export default function useSimulator() {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [dataFormQuota, setdataFormQuota] = useSessionStorage(
     SesionStorageKeys.dataFormSimulation.key,
     {}
@@ -21,6 +22,7 @@ export default function useSimulator() {
     'house'
   );
   const onSubmit = async (formData: iFormDataSimulation) => {
+    setIsLoading(true);
     const body: iFormDataSimulation = {
       simulationType: simulatioTypeOption,
       typeHouse: formData.typeHouse,
@@ -37,10 +39,12 @@ export default function useSimulator() {
     setdataFormQuota(body);
     const response = await sendSimulationData(body);
     if (!response.error) {
-      setdataFormResponse(response.response.data);
       router.push(routes.simuladorResumen);
+      setdataFormResponse(response.response.data);
+      setIsLoading(false);
     }
+    setIsLoading(false);
   };
 
-  return { simulatioTypeOption, setsimulatioTypeOption, onSubmit };
+  return { simulatioTypeOption, setsimulatioTypeOption, onSubmit, isLoading };
 }

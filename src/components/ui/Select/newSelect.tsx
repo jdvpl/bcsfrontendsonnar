@@ -23,7 +23,7 @@ const ReactHookFormSelect: React.FC<any> = ({
   dataTestId,
   ...props
 }) => {
-  const labelId = `${name}-label`;
+  const labelId = `${label}-label`;
 
   const [initialBorder, setBorder] = useState('#798c98a6');
   const [initialIcon, setInitialIcon] = useState(

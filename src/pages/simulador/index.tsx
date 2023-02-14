@@ -3,13 +3,12 @@ import LogoBcs from '../../components/svg/LogoBcs';
 import LogoForm from '../../components/svg/LogoForm';
 import FormQuota from '../../components/ui/Form/FormQuota';
 import Typography from '../../components/ui/Typography';
-import { iFormDataSimulation } from '../../interfaces/formSimulation';
 import HouseSimulator from '../../components/ui/Form/houseSimulator/HouseSimulator';
 import useSimulator from './useSimulator';
 import TagManager from 'react-gtm-module';
 
 function Simulator() {
-  const { simulatioTypeOption, setsimulatioTypeOption, onSubmit } = useSimulator();
+  const { simulatioTypeOption, setsimulatioTypeOption, onSubmit,isLoading } = useSimulator();
   useEffect(() => {
     TagManager.dataLayer({
       dataLayer: {
@@ -73,7 +72,7 @@ function Simulator() {
           </button>
         </div>
         {simulatioTypeOption === 'salary' && (
-          <FormQuota onSubmit={(formData: iFormDataSimulation) => onSubmit(formData)} />
+          <FormQuota isLoading={isLoading} onSubmit={onSubmit} />
         )}
         {simulatioTypeOption === 'house' && <HouseSimulator />}
       </div>

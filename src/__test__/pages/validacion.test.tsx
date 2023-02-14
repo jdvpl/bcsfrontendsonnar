@@ -1,30 +1,43 @@
-import '@testing-library/jest-dom'
+import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
-import React from 'react'
+import React from 'react';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import Error from '../../pages/validacion/error-validacionIdentidad';
-import ErrorBlock from '../../pages/validacion/error-bloqueo'
-import ErrorAttempts from '../../pages/validacion/error-numero-intentos'
-import ErrorValidacion from '../../pages/validacion/error-validacion'
-import Preguntas from '../../pages/validacion/error-validacion-identidad-preguntas'
-import Biometria from '../../pages/validacion/error-validacion-biometrica'
-import Rechazo from '../../pages/validacion/rechazo-solicitud'
+import ErrorBlock from '../../pages/validacion/error-bloqueo';
+import ErrorAttempts from '../../pages/validacion/error-numero-intentos';
+import ErrorValidacion from '../../pages/validacion/error-validacion';
+import Preguntas from '../../pages/validacion/error-validacion-identidad-preguntas';
+import Biometria from '../../pages/validacion/error-validacion-biometrica';
+import Rechazo from '../../pages/validacion/rechazo-solicitud';
 import { createMockRouter } from '../utils/createMockRouter';
 import { routes } from '../../routes';
-
+import SiteDown from '../../pages/validacion/error-servicio';
 
 describe('Error', () => {
   test('should render "Error" successfully', () => {
-    const router = createMockRouter({ query: { error: 'validacion/error-validacionIdentidad' } });
+    const router = createMockRouter({
+      query: { error: 'validacion/error-validacionIdentidad' },
+    });
     render(
       <RouterContext.Provider value={router}>
         <Error />
       </RouterContext.Provider>
     );
     const imageError = screen.getByRole('imageError');
-    expect(imageError.getAttribute('src')).toBe('/vivienda/images/autenticacion1.svg')
+    expect(imageError.getAttribute('src')).toBe('/vivienda/images/autenticacion1.svg');
   });
-
+  test('should render "Error" successfully', () => {
+    const router = createMockRouter({
+      query: { error: 'validacion/error-validacionIdentidad' },
+    });
+    render(
+      <RouterContext.Provider value={router}>
+        <SiteDown />
+      </RouterContext.Provider>
+    );
+    const imageError = screen.getByRole('imageError');
+    expect(imageError.getAttribute('src')).toBe('/vivienda/images/SiteDown.svg');
+  });
   test('should render "ErrorBlock" successfully', () => {
     const router = createMockRouter({ query: { error: 'validacion/error-bloqueo' } });
     render(
@@ -33,7 +46,7 @@ describe('Error', () => {
       </RouterContext.Provider>
     );
     const imageError = screen.getByRole('imageError');
-    expect(imageError.getAttribute('src')).toBe('/vivienda/images/autenticacion1.svg')
+    expect(imageError.getAttribute('src')).toBe('/vivienda/images/autenticacion1.svg');
   });
   test('should render "ErrorBlock" successfully', () => {
     const router = createMockRouter({ query: { error: 'validacion/error-bloqueo' } });
@@ -42,19 +55,20 @@ describe('Error', () => {
         <ErrorBlock />
       </RouterContext.Provider>
     );
-    expect(baseElement).toBeTruthy()
+    expect(baseElement).toBeTruthy();
   });
 
-
   test('should render "ErrorAttempts" successfully', () => {
-    const router = createMockRouter({ query: { error: 'validacion/error-numero-intentos' } });
+    const router = createMockRouter({
+      query: { error: 'validacion/error-numero-intentos' },
+    });
     render(
       <RouterContext.Provider value={router}>
         <ErrorAttempts />
       </RouterContext.Provider>
     );
     const imageError = screen.getByRole('imageError');
-    expect(imageError.getAttribute('src')).toBe('/vivienda/images/autenticacion3.svg')
+    expect(imageError.getAttribute('src')).toBe('/vivienda/images/autenticacion3.svg');
   });
 
   test('should render "ErrorValidacion" successfully', () => {
@@ -65,20 +79,20 @@ describe('Error', () => {
       </RouterContext.Provider>
     );
     const imageError = screen.getByRole('imageError');
-    expect(imageError.getAttribute('src')).toBe('/vivienda/images/autenticacion1.svg')
+    expect(imageError.getAttribute('src')).toBe('/vivienda/images/autenticacion1.svg');
   });
 
-
-
   test('should render "Preguntas" successfully', () => {
-    const router = createMockRouter({ query: { error: 'validacion/error-validacion-identidad-preguntas' } });
+    const router = createMockRouter({
+      query: { error: 'validacion/error-validacion-identidad-preguntas' },
+    });
     render(
       <RouterContext.Provider value={router}>
         <Preguntas />
       </RouterContext.Provider>
     );
     const imageError = screen.getByRole('imageError');
-    expect(imageError.getAttribute('src')).toBe('/vivienda/images/preautenticacion2.svg')
+    expect(imageError.getAttribute('src')).toBe('/vivienda/images/preautenticacion2.svg');
   });
 
   test('should render "Rechazo" successfully', () => {
@@ -89,11 +103,13 @@ describe('Error', () => {
       </RouterContext.Provider>
     );
     const imageError = screen.getByRole('imageError');
-    expect(imageError.getAttribute('src')).toBe('/vivienda/images/rechazo.svg')
+    expect(imageError.getAttribute('src')).toBe('/vivienda/images/rechazo.svg');
   });
 
   test('should render "Biometria" successfully', () => {
-    const router = createMockRouter({ query: { error: 'validacion/error-validacion-biometrica' } });
+    const router = createMockRouter({
+      query: { error: 'validacion/error-validacion-biometrica' },
+    });
     render(
       <RouterContext.Provider value={router}>
         <Biometria />
@@ -112,7 +128,7 @@ describe('Error', () => {
     );
     const btnOnboarding = await findByTestId('btnOnboarding');
     fireEvent.click(btnOnboarding);
-    expect(router.push).toHaveBeenCalledWith(routes.startProccess)
+    expect(router.push).toHaveBeenCalledWith(routes.startProccess);
   });
   test('should "ErrorBlock" got to other page', async () => {
     const router = createMockRouter({});
@@ -123,7 +139,7 @@ describe('Error', () => {
     );
     const btnOnboarding = await findByTestId('btnOnboarding');
     fireEvent.click(btnOnboarding);
-    expect(router.push).toHaveBeenCalledWith(routes.startProccess)
+    expect(router.push).toHaveBeenCalledWith(routes.startProccess);
   });
   test('should "Preguntas" go to other page', async () => {
     const router = createMockRouter({});
@@ -134,7 +150,7 @@ describe('Error', () => {
     );
     const btnOnboarding = await findByTestId('btnOnboarding');
     fireEvent.click(btnOnboarding);
-    expect(router.push).toHaveBeenCalledWith(routes.startProccess)
+    expect(router.push).toHaveBeenCalledWith(routes.startProccess);
   });
   test('should "ErrorValidacion" go to other page', async () => {
     const router = createMockRouter({});
@@ -145,7 +161,7 @@ describe('Error', () => {
     );
     const btnOnboarding = await findByTestId('btnOnboarding');
     fireEvent.click(btnOnboarding);
-    expect(router.push).toHaveBeenCalledWith(routes.startProccess)
+    expect(router.push).toHaveBeenCalledWith(routes.startProccess);
   });
   test('should "Error" go to other page', async () => {
     const router = createMockRouter({});
@@ -156,7 +172,18 @@ describe('Error', () => {
     );
     const btnOnboarding = await findByTestId('btnOnboarding');
     fireEvent.click(btnOnboarding);
-    expect(router.push).toHaveBeenCalledWith(routes.startProccess)
+    expect(router.push).toHaveBeenCalledWith(routes.startProccess);
+  });
+  test('should "Error" go to other page', async () => {
+    const router = createMockRouter({});
+    const { findByTestId } = render(
+      <RouterContext.Provider value={router}>
+        <SiteDown />
+      </RouterContext.Provider>
+    );
+    const btnOnboarding = await findByTestId('btnOnboarding');
+    fireEvent.click(btnOnboarding);
+    expect(router.push).toHaveBeenCalledWith(routes.home);
   });
   test('should "Rechazo" go to other page', async () => {
     const router = createMockRouter({});
@@ -167,8 +194,8 @@ describe('Error', () => {
     );
     const btnOnboarding = await findByTestId('btnOnboarding');
     fireEvent.click(btnOnboarding);
-    expect(router.push).toHaveBeenCalledWith('https://www.bancocajasocial.com/portalserver/Ubiquenos')
+    expect(router.push).toHaveBeenCalledWith(
+      'https://www.bancocajasocial.com/portalserver/Ubiquenos'
+    );
   });
-
 });
-
