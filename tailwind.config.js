@@ -173,6 +173,8 @@ module.exports = {
         'requirements-xxxl':`url('${basePath}/images/requirementsxxxl.png')`,
         'requirements-md':`url('${basePath}/images/requirementsmd.png')`,
         'requirements-sm':`url('${basePath}/images/requirementssm.png')`,
+        'requirements-smd':`url('${basePath}/images/requirementssmd.png')`,
+        'requirements-xs':`url('${basePath}/images/requirementsxs.png')`,
 
         'landing-md':`url('${basePath}/images/landingMd.png')`,
         'landing-smd':`url('${basePath}/images/landingSmd.png')`,
