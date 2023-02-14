@@ -69,7 +69,7 @@ export function CreditDataForm() {
   return (
     <div className="flex flex-col items-center">
       {/* Form When Person chose Hose */}
-      <div className="flex flex-col items-center gap-y-[12px] w-full mb-[32px]">
+      <div className="flex flex-col items-center gap-y-[12px] w-full mb-[30px]">
         <div
           data-testid="InputTypeHouse"
           className="w-full grid grid-cols-1 md:grid-cols-2 gap-4"
@@ -224,7 +224,7 @@ export function CreditDataForm() {
           </MenuItem>
         </ReactHookFormSelect>
         {/* Card Chose Housing */}
-        <div className="cardShadow min-h-[106px] rounded-xl pt-[24px] pb-[27px] mb-[6px] px-[24px] w-full flex flex-col gap-4">
+        <div className="cardShadow min-h-[106px] mt-[23px] rounded-xl pt-[24px] pb-[23px] px-[24px] w-full flex flex-col gap-4">
           <div>
             <span
               className="w-full font-montserratRegular font-semibold text-primario-900 text-[16px] leading-[18px]"
@@ -287,7 +287,7 @@ export function CreditDataForm() {
                     </div>
                   ) : null}
                 </div>
-                <span className="font-normal text-primario-900 font-montserratRegular">Asesor</span>
+                <span className="font-normal text-primario-900 font-montserratRegular">Recibir visita asesor</span>
               </button>
             ) : null}
           </div>
