@@ -15,7 +15,7 @@ export default function SiteDown() {
       title={<p className='mt-[88px]'>¡Ups! Algo salió mal</p>}
       btnaction={() => router.push(routes.home)}
       text={<p className='mb-[68px]'>Por favor inténtelo nuevamente</p>}
-      urlsvg={`${basePath}/images/SiteDown.svg`}
+      urlsvg={`${basePath}/images/siteDown.svg`}
       textbtn="Volver a intentar"
       ImgClass="mb-[40px] mt-20 lg:h-[300px] md:w-[340px] md:h-[300px] sm:w-[245px] sm:h-[200px] xs:h-[200px] xs:w-[245px] m-auto pt-[15px]"
     />

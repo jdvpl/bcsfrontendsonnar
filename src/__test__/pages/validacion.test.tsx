@@ -36,7 +36,7 @@ describe('Error', () => {
       </RouterContext.Provider>
     );
     const imageError = screen.getByRole('imageError');
-    expect(imageError.getAttribute('src')).toBe('/vivienda/images/SiteDown.svg');
+    expect(imageError.getAttribute('src')).toBe('/vivienda/images/siteDown.svg');
   });
   test('should render "ErrorBlock" successfully', () => {
     const router = createMockRouter({ query: { error: 'validacion/error-bloqueo' } });
