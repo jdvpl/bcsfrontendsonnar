@@ -2,13 +2,13 @@ import { useEffect } from 'react';
 import TagManager from 'react-gtm-module';
 import { iFormDataSimulation, SimulationData } from '../../../../interfaces';
 import {
-  maxHouseValueNoVis,
-  maxHouseValueVis,
-  minHouseValueNoVis,
-  minHouseValueVis,
-  SMMLV,
-} from '../../../../lib/simulator';
-import { calculateAge, isValidDate } from '../../../../utils';
+  calculateAge,
+  handleClearErrors,
+  isValidDate,
+  validateAge,
+  validateFinanceValue,
+  validateTypeHouse,
+} from '../../../../utils';
 import { routes } from '../../../../routes';
 import { sendSimulationData } from '../../../../services';
 import { useRouter } from 'next/router';
@@ -31,85 +31,6 @@ export default function useHouseSimulator({
   setDataFormQuota,
 }: any) {
   const router = useRouter();
-  const handleClearErrors = () => {
-    clearErrors('typeHouse');
-    clearErrors('houseValue');
-    clearErrors('financeValueE');
-    clearErrors('termFinance');
-    clearErrors('day');
-    clearErrors('month');
-    clearErrors('year');
-  };
-
-  const validateTypeHouse = () => {
-    if (
-      (houseValue < minHouseValueVis || houseValue > maxHouseValueVis) &&
-      typeHouse === 'vis' &&
-      houseValue > 0
-    ) {
-      setError('typeHouse', {
-        type: 'error',
-        message: 'El valor de la vivienda VIS debe estar entre 50 y 150 SMMLV.',
-      });
-    }
-    if (houseValue < minHouseValueNoVis && typeHouse === 'novis' && houseValue > 0) {
-      setError('typeHouse', {
-        type: 'error',
-        message: 'El valor mínimo de la vivienda debe ser de 150 SMMLV.',
-      });
-    }
-    if (houseValue > maxHouseValueNoVis && typeHouse === 'novis' && houseValue > 0) {
-      setError('typeHouse', {
-        type: 'error',
-        message: 'El valor de la vivienda máximo debe ser de 1.400 SMMLV.',
-      });
-    }
-  };
-
-  const validateAge = () => {
-    if (day && month && year) {
-      const age = calculateAge(`${day}/${month}/${year}`);
-      if (age < 19 || age > 71) {
-        setError(
-          'day',
-          {
-            type: 'error',
-            message: 'Fecha inválida',
-          },
-          {
-            shouldFocus: true,
-          }
-        );
-      }
-      if (!isValidDate(parseInt(year), parseInt(month), parseInt(day))) {
-        setError(
-          'day',
-          {
-            type: 'error',
-            message: 'Fecha inválida',
-          },
-          {
-            shouldFocus: true,
-          }
-        );
-      }
-    }
-  };
-
-  const validatefinanceValue = () => {
-    if (financeValue > Math.round(houseValue * 0.7) && financeValue > 0) {
-      setError('financeValueE', {
-        type: 'error',
-        message: 'El valor máximo a financiar no puede superar el 70% de la vivienda.',
-      });
-    }
-    if (financeValue < SMMLV * 20 && financeValue > 0) {
-      setError('financeValueE', {
-        type: 'error',
-        message: 'El valor mínimo a financiar para vivienda VIS es de 20 SMMLV.',
-      });
-    }
-  };
 
   const onSubmit = async (formData: SimulationData) => {
     setIsLoading(true);
@@ -145,11 +66,11 @@ export default function useHouseSimulator({
   };
 
   useEffect(() => {
-    handleClearErrors();
-    validateTypeHouse();
-    validatefinanceValue();
+    handleClearErrors(clearErrors);
+    validateTypeHouse(houseValue, typeHouse, setError);
+    validateFinanceValue(financeValue, houseValue, setError);
     calculatePercentageFinance();
-    validateAge();
+    validateAge(day, month, year, setError);
   }, [typeHouse, houseValue, financeValue, termFinance, day, month, year]);
 
   return { onSubmit };

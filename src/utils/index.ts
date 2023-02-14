@@ -5,6 +5,14 @@ import { getSessionStorageOrDefault } from '../hooks/useSessionStorage';
 import { AxiosError, AxiosInstance } from 'axios';
 import Router from 'next/router';
 import cities from '../lib/cities.json';
+import { months } from '../lib/dates';
+import {
+  maxHouseValueNoVis,
+  maxHouseValueVis,
+  minHouseValueNoVis,
+  minHouseValueVis,
+  SMMLV,
+} from '../lib/simulator';
 
 export const clearSessionStorage = () => {
   sessionStorage.clear();
@@ -104,4 +112,88 @@ export const renderPercentage = (percentageFinance: any) => {
 export const getCityById = (id: string) => {
   const city = cities.details.filter((element) => element.id == id)[0]?.name;
   return city;
+};
+
+export const handleClearErrors = (clearErrors: any) => {
+  clearErrors('typeHouse');
+  clearErrors('houseValue');
+  clearErrors('financeValueE');
+  clearErrors('termFinance');
+  clearErrors('day');
+  clearErrors('month');
+  clearErrors('year');
+};
+
+export const validateTypeHouse = (houseValue: any, typeHouse: string, setError: any) => {
+  if (
+    (houseValue < minHouseValueVis || houseValue > maxHouseValueVis) &&
+    typeHouse === 'vis' &&
+    houseValue > 0
+  ) {
+    setError('typeHouse', {
+      type: 'error',
+      message: 'El valor de la vivienda VIS debe estar entre 50 y 150 SMMLV.',
+    });
+  }
+  if (houseValue < minHouseValueNoVis && typeHouse === 'novis' && houseValue > 0) {
+    setError('typeHouse', {
+      type: 'error',
+      message: 'El valor mínimo de la vivienda debe ser de 150 SMMLV.',
+    });
+  }
+  if (houseValue > maxHouseValueNoVis && typeHouse === 'novis' && houseValue > 0) {
+    setError('typeHouse', {
+      type: 'error',
+      message: 'El valor de la vivienda máximo debe ser de 1.400 SMMLV.',
+    });
+  }
+};
+
+export const validateAge = (day: string, month: string, year: string, setError: any) => {
+  if (day && month && year) {
+    const age = calculateAge(`${day}/${month}/${year}`);
+    if (age < 19 || age > 71) {
+      setError(
+        'day',
+        {
+          type: 'error',
+          message: 'Fecha inválida',
+        },
+        {
+          shouldFocus: true,
+        }
+      );
+    }
+    if (!isValidDate(parseInt(year), parseInt(month), parseInt(day))) {
+      setError(
+        'day',
+        {
+          type: 'error',
+          message: 'Fecha inválida',
+        },
+        {
+          shouldFocus: true,
+        }
+      );
+    }
+  }
+};
+
+export const validateFinanceValue = (
+  financeValue: number,
+  houseValue: number,
+  setError: any
+) => {
+  if (financeValue > Math.round(houseValue * 0.7) && financeValue > 0) {
+    setError('financeValueE', {
+      type: 'error',
+      message: 'El valor máximo a financiar no puede superar el 70% de la vivienda.',
+    });
+  }
+  if (financeValue < SMMLV * 20 && financeValue > 0) {
+    setError('financeValueE', {
+      type: 'error',
+      message: 'El valor mínimo a financiar para vivienda VIS es de 20 SMMLV.',
+    });
+  }
 };
