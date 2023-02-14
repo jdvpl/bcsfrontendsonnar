@@ -20,6 +20,7 @@ const ReactHookFormSelect: React.FC<any> = ({
   spacing,
   error = false,
   hideMenuItem = false,
+  dataTestId,
   ...props
 }) => {
   const labelId = `${label}-label`;
@@ -58,7 +59,7 @@ const ReactHookFormSelect: React.FC<any> = ({
         id={labelId}
         sx={{
           color: error && '#ce1126',
-          left:-4,
+          left: -4
         }}
       >
         {label}
@@ -69,7 +70,7 @@ const ReactHookFormSelect: React.FC<any> = ({
           rules={rules}
           render={({ field }) => (
             <Select
-              data-testid="select"
+              data-testid={dataTestId}
               SelectDisplayProps={{
                 // @ts-ignore
                 "data-testid": `select`

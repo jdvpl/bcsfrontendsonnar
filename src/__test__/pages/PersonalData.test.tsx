@@ -154,7 +154,6 @@ describe('PersonalData', () => {
     const inputBirthCity = getAllByRole('combobox')[0];
 
     const inputCurretnCity = getAllByRole('combobox')[1];
-    const currentAddres = getByTestId('currentAddres');
     const btnBasicDataTest = getByTestId('btnBasicDataTest');
     const personaldataTest = getByTestId('personaldataTest')
 
@@ -165,9 +164,6 @@ describe('PersonalData', () => {
 
 
     fireEvent.input(genderTest, { target: { value: 'male' } })
-
-    fireEvent.paste(currentAddres, "currentAddres")
-    fireEvent.input(currentAddres, { target: { value: 'Cra falsa # falsa-5' } })
 
     fireEvent.submit(personaldataTest);
 

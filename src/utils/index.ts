@@ -4,6 +4,7 @@ import { SesionStorageKeys } from '../session';
 import { getSessionStorageOrDefault } from '../hooks/useSessionStorage';
 import { AxiosError, AxiosInstance } from 'axios';
 import Router from 'next/router';
+import cities from '../lib/cities.json';
 
 export const clearSessionStorage = () => {
   sessionStorage.clear();
@@ -99,4 +100,8 @@ export const renderPercentage = (percentageFinance: any) => {
     return `> 100`;
   }
   return Math.floor(percentageFinance * 100);
+};
+export const getCityById = (id: string) => {
+  const city = cities.details.filter((element) => element.id == id)[0]?.name;
+  return city;
 };
