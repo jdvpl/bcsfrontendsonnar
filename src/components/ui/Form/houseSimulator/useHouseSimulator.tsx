@@ -60,9 +60,9 @@ export default function useHouseSimulator({
       router.push(routes.simuladorResumen);
       setDataFormResponse(response?.response?.data);
       setDataFormQuota(body);
+    }else{
       setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   useEffect(() => {
