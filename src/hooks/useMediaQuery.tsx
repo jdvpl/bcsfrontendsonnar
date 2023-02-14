@@ -6,7 +6,7 @@ export default function useMediaQueryResponsive() {
     query: "(max-width:575px)"
   })
   const isTablet = useMediaQuery({
-    query: "(min-width: 576px) and (max-width: 1083px)"
+    query: "(min-width: 576px) and (max-width: 1079px)"
   })
   const isBrowser = useMediaQuery({
     query: "(min-width: 1024px) "

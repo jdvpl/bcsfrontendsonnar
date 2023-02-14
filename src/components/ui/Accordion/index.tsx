@@ -13,7 +13,7 @@ const Questions: FC = () => {
     >
       <h2
         id="questions"
-        className="text-center min-w-[291px] lg:mb-[48px] mt-[80px]  md:mb-[48px] md:mt-[80px] w-full text-[30px] leading-[34px]  mb-[45px] lg:text-[32px] lg:leading-[34px] font-poppinsBold"
+        className="text-center min-w-[291px] lg:mb-[48px] mt-[80px]  md:mb-[48px] md:mt-[80px] w-full text-[28px] leading-[34px]  mb-8 lg:text-[32px] lg:leading-[34px] font-poppinsSemiBold"
         role="paragraph"
         tabIndex={0}
       >
@@ -83,7 +83,7 @@ const Questions: FC = () => {
             setSelected={setSelected}
           >
             <div data-testid="itemATest6">
-            Las condiciones que el Banco maneja en este momento son:
+              Las condiciones que el Banco maneja en este momento son:
               <ul className="list-disc ml-6 mt-3">
                 <li>Tipo de vivienda VIS y No VIS.</li>
                 <li>Aplica para vivienda nueva y usada.</li>

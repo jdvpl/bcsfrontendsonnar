@@ -79,7 +79,7 @@ export const getQuestions = async (data: any) => {
 // TODO sendQuestions KYC
 export const sendQuestions = async (data: any) => {
   try {
-    const dataInfo = await allResponse({...data,processId: getProcessId()}, KEY);
+    const dataInfo = await allResponse({ ...data, processId: getProcessId() }, KEY);
     const { data: response } = await clientAxiosBackend.post(
       // '/customers/answer',
       '/api-composer/composer/answer',
@@ -160,8 +160,8 @@ export const validateOTOCode = async (data: ValidateOTC) => {
 export const reSendOTPCode = async (data: OTPCodeRequest) => {
   try {
     const dataInfo = await allResponse({ ...data, processId: getProcessId() }, KEY);
-    const { data: response } = await clientAxiosMock.post(
-      '/identity-user/resend',
+    const { data: response } = await clientAxiosBackend.post(
+      '/api-composer/composer/resend-otp',
       { data: dataInfo },
       headersBack
     );

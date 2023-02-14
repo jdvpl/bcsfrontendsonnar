@@ -1267,7 +1267,7 @@ input[type='checkbox']:checked {
   color: #00253d !important;
 }
 
-.verificationForm .ast,
+/* .verificationForm .ast,
 li {
   margin: 0;
   padding: 0;
@@ -1277,7 +1277,7 @@ li {
 .verificationForm .ast li:before {
   content: '*';
   padding-right: 1rem;
-}
+} */
 
 svg {
   transform: none !important;

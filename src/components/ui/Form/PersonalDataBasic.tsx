@@ -281,7 +281,7 @@ function PersonalDataBasic({ userInfo }: any) {
                 <Input
                   helperText="Ejemplo: correo@dominio.com"
                   helperTextOption
-                  type="email"
+                  type="text"
                   error={!!errors.email}
                   onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                     e.preventDefault();
@@ -292,7 +292,7 @@ function PersonalDataBasic({ userInfo }: any) {
                   id="email"
                   onFocus={showPopup}
                   data-testid="emailTest"
-                  inputMode="email"
+                  inputMode="text"
                   placeholder="Correo electrónico"
                   label="Correo electrónico"
                   onChange={(e: any) => setValue('email', e.target.value)}

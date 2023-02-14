@@ -7,8 +7,8 @@ import dynamicClassesSelective from './SelectiveClassnames';
 import React from 'react'
 
 export interface ISelectiveCardProps extends IconsProps {
-  label?: string;
-  description: string;
+  label?:React.ReactNode| string;
+  description:  string;
   pathTo?: string;
   className?: string;
   hasTitle?: boolean;
