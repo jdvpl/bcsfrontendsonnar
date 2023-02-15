@@ -9,6 +9,7 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<'button'> {
   variant?: 'primary' | 'secondary';
   className?: string;
   isLanding?: string;
+  border?: string;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -21,6 +22,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       isLoading,
       isLanding,
+      border = '0',
       ...rest
     },
     ref
@@ -33,18 +35,23 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         type="button"
         disabled={disabled}
         className={`
+        
+
         rounded h-[48px] transition-all duration-500  hover:shadow-media-300  text-lg leading-5
-        ${isLanding ||
+        ${
+          isLanding ||
           'w-[288px] sm:w-[343px] sm:max-w-[343px] md:w-[343px] lg:w-[375px] lg:max-w-[375px] '
-          }
-          ${variant === 'primary'
-            ? 'py-[10px] text-white bg-primario-100  hover:bg-primario-400  focus:text-secundario-200 focus:shadow-none disabled:text-[#ACD1ED] disabled:bg-gris-80 disabled:shadow-none font-montserratMedium'
-            : ''
+        }
+          ${
+            variant === 'primary'
+              ? 'py-[10px] text-white bg-primario-100  hover:bg-primario-400  focus:text-secundario-200 focus:shadow-none disabled:text-[#ACD1ED] disabled:bg-gris-80 disabled:shadow-none font-montserratMedium'
+              : ''
           }  
-        ${variant === 'secondary'
-            ? 'valid:text-primario-100  py-[10px]  hover:shadow-none  border-primario-100 bg-white text-primario-100 hover:border-primario-80   focus:text-white focus:shadow-none disabled:text-azul_gris-70 disabled:bg-gris-80 disabled:border-0 border-0 font-montserratMedium'
+        ${
+          variant === 'secondary'
+            ? `valid:text-primario-100  py-[10px]  hover:shadow-none border-primario-100 bg-white text-primario-100 hover:border-primario-80  border-[${border}px] focus:text-white focus:shadow-none disabled:text-azul_gris-70 disabled:bg-gris-80 disabled:border-0 font-montserratMedium`
             : ''
-          }
+        }
         ${className || ''}
         ${transition || ''}`}
         {...rest}
