@@ -26,13 +26,13 @@ function ApplicationApproval() {
         </div>
         <Typography
           variant="h1"
-          className="text-center mt-[52px] text-primario-900 text-[32px] font-semibold"
+          className="text-center mt-[52px] text-primario-900 text-[32px] font-semibold font-poppinsSemiBold"
         >
           ¡{dataInfo.firstName}, felicitaciones!
         </Typography>
         <Typography
           variant="h4"
-          className="text-center mt-3 text-primario-900 text-[18px] font-semibold leading-[20px]"
+          className="text-center mt-3 text-primario-900 text-[18px] font-semibold leading-[20px] font-poppinsSemiBold"
         >
           Su crédito hipotecario
           <span className="block">ha sido preaprobado</span>
@@ -42,9 +42,9 @@ function ApplicationApproval() {
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA] font-semibold rounded-[8px] m-auto"
             title="Monto preaprobado"
             value={`${convertToColombianPesos(valuesMortgage?.financeValue)}`}
-            text="md:text-[32px] text-[25px] pl-[16px] pt-2 flex items-baseline"
+            text="md:text-[32px] text-[25px] pl-[16px] pt-2 flex items-baseline font-poppinsSemiBold"
             urlsvg=""
-            classtitle="h-[18px] pt-[16px] text-[16px] pl-0"
+            classtitle="h-[18px] pt-[16px] text-[16px] pl-0 font-poppinsSemiBold"
             subvalue="pesos"
             textsub="30"
             tooltiptext=""
@@ -57,9 +57,9 @@ function ApplicationApproval() {
             title="Plazo"
             urlsvgendicon=""
             value="15 años"
-            text="text-[20px] pl-[18px] font-semibold"
+            text="text-[20px] pl-[18px] font-semibold font-poppinsSemiBold"
             urlsvg={`${basePath}/images/Calendar.svg`}
-            classtitle="h-[14px] text-[13px]"
+            classtitle="h-[14px] text-[13px] font-montserratRegular"
             tooltiptext=""
           />
         </div>
@@ -76,22 +76,13 @@ function ApplicationApproval() {
                 )} - ${valuesMortgage?.office?.city
                   ?.toLowerCase()
                   .replace(/\b\w/g, (l: string) => l.toUpperCase())} `}
-              text="text-[20px] pl-[18px] font-semibold"
+              text="text-[20px] pl-[18px] font-semibold font-poppinsSemiBold"
               urlsvg={`${basePath}/images/location.svg`}
-              classtitle="h-[14px] text-[13px]"
+              classtitle="h-[14px] text-[13px] font-montserratRegular"
               tooltiptext=""
             />
           </div>
         ) : null}
-        <div>
-          <Typography
-            variant="bodyM3"
-            className="w-[288px] sm:w-[343px] text-center mt-[25px] text-primario-900 text-[18px]  font-normal leading-[20px] m-auto"
-          >
-            A continuación obtenga su carta
-            de preaprobado y el plan de pagos
-          </Typography>
-        </div>
         <div className="mt-8 flex justify-center">
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[438px]"
@@ -103,23 +94,23 @@ function ApplicationApproval() {
             id="btn-next"
           >
             <span className="font-medium font-monserratLight text-[18px]">
-              <Icons icon="bcs-arrow-one-down" /> Descargar documentos
+              <Icons icon="bcs-arrow-one-down" /> Carta de preaprobación
             </span>
           </Button>
         </div>
-        {/* <div className="sm:w-[350px] w-[293px] md:w-[398px] lg:w-[448px] m-auto">
+        <div className="sm:w-[350px] w-[293px] md:w-[398px] lg:w-[448px] m-auto font-montserratRegular">
           <Alert message="La carta de preaprobación de su crédito y los próximos pasos serán enviados su correo registrado." />
-        </div> */}
+        </div>
         <div className="mt-8 md:w-[440px] sm:w-[343px] w-[293px] m-auto">
           <Typography
             variant="bodyM3"
-            className="text-center mt-3 text-primario-900 text-[18px] font-semibold leading-[20px]"
+            className="text-center mt-3 text-primario-900 text-[18px] font-semibold leading-[20px] font-montserratRegular"
           >
             Conozca los próximos pasos <br />
             para el desembolso de su crédito
           </Typography>
         </div>
-        <div className="listInitial md:w-[440px] sm:w-[343px] w-[293px] m-auto mt-8">
+        <div className="listInitial md:w-[440px] sm:w-[343px] w-[293px] m-auto mt-8 font-montserratRegular text-primario-900">
           <ul className="">
             <li className="mt-3 text-lg font-light">
               Descargue la carta de preaprobación.
