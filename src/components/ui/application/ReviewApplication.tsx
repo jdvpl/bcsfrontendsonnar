@@ -1,7 +1,6 @@
 import React from 'react';
 import Card from '../simulation/Card';
 import { basePath } from '../../../../next.config';
-import { useReviewApplication } from './useReviewApplication';
 
 interface ReviewApplicationProps {
   financedValue?: string;
@@ -21,7 +20,6 @@ function ReviewApplication({
   rate,
   insuranceCheck = true,
 }: ReviewApplicationProps) {
-  const { insurance, handleInsurance, goBack } = useReviewApplication(insuranceCheck);
   return (
     <div className="flex flex-col items-center ">
       <Card
@@ -78,9 +76,6 @@ function ReviewApplication({
         urlsvg={`${basePath}/images/Calendar.svg`}
         classtitle="h-[14px] text-[13px]"
         tooltiptext=""
-        endicon
-        urlsvgendicon={`${basePath}/images/PenEdit.svg`}
-        clickEdit={goBack}
         description
         descriptionHtml={
           <p className="pr-[1px] ml-[26px] mr-[8px] text-[14px] color-[#00253D]">
@@ -88,7 +83,6 @@ function ReviewApplication({
           </p>
         }
       />
-      {insurance ? (
         <Card
           data-testid="lifeInsurance"
           className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[98px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
@@ -98,9 +92,6 @@ function ReviewApplication({
           urlsvg={`${basePath}/images/Insurage.svg`}
           classtitle="h-[14px] text-[13px]"
           tooltiptext=""
-          endicon
-          urlsvgendicon={`${basePath}/images/Delete.svg`}
-          clickEdit={handleInsurance}
           description
           descriptionHtml={
             <p className="pr-[1px] ml-[26px] mr-[8px] text-[14px] color-[#00253D]">
@@ -108,8 +99,6 @@ function ReviewApplication({
             </p>
           }
         />
-      ) : null}
-      {insurance ? (
         <Card
           data-testid="fireInsurance"
           className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[98px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
@@ -119,9 +108,6 @@ function ReviewApplication({
           urlsvg={`${basePath}/images/Money.svg`}
           classtitle="h-[14px] text-[13px]"
           tooltiptext=""
-          endicon
-          urlsvgendicon={`${basePath}/images/Delete.svg`}
-          clickEdit={handleInsurance}
           description
           descriptionHtml={
             <p className="pr-[1px] ml-[26px] mr-[8px] text-[14px] color-[#00253D]">
@@ -129,7 +115,6 @@ function ReviewApplication({
             </p>
           }
         />
-      ) : null}
     </div>
   );
 }
