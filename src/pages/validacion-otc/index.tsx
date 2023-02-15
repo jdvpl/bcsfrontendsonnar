@@ -5,13 +5,15 @@ import Layout from '../../components/layouts/layout';
 import Stepper from '../../components/ui/Stepper';
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
 
-export default function ValidacionSolicitud() {
+export default function OTCPage() {
   return (
     <InactivityWarper>
       <Layout navTitle={<NavTitle noBack />}>
         <Stepper steps={4} actualStep={4} title="Validación de identidad" />
-        <Otp />
+        <Otp otc />
       </Layout>
     </InactivityWarper>
   );
 }
+
+

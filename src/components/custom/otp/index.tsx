@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, FC } from 'react';
 import OtpInput from 'react-otp-input-rc-17';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../session';
@@ -9,20 +9,25 @@ import Typography from '../../ui/Typography';
 import useOtp from './useOtp';
 import { reSendOTPCode, validateOTOCode } from '../../../services';
 
+interface otpProps {
+  otc?: boolean;
+}
 export interface ValidateOTC {
   pin: string;
   document_number: string;
   document_type: string;
   processId: string;
+  otc?: boolean
 }
 export interface OTPCodeRequest {
   document_type: string;
   document_number: string;
   phone: string;
   processId: string;
+  otc?: boolean
 }
 
-export function Otp() {
+const Otp: FC<otpProps> = ({ otc }) => {
   const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const [otp, setOtp] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(false);
@@ -46,7 +51,8 @@ export function Otp() {
     router,
     reSendOTPCode,
     validateOTOCode,
-    dataQuestions
+    dataQuestions,
+    otc
   });
   useEffect(() => {
     if (otp?.length === 6) {
@@ -73,11 +79,15 @@ export function Otp() {
     <div className="w-scren flex flex-col items-center">
       <h4
         id="title"
-        className="font-semibold text-[20px] text-primario-900 text-center mt-[40px] mb-[36px]  md:mt-[64px]  md:mb-[52px] lg:mb-[36px]"
+        className="font-semibold text-[20px] text-primario-900 text-center mt-[40px] mb-[36px]  md:mt-[64px]  md:mb-[52px] lg:mb-[36px] font-poppinsSemiBold"
         data-testid="h4OtpText"
       >
-        Ingrese el código enviado por <br /> sms a su celular +57
-        {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : ''}
+        {
+          otc ? <span>Ingrese el código enviado  a su <br />celular y correo electrónico</span> : <span>
+            Ingrese el código enviado por <br /> sms a su celular +57
+            {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : ''}
+          </span>
+        }
       </h4>
 
       <div className="text-normal mb-[12px]">
@@ -157,3 +167,5 @@ export function Otp() {
     </div>
   );
 }
+
+export default Otp;
