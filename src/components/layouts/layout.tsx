@@ -32,7 +32,7 @@ const Layout: React.FC<LayoutProps> = ({ className, navTitle, children }) => {
             <div
               className="lg:w-[1160px] lg:max-w-[100%] mx-4  flex justify-between items-baseline ml-40"
               itemScope
-              itemType="http://schema.org/Organization"
+              itemType="https://schema.org/Organization"
               itemProp="logo"
             >
               <LogoBcs />

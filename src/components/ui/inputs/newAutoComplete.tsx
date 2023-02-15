@@ -48,7 +48,7 @@ const NewAutoComplete: React.FC<InputProps> = ({
       id="select-autocomplete"
       data-testid={'searchAutocomplete'}
       itemScope
-      itemType="http://schema.org/Person"
+      itemType="https://schema.org/Person"
       className="flex flex-col justify-start relative"
     >
       {/* eslint-disable-line no-use-before-define */}
