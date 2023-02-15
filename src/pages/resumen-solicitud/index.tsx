@@ -14,7 +14,6 @@ import Alert from '../../components/ui/Alert/index';
 import { ApplicationLoader } from '../../components/ui/Loaders/ApplicationLoader';
 import useSummaryApplication from '../../hooks/useReviewApplication';
 import HeaderForm from '../../components/ui/Headers/HeaderForm';
-import { RatingModal } from '../../components/ui/Modal/ratingModal';
 
 function ResumenApplication() {
   const router = useRouter();
@@ -25,7 +24,7 @@ function ResumenApplication() {
     <div>
       {isLoading ? <ApplicationLoader /> : null}
       <HeaderForm />
-      <RatingModal />
+      
       <div className="lg:w-[825px] mx-auto md:w-[528px] mb-[64px] xs:mb-[40px] xs:w-[288px] sm:w-[343px] mt-9">
         <Stepper
           steps={4}

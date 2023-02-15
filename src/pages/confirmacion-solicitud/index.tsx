@@ -5,6 +5,7 @@ import Alert from '../../components/ui/Alert';
 import Button from '../../components/ui/Button';
 import Header from '../../components/ui/Headers/Header';
 import Icons from '../../components/ui/icons';
+import { RatingModal } from '../../components/ui/Modal/ratingModal';
 import Card from '../../components/ui/simulation/Card';
 import Typography from '../../components/ui/Typography';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
@@ -20,6 +21,7 @@ function ApplicationApproval() {
   return (
     <div>
       <Header />
+      <RatingModal />
       <div className="m-auto lg:w-[528px]">
         <div className="mt-[60px] lg:w-[455px] lg:h-[300px] md:w-[455px] md:h-[300px] sm:w-[303px] sm:h-[200px] xs:h-[200px] xs:w-[303px] m-auto ">
           <img src={`${basePath}/images/approvalSvg.svg`} alt="" />
