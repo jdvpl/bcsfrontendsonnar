@@ -3,6 +3,7 @@ export const routes = {
   startProccess: '/inicio-solicitud',
   ratings: '/calificacion-solicitud',
   otp: '/validacion-otp',
+  otc: '/validacion-otc',
   validacionIdentidad: '/validacion-identidad',
   validacionBiometrica: '/validacion-biometrica',
   validacionErrorValidacionIdentidad: '/validacion/error-validacionIdentidad/',
@@ -25,5 +26,6 @@ export const routes = {
   creditData: '/datos-credito',
   summaryApprovalPage: '/',
   approvalDataPage: '/confirmacion-solicitud',
-  ResumenSolicitud: '/resumen-solicitud'
+  ResumenSolicitud: '/resumen-solicitud',
+  servicError: '/validacion/error-servicio'
 };

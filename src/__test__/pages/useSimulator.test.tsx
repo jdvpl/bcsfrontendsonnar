@@ -1,5 +1,4 @@
 import { renderHook } from '@testing-library/react-hooks';
-import useVerificationForm from '../../hooks/useVerificationForm';
 import useSimulator from '../../pages/simulador/useSimulator';
 import { createMockRouter } from '../utils/createMockRouter';
 import { RouterContext } from 'next/dist/shared/lib/router-context';

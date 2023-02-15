@@ -54,10 +54,12 @@ export const getQuestions = async (data: any) => {
       { data: dataInfo },
       headersBack
     );
+    const infoAllow = await allResponseDecrypted(response.data, KEY)
+    console.log({ infoAllow })
     return {
       response: {
         result: response.result,
-        data: await allResponseDecrypted(response.data, KEY),
+        data: infoAllow,
       },
       error: false,
     };
@@ -79,7 +81,7 @@ export const getQuestions = async (data: any) => {
 // TODO sendQuestions KYC
 export const sendQuestions = async (data: any) => {
   try {
-    const dataInfo = await allResponse({ ...data, processId: getProcessId() }, KEY);
+    const dataInfo = await allResponse(data, KEY);
     const { data: response } = await clientAxiosBackend.post(
       // '/customers/answer',
       '/api-composer/composer/answer',
@@ -95,26 +97,6 @@ export const sendQuestions = async (data: any) => {
     };
   } catch (e: any) {
     return { error: true, response: e.response?.data };
-  }
-};
-export const loginAccountSendRequest = async (data: any) => {
-  try {
-    const dataInfo = await allResponse({ ...data, processId: getProcessId() }, KEY);
-    const { data: response } = await clientAxiosBackend.post(
-      // '/customers/answer',
-      '/customer/user-auth',
-      { data: dataInfo },
-      headersBack
-    );
-    return {
-      response: {
-        result: response.result,
-        data: await allResponseDecrypted(response.data, KEY),
-      },
-      error: false,
-    };
-  } catch (e: any) {
-    return { error: true, response: e.response.data };
   }
 };
 
@@ -135,14 +117,15 @@ export const sendNumber = async (data: any) => {
       error: false,
     };
   } catch (e: any) {
-    return { error: true, response: e.response.data, status: e.response.status };
+    return { error: true, response: e.response?.data, status: e.response.status };
   }
 };
 export const validateOTOCode = async (data: ValidateOTC) => {
   try {
-    const dataInfo = await allResponse(data, KEY);
+    const { otc, document_number, document_type, pin, processId } = data;
+    const dataInfo = await allResponse({ document_number, document_type, pin, processId }, KEY);
     const { data: response } = await clientAxiosBackend.post(
-      '/api-composer/composer/validate-otp',
+      otc ? '/customer/otc/validate' : '/api-composer/composer/validate-otp',
       { data: dataInfo },
       headersBack
     );
@@ -159,9 +142,12 @@ export const validateOTOCode = async (data: ValidateOTC) => {
 };
 export const reSendOTPCode = async (data: OTPCodeRequest) => {
   try {
-    const dataInfo = await allResponse({ ...data, processId: getProcessId() }, KEY);
+
+    const { otc, document_number, document_type, phone, processId } = data;
+    console.log(data)
+    const dataInfo = await allResponse({ document_number, document_type, phone, processId }, KEY);
     const { data: response } = await clientAxiosBackend.post(
-      '/api-composer/composer/resend-otp',
+      otc ? '/customer/otc/resend-otc' : '/api-composer/composer/resend-otp',
       { data: dataInfo },
       headersBack
     );

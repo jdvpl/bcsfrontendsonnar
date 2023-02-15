@@ -1,5 +1,5 @@
 import { routes } from "../routes";
-import { loginAccountSendRequest, sendAuthorization, sendQuestions } from "../services";
+import { sendAuthorization, sendQuestions } from "../services";
 import { FormData } from '../components/ui/Form'
 import TagManager from "react-gtm-module";
 
@@ -7,7 +7,7 @@ interface InitDataSend {
   document_type: string;
   document_number: string;
 }
-export const onSubmitResponse = async (initData: InitDataSend, dataTU: any, router: any, setDataValid: any, setDataNumber: any, processId:string) => {
+export const onSubmitResponse = async (initData: InitDataSend, dataTU: any, router: any, setDataNumber: any, processId: string) => {
   const body = {
     document_type: dataTU?.document_type,
     document_number: dataTU?.document_number,
@@ -15,6 +15,7 @@ export const onSubmitResponse = async (initData: InitDataSend, dataTU: any, rout
     processId
   };
   const response = await sendQuestions(body);
+  console.log(response)
   if (response.error) {
     const code = response.response?.internal_code;
     switch (code) {
@@ -30,10 +31,13 @@ export const onSubmitResponse = async (initData: InitDataSend, dataTU: any, rout
       default:
         break;
     }
+    if (response.response?.statusCode === 500) {
+      router.push(routes.servicError)
+    }
   } else if (!response.error) {
     const { step } = response.response.data;
     if (step === 'AUTH') {
-      setDataValid(true);
+      router.push(routes.otc)
     } else if (step === 'VQ') {
       setDataNumber(response.response.data);
     }
@@ -64,45 +68,5 @@ export const onSubmitStartProcess = async (formData: FormData, setDataUser: any,
     }
   } else {
     router.push(routes.validacionErrorValidacionIdentidad);
-  }
-}
-
-
-export const loginAccount = async (dataSend: any, setIsLoading: any, dataTU: any, router: any, setBorder: any, setmessagePassword: any, setlockedUser: any, setDataTU: any,processId:string) => {
-  setIsLoading(true);
-  const data = { password: dataSend.password, documentType: dataTU.document_type, documentNumber: dataTU.document_number }
-  const response = await loginAccountSendRequest(data);
-  if (!response.error) {
-    if (response.response.data.state === "OK") {
-      await setDataTU({
-        processId,
-        ...dataTU,
-        personalData: {
-          celular: response.response.data?.phone,
-          phoneNumber: response.response.data?.number,
-        },
-        encriptPhone: { encriptPhone: response.response.data?.phone },
-      });
-      router.push(routes.otp)
-      setIsLoading(false);
-    }
-  } else {
-    const code = response.response.internal_code;
-    switch (code) {
-      case 'AUTH-01':
-        setBorder('#E9132B');
-        setmessagePassword('Contraseña incorrecta intente nuevamente');
-        setlockedUser(true);
-
-        break;
-      case 'AUTH-02':
-        setBorder('#E9132B');
-        setmessagePassword('Usuario bloqueado');
-        setlockedUser(true);
-        break;
-      default:
-        break;
-    }
-    setIsLoading(false);
   }
 }

@@ -1,7 +1,7 @@
 import 'jest-canvas-mock';
 import { render } from '@testing-library/react';
 import React from 'react'
-import ValidacionSolicitud from '../../pages/validacion-otp/index';
+import ValidacionSolicitud from '../../pages/validacion-otp';
 
 describe('ValidacionSolicitud', () => {
   it('should render "ValidacionSolicitud" successfully', () => {
