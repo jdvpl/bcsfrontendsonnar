@@ -51,7 +51,7 @@ function PersonalDataBasic({ userInfo }: any) {
   const monthDt = watch('monthDt', '');
   const [, setDataUser] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
 
-  const { onSubmit } = usePersonalData(setValue, userInfo, setError, clearErrors, dayDt, monthDt, yearDt, router, setDataUser);
+  const { onSubmit } = usePersonalData(setValue, userInfo, setError, clearErrors, dayDt, monthDt, yearDt, router, setDataUser, setCurrentRouting);
   const showPopup = () => {
     if (userInfo.isClient) {
       setShowModal(true);

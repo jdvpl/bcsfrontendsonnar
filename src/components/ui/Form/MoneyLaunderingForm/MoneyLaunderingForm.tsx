@@ -4,6 +4,7 @@ import { ToolTipInfo } from '../../Tooltip';
 import { InfoIco } from '../../Tooltip/info';
 import Typography from '../../Typography';
 import useMoneyLaundering from '../../../../hooks/useMoneyLaundering';
+import useProtectedRoutes from '../../../../hooks/useProtectedRoutes';
 
 const MoneyLaunderingOptions = [
   {
@@ -26,7 +27,9 @@ const MoneyLaunderingOptions = [
   },
 ];
 export function MoneyLaunderingForm() {
-  const { moneyLaundering, changeMoneyLaundering, onSubmit } = useMoneyLaundering();
+  const { setCurrentRouting } = useProtectedRoutes()
+  const { moneyLaundering, changeMoneyLaundering, onSubmit } = useMoneyLaundering({ setCurrentRouting });
+
   return (
     <div>
       <div>

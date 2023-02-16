@@ -2,11 +2,18 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import MoneyLaunderingPage from '../../pages/preguntas-sarlaft';
 import '@testing-library/jest-dom'
+import { RouterContext } from 'next/dist/shared/lib/router-context';
+import { createMockRouter } from '../utils/createMockRouter';
+
+jest.useFakeTimers();
 
 describe('<HouseSimulator />', () => {
   let component: any;
   beforeEach(() => {
-    component = render(<MoneyLaunderingPage />);
+    const router = createMockRouter({});
+    component = render(<RouterContext.Provider value={router}>
+      <MoneyLaunderingPage />
+    </RouterContext.Provider>);
   });
   test('should render all form', () => {
     expect(component.baseElement).toBeTruthy();

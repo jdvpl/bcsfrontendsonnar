@@ -179,7 +179,7 @@ describe('useValidationFormNumber', () => {
 
     await onSubmit(formData);
 
-    expect(router.push).toHaveBeenCalledWith('/');
+    expect(router.push).toHaveBeenCalledWith(routes.startProccess);
   });
   it('should redirect to `/validacion-biometrica/` when response status is 403 and internal_code is `VQ-03`', async () => {
     const formData = { number: 123456 };
@@ -193,7 +193,7 @@ describe('useValidationFormNumber', () => {
 
     await onSubmit(formData);
 
-    expect(router.push).toHaveBeenCalledWith('/validacion-biometrica/');
+    expect(router.push).toHaveBeenCalledWith('/validacion-biometrica');
   });
   it('should redirect to `/validacion/error-validacionIdentidad/` when response status is 403 and internal_code is `PF-00`', async () => {
     const formData = { number: 123456 };
@@ -207,7 +207,7 @@ describe('useValidationFormNumber', () => {
 
     await onSubmit(formData);
 
-    expect(router.push).toHaveBeenCalledWith('/validacion/error-validacionIdentidad/');
+    expect(router.push).toHaveBeenCalledWith('/validacion/error-validacionIdentidad');
   });
   it('should redirect to `/validacion/error-validacionSucursal` when response status is 403 and internal_code is `PF-02`', async () => {
     const formData = { number: 123456 };
@@ -235,7 +235,7 @@ describe('useValidationFormNumber', () => {
 
     await onSubmit(formData);
 
-    expect(router.push).toHaveBeenCalledWith('/validacion-biometrica/');
+    expect(router.push).toHaveBeenCalledWith('/validacion-biometrica');
   });
   it('should redirect to `/validacion-biometrica/` when response status is 403 and internal_code is `PF-09`', async () => {
     const formData = { number: 123456 };
@@ -249,7 +249,7 @@ describe('useValidationFormNumber', () => {
 
     await onSubmit(formData);
 
-    expect(router.push).toHaveBeenCalledWith('/validacion-biometrica/');
+    expect(router.push).toHaveBeenCalledWith('/validacion-biometrica');
   });
   it('should redirect to `/validacion-biometrica/` when response status is 404 a', async () => {
     const formData = { number: 123456 };
@@ -263,7 +263,7 @@ describe('useValidationFormNumber', () => {
 
     await onSubmit(formData);
 
-    expect(router.push).toHaveBeenCalledWith('/validacion/error/');
+    expect(router.push).toHaveBeenCalledWith('/validacion/error');
   });
 });
 
