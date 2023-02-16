@@ -43,5 +43,9 @@ export const SesionStorageKeys = {
   mortgageValues: {
     key: 'MortgageValues',
     description: 'This key save the data of credit data form'
+  },
+  protectedRoutes: {
+    key: 'PRK',
+    description: 'This ket saves the router flux'
   }
 };

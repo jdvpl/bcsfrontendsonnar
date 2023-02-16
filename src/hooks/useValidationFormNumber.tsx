@@ -4,10 +4,10 @@ import { sendNumber } from "../services";
 export interface FormData {
   number: number | string;
 }
-const useValidationFormNumber = (dataTU: any, setDataTU: any, setEncript: any, setLoaded: any, router: any, setProcessBiometry: any, dataQuestions: any) => {
+const useValidationFormNumber = (dataTU: any, setDataTU: any, setEncript: any, setLoaded: any, router: any, setProcessBiometry: any, dataQuestions: any, setCurrentRouting: any) => {
   const proccessResponse = (redirect: string) => {
     setLoaded(true);
-    setTimeout(() => router.push(redirect), 1000);
+    setTimeout(() => router.push(redirect), 100);
   };
   const onSubmit = async (formData: FormData) => {
     const body = {
@@ -26,7 +26,9 @@ const useValidationFormNumber = (dataTU: any, setDataTU: any, setEncript: any, s
         },
       });
       setEncript(formData.number);
-      setTimeout(() => proccessResponse(routes.otp), 1000);
+      setCurrentRouting(routes.validacionIdentidad, false);
+      setCurrentRouting(routes.otp)
+      proccessResponse(routes.otp), 1000;
     } else if (response.status === 403) {
       const code = response.response.internal_code;
       switch (code) {

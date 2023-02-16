@@ -17,10 +17,12 @@ import Modal from '../Modal';
 import usePersonalData from '../../../hooks/usePersonalData';
 import { getCityById, validateAddress } from '../../../utils';
 import { useBackDetector } from '../../../hooks/useBackDetector'
+import useProtectedRoutes from '../../../hooks/useProtectedRoutes';
 
 function PersonalDataBasic({ userInfo }: any) {
   const router = useRouter();
 
+  const { setCurrentRouting } = useProtectedRoutes()
   const {
     handleSubmit,
     watch,

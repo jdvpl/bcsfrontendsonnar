@@ -55,7 +55,6 @@ export const getQuestions = async (data: any) => {
       headersBack
     );
     const infoAllow = await allResponseDecrypted(response.data, KEY)
-    console.log({ infoAllow })
     return {
       response: {
         result: response.result,
@@ -88,10 +87,11 @@ export const sendQuestions = async (data: any) => {
       { data: dataInfo },
       headersBack
     );
+    const info = await allResponseDecrypted(response.data, KEY);
     return {
       response: {
         result: response.result,
-        data: await allResponseDecrypted(response.data, KEY),
+        data: info,
       },
       error: false,
     };
@@ -102,7 +102,7 @@ export const sendQuestions = async (data: any) => {
 
 export const sendNumber = async (data: any) => {
   try {
-    const dataInfo = await allResponse({ ...data, processId: getProcessId() }, KEY);
+    const dataInfo = await allResponse(data, KEY);
     const { data: response } = await clientAxiosBackend.post(
       '/api-composer/composer/answer-phone',
       { data: dataInfo },
@@ -144,7 +144,6 @@ export const reSendOTPCode = async (data: OTPCodeRequest) => {
   try {
 
     const { otc, document_number, document_type, phone, processId } = data;
-    console.log(data)
     const dataInfo = await allResponse({ document_number, document_type, phone, processId }, KEY);
     const { data: response } = await clientAxiosBackend.post(
       otc ? '/customer/otc/resend-otc' : '/api-composer/composer/resend-otp',

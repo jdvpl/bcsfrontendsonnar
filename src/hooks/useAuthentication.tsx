@@ -1,10 +1,11 @@
 import { routes } from '../routes';
 import { getQuestions } from '../services';
 
-export default function useAuthentication(setShowAnimation: (data: boolean) => void, setValidated: (data: boolean) => void, dataUser: any, setDataQuestions: (data: any) => void, router: any) {
+export default function useAuthentication(setShowAnimation: (data: boolean) => void, setValidated: (data: boolean) => void, dataUser: any, setDataQuestions: (data: any) => void, router: any, setCurrentRouting: any) {
   const onSubmit = async () => {
     setShowAnimation(true);
     setValidated(true);
+    await setCurrentRouting(routes.validacionIdentidad);
     const body = {
       document_type: dataUser.document_type,
       document_number: dataUser.document_number,

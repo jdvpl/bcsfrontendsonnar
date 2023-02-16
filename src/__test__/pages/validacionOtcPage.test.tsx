@@ -2,19 +2,30 @@ import 'jest-canvas-mock';
 import { render } from '@testing-library/react';
 import React from 'react'
 import OTCPage from '../../pages/validacion-otc';
+import { RouterContext } from 'next/dist/shared/lib/router-context';
+import { createMockRouter } from '../utils/createMockRouter';
 
 describe('ValidacionSolicitud', () => {
   it('should render "ValidacionSolicitud" successfully', () => {
-    const { baseElement } = render(<OTCPage />);
+    const router = createMockRouter({});
+    const { baseElement } = render(<RouterContext.Provider value={router}>
+      <OTCPage />
+    </RouterContext.Provider>);
     expect(baseElement).toBeTruthy();
   });
   it('should render the text resend code', () => {
-    const component = render(<OTCPage />);
+    const router = createMockRouter({});
+    const component = render(<RouterContext.Provider value={router}>
+      <OTCPage />
+    </RouterContext.Provider>);
     component.getByText('Volver a enviar código en')
   });
 
   it('should render ValidacionSolicitud inputs', () => {
-    const component = render(<OTCPage />);
+    const router = createMockRouter({});
+    const component = render(<RouterContext.Provider value={router}>
+      <OTCPage />
+    </RouterContext.Provider>);
     const inputs = component.container.querySelectorAll('input');
     expect(inputs.length).toBe(6);
   });

@@ -20,7 +20,7 @@ export function getSessionStorageOrDefault(
 
 export function useSessionStorage(
   key: string,
-  defaultValue: Record<string, string> | string
+  defaultValue: Record<string, string> | string | any
 ) {
   const [value, setValue] = useState(getSessionStorageOrDefault(key, defaultValue));
 

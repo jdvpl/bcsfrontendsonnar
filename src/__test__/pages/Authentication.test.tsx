@@ -10,7 +10,13 @@ jest.mock('../../services', () => ({
 }));
 describe('Authentication', () => {
   it('should render "Authentication" successfully', () => {
-    const { baseElement } = render(<Authentication />);
+    const router = createMockRouter({});
+
+    const { baseElement } = render(
+      <RouterContext.Provider value={router}>
+        <Authentication />
+      </RouterContext.Provider>
+    );
     expect(baseElement).toBeTruthy();
   });
 

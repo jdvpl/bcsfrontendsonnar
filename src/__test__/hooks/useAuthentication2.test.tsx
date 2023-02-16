@@ -1,16 +1,13 @@
-import React from 'react';
 import '@testing-library/jest-dom';
 import { act, renderHook } from '@testing-library/react-hooks';
-import { createMockRouter } from '../utils/createMockRouter';
-import useMoneyLaundering from '../../hooks/useMoneyLaundering';
-import { RouterContext } from 'next/dist/shared/lib/router-context';
 import useAuthentication from '../../hooks/useAuthentication';
 import { getQuestions } from '../../services';
-import { resolve } from 'path';
-import { rejects } from 'assert';
+
 
 jest.mock('../../services');
-getQuestions
+const fkMock = jest.fn();
+
+(getQuestions as jest.Mock)
   .mockReturnValueOnce({
     response: {
       status: 403,
@@ -179,7 +176,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router
+        router, fkMock
       )
     );
     act(() => {
@@ -203,7 +200,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router
+        router, fkMock
       )
     );
     act(() => {
@@ -227,7 +224,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router
+        router, fkMock
       )
     );
     act(() => {
@@ -251,7 +248,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router
+        router, fkMock
       )
     );
     act(() => {
@@ -275,7 +272,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router
+        router, fkMock
       )
     );
     act(() => {
@@ -299,7 +296,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router
+        router, fkMock
       )
     );
     act(() => {
@@ -323,7 +320,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router
+        router, fkMock
       )
     );
     act(() => {
@@ -347,7 +344,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router
+        router, fkMock
       )
     );
     act(() => {
@@ -371,7 +368,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router
+        router, fkMock
       )
     );
     act(() => {
@@ -395,7 +392,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router
+        router, fkMock
       )
     );
     act(() => {

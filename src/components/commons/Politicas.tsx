@@ -19,7 +19,7 @@ function Politicas() {
       </p>
     </p>
 
-    <p className="mt-4">
+    <div className="mt-4">
       <p className="font-bold mt-6">
         Otras finalidades
       </p>
@@ -29,7 +29,7 @@ function Politicas() {
       <p className="mt-4 text-base">
         Declaro que me han informado de manera adecuada y suficiente sobre las finalidades con las cuales tratarán este dato sensible, que no se almacenará ni compartirá con ningún tercero, y sé que no me encuentro obligado a autorizar su tratamiento. Sin embargo, entiendo que estos usos buscan dar más seguridad a mis datos en el desarrollo de mi relación contractual y lo encuentro razonable.
       </p>
-    </p>
+    </div>
     <p className="font-bold mt-4">
       <span className="font-bold">II. AUTORIZACIÓN DE TRATAMIENTO DE OTROS DATOS PERSONALES </span>
     </p>
