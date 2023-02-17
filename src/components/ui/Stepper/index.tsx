@@ -22,7 +22,7 @@ function Stepper({
     <NoSSRWrapper>
       <div className={className}>
         <p
-          className={`text-[16px] leading-4 text-primario-900 font-semibold"
+          className={`text-[16px] leading-4 text-primario-900 font-normal font-montserratRegular"
           data-testid="titleStep ${classTitle}`}
         >
           {title}

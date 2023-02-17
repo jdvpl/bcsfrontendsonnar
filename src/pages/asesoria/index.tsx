@@ -38,18 +38,16 @@ function Consultancy() {
       isMobile,
       itemActive,
     });
-    useEffect(() => {
-      TagManager.dataLayer({
-        dataLayer: {
-          event:'load_guide',
-          category: 'load',
-          action: 'load_guide',
-          label: 'load_guide',
-        },
-      }); 
-
-  },[]
-  );
+  useEffect(() => {
+    TagManager.dataLayer({
+      dataLayer: {
+        event: 'load_guide',
+        category: 'load',
+        action: 'load_guide',
+        label: 'load_guide',
+      },
+    });
+  }, []);
 
   return (
     <>
@@ -84,12 +82,6 @@ function Consultancy() {
         </div>
 
         <div className="lg:w-[825px] mx-auto md:w-[528px] w-[full] xs:w-full">
-          <Typography
-            variant="h2"
-            className="lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center leading-[22px]"
-          >
-            {titleSection[actualStep - 1]}
-          </Typography>
           <Stepper
             steps={4}
             actualStep={actualStep}
@@ -97,6 +89,12 @@ function Consultancy() {
             className="lg:w-[684px] md:w-[456px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px]"
             title={stepperTitles[actualStep - 1]}
           />
+          <Typography
+            variant="h2"
+            className="lg:w-[445px] leading-[32px] md:w-[445px] sm:w-[303px] w-[303px] mx-auto lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center  font-poppinsSemiBold"
+          >
+            {titleSection[actualStep - 1]}
+          </Typography>
         </div>
       </div>
 

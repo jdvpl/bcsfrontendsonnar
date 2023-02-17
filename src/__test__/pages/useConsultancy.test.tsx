@@ -1,4 +1,6 @@
+import { renderHook } from '@testing-library/react-hooks';
 import React from 'react';
+import { act } from 'react-dom/test-utils';
 import { analyticsId } from '../../../next.config';
 import useConsultancy from '../../pages/asesoria/useConsultancy';
 
@@ -12,7 +14,7 @@ describe('useConsultancy when onValidateOTP fetch is successfully', () => {
   let isMobile: any;
   let itemActive: any;
   beforeEach(() => {
-    setActualStep = jest.fn().mockImplementation(() => { });
+    setActualStep = jest.fn().mockImplementation(() => {});
     setActiveIndex = jest.fn();
     router = { push: jest.fn() };
     activeIndex = jest.fn();
@@ -52,7 +54,7 @@ describe('useConsultancy when onValidateOTP fetch is successfully', () => {
   let isMobile: any;
   let itemActive: any;
   beforeEach(() => {
-    setActualStep = jest.fn().mockImplementation(() => { });
+    setActualStep = jest.fn().mockImplementation(() => {});
     setActiveIndex = jest.fn();
     router = { push: jest.fn() };
     activeIndex = jest.fn();
@@ -93,7 +95,7 @@ describe('useConsultancy when onValidateOTP fetch is successfully', () => {
   let itemActive: any;
 
   beforeEach(() => {
-    setActualStep = jest.fn().mockImplementation(() => { });
+    setActualStep = jest.fn().mockImplementation(() => {});
     setActiveIndex = jest.fn();
     router = { push: jest.fn() };
     activeIndex = jest.fn();
@@ -136,7 +138,7 @@ describe('useConsultancy when onValidateOTP fetch is successfully', () => {
   let itemActive: any;
 
   beforeEach(() => {
-    setActualStep = jest.fn().mockImplementation(() => { });
+    setActualStep = jest.fn().mockImplementation(() => {});
     setActiveIndex = jest.fn();
     router = { push: jest.fn() };
     activeIndex = jest.fn();
@@ -176,7 +178,7 @@ describe('useConsultancy when onValidateOTP fetch is successfully', () => {
   let itemActive: any;
 
   beforeEach(() => {
-    setActualStep = jest.fn().mockImplementation(() => { });
+    setActualStep = jest.fn().mockImplementation(() => {});
     setActiveIndex = jest.fn();
     router = { push: jest.fn() };
     activeIndex = jest.fn();
@@ -263,4 +265,84 @@ describe('useConsultancy when onValidateOTP fetch is successfully', () => {
     expect(typeof result.nextStep).toBe('function');
   });
 
+  it('should increment the actualStep value when calling nextStep', () => {
+    const actualStep = 1;
+    const setActualStep = jest.fn();
+    const router = { push: jest.fn() };
+    const setActiveIndex = jest.fn();
+    const activeIndex = 0;
+    const setItemActive = jest.fn();
+    const isMobile = false;
+    const itemActive = 'Vivienda Nueva';
+    const { result } = renderHook(() =>
+      useConsultancy({
+        actualStep,
+        setActualStep,
+        router,
+        setActiveIndex,
+        activeIndex,
+        setItemActive,
+        isMobile,
+        itemActive,
+      })
+    );
+
+    act(() => {
+      result.current.OptionList();
+      document.querySelector('button')?.click();
+    });
+  });
+
+  it('should increment the actualStep value when calling nextStep', () => {
+    const actualStep = 4;
+    const setActualStep = jest.fn();
+    const router = { push: jest.fn() };
+    const setActiveIndex = jest.fn();
+    const activeIndex = 0;
+    const setItemActive = jest.fn();
+    const isMobile = false;
+    const itemActive = 'Vivienda Nueva';
+    const { result } = renderHook(() =>
+      useConsultancy({
+        actualStep,
+        setActualStep,
+        router,
+        setActiveIndex,
+        activeIndex,
+        setItemActive,
+        isMobile,
+        itemActive,
+      })
+    );
+
+    act(() => {
+      result.current.nextStep();
+    });
+  });
+  it('should increment the actualStep value when calling nextStep', () => {
+    const actualStep = 4;
+    const setActualStep = jest.fn();
+    const router = { push: jest.fn() };
+    const setActiveIndex = jest.fn();
+    const activeIndex = 0;
+    const setItemActive = jest.fn();
+    const isMobile = false;
+    const itemActive = 'Vivienda Nueva';
+    const { result } = renderHook(() =>
+      useConsultancy({
+        actualStep,
+        setActualStep,
+        router,
+        setActiveIndex,
+        activeIndex,
+        setItemActive,
+        isMobile,
+        itemActive,
+      })
+    );
+
+    act(() => {
+      result.current.renderContent();
+    });
+  });
 });

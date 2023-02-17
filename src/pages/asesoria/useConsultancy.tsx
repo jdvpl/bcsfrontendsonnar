@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { initialOptions } from '../../lib/consultancy';
 import { routes } from '../../routes';
 import Button from '../../components/ui/Button';
@@ -40,13 +40,13 @@ export default function useConsultancy({
   };
 
   const renderContent = () => (
-      <div className="lg:w-[411px] text-[14px]">
-        <span className="font-semibold text-primario-900 lg:text-[20px] text-[16px]">
-          {itemActive}
-        </span>
-        {initialOptions[actualStep - 1]?.[activeIndex]?.content()}
-      </div>
-    );
+    <div className="lg:w-[411px] text-[14px]">
+      <span className="font-montserratSemiBold font-semibold text-primario-900 lg:text-[20px] text-[16px]">
+        {itemActive}
+      </span>
+      {initialOptions[actualStep - 1]?.[activeIndex]?.content()}
+    </div>
+  );
 
   function OptionList() {
     return (
@@ -56,15 +56,21 @@ export default function useConsultancy({
             key={option?.label}
             onClick={() => openModal(option?.label, index)}
             variant="secondary"
-            isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%] font-semibold rounded-[8px] lg:h-48px ${itemActive === option?.label ? 'bg-primario-100' : ''
-              }
-                ${itemActive && !isMobile === option?.label ? 'translate-x-[16px]' : ''}
-                `}
+            border="0.5"
+            isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%] font-semibold font-montserratRegular rounded-[8px] lg:h-48px ${
+              itemActive === option?.label ? 'bg-primario-100' : ''
+            }
+                ${
+                  itemActive === option?.label && isMobile === false
+                    ? 'translate-x-[16px]'
+                    : ''
+                }`}
           >
             <div className="flex justify-center">
               <span
-                className={`text-center ${itemActive === option?.label ? 'text-white' : 'text-primario-100'
-                  } text-[18px] p-0`}
+                className={`text-center ${
+                  itemActive === option?.label ? 'text-white' : 'text-primario-100'
+                } text-[18px] p-0`}
               >
                 {option?.label}
               </span>

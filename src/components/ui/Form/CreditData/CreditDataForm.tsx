@@ -294,7 +294,7 @@ export function CreditDataForm() {
         </div>
       </div>
 
-      <button
+      {/* <button
         className="flex items-center gap-3 w-full cursor-pointer"
         onClick={() => setInsuranceCheck(!insuranceCheck)}
       >
@@ -312,7 +312,7 @@ export function CreditDataForm() {
           Deseo incluir en la simulación del crédito el valor de los seguros
           correspondientes.
         </span>
-      </button>
+      </button> */}
 
       <Button
         isLanding="w-full md:w-[375px] mx-auto mt-[32px]"
