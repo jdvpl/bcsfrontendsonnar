@@ -4,8 +4,6 @@ import { routes } from "../routes";
 import { SesionStorageKeys } from "../session";
 import { useSessionStorage } from "./useSessionStorage";
 
-const allowedRoutes = ['/validacion-identidad', '/validacion-otp', '/validacion-otc', '/datos-personales', '/preguntas-sarlaft', '/datos-financieros', '/datos-credito']
-
 const useProtectedRoutes = () => {
   const protectecRoutes = {
     '/autenticacion': true,

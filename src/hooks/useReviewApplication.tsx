@@ -4,7 +4,7 @@ import { riskBoxes } from '../services/index';
 import { SesionStorageKeys } from '../session';
 import { useSessionStorage } from './useSessionStorage';
 
-export default function useSummaryApplication(router: any) {
+export default function useSummaryApplication(router: any, setCurrentRouting: any) {
   const [isLoading, setLoading] = useState<boolean>(false);
   const [data] = useSessionStorage(SesionStorageKeys.mortgageValues.key, {});
 
@@ -12,6 +12,7 @@ export default function useSummaryApplication(router: any) {
     setLoading(true);
     const response = await riskBoxes(data);
     if (!response?.error) {
+      setCurrentRouting(routes.approvalDataPage);
       router?.push(routes.approvalDataPage);
     }
     setLoading(false);

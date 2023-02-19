@@ -14,6 +14,7 @@ import { convertToColombianPesos } from '../../../../utils';
 import Alert from '../../Alert';
 import useValidationFinancialDataForm from './useValidationFinancialDataForm';
 import { routes } from '../../../../routes';
+import useProtectedRoutes from '../../../../hooks/useProtectedRoutes';
 
 function FinancialDataForm() {
   const router = useRouter();
@@ -26,6 +27,8 @@ function FinancialDataForm() {
     setValue,
     formState: { errors, isValid },
   } = useForm<iFinancialData>({ mode: 'onChange' });
+
+  const { setCurrentRouting } = useProtectedRoutes();
 
   const occupation = watch('occupation');
   const enterprise = watch('enterprise');
@@ -52,6 +55,7 @@ function FinancialDataForm() {
     if (data.contractType === "06") {
       router.push(routes.errorCreditBankApplication)
     } else {
+      setCurrentRouting(routes.creditData);
       router.push(routes.creditData)
     }
   }

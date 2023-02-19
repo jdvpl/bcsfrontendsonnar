@@ -5,18 +5,28 @@ import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { routes } from '../../routes';
 import ResumenSolicitud from '../../pages/resumen-solicitud/index';
 import { createMockRouter } from '../utils/createMockRouter';
-import ReviewApplication from '../../components/ui/application/ReviewApplication';
 import 'jest-canvas-mock';
 import React from 'react'
 
+const fcMk = jest.fn();
 describe('<Resumen-Solicitud/>', () => {
   it('should render successfully', () => {
-    const { container } = render(<ResumenSolicitud />);
+    const router = createMockRouter({});
+
+    const { container } = render(
+      <RouterContext.Provider value={router}>
+        <ResumenSolicitud />
+      </RouterContext.Provider>
+    );
     expect(container).toBeTruthy();
   });
   it('Buttom continue', async () => {
+    const router = createMockRouter({});
+
     const component = render(
-      <ResumenSolicitud />
+      <RouterContext.Provider value={router}>
+        <ResumenSolicitud />
+      </RouterContext.Provider>
     );
     const btnContinue = component.getByTestId('btn-next');
     await waitFor(() => userEvent.click(btnContinue));

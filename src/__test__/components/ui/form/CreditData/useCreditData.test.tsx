@@ -8,12 +8,21 @@ describe('useValidations is successfully', () => {
   const financeValue: any = 1000000;
   const termFinance: any = 1000000;
   const typeHouse: any = 'vis';
+  const houseStatus: any = 'vis';
+  const insuranceCheck: boolean = true;
+  const choseOffice = jest.fn();
+  const office = null;
   let clearErrors: any;
   let setError: any;
   let setPercentageFinance: any;
   let setValue: any;
-  const houseType = 'vis';
+  const stratum: any = 0;
+  const router = jest.fn();
 
+  const houseType = 'vis';
+  const mkFn = jest.fn()
+  const setDataForm = jest.fn()
+  const errors: any = [];
   beforeEach(async () => {
     clearErrors = jest.fn();
     setPercentageFinance = jest.fn();
@@ -30,7 +39,16 @@ describe('useValidations is successfully', () => {
         clearErrors,
         setError,
         setPercentageFinance,
-        setValue
+        setValue,
+        setDataForm,
+        houseStatus,
+        insuranceCheck,
+        choseOffice,
+        office,
+        stratum,
+        router,
+        errors,
+        mkFn
       )
     );
   });

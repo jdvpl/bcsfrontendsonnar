@@ -12,11 +12,12 @@ import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { routes } from '../../routes';
 import { SesionStorageKeys } from '../../session';
 import { convertToColombianPesos } from '../../utils';
+import useProtectedRoutes from '../../hooks/useProtectedRoutes';
 
 function ApplicationApproval() {
+  const { setCurrentRouting } = useProtectedRoutes();
   const [dataInfo] = useSessionStorage(SesionStorageKeys.personalInfoDataBack.key, {});
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
-
   const router = useRouter();
   return (
     <div>
@@ -133,7 +134,10 @@ function ApplicationApproval() {
         <div className="mt-8 flex justify-center">
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] shadow-none border-0 m-auto font-semibold"
-            onClick={() => router.push(routes.ratings)}
+            onClick={() => {
+              setCurrentRouting(routes.approvalDataPage, false);
+              router.push(routes.home);
+            }}
             name="solicitarCredito"
             data-testid="btnGetOut"
             tabIndex={0}

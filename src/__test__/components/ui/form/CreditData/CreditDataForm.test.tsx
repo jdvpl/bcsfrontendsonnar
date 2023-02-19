@@ -10,19 +10,36 @@ import { routes } from '../../../../../routes';
 
 describe('<CreditDataForm/>', () => {
   it('should render successfully', () => {
-    const { container } = render(<CreditDataForm />);
+    const router = createMockRouter({});
+    const { container } = render(
+      <RouterContext.Provider value={router}>
+        <CreditDataForm />
+      </RouterContext.Provider>
+    );
     expect(container).toBeTruthy();
   });
 
   it('should render house type  when choseHouse is true ', async () => {
-    const { container } = render(<CreditDataForm />);
+    const router = createMockRouter({});
+
+    const { container } = render(
+      <RouterContext.Provider value={router}>
+        <CreditDataForm />
+      </RouterContext.Provider>
+    );
     const ButtonYes = screen.getByTestId('Button-Yes');
     await waitFor(() => userEvent.click(ButtonYes));
     const InputTypeHouse = screen.queryByTestId('InputTypeHouse');
     expect(InputTypeHouse!).toBeInTheDocument();
   });
   it('should render house type  when choseHouse is false ', async () => {
-    const { container } = render(<CreditDataForm />);
+    const router = createMockRouter({});
+
+    const { container } = render(
+      <RouterContext.Provider value={router}>
+        <CreditDataForm />
+      </RouterContext.Provider>
+    );
     const ButtonYes = screen.getByTestId('Button-Yes');
     await waitFor(() => userEvent.click(ButtonYes));
     const InputTypeHouse = screen.queryByTestId('InputOffices');
@@ -53,14 +70,16 @@ describe('<CreditDataForm/>', () => {
 
     fireEvent.click(btnSubmitDataForm);
 
-    expect(router.push).not.toHaveBeenCalled();
+    expect(router.push).toHaveBeenCalled();
   });
   it('should render house type  when choseHouse is false ', async () => {
-    const { container } = render(<CreditDataForm />, {
-      personalData: {
-        hasAdviser: true,
-      },
-    });
+    const router = createMockRouter({});
+
+    const { container } = render(
+      <RouterContext.Provider value={router}>
+        <CreditDataForm />
+      </RouterContext.Provider>
+    );
 
     const ButtonYes = screen.getByTestId('Button-Yes');
     await waitFor(() => userEvent.click(ButtonYes));

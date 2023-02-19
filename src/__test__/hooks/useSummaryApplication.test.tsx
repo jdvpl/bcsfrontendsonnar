@@ -6,7 +6,7 @@ import { riskBoxes } from '../../services';
 import { routes } from '../../routes';
 
 jest.mock('../../services');
-riskBoxes.mockReturnValueOnce({
+(riskBoxes as jest.Mock).mockReturnValueOnce({
   response: {
     result: '',
   },
@@ -14,9 +14,10 @@ riskBoxes.mockReturnValueOnce({
 });
 const router = createMockRouter({});
 
+const fcmk = jest.fn()
 describe('useSummaryApplication', () => {
   test('should render text when call renderBody when case 0 ', async () => {
-    const { result } = renderHook(() => useSummaryApplication(router));
+    const { result } = renderHook(() => useSummaryApplication(router, fcmk));
     act(() => {
       result.current.onSubmit();
     });
@@ -29,7 +30,7 @@ describe('useSummaryApplication', () => {
       riskBoxes: jest.fn(() => Promise.resolve({ error: false }))
     }));
     const mockRouter = { push: jest.fn() };
-    const { result } = renderHook(() => useSummaryApplication(mockRouter));
+    const { result } = renderHook(() => useSummaryApplication(mockRouter, fcmk));
 
     await act(async () => {
       result.current.onSubmit();
@@ -44,7 +45,7 @@ describe('useSummaryApplication', () => {
       riskBoxes: jest.fn(() => Promise.resolve({ error: false }))
     }));
     const mockRouter = { push: jest.fn() };
-    const { result } = renderHook(() => useSummaryApplication(mockRouter));
+    const { result } = renderHook(() => useSummaryApplication(mockRouter, fcmk));
 
     await act(async () => {
       result.current.onSubmit();
@@ -60,7 +61,7 @@ describe('useSummaryApplication', () => {
       riskBoxes: jest.fn(() => Promise.resolve({ error: true }))
     }));
 
-    const { result } = renderHook(() => useSummaryApplication(mockRouter));
+    const { result } = renderHook(() => useSummaryApplication(mockRouter, fcmk));
 
     await act(async () => {
       result.current.onSubmit();

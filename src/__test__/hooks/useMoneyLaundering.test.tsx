@@ -57,25 +57,25 @@ describe('useSummaryApplication', () => {
     });
   });
   test('switch when is RESTRICTED', async () => {
-    const { result } = renderHook(() => useMoneyLaundering({ fcMk: setCurrentRouting }), { wrapper });
+    const { result } = renderHook(() => useMoneyLaundering({ setCurrentRouting }), { wrapper });
     act(() => {
       result.current.onSubmit();
     });
   });
   test('Switch when is ERROR ', async () => {
-    const { result } = renderHook(() => useMoneyLaundering({ fcMk: setCurrentRouting }), { wrapper });
+    const { result } = renderHook(() => useMoneyLaundering({ setCurrentRouting }), { wrapper });
     act(() => {
       result.current.onSubmit();
     });
   });
   test('Switch Default', async () => {
-    const { result } = renderHook(() => useMoneyLaundering({ fcMk: setCurrentRouting }), { wrapper });
+    const { result } = renderHook(() => useMoneyLaundering({ setCurrentRouting }), { wrapper });
     act(() => {
       result.current.onSubmit();
     });
   });
   test('changeMoneyLaundering Default', async () => {
-    const { result } = renderHook(() => useMoneyLaundering({ fcMk: setCurrentRouting }), { wrapper });
+    const { result } = renderHook(() => useMoneyLaundering({ setCurrentRouting }), { wrapper });
     act(() => {
       result.current.changeMoneyLaundering('incomeSource', false);
     });

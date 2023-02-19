@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import LogoBcs from '../../components/svg/LogoBcs';
 import LogoForm from '../../components/svg/LogoForm';
 import Typography from '../../components/ui/Typography';
 import ReviewHouse from '../../components/ui/simulation/reviewHouse';
 import ReviewSalary from '../../components/ui/simulation/reviewSalary';
-import { routes } from '../../routes/index';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import Button from '../../components/ui/Button/index';
 import { convertToColombianPesos } from '../../utils/index';
@@ -13,6 +12,7 @@ import { urlAndUtms } from '../../utils/RouterUtmsUrl';
 import { getDataPDF } from '../../services';
 import { SesionStorageKeys } from '../../session';
 import CheckLoader from '../../components/ui/Loaders/CheckLoader';
+import { routes } from '../../routes';
 
 const intialDataPdfInfo = {
   approximateFinancedValue: 0,
@@ -32,8 +32,8 @@ function Resumen() {
     ''
   );
   const [getDataPdfInfo, setgetDataPdfInfo] = useState(intialDataPdfInfo);
-  const [valuesSimulation, setValuesSimulation] = useSessionStorage(
-    'simulationResponse',
+  const [valuesSimulation,] = useSessionStorage(
+    SesionStorageKeys.dataFormSimulationResponse.key,
     ''
   );
   const router = useRouter();
@@ -111,8 +111,8 @@ function Resumen() {
                 monthlyCouteInsurance={`${convertToColombianPesos(
                   Math.floor(
                     valuesSimulation.monthlyCoute +
-                      valuesSimulation.lifeInsurance +
-                      valuesSimulation.fireInsurance
+                    valuesSimulation.lifeInsurance +
+                    valuesSimulation.fireInsurance
                   )
                 )}`}
                 monthlyCoute={`${convertToColombianPesos(
@@ -143,8 +143,8 @@ function Resumen() {
                 amountQuotatotal={`${convertToColombianPesos(
                   Math.floor(
                     valuesSimulation.amountQuota +
-                      valuesSimulation.lifeInsurance +
-                      valuesSimulation.fireInsurance
+                    valuesSimulation.lifeInsurance +
+                    valuesSimulation.fireInsurance
                   )
                 )}`}
                 termFinance={`${valuesSimulation.termFinance} años`}
@@ -162,7 +162,7 @@ function Resumen() {
             <div className="flex flex-col items-center gap-y-5">
               <Button
                 isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] shadow-none"
-                onClick={() => urlAndUtms(router, '/inicio-solicitud')}
+                onClick={() => urlAndUtms(router, routes.startProccess)}
                 name="solicitarCredito"
                 data-testid="btn-openAccount1"
                 tabIndex={0}
@@ -172,7 +172,7 @@ function Resumen() {
               </Button>
               <Button
                 isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] shadow-none"
-                onClick={() => urlAndUtms(router, '/simulador')}
+                onClick={() => urlAndUtms(router, routes.simulador)}
                 name="solicitarCredito"
                 data-testid="btn-openAccount1"
                 tabIndex={0}

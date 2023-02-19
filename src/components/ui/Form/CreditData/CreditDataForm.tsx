@@ -13,9 +13,10 @@ import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import AutoCompleteCustom from '../../../../hooks/autocomplete';
 import useCreditForm from '../../../../hooks/useCreditForm';
+import useProtectedRoutes from '../../../../hooks/useProtectedRoutes';
 
 export function CreditDataForm() {
-  const [insuranceCheck, setInsuranceCheck] = useState(true);
+  const [insuranceCheck,] = useState(true);
   const [percentageFinance, setPercentageFinance] = useState(0.7);
   const [dataForm] = useSessionStorage(SesionStorageKeys.dataFormSimulation.key, {});
   const [, setDataForm] = useSessionStorage(SesionStorageKeys.mortgageValues.key, {});
@@ -32,6 +33,9 @@ export function CreditDataForm() {
     setValue,
     formState: { errors },
   } = useForm<SimulationData>({ mode: 'onChange' });
+
+  const { setCurrentRouting } = useProtectedRoutes();
+
   const { changeOffice, choseOffice } = useCreditForm({ setOffices });
   const houseStatus = watch('houseStatus', 'new');
   const typeHouse = watch('typeHouse', 'novis');
@@ -56,7 +60,8 @@ export function CreditDataForm() {
     office,
     stratum,
     router,
-    errors
+    errors,
+    setCurrentRouting
   );
   useEffect(() => {
     setValue('financeValue', dataForm?.financeValue || 0);

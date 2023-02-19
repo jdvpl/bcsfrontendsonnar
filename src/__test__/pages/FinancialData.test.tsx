@@ -9,7 +9,12 @@ import { routes } from '../../routes';
 
 describe('FinancialData', () => {
   it('should render "FinancialData" successfully', () => {
-    const { baseElement } = render(<FinancialData />);
+    const router = createMockRouter({});
+    const { baseElement } = render(
+      <RouterContext.Provider value={router}>
+        <FinancialData />
+      </RouterContext.Provider>
+    );
     expect(baseElement).toBeTruthy();
   });
   test('should go To other page', async () => {
