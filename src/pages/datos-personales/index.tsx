@@ -18,7 +18,6 @@ function PersonalData() {
     title: <span>¿Recibió <span className="md:inline sm:inline xs:block">acompañamiento</span> <span className="block" />para acceder a esta plataforma?</span>,
     id: '',
   });
-
   const [dataUser, setDataUser] = useSessionStorage(
     SesionStorageKeys.dataUser.key,
     {}
@@ -36,11 +35,9 @@ function PersonalData() {
     firstName: '',
     isClient: false
   })
-
   useEffect(() => {
     getBasicDataUser()
   }, [])
-
   const getBasicDataUser = async () => {
     const response = await getBasicData({
       govIssueIdentType: dataUser.document_type,
@@ -51,8 +48,6 @@ function PersonalData() {
       setDataPersonalInfo(response.response.data);
     }
   }
-
-
   const closeModal = () => {
     const datainfo = { advisoryType: null, otherAdvisoryType: null };
     setDataUser({ ...dataUser, ...datainfo })

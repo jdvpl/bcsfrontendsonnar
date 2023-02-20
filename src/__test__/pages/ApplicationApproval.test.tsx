@@ -6,7 +6,12 @@ import { routes } from "../../routes";
 
 describe('<ApplicationApproval/>', () => {
   it('should render "Authentication" successfully', () => {
-    const { baseElement } = render(<ApplicationApproval />);
+    const router = createMockRouter({});
+    const { baseElement } = render(
+      <RouterContext.Provider value={router}>
+        <ApplicationApproval />
+      </RouterContext.Provider>
+    );
     expect(baseElement).toBeTruthy();
   });
   it('should get out', () => {
@@ -18,6 +23,6 @@ describe('<ApplicationApproval/>', () => {
     );
     const btnGetOut = getByTestId('btnGetOut');
     fireEvent.click(btnGetOut);
-    expect(router.push).toHaveBeenCalledWith(routes.ratings)
+    expect(router.push).toHaveBeenCalledWith(routes.home)
   });
 })

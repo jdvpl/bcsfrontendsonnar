@@ -13,6 +13,7 @@ import { SesionStorageKeys } from '../../session';
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
 import { onSubmitResponse } from '../../hooks/functions';
 import TagManager from 'react-gtm-module';
+import useProtectedRoutes from '../../hooks/useProtectedRoutes'
 interface Quest {
   items: Question[];
 }
@@ -41,6 +42,7 @@ const Index: React.FC = () => {
 
   }, []
   );
+  const { setCurrentRouting } = useProtectedRoutes();
   return (
     <>
       <Head>
@@ -57,7 +59,7 @@ const Index: React.FC = () => {
               <ValidationForm
                 questions={data?.items}
                 onSubmit={(dataSend: any) => {
-                  onSubmitResponse(dataSend, dataTU, router, setDataNumber, dataQuestions?.processId);
+                  onSubmitResponse(dataSend, dataTU, router, setDataNumber, dataQuestions?.processId, setCurrentRouting);
                   setprogress('75%');
                 }}
               />
@@ -65,7 +67,7 @@ const Index: React.FC = () => {
           )}
 
           <AnimatePresence>
-            {dataNumber && <ValidationFormNumber questions={dataNumber} />}
+            {dataNumber && <ValidationFormNumber questions={dataNumber} setCurrentRouting={setCurrentRouting} />}
           </AnimatePresence>
         </Layout>
       </InactivityWarper>

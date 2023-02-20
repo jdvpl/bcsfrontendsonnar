@@ -8,6 +8,7 @@ import { OTLoader } from '../../ui/Loaders/OTPloader';
 import Typography from '../../ui/Typography';
 import useOtp from './useOtp';
 import { reSendOTPCode, validateOTOCode } from '../../../services';
+import useProtectedRoutes from '../../../hooks/useProtectedRoutes';
 
 interface otpProps {
   otc?: boolean;
@@ -39,6 +40,8 @@ const Otp: FC<otpProps> = ({ otc }) => {
   const router = useRouter();
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
 
+  const { setCurrentRouting } = useProtectedRoutes();
+
   const { onValidateOTP, onResendOTP } = useOtp({
     setIsLoading,
     dataTU,
@@ -52,7 +55,8 @@ const Otp: FC<otpProps> = ({ otc }) => {
     reSendOTPCode,
     validateOTOCode,
     dataQuestions,
-    otc
+    otc,
+    setCurrentRouting
   });
   useEffect(() => {
     if (otp?.length === 6) {
@@ -74,6 +78,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
       clearInterval(intervalRef.current);
     }
   }, [timer]);
+
 
   return (
     <div className="w-scren flex flex-col items-center">

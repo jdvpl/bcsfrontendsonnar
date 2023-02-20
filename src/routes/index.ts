@@ -6,7 +6,7 @@ export const routes = {
   otc: '/validacion-otc',
   validacionIdentidad: '/validacion-identidad',
   validacionBiometrica: '/validacion-biometrica',
-  validacionErrorValidacionIdentidad: '/validacion/error-validacionIdentidad/',
+  validacionErrorValidacionIdentidad: '/validacion/error-validacionIdentidad',
   validacionErrorPreguntas: 'validacion/error-validacion-identidad-preguntas',
   validacionErrorIntentos: 'validacion/error-numero-intentos',
   validacionErrorBloqueo: 'validacion/error-bloqueo',
@@ -27,5 +27,8 @@ export const routes = {
   summaryApprovalPage: '/',
   approvalDataPage: '/confirmacion-solicitud',
   ResumenSolicitud: '/resumen-solicitud',
-  servicError: '/validacion/error-servicio'
+  servicError: '/validacion/error-servicio',
+  validacionSucursalError: '/validacion/error-validacionSucursal',
+  validacionError: '/validacion/error'
+
 };

@@ -19,6 +19,7 @@ export default function useValidations(
   stratum: any,
   router: any,
   errors: any,
+  setCurrentRouting: any
 ) {
   const handleClearErrors = () => {
     clearErrors('typeHouse');
@@ -104,6 +105,7 @@ export default function useValidations(
       office,
       stratum,
     });
+    setCurrentRouting(routes.ResumenSolicitud);
     router.push(routes.ResumenSolicitud);
   };
 

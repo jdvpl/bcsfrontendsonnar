@@ -14,7 +14,8 @@ export default function useOtp({
   validateOTOCode,
   reSendOTPCode,
   dataQuestions,
-  otc
+  otc,
+  setCurrentRouting
 }: any) {
   const onValidateOTP = async () => {
     setIsLoading(true);
@@ -29,6 +30,9 @@ export default function useOtp({
     if (!response.error) {
       setIsValid(true);
       setIsLoading(false);
+      setCurrentRouting(routes.otp, false);
+      setCurrentRouting(routes.otc, false);
+      setCurrentRouting(routes.personalData);
       setTimeout(() => {
         router.push(routes.personalData);
       }, 3000);

@@ -6,6 +6,8 @@ jest.mock('../../services', () => ({
   getQuestions: jest.fn()
 }));
 
+const fkMock = jest.fn();
+
 describe('useAuthentication', () => {
   let setShowAnimation: jest.Mock;
   let setValidated: jest.Mock;
@@ -25,7 +27,7 @@ describe('useAuthentication', () => {
       policy_and_terms: true,
       commercial_terms: true
     };
-    onSubmit = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router).onSubmit;
+    onSubmit = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, fkMock).onSubmit;
   });
 
   it('debería llamar a setShowAnimation con true', async () => {
@@ -50,7 +52,7 @@ describe('useAuthentication', () => {
   });
 
   it('debería llamar a setDataQuestions con la respuesta correcta', async () => {
-    getQuestions.mockResolvedValue({
+    (getQuestions as jest.Mock).mockResolvedValue({
       response: {
         data: 'some data'
       }
@@ -60,7 +62,7 @@ describe('useAuthentication', () => {
   });
 
   it('debería llamar a router.push con la ruta correcta', async () => {
-    getQuestions.mockResolvedValue({
+    (getQuestions as jest.Mock).mockResolvedValue({
       response: {
         data: 'some data'
       }
@@ -69,13 +71,13 @@ describe('useAuthentication', () => {
     expect(router.push).toHaveBeenCalledWith(routes.validacionIdentidad);
   });
   it('should set showAnimation to true and validated to true', async () => {
-    const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router);
+    const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, fkMock);
     await onSubmit();
     expect(setShowAnimation).toHaveBeenCalledWith(true);
     expect(setValidated).toHaveBeenCalledWith(true);
   });
   it('should call getQuestions with the correct body', async () => {
-    const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router);
+    const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, fkMock);
     await onSubmit();
     expect(getQuestions).toHaveBeenCalledWith({
       document_type: 'CC',
@@ -87,7 +89,7 @@ describe('useAuthentication', () => {
   });
   it('should navigate to validacionIdentidad if there is no error in the response', async () => {
     (getQuestions as jest.Mock).mockResolvedValueOnce({});
-    const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router);
+    const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, fkMock);
     await onSubmit();
     expect(router.push).toHaveBeenCalledWith(routes.validacionIdentidad);
   });
@@ -99,7 +101,7 @@ describe('useAuthentication', () => {
         json: jest.fn().mockResolvedValueOnce({ internal_code: 'RL-02' }),
       },
     });
-    const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router);
+    const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, fkMock);
     await onSubmit();
     (getQuestions as jest.Mock).mockResolvedValueOnce({
       response: {
@@ -136,7 +138,7 @@ describe('useAuthentication', () => {
         json: jest.fn().mockResolvedValueOnce({ internal_code: 'IV-08' }),
       },
     });
-    const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router);
+    const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, fkMock);
     await onSubmit();
     expect(router.push).toHaveBeenCalledWith(routes.validacionIdentidad);
   });
@@ -148,7 +150,7 @@ describe('useAuthentication', () => {
         json: jest.fn().mockResolvedValueOnce({ internal_code: 'IV-09' }),
       },
     });
-    const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router);
+    const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, fkMock);
     await onSubmit();
     expect(router.push).toHaveBeenCalledWith(routes.validacionIdentidad);
   });

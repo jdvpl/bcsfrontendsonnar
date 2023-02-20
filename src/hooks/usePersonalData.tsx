@@ -9,7 +9,8 @@ export default function usePersonalData(setValue: any, userInfo: any,
   monthDt: any,
   yearDt: any,
   router: any,
-  setDataUser: any
+  setDataUser: any,
+  setCurrentRouting: any
 ) {
 
   const date = userInfo.birthDt.split('-');
@@ -72,6 +73,7 @@ export default function usePersonalData(setValue: any, userInfo: any,
       email: data.email,
     };
     setDataUser(dataSend);
+    setCurrentRouting(routes.sarlaft);
     router.push(routes.sarlaft);
   };
   return { onSubmit };

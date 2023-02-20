@@ -14,7 +14,7 @@ jest.mock('../../services', () => ({
 }));
 
 const dataQuestions = { processId: 'PRE00000023' }
-
+const fcMk = jest.fn();
 jest.useFakeTimers();
 describe('useValidationFormNumber', () => {
 
@@ -36,7 +36,7 @@ describe('useValidationFormNumber', () => {
       number: '555-555-5555'
     };
 
-    const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry, dataQuestions);
+    const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry, dataQuestions, fcMk);
 
     await onSubmit(formData);
 
@@ -77,7 +77,7 @@ describe("useValidationFormNumber", () => {
     number: "+1-555-555-5555",
   };
 
-  const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry, dataQuestions);
+  const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry, dataQuestions, fcMk);
 
   it("calls sendNumber with the correct parameters", async () => {
     await onSubmit(formData);
@@ -137,7 +137,8 @@ describe('useValidationFormNumber', () => {
     setLoaded,
     router,
     setProcessBiometry,
-    dataQuestions
+    dataQuestions,
+    fcMk
   );
 
   beforeEach(() => {
@@ -168,7 +169,7 @@ describe('useValidationFormNumber', () => {
 
   it('should redirect to `/` when response status is 403 and internal_code is `VQ-01`', async () => {
     const formData = { number: 123456 };
-    sendNumber.mockImplementation(() => Promise.resolve({
+    (sendNumber as jest.Mock).mockImplementation(() => Promise.resolve({
       error: true,
       status: 403,
       response: {
@@ -178,11 +179,11 @@ describe('useValidationFormNumber', () => {
 
     await onSubmit(formData);
 
-    expect(router.push).toHaveBeenCalledWith('/');
+    expect(router.push).toHaveBeenCalledWith(routes.startProccess);
   });
   it('should redirect to `/validacion-biometrica/` when response status is 403 and internal_code is `VQ-03`', async () => {
     const formData = { number: 123456 };
-    sendNumber.mockImplementation(() => Promise.resolve({
+    (sendNumber as jest.Mock).mockImplementation(() => Promise.resolve({
       error: true,
       status: 403,
       response: {
@@ -192,11 +193,11 @@ describe('useValidationFormNumber', () => {
 
     await onSubmit(formData);
 
-    expect(router.push).toHaveBeenCalledWith('/validacion-biometrica/');
+    expect(router.push).toHaveBeenCalledWith('/validacion-biometrica');
   });
   it('should redirect to `/validacion/error-validacionIdentidad/` when response status is 403 and internal_code is `PF-00`', async () => {
     const formData = { number: 123456 };
-    sendNumber.mockImplementation(() => Promise.resolve({
+    (sendNumber as jest.Mock).mockImplementation(() => Promise.resolve({
       error: true,
       status: 403,
       response: {
@@ -206,11 +207,11 @@ describe('useValidationFormNumber', () => {
 
     await onSubmit(formData);
 
-    expect(router.push).toHaveBeenCalledWith('/validacion/error-validacionIdentidad/');
+    expect(router.push).toHaveBeenCalledWith('/validacion/error-validacionIdentidad');
   });
   it('should redirect to `/validacion/error-validacionSucursal` when response status is 403 and internal_code is `PF-02`', async () => {
     const formData = { number: 123456 };
-    sendNumber.mockImplementation(() => Promise.resolve({
+    (sendNumber as jest.Mock).mockImplementation(() => Promise.resolve({
       error: true,
       status: 403,
       response: {
@@ -224,7 +225,7 @@ describe('useValidationFormNumber', () => {
   });
   it('should redirect to `/validacion-biometrica/` when response status is 403 and internal_code is `PF-03`', async () => {
     const formData = { number: 123456 };
-    sendNumber.mockImplementation(() => Promise.resolve({
+    (sendNumber as jest.Mock).mockImplementation(() => Promise.resolve({
       error: true,
       status: 403,
       response: {
@@ -234,11 +235,11 @@ describe('useValidationFormNumber', () => {
 
     await onSubmit(formData);
 
-    expect(router.push).toHaveBeenCalledWith('/validacion-biometrica/');
+    expect(router.push).toHaveBeenCalledWith('/validacion-biometrica');
   });
   it('should redirect to `/validacion-biometrica/` when response status is 403 and internal_code is `PF-09`', async () => {
     const formData = { number: 123456 };
-    sendNumber.mockImplementation(() => Promise.resolve({
+    (sendNumber as jest.Mock).mockImplementation(() => Promise.resolve({
       error: true,
       status: 403,
       response: {
@@ -248,11 +249,11 @@ describe('useValidationFormNumber', () => {
 
     await onSubmit(formData);
 
-    expect(router.push).toHaveBeenCalledWith('/validacion-biometrica/');
+    expect(router.push).toHaveBeenCalledWith('/validacion-biometrica');
   });
   it('should redirect to `/validacion-biometrica/` when response status is 404 a', async () => {
     const formData = { number: 123456 };
-    sendNumber.mockImplementation(() => Promise.resolve({
+    (sendNumber as jest.Mock).mockImplementation(() => Promise.resolve({
       error: true,
       status: 404,
       response: {
@@ -262,7 +263,7 @@ describe('useValidationFormNumber', () => {
 
     await onSubmit(formData);
 
-    expect(router.push).toHaveBeenCalledWith('/validacion/error/');
+    expect(router.push).toHaveBeenCalledWith('/validacion/error');
   });
 });
 

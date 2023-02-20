@@ -13,6 +13,7 @@ interface FormProps {
   isLoading?: boolean;
   defaultValues?: string;
   questions: Question;
+  setCurrentRouting: any
 }
 export interface Question {
   description: string;
@@ -26,7 +27,7 @@ export interface FormData {
   number: number | string;
 }
 
-export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
+export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurrentRouting }) => {
   const [dataTU, setDataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
   const [, setEncript] = useSessionStorage(SesionStorageKeys.dataTuEncripPhone.key, '');
@@ -62,7 +63,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
     }
     clearErrors('number');
   }, [clearErrors, inputValues, setError]);
-  const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry, dataQuestions)
+  const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry, dataQuestions, setCurrentRouting)
   return (
     <motion.div
       initial="hidden"

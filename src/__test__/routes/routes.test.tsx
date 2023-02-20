@@ -26,7 +26,7 @@ describe('Routes', () => {
   });
 
   it('should have a validacionErrorValidacionIdentidad route', () => {
-    expect(routes).toHaveProperty('validacionErrorValidacionIdentidad', '/validacion/error-validacionIdentidad/');
+    expect(routes).toHaveProperty('validacionErrorValidacionIdentidad', '/validacion/error-validacionIdentidad');
   });
 
   it('should have a validacionErrorPreguntas route', () => {

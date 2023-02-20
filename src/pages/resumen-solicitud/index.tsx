@@ -1,7 +1,5 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import LogoBcs from '../../components/svg/LogoBcs';
-import LogoForm from '../../components/svg/LogoForm';
 import Typography from '../../components/ui/Typography';
 import ReviewApplication from '../../components/ui/application/ReviewApplication';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
@@ -14,17 +12,19 @@ import Alert from '../../components/ui/Alert/index';
 import { ApplicationLoader } from '../../components/ui/Loaders/ApplicationLoader';
 import useSummaryApplication from '../../hooks/useReviewApplication';
 import HeaderForm from '../../components/ui/Headers/HeaderForm';
+import useProtectedRoutes from '../../hooks/useProtectedRoutes';
 
 function ResumenApplication() {
   const router = useRouter();
+  const { setCurrentRouting } = useProtectedRoutes();
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
-  const { isLoading, onSubmit } = useSummaryApplication(router);
+  const { isLoading, onSubmit } = useSummaryApplication(router, setCurrentRouting);
 
   return (
     <div>
       {isLoading ? <ApplicationLoader /> : null}
       <HeaderForm />
-      
+
       <div className="lg:w-[825px] mx-auto md:w-[528px] mb-[64px] xs:mb-[40px] xs:w-[288px] sm:w-[343px] mt-9">
         <Stepper
           steps={4}

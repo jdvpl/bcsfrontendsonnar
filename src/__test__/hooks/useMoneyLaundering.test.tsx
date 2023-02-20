@@ -4,9 +4,12 @@ import { createMockRouter } from '../utils/createMockRouter';
 import { fetchSarlaft } from '../../services';
 import useMoneyLaundering from '../../hooks/useMoneyLaundering';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
-import { routes } from '../../routes';
+import React from 'react'
 
 jest.mock('../../services');
+const setCurrentRouting = jest.fn()
+jest.useFakeTimers();
+
 const router = createMockRouter({});
 const wrapper = ({ children }: any) => (
   <RouterContext.Provider value={router}>{children}</RouterContext.Provider>
@@ -48,31 +51,31 @@ const wrapper = ({ children }: any) => (
 
 describe('useSummaryApplication', () => {
   test('switch when is ALLOWED', async () => {
-    const { result } = renderHook(() => useMoneyLaundering(), { wrapper });
+    const { result } = renderHook(() => useMoneyLaundering({ setCurrentRouting }), { wrapper });
     act(() => {
       result.current.onSubmit();
     });
   });
   test('switch when is RESTRICTED', async () => {
-    const { result } = renderHook(() => useMoneyLaundering(), { wrapper });
+    const { result } = renderHook(() => useMoneyLaundering({ setCurrentRouting }), { wrapper });
     act(() => {
       result.current.onSubmit();
     });
   });
   test('Switch when is ERROR ', async () => {
-    const { result } = renderHook(() => useMoneyLaundering(), { wrapper });
+    const { result } = renderHook(() => useMoneyLaundering({ setCurrentRouting }), { wrapper });
     act(() => {
       result.current.onSubmit();
     });
   });
   test('Switch Default', async () => {
-    const { result } = renderHook(() => useMoneyLaundering(), { wrapper });
+    const { result } = renderHook(() => useMoneyLaundering({ setCurrentRouting }), { wrapper });
     act(() => {
       result.current.onSubmit();
     });
   });
   test('changeMoneyLaundering Default', async () => {
-    const { result } = renderHook(() => useMoneyLaundering(), { wrapper });
+    const { result } = renderHook(() => useMoneyLaundering({ setCurrentRouting }), { wrapper });
     act(() => {
       result.current.changeMoneyLaundering('incomeSource', false);
     });

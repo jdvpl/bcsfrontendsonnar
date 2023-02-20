@@ -17,10 +17,12 @@ import Modal from '../Modal';
 import usePersonalData from '../../../hooks/usePersonalData';
 import { getCityById, validateAddress } from '../../../utils';
 import { useBackDetector } from '../../../hooks/useBackDetector'
+import useProtectedRoutes from '../../../hooks/useProtectedRoutes';
 
 function PersonalDataBasic({ userInfo }: any) {
   const router = useRouter();
 
+  const { setCurrentRouting } = useProtectedRoutes()
   const {
     handleSubmit,
     watch,
@@ -49,7 +51,7 @@ function PersonalDataBasic({ userInfo }: any) {
   const monthDt = watch('monthDt', '');
   const [, setDataUser] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
 
-  const { onSubmit } = usePersonalData(setValue, userInfo, setError, clearErrors, dayDt, monthDt, yearDt, router, setDataUser);
+  const { onSubmit } = usePersonalData(setValue, userInfo, setError, clearErrors, dayDt, monthDt, yearDt, router, setDataUser, setCurrentRouting);
   const showPopup = () => {
     if (userInfo.isClient) {
       setShowModal(true);

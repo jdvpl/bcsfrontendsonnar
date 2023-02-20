@@ -4,10 +4,10 @@ import { sendNumber } from "../services";
 export interface FormData {
   number: number | string;
 }
-const useValidationFormNumber = (dataTU: any, setDataTU: any, setEncript: any, setLoaded: any, router: any, setProcessBiometry: any, dataQuestions: any) => {
+const useValidationFormNumber = (dataTU: any, setDataTU: any, setEncript: any, setLoaded: any, router: any, setProcessBiometry: any, dataQuestions: any, setCurrentRouting: any) => {
   const proccessResponse = (redirect: string) => {
     setLoaded(true);
-    setTimeout(() => router.push(redirect), 1000);
+    setTimeout(() => router.push(redirect), 100);
   };
   const onSubmit = async (formData: FormData) => {
     const body = {
@@ -26,32 +26,34 @@ const useValidationFormNumber = (dataTU: any, setDataTU: any, setEncript: any, s
         },
       });
       setEncript(formData.number);
-      setTimeout(() => proccessResponse(routes.otp), 1000);
+      setCurrentRouting(routes.validacionIdentidad, false);
+      setCurrentRouting(routes.otp)
+      proccessResponse(routes.otp);
     } else if (response.status === 403) {
       const code = response.response.internal_code;
       switch (code) {
         case 'VQ-01':
-          router.push('/');
+          router.push(routes.startProccess);
           break;
         case 'VQ-03':
-          router.push('/validacion-biometrica/');
+          router.push(routes.validacionBiometrica);
           break;
         case 'PF-00':
-          router.push('/validacion/error-validacionIdentidad/');
+          router.push(routes.validacionErrorValidacionIdentidad);
           break;
         case 'PF-02':
-          router.push('/validacion/error-validacionSucursal');
+          router.push(routes.validacionSucursalError);
           break;
         case 'PF-03':
           setProcessBiometry('no');
-          router.push('/validacion-biometrica/');
+          router.push(routes.validacionBiometrica);
           break;
         default:
-          router.push('/validacion-biometrica/');
+          router.push(routes.validacionBiometrica);
           break;
       }
     } else {
-      router.push('/validacion/error/');
+      router.push(routes.validacionError);
     }
   };
 
