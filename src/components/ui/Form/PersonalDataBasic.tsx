@@ -186,7 +186,7 @@ function PersonalDataBasic({ userInfo }: any) {
                     disabled={showModal}
                     name="birthCity"
                     placeholder="Lugar de nacimiento"
-                    label="Lugar de nacimientol"
+                    label="Lugar de nacimiento"
                     onChange={(e: any) => setValue('birthCity', e.target.value)}
                   />
                 )}

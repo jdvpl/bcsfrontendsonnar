@@ -6,8 +6,6 @@ import { HowItemProps } from '../../components/ui/Form';
 import Modal from '../../components/ui/Modal';
 import Advisory from '../../components/commons/Advisory';
 import Stepper from '../../components/ui/Stepper';
-import { getBasicData } from '../../services';
-import { iDataUser } from '../../interfaces/dataUserBasic';
 import PersonalDataBasic from '../../components/ui/Form/PersonalDataBasic';
 import HeaderForm from '../../components/ui/Headers/HeaderForm'
 
@@ -22,32 +20,10 @@ function PersonalData() {
     SesionStorageKeys.dataUser.key,
     {}
   );
-  const [, setDataPersonalInfo] = useSessionStorage(
-    SesionStorageKeys.personalInfoDataBack.key,
+  const [dataPersonalInfo] = useSessionStorage(
+    SesionStorageKeys.basicDataUser.key,
     {}
   );
-  const [userInfo, setuserInfo] = useState<iDataUser>({
-    birthDt: '',
-    addr1: '',
-    cellPhone: '',
-    city: '',
-    emailAddr: '',
-    firstName: '',
-    isClient: false
-  })
-  useEffect(() => {
-    getBasicDataUser()
-  }, [])
-  const getBasicDataUser = async () => {
-    const response = await getBasicData({
-      govIssueIdentType: dataUser.document_type,
-      identSerialNum: dataUser.document_number
-    })
-    if (!response.error) {
-      setuserInfo(response.response.data);
-      setDataPersonalInfo(response.response.data);
-    }
-  }
   const closeModal = () => {
     const datainfo = { advisoryType: null, otherAdvisoryType: null };
     setDataUser({ ...dataUser, ...datainfo })
@@ -75,10 +51,10 @@ function PersonalData() {
           title="Datos personales"
         />
         <Typography variant="h2" className="mt-8 text-center">
-          {userInfo.firstName || 'Hola'}, {userInfo.isClient ? 'confirme sus datos personales' : 'ingrese sus datos personales'}
+          {dataPersonalInfo.firstName || 'Hola'}, {dataPersonalInfo.isClient ? 'confirme sus datos personales' : 'ingrese sus datos personales'}
         </Typography>
         <div className="flex gap-1 my-8 lg:w-[684px] md:w-[528px] sm:w-[343px] w-[288px] mx-auto">
-          <PersonalDataBasic userInfo={userInfo} />
+          <PersonalDataBasic userInfo={dataPersonalInfo} />
         </div>
 
       </div>

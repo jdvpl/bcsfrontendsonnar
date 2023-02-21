@@ -197,3 +197,26 @@ export const validateFinanceValue = (
     });
   }
 };
+
+
+export const cellPhoneMaked = (number: string | number) => {
+  const strNum = number.toString();
+  const prefix = strNum.slice(0, 3);
+  const suffix = strNum.slice(-2);
+  const maskedDigits = '●'.repeat(strNum.length - prefix.length - suffix.length);
+  const maskedNum = `${prefix}${maskedDigits}${suffix}`;
+  return maskedNum;
+}
+
+export const emailMasked = (email: string) => {
+  const [username, domain] = email.split('@');
+  if (username.length > 3) {
+    const prefix = username.slice(0, 3);
+    const suffix = username.slice(-1);
+    const maskedChars = '●'.repeat(username.length - prefix.length - suffix.length);
+    const maskedEmail = `${prefix}${maskedChars}${suffix}@${domain}`;
+    return maskedEmail
+  } else {
+    return email;
+  }
+}

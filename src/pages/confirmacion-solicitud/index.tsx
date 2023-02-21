@@ -16,7 +16,7 @@ import useProtectedRoutes from '../../hooks/useProtectedRoutes';
 
 function ApplicationApproval() {
   const { setCurrentRouting } = useProtectedRoutes();
-  const [dataInfo] = useSessionStorage(SesionStorageKeys.personalInfoDataBack.key, {});
+  const [dataInfo] = useSessionStorage(SesionStorageKeys.basicDataUser.key, {});
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
   const router = useRouter();
   return (

@@ -13,15 +13,15 @@ export default function usePersonalData(setValue: any, userInfo: any,
   setCurrentRouting: any
 ) {
 
-  const date = userInfo.birthDt.split('-');
+  const date = userInfo?.birthDt?.split('-');
   useEffect(() => {
-    setValue('yearDt', date[0]);
-    setValue('monthDt', date[1]);
-    setValue('dayDt', date[2]);
+    setValue('yearDt', date ? date[0] : undefined);
+    setValue('monthDt', date ? date[1] : '');
+    setValue('dayDt', date ? date[2] : '');
     setValue('phone', userInfo.cellPhone)
-    setValue('email', userInfo.emailAddr);
+    setValue('email', userInfo.email);
     if (userInfo.isClient) {
-      setValue('currentAddress', userInfo.addr1)
+      setValue('currentAddress', userInfo.addres)
     }
   }, [userInfo])
 

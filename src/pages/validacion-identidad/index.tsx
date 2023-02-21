@@ -21,6 +21,7 @@ const Index: React.FC = () => {
   const router = useRouter();
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
   const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
+  const [, setBasicData] = useSessionStorage(SesionStorageKeys.basicDataUser.key, '');
   const [dataNumber, setDataNumber] = useState<any | null>(null);
   const [dataValid,] = useState(false);
   const [, setprogress] = useState('');
@@ -59,7 +60,7 @@ const Index: React.FC = () => {
               <ValidationForm
                 questions={data?.items}
                 onSubmit={(dataSend: any) => {
-                  onSubmitResponse(dataSend, dataTU, router, setDataNumber, dataQuestions?.processId, setCurrentRouting);
+                  onSubmitResponse(dataSend, dataTU, router, setDataNumber, dataQuestions?.processId, setCurrentRouting, setBasicData);
                   setprogress('75%');
                 }}
               />
