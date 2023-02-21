@@ -8,10 +8,10 @@ import { RouterContext } from 'next/dist/shared/lib/router-context';
 describe('<PersonalDataBasic/>', () => {
   it('should render successfully', () => {
     const userInfo = {
-      "birthDt": "1995-05-27",
+      "birthDay": "1995-05-27",
       "cellPhone": "3209188638",
-      "emailAddr": "juanda5542@hotmail.com",
-      "addr1": "CL 69g#67-62",
+      "email": "juanda5542@hotmail.com",
+      "address": "CL 69g#67-62",
       "city": "11001",
       "firstName": "Juan",
       "isClient": false
@@ -26,7 +26,7 @@ describe('<PersonalDataBasic/>', () => {
     const userInfo = {
       "birthDt": "1995-05-27",
       "cellPhone": "3209188638",
-      "emailAddr": "juanda5542@hotmail.com",
+      "email": "juanda5542@hotmail.com",
       "addr1": "CL 69g#67-62",
       "city": "11001",
       "firstName": "Juan",

@@ -30,8 +30,8 @@ describe('useProtectedRoutes', () => {
 
 describe("useProtectedRoutes", () => {
   let useRouterSpy;
-  let useSessionStorageSpy;
-  let pushSpy;
+  let useSessionStorageSpy: any;
+  let pushSpy: any;
   beforeEach(() => {
     useRouterSpy = jest.spyOn(require("next/router"), "useRouter");
     useSessionStorageSpy = jest.spyOn(

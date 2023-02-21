@@ -86,10 +86,10 @@ describe('PersonalData', () => {
 
   it('should fill form', async () => {
     const userInfo = {
-      "birthDt": "1995-05-27",
+      "birthDay": "1995-05-27",
       "cellPhone": null,
-      "emailAddr": null,
-      "addr1": "CL 69g#67-62",
+      "email": null,
+      "address": "CL 69g#67-62",
       "city": "11001",
       "firstName": "Juan",
       "isClient": false
@@ -136,10 +136,10 @@ describe('PersonalData', () => {
   });
   it('should fill form ', async () => {
     const userInfo = {
-      "birthDt": "1995-05-27",
-      "cellPhone": 'adsf',
-      "emailAddr": 'asd',
-      "addr1": "CL 69g#67-62",
+      "birthDay": "1995-05-27",
+      "cellPhone": '3123867809',
+      "email": 'juanda554242@gmail.com',
+      "address": "CL 69g#67-62",
       "city": "11001",
       "firstName": "Juan",
       "isClient": true

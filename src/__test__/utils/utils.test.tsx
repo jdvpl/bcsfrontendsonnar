@@ -1,5 +1,5 @@
 
-import { clearSessionStorage, convertToColombianPesos, calculateAge, parserPercentageDecimal, validateAddress, isValidDate, decryptPass, encriptPass, renderPercentage } from '../../utils'
+import { clearSessionStorage, convertToColombianPesos, calculateAge, parserPercentageDecimal, validateAddress, isValidDate, decryptPass, encriptPass, renderPercentage, cellPhoneMaked, emailMasked } from '../../utils'
 import * as CryptoJS from 'crypto-js';
 
 describe('clearSessionStorage', () => {
@@ -135,4 +135,62 @@ describe('clearSessionStorage', () => {
   it('should return "> 100" when percentage is over 100', () => {
     expect(renderPercentage(1.25)).toBe('> 100');
   });
+  it('should mask a 10-digit phone number', () => {
+    const number = '1234567890';
+    const expected = '123●●●●●90';
+    const result = cellPhoneMaked(number);
+    expect(result).toEqual(expected);
+  });
+
+  it('should mask a 7-digit phone number', () => {
+    const number = '1234567';
+    const expected = '123●●67';
+    const result = cellPhoneMaked(number);
+    expect(result).toEqual(expected);
+  });
+
+
+  it('should mask a 0-digit phone number', () => {
+    const number = '';
+    const expected = '';
+    const result = cellPhoneMaked(number);
+    expect(result).toEqual(expected);
+  });
+
+  it('should mask a phone number with non-digit characters', () => {
+    const number = '123-456-7890';
+    const expected = "123●●●●●●●90";
+    const result = cellPhoneMaked(number);
+    expect(result).toEqual(expected);
+  });
+
+  it('should mask a regular email address', () => {
+    const email = 'johndoe@example.com';
+    const expected = 'joh●●●e@example.com';
+    const result = emailMasked(email);
+    expect(result).toEqual(expected);
+  });
+
+
+  it('should mask an email address with a long username', () => {
+    const email = 'verylongusername@example.com';
+    const expected = 'ver●●●●●●●●●●●●e@example.com';
+    const result = emailMasked(email);
+    expect(result).toEqual(expected);
+  });
+
+  it('should mask an email address with a one-letter username', () => {
+    const email = 'aadsf8@example.com';
+    const expected = 'aad●●8@example.com';
+    const result = emailMasked(email);
+    expect(result).toEqual(expected);
+  });
+
+  it('should mask an email address with multiple "@" symbols', () => {
+    const email = 'johndo8@example.com';
+    const expected = 'joh●●●8@example.com';
+    const result = emailMasked(email);
+    expect(result).toEqual(expected);
+  });
+
 });
