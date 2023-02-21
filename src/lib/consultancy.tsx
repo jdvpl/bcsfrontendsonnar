@@ -53,7 +53,7 @@ export const initialOptions = [
         <div className="font-montserratRegular">
           <p className="font-medium my-3">
             Es aquella que ha sido habitada previamente a su venta; es decir, una
-            propiedad que ya ha sido usada.
+            propiedad que ya ha sido usada
           </p>
           <span className="font-semibold text-primario-900">Ventajas:</span>
           <ol className="list-decimal mb-3 list-inside ml-2 special-list">

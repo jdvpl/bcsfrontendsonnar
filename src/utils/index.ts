@@ -197,6 +197,16 @@ export const validateFinanceValue = (
   }
 };
 
+export const calculatePercentageFinance = (
+  houseValue: number,
+  financeValue: number,
+  setPercentageFinance: any
+) => {
+  if (houseValue > 0 && financeValue > 999999) {
+    const calculatePercentage = financeValue / houseValue;
+    setPercentageFinance(calculatePercentage);
+  }
+};
 
 export const cellPhoneMaked = (number: string | number) => {
 
