@@ -143,10 +143,10 @@ export const validateOTOCode = async (data: ValidateOTC) => {
 export const reSendOTPCode = async (data: OTPCodeRequest) => {
   try {
 
-    const { otc, document_number, document_type, phone, processId } = data;
-    const dataInfo = await allResponse({ document_number, document_type, phone, processId }, KEY);
+    const { otc, document_number, document_type, processId } = data;
+    const dataInfo = await allResponse({ document_number, document_type, processId }, KEY);
     const { data: response } = await clientAxiosBackend.post(
-      otc ? '/customer/otc/resend-otc' : '/api-composer/composer/resend-otp',
+      otc ? '/customer/otc/generate' : '/api-composer/composer/resend-otp',
       { data: dataInfo },
       headersBack
     );

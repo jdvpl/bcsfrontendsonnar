@@ -5,7 +5,6 @@ import { getSessionStorageOrDefault } from '../hooks/useSessionStorage';
 import { AxiosError, AxiosInstance } from 'axios';
 import Router from 'next/router';
 import cities from '../lib/cities.json';
-import { months } from '../lib/dates';
 import {
   maxHouseValueNoVis,
   maxHouseValueVis,
@@ -208,3 +207,30 @@ export const calculatePercentageFinance = (
     setPercentageFinance(calculatePercentage);
   }
 };
+
+export const cellPhoneMaked = (number: string | number) => {
+
+  const strNum = number?.toString();
+  if (strNum?.length > 0) {
+    const prefix = strNum.slice(0, 3);
+    const suffix = strNum.slice(-2);
+    const maskedDigits = '●'.repeat(strNum.length - prefix.length - suffix.length);
+    const maskedNum = `${prefix}${maskedDigits}${suffix}`;
+    return maskedNum;
+  } else {
+    return number;
+  }
+}
+
+export const emailMasked = (email: string) => {
+  if (email?.length > 3) {
+    const [username, domain] = email.split('@');
+    const prefix = username.slice(0, 3);
+    const suffix = username.slice(-1);
+    const maskedChars = '●'.repeat(username.length - prefix.length - suffix.length);
+    const maskedEmail = `${prefix}${maskedChars}${suffix}@${domain}`;
+    return maskedEmail
+  } else {
+    return email;
+  }
+}

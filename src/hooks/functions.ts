@@ -7,7 +7,7 @@ interface InitDataSend {
   document_type: string;
   document_number: string;
 }
-export const onSubmitResponse = async (initData: InitDataSend, dataTU: any, router: any, setDataNumber: any, processId: string, setCurrentRouting: any) => {
+export const onSubmitResponse = async (initData: InitDataSend, dataTU: any, router: any, setDataNumber: any, processId: string, setCurrentRouting: any, setBasicData: any) => {
   const body = {
     document_type: dataTU?.document_type,
     document_number: dataTU?.document_number,
@@ -35,13 +35,19 @@ export const onSubmitResponse = async (initData: InitDataSend, dataTU: any, rout
       router.push(routes.servicError)
     }
   } else if (!response.error) {
-    const { step } = response.response.data;
+    const step = response.response?.data?.question?.step;
+    const info = {
+      isClient: response.response.data.isClient,
+      clientType: response.response.data.clientType,
+      ...response.response.data.clientBasicData
+    }
+    setBasicData(info);
     if (step === 'AUTH') {
       setCurrentRouting(routes.validacionIdentidad, false);
       setCurrentRouting(routes.otc);
       router.push(routes.otc);
     } else if (step === 'VQ') {
-      setDataNumber(response.response.data);
+      setDataNumber(response.response.data.question);
     }
   } else {
     router.push(routes.errorValidacion)
