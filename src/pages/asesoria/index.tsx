@@ -174,7 +174,7 @@ function Consultancy() {
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-20"
                 />
               </div>
-              <a className="text-primario-20 font-bold md:underline text-center text-[14px]">
+              <a className="text-primario-100 font-bold font-montserratRegular text-center text-[14px]">
                 {actualStep === 1 ? 'Volver al Inicio' : 'Anterior'}
               </a>
             </div>
@@ -190,7 +190,7 @@ function Consultancy() {
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-20"
                 />
               </div>
-              <a className=" text-primario-20 md:order-2 xs:order-1 font-bold md:underline text-center text-[14px]">
+              <a className=" text-primario-100 font-montserratRegular  md:order-2 xs:order-1 font-bold text-center text-[14px]">
                 {actualStep === 4 ? 'Salir' : 'Siguiente'}
               </a>
             </div>
@@ -212,7 +212,7 @@ function Consultancy() {
       >
         <a
           href={`${basePath}`}
-          className=" text-primario-20 font-bold underline  text-[14px]"
+          className=" text-primario-100 font-montserratRegular font-bold text-[14px]"
         >
           Volver al inicio
         </a>

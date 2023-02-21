@@ -8,7 +8,7 @@ const CheckLoader = () => {
       <Lottie
         loop
         animationData={checkAnimation}
-        className="mx-auto w-[260px] h-[260px]"
+        className="mx-auto w-[150px] h-[150px]"
         play
         speed={1}
       />
