@@ -5,7 +5,6 @@ import { getSessionStorageOrDefault } from '../hooks/useSessionStorage';
 import { AxiosError, AxiosInstance } from 'axios';
 import Router from 'next/router';
 import cities from '../lib/cities.json';
-import { months } from '../lib/dates';
 import {
   maxHouseValueNoVis,
   maxHouseValueVis,
@@ -200,17 +199,22 @@ export const validateFinanceValue = (
 
 
 export const cellPhoneMaked = (number: string | number) => {
-  const strNum = number.toString();
-  const prefix = strNum.slice(0, 3);
-  const suffix = strNum.slice(-2);
-  const maskedDigits = '●'.repeat(strNum.length - prefix.length - suffix.length);
-  const maskedNum = `${prefix}${maskedDigits}${suffix}`;
-  return maskedNum;
+
+  const strNum = number?.toString();
+  if (strNum?.length > 0) {
+    const prefix = strNum.slice(0, 3);
+    const suffix = strNum.slice(-2);
+    const maskedDigits = '●'.repeat(strNum.length - prefix.length - suffix.length);
+    const maskedNum = `${prefix}${maskedDigits}${suffix}`;
+    return maskedNum;
+  } else {
+    return number;
+  }
 }
 
 export const emailMasked = (email: string) => {
-  const [username, domain] = email.split('@');
-  if (username.length > 3) {
+  if (email?.length > 3) {
+    const [username, domain] = email.split('@');
     const prefix = username.slice(0, 3);
     const suffix = username.slice(-1);
     const maskedChars = '●'.repeat(username.length - prefix.length - suffix.length);

@@ -165,60 +165,32 @@ function PersonalDataBasic({ userInfo }: any) {
               )}
             />
           </div>
-          {userInfo.isClient ?
-            <div className="flex flex-col mt-4">
-              <Controller
-                rules={{ required: !userInfo.isClient }}
-                render={() => (
-                  <Input
-                    type="text"
-                    startIcon='bcs-search'
-                    error={!!errors.birthCity}
-                    onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                      e.preventDefault();
-                    }}
-                    onClick={showPopup}
-                    value={getCityById(userInfo.birthCity)}
-                    tabIndex={0}
-                    id="birthCity"
-                    data-testid="birthCity"
-                    inputMode="text"
-                    disabled={showModal}
-                    name="birthCity"
-                    placeholder="Lugar de nacimiento"
-                    label="Lugar de nacimiento"
-                    onChange={(e: any) => setValue('birthCity', e.target.value)}
-                  />
-                )}
-                name="birthCity"
-                control={control}
-              />
-            </div>
-            :
-            <div className="w-full mt-4">
-              <Controller
-                control={control}
-                name="birthCity"
-                rules={{ required: true }}
-                defaultValue={undefined}
-                render={({ field: { onChange } }) => (
-                  <NewAutoComplete
-                    id="birthCity"
-                    defaultValue={undefined}
-                    placeholder="Lugar de nacimiento"
-                    label="Lugar de nacimiento"
-                    onChange={(e: any) => {
-                      if (e?.id) {
-                        return onChange({ item: e.name, option: e.id });
-                      }
-                      return onChange(undefined);
-                    }}
-                    zIndex={30}
-                  />
-                )}
-              />
-            </div>
-          }
+
+
+          <div className="w-full mt-4">
+            <Controller
+              control={control}
+              name="birthCity"
+              rules={{ required: true }}
+              defaultValue={undefined}
+              render={({ field: { onChange } }) => (
+                <NewAutoComplete
+                  id="birthCity"
+                  defaultValue={undefined}
+                  placeholder="Lugar de nacimiento"
+                  label="Lugar de nacimiento"
+                  onChange={(e: any) => {
+                    if (e?.id) {
+                      return onChange({ item: e.name, option: e.id });
+                    }
+                    return onChange(undefined);
+                  }}
+                  zIndex={30}
+                />
+              )}
+            />
+          </div>
+
 
 
           <div className="w-full mt-4">
@@ -305,35 +277,64 @@ function PersonalDataBasic({ userInfo }: any) {
             />
           </div>
 
-
-          <div className="w-full mt-4">
-            <Controller
-              control={control}
-              name="currentCity"
-              rules={{ required: true }}
-              defaultValue={undefined}
-              render={({ field: { onChange } }) => (
-                <NewAutoComplete
-                  id="currentCity"
-                  defaultValue={undefined}
-                  label="Ciudad de residencia"
-                  onChange={(e: any) => {
-                    if (e?.id) {
-                      return onChange({
-                        item: e.name,
-                        option: e.id,
-                        hasAdviser: e?.hasAdviser,
-                        nameAdviser: e?.nameAdviser,
-                      });
-                    }
-                    return onChange(undefined);
-                  }}
-                  zIndex={30}
-                />
-              )}
-            />
-          </div>
-
+          {userInfo.isClient ?
+            <div className="flex flex-col mt-4">
+              <Controller
+                rules={{ required: !userInfo.isClient }}
+                render={() => (
+                  <Input
+                    type="text"
+                    startIcon='bcs-search'
+                    error={!!errors.birthCity}
+                    onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                      e.preventDefault();
+                    }}
+                    onClick={showPopup}
+                    value={getCityById(userInfo.residenceCity)}
+                    tabIndex={0}
+                    id="currentCity"
+                    data-testid="currentCity"
+                    inputMode="text"
+                    disabled={showModal}
+                    name="currentCity"
+                    placeholder="Ciudad de residencia"
+                    label="Ciudad de residencia"
+                    onChange={(e: any) => setValue('currentCity', e.target.value)}
+                  />
+                )}
+                name="currentCity"
+                control={control}
+              />
+            </div>
+            :
+            <div className="w-full mt-4">
+              <Controller
+                control={control}
+                name="currentCity"
+                rules={{ required: true }}
+                defaultValue={undefined}
+                render={({ field: { onChange } }) => (
+                  <NewAutoComplete
+                    id="currentCity"
+                    defaultValue={undefined}
+                    label="Ciudad de residencia"
+                    onChange={(e: any) => {
+                      if (e?.id) {
+                        return onChange({
+                          item: e.name,
+                          option: e.id,
+                          hasAdviser: e?.hasAdviser,
+                          nameAdviser: e?.nameAdviser,
+                        });
+                      }
+                      return onChange(undefined);
+                    }}
+                    zIndex={30}
+                  />
+                )}
+              />
+            </div>
+          }
           {!userInfo.isClient &&
             <div className="flex flex-col mt-4">
               <Controller

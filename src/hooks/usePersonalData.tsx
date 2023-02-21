@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { iPersonalData } from "../interfaces/dataUserBasic";
 import { routes } from "../routes";
-import { calculateAge, isValidDate } from "../utils";
+import { calculateAge, emailMasked, isValidDate, cellPhoneMaked } from "../utils";
 
 export default function usePersonalData(setValue: any, userInfo: any,
   setError: any,
@@ -13,13 +13,13 @@ export default function usePersonalData(setValue: any, userInfo: any,
   setCurrentRouting: any
 ) {
 
-  const date = userInfo?.birthDt?.split('-');
+  const date = userInfo?.birthDay?.split('-');
   useEffect(() => {
     setValue('yearDt', date ? date[0] : undefined);
     setValue('monthDt', date ? date[1] : '');
     setValue('dayDt', date ? date[2] : '');
-    setValue('phone', userInfo.cellPhone)
-    setValue('email', userInfo.email);
+    setValue('phone', cellPhoneMaked(userInfo.cellPhone))
+    setValue('email', emailMasked(userInfo.email));
     if (userInfo.isClient) {
       setValue('currentAddress', userInfo.addres)
     }
@@ -27,9 +27,9 @@ export default function usePersonalData(setValue: any, userInfo: any,
 
   useEffect(() => {
     clearErrors('dayDt');
-    if (dayDt && monthDt && yearDt.length === 4) {
+    if (dayDt && monthDt && yearDt?.length === 4) {
       const age = calculateAge(`${dayDt}/${monthDt}/${yearDt}`);
-      if (age < 19 || age > 71) {
+      if (age < 18 || age > 71) {
         setError(
           'dayDt',
           {
