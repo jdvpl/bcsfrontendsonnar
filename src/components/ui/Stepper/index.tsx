@@ -24,7 +24,7 @@ function Stepper({
         <p
           className={`text-[12px] leading-4 text-primario-900 font-semibold font-montserratRegular ${classTitle}`}
         >
-          {title} {percentage}
+          {title}
         </p>
         <div className="w-full flex gap-1 my-2">
           {renderSteps?.map((item, index) => (

@@ -12,8 +12,8 @@ function CreditData() {
 
       <div className="lg:w-[825px] mx-auto md:w-[528px]  xs:w-[288px] sm:w-[343px] mt-9">
         <Stepper
-          steps={4}
-          actualStep={3}
+          steps={5}
+          actualStep={4}
           percentage={100}
           className="lg:w-[684px] md:w-[528px] xs:w-full mx-auto lg:mb-[64px] xs:mb-[40px] md:mb-[40px]"
           title="Personalización del crédito"

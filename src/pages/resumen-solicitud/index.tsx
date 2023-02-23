@@ -27,8 +27,8 @@ function ResumenApplication() {
 
       <div className="lg:w-[825px] mx-auto md:w-[528px] mb-[64px] xs:mb-[40px] xs:w-[288px] sm:w-[343px] mt-9">
         <Stepper
-          steps={4}
-          actualStep={4}
+          steps={5}
+          actualStep={5}
           percentage={100}
           className="lg:w-[684px] md:w-[528px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px]"
           title="Resumen de la solicitud"

@@ -9,7 +9,7 @@ export default function ValidacionSolicitud() {
   return (
     <InactivityWarper>
       <Layout navTitle={<NavTitle noBack />}>
-        <Stepper steps={4} actualStep={4} title="Validación de identidad" />
+        <Stepper steps={5} actualStep={1} title="Validación de identidad" />
         <Otp />
       </Layout>
     </InactivityWarper>

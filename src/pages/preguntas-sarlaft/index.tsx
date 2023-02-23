@@ -11,9 +11,8 @@ function MoneyLaunderingPage() {
 
       <div className="lg:w-[825px] mx-auto md:w-[528px] mb-[64px] xs:mb-[40px] xs:w-[288px] sm:w-[343px] mt-9">
         <Stepper
-          steps={4}
-          actualStep={1}
-          percentage={100}
+          steps={5}
+          actualStep={2}
           className="lg:w-[684px] md:w-[456px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px]"
           title="Datos personales"
         />
