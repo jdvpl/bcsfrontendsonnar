@@ -24,7 +24,7 @@ export default function useConsultancyTutorial({
     prevTutorialStepRef?.current
       ?.querySelector('div')
       .classList?.add('border-primario-20');
-    prevTutorialStepRef?.current?.querySelector('a')?.classList?.add('text-primario-100');
+    prevTutorialStepRef?.current?.querySelector('a')?.classList?.add('text-primario-100','text-semibold');
     prevTutorialStepRef?.current?.querySelector('i')?.classList?.add('text-primario-20');
   };
   const clearStylesNextStep = () => {
@@ -33,7 +33,7 @@ export default function useConsultancyTutorial({
     nextTutorialStepRef?.current
       ?.querySelector('div')
       .classList?.add('border-primario-20');
-    nextTutorialStepRef?.current?.querySelector('a')?.classList?.add('text-primario-100');
+    nextTutorialStepRef?.current?.querySelector('a')?.classList?.add('text-primario-100','text-semibold');
     nextTutorialStepRef?.current?.querySelector('i')?.classList?.add('text-primario-20');
   };
   const handelActualStep = () => {
