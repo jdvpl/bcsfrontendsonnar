@@ -85,7 +85,6 @@ function Consultancy() {
           <Stepper
             steps={4}
             actualStep={actualStep}
-            percentage={40}
             className="lg:w-[684px] md:w-[456px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px]"
             title={stepperTitles[actualStep - 1]}
           />
