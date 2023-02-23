@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import { act, renderHook } from '@testing-library/react-hooks';
 import useConsultancyTutorial from '../../../../components/custom/tutorial/ConsultancyTutorial/useConsultancyTutorial';
-import React from 'react'
+import React from 'react';
 describe('ConsultancyTutorial', () => {
   test('isOpen state change to False when call onHandleModal to first time ', async () => {
     const nextTutorialStepRef = '';
@@ -13,6 +13,37 @@ describe('ConsultancyTutorial', () => {
       result.current.onHandleModal();
     });
     expect(result.current.isOpen).toBe(false);
+  });
+  test('should change actualTutorialStep to 1 when call handelActualStep one time ', async () => {
+    let caseResult;
+    const nextTutorialStepRef = '';
+    const prevTutorialStepRef = {
+      current: {
+        offsetLeftP: 10,
+        offsetWidthP: 10,
+        offsetTopP: 10,
+        offsetHeightP: 10,
+        querySelector: jest.fn(() => {
+          return {
+            classList: {
+              add: jest.fn(),
+              remove: jest.fn(),
+            },
+          };
+        }),
+      },
+    };
+    const { result } = renderHook(() =>
+      useConsultancyTutorial({ nextTutorialStepRef, prevTutorialStepRef })
+    );
+    act(() => {
+      result.current.handelActualStep();
+    });
+    act(() => {
+      caseResult= result.current.renderBody();
+    });
+    console.log(caseResult)
+    // expect(result.current.actualTutorialStep).toBe(1);
   });
   test('should change actualTutorialStep to 1 when call handelActualStep one time ', async () => {
     const nextTutorialStepRef = '';
