@@ -22,7 +22,7 @@ function Stepper({
     <NoSSRWrapper>
       <div className={className}>
         <p
-          className={`text-[16px] leading-4 text-primario-900 font-normal font-montserratRegular"
+          className={`text-[16px] leading-4 text-primario-900 font-semibold heading"
           data-testid="titleStep ${classTitle}`}
         >
           {title}
@@ -40,7 +40,7 @@ function Stepper({
         <p
           tabIndex={0}
           role="paragraph"
-          className="text-complementario-100 text-xs ln-16"
+          className="text-complementario-100 text-xs ln-16 font-montserratRegular"
           data-testid="stepNumber"
         >
           Paso {actualStep} de {steps}
