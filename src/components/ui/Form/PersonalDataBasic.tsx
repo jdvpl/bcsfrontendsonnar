@@ -250,7 +250,7 @@ function PersonalDataBasic({ userInfo }: any) {
           </div>
           <div className="flex flex-col mt-4">
             <Controller
-              rules={{ required: !userInfo.emailAddr }}
+              rules={{ required: !userInfo.email }}
               render={({ field }) => (
                 <Input
                   helperText="Ejemplo: correo@dominio.com"

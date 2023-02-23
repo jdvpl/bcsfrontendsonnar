@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { iPersonalData } from "../interfaces/dataUserBasic";
 import { routes } from "../routes";
-import { calculateAge, emailMasked, isValidDate, cellPhoneMaked } from "../utils";
+import { calculateAge, emailMasked, isValidDate, cellPhoneMaked, getCityById, getHasAdviserNameAdviser } from "../utils";
 
 export default function usePersonalData(setValue: any, userInfo: any,
   setError: any,
@@ -21,7 +21,7 @@ export default function usePersonalData(setValue: any, userInfo: any,
     setValue('phone', cellPhoneMaked(userInfo.cellPhone))
     setValue('email', emailMasked(userInfo.email));
     if (userInfo.isClient) {
-      setValue('currentAddress', userInfo.addres)
+      setValue('currentAddress', userInfo.addres);
     }
   }, [userInfo])
 
@@ -61,17 +61,20 @@ export default function usePersonalData(setValue: any, userInfo: any,
     const birthDate = `${data.yearDt}-${data.monthDt}-${data.dayDt}`;
     const birthCity = data.birthCity?.option;
     const currentCity = data.currentCity?.option;
+    const hasAdviser = userInfo.isClient ? getHasAdviserNameAdviser(userInfo.residenceCity) : null;
+    const nameAdviser = userInfo.isClient ? getHasAdviserNameAdviser(userInfo.residenceCity) : null;
     const dataSend = {
       birthDate,
       birthCity,
       currentCity,
-      hasAdviser: data?.currentCity?.hasAdviser,
-      nameAdviser: data?.currentCity?.nameAdviser,
+      hasAdviser: userInfo.isClient ? hasAdviser?.hasAdviser : data?.currentCity?.hasAdviser,
+      nameAdviser: userInfo.isClient ? nameAdviser?.nameAdviser : data?.currentCity?.nameAdviser,
       phone: data.phone,
       gender: data.gender,
       currentAddress: data.currentAddress,
       email: data.email,
     };
+    console.log({ dataSend })
     setDataUser(dataSend);
     setCurrentRouting(routes.sarlaft);
     router.push(routes.sarlaft);

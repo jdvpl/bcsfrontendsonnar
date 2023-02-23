@@ -64,11 +64,9 @@ function HeadersTable() {
         <Text style={[styles.cellText]}>Seguro de vida</Text>
       </View>
       <View style={[styles.cell, styles.tableHeader]}>
-        <Text style={[styles.cellText]}>Seguro IRT
-        </Text>
+        <Text style={[styles.cellText]}>Seguro IRT</Text>
         <Text style={styles.textsmall}>(Incendio, rayo y </Text>
         <Text style={styles.textsmall}>terremoto) </Text>
-
       </View>
       <View style={[styles.cell, styles.tableHeader]}>
         <Text style={[styles.cellText]}>Cuota total con </Text>

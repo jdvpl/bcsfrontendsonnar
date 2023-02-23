@@ -112,6 +112,13 @@ export const getCityById = (id: string) => {
   const city = cities.details.filter((element) => element.id == id)[0]?.name;
   return city;
 };
+export const getHasAdviserNameAdviser = (id: string) => {
+  const data = cities.details.filter((element) => element.id == id)[0];
+  return {
+    hasAdviser: data.hasAdviser,
+    nameAdviser: data.nameAdviser
+  };
+};
 
 export const handleClearErrors = (clearErrors: any) => {
   clearErrors('typeHouse');
@@ -223,4 +230,13 @@ export const emailMasked = (email: string) => {
   } else {
     return email;
   }
+}
+
+export const downLoadPdf = (pdf: any, dataTU: any) => {
+  const linkSource = `data:application/pdf;base64,${pdf}`;
+  const downloadLink = document.createElement("a");
+  const fileName = `carta_de_aprobacion${dataTU.document_number}.pdf`;
+  downloadLink.href = linkSource;
+  downloadLink.download = fileName;
+  downloadLink.click()
 }

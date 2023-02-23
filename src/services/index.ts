@@ -10,7 +10,7 @@ import { getProcessId } from '../utils';
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
 const KEYKYCHASH = process.env.KEYKYCHASH;
-
+import { iPdfLetter } from '../interfaces/ipdfLetter'
 //? this save the authorization data.
 /**
  * It sends a POST request to the backend with the body of the request being the body parameter
@@ -277,6 +277,23 @@ export const delKeysRedis = async (body: any) => {
     return {
       response: {
         result: response?.response,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e.response?.data?.message };
+  }
+
+}
+export const getPDF = async (body: iPdfLetter) => {
+  try {
+    const { data: response } = await axios.post(
+      'http://localhost:8000/pdf',
+      body
+    );
+    return {
+      response: {
+        result: response,
       },
       error: false,
     };

@@ -13,12 +13,17 @@ import { routes } from '../../routes';
 import { SesionStorageKeys } from '../../session';
 import { convertToColombianPesos } from '../../utils';
 import useProtectedRoutes from '../../hooks/useProtectedRoutes';
+import useDownloadPdf from '../../hooks/useDownloadPdf';
 
 function ApplicationApproval() {
   const { setCurrentRouting } = useProtectedRoutes();
   const [dataInfo] = useSessionStorage(SesionStorageKeys.basicDataUser.key, {});
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
+  const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
+  const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
+
   const router = useRouter();
+  const { getPdf } = useDownloadPdf(dataQuestions, dataTU);
   return (
     <div>
       <Header />
@@ -94,6 +99,7 @@ function ApplicationApproval() {
             className="mb-8"
             data-testid="btn-Confirmation"
             tabIndex={0}
+            onClick={getPdf}
             id="btn-next"
           >
             <span className="font-medium font-monserratLight text-[18px]">
