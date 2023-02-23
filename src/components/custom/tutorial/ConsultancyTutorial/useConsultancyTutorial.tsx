@@ -53,7 +53,7 @@ export default function useConsultancyTutorial({
           <>
             <Typography
               variant="h2"
-              className="xl:leading-[34px] md:leading-[30px] xs:leading-[22px] text-center mx-auto text-white xs:text-[18px] md:text-[26px] xl:text-[30px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
+              className="md:font-poppinsSemiBold font-montserratSemiBold xl:leading-[34px] md:leading-[30px] xs:leading-[22px] text-center mx-auto text-white xs:text-[18px] md:text-[26px] xl:text-[28px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
             >
               Acompáñenos en un corto recorrido antes de iniciar la guía interactiva y
               conozca como navegar en ella.
@@ -63,20 +63,20 @@ export default function useConsultancyTutorial({
                 data-testid="nextStep"
                 disabled={!(timer === 0)}
                 onClick={handelActualStep}
-                isLanding="sm:w-[343px] xs:w-[284.17px] font-semibold"
+                isLanding="sm:w-[343px] xs:w-[284.17px] font-montserratRegular font-medium"
               >
                 Continuar
               </Button>
               <button
                 onClick={onHandleModal}
-                className="text-[18px] text-white font-semibold mx-auto mt-[46px] xs:mb-[42px] md:mb-[49px] xl:mb-[42px]"
+                className="text-[18px] text-white font-montserratRegular font-medium mx-auto mt-[46px] xs:mb-[42px] md:mb-[49px] xl:mb-[42px]"
               >
                 Omitir
               </button>
 
               <div className="flex gap-[5px]">
                 <Icons icon="bcs-clock" iconclassNames="text-white text-[14px]" />{' '}
-                <span className="text-white text-[14px]"> {timer} Segundos</span>
+                <span className="text-white text-[14px] font-montserratRegular font-medium"> {timer} Segundos</span>
               </div>
             </div>
           </>
