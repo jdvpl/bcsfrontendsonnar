@@ -23,7 +23,7 @@ function ConsultancyTutorial({ nextTutorialStepRef, prevTutorialStepRef }: any) 
           >
             <Typography
               variant="h2"
-              className="text-white xs:text-[14px] sm:text-[18px] xl:text-[28px]"
+              className="text-white xs:text-[14px] sm:text-[14px] md:text-[14px] lg:text-[20px] lg:font-poppinsSemiBold font-montserratSemiBold"
             >
               Instructivo guía interactiva
             </Typography>

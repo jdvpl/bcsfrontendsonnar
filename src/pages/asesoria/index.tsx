@@ -173,7 +173,7 @@ function Consultancy() {
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-20"
                 />
               </div>
-              <a className="text-primario-100 font-bold font-montserratRegular text-center text-[14px]">
+              <a className="text-primario-100 font-bold font-montserratRegular text-center text-[14px] ">
                 {actualStep === 1 ? 'Volver al Inicio' : 'Anterior'}
               </a>
             </div>
