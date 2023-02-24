@@ -10,8 +10,8 @@ function FinancialData() {
       <HeaderForm />
       <div className="lg:w-[684px] md:w-[584px] sm:w-[343px] w-[288px] m-auto mt-6">
         <Stepper
-          steps={4}
-          actualStep={2}
+          steps={5}
+          actualStep={3}
           percentage={100}
           classTitle='font-normal'
           className="lg:w-[684px] md:w-[528px] xs:w-full mx-auto lg:mb-[64px] xs:mb-[36px] md:mb-[53px] "

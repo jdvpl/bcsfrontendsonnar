@@ -44,8 +44,8 @@ function PersonalData() {
 
       <div className="lg:w-[684px] md:w-[528px] sm:w-[343px] w-[288px] m-auto mt-9">
         <Stepper
-          steps={4}
-          actualStep={1}
+          steps={5}
+          actualStep={2}
           percentage={50}
           className="lg:w-[684px] md:w-[528px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px] text-left"
           title="Datos personales"
