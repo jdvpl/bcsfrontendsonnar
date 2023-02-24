@@ -1,16 +1,17 @@
 import { useEffect } from "react";
-import { iPersonalData } from "../interfaces/dataUserBasic";
+import { iDataUser, iPersonalData, iPersonalDataSent } from "../interfaces/dataUserBasic";
 import { routes } from "../routes";
-import { calculateAge, emailMasked, isValidDate, cellPhoneMaked, getCityById, getHasAdviserNameAdviser } from "../utils";
+import { calculateAge, emailMasked, isValidDate, cellPhoneMaked, getHasAdviserNameAdviser } from "../utils";
 
-export default function usePersonalData(setValue: any, userInfo: any,
+export default function usePersonalData(setValue: any, userInfo: iDataUser,
   setError: any,
   clearErrors: any, dayDt: any,
   monthDt: any,
   yearDt: any,
   router: any,
   setDataUser: any,
-  setCurrentRouting: any
+  setCurrentRouting: any,
+  dataPersonalBasic: iPersonalDataSent
 ) {
 
   const date = userInfo?.birthDay?.split('-');
@@ -21,7 +22,7 @@ export default function usePersonalData(setValue: any, userInfo: any,
     setValue('phone', cellPhoneMaked(userInfo.cellPhone))
     setValue('email', emailMasked(userInfo.email));
     if (userInfo.isClient) {
-      setValue('currentAddress', userInfo.addres);
+      setValue('currentAddress', userInfo.address);
     }
   }, [userInfo])
 
@@ -56,6 +57,20 @@ export default function usePersonalData(setValue: any, userInfo: any,
     }
   }, [yearDt, dayDt, monthDt]);
 
+  useEffect(() => {
+    if (Object.entries(dataPersonalBasic).length > 0) {
+      const date = dataPersonalBasic.birthDate?.split('-');
+      setValue('yearDt', date[0]);
+      setValue('monthDt', date[1]);
+      setValue('dayDt', date[2]);
+      setValue("birthCity", dataPersonalBasic.birthCity)
+      setValue("gender", dataPersonalBasic.gender);
+      setValue("currentAddress", dataPersonalBasic.currentAddress)
+      window.location.hash = "#"
+      return;
+    }
+  }, [])
+
 
   const onSubmit = async (data: iPersonalData) => {
     const birthDate = `${data.yearDt}-${data.monthDt}-${data.dayDt}`;
@@ -63,16 +78,16 @@ export default function usePersonalData(setValue: any, userInfo: any,
     const currentCity = data.currentCity?.option;
     const hasAdviser = userInfo.isClient ? getHasAdviserNameAdviser(userInfo.residenceCity) : null;
     const nameAdviser = userInfo.isClient ? getHasAdviserNameAdviser(userInfo.residenceCity) : null;
-    const dataSend = {
+    const dataSend: iPersonalDataSent = {
       birthDate,
       birthCity,
-      currentCity,
+      currentCity: userInfo.isClient ? userInfo.residenceCity : currentCity,
       hasAdviser: userInfo.isClient ? hasAdviser?.hasAdviser : data?.currentCity?.hasAdviser,
       nameAdviser: userInfo.isClient ? nameAdviser?.nameAdviser : data?.currentCity?.nameAdviser,
-      phone: data.phone,
+      phone: data.phone.trim() === cellPhoneMaked(userInfo.cellPhone) ? userInfo.cellPhone : data.phone,
       gender: data.gender,
-      currentAddress: data.currentAddress,
-      email: data.email,
+      currentAddress: userInfo.isClient ? userInfo.address : data.currentAddress,
+      email: data.email.trim() === emailMasked(userInfo.email) ? userInfo.email : data.email,
     };
     console.log({ dataSend })
     setDataUser(dataSend);

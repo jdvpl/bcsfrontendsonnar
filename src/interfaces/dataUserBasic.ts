@@ -20,3 +20,15 @@ export interface iPersonalData {
   currentCity: any;
   currentAddress: string;
 }
+
+export interface iPersonalDataSent {
+  birthDate: string;
+  birthCity: string;
+  currentCity: string;
+  hasAdviser: boolean;
+  nameAdviser: string;
+  phone: string;
+  gender: string;
+  currentAddress: string;
+  email: string;
+}

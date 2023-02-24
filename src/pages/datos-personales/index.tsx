@@ -24,14 +24,15 @@ function PersonalData() {
     SesionStorageKeys.basicDataUser.key,
     {}
   );
-  const closeModal = () => {
+  const closeModal = async () => {
     const datainfo = { advisoryType: null, otherAdvisoryType: null };
-    setDataUser({ ...dataUser, ...datainfo })
+    await setDataUser({ ...dataUser, ...datainfo })
     setShowModal(false)
   }
+  const keyModal = 'advisoryType' in dataUser;
   return (
     <div data-testid="PersonalDataTest" >
-      {showModal && (
+      {showModal && !keyModal && (
         <Modal
           showModal={showModal}
           onClose={() => closeModal()}

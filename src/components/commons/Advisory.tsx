@@ -10,9 +10,9 @@ function Advisory({ setShowModal }: any) {
     SesionStorageKeys.dataUser.key,
     {}
   );
-  const closeModal = () => {
+  const closeModal = async () => {
     const datainfo = { advisoryType: null, otherAdvisoryType: null };
-    setDataUser({ ...dataUser, ...datainfo })
+    await setDataUser({ ...dataUser, ...datainfo })
     setShowModal(false)
   }
   return (

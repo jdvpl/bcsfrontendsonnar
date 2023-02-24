@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { basePath } from '../../../next.config';
 import Alert from '../../components/ui/Alert';
 import Button from '../../components/ui/Button';
@@ -16,7 +16,7 @@ import useProtectedRoutes from '../../hooks/useProtectedRoutes';
 import useDownloadPdf from '../../hooks/useDownloadPdf';
 
 function ApplicationApproval() {
-  const { setCurrentRouting } = useProtectedRoutes();
+  const { setCurrentRouting, removeAllPath } = useProtectedRoutes();
   const [dataInfo] = useSessionStorage(SesionStorageKeys.basicDataUser.key, {});
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
@@ -24,6 +24,9 @@ function ApplicationApproval() {
 
   const router = useRouter();
   const { getPdf } = useDownloadPdf(dataQuestions, dataTU);
+  useEffect(() => {
+    removeAllPath();
+  }, [])
   return (
     <div>
       <Header />
