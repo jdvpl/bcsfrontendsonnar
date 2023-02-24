@@ -44,6 +44,8 @@ function FinancialDataForm() {
     SesionStorageKeys.financialDataForm.key,
     {}
   );
+
+  console.log({ financialDataForm })
   const onSubmit = async (data: iFinancialData) => {
     if (data.occupation !== "14") {
       data.employeeMonth = null;
@@ -60,7 +62,7 @@ function FinancialDataForm() {
     }
   }
 
-  useValidationFinancialDataForm(occupation, enterprise, contractType, employeeYear, employeeMonth, monthlySalary, monthlyExpenses, realStateValue, debtValue, clearErrors, setError, financialDataForm);
+  useValidationFinancialDataForm(occupation, enterprise, contractType, employeeYear, employeeMonth, monthlySalary, monthlyExpenses, realStateValue, debtValue, clearErrors, setError, setValue, financialDataForm);
 
   return (
     <div data-testid="FormQuotaTest" className="w-[343px] md:mt-[30px] md:w-[517px] xl:w-[656px] mx-auto">

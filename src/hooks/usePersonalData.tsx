@@ -11,7 +11,7 @@ export default function usePersonalData(setValue: any, userInfo: iDataUser,
   router: any,
   setDataUser: any,
   setCurrentRouting: any,
-  dataPersonalBasic: iPersonalDataSent
+  dataPersonalBasic: Partial<iPersonalDataSent>
 ) {
 
   const date = userInfo?.birthDay?.split('-');
@@ -60,15 +60,14 @@ export default function usePersonalData(setValue: any, userInfo: iDataUser,
   useEffect(() => {
     if (Object.entries(dataPersonalBasic).length > 0) {
       const date = dataPersonalBasic.birthDate?.split('-');
-      setValue('yearDt', date[0]);
-      setValue('monthDt', date[1]);
-      setValue('dayDt', date[2]);
+      setValue('yearDt', date?.[0]);
+      setValue('monthDt', date?.[1]);
+      setValue('dayDt', date?.[2]);
       setValue("birthCity", dataPersonalBasic.birthCity)
       setValue("gender", dataPersonalBasic.gender);
       setValue("currentAddress", dataPersonalBasic.currentAddress)
-      setValue("email", dataPersonalBasic.email)
-      setValue("phone", dataPersonalBasic.phone)
-      window.location.hash = "#"
+      setValue("email", userInfo.email === dataPersonalBasic.email ? emailMasked(dataPersonalBasic.email) : dataPersonalBasic.email)
+      setValue("phone", dataPersonalBasic.phone === userInfo.cellPhone ? cellPhoneMaked(dataPersonalBasic.phone) : dataPersonalBasic.phone)
       return;
     }
   }, [])
@@ -91,7 +90,6 @@ export default function usePersonalData(setValue: any, userInfo: iDataUser,
       currentAddress: userInfo.isClient ? userInfo.address : data.currentAddress,
       email: data.email.trim() === emailMasked(userInfo.email) ? userInfo.email : data.email,
     };
-    console.log({ dataSend })
     setDataUser(dataSend);
     setCurrentRouting(routes.sarlaft);
     router.push(routes.sarlaft);

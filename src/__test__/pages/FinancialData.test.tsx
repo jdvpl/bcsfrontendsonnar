@@ -5,6 +5,7 @@ import React from 'react'
 import FinancialData from '../../pages/datos-financieros';
 import { createMockRouter } from '../utils/createMockRouter';
 import { routes } from '../../routes';
+import '@testing-library/jest-dom';
 
 
 describe('FinancialData', () => {
@@ -53,7 +54,7 @@ describe('FinancialData', () => {
   })
   test('should open the year and other inputs `Empleado`', async () => {
     const router = createMockRouter({});
-    render(
+    const { queryByTestId } = render(
       <RouterContext.Provider value={router}>
         <FinancialData />
       </RouterContext.Provider>
@@ -61,7 +62,7 @@ describe('FinancialData', () => {
     const occupation = document.getElementsByName("occupation")[0];
     fireEvent.input(occupation, { target: { value: '14' } });
     const contractType = document.getElementsByName("contractType")[0];
-    const enterpriseTest = screen.queryByTestId('enterpriseTest');
+    const enterpriseTest = queryByTestId('enterpriseTest');
     const employeeYearTest = screen.queryByTestId('employeeYearTest');
     const employeeMonthTest = screen.queryByTestId('employeeMonthTest');
 
@@ -70,7 +71,7 @@ describe('FinancialData', () => {
     const realStateValueTest = screen.getByTestId('realStateValueTest');
     const debtValueTest = screen.getByTestId('debtValueTest');
 
-    fireEvent.input(enterpriseTest!, { target: { value: 'BCS' } });
+    fireEvent?.input(enterpriseTest!, { target: { value: 'BCS' } });
     fireEvent.paste(enterpriseTest!, "data");
 
     fireEvent.input(contractType, { target: { value: '01' } });

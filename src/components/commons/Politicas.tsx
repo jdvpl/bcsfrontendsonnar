@@ -8,7 +8,7 @@ function Politicas() {
     <p className="mt-4 text-base">
       En mi calidad de titular de la información personal suministrada, autorizo de manera expresa y previa al Banco Caja Social y a sus filiales y sucesores, cesionarios o a quien represente u ostente sus derechos, para que directamente o por intermedio de terceros realicen el siguiente tratamiento sobre mi información personal, por medios físicos, digitales o electrónicos:
     </p>
-    <p className="mt-4 text-base">
+    <div className="mt-4 text-base">
       <span className="font-bold">I. AUTORIZACIÓN DE TRATAMIENTO DE DATOS SENSIBLES</span>
       <p className="font-bold my-5">Validación de Identidad con la Registraduría Nacional del Estado Civil </p>
       <p className='text-base'>
@@ -17,7 +17,7 @@ function Politicas() {
       <p className='mt-3'>
         Declaro que me han informado de manera adecuada y suficiente sobre las finalidades con las cuales tratarán este dato sensible, que no se almacenará ni compartirá con ningún tercero, a sabiendas de que no me encuentro obligado a autorizar su tratamiento.
       </p>
-    </p>
+    </div>
 
     <div className="mt-4">
       <p className="font-bold mt-6">

@@ -105,6 +105,8 @@ export default function useValidations(
       office,
       stratum,
     });
+    setCurrentRouting(routes.finalcialData, false);
+    setCurrentRouting(routes.creditData, false);
     setCurrentRouting(routes.ResumenSolicitud);
     router.push(routes.ResumenSolicitud);
   };

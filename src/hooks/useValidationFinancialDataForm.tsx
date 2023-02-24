@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { iFinancialData } from '../interfaces/iFinancialData';
 import {
   SMMLV,
 } from '../lib/simulator';
@@ -16,7 +17,8 @@ export default function useValidationFinancialDataForm(
   debtValue: number,
   clearErrors: any,
   setError: any,
-  financialDataForm: any
+  setValue: any,
+  financialDataForm: Partial<iFinancialData>
 ) {
   const handleClearErrors = () => {
     clearErrors('occupation');
@@ -51,7 +53,20 @@ export default function useValidationFinancialDataForm(
       }
     }
   };
+  useEffect(() => {
+    if (Object.entries(financialDataForm).length > 0) {
+      setValue("occupation", financialDataForm.occupation);
+      setValue("enterprise", financialDataForm.enterprise);
+      setValue("contractType", financialDataForm.contractType);
+      setValue("employeeYear", financialDataForm.employeeYear);
+      setValue("employeeMonth", financialDataForm.employeeMonth);
+      setValue("monthlySalary", financialDataForm.monthlySalary);
+      setValue("monthlyExpenses", financialDataForm.monthlyExpenses);
+      setValue("realStateValue", financialDataForm.realStateValue);
+      setValue("debtValue", financialDataForm.debtValue);
 
+    }
+  }, [])
   useEffect(() => {
     handleClearErrors();
     validations();
