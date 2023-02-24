@@ -12,7 +12,7 @@ import ReactHookFormSelect from '../../Select/newSelect';
 import { iFinancialData } from '../../../../interfaces/iFinancialData';
 import { convertToColombianPesos } from '../../../../utils';
 import Alert from '../../Alert';
-import useValidationFinancialDataForm from './useValidationFinancialDataForm';
+import useValidationFinancialDataForm from '../../../../hooks/useValidationFinancialDataForm';
 import { routes } from '../../../../routes';
 import useProtectedRoutes from '../../../../hooks/useProtectedRoutes';
 
@@ -40,7 +40,7 @@ function FinancialDataForm() {
   const realStateValue = watch('realStateValue');
   const debtValue = watch('debtValue');
 
-  const [, setFinancialDataForm] = useSessionStorage(
+  const [financialDataForm, setFinancialDataForm] = useSessionStorage(
     SesionStorageKeys.financialDataForm.key,
     {}
   );
@@ -60,7 +60,7 @@ function FinancialDataForm() {
     }
   }
 
-  useValidationFinancialDataForm(occupation, enterprise, contractType, employeeYear, employeeMonth, monthlySalary, monthlyExpenses, realStateValue, debtValue, clearErrors, setError);
+  useValidationFinancialDataForm(occupation, enterprise, contractType, employeeYear, employeeMonth, monthlySalary, monthlyExpenses, realStateValue, debtValue, clearErrors, setError, financialDataForm);
 
   return (
     <div data-testid="FormQuotaTest" className="w-[343px] md:mt-[30px] md:w-[517px] xl:w-[656px] mx-auto">

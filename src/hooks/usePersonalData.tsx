@@ -66,6 +66,8 @@ export default function usePersonalData(setValue: any, userInfo: iDataUser,
       setValue("birthCity", dataPersonalBasic.birthCity)
       setValue("gender", dataPersonalBasic.gender);
       setValue("currentAddress", dataPersonalBasic.currentAddress)
+      setValue("email", dataPersonalBasic.email)
+      setValue("phone", dataPersonalBasic.phone)
       window.location.hash = "#"
       return;
     }

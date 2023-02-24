@@ -79,7 +79,7 @@ describe('usePersonalData', () => {
     expect(setValue).toHaveBeenCalledWith('dayDt', '01');
     expect(setValue).toHaveBeenCalledWith('phone', cellPhoneMaked('5555555555'));
     expect(setValue).toHaveBeenCalledWith('email', emailMasked(userInfo.email));
-    expect(setValue).toHaveBeenCalledTimes(11);
+    expect(setValue).toHaveBeenCalledTimes(13);
   });
   it('should set error if calculated age is less than 19 or greater than 71', () => {
     const setValue = jest.fn();

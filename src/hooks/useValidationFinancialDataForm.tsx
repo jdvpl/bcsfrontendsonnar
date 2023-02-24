@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import {
   SMMLV,
-} from '../../../../lib/simulator';
+} from '../lib/simulator';
 
 
 export default function useValidationFinancialDataForm(
@@ -16,6 +16,7 @@ export default function useValidationFinancialDataForm(
   debtValue: number,
   clearErrors: any,
   setError: any,
+  financialDataForm: any
 ) {
   const handleClearErrors = () => {
     clearErrors('occupation');

@@ -11,7 +11,7 @@ export const useBackDetector = (fn: any, asPath: any) => {
         return;
       }
     } else {
-      window.location.hash = "/";
+      window.location.hash = "#";
       window.location.hash = "/"
       window.onhashchange = function () {
         window.location.hash = "#";

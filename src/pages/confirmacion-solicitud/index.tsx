@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import React, { useMemo } from 'react';
 import { basePath } from '../../../next.config';
 import Alert from '../../components/ui/Alert';
 import Button from '../../components/ui/Button';
@@ -21,10 +21,9 @@ function ApplicationApproval() {
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
   const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
-
   const router = useRouter();
   const { getPdf } = useDownloadPdf(dataQuestions, dataTU);
-  useEffect(() => {
+  useMemo(() => {
     removeAllPath();
   }, [])
   return (
