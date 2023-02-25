@@ -44,8 +44,6 @@ export function CreditDataForm() {
   const termFinance = watch('termFinance', dataForm?.termFinance || 0);
   const office = watch('office', dataForm?.office || 0);
   const stratum = watch('stratum', 0);
-
-  console.log({ mortgageValues })
   const { automationFinanceValue, onSubmit, isValid } = useValidations(
     typeHouse,
     houseValue,
