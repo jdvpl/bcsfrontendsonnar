@@ -3,6 +3,8 @@ import { act, renderHook } from '@testing-library/react-hooks';
 import useValidations from '../../../../../components/ui/Form/CreditData/useValidations';
 import { maxHouseValueNoVis } from '../../../../../lib/simulator';
 
+
+const mortgageValues = {}
 describe('useValidations is successfully', () => {
   const houseValue: any = 10000000;
   const financeValue: any = 1000000;
@@ -48,7 +50,7 @@ describe('useValidations is successfully', () => {
         stratum,
         router,
         errors,
-        mkFn
+        mkFn, mortgageValues
       )
     );
   });
@@ -91,8 +93,7 @@ describe('useValidations is successfully', () => {
         clearErrors,
         setError,
         setPercentageFinance,
-        setValue
-      )
+        setValue, jest.fn(), "", "", "", "", "", jest.fn(), "", jest.fn(), {})
     );
   });
   it('setError should call 2 time', async () => {
@@ -103,7 +104,7 @@ describe('useValidations is successfully', () => {
 
 describe('', () => {
   it('should calculate percentage finance correctly', () => {
-    const { result } = renderHook(() => useValidations('novis', 200, 140, 0, jest.fn(), jest.fn(), jest.fn(), jest.fn()));
+    const { result } = renderHook(() => useValidations('novis', 200, 140, 0, jest.fn(), jest.fn(), jest.fn(), jest.fn(), jest.fn(), "", "", null, null, null, jest.fn(), null, jest.fn(), {}));
     act(() => {
       result.current.calculatePercentageFinance();
     });

@@ -44,8 +44,6 @@ function FinancialDataForm() {
     SesionStorageKeys.financialDataForm.key,
     {}
   );
-
-  console.log({ financialDataForm })
   const onSubmit = async (data: iFinancialData) => {
     if (data.occupation !== "14") {
       data.employeeMonth = null;

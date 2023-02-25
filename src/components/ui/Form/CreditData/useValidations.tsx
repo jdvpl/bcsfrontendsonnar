@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { iCreditData } from '../../../../interfaces/iCreditData';
 import { maxHouseValueNoVis, maxHouseValueVis, minHouseValueNoVis, minHouseValueVis, SMMLV } from '../../../../lib/simulator';
 import { routes } from '../../../../routes';
 
@@ -19,7 +20,8 @@ export default function useValidations(
   stratum: any,
   router: any,
   errors: any,
-  setCurrentRouting: any
+  setCurrentRouting: any,
+  mortgageValues: Partial<iCreditData>
 ) {
   const handleClearErrors = () => {
     clearErrors('typeHouse');
@@ -84,6 +86,19 @@ export default function useValidations(
       setValue('financeValue', 0);
     }
   };
+  useEffect(() => {
+    if (Object.entries(mortgageValues).length > 0) {
+      setValue("typeHouse", mortgageValues.typeHouse);
+      setValue("houseStatus", mortgageValues.houseStatus);
+      setValue("houseValue", mortgageValues.houseValue);
+      setValue("financeValue", mortgageValues.financeValue);
+      setValue("termFinance", mortgageValues.termFinance);
+      // setValue("insuranceCheck", mortgageValues.insuranceCheck);
+      setValue("choseOffice", mortgageValues.choseOffice);
+      setValue("office", mortgageValues.office);
+      setValue("stratum", mortgageValues.stratum);
+    }
+  }, [])
 
   useEffect(() => {
     handleClearErrors();
