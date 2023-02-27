@@ -49,8 +49,7 @@ function Resumen() {
   const getDataPDf = async () => {
     const response = await getDataPDF(insuranceCheck);
     if (!response.error) {
-      // TODO remove infoData of response
-      setgetDataPdfInfo(response.response.data.infoData);
+      setgetDataPdfInfo(response.response.data);
     }
   };
   return (
