@@ -35,26 +35,23 @@ export default function useValidations(
     clearErrors('year');
   };
   const validateTypeHouse = () => {
-    if (
-      (houseValue < minHouseValueVis || houseValue > maxHouseValueVis) &&
-      typeHouse === 'vis' &&
-      houseValue > 0
-    ) {
-      setError('typeHouse', {
-        type: 'error',
-        message: 'El valor de la vivienda VIS debe estar entre 50 y 150 SMMLV.',
-      });
+    let message: any;
+
+    if (typeHouse === 'vis') {
+      if (houseValue < minHouseValueVis || houseValue > maxHouseValueVis) {
+        message = 'El valor de la vivienda VIS debe estar entre 50 y 150 SMMLV.';
+      }
+    } else if (typeHouse === 'novis') {
+      if (houseValue < minHouseValueNoVis) {
+        message = 'El valor mínimo de la vivienda debe ser de 150 SMMLV.';
+      } else if (houseValue > maxHouseValueNoVis) {
+        message = 'El valor de la vivienda máximo debe ser de 1.400 SMMLV.';
+      }
     }
-    if (houseValue < minHouseValueNoVis && typeHouse === 'novis' && houseValue > 0) {
+    if (message && houseValue > 0) {
       setError('typeHouse', {
         type: 'error',
-        message: 'El valor mínimo de la vivienda debe ser de 150 SMMLV.',
-      });
-    }
-    if (houseValue > maxHouseValueNoVis && typeHouse === 'novis' && houseValue > 0) {
-      setError('typeHouse', {
-        type: 'error',
-        message: 'El valor de la vivienda máximo debe ser de 1.400 SMMLV.',
+        message,
       });
     }
   };
