@@ -10,6 +10,7 @@ import {
   renderPercentage,
   cellPhoneMaked,
   emailMasked,
+  calculateAgeMethod2,
 } from '../../utils';
 import * as CryptoJS from 'crypto-js';
 
@@ -202,21 +203,21 @@ describe('clearSessionStorage', () => {
     it('should return the correct age when given a date of birth in the past', () => {
       const dob = '1995-06-13';
       const expectedAge = 27;
-      const result = calculateAge(dob);
+      const result = calculateAgeMethod2(dob);
       expect(result).toEqual(expectedAge);
     });
 
     it('should return the correct age when given a date of birth that is today', () => {
       const dob = '2000-02-27';
       const expectedAge = 23;
-      const result = calculateAge(dob);
+      const result = calculateAgeMethod2(dob);
       expect(result).toEqual(expectedAge);
     });
 
     it('should return the correct age when given a date of birth in the future', () => {
       const dob = '2030-01-01';
       const expectedAge = -7;
-      const result = calculateAge(dob);
+      const result = calculateAgeMethod2(dob);
       expect(result).toEqual(expectedAge);
     });
   });
