@@ -67,7 +67,7 @@ function PersonalDataBasic({ userInfo }: any) {
     setshowModalExit(true)
   }, router.asPath);
   return (
-    <div data-testid="FormQuotaTest" className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto " id='personalDataForm'>
+    <div data-testid="FormQuotaTest" className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto" id='personalDataForm'>
       {showModal && (
         <Modal
           showModal={showModal}
@@ -86,35 +86,37 @@ function PersonalDataBasic({ userInfo }: any) {
           heightModal="lg:h-[70%]"
         />
       )}
-      <div className="w-full mt-3">
+      <div className="w-full">
         <form onSubmit={handleSubmit(onSubmit)} data-testid="personaldataTest">
-          <div className="mt-4 grid gap-2">
-            <span className="text-[10px] col-span-6 text-complementario-100">
-              Fecha de nacimiento:
-            </span>
-            <ReactHookFormSelect
-              className={`col-span-2`}
-              onChange={(e: any) => setValue('dayDt', e.target.value)}
-              placeholder="Dia"
-              label="Dia"
-              defaultValue=""
-              control={control}
-              left="right4"
-              valueLength=""
-              name="dayDt"
-              hideMenuItem={showModal}
-              margin="normal"
-              onFocus={showPopup}
-              disabled={showModal}
-              rules={{ required: true }}
-              spacing="mr-[6px]"
-            >
-              {days?.map((element, i) => (
-                <MenuItem value={element?.number} key={i} >
-                  {element?.day}
-                </MenuItem>
-              ))}
-            </ReactHookFormSelect>
+          <div className="grid grid-cols-3 gap-x-2 items-end">
+            <div>
+              <p className="text-[10px] w-full font-montserratRegular font-medium text-complementario-100 mb-3">
+                Fecha de nacimiento:
+              </p>
+              <ReactHookFormSelect
+                className={`col-span-2`}
+                onChange={(e: any) => setValue('dayDt', e.target.value)}
+                placeholder="Dia"
+                label="Dia"
+                defaultValue=""
+                control={control}
+                left="right4"
+                valueLength=""
+                name="dayDt"
+                hideMenuItem={showModal}
+                margin="normal"
+                onFocus={showPopup}
+                disabled={showModal}
+                rules={{ required: true }}
+                spacing="mr-[6px]"
+              >
+                {days?.map((element, i) => (
+                  <MenuItem value={element?.number} key={i} >
+                    {element?.day}
+                  </MenuItem>
+                ))}
+              </ReactHookFormSelect>
+            </div>
 
             <ReactHookFormSelect
               onChange={(e: any) => setValue('monthDt', e.target.value)}
@@ -124,7 +126,7 @@ function PersonalDataBasic({ userInfo }: any) {
               control={control}
               left="right4"
               name="monthDt"
-              className={`col-span-2 ${showModal ? 'hideMenu' : ''}`}
+              className={`${showModal ? 'hideMenu' : ''}`}
               margin="normal"
               onFocus={showPopup}
               disabled={showModal}
@@ -145,7 +147,7 @@ function PersonalDataBasic({ userInfo }: any) {
               rules={{ required: true }}
               render={({ field }) => (
                 <Input
-                  containerClassName="col-span-2"
+                  // containerClassName="col-span-2"
                   type="text"
                   onChange={(e) => {
                     field.onChange(e?.target?.value?.replace(/[^0-9]+/g, ''));
@@ -385,7 +387,7 @@ function PersonalDataBasic({ userInfo }: any) {
               />
             </div>
           }
-          <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-10">
+          <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-[32px]">
             <Button
               isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[375px]"
               type="submit"

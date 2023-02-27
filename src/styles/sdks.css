@@ -513,7 +513,7 @@
 
 .br-blue {
   border-radius: 4px;
-  border: 1.5px solid #0072C8;
+  border: 1.5px solid #0072C8 !important;
 }
 
 .styles__RootComponentStyle-adgmle-1 {

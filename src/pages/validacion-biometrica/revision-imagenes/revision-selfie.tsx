@@ -152,14 +152,14 @@ const RevisionImagenes: React.FC = () => {
       {showAnimation && <AnimationComponent show="" valid={validated} loaded={loaded} />}
       <div data-testid="revision">
         <div className="pt-3 md:pt-0 w-full lg:mt-10">
-          <Stepper steps={1} actualStep={0} title="Validación de identidad" />
+          <Stepper steps={5} actualStep={1} title="Validación de identidad" />
         </div>
 
         <div className="pb-28">
           <Heading>Resultado de las fotos</Heading>
           <div className="d-flex justify-content-center  sm:mt-[32px] md:mt-[52px]">
             <div className="br-complete-gray px-3 pt-6 w-100 mr-3 max-w-[154px]">
-              <p className="fz-18 text-center mb-3 fw-700">Foto uno</p>
+              <p className="text-[14px] font-montserratRegular text-center fw-600 mb-3 text-primario-900">Foto uno</p>
               <div className="d-flex w-100  align-items-center">
                 <img
                   data-testid="image1"
@@ -170,7 +170,7 @@ const RevisionImagenes: React.FC = () => {
               </div>
             </div>
             <div className="br-complete-gray px-3 pt-6 w-100 ml-3 max-w-[154px]">
-              <p className="fz-18 mb-3 text-center fw-700">Foto dos</p>
+              <p className="text-[14px] font-montserratRegular text-center fw-600 mb-3 text-primario-900">Foto dos</p>
               <div className="d-flex w-100 align-items-center">
                 <img
                   data-testid="image2"
@@ -190,11 +190,11 @@ const RevisionImagenes: React.FC = () => {
               className="br-blue mb-10 px-2 py-2 align-items-center w-100 d-flex justify-content-center md:w-[343px]"
             >
               <img
-                src={`${basePath}/images/camarita.svg`}
+                src={`${basePath}/images/camara.png`}
                 className="mb-1 w-100 max-w-[32px]"
                 alt=""
               />
-              <p className="text-center ml-4 fz-18 fw-600 text-primario-400">
+              <p className="text-center ml-4 text-[16px] font-montserratRegular text-primario-20">
                 Repetir fotos de rostro
               </p>
             </button>

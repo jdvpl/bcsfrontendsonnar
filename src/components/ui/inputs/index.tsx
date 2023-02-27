@@ -83,7 +83,6 @@ function Input({
   ${startIcon ? 'pl-6' : ''}
   duration-300 transform -translate-y-4 scale-75 top-2
   origin-[0] bg-white px-2 peer-focus:px-2
-  
   ${error ? 'peer-focus:text-rojo-100 ' : `peer-focus:text-primario-100`} ml-2
   peer-placeholder-shown:scale-100
   peer-focus:ml-2
@@ -123,7 +122,7 @@ function Input({
             }
           }}
         />
-        <label htmlFor="floating_text" className={labelStyles}>
+        <label htmlFor="floating_text" className={`${labelStyles} font-montserratRegular`}>
           {label}
         </label>
       </div>

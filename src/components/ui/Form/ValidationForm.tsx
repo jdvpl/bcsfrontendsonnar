@@ -93,7 +93,7 @@ export const ValidationForm: React.FC<FormProps> = ({ questions, onSubmit }) => 
                               tabIndex={0}
                               role="paragraph"
                               htmlFor="tax-yes"
-                              className="flex items-center cursor-pointer bg-white w-full border border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black  font-semibold rounded-md px-5 py-[17px] shadow-small-300 overflow-auto"
+                              className="font-montserratRegular flex items-center cursor-pointer bg-white w-full border border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black  font-semibold rounded-md px-5 py-[17px] shadow-small-300 overflow-auto"
                               onClick={() => {
                                 setValue(`${question.key}`, answer.id);
                                 if (questions.length - 1 !== index) {

@@ -139,7 +139,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
                       role="paragraph"
                       aria-hidden="true"
                       htmlFor="number"
-                      className={`flex items-center bg-white cursor-pointer  w-full border  rounded-md px-5 py-[17px]
+                      className={`font-montserratRegular flex items-center bg-white cursor-pointer  w-full border  rounded-md px-5 py-[17px]
                         border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black  shadow-small-300  font-semibold
                         ${answer.id === inputValues
                           ? 'shadow-none border-primario-600 text-primario-600'

@@ -37,14 +37,14 @@ export function MoneyLaunderingForm() {
           <div key={i} className="cardShadow min-h-[96px] w-full mb-3 rounded-md px-6 py-3">
             <Typography
               variant="bodyS3"
-              className="text-complementario-100 font-light mb-[12px] md:max-w-full max-w-[95%]"
+              className="text-complementario-100 font-light mb-[12px] md:max-w-full max-w-[95%] font-montserratRegular"
             >
               {option?.label}
               {option?.toolTip !== '' ? (
                 <ToolTipInfo
                   id="tax"
                   info=""
-                  infohtml={<p className="text-white">{option?.toolTip}</p>}
+                  infohtml={<p className="text-white font-montserratRegular">{option?.toolTip}</p>}
                   icon={
                     <div
                       id="-group"
@@ -62,7 +62,7 @@ export function MoneyLaunderingForm() {
                 className="flex cursor-pointer"
                 onClick={() => changeMoneyLaundering(option?.name, true)}
               >
-                <span className="font-semibold text-gris-100">Si</span>
+                <span className="font-medium font-montserratSemiBold text-gris-100">Si</span>
                 <div className="ml-[15px] w-[25px] h-[25px] border border-complementario-100 flex justify-center items-center rounded-full">
                   {moneyLaundering[option?.name] ? (
                     <div className="w-[10px] h-[10px] bg-primario-400 rounded-full option-selected" data-testid="firstOptionSelected" />
@@ -74,7 +74,7 @@ export function MoneyLaunderingForm() {
                 className="flex ml-[85px] cursor-pointer"
                 onClick={() => changeMoneyLaundering(option?.name, false)}
               >
-                <span className="font-semibold text-gris-100">No</span>
+                <span className="font-medium font-montserratSemiBold text-gris-100">No</span>
                 <div className="ml-[15px] w-[25px] h-[25px] border border-complementario-100 flex justify-center items-center rounded-full">
                   {!moneyLaundering[option?.name] ? (
                     <div className="w-[10px] h-[10px] bg-primario-400 rounded-full" />
