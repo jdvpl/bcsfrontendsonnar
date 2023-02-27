@@ -213,8 +213,8 @@ function PersonalDataBasic({ userInfo }: any) {
               margin="normal"
               spacing="mr-[-10px]"
             >
-              <MenuItem value="female">Femenino</MenuItem>
-              <MenuItem value="male">Masculino</MenuItem>
+              <MenuItem value="F">Femenino</MenuItem>
+              <MenuItem value="M">Masculino</MenuItem>
             </ReactHookFormSelect>
 
             <HelperText
