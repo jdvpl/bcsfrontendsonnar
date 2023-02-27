@@ -127,7 +127,6 @@ export default function useValidations(
       stratum,
     });
 
-    console.log(calculateAgeMethod2(dataBasicData?.birthDate));
     const body = {
       creditData: {
         typeHouse,
@@ -149,7 +148,7 @@ export default function useValidations(
     };
 
     const data: any = await riskBoxes(body);
-    // console.log({})
+    
     if (!data?.response.error) {
       setApplicationResponse(data);
       setCurrentRouting(routes.ResumenSolicitud);
