@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import {
   maxHouseValueNoVis,
   maxHouseValueVis,
@@ -8,7 +9,8 @@ import {
 } from '../../../../lib/simulator';
 import { routes } from '../../../../routes';
 import { riskBoxes } from '../../../../services';
-import { calculateAge } from '../../../../utils';
+import { SesionStorageKeys } from '../../../../session';
+import { calculateAge, calculateAgeMethod2 } from '../../../../utils';
 
 export default function useValidations(
   typeHouse: string,
@@ -29,6 +31,17 @@ export default function useValidations(
   errors: any,
   setCurrentRouting: any
 ) {
+  const [financialDataForm] = useSessionStorage(
+    SesionStorageKeys?.financialDataForm.key,
+    {}
+  );
+  const [dataBasicData] = useSessionStorage(SesionStorageKeys?.dataBasicData.key, {});
+  const [dataTu] = useSessionStorage(SesionStorageKeys?.dataUser.key, {});
+  const [, setApplicationResponse] = useSessionStorage(
+    SesionStorageKeys?.applicationResponse.key,
+    {}
+  );
+
   const handleClearErrors = () => {
     clearErrors('typeHouse');
     clearErrors('houseValue');
@@ -114,8 +127,35 @@ export default function useValidations(
       stratum,
     });
 
-    setCurrentRouting(routes.ResumenSolicitud);
-    router.push(routes.ResumenSolicitud);
+    console.log(calculateAgeMethod2(dataBasicData?.birthDate))
+    const body = {
+      creditData: {
+        typeHouse,
+        houseStatus,
+        houseValue,
+        financeValue,
+        termFinance,
+        insuranceCheck,
+        choseOffice,
+        office,
+        stratum,
+      },
+      financialData: financialDataForm,
+      personalData: { ...dataBasicData, age: calculateAgeMethod2(dataBasicData?.birthDate) },
+      dataTu: {
+        commercialTerms: dataTu?.commercial_terms,
+        documentNumber: dataTu?.document_number,
+        documentType: dataTu?.document_type,
+      },
+    };
+
+    const response: any = await riskBoxes(body);
+
+    console.log({ response });
+
+    // setApplicationResponse(response);
+    // setCurrentRouting(routes.ResumenSolicitud);
+    // router.push(routes.ResumenSolicitud);
   };
 
   const isValid = () => {
