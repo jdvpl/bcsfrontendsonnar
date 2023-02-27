@@ -61,7 +61,7 @@ function AdvisoryForm({ setShowModal }: any) {
   }
 
   return (
-    <div>
+    <div data-testid="advisoryForm">
       <p className="text-center mt-9 font-montserratRegular font-normal text-primario-900">
         ¿Quién lo asesoró?
       </p>
