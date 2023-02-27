@@ -11,9 +11,8 @@ function MoneyLaunderingPage() {
 
       <div className="lg:w-[825px] mx-auto md:w-[528px] mb-[64px] xs:mb-[40px] xs:w-[288px] sm:w-[343px] mt-9">
         <Stepper
-          steps={4}
-          actualStep={1}
-          percentage={100}
+          steps={5}
+          actualStep={2}
           className="lg:w-[684px] md:w-[456px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px]"
           title="Datos personales"
         />
@@ -21,7 +20,7 @@ function MoneyLaunderingPage() {
 
       <Typography
         variant="h2"
-        className="text-center md:mb-[42px] sm:mb-[33px] xs:mb-[36px] mb-[36px] md:text-[28px] xs:text-[20px] font-bold text-primario-900"
+        className="text-center font-poppinsSemiBold md:mb-[42px] sm:mb-[33px] xs:mb-[36px] mb-[36px] md:text-[28px] xs:text-[20px] font-semibold text-primario-900"
       >
         Confirme la siguiente información
       </Typography>

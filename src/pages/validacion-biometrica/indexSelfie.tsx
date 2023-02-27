@@ -24,22 +24,22 @@ const ValidationMessage: React.FC = () => {
       {isMobile ? (
         <div>
           <div className="pt-3 md:pt-0 w-full lg:mt-10">
-            <Stepper steps={4} actualStep={0} title="Validación de identidad" />
+            <Stepper steps={5} actualStep={1} title="Validación de identidad" />
           </div>
           <Heading>
             Por seguridad le pediremos tomar dos fotos de su rostro y compararemos con su
             cédula.
           </Heading>
-          <div className="flex flex-col items-center pb-28 sm:mt-[32px] md:mt-[52px]">
+          <div className="flex flex-col items-center pb-28 pt-2">
             <div className="w-100 md:w-[343px]">
               <p
                 tabIndex={0}
                 role="paragraph"
-                className="font-semibold text-lg leading-5 text-primario-900 "
+                className="font-montserratRegular text-center text-lg leading-5 text-primario-900 "
               >
-                Tenga en cuenta estos consejos:&nbsp;
+                Tenga en cuenta estos consejos
               </p>
-              <div className="flex flex-col mt-[26px] md:mt-[52px] space-y-[24px]">
+              <div className="flex flex-col mt-[52px] md:mt-[52px] space-y-[24px]">
                 <div>
                   <div className="flex">
                     <CardImage>
@@ -56,7 +56,7 @@ const ValidationMessage: React.FC = () => {
                     <p
                       tabIndex={0}
                       role="paragraph"
-                      className=" text-primario-900 font-normal text-base leading-[18px] pr-6"
+                      className=" text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
                     >
                       Tome la foto en un lugar iluminado, recomendamos luz natural.
                     </p>
@@ -96,7 +96,7 @@ const ValidationMessage: React.FC = () => {
                     <p
                       tabIndex={0}
                       role="paragraph"
-                      className="text-primario-900 font-normal text-base leading-[18px] pr-6"
+                      className="text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
                     >
                       Tome la foto con el celular en posición vertical.
                     </p>
@@ -136,7 +136,7 @@ const ValidationMessage: React.FC = () => {
                     <p
                       tabIndex={0}
                       role="paragraph"
-                      className=" text-primario-900 font-normal text-base leading-[18px] pr-6"
+                      className=" text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
                     >
                       No usar gafas ni tapabocas.
                     </p>
@@ -175,7 +175,7 @@ const ValidationMessage: React.FC = () => {
                   <p
                     tabIndex={0}
                     role="paragraph"
-                    className=" text-primario-900 font-normal text-base leading-[18px] pr-6"
+                    className=" text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
                   >
                     No usar gorras ni sombreros.
                   </p>

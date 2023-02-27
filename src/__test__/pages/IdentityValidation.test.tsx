@@ -28,7 +28,7 @@ describe('validacion-identidad', () => {
     const component = render(<RouterContext.Provider value={router}>
       <Index />
     </RouterContext.Provider>);
-    component.getByText('Paso 1 de 4')
+    component.getByText('Paso 1 de 5')
   });
 
 

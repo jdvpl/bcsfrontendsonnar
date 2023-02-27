@@ -13,7 +13,7 @@ import { SesionStorageKeys } from '../../session';
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
 import { onSubmitResponse } from '../../hooks/functions';
 import TagManager from 'react-gtm-module';
-import useProtectedRoutes from '../../hooks/useProtectedRoutes'
+import useProtectedRoutes from '../../hooks/useProtectedRoutes';
 interface Quest {
   items: Question[];
 }
@@ -23,14 +23,12 @@ const Index: React.FC = () => {
   const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const [, setBasicData] = useSessionStorage(SesionStorageKeys.basicDataUser.key, '');
   const [dataNumber, setDataNumber] = useState<any | null>(null);
-  const [dataValid,] = useState(false);
-  const [, setprogress] = useState('');
+  const [dataValid] = useState(false);
+  const [progress, setProgress] = useState<number>(25);
   const [loading] = useState(false);
 
   const data: Quest = dataQuestions;
-  useEffect(() => {
-    setprogress('25%');
-  }, []);
+
   useEffect(() => {
     TagManager.dataLayer({
       dataLayer: {
@@ -40,9 +38,7 @@ const Index: React.FC = () => {
         label: 'load_anwsers',
       },
     });
-
-  }, []
-  );
+  }, []);
   const { setCurrentRouting } = useProtectedRoutes();
   return (
     <>
@@ -52,23 +48,41 @@ const Index: React.FC = () => {
       <InactivityWarper>
         <Layout navTitle={<NavTitle noBack />}>
           {loading && <AnimationComponent show="" valid={loading} loaded={false} />}
-          {!dataValid &&
-            < Stepper steps={4} actualStep={1} title="Validación de identidad" />
-          }
+          {!dataValid && (
+            <Stepper
+              steps={5}
+              actualStep={1}
+              percentage={progress}
+              title="Validación de identidad"
+            />
+          )}
           {data && !dataNumber && !dataValid && (
             <AnimatePresence>
               <ValidationForm
                 questions={data?.items}
                 onSubmit={(dataSend: any) => {
-                  onSubmitResponse(dataSend, dataTU, router, setDataNumber, dataQuestions?.processId, setCurrentRouting, setBasicData);
-                  setprogress('75%');
+                  onSubmitResponse(
+                    dataSend,
+                    dataTU,
+                    router,
+                    setDataNumber,
+                    dataQuestions?.processId,
+                    setCurrentRouting,
+                    setBasicData
+                  );
+                  setProgress(50);
                 }}
               />
             </AnimatePresence>
           )}
 
           <AnimatePresence>
-            {dataNumber && <ValidationFormNumber questions={dataNumber} setCurrentRouting={setCurrentRouting} />}
+            {dataNumber && (
+              <ValidationFormNumber
+                questions={dataNumber}
+                setCurrentRouting={setCurrentRouting}
+              />
+            )}
           </AnimatePresence>
         </Layout>
       </InactivityWarper>

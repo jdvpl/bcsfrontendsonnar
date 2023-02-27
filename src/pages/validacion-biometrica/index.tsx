@@ -113,33 +113,31 @@ const ValidationMessage: React.FC = () => {
           <div>
             <div className="pt-3 md:pt-0 w-full lg:mt-10">
               <Stepper
-                steps={1}
-                actualStep={0}
+                steps={5}
+                actualStep={1}
                 title="Validación de identidad"
               />
             </div>
             <Heading>
               Por seguridad pediremos tomar foto de su cédula, para validar su identidad.
             </Heading>
-            &nbsp;
-            <br />
-            <div className="flex justify-center pb-28 mt-[32px] md:mt-[52px]">
+            <div className="flex justify-center pb-28 mt-2">
               <div className=" w-[343px]">
                 <p
                   tabIndex={0}
                   role="paragraph"
-                  className="font-semibold text-lg leading-5 text-primario-900 "
+                  className="font-normal text-lg leading-5 text-primario-900 font-montserratRegular m-0 p-0 text-center"
                 >
                   Tenga en cuenta estos consejos:&nbsp;
                 </p>
-                <div className="flex flex-col  mt-[26px] md:mt-[28px] space-y-[24px]">
+                <div className="flex flex-col  mt-[36px] md:mt-[36px] space-y-[24px]">
                   <div>
                     <div className="flex">
                       <CardImage>
                         <Image
                           unoptimized
                           src={`${basePath}/images/new1.svg`}
-                          className="mw-64 hw-64"
+                          className="mw-64 hw-64 font-montserratRegular"
                           alt="celular"
                           title="celular"
                           width="64"
@@ -149,7 +147,7 @@ const ValidationMessage: React.FC = () => {
                       <p
                         tabIndex={0}
                         role="paragraph"
-                        className="text-primario-900 font-normal text-base leading-[18px] pr-6"
+                        className="text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
                       >
                         Tome la foto en un lugar con luz, preferiblemente luz natural
                         evitando brillos y reflejos.
@@ -190,7 +188,7 @@ const ValidationMessage: React.FC = () => {
                       <p
                         tabIndex={0}
                         role="paragraph"
-                        className="text-primario-900 font-normal text-base leading-[18px] pr-6"
+                        className="text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
                       >
                         Tome la foto con el celular en posición horizontal.
                       </p>
@@ -229,7 +227,7 @@ const ValidationMessage: React.FC = () => {
                     <p
                       tabIndex={0}
                       role="paragraph"
-                      className="text-primario-900 font-normal text-base leading-[18px] pr-6"
+                      className="text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
                     >
                       Asegúrese de que su cédula no tenga imperfecciones.
                     </p>

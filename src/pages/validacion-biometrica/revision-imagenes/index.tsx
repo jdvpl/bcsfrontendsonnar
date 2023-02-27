@@ -131,8 +131,8 @@ const RevisionImagenes: React.FC = () => {
       <div data-testid="revision">
         <div className="pt-3 md:pt-0 w-full lg:mt-10">
           <Stepper
-            steps={1}
-            actualStep={0}
+            steps={5}
+            actualStep={1}
             title="Validación de identidad"
           />
         </div>
@@ -143,7 +143,7 @@ const RevisionImagenes: React.FC = () => {
             <div className="br-complete-gray px-4 py-4 w-100 md:w-[343px] mb-3">
               <div className="d-flex w-100  align-items-center">
                 <div>
-                  <p className="fz-18 text-center fw-600 mb-3 text-primario-900 max-w-[88%]">
+                  <p className="text-[14px] font-montserratRegular text-center fw-600 mb-3 text-primario-900 max-w-[88%]">
                     Frente de la cédula
                   </p>
                   <img
@@ -160,7 +160,7 @@ const RevisionImagenes: React.FC = () => {
                   className="br-complete-gray mt-7 px-2 py-2 align-items-center flex-column d-flex justify-content-center border-secondary-300 border-[0.5px] max-w-[84px] max-h-[74px]"
                 >
                   <img src={`${basePath}/images/camara.png`} className="mb-1" alt="" />
-                  <p className="text-center fz-12 fw-600 text-primario-400">
+                  <p className="text-center text-[12px] font-montserratRegular font-medium text-primario-100">
                     Volver a tomar foto
                   </p>
                 </button>
@@ -169,7 +169,7 @@ const RevisionImagenes: React.FC = () => {
             <div className="br-complete-gray px-4 py-4 w-100  md:w-[343px]">
               <div className="d-flex w-100  align-items-center">
                 <div>
-                  <p className="fz-18 text-center fw-600 text-sm mb-3 text-primario-900 max-w-[88%]">
+                  <p className="text-[14px] font-montserratRegular text-center fw-600 text-sm mb-3 text-primario-900 max-w-[88%]">
                     Reverso de la cédula
                   </p>
 
@@ -187,7 +187,7 @@ const RevisionImagenes: React.FC = () => {
                   className="br-complete-gray mt-7 px-2 py-2 align-items-center flex-column d-flex justify-content-center border-secondary-300 border-[0.5px] max-w-[84px] max-h-[74px]"
                 >
                   <img src={`${basePath}/images/camara.png`} className="mb-1" alt="" />
-                  <p className="text-center fz-12 fw-600 text-primario-400">
+                  <p className="text-center text-[12px] font-montserratRegular font-medium text-primario-100">
                     Volver a tomar foto
                   </p>
                 </button>

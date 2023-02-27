@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { iCreditData } from '../../../../interfaces/iCreditData';
 import { maxHouseValueNoVis, maxHouseValueVis, minHouseValueNoVis, minHouseValueVis, SMMLV } from '../../../../lib/simulator';
 import { routes } from '../../../../routes';
+import { riskBoxes } from '../../../../services';
+import { calculateAge } from '../../../../utils';
 
 export default function useValidations(
   typeHouse: string,
@@ -108,7 +110,7 @@ export default function useValidations(
     validateTypeHouse();
   }, [houseValue, financeValue, termFinance, typeHouse]);
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     // eslint-disable-next-line no-console
     setDataForm({
       typeHouse,
@@ -172,6 +174,6 @@ export default function useValidations(
     calculatePercentageFinance,
     automationFinanceValue,
     onSubmit,
-    isValid
+    isValid,
   };
 }

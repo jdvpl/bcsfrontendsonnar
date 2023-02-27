@@ -55,7 +55,7 @@ const NewInput = forwardRef<HTMLInputElement, InputProps>(
             type={type}
             data-testid={dataTestId}
             id={props.id}
-            className={`w-100 hover-input h-12 bg-[transparent] block py-2 pr-3.5 pl-3  w-full text-sm leading-none text-primario-900 bg-transparent border  rounded-md  appearance-none focus:border-1  focus:border-primario-100   ${
+            className={`font-montserratRegular w-100 hover-input h-12 bg-[transparent] block py-2 pr-3.5 pl-3  w-full text-sm leading-none text-primario-900 bg-transparent border  rounded-md  appearance-none focus:border-1  focus:border-primario-100   ${
               errorLabel ? 'error-class border-2' : 'focus:focus-new  active:focus-new'
             }
             ${error ? 'border-rojo-100 focus:border-rojo-100' : `border-[#798c98a6]`} 

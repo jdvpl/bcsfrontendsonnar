@@ -131,7 +131,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
               <Icons icon="bcs-advertising" size="text-rojo-200 mr-[10px]" />
               <Typography
                 variant="caption4"
-                className="font-normal text-rojo-200 text-[12px]"
+                className="font-normal text-rojo-200 text-[12px] font-montserratRegular"
               >
                 Código inválido, intente nuevamente
               </Typography>
@@ -150,7 +150,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
         <Typography
           onClick={onResendOTP}
           variant="caption1"
-          className={`text-[14px] leading-4 ${timer === 0 && wasResend === false
+          className={`text-[14px] font-montserratRegular leading-4 ${timer === 0 && wasResend === false
             ? 'text-primario-20 cursor-pointer'
             : 'text-gris-200'
             } mb-[12px]`}
@@ -164,7 +164,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
       {timer === 0 || isValid ? null : (
         <div className="flex justify-center items-center gap-1">
           <Icons icon="bcs-clock" size="text-gris-30 font-semibold" />
-          <Typography variant="caption2" className="text-gris-30 font-semibold">
+          <Typography variant="caption2" className="text-gris-30 font-semibold font-montserratRegular">
             {timer} segundos
           </Typography>
         </div>

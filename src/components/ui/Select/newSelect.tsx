@@ -1,7 +1,7 @@
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { Controller } from 'react-hook-form';
 import { HelperText } from '../inputs/HelperText';
 
@@ -55,16 +55,17 @@ const ReactHookFormSelect: React.FC<any> = ({
         </svg>
       </div>
       <InputLabel
+        className="font-montserratRegular"
         htmlFor={labelId}
         id={labelId}
         sx={{
           color: error && '#ce1126',
-          left: -4
+          left: -4,
         }}
       >
         {label}
       </InputLabel>
-      {!hideMenuItem ?
+      {!hideMenuItem ? (
         <Controller
           defaultValue={defaultValue || ''}
           rules={rules}
@@ -73,7 +74,7 @@ const ReactHookFormSelect: React.FC<any> = ({
               data-testid={dataTestId}
               SelectDisplayProps={{
                 // @ts-ignore
-                "data-testid": `select`
+                'data-testid': `select`,
               }}
               id={labelId}
               margin="none"
@@ -111,7 +112,6 @@ const ReactHookFormSelect: React.FC<any> = ({
                 '.css-1iledgx-MuiFormControl-root': {
                   marginTop: '0px !important',
                 },
-
               }}
               onOpen={() =>
                 setInitialIcon(
@@ -136,9 +136,10 @@ const ReactHookFormSelect: React.FC<any> = ({
           name={name}
           control={control}
         />
-        : <Select></Select>
-      }
-      {helperText ? <HelperText text={helperText} error={error} /> : null}
+      ) : (
+        <Select></Select>
+      )}
+      {helperText ? <HelperText className='font-montserratRegular text-complementario-50' text={helperText} error={error} /> : null}
     </FormControl>
   );
 };

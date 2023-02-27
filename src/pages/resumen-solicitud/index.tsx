@@ -27,20 +27,25 @@ function ResumenApplication() {
 
       <div className="lg:w-[825px] mx-auto md:w-[528px] mb-[64px] xs:mb-[40px] xs:w-[288px] sm:w-[343px] mt-9">
         <Stepper
-          steps={4}
-          actualStep={4}
+          steps={5}
+          actualStep={5}
           percentage={100}
           className="lg:w-[684px] md:w-[528px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px]"
           title="Resumen de la solicitud"
         />
       </div>
       <div className=" xs:w-[290px] sm:w-[343px]  lg:w-[684px] md:w-[584px] m-auto">
-        <Typography variant="h2" className="mt-8 mb-[40px] text-center">
+        <Typography
+          variant="h2"
+          className="mt-8 mb-[40px] text-center font-poppinsSemiBold"
+        >
           Conozca la oferta que hemos
           <br />
           diseñado para usted
         </Typography>
-        <Alert message="La tasa de su crédito será la que se encuentre vigente en el momento del desembolso." />
+        <div className="xs:w-[290px] sm:w-[343px] md:w-[448px] mx-auto">
+          <Alert message="La tasa de su crédito será la que se encuentre vigente en el momento del desembolso." colorMessage='text-primario-200' />
+        </div>
         <ReviewApplication
           financedValue={`${convertToColombianPesos(
             Math.floor(valuesMortgage.financeValue)
@@ -54,7 +59,7 @@ function ResumenApplication() {
 
         <div className="flex flex-col items-center gap-y-5">
           <Button
-            isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] mt-[24px] shadow-none"
+            isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] mt-[24px] shadow-none font-monserratLight"
             onClick={onSubmit}
             name="solicitarCredito"
             data-testid="btn-next"
