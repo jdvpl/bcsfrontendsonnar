@@ -10,7 +10,7 @@ import {
 import { routes } from '../../../../routes';
 import { riskBoxes } from '../../../../services';
 import { SesionStorageKeys } from '../../../../session';
-import { calculateAge, calculateAgeMethod2 } from '../../../../utils';
+import { calculateAgeMethod2 } from '../../../../utils';
 
 export default function useValidations(
   typeHouse: string,
@@ -127,7 +127,7 @@ export default function useValidations(
       stratum,
     });
 
-    console.log(calculateAgeMethod2(dataBasicData?.birthDate))
+    console.log(calculateAgeMethod2(dataBasicData?.birthDate));
     const body = {
       creditData: {
         typeHouse,
@@ -141,21 +141,20 @@ export default function useValidations(
         stratum,
       },
       financialData: financialDataForm,
-      personalData: { ...dataBasicData, age: calculateAgeMethod2(dataBasicData?.birthDate) },
-      dataTu: {
-        commercialTerms: dataTu?.commercial_terms,
-        documentNumber: dataTu?.document_number,
-        documentType: dataTu?.document_type,
+      personalData: {
+        ...dataBasicData,
+        age: calculateAgeMethod2(dataBasicData?.birthDate),
       },
+      dataTu,
     };
 
-    const response: any = await riskBoxes(body);
-
-    console.log({ response });
-
-    // setApplicationResponse(response);
-    // setCurrentRouting(routes.ResumenSolicitud);
-    // router.push(routes.ResumenSolicitud);
+    const data: any = await riskBoxes(body);
+    // console.log({})
+    if (!data?.response.error) {
+      setApplicationResponse(data);
+      setCurrentRouting(routes.ResumenSolicitud);
+      router.push(routes.ResumenSolicitud);
+    }
   };
 
   const isValid = () => {
