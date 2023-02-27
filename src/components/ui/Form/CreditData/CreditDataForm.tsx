@@ -8,7 +8,7 @@ import { SimulationData } from '../../../../interfaces';
 import Input from '../../inputs';
 import { convertToColombianPesos, renderPercentage } from '../../../../utils';
 import { yearsAvailable } from '../../../../lib/simulator';
-import useValidations from './useValidations';
+import useValidations from '../../../../hooks/useValidationsCreditData';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import AutoCompleteCustom from '../../../../hooks/autocomplete';

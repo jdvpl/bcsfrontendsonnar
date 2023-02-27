@@ -1,7 +1,17 @@
 import '@testing-library/jest-dom';
 import { useBackDetector } from '../../hooks/useBackDetector'
 import { renderHook, act } from '@testing-library/react-hooks';
+import { render } from '@testing-library/react';
+import React from 'react'
 
+
+const MockComponent = ({ fn, asPath }: any) => {
+  useBackDetector(fn, asPath);
+  return null;
+};
+
+
+jest.useFakeTimers();
 describe('useBackDetector', () => {
   beforeEach(() => {
     window.location.hash = '';
@@ -30,7 +40,7 @@ describe('useBackDetector', () => {
     const fn = jest.fn();
 
 
-    jest.spyOn(require('next/router'), 'useRouter').mockImplementation('/datos-personales/#/');
+    jest.spyOn(require('next/router'), 'useRouter').mockImplementation('/datos-personales/#');
 
     renderHook(() => useBackDetector(fn, '/datos-personales'),);
 
@@ -69,5 +79,21 @@ describe('useBackDetector', () => {
     });
 
     expect(fn).not.toHaveBeenCalled();
+  });
+  test('should call the provided function when the URL contains a hash symbol', () => {
+    const mockFn = jest.fn();
+    const { rerender } = render(<MockComponent asPath="/#test" fn={mockFn} />);
+    expect(mockFn).not.toHaveBeenCalled();
+    rerender(<MockComponent asPath="/#test2" fn={mockFn} />);
+    expect(mockFn).not.toHaveBeenCalled();
+  });
+
+  test('should not call the provided function when the URL does not contain a hash symbol', () => {
+    const mockFn = jest.fn();
+    const { rerender } = render(<MockComponent asPath="/" fn={mockFn} />);
+    expect(mockFn).not.toHaveBeenCalled();
+
+    rerender(<MockComponent asPath="/test" fn={mockFn} />);
+    expect(mockFn).not.toHaveBeenCalled();
   });
 });

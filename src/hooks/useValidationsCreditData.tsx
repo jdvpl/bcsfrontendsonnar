@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
-import { iCreditData } from '../../../../interfaces/iCreditData';
-import { maxHouseValueNoVis, maxHouseValueVis, minHouseValueNoVis, minHouseValueVis, SMMLV } from '../../../../lib/simulator';
-import { routes } from '../../../../routes';
-import { riskBoxes } from '../../../../services';
-import { calculateAge } from '../../../../utils';
+import { useEffect } from 'react';
+import { iCreditData } from '../interfaces/iCreditData';
+import { maxHouseValueNoVis, maxHouseValueVis, minHouseValueNoVis, minHouseValueVis, SMMLV } from '../lib/simulator';
+import { routes } from '../routes';
+
 
 export default function useValidations(
   typeHouse: string,
@@ -96,7 +95,6 @@ export default function useValidations(
       setValue("houseValue", mortgageValues.houseValue);
       setValue("financeValue", mortgageValues.financeValue);
       setValue("termFinance", mortgageValues.termFinance);
-      // setValue("insuranceCheck", mortgageValues.insuranceCheck);
       setValue("choseOffice", mortgageValues.choseOffice);
       setValue("office", mortgageValues.office);
       setValue("stratum", mortgageValues.stratum);

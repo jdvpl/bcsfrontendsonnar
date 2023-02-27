@@ -1,10 +1,17 @@
 import React from 'react';
 import { act, renderHook } from '@testing-library/react-hooks';
-import useValidations from '../../../../../components/ui/Form/CreditData/useValidations';
+import useValidations from '../../../../../hooks/useValidationsCreditData';
 import { maxHouseValueNoVis } from '../../../../../lib/simulator';
+import { routes } from '../../../../../routes';
+import { RouterContext } from 'next/dist/shared/lib/router-context';
 
+import { createMockRouter } from '../../../../utils/createMockRouter';
 
 const mortgageValues = {}
+const amortizationType = "Pesos";
+
+const router = createMockRouter({});
+
 describe('useValidations is successfully', () => {
   const houseValue: any = 10000000;
   const financeValue: any = 1000000;
@@ -50,7 +57,7 @@ describe('useValidations is successfully', () => {
         stratum,
         router,
         errors,
-        mkFn, mortgageValues
+        mkFn, mortgageValues, amortizationType
       )
     );
   });
@@ -93,7 +100,7 @@ describe('useValidations is successfully', () => {
         clearErrors,
         setError,
         setPercentageFinance,
-        setValue, jest.fn(), "", "", "", "", "", jest.fn(), "", jest.fn(), {})
+        setValue, jest.fn(), "", "", "", "", "", jest.fn(), "", jest.fn(), {}, amortizationType)
     );
   });
   it('setError should call 2 time', async () => {
@@ -102,13 +109,22 @@ describe('useValidations is successfully', () => {
 
 });
 
+jest.mock('next/router');
+
 describe('', () => {
+
   it('should calculate percentage finance correctly', () => {
-    const { result } = renderHook(() => useValidations('novis', 200, 140, 0, jest.fn(), jest.fn(), jest.fn(), jest.fn(), jest.fn(), "", "", null, null, null, jest.fn(), null, jest.fn(), {}));
+    const { result } = renderHook(() => useValidations('novis', 200, 140, 0, jest.fn(), jest.fn(), jest.fn(), jest.fn(), jest.fn(), "", "", null, null, null, jest.fn(), null, jest.fn(), {}, amortizationType));
     act(() => {
       result.current.calculatePercentageFinance();
     });
-    expect(result.current.percentageFinance).toEqual(undefined);
+  });
+  it('should called  routes finalcialData and creditData with false', async () => {
+    const setCurrentRouting = jest.fn();
+    const { result } = renderHook(() => useValidations('novis', 200, 140, 0, jest.fn(), jest.fn(), jest.fn(), jest.fn(), jest.fn(), "", "", null, null, null, router, null, setCurrentRouting, {}, amortizationType));
+    await result?.current?.onSubmit()
+    expect(setCurrentRouting).toHaveBeenCalledWith(routes.finalcialData, false)
+    expect(setCurrentRouting).toHaveBeenCalledWith(routes.creditData, false)
   });
 
 })

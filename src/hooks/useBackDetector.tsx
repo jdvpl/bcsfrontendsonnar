@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-
 export const useBackDetector = (fn: any, asPath: any) => {
   useEffect(() => {
     if (asPath.includes("#")) {
