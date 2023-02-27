@@ -3,7 +3,7 @@ import { renderHook } from '@testing-library/react-hooks';
 import usePersonalData from '../../hooks/usePersonalData'
 import { createMockRouter } from '../utils/createMockRouter';
 import { cellPhoneMaked, emailMasked } from '../../utils';
-import { iDataUser, iPersonalDataSent } from '../../interfaces/dataUserBasic';
+import { iDataUser, iPersonalData, iPersonalDataSent } from '../../interfaces/dataUserBasic';
 
 
 const setCurrentRouting = jest.fn()
@@ -32,6 +32,7 @@ describe('usePersonalData', () => {
     expect(setValue).toHaveBeenCalledWith('yearDt', '2000');
     expect(setValue).toHaveBeenCalledWith('monthDt', '01');
     expect(setValue).toHaveBeenCalledWith('dayDt', '01');
+    expect(setValue).toHaveBeenCalledWith("email", dataPersonalBasic.email)
   })
 
   it('sets the phone, email, and current address values', () => {
@@ -193,5 +194,43 @@ describe('usePersonalData', () => {
     expect(setValue).toHaveBeenCalledWith('dayDt', '01');
     expect(setValue).toHaveBeenCalledWith('phone', cellPhoneMaked('123456789'));
     expect(setValue).toHaveBeenCalledWith('email', emailMasked('example56@example.com'));
+  });
+  it('should have called the method onSubmit ', async () => {
+    const setValue = jest.fn();
+    const userInfo: iDataUser = {
+      birthDay: '2000-01-01',
+      cellPhone: '123456789',
+      email: 'juanda554242@example.com',
+      address: 'CL 69g#67-62',
+      birthCity: '11001',
+      firstName: 'Juan',
+      isClient: true,
+      residenceCity: '11001'
+    };
+    const setError = jest.fn();
+    const clearErrors = jest.fn();
+
+    const dataPersonalBasic = { "birthDate": "2000-01-01", "birthCity": undefined, "currentCity": "11001", "hasAdviser": true, "nameAdviser": "CARLOS ALBERTO VARGAS/DIEGO PULIDO/JEIMMY CAROLINA USECHE/JONNATHAN ALEJANDRO NEIRA/CAROLINA ALVAREZ/GIOVANI TOVAR/RAUL GONZALEZ", "phone": "3209188638", "gender": "male", "currentAddress": "CL 69g#67-62", "email": "juanda554242@gmail.com" };
+    const { result } = renderHook(() => usePersonalData(setValue, userInfo, setError, clearErrors, '02', '01', '2000', router, setData, setCurrentRouting, dataPersonalBasic));
+
+    const personalData: iPersonalData = {
+      monthDt: '01',
+      yearDt: '2000',
+      dayDt: '01',
+      birthCity: "11001",
+      gender: 'male',
+      phone: '3209188638',
+      email: 'juanda554242@gmail.com',
+      currentCity: "11001",
+      currentAddress: 'Cra 7#10-37'
+    }
+    await result.current.onSubmit(personalData)
+    expect(setValue).toHaveBeenCalledWith('yearDt', '2000');
+    expect(setValue).toHaveBeenCalledWith('monthDt', '01');
+    expect(setValue).toHaveBeenCalledWith('dayDt', '01');
+    expect(setValue).toHaveBeenCalledWith('phone', cellPhoneMaked('123456789'));
+    expect(setValue).toHaveBeenCalledWith('email', emailMasked('juanda554242@example.com'));
+    expect(setData).toHaveBeenCalledWith(dataPersonalBasic)
+
   });
 })

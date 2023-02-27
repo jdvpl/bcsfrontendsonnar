@@ -68,7 +68,6 @@ export default function usePersonalData(setValue: any, userInfo: iDataUser,
       setValue("currentAddress", dataPersonalBasic.currentAddress)
       setValue("email", userInfo.email === dataPersonalBasic.email ? emailMasked(dataPersonalBasic.email) : dataPersonalBasic.email)
       setValue("phone", dataPersonalBasic.phone === userInfo.cellPhone ? cellPhoneMaked(dataPersonalBasic.phone) : dataPersonalBasic.phone)
-      return;
     }
   }, [])
 
