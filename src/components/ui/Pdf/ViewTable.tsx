@@ -2,10 +2,12 @@ import { View, Text, StyleSheet } from '@react-pdf/renderer'
 import React from 'react';
 import HeadersTable from './HeadersTable';
 
-function ViewTable({ data, position }: any) {
+function ViewTable({ data, position, simulatorCoreFallen }: any) {
   const styles = StyleSheet.create({
     cellText: {
-      fontSize: '7px',
+      fontSize: simulatorCoreFallen ? '9px' : '7px',
+      marginRight: simulatorCoreFallen ? '10px' : '3px'
+
     },
     tableRow: {
       display: 'flex',
@@ -18,7 +20,7 @@ function ViewTable({ data, position }: any) {
       textAlign: 'center',
       flexWrap: 'wrap',
       marginLeft: '0.4%',
-      width: '12.5%',
+      width: simulatorCoreFallen ? '20%' : '12.5%',
       height: 28,
     },
     table: {
@@ -37,14 +39,14 @@ function ViewTable({ data, position }: any) {
     },
     textBlue: {
       color: '#005DA2',
-      fontSize: '6px'
+      fontSize: simulatorCoreFallen ? '9px' : '7px'
     },
   });
 
   return (
     <View style={styles.table} >
 
-      <HeadersTable />
+      <HeadersTable simulatorCoreFallen={simulatorCoreFallen} />
       {data[position]?.map((info: any, i: number) => (
         <View key={i} style={[styles.tableRow]}>
           <View style={[styles.cell, styles.bggrayCell]}>
@@ -59,15 +61,20 @@ function ViewTable({ data, position }: any) {
           <View style={[styles.cell]}>
             <Text style={[styles.cellText, styles.cellRight]}>{info.feeWithoutInsurance}</Text>
           </View>
-          <View style={[styles.cell, styles.bggrayCell]}>
-            <Text style={[styles.cellText, styles.cellRight]}>{info.lifeInsurance}</Text>
-          </View>
-          <View style={[styles.cell]}>
-            <Text style={[styles.cellText, styles.cellRight]}>{info.irtInsurance}</Text>
-          </View>
-          <View style={[styles.cell, styles.bggrayCell]}>
-            <Text style={[styles.cellText, styles.cellRight]}>{info.totalInsuranceFee}</Text>
-          </View>
+          {simulatorCoreFallen ? null :
+            <>
+              <View style={[styles.cell, styles.bggrayCell]}>
+                <Text style={[styles.cellText, styles.cellRight]}>{info.lifeInsurance}</Text>
+              </View>
+              <View style={[styles.cell]}>
+                <Text style={[styles.cellText, styles.cellRight]}>{info.irtInsurance}</Text>
+              </View>
+              <View style={[styles.cell, styles.bggrayCell]}>
+                <Text style={[styles.cellText, styles.cellRight]}>{info.totalInsuranceFee}</Text>
+              </View>
+            </>
+          }
+
           <View style={[styles.cell]}>
             <Text style={[styles.cellText, styles.textBlue, styles.cellRight]}>{info.endingBalance}</Text>
           </View>

@@ -21,6 +21,13 @@ interface itableProps {
   children: any, col: any, th: any
 }
 function PDFDocumentData({ infoData }: iPdfProps) {
+
+
+  const simulatorCoreFallen = infoData?.simulatorCoreFallen;
+  const data = infoData?.quotes;
+  const quantiyPages = infoData?.quotes?.length;
+  const numberOfPages = Array(quantiyPages - 1).fill(0);
+
   const styles = StyleSheet.create({
     mainView: {
       width: "100%"
@@ -143,10 +150,7 @@ function PDFDocumentData({ infoData }: iPdfProps) {
       objectFit: 'cover'
     }
   });
-  console.log(JSON.stringify({ infoData }))
-  const data = infoData?.quotes;
-  const quantiyPages = infoData?.quotes?.length;
-  const numberOfPages = Array(quantiyPages - 1).fill(0)
+
   return (
     <Document>
       <Page size="A4" orientation="portrait">
@@ -211,7 +215,7 @@ function PDFDocumentData({ infoData }: iPdfProps) {
                 </View>
               </View>
               <View>
-                <ViewTable data={data} position={0} />
+                <ViewTable data={data} position={0} simulatorCoreFallen={simulatorCoreFallen} />
               </View>
             </View>
             <View style={[styles.colgL1]}>
@@ -230,7 +234,7 @@ function PDFDocumentData({ infoData }: iPdfProps) {
               </View>
               {/* table */}
               <View style={[styles.colLg10, styles.mAuto]}>
-                <ViewTable data={data} position={i + 1} />
+                <ViewTable data={data} position={i + 1} simulatorCoreFallen={simulatorCoreFallen} />
               </View>
               {/*  */}
               <View style={[styles.colgL1]}>
