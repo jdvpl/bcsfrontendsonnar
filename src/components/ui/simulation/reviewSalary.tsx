@@ -37,7 +37,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       textsub="30"
       tooltiptext=""
     />
-    
+
     <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
       title="Cuota mensual total con seguros"
@@ -60,7 +60,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       tooltiptext=""
     />
 
-<Card
+    <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[116px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Tasa aproximada"
       value={rate}
@@ -74,7 +74,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
         <p className="pl-[33px]">
           <p className="flex">
             <p className="font-bold text-[14px] mr-1">MV: </p><span className="text-[14px]">Tasa nominal mes
-            vencido</span>
+              vencido</span>
           </p>
           <p className="flex">
             <p className="font-bold text-[14px]  mr-1">EA:</p><span className="text-[14px]">Tasa efectiva anual</span>
@@ -115,10 +115,6 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
         </p>
       }
     />
-
-    
-
-    
 
     <div className="xs:w-[290px] sm:w-[343px] md:w-[448px] flex justify-end mb-[20px] mt-[20px]">
       {dataPdf?.quotes?.length > 0 ? <BtnPdfDownloader pdf={dataPdf} /> : null}

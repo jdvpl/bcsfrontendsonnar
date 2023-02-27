@@ -26,7 +26,11 @@ const useProtectedRoutes = () => {
     rt["currentPage"] = path;
     await setRt({ ...rt });
   }
-  return { setRt, setCurrentRouting }
+  const removeAllPath = async () => {
+    const paths = { "/autenticacion": true, "currentPage": "/confirmacion-solicitud", "/validacion-identidad": false, "/validacion-otp": false, "/validacion-otc": false, "/datos-personales": false, "/preguntas-sarlaft": false, "/datos-financieros": false, "/datos-credito": false, "/resumen-solicitud": false, "/confirmacion-solicitud": false }
+    await setRt(paths)
+  }
+  return { setRt, setCurrentRouting, removeAllPath }
 }
 
 export default useProtectedRoutes;

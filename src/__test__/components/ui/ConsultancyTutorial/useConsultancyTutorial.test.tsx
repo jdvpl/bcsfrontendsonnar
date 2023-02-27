@@ -40,9 +40,8 @@ describe('ConsultancyTutorial', () => {
       result.current.handelActualStep();
     });
     act(() => {
-      caseResult= result.current.renderBody();
+      caseResult = result.current.renderBody();
     });
-    console.log(caseResult)
     // expect(result.current.actualTutorialStep).toBe(1);
   });
   test('should change actualTutorialStep to 1 when call handelActualStep one time ', async () => {

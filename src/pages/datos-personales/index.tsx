@@ -21,16 +21,23 @@ function PersonalData() {
     ),
     id: '',
   });
-  const [dataUser, setDataUser] = useSessionStorage(SesionStorageKeys.dataUser.key, {});
-  const [dataPersonalInfo] = useSessionStorage(SesionStorageKeys.basicDataUser.key, {});
-  const closeModal = () => {
+  const [dataUser, setDataUser] = useSessionStorage(
+    SesionStorageKeys.dataUser.key,
+    {}
+  );
+  const [dataPersonalInfo] = useSessionStorage(
+    SesionStorageKeys.basicDataUser.key,
+    {}
+  );
+  const closeModal = async () => {
     const datainfo = { advisoryType: null, otherAdvisoryType: null };
-    setDataUser({ ...dataUser, ...datainfo });
-    setShowModal(false);
-  };
+    await setDataUser({ ...dataUser, ...datainfo })
+    setShowModal(false)
+  }
+  const keyModal = 'advisoryType' in dataUser;
   return (
-    <div data-testid="PersonalDataTest">
-      {showModal && (
+    <div data-testid="PersonalDataTest" >
+      {showModal && !keyModal && (
         <Modal
           showModal={showModal}
           onClose={() => closeModal()}

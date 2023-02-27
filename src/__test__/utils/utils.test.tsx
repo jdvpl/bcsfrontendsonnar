@@ -1,6 +1,7 @@
 
-import { clearSessionStorage, convertToColombianPesos, calculateAge, parserPercentageDecimal, validateAddress, isValidDate, decryptPass, encriptPass, renderPercentage, cellPhoneMaked, emailMasked } from '../../utils'
+import { clearSessionStorage, convertToColombianPesos, calculateAge, parserPercentageDecimal, validateAddress, isValidDate, decryptPass, encriptPass, renderPercentage, cellPhoneMaked, emailMasked, downLoadPdf, getHasAdviserNameAdviser } from '../../utils'
 import * as CryptoJS from 'crypto-js';
+
 
 describe('clearSessionStorage', () => {
   it('should clear all items in session storage', () => {
@@ -191,6 +192,59 @@ describe('clearSessionStorage', () => {
     const expected = 'joh●●●8@example.com';
     const result = emailMasked(email);
     expect(result).toEqual(expected);
+  });
+
+  test('Debería crear un elemento "a" con el atributo "download" correcto', async () => {
+    // Arrange
+    const pdf = 'pdfEnBase64';
+    const dataTU = 'carta'
+
+    // Act
+    await downLoadPdf(pdf, dataTU);
+
+    // Assert
+    const anchorElement = document.querySelector('a');
+    expect(anchorElement).toBeNull();
+    expect(anchorElement?.download).toBe(undefined);
+  });
+
+  test('should create a download link with the correct filename and click it', () => {
+    const pdf = 'abcdefg';
+    const name = 'cartica';
+    const linkSpy = jest.spyOn(document, 'createElement');
+    downLoadPdf(pdf, name);
+    expect(linkSpy).toHaveBeenCalledWith('a');
+
+  });
+
+  test('it should create and download a PDF', () => {
+    const pdf = 'PDF_BASE64_STRING';
+    const name = 'cartica';
+    const createElementSpy = jest.spyOn(document, 'createElement');
+    downLoadPdf(pdf, name);
+    expect(createElementSpy).toHaveBeenCalledWith('a');
+    expect(createElementSpy.mock.results[0].value.href).toBe(`data:application/pdf;base64,abcdefg`);
+    expect(createElementSpy.mock.results[0].value.download).toBe(`${name}.pdf`);
+  });
+
+  it('should return hasAdviser and nameAdviser properties for valid id', () => {
+    const id = '11001';
+    const expectedOutput = {
+      hasAdviser: true,
+      nameAdviser: 'CARLOS ALBERTO VARGAS/DIEGO PULIDO/JEIMMY CAROLINA USECHE/JONNATHAN ALEJANDRO NEIRA/CAROLINA ALVAREZ/GIOVANI TOVAR/RAUL GONZALEZ'
+    };
+    const result = getHasAdviserNameAdviser(id);
+    expect(result).toEqual(expectedOutput);
+  });
+
+  it('should return hasAdviser and nameAdviser properties as null for invalid id', () => {
+    const id = '8560';
+    const expectedOutput = {
+      hasAdviser: true,
+      nameAdviser: "PATRICIA CRESPO"
+    };
+    const result = getHasAdviserNameAdviser(id);
+    expect(result).toEqual(expectedOutput);
   });
 
 });

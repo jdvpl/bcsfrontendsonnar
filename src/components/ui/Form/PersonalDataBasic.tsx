@@ -49,9 +49,9 @@ function PersonalDataBasic({ userInfo }: any) {
   const yearDt = watch('yearDt', '');
   const dayDt = watch('dayDt', '');
   const monthDt = watch('monthDt', '');
-  const [, setDataUser] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
+  const [dataPersonalBasic, setDataUser] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
 
-  const { onSubmit } = usePersonalData(setValue, userInfo, setError, clearErrors, dayDt, monthDt, yearDt, router, setDataUser, setCurrentRouting);
+
   const showPopup = () => {
     if (userInfo.isClient) {
       setShowModal(true);
@@ -66,6 +66,8 @@ function PersonalDataBasic({ userInfo }: any) {
   useBackDetector(() => {
     setshowModalExit(true)
   }, router.asPath);
+
+  const { onSubmit } = usePersonalData(setValue, userInfo, setError, clearErrors, dayDt, monthDt, yearDt, router, setDataUser, setCurrentRouting, dataPersonalBasic);
   return (
     <div data-testid="FormQuotaTest" className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto" id='personalDataForm'>
       {showModal && (
@@ -77,7 +79,7 @@ function PersonalDataBasic({ userInfo }: any) {
           heightModal="lg:h-[70%]"
         />
       )}
-      {showModalExit && (
+      {showModalExit && Object.entries(dataPersonalBasic).length === 0 && (
         <Modal
           showModal={showModalExit}
           onClose={() => closeModalExit()}
@@ -252,7 +254,7 @@ function PersonalDataBasic({ userInfo }: any) {
           </div>
           <div className="flex flex-col mt-4">
             <Controller
-              rules={{ required: !userInfo.emailAddr }}
+              rules={{ required: !userInfo.email }}
               render={({ field }) => (
                 <Input
                   helperText="Ejemplo: correo@dominio.com"

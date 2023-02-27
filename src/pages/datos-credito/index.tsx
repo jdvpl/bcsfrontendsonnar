@@ -3,7 +3,6 @@ import { CreditDataForm } from '../../components/ui/Form/CreditData/CreditDataFo
 import HeaderForm from '../../components/ui/Headers/HeaderForm';
 // eslint-disable-next-line import/no-named-as-default
 import Stepper from '../../components/ui/Stepper';
-import Typography from '../../components/ui/Typography';
 
 function CreditData() {
   return (

@@ -30,6 +30,8 @@ export default function useMoneyLaundering({ setCurrentRouting }: any) {
     if (!response?.error) {
       switch (response.response.result.customer_status) {
         case 'ALLOWED':
+          setCurrentRouting(routes.personalData, false);
+          setCurrentRouting(routes.sarlaft, false);
           setCurrentRouting(routes.finalcialData);
           router.push(routes.finalcialData);
           break;

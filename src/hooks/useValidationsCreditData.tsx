@@ -1,14 +1,8 @@
-import React, { useEffect } from 'react';
-import {
-  maxHouseValueNoVis,
-  maxHouseValueVis,
-  minHouseValueNoVis,
-  minHouseValueVis,
-  SMMLV,
-} from '../../../../lib/simulator';
-import { routes } from '../../../../routes';
-import { riskBoxes } from '../../../../services';
-import { calculateAge } from '../../../../utils';
+import { useEffect } from 'react';
+import { iCreditData } from '../interfaces/iCreditData';
+import { maxHouseValueNoVis, maxHouseValueVis, minHouseValueNoVis, minHouseValueVis, SMMLV } from '../lib/simulator';
+import { routes } from '../routes';
+
 
 export default function useValidations(
   typeHouse: string,
@@ -27,7 +21,9 @@ export default function useValidations(
   stratum: any,
   router: any,
   errors: any,
-  setCurrentRouting: any
+  setCurrentRouting: any,
+  mortgageValues: Partial<iCreditData>,
+  amortizationType: any,
 ) {
   const handleClearErrors = () => {
     clearErrors('typeHouse');
@@ -39,26 +35,23 @@ export default function useValidations(
     clearErrors('year');
   };
   const validateTypeHouse = () => {
-    if (
-      (houseValue < minHouseValueVis || houseValue > maxHouseValueVis) &&
-      typeHouse === 'vis' &&
-      houseValue > 0
-    ) {
-      setError('typeHouse', {
-        type: 'error',
-        message: 'El valor de la vivienda VIS debe estar entre 50 y 150 SMMLV.',
-      });
+    let message: any;
+
+    if (typeHouse === 'vis') {
+      if (houseValue < minHouseValueVis || houseValue > maxHouseValueVis) {
+        message = 'El valor de la vivienda VIS debe estar entre 50 y 150 SMMLV.';
+      }
+    } else if (typeHouse === 'novis') {
+      if (houseValue < minHouseValueNoVis) {
+        message = 'El valor mínimo de la vivienda debe ser de 150 SMMLV.';
+      } else if (houseValue > maxHouseValueNoVis) {
+        message = 'El valor de la vivienda máximo debe ser de 1.400 SMMLV.';
+      }
     }
-    if (houseValue < minHouseValueNoVis && typeHouse === 'novis' && houseValue > 0) {
+    if (message && houseValue > 0) {
       setError('typeHouse', {
         type: 'error',
-        message: 'El valor mínimo de la vivienda debe ser de 150 SMMLV.',
-      });
-    }
-    if (houseValue > maxHouseValueNoVis && typeHouse === 'novis' && houseValue > 0) {
-      setError('typeHouse', {
-        type: 'error',
-        message: 'El valor de la vivienda máximo debe ser de 1.400 SMMLV.',
+        message,
       });
     }
   };
@@ -92,6 +85,18 @@ export default function useValidations(
       setValue('financeValue', 0);
     }
   };
+  useEffect(() => {
+    if (Object.entries(mortgageValues).length > 0) {
+      setValue("typeHouse", mortgageValues.typeHouse);
+      setValue("houseStatus", mortgageValues.houseStatus);
+      setValue("houseValue", mortgageValues.houseValue);
+      setValue("financeValue", mortgageValues.financeValue);
+      setValue("termFinance", mortgageValues.termFinance);
+      setValue("choseOffice", mortgageValues.choseOffice);
+      setValue("office", mortgageValues.office);
+      setValue("stratum", mortgageValues.stratum);
+    }
+  }, [])
 
   useEffect(() => {
     handleClearErrors();
@@ -112,8 +117,10 @@ export default function useValidations(
       choseOffice,
       office,
       stratum,
+      amortizationType,
     });
-
+    setCurrentRouting(routes.finalcialData, false);
+    setCurrentRouting(routes.creditData, false);
     setCurrentRouting(routes.ResumenSolicitud);
     router.push(routes.ResumenSolicitud);
   };

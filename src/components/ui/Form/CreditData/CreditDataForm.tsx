@@ -8,7 +8,7 @@ import { SimulationData } from '../../../../interfaces';
 import Input from '../../inputs';
 import { convertToColombianPesos, renderPercentage } from '../../../../utils';
 import { yearsAvailable } from '../../../../lib/simulator';
-import useValidations from './useValidations';
+import useValidations from '../../../../hooks/useValidationsCreditData';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import AutoCompleteCustom from '../../../../hooks/autocomplete';
@@ -19,7 +19,7 @@ export function CreditDataForm() {
   const [insuranceCheck,] = useState(true);
   const [percentageFinance, setPercentageFinance] = useState(0.7);
   const [dataForm] = useSessionStorage(SesionStorageKeys.dataFormSimulation.key, {});
-  const [, setDataForm] = useSessionStorage(SesionStorageKeys.mortgageValues.key, {});
+  const [mortgageValues, setDataForm] = useSessionStorage(SesionStorageKeys.mortgageValues.key, {});
   const [personalData] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
   const [offices, setOffices] = useState<any>([]);
   const router = useRouter();
@@ -44,6 +44,7 @@ export function CreditDataForm() {
   const termFinance = watch('termFinance', dataForm?.termFinance || 0);
   const office = watch('office', dataForm?.office || 0);
   const stratum = watch('stratum', 0);
+  const amortizationType = watch('amortizationType', "Pesos");
   const { automationFinanceValue, onSubmit, isValid } = useValidations(
     typeHouse,
     houseValue,
@@ -61,15 +62,19 @@ export function CreditDataForm() {
     stratum,
     router,
     errors,
-    setCurrentRouting
+    setCurrentRouting,
+    mortgageValues,
+    amortizationType
   );
   useEffect(() => {
-    setValue('financeValue', dataForm?.financeValue || 0);
-    setValue('houseValue', dataForm?.houseValue || 0);
-    setValue('termFinance', dataForm?.termFinance || undefined);
-    setValue('typeHouse', 'novis');
-    setValue('houseStatus', 'used');
-    setValue('amortizationType', 'Pesos');
+    if (Object.entries(mortgageValues).length === 0) {
+      setValue('financeValue', dataForm?.financeValue || 0);
+      setValue('houseValue', dataForm?.houseValue || 0);
+      setValue('termFinance', dataForm?.termFinance || undefined);
+      setValue('typeHouse', 'novis');
+      setValue('houseStatus', 'used');
+      setValue('amortizationType', 'Pesos');
+    }
   }, []);
   return (
     <div className="flex flex-col items-center">

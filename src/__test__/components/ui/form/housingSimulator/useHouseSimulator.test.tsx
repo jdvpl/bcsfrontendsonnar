@@ -5,6 +5,8 @@ import { sendSimulationData } from '../../../../../services';
 import { createMockRouter } from '../../../../utils/createMockRouter';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 jest.mock('../../../../../services');
+import React from 'react'
+
 const router = createMockRouter({});
 
 const wrapper = ({ children }: any) => {
