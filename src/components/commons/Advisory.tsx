@@ -16,7 +16,7 @@ function Advisory({ setShowModal }: any) {
     setShowModal(false)
   }
   return (
-    <div className='m-auto flex-col'>
+    <div className='m-auto flex-col' data-testid="modalAdvisory">
       {showMessage ? (
         <div className='mt-[60px] lg:mt-[95px] md:mt-[72px] xs:mt-[60px] flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 '>
           <Button
