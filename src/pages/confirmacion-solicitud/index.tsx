@@ -22,7 +22,7 @@ function ApplicationApproval() {
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
   const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const router = useRouter();
-  const { getPdf } = useDownloadPdf(dataQuestions, dataTU);
+  const { getPdf } = useDownloadPdf(dataQuestions, dataTU, valuesMortgage);
   useMemo(() => {
     removeAllPath();
   }, [])

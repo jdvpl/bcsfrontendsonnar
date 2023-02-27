@@ -242,10 +242,10 @@ export const emailMasked = (email: string) => {
   }
 }
 
-export const downLoadPdf = (pdf: any, dataTU: any) => {
+export const downLoadPdf = (pdf: any, name: string) => {
   const linkSource = `data:application/pdf;base64,${pdf}`;
   const downloadLink = document.createElement("a");
-  const fileName = `carta_de_aprobacion${dataTU.document_number}.pdf`;
+  const fileName = `${name}.pdf`;
   downloadLink.href = linkSource;
   downloadLink.download = fileName;
   downloadLink.click()

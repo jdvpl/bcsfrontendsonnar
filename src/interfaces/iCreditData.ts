@@ -8,4 +8,5 @@ export interface iCreditData {
   choseOffice: string;
   office: string;
   stratum: string;
+  amortizationType: string;
 }

@@ -21,7 +21,8 @@ export default function useValidations(
   router: any,
   errors: any,
   setCurrentRouting: any,
-  mortgageValues: Partial<iCreditData>
+  mortgageValues: Partial<iCreditData>,
+  amortizationType: any,
 ) {
   const handleClearErrors = () => {
     clearErrors('typeHouse');
@@ -119,6 +120,7 @@ export default function useValidations(
       choseOffice,
       office,
       stratum,
+      amortizationType,
     });
     setCurrentRouting(routes.finalcialData, false);
     setCurrentRouting(routes.creditData, false);

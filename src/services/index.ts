@@ -181,9 +181,8 @@ export const sendSimulationData = async (data: iFormDataSimulation) => {
 export const getDataPDF = async (data: iFormDataSimulation) => {
   try {
     // TODO change the clientAxios for backend
-    const { data: response } = await axios.post(
-      // '/simulator/simulator/generatepdf',
-      "http://localhost:7000/api/users/genetate-pdf",
+    const { data: response } = await clientAxiosBackend.post(
+      '/simulator/simulator/generatepdf',
       data,
       headersBack
     );
@@ -289,8 +288,9 @@ export const delKeysRedis = async (body: any) => {
 }
 export const getPDF = async (body: iPdfLetter) => {
   try {
-    const { data: response } = await axios.post(
-      'http://localhost:8000/pdf',
+    const { data: response } = await clientAxiosBackend.post(
+      // 'http://localhost:8000/pdf',
+      '/commons/generate/pdf',
       body
     );
     return {

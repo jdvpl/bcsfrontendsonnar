@@ -44,6 +44,7 @@ export function CreditDataForm() {
   const termFinance = watch('termFinance', dataForm?.termFinance || 0);
   const office = watch('office', dataForm?.office || 0);
   const stratum = watch('stratum', 0);
+  const amortizationType = watch('amortizationType', "Pesos");
   const { automationFinanceValue, onSubmit, isValid } = useValidations(
     typeHouse,
     houseValue,
@@ -62,7 +63,8 @@ export function CreditDataForm() {
     router,
     errors,
     setCurrentRouting,
-    mortgageValues
+    mortgageValues,
+    amortizationType
   );
   useEffect(() => {
     if (Object.entries(mortgageValues).length === 0) {

@@ -197,7 +197,7 @@ describe('clearSessionStorage', () => {
   test('Debería crear un elemento "a" con el atributo "download" correcto', async () => {
     // Arrange
     const pdf = 'pdfEnBase64';
-    const dataTU = { document_number: '1234567890' };
+    const dataTU = 'carta'
 
     // Act
     await downLoadPdf(pdf, dataTU);
@@ -210,23 +210,21 @@ describe('clearSessionStorage', () => {
 
   test('should create a download link with the correct filename and click it', () => {
     const pdf = 'abcdefg';
-    const dataTU = { document_number: 123 };
+    const name = 'cartica';
     const linkSpy = jest.spyOn(document, 'createElement');
-    downLoadPdf(pdf, dataTU);
+    downLoadPdf(pdf, name);
     expect(linkSpy).toHaveBeenCalledWith('a');
 
   });
 
   test('it should create and download a PDF', () => {
     const pdf = 'PDF_BASE64_STRING';
-    const dataTU = {
-      document_number: '12345'
-    };
+    const name = 'cartica';
     const createElementSpy = jest.spyOn(document, 'createElement');
-    downLoadPdf(pdf, dataTU);
+    downLoadPdf(pdf, name);
     expect(createElementSpy).toHaveBeenCalledWith('a');
     expect(createElementSpy.mock.results[0].value.href).toBe(`data:application/pdf;base64,abcdefg`);
-    expect(createElementSpy.mock.results[0].value.download).toBe(`carta_de_aprobacion123.pdf`);
+    expect(createElementSpy.mock.results[0].value.download).toBe(`${name}.pdf`);
   });
 
   it('should return hasAdviser and nameAdviser properties for valid id', () => {
