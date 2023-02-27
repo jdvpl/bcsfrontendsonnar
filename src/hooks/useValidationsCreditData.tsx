@@ -1,5 +1,3 @@
-import '@testing-library/jest-dom';
-
 import { useEffect } from 'react';
 import {
   maxHouseValueNoVis,
