@@ -17,37 +17,27 @@ describe('useBackDetector', () => {
     window.location.hash = '';
     window.onhashchange = null;
   });
-
   afterEach(() => {
     window.location.hash = '';
     window.onhashchange = null;
   });
-
   it('should set the hash to "#" if asPath includes "#"', () => {
     const fn = jest.fn();
     const mockUseRouter = () => ({
       asPath: 'somepath#hash',
     });
-
     jest.spyOn(require('next/router'), 'useRouter').mockImplementation(mockUseRouter);
-
     renderHook(() => useBackDetector(fn, '/datos-personales/#'),);
-
     expect(window.location.hash).toBe('#/');
   });
 
   it('should call fn when the hash changes if asPath includes "#"', () => {
     const fn = jest.fn();
-
-
     jest.spyOn(require('next/router'), 'useRouter').mockImplementation('/datos-personales/#');
-
     renderHook(() => useBackDetector(fn, '/datos-personales'),);
-
     act(() => {
       window.dispatchEvent(new HashChangeEvent('hashchange'));
     });
-
     expect(fn).not.toHaveBeenCalled();
   });
 
@@ -56,11 +46,8 @@ describe('useBackDetector', () => {
     const mockUseRouter = () => ({
       asPath: 'somepath',
     });
-
     jest.spyOn(require('next/router'), 'useRouter').mockImplementation(mockUseRouter);
-
     renderHook(() => useBackDetector(fn, '/datos-personales'),);
-
     expect(window.location.hash).toBe('#/');
   });
 
@@ -69,15 +56,11 @@ describe('useBackDetector', () => {
     const mockUseRouter = () => ({
       asPath: 'somepath',
     });
-
     jest.spyOn(require('next/router'), 'useRouter').mockImplementation(mockUseRouter);
-
     renderHook(() => useBackDetector(fn, '/datos-personales'),);
-
     act(() => {
       window.dispatchEvent(new HashChangeEvent('hashchange'));
     });
-
     expect(fn).not.toHaveBeenCalled();
   });
   test('should call the provided function when the URL contains a hash symbol', () => {
@@ -92,8 +75,7 @@ describe('useBackDetector', () => {
     const mockFn = jest.fn();
     const { rerender } = render(<MockComponent asPath="/" fn={mockFn} />);
     expect(mockFn).not.toHaveBeenCalled();
-
-    rerender(<MockComponent asPath="/test" fn={mockFn} />);
+    rerender(<MockComponent asPath="/test/#" fn={mockFn} />);
     expect(mockFn).not.toHaveBeenCalled();
   });
 });
