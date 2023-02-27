@@ -1,17 +1,13 @@
-import React from 'react';
 import { act, renderHook } from '@testing-library/react-hooks';
 import useValidations from '../../../../../hooks/useValidationsCreditData';
 import { maxHouseValueNoVis } from '../../../../../lib/simulator';
 import { routes } from '../../../../../routes';
-import { RouterContext } from 'next/dist/shared/lib/router-context';
-
 import { createMockRouter } from '../../../../utils/createMockRouter';
-
 const mortgageValues = {}
 const amortizationType = "Pesos";
-
 const router = createMockRouter({});
 
+jest.useFakeTimers();
 describe('useValidations is successfully', () => {
   const houseValue: any = 10000000;
   const financeValue: any = 1000000;
@@ -108,8 +104,6 @@ describe('useValidations is successfully', () => {
   });
 
 });
-
-jest.mock('next/router');
 
 describe('', () => {
 

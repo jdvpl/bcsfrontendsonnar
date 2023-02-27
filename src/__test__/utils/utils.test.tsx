@@ -1,5 +1,5 @@
 
-import { clearSessionStorage, convertToColombianPesos, calculateAge, parserPercentageDecimal, validateAddress, isValidDate, decryptPass, encriptPass, renderPercentage, cellPhoneMaked, emailMasked, downLoadPdf, getHasAdviserNameAdviser } from '../../utils'
+import { clearSessionStorage, convertToColombianPesos, calculateAge, parserPercentageDecimal, validateAddress, isValidDate, decryptPass, encriptPass, renderPercentage, cellPhoneMaked, emailMasked, downLoadPdf, getHasAdviserNameAdviser, calculateAgeMethod2 } from '../../utils'
 import * as CryptoJS from 'crypto-js';
 
 
@@ -17,7 +17,7 @@ describe('clearSessionStorage', () => {
     expect(convertToColombianPesos(5000)).toBe('$ 5.000');
   });
   test('Convert to Colombian pesos with empty input', () => {
-    expect(convertToColombianPesos("")).toBe('');
+    expect(convertToColombianPesos('')).toBe('');
   });
   test('Convert to Colombian pesos with undefined input', () => {
     expect(convertToColombianPesos(undefined)).toBe('');
@@ -26,7 +26,7 @@ describe('clearSessionStorage', () => {
     expect(convertToColombianPesos(0)).toBe('');
   });
   test('Convert to Colombian pesos with 00 input', () => {
-    expect(convertToColombianPesos("00")).toBe('');
+    expect(convertToColombianPesos('00')).toBe('');
   });
   test('calculates age correctly', () => {
     const dob = '01/01/2000';
@@ -80,7 +80,10 @@ describe('clearSessionStorage', () => {
   test('number address', () => {
     const address = '9999999';
     const result = validateAddress(address);
-    expect(result).toEqual({ isError: true, message: 'La direccion debe contener caracteres ' });
+    expect(result).toEqual({
+      isError: true,
+      message: 'La direccion debe contener caracteres ',
+    });
   });
   test('valid date', () => {
     const year = 2021;
@@ -150,7 +153,6 @@ describe('clearSessionStorage', () => {
     expect(result).toEqual(expected);
   });
 
-
   it('should mask a 0-digit phone number', () => {
     const number = '';
     const expected = '';
@@ -160,7 +162,7 @@ describe('clearSessionStorage', () => {
 
   it('should mask a phone number with non-digit characters', () => {
     const number = '123-456-7890';
-    const expected = "123●●●●●●●90";
+    const expected = '123●●●●●●●90';
     const result = cellPhoneMaked(number);
     expect(result).toEqual(expected);
   });
@@ -171,7 +173,6 @@ describe('clearSessionStorage', () => {
     const result = emailMasked(email);
     expect(result).toEqual(expected);
   });
-
 
   it('should mask an email address with a long username', () => {
     const email = 'verylongusername@example.com';
@@ -185,6 +186,29 @@ describe('clearSessionStorage', () => {
     const expected = 'aad●●8@example.com';
     const result = emailMasked(email);
     expect(result).toEqual(expected);
+  });
+
+  describe('calculateAge', () => {
+    it('should return the correct age when given a date of birth in the past', () => {
+      const dob = '1995-06-13';
+      const expectedAge = 27;
+      const result = calculateAgeMethod2(dob);
+      expect(result).toEqual(expectedAge);
+    });
+
+    it('should return the correct age when given a date of birth that is today', () => {
+      const dob = '2000-02-27';
+      const expectedAge = 23;
+      const result = calculateAgeMethod2(dob);
+      expect(result).toEqual(expectedAge);
+    });
+
+    it('should return the correct age when given a date of birth in the future', () => {
+      const dob = '2030-01-01';
+      const expectedAge = -7;
+      const result = calculateAgeMethod2(dob);
+      expect(result).toEqual(expectedAge);
+    });
   });
 
   it('should mask an email address with multiple "@" symbols', () => {
@@ -248,3 +272,4 @@ describe('clearSessionStorage', () => {
   });
 
 });
+

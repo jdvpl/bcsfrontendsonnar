@@ -1,8 +1,19 @@
-import { useEffect } from 'react';
-import { iCreditData } from '../interfaces/iCreditData';
-import { maxHouseValueNoVis, maxHouseValueVis, minHouseValueNoVis, minHouseValueVis, SMMLV } from '../lib/simulator';
-import { routes } from '../routes';
+import '@testing-library/jest-dom';
 
+import { useEffect } from 'react';
+import {
+  maxHouseValueNoVis,
+  maxHouseValueVis,
+  minHouseValueNoVis,
+  minHouseValueVis,
+  SMMLV,
+} from '../lib/simulator';
+import { iCreditData } from '../interfaces/iCreditData';
+import { useSessionStorage } from './useSessionStorage';
+import { SesionStorageKeys } from '../session';
+import { calculateAgeMethod2 } from '../utils';
+import { riskBoxes } from '../services';
+import { routes } from '../routes';
 
 export default function useValidations(
   typeHouse: string,
@@ -23,8 +34,19 @@ export default function useValidations(
   errors: any,
   setCurrentRouting: any,
   mortgageValues: Partial<iCreditData>,
-  amortizationType: any,
+  amortizationType: any
 ) {
+  const [financialDataForm] = useSessionStorage(
+    SesionStorageKeys?.financialDataForm.key,
+    {}
+  );
+  const [dataBasicData] = useSessionStorage(SesionStorageKeys?.dataBasicData.key, {});
+  const [dataTu] = useSessionStorage(SesionStorageKeys?.dataUser.key, {});
+  const [, setApplicationResponse] = useSessionStorage(
+    SesionStorageKeys?.applicationResponse.key,
+    {}
+  );
+
   const handleClearErrors = () => {
     clearErrors('typeHouse');
     clearErrors('houseValue');
@@ -87,16 +109,16 @@ export default function useValidations(
   };
   useEffect(() => {
     if (Object.entries(mortgageValues).length > 0) {
-      setValue("typeHouse", mortgageValues.typeHouse);
-      setValue("houseStatus", mortgageValues.houseStatus);
-      setValue("houseValue", mortgageValues.houseValue);
-      setValue("financeValue", mortgageValues.financeValue);
-      setValue("termFinance", mortgageValues.termFinance);
-      setValue("choseOffice", mortgageValues.choseOffice);
-      setValue("office", mortgageValues.office);
-      setValue("stratum", mortgageValues.stratum);
+      setValue('typeHouse', mortgageValues.typeHouse);
+      setValue('houseStatus', mortgageValues.houseStatus);
+      setValue('houseValue', mortgageValues.houseValue);
+      setValue('financeValue', mortgageValues.financeValue);
+      setValue('termFinance', mortgageValues.termFinance);
+      setValue('choseOffice', mortgageValues.choseOffice);
+      setValue('office', mortgageValues.office);
+      setValue('stratum', mortgageValues.stratum);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     handleClearErrors();
@@ -119,10 +141,35 @@ export default function useValidations(
       stratum,
       amortizationType,
     });
-    setCurrentRouting(routes.finalcialData, false);
-    setCurrentRouting(routes.creditData, false);
-    setCurrentRouting(routes.ResumenSolicitud);
-    router.push(routes.ResumenSolicitud);
+
+    const body = {
+      creditData: {
+        typeHouse,
+        houseStatus,
+        houseValue,
+        financeValue,
+        termFinance,
+        insuranceCheck,
+        choseOffice,
+        office,
+        stratum,
+      },
+      financialData: financialDataForm,
+      personalData: {
+        ...dataBasicData,
+        age: calculateAgeMethod2(dataBasicData?.birthDate),
+      },
+      dataTu,
+    };
+
+    const data: any = await riskBoxes(body);
+
+    if (!data?.response.error) {
+      setCurrentRouting(routes.finalcialData, false);
+      setCurrentRouting(routes.creditData, false);
+      setCurrentRouting(routes.ResumenSolicitud);
+      router.push(routes.ResumenSolicitud);
+    }
   };
 
   const isValid = () => {

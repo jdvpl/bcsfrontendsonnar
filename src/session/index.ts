@@ -48,5 +48,9 @@ export const SesionStorageKeys = {
   basicDataUser: {
     key: 'BDUbasic',
     description: 'this saves the basicData of user'
+  },
+  applicationResponse:{
+    key: 'applicationResponse',
+    description: 'this saves the response of application risk boxes'
   }
 };

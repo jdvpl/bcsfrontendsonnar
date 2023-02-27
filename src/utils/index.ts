@@ -216,7 +216,6 @@ export const calculatePercentageFinance = (
 };
 
 export const cellPhoneMaked = (number: string | number) => {
-
   const strNum = number?.toString();
   if (strNum?.length > 0) {
     const prefix = strNum.slice(0, 3);
@@ -227,7 +226,7 @@ export const cellPhoneMaked = (number: string | number) => {
   } else {
     return number;
   }
-}
+};
 
 export const emailMasked = (email: string) => {
   if (email?.length > 3) {
@@ -236,7 +235,7 @@ export const emailMasked = (email: string) => {
     const suffix = username.slice(-1);
     const maskedChars = '●'.repeat(username.length - prefix.length - suffix.length);
     const maskedEmail = `${prefix}${maskedChars}${suffix}@${domain}`;
-    return maskedEmail
+    return maskedEmail;
   } else {
     return email;
   }
@@ -250,3 +249,16 @@ export const downLoadPdf = (pdf: any, name: string) => {
   downloadLink.download = fileName;
   downloadLink.click()
 }
+
+export const calculateAgeMethod2 = (dob: string): number => {
+  var hoy = new Date();
+  var cumpleanos = new Date(dob);
+  var edad = hoy.getFullYear() - cumpleanos.getFullYear();
+  var m = hoy.getMonth() - cumpleanos.getMonth();
+
+  if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+    edad--;
+  }
+
+  return edad;
+};
