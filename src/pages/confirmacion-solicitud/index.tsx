@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { basePath } from '../../../next.config';
 import Alert from '../../components/ui/Alert';
 import Button from '../../components/ui/Button';
@@ -14,6 +14,9 @@ import { SesionStorageKeys } from '../../session';
 import { convertToColombianPesos } from '../../utils';
 import useProtectedRoutes from '../../hooks/useProtectedRoutes';
 import useDownloadPdf from '../../hooks/useDownloadPdf';
+import ExitModal from '../../components/commons/ExitModal';
+import Modal from '../../components/ui/Modal';
+import { useBackDetector } from '../../hooks/useBackDetector';
 
 function ApplicationApproval() {
   const { setCurrentRouting, removeAllPath } = useProtectedRoutes();
@@ -23,13 +26,41 @@ function ApplicationApproval() {
   const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const router = useRouter();
   const { getPdf } = useDownloadPdf(dataQuestions, dataTU, valuesMortgage);
+
+  const [showModalExit, setshowModalExit] = useState(false);
+
+  const [componentModalExit,] = useState({
+    children: <ExitModal setshowModalExit={setshowModalExit} />,
+    title: <span className='md:text-[28px] font-poppinsSemiBold'>Está a punto de abandonar su solicitud</span>,
+    id: '',
+  });
+
   useMemo(() => {
     removeAllPath();
   }, [])
+
+  const closeModalExit = () => {
+    setshowModalExit(false);
+  };
+
+  useBackDetector(() => {
+    setshowModalExit(true)
+  }, router.asPath);
+
   return (
     <div>
       <Header />
       <RatingModal />
+
+      {showModalExit && (
+        <Modal
+          showModal={showModalExit}
+          onClose={() => closeModalExit()}
+          compont={componentModalExit}
+          advisory
+          heightModal="lg:h-[70%]"
+        />
+      )}
       <div className="m-auto lg:w-[528px]">
         <div className="mt-[60px] lg:w-[455px] lg:h-[300px] md:w-[455px] md:h-[300px] sm:w-[303px] sm:h-[200px] xs:h-[200px] xs:w-[303px] m-auto ">
           <img src={`${basePath}/images/approvalSvg.svg`} alt="" />

@@ -1,74 +1,75 @@
 import useDownloadPdf from '../../hooks/useDownloadPdf';
-import { downLoadPdf } from '../../utils';
+import { convertToColombianPesos, downLoadPdf } from '../../utils';
 import { getPDF } from '../../services';
 import { iCreditData } from '../../interfaces/iCreditData';
 
 
-const valuesMortgage: Partial<iCreditData> = {
-  financeValue: '140000000',
-  amortizationType: 'Pesos',
-  termFinance: '10'
-}
 
-jest.mock('../../utils', () => ({
-  downLoadPdf: jest.fn()
-}));
+jest.mock('../../services');
+jest.mock('../../utils');
 
-jest.mock('../../services', () => ({
-  getPDF: jest.fn()
-}));
+describe('useDownloadPdf', () => {
+  let dataQuestions: any;
+  let dataTU: any;
+  let valuesMortgage: Partial<iCreditData>;
 
-describe('useDownloadPdf function', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    dataQuestions = {
+      processId: 'testProcessId',
+    };
+    dataTU = {
+      document_number: 'testDocumentNumber',
+      document_type: 'testDocumentType',
+    };
+    valuesMortgage = {
+      financeValue: "1000000",
+      amortizationType: 'testAmortizationType',
+      termFinance: 'testTermFinance',
+    };
   });
 
-  it('should call getPDF with correct parameters', async () => {
-    const dataQuestions = { processId: '123' };
-    const dataTU = { document_number: '456', document_type: 'pdf' };
-    (getPDF as jest.Mock).mockResolvedValueOnce({ error: false });
-
-    const { getPdf } = useDownloadPdf(dataQuestions, dataTU, valuesMortgage);
-    await getPdf();
-
-    expect(getPDF).toHaveBeenCalledWith({
-      proccessId: dataQuestions.processId,
-      documentNumber: dataTU.document_number,
-      documentType: dataTU.document_type,
-      amortizationType: valuesMortgage.amortizationType,
-      maxAmount: valuesMortgage.financeValue,
-      termFinance: valuesMortgage.termFinance
+  describe('getPdf', () => {
+    it('should call getPDF and download the PDF if there is no error', async () => {
+      const pdf = 'testPdfContent';
+      const name = 'testPdfName';
+      const response = {
+        error: false,
+        response: {
+          result: {
+            doc: pdf,
+            name: name,
+          },
+        },
+      };
+      (getPDF as jest.Mock).mockResolvedValue(response);
+      await useDownloadPdf(dataQuestions, dataTU, valuesMortgage).getPdf();
+      expect(getPDF).toHaveBeenCalledWith({
+        proccessId: dataQuestions.processId,
+        documentNumber: dataTU.document_number,
+        documentType: dataTU.document_type,
+        maxAmount: convertToColombianPesos(valuesMortgage.financeValue),
+        amortizationType: valuesMortgage.amortizationType,
+        termFinance: valuesMortgage.termFinance?.toString(),
+      });
+      expect(downLoadPdf).toHaveBeenCalledWith(pdf, name);
     });
-  });
 
-  it('should call downLoadPdf with correct parameters if response does not have error', async () => {
-    const dataQuestions = { processId: '123' };
-    const dataTU = { document_number: '456', document_type: 'pdf' };
-    const name = "carta";
-    (getPDF as jest.Mock).mockResolvedValueOnce({
-      error: false,
-      response: {
-        result: {
-          doc: 'simulated-pdf-data',
-          name: name
-        }
-      }
+    it('should not call downLoadPdf if there is an error', async () => {
+      const response = {
+        error: true,
+        response: null,
+      };
+      (getPDF as jest.Mock).mockResolvedValue(response);
+      await useDownloadPdf(dataQuestions, dataTU, valuesMortgage).getPdf();
+      expect(getPDF).toHaveBeenCalledWith({
+        proccessId: dataQuestions.processId,
+        documentNumber: dataTU.document_number,
+        documentType: dataTU.document_type,
+        maxAmount: convertToColombianPesos(valuesMortgage.financeValue),
+        amortizationType: valuesMortgage.amortizationType,
+        termFinance: valuesMortgage.termFinance?.toString(),
+      });
+      expect(downLoadPdf).toHaveBeenCalled();
     });
-
-    const { getPdf } = useDownloadPdf(dataQuestions, dataTU, valuesMortgage);
-    await getPdf();
-
-    expect(downLoadPdf).toHaveBeenCalledWith('simulated-pdf-data', name);
-  });
-
-  it('should not call downLoadPdf if response has error', async () => {
-    const dataQuestions = { processId: '123' };
-    const dataTU = { document_number: '456', document_type: 'pdf' };
-    (getPDF as jest.Mock).mockResolvedValueOnce({ error: true });
-
-    const { getPdf } = useDownloadPdf(dataQuestions, dataTU, valuesMortgage);
-    await getPdf();
-
-    expect(downLoadPdf).not.toHaveBeenCalled();
   });
 });

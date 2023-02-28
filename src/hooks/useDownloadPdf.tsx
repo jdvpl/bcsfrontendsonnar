@@ -1,5 +1,5 @@
 
-import { downLoadPdf } from '../utils';
+import { convertToColombianPesos, downLoadPdf } from '../utils';
 import { getPDF } from '../services';
 import { iCreditData } from './../interfaces/iCreditData';
 
@@ -11,9 +11,9 @@ export default function useDownloadPdf(dataQuestions: any,
       proccessId: dataQuestions.processId,
       documentNumber: dataTU.document_number,
       documentType: dataTU.document_type,
-      maxAmount: valuesMortgage.financeValue,
+      maxAmount: convertToColombianPesos(valuesMortgage.financeValue),
       amortizationType: valuesMortgage.amortizationType,
-      termFinance: valuesMortgage.termFinance
+      termFinance: valuesMortgage.termFinance?.toString()
     })
     if (!response.error) {
       const pdf = response.response?.result?.doc;
