@@ -95,7 +95,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
         }
       </h4>
 
-      <div className="text-normal mb-[12px]">
+      <div className="text-normal mb-[24px]">
         <OtpInput
           className="otp-div"
           value={otp}
@@ -124,7 +124,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
       </div>
 
       {(isLoading || error || isValid) && (
-        <div className={`"w-[33px] h-[48px] mb-[12px]" flex flex-col items-center`}>
+        <div className={`"w-[33px] h-[48px] mb-[24px]" flex flex-col items-center`}>
           {isLoading && <OTLoader />}
           {error && (
             <div className="w-[294px] h-[28px] bg-[#ffd4ce40] px-[9px] py-[8px] flex items-center rounded-[4px]">

@@ -53,7 +53,7 @@ export default function useConsultancyTutorial({
           <>
             <Typography
               variant="h2"
-              className="md:font-poppinsSemiBold font-montserratSemiBold xl:leading-[34px] md:leading-[30px] xs:leading-[22px] text-center mx-auto text-white xs:text-[18px] md:text-[26px] xl:text-[28px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
+              className="font-montserratSemiBold xl:leading-[34px] md:leading-[30px] xs:leading-[22px] text-center mx-auto text-white xs:text-[18px] md:text-[26px] xl:text-[28px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
             >
               Acompáñenos en un corto recorrido antes de iniciar la guía interactiva y
               conozca como navegar en ella.
@@ -118,7 +118,7 @@ export default function useConsultancyTutorial({
               >
                 <p
                   data-testid="text-next-step"
-                  className="z-40 text-[18px] lg:font-heading lg:font-semibold font-medium font-montserratMedium text-center mx-auto leading-[20px] text-primario-900"
+                  className="z-40 text-[16px] font-medium font-montserratMedium text-center mx-auto leading-[20px] text-primario-900"
                 >
                   Para salir de la guía interactiva haga clic aquí.
                 </p>
@@ -143,7 +143,7 @@ export default function useConsultancyTutorial({
               <div
                 className={`bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute  md:flex flex-col items-center gap-y-[28px] h-[171px]`}
               >
-                <p className="z-40 text-[18px]  text-center mx-auto lg:font-heading lg:font-semibold font-medium font-montserratMedium leading-[20px] text-primario-900">
+                <p className="z-40 text-[16px]  text-center mx-auto  font-medium font-montserratMedium leading-[20px] text-primario-900">
                   Para salir de la guía interactiva haga clic aquí.
                 </p>
                 <button
@@ -186,7 +186,7 @@ export default function useConsultancyTutorial({
               <div
                 className={`z-[100]  bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute flex flex-col items-center justify-center gap-y-[28px] h-[171px]`}
               >
-                <p className="z-40 text-[18px]  text-center mx-auto lg:font-heading lg:font-semibold font-medium font-montserratMedium leading-[20px] text-primario-900">
+                <p className="z-40 text-[16px]  text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
                   Para continuar con la guía interactiva haga clic aquí.
                 </p>
                 <button
@@ -209,7 +209,7 @@ export default function useConsultancyTutorial({
               <div
                 className={`z-[100] sm:hidden bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute  md:flex flex-col items-center justify-center gap-y-[28px] h-[171px]`}
               >
-                <p className="z-40 text-[18px] p-0  text-center mx-auto lg:font-heading lg:font-semibold font-medium font-montserratMedium leading-[20px] text-primario-900">
+                <p className="z-40 text-[16px] p-0  text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
                   Para continuar con la guía interactiva haga clic aquí.
                 </p>
                 <button
@@ -236,7 +236,7 @@ export default function useConsultancyTutorial({
                      bg-primario-100`}
                 >
                   <div className="flex justify-center">
-                    <span className={`text-center text-white text-[18px] p-0 lg:font-heading lg:font-semibold font-medium font-montserratMedium`}>
+                    <span className={`text-center text-white text-[18px] p-0 font-medium font-montserratMedium`}>
                       Tema {item}
                     </span>
                   </div>
@@ -250,7 +250,7 @@ export default function useConsultancyTutorial({
               <div
                 className={`bg-white rounded-lg w-[253px] z-10 px-[30px] pt-[31px] pb-[31px] flex flex-col items-center h-[171px]`}
               >
-                <p className="z-40 text-[18px] w-[199px] mb-[20px] text-center mx-auto lg:font-heading lg:font-semibold font-medium font-montserratMedium leading-[20px] text-primario-900">
+                <p className="z-40 text-[16px] w-[199px] mb-[20px] text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
                   Seleccione cada botón para conocer el detalle de su enunciado.
                 </p>
                 <button
@@ -268,7 +268,7 @@ export default function useConsultancyTutorial({
               <div
                 className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[31px] pb-[31px] flex flex-col items-center h-[171px]`}
               >
-                <p className="z-40 text-[18px] mb-[10px] w-[200px] text-center mx-auto lg:font-heading lg:font-semibold font-medium font-montserratMedium leading-[20px] text-primario-900">
+                <p className="z-40 text-[18px] mb-[10px] w-[200px] text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
                   Seleccione cada botón para conocer el detalle de su enunciado.
                 </p>
                 <button
@@ -292,7 +292,7 @@ export default function useConsultancyTutorial({
                 <div
                   className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center  h-[171px]`}
                 >
-                  <p className="z-40 text-[18px] w-[200px] mb-[20px] text-center mx-auto lg:font-heading lg:font-semibold font-medium font-montserratMedium leading-[20px] text-primario-900">
+                  <p className="z-40 text-[18px] w-[200px] mb-[20px] text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
                     Para cerrar la ventana, haga clic aquí.
                   </p>
                   <button
@@ -320,7 +320,7 @@ export default function useConsultancyTutorial({
                       <span
                         className={`text-center ${
                           item === 1 ? 'text-white' : 'text-primario-100'
-                        }  text-[18px] p-0 lg:font-heading lg:font-semibold font-medium font-montserratMedium`}
+                        }  text-[18px] p-0 font-medium font-montserratMedium`}
                       >
                         Tema {item}
                       </span>
@@ -338,7 +338,7 @@ export default function useConsultancyTutorial({
                     <div
                       className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center gap-y-[28px] h-[171px]`}
                     >
-                      <p className="z-40 text-[18px] w-[200px] text-center mx-auto lg:font-heading lg:font-semibold font-medium font-montserratMedium leading-[20px] text-primario-900">
+                      <p className="z-40 text-[18px] w-[200px] text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
                         Para cerrar la ventana, haga clic aquí.
                       </p>
                       <button
@@ -382,7 +382,7 @@ export default function useConsultancyTutorial({
             <div className="w-[full] flex flex-col items-center xl:mt-[48px] md:mt-[60px] sm:mt-[46px] xs:mt-[36px]">
               <Button
                 onClick={onHandleModal}
-                isLanding="sm:w-[343px] xs:w-[284.17px] text-[18px] font-heading font-semibold"
+                isLanding="sm:w-[343px] xs:w-[284.17px] text-[18px] font-heading font-medium font-montserratMedium"
               >
                 Iniciar guía interactiva
               </Button>
