@@ -45,14 +45,14 @@ function FinancialDataForm() {
     {}
   );
   const onSubmit = async (data: iFinancialData) => {
-    if (data.occupation !== "14") {
+    if (data.occupation !== "Employee") {
       data.employeeMonth = null;
       data.employeeYear = null;
       data.enterprise = null;
       data.contractType = null;
     }
     setFinancialDataForm(data);
-    if (data.contractType === "06") {
+    if (data.contractType === "FreeAppointmentAndRemoval") {
       router.push(routes.errorCreditBankApplication)
     } else {
       setCurrentRouting(routes.creditData);
@@ -85,16 +85,16 @@ function FinancialDataForm() {
               margin="normal"
               rules={{ required: true }}
             >
-              <MenuItem value="14">Empleado</MenuItem>
-              <MenuItem value="05">Pensionado o jubilado</MenuItem>
+              <MenuItem value="Employee">Empleado</MenuItem>
+              <MenuItem value="PensionerOrRetired">Pensionado o jubilado</MenuItem>
             </ReactHookFormSelect>
           </div>
           {
-            occupation === '14' ? (
+            occupation === 'Employee' ? (
               <>
                 <div className="flex flex-col mt-3">
                   <Controller
-                    rules={{ required: occupation === '14' }}
+                    rules={{ required: occupation === 'Employee' }}
                     render={({ field }) => (
                       <Input
                         helperText={errors.enterprise?.message}
@@ -134,15 +134,15 @@ function FinancialDataForm() {
                     name="contractType"
                     className="w-100"
                     margin="normal"
-                    rules={{ required: occupation === '14' }}
+                    rules={{ required: occupation === 'Employee' }}
                   >
-                    <MenuItem value="01">Término indefinido</MenuItem>
-                    <MenuItem value="02">Término fijo</MenuItem>
-                    <MenuItem value="03">Prestación de servicios</MenuItem>
-                    <MenuItem value="04">Temporal-En misión</MenuItem>
-                    <MenuItem value="05">Carrera administrativa</MenuItem>
-                    <MenuItem value="06">Libre nombramiento y remoción</MenuItem>
-                    <MenuItem value="02">Provisional</MenuItem>
+                    <MenuItem value="IndefiniteTerm">Término indefinido</MenuItem>
+                    <MenuItem value="FixedTerm">Término fijo</MenuItem>
+                    <MenuItem value="ProvisionOfServices">Prestación de servicios</MenuItem>
+                    <MenuItem value="TemporaryOnMission">Temporal-En misión</MenuItem>
+                    <MenuItem value="AdministrativeCareer">Carrera administrativa</MenuItem>
+                    <MenuItem value="FreeAppointmentAndRemoval">Libre nombramiento y remoción</MenuItem>
+                    <MenuItem value="Provisional">Provisional</MenuItem>
                   </ReactHookFormSelect>
                 </div>
                 <span className="text-[10px] col-span-6 text-complementario-100">
@@ -151,7 +151,7 @@ function FinancialDataForm() {
                 <div className='grid gap-2 grid-cols-2 mt-2'>
                   <div >
                     <Controller
-                      rules={{ required: occupation === '14', maxLength: 2 }}
+                      rules={{ required: occupation === 'Employee', maxLength: 2 }}
                       render={({ field }) => (
                         <Input
                           type="text"
@@ -178,7 +178,7 @@ function FinancialDataForm() {
                   </div>
                   <div>
                     <Controller
-                      rules={{ required: occupation === '14' }}
+                      rules={{ required: occupation === 'Employee' }}
                       render={({ field }) => (
                         <Input
                           type="text"

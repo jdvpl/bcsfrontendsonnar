@@ -32,7 +32,7 @@ describe('FinancialData', () => {
     const realStateValueTest = screen.getByTestId('realStateValueTest');
     const debtValueTest = screen.getByTestId('debtValueTest');
 
-    fireEvent.input(occupation, { target: { value: '05' } });
+    fireEvent.input(occupation, { target: { value: 'PensionerOrRetired' } });
     fireEvent.input(monthlySalaryTest, { target: { value: '1018422010' } });
     fireEvent.paste(monthlySalaryTest, "data");
 
@@ -60,7 +60,7 @@ describe('FinancialData', () => {
       </RouterContext.Provider>
     );
     const occupation = document.getElementsByName("occupation")[0];
-    fireEvent.input(occupation, { target: { value: '14' } });
+    fireEvent.input(occupation, { target: { value: 'Employee' } });
     const contractType = document.getElementsByName("contractType")[0];
     const enterpriseTest = queryByTestId('enterpriseTest');
     const employeeYearTest = screen.queryByTestId('employeeYearTest');
@@ -106,7 +106,7 @@ describe('FinancialData', () => {
       </RouterContext.Provider>
     );
     const occupation = document.getElementsByName("occupation")[0];
-    fireEvent.input(occupation, { target: { value: '14' } });
+    fireEvent.input(occupation, { target: { value: 'Employee' } });
     const contractType = document.getElementsByName("contractType")[0];
     const enterpriseTest = screen.queryByTestId('enterpriseTest');
     const employeeYearTest = screen.queryByTestId('employeeYearTest');
@@ -120,7 +120,7 @@ describe('FinancialData', () => {
     fireEvent.input(enterpriseTest!, { target: { value: 'BCS' } });
     fireEvent.paste(enterpriseTest!, "data");
 
-    fireEvent.input(contractType, { target: { value: '06' } });
+    fireEvent.input(contractType, { target: { value: 'FreeAppointmentAndRemoval' } });
 
     fireEvent.input(employeeYearTest!, { target: { value: '10' } });
     fireEvent.paste(employeeYearTest!, "data");

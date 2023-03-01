@@ -54,6 +54,7 @@ export default function useValidations(
     clearErrors('month');
     clearErrors('year');
   };
+
   const validateTypeHouse = () => {
     let message: any;
 
@@ -154,6 +155,8 @@ export default function useValidations(
       },
       financialData: financialDataForm,
       personalData: {
+        middleName: '',
+        secondLastName: '',
         ...dataBasicData,
         age: calculateAgeMethod2(dataBasicData?.birthDate),
       },
@@ -161,8 +164,10 @@ export default function useValidations(
     };
 
     const data: any = await riskBoxes(body);
+    console.log(data)
 
-    if (!data?.response.error) {
+    if (!data?.response?.error) {
+      setApplicationResponse({data});
       setCurrentRouting(routes.finalcialData, false);
       setCurrentRouting(routes.creditData, false);
       setCurrentRouting(routes.ResumenSolicitud);

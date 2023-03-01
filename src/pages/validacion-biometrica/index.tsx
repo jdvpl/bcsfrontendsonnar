@@ -32,46 +32,7 @@ const ValidationMessage: React.FC = () => {
   const [loaded] = useState(false);
   const { allResponse } = useAES();
 
-  // const beginBiometry = async () => {
-  //   const requestHeaders: HeadersInit = new Headers();
-  //   requestHeaders.set('x-mock-match-request-body', 'true');
-  //   requestHeaders.set('Content-Type', 'application/json');
-  //   requestHeaders.set('App-Name', 'ADIGITAL');
-  //   const body = {
-  //     document_type: dataTU.document_type,
-  //     document_number: dataTU.document_number,
-  //   };
-  //   const bodyEncript = await allResponse(body, KEY);
-  //   try {
-  //     const response = await fetch(
-  //       `${process.env.KYCAPIURL}/identity-user/biometry`,
-  //       {
-  //         method: 'POST',
-  //         headers: requestHeaders,
-  //         body: JSON.stringify({
-  //           data: bodyEncript,
-  //         }),
-  //       }
-  //     );
-  //     if (response.ok) {
-  //       setValidated(false);
-  //       setShowAnimation(false);
-  //     } else if (response.status === 403) {
-  //       setValidated(false);
-  //       setShowAnimation(false);
-  //       const dataResponse: any = await response.json();
-  //       if (dataResponse.internal_code === 'VQ-01') {
-  //         setTimeout(() => urlAndUtms(router, '/'), 100);
-  //       } else {
-  //         setTimeout(() => urlAndUtms(router, '/validacion/error'), 100);
-  //       }
-  //     } else {
-  //       urlAndUtms(router, '/validacion/error');
-  //     }
-  //   } catch (e: any) {
-  //     urlAndUtms(router, '/validacion/error');
-  //   }
-  // };
+  
   const scrollBody = () => {
     if (typeof window === 'object') {
       document.body.classList.remove('body-scroll-hidden');

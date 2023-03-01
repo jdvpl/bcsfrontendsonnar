@@ -13,7 +13,7 @@ describe('useValidationFinancialDataForm', () => {
     const setValue = jest.fn();
     // Act
     renderHook(() => useValidationFinancialDataForm(
-      '05', null, null, null, null, 20000, 1000000, 30000000, 20000000,
+      'PensionerOrRetired', null, null, null, null, 20000, 1000000, 30000000, 20000000,
       mockClearErrors,
       mockSetError,
       setValue,
@@ -31,7 +31,7 @@ describe('useValidationFinancialDataForm', () => {
 
     // Act
     renderHook(() => useValidationFinancialDataForm(
-      '14', 'Rappi', '01', '234', '20', 20000, 1000000, 30000000, 20000000,
+      'Employee', 'Rappi', '01', '234', '20', 20000, 1000000, 30000000, 20000000,
       mockClearErrors,
       mockSetError,
       setValue,

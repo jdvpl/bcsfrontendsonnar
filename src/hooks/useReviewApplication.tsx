@@ -10,11 +10,8 @@ export default function useSummaryApplication(router: any, setCurrentRouting: an
 
   const onSubmit = async () => {
     setLoading(true);
-    const response = await riskBoxes(data);
-    if (!response?.error) {
-      setCurrentRouting(routes.approvalDataPage);
-      router?.push(routes.approvalDataPage);
-    }
+    setCurrentRouting(routes.approvalDataPage);
+    router?.push(routes.approvalDataPage);
     setLoading(false);
   };
 

@@ -1,9 +1,10 @@
 import '@testing-library/jest-dom';
-import { act, fireEvent, render } from "@testing-library/react";
-import ApplicationApproval from "../../pages/confirmacion-solicitud";
+import { fireEvent, render } from '@testing-library/react';
+import ApplicationApproval from '../../pages/confirmacion-solicitud';
 import { createMockRouter } from '../utils/createMockRouter';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
-import { routes } from "../../routes";
+import { routes } from '../../routes';
+
 
 describe('<ApplicationApproval/>', () => {
   it('should render "Authentication" successfully', () => {
@@ -24,10 +25,12 @@ describe('<ApplicationApproval/>', () => {
     );
     const btnGetOut = getByTestId('btnGetOut');
     fireEvent.click(btnGetOut);
-    expect(router.push).toHaveBeenCalledWith(routes.home)
+    expect(router.push).toHaveBeenCalledWith(routes.home);
   });
   it('should not show the modal', async () => {
-    const router = createMockRouter({ query: { 'confirmacion-solicitud': "confirmacion-solicitud/#" } });
+    const router = createMockRouter({
+      query: { 'confirmacion-solicitud': 'confirmacion-solicitud/#' },
+    });
     const { queryByTestId, getByTestId } = render(
       <RouterContext.Provider value={router}>
         <ApplicationApproval modalExit={true} />
@@ -38,10 +41,8 @@ describe('<ApplicationApproval/>', () => {
     const btnClose = queryByTestId('btn-close');
     fireEvent.click(btnClose!);
     window.history.back();
-    const getbackRouteTest = getByTestId("getbackRouteTest");
+    const getbackRouteTest = getByTestId('getbackRouteTest');
     fireEvent.click(getbackRouteTest);
-    expect(modalDataTest!).not.toBeInTheDocument()
+    expect(modalDataTest!).not.toBeInTheDocument();
   });
-
-
-})
+});
