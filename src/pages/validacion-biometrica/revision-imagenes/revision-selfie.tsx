@@ -13,7 +13,7 @@ import Layout from '../../../components/layouts/layout';
 import NavTitle from '../../../components/commons/NavTitle';
 import ContainerButtonForm from '../../../components/ui/Form/ContainerButtonForm';
 
-const KEY = process.env.KEYKYCHASH;
+const KEY = process.env.KEYENCRYPTADIGITAL;
 
 const RevisionImagenes: React.FC = () => {
   const router = useRouter();

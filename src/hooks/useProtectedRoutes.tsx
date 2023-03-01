@@ -18,7 +18,7 @@ const useProtectedRoutes = () => {
 
   useEffect(() => {
     if (rt[currentRoute] === false || !rt[currentRoute]) {
-      router.push(rt["currentPage"])
+      // router.push(rt["currentPage"])
     }
   }, [])
   const setCurrentRouting = async (path: string, valueData: boolean = true) => {

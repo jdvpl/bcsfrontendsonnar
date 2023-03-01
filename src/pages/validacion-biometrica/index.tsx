@@ -18,7 +18,7 @@ import NavTitle from '../../components/commons/NavTitle';
 import { basePath } from '../../../next.config';
 import ContainerButtonForm from '../../components/ui/Form/ContainerButtonForm';
 
-const KEY = process.env.KEYKYCHASH;
+const KEY = process.env.KEYENCRYPTADIGITAL;
 
 const CardImage: React.FC<childrenProps> = ({ children }) => (
   <div className="flex mr-6 minw-64">{children}</div>

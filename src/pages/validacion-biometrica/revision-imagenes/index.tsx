@@ -12,7 +12,7 @@ import { basePath } from '../../../../next.config';
 import useAES from '../../../hooks/useAES';
 import { urlAndUtms } from '../../../utils/RouterUtmsUrl/index';
 
-const KEY = process.env.KEYKYCHASH;
+const KEY = process.env.KEYENCRYPTADIGITAL;
 
 const RevisionImagenes: React.FC = () => {
   const router = useRouter();

@@ -18,31 +18,24 @@ import ExitModal from '../../components/commons/ExitModal';
 import Modal from '../../components/ui/Modal';
 import { useBackDetector } from '../../hooks/useBackDetector';
 
-function ApplicationApproval() {
-  const { setCurrentRouting, removeAllPath } = useProtectedRoutes();
+
+function ApplicationApproval({ modalExit = false }: any) {
+  const { setCurrentRouting } = useProtectedRoutes();
   const [dataInfo] = useSessionStorage(SesionStorageKeys.basicDataUser.key, {});
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
   const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const router = useRouter();
   const { getPdf } = useDownloadPdf(dataQuestions, dataTU, valuesMortgage);
-
-  const [showModalExit, setshowModalExit] = useState(false);
-
+  const [showModalExit, setshowModalExit] = useState(modalExit);
   const [componentModalExit,] = useState({
     children: <ExitModal setshowModalExit={setshowModalExit} />,
     title: <span className='md:text-[28px] font-poppinsSemiBold'>Está a punto de abandonar su solicitud</span>,
     id: '',
   });
-
-  useMemo(() => {
-    removeAllPath();
-  }, [])
-
   const closeModalExit = () => {
     setshowModalExit(false);
   };
-
   useBackDetector(() => {
     setshowModalExit(true)
   }, router.asPath);
