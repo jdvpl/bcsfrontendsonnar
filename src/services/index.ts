@@ -1,11 +1,8 @@
-import axios from 'axios';
 import { OTPCodeRequest, ValidateOTC } from '../components/custom/otp';
 import { clientAxiosBackend } from '../config/AxiosMortgage';
-import { clientAxiosMock } from '../config/AxiosMock';
 import useAES from '../hooks/useAES';
 import { headersBack } from './HeaderBack';
 import { iFormDataSimulation } from '../interfaces';
-import { iFormBasicData } from '../interfaces/basicDataProps';
 import { getProcessId } from '../utils';
 const { allResponse, allResponseDecrypted } = useAES();
 import { iPdfLetter } from '../interfaces/ipdfLetter'
