@@ -11,12 +11,14 @@ import Heading from '../../../components/form/heading';
 import { basePath } from '../../../../next.config';
 import useAES from '../../../hooks/useAES';
 import { urlAndUtms } from '../../../utils/RouterUtmsUrl/index';
+import { SesionStorageKeys } from '../../../session/index';
+import { getProcessId } from '../../../utils';
 
 const KEY = process.env.KEYKYCHASH;
 
 const RevisionImagenes: React.FC = () => {
   const router = useRouter();
-  const [dataTU] = useSessionStorage('DataUser', '');
+  const [dataTU] = useSessionStorage(SesionStorageKeys?.dataUser?.key, '');
   const { setEligirFoto, fotosCedula, setFotoDelantera, setFotoTrasera } =
     useContext(AplicationContext);
   const [showAnimation, setShowAnimation] = useState(false);
@@ -53,67 +55,68 @@ const RevisionImagenes: React.FC = () => {
     }, 100);
   };
 
-  // const sendAll = async () => {
-  //   const requestHeaders: HeadersInit = new Headers();
-  //   requestHeaders.set('x-mock-match-request-body', 'true');
-  //   requestHeaders.set('Content-Type', 'application/json');
-  //   requestHeaders.set('App-Name', 'ADIGITAL');
+  const sendAll = async () => {
+    const requestHeaders: HeadersInit = new Headers();
+    requestHeaders.set('x-mock-match-request-body', 'true');
+    requestHeaders.set('Content-Type', 'application/json');
+    requestHeaders.set('App-Name', 'ADIGITAL');
 
-  //   const body = {
-  //     front: fotosCedula.delantera,
-  //     back: fotosCedula.trasera,
-  //     document_type: dataTU.document_type,
-  //     document_number: dataTU.document_number,
-  //   };
-  //   const encrypt = await allResponse(body, KEY);
-  //   try {
-  //     setShowAnimation(true);
-  //     setError(false);
-  //     const response = await fetch(
-  //       `${process.env.KYCAPIURL}/identity-user/biometry/document`,
-  //       {
-  //         method: 'POST',
-  //         headers: requestHeaders,
-  //         body: JSON.stringify({
-  //           data: encrypt,
-  //         }),
-  //       }
-  //     );
-  //     if (response.ok) {
-  //       setIsLoading(false);
-  //       redirectLoader('/validacion-biometrica/indexSelfie');
-  //     } else if (response.status === 403) {
-  //       const dataResponse: any = await response.json();
+    const body = {
+      front: fotosCedula.delantera,
+      back: fotosCedula.trasera,
+      document_type: dataTU.document_type,
+      document_number: dataTU.document_number,
+    };
+    const encript = await allResponse({ ...body, processId: getProcessId() }, KEY);
 
-  //       const code = dataResponse.internal_code;
+    try {
+      setShowAnimation(true);
+      setError(false);
+      const response = await fetch(
+        `${process.env.APIURLMORTGAGE}/api-composer/composer/biometry/validation/document`,
+        {
+          method: 'POST',
+          headers: requestHeaders,
+          body: JSON.stringify({
+            data: encript,
+          }),
+        }
+      );
+      console.log({ response });
+      if (response.ok) {
+        setIsLoading(false);
+        redirectLoader('/validacion-biometrica/indexSelfie');
+      } else if (response.status === 403) {
+        const dataResponse: any = await response.json();
 
-  //       switch (code) {
-  //         case 'VQ-01':
-  //           urlAndUtms(router, '/');
-  //           break;
-  //         case 'VQ-02':
-  //           urlAndUtms(router, '/validacion/error-validacionIdentidad');
-  //           break;
-  //         default:
-  //           urlAndUtms(router, '/validacion/');
-  //       }
-  //     } else if (response.status === 401) {
-  //       urlAndUtms(router, '/validacion/error-validacionIdentidad');
-  //     } else if (response.status === 504 || response.status === 408) {
-  //       setShowAnimation(false);
-  //       setIsLoading(false);
-  //       setError(true);
-  //     } else {
-  //       urlAndUtms(router, '/validacion/error-validacionIdentidad');
-  //     }
-  //   } catch (e: any) {
-  //     urlAndUtms(router, '/validacion/error');
-  //   }
-  // };
+        const code = dataResponse.internal_code;
+
+        switch (code) {
+          case 'VQ-01':
+            urlAndUtms(router, '/');
+            break;
+          case 'VQ-02':
+            urlAndUtms(router, '/validacion/error-validacionIdentidad');
+            break;
+          default:
+            urlAndUtms(router, '/validacion/');
+        }
+      } else if (response.status === 401) {
+        urlAndUtms(router, '/validacion/error-validacionIdentidad');
+      } else if (response.status === 504 || response.status === 408) {
+        setShowAnimation(false);
+        setIsLoading(false);
+        setError(true);
+      } else {
+        urlAndUtms(router, '/validacion/error-validacionIdentidad');
+      }
+    } catch (e: any) {
+      urlAndUtms(router, '/validacion/error');
+    }
+  };
 
   const sendData = async () => {
-    setIsLoading(false);
-    redirectLoader('/validacion-biometrica/indexSelfie');
+    await sendAll();
   };
   useEffect(() => {
     scrollBody();
@@ -130,11 +133,7 @@ const RevisionImagenes: React.FC = () => {
       )}
       <div data-testid="revision">
         <div className="pt-3 md:pt-0 w-full lg:mt-10">
-          <Stepper
-            steps={5}
-            actualStep={1}
-            title="Validación de identidad"
-          />
+          <Stepper steps={5} actualStep={1} title="Validación de identidad" />
         </div>
 
         <div>

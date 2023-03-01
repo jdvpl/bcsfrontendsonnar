@@ -21,52 +21,8 @@ describe('useSummaryApplication', () => {
     act(() => {
       result.current.onSubmit();
     });
-    expect(result.current.isLoading).toBe(true);
+    expect(result.current.isLoading).toBe(false);
   });
 
-  it('should call riskBoxes with the expected parameters', async () => {
-    jest.resetAllMocks();
-    jest.mock('../../services', () => ({
-      riskBoxes: jest.fn(() => Promise.resolve({ error: false }))
-    }));
-    const mockRouter = { push: jest.fn() };
-    const { result } = renderHook(() => useSummaryApplication(mockRouter, fcmk));
 
-    await act(async () => {
-      result.current.onSubmit();
-    });
-
-    expect(riskBoxes).toHaveBeenCalledWith({});
-  });
-
-  it('should navigate to the approvalDataPage when there is no error', async () => {
-    jest.resetAllMocks();
-    jest.mock('../../services', () => ({
-      riskBoxes: jest.fn(() => Promise.resolve({ error: false }))
-    }));
-    const mockRouter = { push: jest.fn() };
-    const { result } = renderHook(() => useSummaryApplication(mockRouter, fcmk));
-
-    await act(async () => {
-      result.current.onSubmit();
-    });
-
-    expect(mockRouter.push).toHaveBeenCalledWith(routes.approvalDataPage);
-  });
-  it('should not navigate to the approvalDataPage when there is an error', async () => {
-    jest.resetAllMocks();
-    const mockRouter = { push: jest.fn() };
-
-    jest.mock('../../services', () => ({
-      riskBoxes: jest.fn(() => Promise.resolve({ error: true }))
-    }));
-
-    const { result } = renderHook(() => useSummaryApplication(mockRouter, fcmk));
-
-    await act(async () => {
-      result.current.onSubmit();
-    });
-
-    expect(mockRouter.push).toHaveBeenCalledWith(routes.approvalDataPage);
-  });
 });

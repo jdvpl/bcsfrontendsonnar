@@ -12,6 +12,9 @@ import { urlAndUtms } from '../../../utils/RouterUtmsUrl';
 import Layout from '../../../components/layouts/layout';
 import NavTitle from '../../../components/commons/NavTitle';
 import ContainerButtonForm from '../../../components/ui/Form/ContainerButtonForm';
+import { SesionStorageKeys } from '../../../session';
+import { getProcessId } from '../../../utils';
+import { routes } from '../../../routes';
 
 const KEY = process.env.KEYKYCHASH;
 
@@ -23,7 +26,7 @@ const RevisionImagenes: React.FC = () => {
   const [validated, setValidated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
-  const [dataTU, setDataUser] = useSessionStorage('DataUser', '');
+  const [dataTU] = useSessionStorage(SesionStorageKeys?.dataUser?.key, '');
   const dataUser = dataTU?.personalData;
   const { allResponseDecrypted, allResponse } = useAES();
   const changePhoto = () => {
@@ -44,7 +47,6 @@ const RevisionImagenes: React.FC = () => {
 
   // const biometryProcess = async () => {
   //   setIsLoading(true);
-
   //   const requestHeaders: HeadersInit = new Headers();
   //   requestHeaders.set('x-mock-match-request-body', 'true');
   //   requestHeaders.set('Content-Type', 'application/json');
@@ -85,67 +87,66 @@ const RevisionImagenes: React.FC = () => {
   //     setIsLoading(false);
   //   }
   // };
-  // const sendSelfie = async () => {
-  //   const requestHeaders: HeadersInit = new Headers();
 
-  //   const body = {
-  //     selfie_normal: selfies.sonriendo.image,
-  //     selfie_alive: selfies.sonriendo.image_alive,
-  //     document_type: dataTU.document_type,
-  //     document_number: dataTU.document_number,
-  //   };
-  //   requestHeaders.set('x-mock-match-request-body', 'true');
-  //   requestHeaders.set('Content-Type', 'application/json');
-  //   requestHeaders.set('App-Name', 'ADIGITAL');
-  //   const encript = await allResponse(body, KEY);
-  //   try {
-  //     setShowAnimation(true);
+  const sendSelfie = async () => {
+    const requestHeaders: HeadersInit = new Headers();
 
-  //     const response = await fetch(
-  //       `${process.env.KYCAPIUR}/identity-user/biometry/selfie`,
-  //       {
-  //         method: 'POST',
-  //         headers: requestHeaders,
-  //         body: JSON.stringify({
-  //           data: encript,
-  //         }),
-  //       }
-  //     );
-  //     if (response.ok) {
-  //       setIsLoading(false);
-  //       biometryProcess();
-  //     } else if (response.status === 403) {
-  //       const dataResponse: any = await response.json();
+    const body = {
+      selfie_normal: selfies.sonriendo.image,
+      selfie_alive: selfies.sonriendo.image_alive,
+      document_type: dataTU.document_type,
+      document_number: dataTU.document_number,
+    };
+    requestHeaders.set('x-mock-match-request-body', 'true');
+    requestHeaders.set('Content-Type', 'application/json');
+    requestHeaders.set('App-Name', 'ADIGITAL');
+    const encript = await allResponse({ ...body, processId: getProcessId() }, KEY);
+    try {
+      setShowAnimation(true);
+      const response = await fetch(
+        `${process.env.APIURLMORTGAGE}/api-composer/composer/biometry/validation/selfie`,
+        {
+          method: 'POST',
+          headers: requestHeaders,
+          body: JSON.stringify({
+            data: encript,
+          }),
+        }
+      );
+      if (response.ok) {
+        setIsLoading(false);
+        router.push(routes.personalData);
+      } else if (response.status === 403) {
+        const dataResponse: any = await response.json();
 
-  //       const code = dataResponse.internal_code;
+        const code = dataResponse.internal_code;
 
-  //       switch (code) {
-  //         case 'VQ-01':
-  //           urlAndUtms(router, '/');
-  //           break;
-  //         case 'VQ-02':
-  //           urlAndUtms(router, '/validacion/error-validacionIdentidad');
-  //           break;
-  //         default:
-  //           urlAndUtms(router, '/validacion/');
-  //       }
-  //     } else if (response.status === 401) {
-  //       urlAndUtms(router, '/validacion/error-validacionIdentidad');
-  //     } else if (response.status === 504 || response.status === 408) {
-  //       setShowAnimation(false);
-  //       setIsLoading(false);
-  //       setError(true);
-  //     } else {
-  //       urlAndUtms(router, '/validacion/error');
-  //     }
-  //   } catch (e: any) {
-  //     urlAndUtms(router, '/validacion/error');
-  //   }
-  // };
+        switch (code) {
+          case 'VQ-01':
+            urlAndUtms(router, '/');
+            break;
+          case 'VQ-02':
+            urlAndUtms(router, '/validacion/error-validacionIdentidad');
+            break;
+          default:
+            urlAndUtms(router, '/validacion/');
+        }
+      } else if (response.status === 401) {
+        urlAndUtms(router, '/validacion/error-validacionIdentidad');
+      } else if (response.status === 504 || response.status === 408) {
+        setShowAnimation(false);
+        setIsLoading(false);
+        setError(true);
+      } else {
+        urlAndUtms(router, '/validacion/error');
+      }
+    } catch (e: any) {
+      urlAndUtms(router, '/validacion/error');
+    }
+  };
 
   const sendData = async () => {
-    setIsLoading(false);
-    redirectLoader('/simulador/');
+    await sendSelfie();
   };
   return (
     <Layout navTitle={<NavTitle noBack />}>
@@ -159,7 +160,9 @@ const RevisionImagenes: React.FC = () => {
           <Heading>Resultado de las fotos</Heading>
           <div className="d-flex justify-content-center  sm:mt-[32px] md:mt-[52px]">
             <div className="br-complete-gray px-3 pt-6 w-100 mr-3 max-w-[154px]">
-              <p className="text-[14px] font-montserratRegular text-center fw-600 mb-3 text-primario-900">Foto uno</p>
+              <p className="text-[14px] font-montserratRegular text-center fw-600 mb-3 text-primario-900">
+                Foto uno
+              </p>
               <div className="d-flex w-100  align-items-center">
                 <img
                   data-testid="image1"
@@ -170,7 +173,9 @@ const RevisionImagenes: React.FC = () => {
               </div>
             </div>
             <div className="br-complete-gray px-3 pt-6 w-100 ml-3 max-w-[154px]">
-              <p className="text-[14px] font-montserratRegular text-center fw-600 mb-3 text-primario-900">Foto dos</p>
+              <p className="text-[14px] font-montserratRegular text-center fw-600 mb-3 text-primario-900">
+                Foto dos
+              </p>
               <div className="d-flex w-100 align-items-center">
                 <img
                   data-testid="image2"

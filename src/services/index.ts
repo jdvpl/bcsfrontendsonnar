@@ -10,7 +10,7 @@ import { getProcessId } from '../utils';
 const { allResponse, allResponseDecrypted } = useAES();
 const KEY = process.env.KEYKYCHASH;
 const KEYKYCHASH = process.env.KEYKYCHASH;
-import { iPdfLetter } from '../interfaces/ipdfLetter'
+import { iPdfLetter } from '../interfaces/ipdfLetter';
 //? this save the authorization data.
 /**
  * It sends a POST request to the backend with the body of the request being the body parameter
@@ -54,7 +54,7 @@ export const getQuestions = async (data: any) => {
       { data: dataInfo },
       headersBack
     );
-    const infoAllow = await allResponseDecrypted(response.data, KEY)
+    const infoAllow = await allResponseDecrypted(response.data, KEY);
     return {
       response: {
         result: response.result,
@@ -99,7 +99,6 @@ export const sendQuestions = async (data: any) => {
     return { error: true, response: e.response?.data };
   }
 };
-
 export const sendNumber = async (data: any) => {
   try {
     const dataInfo = await allResponse(data, KEY);
@@ -123,7 +122,10 @@ export const sendNumber = async (data: any) => {
 export const validateOTOCode = async (data: ValidateOTC) => {
   try {
     const { otc, document_number, document_type, pin, processId } = data;
-    const dataInfo = await allResponse({ document_number, document_type, pin, processId }, KEY);
+    const dataInfo = await allResponse(
+      { document_number, document_type, pin, processId },
+      KEY
+    );
     const { data: response } = await clientAxiosBackend.post(
       otc ? '/customer/otc/validate' : '/api-composer/composer/validate-otp',
       { data: dataInfo },
@@ -142,9 +144,11 @@ export const validateOTOCode = async (data: ValidateOTC) => {
 };
 export const reSendOTPCode = async (data: OTPCodeRequest) => {
   try {
-
     const { otc, document_number, document_type, processId } = data;
-    const dataInfo = await allResponse({ document_number, document_type, processId }, KEY);
+    const dataInfo = await allResponse(
+      { document_number, document_type, processId },
+      KEY
+    );
     const { data: response } = await clientAxiosBackend.post(
       otc ? '/customer/otc/generate' : '/api-composer/composer/resend-otp',
       { data: dataInfo },
@@ -182,7 +186,7 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
   try {
     // TODO change the clientAxios for backend
     const { data: response } = await clientAxiosBackend.post(
-      '/simulator/simulator/generatepdf',
+      '/simulator/generatepdf',
       data,
       headersBack
     );
@@ -196,34 +200,17 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
     return { error: true, response: e?.response?.data?.message };
   }
 };
-export const getBasicData = async (data: iFormBasicData) => {
-  try {
-    const { data: response } = await clientAxiosMock.post('/basic-data', {
-      ...data,
-      processId: getProcessId(),
-    });
-    return {
-      response: {
-        data: response,
-      },
-      error: false,
-    };
-  } catch (e: any) {
-    return { error: true, response: e?.response?.data?.message };
-  }
-};
-
 export const fetchSarlaft = async (body: any) => {
   try {
-    const bodyencript = await allResponse(
+    const bodyEncrypt = await allResponse(
       { ...body, processId: getProcessId() },
       KEYKYCHASH
     );
     const { data: response } = await clientAxiosBackend.post(
       '/sarlaft/sarlaft-questions',
-      { data: bodyencript }
+      { data: bodyEncrypt }
     );
-    const data = await allResponseDecrypted(response.data, KEYKYCHASH)
+    const data = await allResponseDecrypted(response.data, KEYKYCHASH);
     return {
       response: {
         result: data,
@@ -234,12 +221,15 @@ export const fetchSarlaft = async (body: any) => {
     return { error: true, response: e.response?.data?.message };
   }
 };
-
 export const riskBoxes = async (body: any) => {
   try {
-    const { data: response } = await axios.post(
-      'https://63a9fbb57d7edb3ae61dd65b.mockapi.io/v1/send-authorization',
-      { ...body, processId: getProcessId() }
+    const bodyEncrypt = await allResponse(
+      { ...body, processId: getProcessId() },
+      KEYKYCHASH
+    );
+    const { data: response } = await clientAxiosBackend.post(
+      '/api-composer/composer/risk-boxes',
+      { data: bodyEncrypt }
     );
     return {
       response: {
@@ -251,30 +241,9 @@ export const riskBoxes = async (body: any) => {
     return { error: true, response: e.response?.data?.message };
   }
 };
-
-export const getOffices = async () => {
-  try {
-    const { data: response } = await clientAxiosMock.get(
-      '/offices',
-    );
-    return {
-      response: {
-        result: response?.response,
-      },
-      error: false,
-    };
-  } catch (e: any) {
-    return { error: true, response: e.response?.data?.message };
-  }
-
-};
-
 export const delKeysRedis = async (body: any) => {
   try {
-    const { data: response } = await clientAxiosBackend.post(
-      'commons/delete-keys',
-      body
-    );
+    const { data: response } = await clientAxiosBackend.post('commons/delete-keys', body);
     return {
       response: {
         result: response?.response,
@@ -284,15 +253,13 @@ export const delKeysRedis = async (body: any) => {
   } catch (e: any) {
     return { error: true, response: e.response?.data?.message };
   }
-
-}
+};
 export const getPDF = async (body: iPdfLetter) => {
   try {
-    const { data: response } = await clientAxiosBackend.post(
-      // 'http://localhost:8000/pdf',
-      '/commons/generate/pdf',
-      body
-    );
+    const bodyEncrypt = await allResponse(body, KEYKYCHASH);
+    const { data: response } = await clientAxiosBackend.post('/commons/generate/pdf', {
+      data: bodyEncrypt,
+    });
     return {
       response: {
         result: response,
@@ -302,7 +269,4 @@ export const getPDF = async (body: iPdfLetter) => {
   } catch (e: any) {
     return { error: true, response: e.response?.data?.message };
   }
-
-}
-
-
+};

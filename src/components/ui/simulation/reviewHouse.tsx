@@ -84,7 +84,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         </p>
       }
     />
-    <Card
+    {/* <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Seguro de vida"
       value={lifeInsurance?.toString()}
@@ -118,7 +118,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
           directa de los riesgos amparados.{' '}
         </p>
       }
-    />
+    /> */}
     
     
 

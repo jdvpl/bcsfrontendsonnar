@@ -382,7 +382,7 @@ export default function useConsultancyTutorial({
             <div className="w-[full] flex flex-col items-center xl:mt-[48px] md:mt-[60px] sm:mt-[46px] xs:mt-[36px]">
               <Button
                 onClick={onHandleModal}
-                isLanding="sm:w-[343px] xs:w-[284.17px] text-[18px] font-heading font-medium font-montserratMedium"
+                isLanding="sm:w-[343px] xs:w-[284.17px] text-[18px] font-medium font-montserratMedium"
               >
                 Iniciar guía interactiva
               </Button>
