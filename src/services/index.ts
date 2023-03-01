@@ -183,7 +183,7 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
   try {
     // TODO change the clientAxios for backend
     const { data: response } = await clientAxiosBackend.post(
-      '/simulator/generatepdf',
+      '/simulator/simulator/generatepdf',
       data,
       headersBack
     );
