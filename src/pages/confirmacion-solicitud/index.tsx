@@ -18,33 +18,26 @@ import ExitModal from '../../components/commons/ExitModal';
 import Modal from '../../components/ui/Modal';
 import { useBackDetector } from '../../hooks/useBackDetector';
 
+
 function ApplicationApproval({ modalExit = false }: any) {
-  const { setCurrentRouting, removeAllPath } = useProtectedRoutes();
+  const { setCurrentRouting } = useProtectedRoutes();
   const [dataInfo] = useSessionStorage(SesionStorageKeys.basicDataUser.key, {});
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
   const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const router = useRouter();
   const { getPdf } = useDownloadPdf(dataQuestions, dataTU, valuesMortgage);
-
   const [showModalExit, setshowModalExit] = useState(modalExit);
-
-  const [componentModalExit] = useState({
+  const [componentModalExit,] = useState({
     children: <ExitModal setshowModalExit={setshowModalExit} />,
-    title: (
-      <span className="md:text-[28px] font-poppinsSemiBold">
-        Está a punto de abandonar su solicitud
-      </span>
-    ),
+    title: <span className='md:text-[28px] font-poppinsSemiBold'>Está a punto de abandonar su solicitud</span>,
     id: '',
   });
-
   const closeModalExit = () => {
     setshowModalExit(false);
   };
-
   useBackDetector(() => {
-    setshowModalExit(true);
+    setshowModalExit(true)
   }, router.asPath);
 
   return (
@@ -115,8 +108,8 @@ function ApplicationApproval({ modalExit = false }: any) {
                 .replace(/\b\w/g, (l: string) =>
                   l.toUpperCase()
                 )} - ${valuesMortgage?.office?.city
-                ?.toLowerCase()
-                .replace(/\b\w/g, (l: string) => l.toUpperCase())} `}
+                  ?.toLowerCase()
+                  .replace(/\b\w/g, (l: string) => l.toUpperCase())} `}
               text="text-[20px] pl-[18px] font-semibold font-poppinsSemiBold"
               urlsvg={`${basePath}/images/location.svg`}
               classtitle="h-[14px] text-[13px] font-montserratRegular"

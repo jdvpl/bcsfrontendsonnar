@@ -7,7 +7,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   env: {
-    KEYKYCHASH: process.env.KEYKYCHASH,
+    KEYENCRYPTADIGITAL: process.env.KEYENCRYPTADIGITAL,
     KEYSESSIONSTORAGE: process.env.KEYSESSIONSTORAGE,
     TAGMANAGER:process.env.TAGMANAGER,
     APIURLMORTGAGE:process.env.APIURLMORTGAGE,

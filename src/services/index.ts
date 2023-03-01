@@ -1,16 +1,13 @@
-import axios from 'axios';
 import { OTPCodeRequest, ValidateOTC } from '../components/custom/otp';
 import { clientAxiosBackend } from '../config/AxiosMortgage';
-import { clientAxiosMock } from '../config/AxiosMock';
 import useAES from '../hooks/useAES';
 import { headersBack } from './HeaderBack';
 import { iFormDataSimulation } from '../interfaces';
-import { iFormBasicData } from '../interfaces/basicDataProps';
 import { getProcessId } from '../utils';
 const { allResponse, allResponseDecrypted } = useAES();
-const KEY = process.env.KEYKYCHASH;
-const KEYKYCHASH = process.env.KEYKYCHASH;
-import { iPdfLetter } from '../interfaces/ipdfLetter';
+import { iPdfLetter } from '../interfaces/ipdfLetter'
+
+const KEY = process.env.KEYENCRYPTADIGITAL;
 //? this save the authorization data.
 /**
  * It sends a POST request to the backend with the body of the request being the body parameter
@@ -204,13 +201,13 @@ export const fetchSarlaft = async (body: any) => {
   try {
     const bodyEncrypt = await allResponse(
       { ...body, processId: getProcessId() },
-      KEYKYCHASH
+      KEY
     );
     const { data: response } = await clientAxiosBackend.post(
       '/sarlaft/sarlaft-questions',
       { data: bodyEncrypt }
     );
-    const data = await allResponseDecrypted(response.data, KEYKYCHASH);
+    const data = await allResponseDecrypted(response.data, KEY)
     return {
       response: {
         result: data,
@@ -225,7 +222,7 @@ export const riskBoxes = async (body: any) => {
   try {
     const bodyEncrypt = await allResponse(
       { ...body, processId: getProcessId() },
-      KEYKYCHASH
+      KEY
     );
     const { data: response } = await clientAxiosBackend.post(
       '/api-composer/composer/risk-boxes',
@@ -256,7 +253,7 @@ export const delKeysRedis = async (body: any) => {
 };
 export const getPDF = async (body: iPdfLetter) => {
   try {
-    const bodyEncrypt = await allResponse(body, KEYKYCHASH);
+    const bodyEncrypt = await allResponse(body, KEY);
     const { data: response } = await clientAxiosBackend.post('/commons/generate/pdf', {
       data: bodyEncrypt,
     });

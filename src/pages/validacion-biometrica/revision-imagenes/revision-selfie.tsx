@@ -16,7 +16,7 @@ import { SesionStorageKeys } from '../../../session';
 import { getProcessId } from '../../../utils';
 import { routes } from '../../../routes';
 
-const KEY = process.env.KEYKYCHASH;
+const KEY = process.env.KEYENCRYPTADIGITAL;
 
 const RevisionImagenes: React.FC = () => {
   const router = useRouter();

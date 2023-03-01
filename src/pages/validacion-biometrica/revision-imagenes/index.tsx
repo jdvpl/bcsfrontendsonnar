@@ -14,7 +14,7 @@ import { urlAndUtms } from '../../../utils/RouterUtmsUrl/index';
 import { SesionStorageKeys } from '../../../session/index';
 import { getProcessId } from '../../../utils';
 
-const KEY = process.env.KEYKYCHASH;
+const KEY = process.env.KEYENCRYPTADIGITAL;
 
 const RevisionImagenes: React.FC = () => {
   const router = useRouter();
