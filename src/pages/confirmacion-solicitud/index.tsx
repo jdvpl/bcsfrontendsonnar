@@ -148,18 +148,16 @@ function ApplicationApproval({ modalExit = false }: any) {
         <div className="listInitial md:w-[440px] sm:w-[343px] w-[293px] m-auto mt-8 font-montserratRegular text-primario-900">
           <ul className="">
             <li className="mt-3 text-lg font-light">
-              Descargue la carta de preaprobación.
+              Descargue la carta. Tenga presente que su preaprobación está sujeta a las políticas del Banco.
             </li>
             <li className="mt-3 text-lg font-light">
-              Uno de nuestros asesores lo contactará para acompañarlo en los próximos
-              pasos.
+              Entregue la carta para formalizar la compra o separación del inmueble al vendedor.
             </li>
             <li className="mt-3 text-lg font-light">
-              Reúna la documentación e inicie el proceso de legalización. Avalúo, estudio
-              de títulos y escrituración.
+              Realice la legalización del inmueble. (Avalúo, estudio de títulos y escrituración).
             </li>
             <li className="mt-3 text-lg font-light">
-              Reciba su vivienda y disfrute de este sueño cumplido.
+              Reciba su nueva vivienda y disfrute de este sueño cumplido.
             </li>
           </ul>
         </div>
