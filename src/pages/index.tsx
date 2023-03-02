@@ -26,6 +26,10 @@ export default function Home() {
     [device]
   );
   useEffect(() => {
+    console.log({ KEYENCRYPTADIGITAL: process.env.KEYENCRYPTADIGITAL });
+    console.log({ KEYSESSIONSTORAGE: process.env.KEYSESSIONSTORAGE });
+    console.log({ TAGMANAGER: process.env.TAGMANAGER });
+    console.log({ APIURLMORTGAGE: process.env.APIURLMORTGAGE });
     TagManager.dataLayer({
       dataLayer: {
         event: 'load_landing',
