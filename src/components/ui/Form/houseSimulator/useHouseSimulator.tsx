@@ -45,7 +45,7 @@ export default function useHouseSimulator({
     const body: iFormDataSimulation = {
       typeHouse: formData?.typeHouse,
       houseValue: Math.floor(formData.houseValue),
-      financeValue: formData.financeValue,
+      financeValue: Math.floor(formData.financeValue),
       termFinance: formData?.termFinance,
       percentageFinance,
       insuranceCheck,
