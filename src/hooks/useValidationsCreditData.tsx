@@ -158,7 +158,7 @@ export default function useValidations(
       personalData: {
         middleName: '',
         secondLastName: '',
-        basicDataUser,
+        ...basicDataUser,
         ...dataBasicData,
         age: calculateAgeMethod2(dataBasicData?.birthDate),
       },
