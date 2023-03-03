@@ -166,7 +166,6 @@ export default function useValidations(
     };
 
     const data: any = await riskBoxes(body);
-    console.log(data)
 
     if (!data?.response?.error) {
       setApplicationResponse({data});
@@ -174,6 +173,9 @@ export default function useValidations(
       setCurrentRouting(routes.creditData, false);
       setCurrentRouting(routes.ResumenSolicitud);
       router.push(routes.ResumenSolicitud);
+    }else{
+      router.push(routes.errorValidacion);
+
     }
   };
 
