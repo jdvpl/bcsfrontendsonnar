@@ -8,6 +8,8 @@ const { allResponse, allResponseDecrypted } = useAES();
 import { iPdfLetter } from '../interfaces/ipdfLetter'
 
 const KEY = process.env.KEYENCRYPTADIGITAL;
+
+console.log("KEY to decrypt data", { KEY })
 //? this save the authorization data.
 /**
  * It sends a POST request to the backend with the body of the request being the body parameter
@@ -45,13 +47,17 @@ export const sendAuthorization = async (body: any) => {
  */
 export const getQuestions = async (data: any) => {
   try {
+    console.log({ bodyAllowList: data });
     const dataInfo = await allResponse(data, KEY);
+    console.log({ bodyEncritedAllowList: dataInfo })
     const { data: response } = await clientAxiosBackend.post(
       '/api-composer/composer/allow-list',
       { data: dataInfo },
       headersBack
     );
+    console.log({ bodyResponseEncriptedAllowList: response })
     const infoAllow = await allResponseDecrypted(response.data, KEY);
+    console.log({ bodyDescencriptedAllowListResponse: infoAllow })
     return {
       response: {
         result: response.result,

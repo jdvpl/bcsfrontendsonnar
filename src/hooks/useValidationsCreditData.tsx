@@ -39,6 +39,7 @@ export default function useValidations(
     {}
   );
   const [dataBasicData] = useSessionStorage(SesionStorageKeys?.dataBasicData.key, {});
+  const [basicDataUser] = useSessionStorage(SesionStorageKeys?.basicDataUser.key, {});
   const [dataTu] = useSessionStorage(SesionStorageKeys?.dataUser.key, {});
   const [, setApplicationResponse] = useSessionStorage(
     SesionStorageKeys?.applicationResponse.key,
@@ -162,6 +163,7 @@ export default function useValidations(
       personalData: {
         middleName: '',
         secondLastName: '',
+        ...basicDataUser,
         ...dataBasicData,
         age: calculateAgeMethod2(dataBasicData?.birthDate),
       },
@@ -177,6 +179,9 @@ export default function useValidations(
       setCurrentRouting(routes.creditData, false);
       setCurrentRouting(routes.ResumenSolicitud);
       router.push(routes.ResumenSolicitud);
+    }else{
+      router.push(routes.errorValidacion);
+
     }
   };
 

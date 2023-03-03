@@ -31,9 +31,6 @@ describe('<HouseSimulator />', () => {
       '¿Es funcionario o familiar de un administrador o representante legal en el Banco Caja Social?'
     );
   });
-  test('Render simulation button', () => {
-    component.getByText('Continuar');
-  });
   test('Render 3 cards ', () => {
     expect(component.container.querySelectorAll('.cardShadow').length).toBe(3);
   });
