@@ -154,7 +154,12 @@ export default function useValidations(
         office,
         stratum,
       },
-      financialData: financialDataForm,
+      financialData: {
+        ...financialDataForm,
+        contractType: financialDataForm?.contractType || '',
+        employeeYear: financialDataForm?.employeeYear || '',
+        employeeMonth: financialDataForm?.employeeMonth || '',
+      },
       personalData: {
         middleName: '',
         secondLastName: '',
@@ -166,9 +171,10 @@ export default function useValidations(
     };
 
     const data: any = await riskBoxes(body);
+    console.log(data);
 
     if (!data?.response?.error) {
-      setApplicationResponse({data});
+      setApplicationResponse({ data });
       setCurrentRouting(routes.finalcialData, false);
       setCurrentRouting(routes.creditData, false);
       setCurrentRouting(routes.ResumenSolicitud);
