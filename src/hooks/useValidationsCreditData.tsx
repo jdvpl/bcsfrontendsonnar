@@ -159,6 +159,7 @@ export default function useValidations(
         contractType: financialDataForm?.contractType || '',
         employeeYear: financialDataForm?.employeeYear || '',
         employeeMonth: financialDataForm?.employeeMonth || '',
+        enterprise: financialDataForm?.enterprise || '',
       },
       personalData: {
         middleName: '',
