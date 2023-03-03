@@ -35,4 +35,6 @@ export default function useValidateAge(
     validateAge();
     handleClearErrors();
   }, [day, month, year]);
+
+  return { handleClearErrors, validateAge };
 }

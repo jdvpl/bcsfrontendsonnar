@@ -14,24 +14,26 @@ export default function useConsultancyTutorial({
   const intervalRef = useRef<number>();
 
   const onHandleModal = () => {
+    clearStylesPrevStep();
+    clearStylesNextStep();
     setIsOpen(!isOpen);
   };
   const clearStylesPrevStep = () => {
     prevTutorialStepRef?.current?.classList?.remove('z-[95]');
-    prevTutorialStepRef?.current?.classList?.remove('text-white');
+    prevTutorialStepRef?.current?.classList?.remove('text-white','underline');
     prevTutorialStepRef?.current
       ?.querySelector('div')
       .classList?.add('border-primario-20');
-    prevTutorialStepRef?.current?.querySelector('a')?.classList?.add('text-primario-20');
+    prevTutorialStepRef?.current?.querySelector('a')?.classList?.add('text-primario-100','text-semibold');
     prevTutorialStepRef?.current?.querySelector('i')?.classList?.add('text-primario-20');
   };
   const clearStylesNextStep = () => {
     nextTutorialStepRef?.current?.classList?.remove('z-[95]');
-    nextTutorialStepRef?.current?.classList?.remove('text-white');
+    nextTutorialStepRef?.current?.classList?.remove('text-white','underline');
     nextTutorialStepRef?.current
       ?.querySelector('div')
       .classList?.add('border-primario-20');
-    nextTutorialStepRef?.current?.querySelector('a')?.classList?.add('text-primario-20');
+    nextTutorialStepRef?.current?.querySelector('a')?.classList?.add('text-primario-100','text-semibold');
     nextTutorialStepRef?.current?.querySelector('i')?.classList?.add('text-primario-20');
   };
   const handelActualStep = () => {
@@ -51,33 +53,31 @@ export default function useConsultancyTutorial({
           <>
             <Typography
               variant="h2"
-              className="text-center mx-auto text-white xs:text-[20px] md:text-[28px] xl:text-[28px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
+              className="font-montserratSemiBold xl:leading-[34px] md:leading-[30px] xs:leading-[22px] text-center mx-auto text-white xs:text-[18px] md:text-[26px] xl:text-[28px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
             >
-              Acompáñenos en un corto recorrido antes de iniciar la asesoría y conozca
-              cómo navegar en ella.
+              Acompáñenos en un corto recorrido antes de iniciar la guía interactiva y
+              conozca como navegar en ella.
             </Typography>
             <div className="w-[full] flex flex-col items-center xl:mt-[48px] md:mt-[60px] sm:mt-[46px] xs:mt-[36px]">
               <Button
                 data-testid="nextStep"
                 disabled={!(timer === 0)}
                 onClick={handelActualStep}
-                isLanding="sm:w-[343px] xs:w-[284.17px]"
+                isLanding="sm:w-[343px] xs:w-[284.17px] font-montserratRegular font-medium"
               >
                 Continuar
               </Button>
               <button
                 onClick={onHandleModal}
-                className="text-[18px] text-white font-semibold mx-auto mt-[46px] xs:mb-[42px] md:mb-[49px] xl:mb-[42px]"
+                className="text-[18px] text-white font-montserratRegular font-medium mx-auto mt-[46px] xs:mb-[42px] md:mb-[49px] xl:mb-[42px]"
               >
                 Omitir
               </button>
 
-              {timer > 0 ? (
-                <div className="flex gap-[5px]">
-                  <Icons icon="bcs-clock" iconclassNames="text-white text-[14px]" />{' '}
-                  <span className="text-white text-[14px]"> {timer} Segundos</span>
-                </div>
-              ) : null}
+              <div className="flex gap-[5px]">
+                <Icons icon="bcs-clock" iconclassNames="text-white text-[14px]" />{' '}
+                <span className="text-white text-[14px] font-montserratRegular font-medium"> {timer} Segundos</span>
+              </div>
             </div>
           </>
         );
@@ -89,13 +89,16 @@ export default function useConsultancyTutorial({
           offsetHeight: offsetHeightP,
         } = prevTutorialStepRef?.current;
 
-        prevTutorialStepRef?.current?.classList?.add('z-[95]', 'text-white');
+        prevTutorialStepRef?.current?.classList?.add('z-[95]', 'text-white','underline');
         prevTutorialStepRef?.current
           ?.querySelector('div')
           .classList?.remove('border-primario-20');
+          prevTutorialStepRef?.current
+          ?.querySelector('a')
+          .classList?.add('w-[150px]');
         prevTutorialStepRef?.current
           ?.querySelector('a')
-          .classList?.remove('text-primario-20');
+          .classList?.remove('text-primario-100','font-bold');
         prevTutorialStepRef?.current
           ?.querySelector('i')
           .classList?.remove('text-primario-20');
@@ -111,17 +114,17 @@ export default function useConsultancyTutorial({
             >
               <div className="bg-white w-[90px] h-[90px] absolute translate-y-[100%] left-[33px] rotate-45"></div>
               <div
-                className={`bg-white rounded-lg w-[253px]  pt-[41px] pb-[31px] absolute flex flex-col items-center  gap-y-[28px] h-[171px]`}
+                className={`bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute flex flex-col items-center  gap-y-[28px] h-[171px]`}
               >
                 <p
                   data-testid="text-next-step"
-                  className="text-[18px] w-full pl-[30px] font-semibold leading-[20px] text-primario-900"
+                  className="z-40 text-[16px] font-medium font-montserratMedium text-center mx-auto leading-[20px] text-primario-900"
                 >
-                  Para salir de la asesoría haga clic aquí.
+                  Para salir de la guía interactiva haga clic aquí.
                 </p>
                 <button
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-centermx-auto"
+                  className="text-primario-20 w-fit text-center font-montserratMedium mx-auto"
                 >
                   Siguiente
                 </button>
@@ -138,14 +141,14 @@ export default function useConsultancyTutorial({
             >
               <div className="bg-white w-[90px] h-[90px] absolute top-[50%] translate-y-1/2 bottom-0 left-0 rotate-45"></div>
               <div
-                className={`bg-white rounded-lg w-[253px]  pt-[41px] pb-[31px] absolute  md:flex flex-col items-center gap-y-[28px] h-[171px]`}
+                className={`bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute  md:flex flex-col items-center gap-y-[28px] h-[171px]`}
               >
-                <p className="text-[18px] w-full pl-[30px] font-semibold leading-[20px] text-primario-900">
-                  Para salir de la asesoría haga clic aquí.
+                <p className="z-40 text-[16px]  text-center mx-auto  font-medium font-montserratMedium leading-[20px] text-primario-900">
+                  Para salir de la guía interactiva haga clic aquí.
                 </p>
                 <button
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-centermx-auto"
+                  className="text-primario-20 w-fit text-center font-montserratMedium mx-auto"
                 >
                   Siguiente
                 </button>
@@ -160,13 +163,13 @@ export default function useConsultancyTutorial({
           offsetTop: offsetTopN,
           offsetHeight: offsetHeightN,
         } = nextTutorialStepRef?.current;
-        nextTutorialStepRef?.current?.classList.add('z-[95]', 'text-white');
+        nextTutorialStepRef?.current?.classList.add('z-[95]', 'text-white','underline');
         nextTutorialStepRef?.current
           ?.querySelector('div')
           ?.classList.remove('border-primario-20');
         nextTutorialStepRef?.current
           ?.querySelector('a')
-          ?.classList.remove('text-primario-20');
+          ?.classList.remove('text-primario-100','font-bold');
         nextTutorialStepRef?.current
           ?.querySelector('i')
           ?.classList.remove('text-primario-20');
@@ -181,14 +184,14 @@ export default function useConsultancyTutorial({
             >
               <div className="bg-white w-[90px] h-[90px] absolute rotate-45 translate-y-[100%] right-[33px]"></div>
               <div
-                className={`z-[100]  bg-white rounded-lg w-[253px]  pt-[41px] pb-[31px] absolute flex flex-col items-center justify-center gap-y-[28px] h-[171px]`}
+                className={`z-[100]  bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute flex flex-col items-center justify-center gap-y-[28px] h-[171px]`}
               >
-                <p className="text-[18px] w-full pl-[30px] font-semibold leading-[20px] text-primario-900">
-                  Para continuar con la asesoría haga clic aquí.
+                <p className="z-40 text-[16px]  text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
+                  Para continuar con la guía interactiva haga clic aquí.
                 </p>
                 <button
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-centermx-auto"
+                  className="text-primario-20 w-fit text-center font-montserratMedium mx-auto"
                 >
                   Siguiente
                 </button>
@@ -204,14 +207,14 @@ export default function useConsultancyTutorial({
             >
               <div className="bg-white w-[90px] h-[90px] absolute top-[50%] translate-y-1/2 bottom-0 right-0 rotate-45"></div>
               <div
-                className={`z-[100] sm:hidden bg-white rounded-lg w-[253px]  pt-[41px] pb-[31px] absolute  md:flex flex-col items-center justify-center gap-y-[28px] h-[171px]`}
+                className={`z-[100] sm:hidden bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute  md:flex flex-col items-center justify-center gap-y-[28px] h-[171px]`}
               >
-                <p className="text-[18px] w-full pl-[30px] font-semibold leading-[20px] text-primario-900">
-                  Para continuar con la asesoría haga clic aquí.
+                <p className="z-40 text-[16px] p-0  text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
+                  Para continuar con la guía interactiva haga clic aquí.
                 </p>
                 <button
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-centermx-auto"
+                  className="text-primario-20 w-fit text-center font-montserratMedium mx-auto"
                 >
                   Siguiente
                 </button>
@@ -233,7 +236,7 @@ export default function useConsultancyTutorial({
                      bg-primario-100`}
                 >
                   <div className="flex justify-center">
-                    <span className={`text-center text-white text-[18px] p-0`}>
+                    <span className={`text-center text-white text-[18px] p-0 font-medium font-montserratMedium`}>
                       Tema {item}
                     </span>
                   </div>
@@ -245,14 +248,14 @@ export default function useConsultancyTutorial({
             <div className="relative xs:hidden md:flex md:order-2">
               <div className="bg-white w-[90px] h-[90px] absolute z-9 translate-y-[50%] left-[0px] rotate-45"></div>
               <div
-                className={`bg-white rounded-lg w-[253px] z-10 pt-[41px] pb-[31px] flex flex-col items-center  gap-y-[28px] h-[171px]`}
+                className={`bg-white rounded-lg w-[253px] z-10 px-[30px] pt-[31px] pb-[31px] flex flex-col items-center h-[171px]`}
               >
-                <p className="text-[18px] w-full pl-[30px] font-semibold leading-[20px] text-primario-900">
+                <p className="z-40 text-[16px] w-[199px] mb-[20px] text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
                   Seleccione cada botón para conocer el detalle de su enunciado.
                 </p>
                 <button
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-centermx-auto"
+                  className="text-primario-20 w-fit text-center font-montserratMedium mx-auto"
                 >
                   Siguiente
                 </button>
@@ -263,14 +266,14 @@ export default function useConsultancyTutorial({
             <div className="relative md:hidden xs:flex- md:order-2 xs:order-1">
               <div className="bg-white w-[90px] h-[90px] absolute z-9 translate-y-[100%] translate-x-[-50%] left-[50%] rotate-45"></div>
               <div
-                className={`bg-white rounded-lg w-[253px] z-40 pt-[41px] pb-[31px] flex flex-col items-center gap-y-[28px] h-[171px]`}
+                className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[31px] pb-[31px] flex flex-col items-center h-[171px]`}
               >
-                <p className="pb-[0px] text-[18px] w-full pl-[30px] pr-[20px] z-40 font-semibold leading-[20px] text-primario-900">
+                <p className="z-40 text-[18px] mb-[10px] w-[200px] text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
                   Seleccione cada botón para conocer el detalle de su enunciado.
                 </p>
                 <button
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-centermx-auto z-40"
+                  className="text-primario-20 w-fit text-center font-montserratMedium mx-auto z-40"
                 >
                   Siguiente
                 </button>
@@ -287,16 +290,16 @@ export default function useConsultancyTutorial({
                 <div className="bg-white w-[90px] h-[90px] absolute z-9 translate-y-[100%] translate-x-[-50%] left-[50%] rotate-45"></div>
 
                 <div
-                  className={`bg-white rounded-lg w-[253px] z-40 pt-[41px] pb-[31px] flex flex-col items-center gap-y-[28px] h-[171px]`}
+                  className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center  h-[171px]`}
                 >
-                  <p className="pb-[0px] text-[18px] w-full pl-[30px] pr-[20px] z-40 font-semibold leading-[20px] text-primario-900">
+                  <p className="z-40 text-[18px] w-[200px] mb-[20px] text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
                     Para cerrar la ventana, haga clic aquí.
                   </p>
                   <button
                     onClick={handelActualStep}
-                    className="text-primario-20 w-fit text-centermx-auto z-40"
+                    className="text-primario-20 w-fit text-center font-montserratMedium mx-auto z-40"
                   >
-                    Siguiente
+                    Terminar
                   </button>
                 </div>
               </div>
@@ -317,7 +320,7 @@ export default function useConsultancyTutorial({
                       <span
                         className={`text-center ${
                           item === 1 ? 'text-white' : 'text-primario-100'
-                        }  text-[18px] p-0`}
+                        }  text-[18px] p-0 font-medium font-montserratMedium`}
                       >
                         Tema {item}
                       </span>
@@ -333,16 +336,16 @@ export default function useConsultancyTutorial({
                   <div className="xs:hidden md:block md:order-2 xs:order-1 absolute top-[-240px] right-0">
                     <div className="bg-white w-[90px] h-[90px] absolute z-9 translate-y-[100%] translate-x-[-85%] left-[85%] rotate-45"></div>
                     <div
-                      className={`bg-white rounded-lg w-[253px] z-40 pt-[41px] pb-[31px] flex flex-col items-center gap-y-[28px] h-[171px]`}
+                      className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center gap-y-[28px] h-[171px]`}
                     >
-                      <p className="pb-[0px] text-[18px] w-full pl-[30px] pr-[20px] z-40 font-semibold leading-[20px] text-primario-900">
+                      <p className="z-40 text-[18px] w-[200px] text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
                         Para cerrar la ventana, haga clic aquí.
                       </p>
                       <button
                         onClick={handelActualStep}
-                        className="text-primario-20 w-fit text-centermx-auto z-40"
+                        className="text-primario-20 w-fit text-center font-montserratMedium mx-auto z-40"
                       >
-                        Siguiente
+                        Terminar
                       </button>
                     </div>
                   </div>
@@ -352,10 +355,10 @@ export default function useConsultancyTutorial({
                       <Close />
                     </div>
                   </div>
-                  <span className="font-semibold text-primario-900 lg:text-[20px] text-[16px]">
+                  <span className="font-semibold text-primario-900 font-montserratMedium lg:text-[20px] text-[16px]">
                     Texto descriptivo
                   </span>
-                  <p className="break-words">
+                  <p className="break-words lg:font-heading font-medium font-montserratMedium">
                     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
                   </p>
                 </div>
@@ -371,13 +374,17 @@ export default function useConsultancyTutorial({
             </div>
             <Typography
               variant="h2"
-              className="text-center mx-auto text-white xs:text-[20px] md:text-[28px] xl:text-[28px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
+              className="xl:leading-[34px] md:leading-[30px] xs:leading-[22px] font-poppinsSemiBold text-center mx-auto text-white xs:text-[20px] md:text-[28px] lg:text-[32px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
             >
-              El recorrido ha terminado. ¡Está listo para continuar!
+              El recorrido ha terminado.
+              <br /> ¡Está listo para continuar!
             </Typography>
             <div className="w-[full] flex flex-col items-center xl:mt-[48px] md:mt-[60px] sm:mt-[46px] xs:mt-[36px]">
-              <Button onClick={onHandleModal} isLanding="sm:w-[343px] xs:w-[284.17px]">
-                Iniciar asesoría
+              <Button
+                onClick={onHandleModal}
+                isLanding="sm:w-[343px] xs:w-[284.17px] text-[18px] font-medium font-montserratMedium"
+              >
+                Iniciar guía interactiva
               </Button>
             </div>
           </>

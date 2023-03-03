@@ -2,7 +2,7 @@ import React from 'react';
 import '@testing-library/jest-dom';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { ValidationForm, Question, FormProps } from '../../../../components/ui/Form/ValidationForm';
-import { debug } from 'console';
+
 const fn = jest.fn()
 describe('Visibility of the ValidationForm', () => {
   const onSubmit = jest.fn();
@@ -19,7 +19,6 @@ describe('Visibility of the ValidationForm', () => {
     },
   ];
   const props: FormProps = { onSubmit, questions };
-  debug(questions)
   it('render component ', async () => {
     render(<ValidationForm onSubmit={fn} questions={[]} />);
     const component = screen.getByTestId(`validationForm`);
@@ -35,7 +34,6 @@ describe('Visibility of the ValidationForm', () => {
     const { getByLabelText, getByText } = render(<ValidationForm {...props} />);
     const input1 = getByText(questions[0].description);
     fireEvent.click(input1);
-
   });
   it('should update the current state and add the answer to the responses array when selecting a closed question option', () => {
     const { getByText } = render(
@@ -56,6 +54,4 @@ describe('Visibility of the ValidationForm', () => {
     const option1 = getByText('Opción 1');
     fireEvent.click(option1);
   });
-
-
 });

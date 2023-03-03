@@ -9,6 +9,7 @@ import Input from '../inputs';
 import LogoForm from '../../svg/LogoForm';
 import ReactHookFormSelect from '../Select/newSelect';
 import Typography from '../Typography';
+import useMediaQueryResponsive from '../../../hooks/useMediaQuery';
 
 interface FormProps {
   onSubmit: (data: FormData) => void;
@@ -84,6 +85,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
       setDisable(true);
     }
   }, [documentNumber, documentType]);
+  const { heightHeader } = useMediaQueryResponsive();
 
   return (
     <form
@@ -95,15 +97,15 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
       <Typography variant="h2" className="text-center text-primario-900">
         Bienvenido a
       </Typography>
-      <figure itemProp="logo" className="flex justify-center">
-        <LogoForm />
+      <figure itemProp="logo" className="flex justify-center lg:w-[300px] md:w-[240px] w-[250px] m-auto mt-4">
+        <LogoForm height={heightHeader} />
       </figure>
 
       <div className="text-gray-100">
         <div>
           <Typography
             variant="bodyM4"
-            className="m-auto text-center mb-[36px] mt-[24px] text-[18px] text-complementario-100 sm:w-[306px]"
+            className="m-auto text-center mb-[36px] lg:mt-[24px] md:mt-[10px] text-[18px] text-complementario-100 sm:w-[306px] lg:w-[629px] md:w-[311px]"
           >
             Para iniciar la solicitud de su crédito ingrese los siguientes datos.
           </Typography>

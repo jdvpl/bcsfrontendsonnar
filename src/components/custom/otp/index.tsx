@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, FC } from 'react';
 import OtpInput from 'react-otp-input-rc-17';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../session';
@@ -8,19 +8,27 @@ import { OTLoader } from '../../ui/Loaders/OTPloader';
 import Typography from '../../ui/Typography';
 import useOtp from './useOtp';
 import { reSendOTPCode, validateOTOCode } from '../../../services';
+import useProtectedRoutes from '../../../hooks/useProtectedRoutes';
 
+interface otpProps {
+  otc?: boolean;
+}
 export interface ValidateOTC {
   pin: string;
   document_number: string;
   document_type: string;
+  processId: string;
+  otc?: boolean
 }
 export interface OTPCodeRequest {
   document_type: string;
   document_number: string;
   phone: string;
+  processId: string;
+  otc?: boolean
 }
 
-export function Otp() {
+const Otp: FC<otpProps> = ({ otc }) => {
   const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const [otp, setOtp] = useState<string>('');
   const [isValid, setIsValid] = useState<boolean>(false);
@@ -30,6 +38,10 @@ export function Otp() {
   const intervalRef = useRef<number>();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
+  const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
+
+  const { setCurrentRouting } = useProtectedRoutes();
+
   const { onValidateOTP, onResendOTP } = useOtp({
     setIsLoading,
     dataTU,
@@ -42,8 +54,10 @@ export function Otp() {
     router,
     reSendOTPCode,
     validateOTOCode,
+    dataQuestions,
+    otc,
+    setCurrentRouting
   });
-
   useEffect(() => {
     if (otp?.length === 6) {
       onValidateOTP();
@@ -65,18 +79,23 @@ export function Otp() {
     }
   }, [timer]);
 
+
   return (
     <div className="w-scren flex flex-col items-center">
       <h4
         id="title"
-        className="font-semibold text-[20px] text-primario-900 text-center mt-[40px] mb-[36px]  md:mt-[64px]  md:mb-[52px] lg:mb-[36px]"
+        className="font-semibold text-[20px] text-primario-900 text-center mt-[40px] mb-[36px]  md:mt-[64px]  md:mb-[52px] lg:mb-[36px] font-poppinsSemiBold"
         data-testid="h4OtpText"
       >
-        Ingrese el código enviado por <br /> sms a su celular +57
-        {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : ''}
+        {
+          otc ? <span>Ingrese el código enviado  a su <br />celular y correo electrónico</span> : <span>
+            Ingrese el código enviado por <br /> sms a su celular +57
+            {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : ''}
+          </span>
+        }
       </h4>
 
-      <div className="text-normal mb-[12px]">
+      <div className="text-normal mb-[24px]">
         <OtpInput
           className="otp-div"
           value={otp}
@@ -105,14 +124,14 @@ export function Otp() {
       </div>
 
       {(isLoading || error || isValid) && (
-        <div className={`"w-[33px] h-[48px] mb-[12px]" flex flex-col items-center`}>
+        <div className={`"w-[33px] h-[48px] mb-[24px]" flex flex-col items-center`}>
           {isLoading && <OTLoader />}
           {error && (
             <div className="w-[294px] h-[28px] bg-[#ffd4ce40] px-[9px] py-[8px] flex items-center rounded-[4px]">
               <Icons icon="bcs-advertising" size="text-rojo-200 mr-[10px]" />
               <Typography
                 variant="caption4"
-                className="font-normal text-rojo-200 text-[12px]"
+                className="font-normal text-rojo-200 text-[12px] font-montserratRegular"
               >
                 Código inválido, intente nuevamente
               </Typography>
@@ -131,11 +150,10 @@ export function Otp() {
         <Typography
           onClick={onResendOTP}
           variant="caption1"
-          className={`text-[14px] leading-4 ${
-            timer === 0 && wasResend === false
-              ? 'text-primario-20 cursor-pointer'
-              : 'text-gris-200'
-          } mb-[12px]`}
+          className={`text-[14px] font-montserratRegular leading-4 ${timer === 0 && wasResend === false
+            ? 'text-primario-20 cursor-pointer'
+            : 'text-gris-200'
+            } mb-[12px]`}
         >
           {timer === 0 && wasResend === false
             ? 'Volver a enviar código'
@@ -146,7 +164,7 @@ export function Otp() {
       {timer === 0 || isValid ? null : (
         <div className="flex justify-center items-center gap-1">
           <Icons icon="bcs-clock" size="text-gris-30 font-semibold" />
-          <Typography variant="caption2" className="text-gris-30 font-semibold">
+          <Typography variant="caption2" className="text-gris-30 font-semibold font-montserratRegular">
             {timer} segundos
           </Typography>
         </div>
@@ -154,3 +172,5 @@ export function Otp() {
     </div>
   );
 }
+
+export default Otp;

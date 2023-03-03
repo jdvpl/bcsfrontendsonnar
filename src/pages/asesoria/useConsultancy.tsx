@@ -1,7 +1,8 @@
+import React from 'react';
 import { initialOptions } from '../../lib/consultancy';
 import { routes } from '../../routes';
 import Button from '../../components/ui/Button';
-import React from 'react'
+
 export default function useConsultancy({
   actualStep,
   setActualStep,
@@ -38,18 +39,16 @@ export default function useConsultancy({
     setItemActive('');
   };
 
-  const renderContent = () => {
-    return (
-      <div className="lg:w-[411px] text-[14px]">
-        <span className="font-semibold text-primario-900 lg:text-[20px] text-[16px]">
-          {itemActive}
-        </span>
-        {initialOptions[actualStep - 1]?.[activeIndex]?.content()}
-      </div>
-    );
-  };
+  const renderContent = () => (
+    <div className="lg:w-[411px] text-[14px]">
+      <span className="font-montserratSemiBold font-semibold text-primario-900 lg:text-[20px] text-[16px]">
+        {itemActive}
+      </span>
+      {initialOptions[actualStep - 1]?.[activeIndex]?.content()}
+    </div>
+  );
 
-  const OptionList = () => {
+  function OptionList() {
     return (
       <>
         {initialOptions[actualStep - 1]?.map((option: any, index: number) => (
@@ -57,15 +56,21 @@ export default function useConsultancy({
             key={option?.label}
             onClick={() => openModal(option?.label, index)}
             variant="secondary"
-            isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%] font-semibold rounded-[8px] lg:h-48px ${itemActive === option?.label ? 'bg-primario-100' : ''
-              }
-                ${itemActive && !isMobile === option?.label ? 'translate-x-[16px]' : ''}
-                `}
+            border="0.5"
+            isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%] font-semibold font-montserratRegular rounded-[8px] lg:h-48px ${
+              itemActive === option?.label ? 'bg-primario-100' : ''
+            }
+                ${
+                  itemActive === option?.label && isMobile === false
+                    ? 'translate-x-[16px]'
+                    : ''
+                }`}
           >
             <div className="flex justify-center">
               <span
-                className={`text-center ${itemActive === option?.label ? 'text-white' : 'text-primario-100'
-                  } text-[18px] p-0`}
+                className={`text-center ${
+                  itemActive === option?.label ? 'text-white' : 'text-primario-100'
+                } text-[18px] p-0`}
               >
                 {option?.label}
               </span>
@@ -74,7 +79,7 @@ export default function useConsultancy({
         ))}
       </>
     );
-  };
+  }
 
   return {
     nextStep,

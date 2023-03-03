@@ -2,16 +2,18 @@ export const routes = {
   home: '/',
   startProccess: '/inicio-solicitud',
   ratings: '/calificacion-solicitud',
-  otp: 'validacion-otp',
+  otp: '/validacion-otp',
+  otc: '/validacion-otc',
   validacionIdentidad: '/validacion-identidad',
   validacionBiometrica: '/validacion-biometrica',
-  validacionErrorValidacionIdentidad: '/validacion/error-validacionIdentidad/',
+  validacionErrorValidacionIdentidad: '/validacion/error-validacionIdentidad',
   validacionErrorPreguntas: 'validacion/error-validacion-identidad-preguntas',
   validacionErrorIntentos: 'validacion/error-numero-intentos',
   validacionErrorBloqueo: 'validacion/error-bloqueo',
-  errorValidacion: '/validacion/error/',
+  errorValidacion: '/validacion/error-validacion/',
   validacionErrorDiario: '/validacion/error-validacionDiario/',
   validacionBlock: '/validacion/error-validacionBlock/',
+  errorCreditBankApplication: '/validacion/rechazo-solicitud',
   inactivityScreen: '/inactividad',
   simulador: '/simulador',
   simuladorResumen: '/simulador/resumen',
@@ -24,5 +26,9 @@ export const routes = {
   creditData: '/datos-credito',
   summaryApprovalPage: '/',
   approvalDataPage: '/confirmacion-solicitud',
-  ResumenSolicitud: '/resumen-solicitud'
+  ResumenSolicitud: '/resumen-solicitud',
+  servicError: '/validacion/error-servicio',
+  validacionSucursalError: '/validacion/error-validacionSucursal',
+  validacionError: '/validacion/error'
+
 };

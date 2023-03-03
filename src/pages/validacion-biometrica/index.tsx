@@ -18,7 +18,7 @@ import NavTitle from '../../components/commons/NavTitle';
 import { basePath } from '../../../next.config';
 import ContainerButtonForm from '../../components/ui/Form/ContainerButtonForm';
 
-const KEY = process.env.KEYKYCHASH;
+const KEY = process.env.KEYENCRYPTADIGITAL;
 
 const CardImage: React.FC<childrenProps> = ({ children }) => (
   <div className="flex mr-6 minw-64">{children}</div>
@@ -32,46 +32,7 @@ const ValidationMessage: React.FC = () => {
   const [loaded] = useState(false);
   const { allResponse } = useAES();
 
-  // const beginBiometry = async () => {
-  //   const requestHeaders: HeadersInit = new Headers();
-  //   requestHeaders.set('x-mock-match-request-body', 'true');
-  //   requestHeaders.set('Content-Type', 'application/json');
-  //   requestHeaders.set('App-Name', 'ADIGITAL');
-  //   const body = {
-  //     document_type: dataTU.document_type,
-  //     document_number: dataTU.document_number,
-  //   };
-  //   const bodyEncript = await allResponse(body, KEY);
-  //   try {
-  //     const response = await fetch(
-  //       `${process.env.KYCAPIURL}/identity-user/biometry`,
-  //       {
-  //         method: 'POST',
-  //         headers: requestHeaders,
-  //         body: JSON.stringify({
-  //           data: bodyEncript,
-  //         }),
-  //       }
-  //     );
-  //     if (response.ok) {
-  //       setValidated(false);
-  //       setShowAnimation(false);
-  //     } else if (response.status === 403) {
-  //       setValidated(false);
-  //       setShowAnimation(false);
-  //       const dataResponse: any = await response.json();
-  //       if (dataResponse.internal_code === 'VQ-01') {
-  //         setTimeout(() => urlAndUtms(router, '/'), 100);
-  //       } else {
-  //         setTimeout(() => urlAndUtms(router, '/validacion/error'), 100);
-  //       }
-  //     } else {
-  //       urlAndUtms(router, '/validacion/error');
-  //     }
-  //   } catch (e: any) {
-  //     urlAndUtms(router, '/validacion/error');
-  //   }
-  // };
+  
   const scrollBody = () => {
     if (typeof window === 'object') {
       document.body.classList.remove('body-scroll-hidden');
@@ -83,7 +44,6 @@ const ValidationMessage: React.FC = () => {
       setShowAnimation(false);
       setValidated(false);
     } else if (isMobile || isTablet || window.innerWidth <= 1000) {
-      console.log("is mobile")
     }
   }, []);
 
@@ -114,33 +74,31 @@ const ValidationMessage: React.FC = () => {
           <div>
             <div className="pt-3 md:pt-0 w-full lg:mt-10">
               <Stepper
-                steps={1}
-                actualStep={0}
+                steps={5}
+                actualStep={1}
                 title="Validación de identidad"
               />
             </div>
             <Heading>
               Por seguridad pediremos tomar foto de su cédula, para validar su identidad.
             </Heading>
-            &nbsp;
-            <br />
-            <div className="flex justify-center pb-28 mt-[32px] md:mt-[52px]">
+            <div className="flex justify-center pb-28 mt-2">
               <div className=" w-[343px]">
                 <p
                   tabIndex={0}
                   role="paragraph"
-                  className="font-semibold text-lg leading-5 text-primario-900 "
+                  className="font-normal text-lg leading-5 text-primario-900 font-montserratRegular m-0 p-0 text-center"
                 >
                   Tenga en cuenta estos consejos:&nbsp;
                 </p>
-                <div className="flex flex-col  mt-[26px] md:mt-[28px] space-y-[24px]">
+                <div className="flex flex-col  mt-[36px] md:mt-[36px] space-y-[24px]">
                   <div>
                     <div className="flex">
                       <CardImage>
                         <Image
                           unoptimized
                           src={`${basePath}/images/new1.svg`}
-                          className="mw-64 hw-64"
+                          className="mw-64 hw-64 font-montserratRegular"
                           alt="celular"
                           title="celular"
                           width="64"
@@ -150,7 +108,7 @@ const ValidationMessage: React.FC = () => {
                       <p
                         tabIndex={0}
                         role="paragraph"
-                        className="text-primario-900 font-normal text-base leading-[18px] pr-6"
+                        className="text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
                       >
                         Tome la foto en un lugar con luz, preferiblemente luz natural
                         evitando brillos y reflejos.
@@ -191,7 +149,7 @@ const ValidationMessage: React.FC = () => {
                       <p
                         tabIndex={0}
                         role="paragraph"
-                        className="text-primario-900 font-normal text-base leading-[18px] pr-6"
+                        className="text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
                       >
                         Tome la foto con el celular en posición horizontal.
                       </p>
@@ -230,7 +188,7 @@ const ValidationMessage: React.FC = () => {
                     <p
                       tabIndex={0}
                       role="paragraph"
-                      className="text-primario-900 font-normal text-base leading-[18px] pr-6"
+                      className="text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
                     >
                       Asegúrese de que su cédula no tenga imperfecciones.
                     </p>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
 import { deviceType } from 'react-device-detect';
 import LogoBcs from '../../components/svg/LogoBcs'
@@ -6,71 +6,38 @@ import LogoForm from '../../components/svg/LogoForm'
 import { basePath } from '../../../next.config';
 import Typography from '../../components/ui/Typography';
 import Button from '../../components/ui/Button'
-import { routes } from '../../routes';
 import Icons from '../../components/ui/icons';
-import { getQuestions } from '../../services';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../session';
 import AnimationComponent from '../../components/commons/Animation';
+import TagManager from 'react-gtm-module';
+import useAuthentication from '../../hooks/useAuthentication'
+import useProtectedRoutes from '../../hooks/useProtectedRoutes';
 
 function Authentication() {
   const router = useRouter();
-  const [, setDataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
+  const [, setDataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, {});
   const [dataUser,] = useSessionStorage(
     SesionStorageKeys.dataUser.key,
     {}
   );
   const [showAnimation, setShowAnimation] = useState(false);
   const [validated, setValidated] = useState(false);
-  const [loaded, setLoaded] = useState(false);
+  const [loaded,] = useState(false);
+  useEffect(() => {
+    TagManager.dataLayer({
+      dataLayer: {
+        event: 'load_onboarding_auth',
+        category: 'load_page',
+        action: 'load_onboarding_auth',
+        label: 'load_onboarding_auth',
+      },
+    });
 
-  const onSubmit = async () => {
-    setShowAnimation(true);
-    setValidated(true);
-    const body = {
-      document_type: dataUser.document_type,
-      document_number: dataUser.document_number,
-      dataTreatment: dataUser.policy_and_terms,
-      productRegulation: dataUser.policy_and_terms,
-      commercialPurposes: dataUser.commercial_terms,
-    };
-    const response = await getQuestions(body);
-    if (!response?.error) {
-      setDataQuestions(response?.response?.data);
-      router.push(routes.validacionIdentidad);
-      return;
-    }
-    if (response.response?.status === 403) {
-      setDataQuestions(response.response.data);
-      const dataResponse: any = await response.response.json();
-      const code = dataResponse.internal_code;
-      switch (code) {
-        case 'RL-02':
-        case 'IV-02':
-        case 'IV-03':
-        case 'IV-05':
-          router.push(routes.validacionErrorValidacionIdentidad);
-          break;
-        case 'IV-08':
-          router.push(routes.validacionErrorDiario);
-          break;
-        case 'IV-09':
-          router.push(routes.validacionBlock);
-          break;
-        case 'PF-01':
-        case 'PF-02':
-          router.push(routes.validacionBiometrica);
-          break;
-        case 'ER-00':
-          router.push(routes.startProccess);
-          break;
-        default:
-          break;
-      }
-    } else {
-      router.push(routes.errorValidacion);
-    }
-  }
+  }, []
+  );
+  const { setCurrentRouting } = useProtectedRoutes();
+  const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, setCurrentRouting);
   return (
     <div>
       {showAnimation ? <AnimationComponent show="" valid={validated} loaded={loaded} /> : null}
@@ -121,4 +88,4 @@ function Authentication() {
   )
 }
 
-export default Authentication
+export default Authentication;

@@ -7,7 +7,7 @@ const Heading: React.FC<childrenProps> = ({ children }) => (
     id="title"
     tabIndex={0}
     role="paragraph"
-    className="text-center mt-[40px] md:mt-[64px]  md:text-[28px] md:leading-[30px] tracking-[0.01px]"
+    className="font-poppinsSemiBold text-center mt-[40px] md:mt-[64px]  md:text-[28px] md:leading-[30px] tracking-[0.01px]"
   >
     {children}
   </h4>

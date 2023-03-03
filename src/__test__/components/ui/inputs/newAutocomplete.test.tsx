@@ -1,7 +1,7 @@
 import { render, waitFor, screen } from '@testing-library/react';
 import React, { useState } from 'react'
-import NewAutoComplete from '../../../../components/ui/inputs/newAutoComplete';
 import userEvent from '@testing-library/user-event';
+import NewAutoComplete from '../../../../components/ui/inputs/newAutoComplete';
 import '@testing-library/jest-dom'
 
 

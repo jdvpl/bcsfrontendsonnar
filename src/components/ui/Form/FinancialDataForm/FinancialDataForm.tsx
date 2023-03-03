@@ -3,19 +3,20 @@ import React, {
   ClipboardEvent,
 } from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { useRouter } from 'next/router';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
 import Button from '../../Button';
 import Input from '../../inputs';
 import ReactHookFormSelect from '../../Select/newSelect';
-import { useRouter } from 'next/router';
 import { iFinancialData } from '../../../../interfaces/iFinancialData';
 import { convertToColombianPesos } from '../../../../utils';
 import Alert from '../../Alert';
-import useValidationFinancialDataForm from './useValidationFinancialDataForm';
+import useValidationFinancialDataForm from '../../../../hooks/useValidationFinancialDataForm';
 import { routes } from '../../../../routes';
+import useProtectedRoutes from '../../../../hooks/useProtectedRoutes';
 
-const FinancialDataForm = () => {
+function FinancialDataForm() {
   const router = useRouter();
   const {
     handleSubmit,
@@ -24,9 +25,10 @@ const FinancialDataForm = () => {
     clearErrors,
     control,
     setValue,
-    register,
     formState: { errors, isValid },
   } = useForm<iFinancialData>({ mode: 'onChange' });
+
+  const { setCurrentRouting } = useProtectedRoutes();
 
   const occupation = watch('occupation');
   const enterprise = watch('enterprise');
@@ -38,26 +40,31 @@ const FinancialDataForm = () => {
   const realStateValue = watch('realStateValue');
   const debtValue = watch('debtValue');
 
-  const [, setFinancialDataForm] = useSessionStorage(
+  const [financialDataForm, setFinancialDataForm] = useSessionStorage(
     SesionStorageKeys.financialDataForm.key,
     {}
   );
   const onSubmit = async (data: iFinancialData) => {
-    if (data.occupation !== "14") {
+    if (data.occupation !== "Employee") {
       data.employeeMonth = null;
       data.employeeYear = null;
       data.enterprise = null;
       data.contractType = null;
     }
     setFinancialDataForm(data);
-    router.push(routes.creditData)
+    if (data.contractType === "FreeAppointmentAndRemoval") {
+      router.push(routes.errorCreditBankApplication)
+    } else {
+      setCurrentRouting(routes.creditData);
+      router.push(routes.creditData)
+    }
   }
 
-  useValidationFinancialDataForm(occupation, enterprise, contractType, employeeYear, employeeMonth, monthlySalary, monthlyExpenses, realStateValue, debtValue, clearErrors, setError);
+  useValidationFinancialDataForm(occupation, enterprise, contractType, employeeYear, employeeMonth, monthlySalary, monthlyExpenses, realStateValue, debtValue, clearErrors, setError, setValue, financialDataForm);
 
   return (
     <div data-testid="FormQuotaTest" className="w-[343px] md:mt-[30px] md:w-[517px] xl:w-[656px] mx-auto">
-      <Alert message='Los aportes a salud y pensión son un criterio obligatorio para la aprobación del crédito.' />
+      <Alert message='Los aportes a salud y pensión son un criterio obligatorio para la preaprobación del crédito.' />
       <div className="w-full mt-3">
         <form onSubmit={handleSubmit(onSubmit)}>
 
@@ -78,16 +85,16 @@ const FinancialDataForm = () => {
               margin="normal"
               rules={{ required: true }}
             >
-              <MenuItem value="14">Empleado</MenuItem>
-              <MenuItem value="05">Pensionado o jubilado</MenuItem>
+              <MenuItem value="Employee">Empleado</MenuItem>
+              <MenuItem value="PensionerOrRetired">Pensionado o jubilado</MenuItem>
             </ReactHookFormSelect>
           </div>
           {
-            occupation === '14' ? (
+            occupation === 'Employee' ? (
               <>
                 <div className="flex flex-col mt-3">
                   <Controller
-                    rules={{ required: occupation === '14' ? true : false }}
+                    rules={{ required: occupation === 'Employee' }}
                     render={({ field }) => (
                       <Input
                         helperText={errors.enterprise?.message}
@@ -127,15 +134,15 @@ const FinancialDataForm = () => {
                     name="contractType"
                     className="w-100"
                     margin="normal"
-                    rules={{ required: occupation === '14' ? true : false }}
+                    rules={{ required: occupation === 'Employee' }}
                   >
-                    <MenuItem value="01">Término indefinido</MenuItem>
-                    <MenuItem value="02">Término fijo</MenuItem>
-                    <MenuItem value="03">Prestación de servicios</MenuItem>
-                    <MenuItem value="04">Temporal-En misión</MenuItem>
-                    <MenuItem value="05">Carrera administrativa</MenuItem>
-                    <MenuItem value="06">Libre nombramiento y remoción</MenuItem>
-                    <MenuItem value="02">Provisional</MenuItem>
+                    <MenuItem value="IndefiniteTerm">Término indefinido</MenuItem>
+                    <MenuItem value="FixedTerm">Término fijo</MenuItem>
+                    <MenuItem value="ProvisionOfServices">Prestación de servicios</MenuItem>
+                    <MenuItem value="TemporaryOnMission">Temporal-En misión</MenuItem>
+                    <MenuItem value="AdministrativeCareer">Carrera administrativa</MenuItem>
+                    <MenuItem value="FreeAppointmentAndRemoval">Libre nombramiento y remoción</MenuItem>
+                    <MenuItem value="Provisional">Provisional</MenuItem>
                   </ReactHookFormSelect>
                 </div>
                 <span className="text-[10px] col-span-6 text-complementario-100">
@@ -144,7 +151,7 @@ const FinancialDataForm = () => {
                 <div className='grid gap-2 grid-cols-2 mt-2'>
                   <div >
                     <Controller
-                      rules={{ required: occupation === '14' ? true : false }}
+                      rules={{ required: occupation === 'Employee', maxLength: 2 }}
                       render={({ field }) => (
                         <Input
                           type="text"
@@ -153,10 +160,10 @@ const FinancialDataForm = () => {
                           onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                             e.preventDefault();
                           }}
-                          value={field.value || undefined}
+                          value={field.value || ''}
                           tabIndex={0}
                           id="employeeYear"
-                          inputMode="text"
+                          inputMode="numeric"
                           dataTestId='employeeYearTest'
                           required
                           label="Años"
@@ -171,7 +178,7 @@ const FinancialDataForm = () => {
                   </div>
                   <div>
                     <Controller
-                      rules={{ required: occupation === '14' ? true : false }}
+                      rules={{ required: occupation === 'Employee' }}
                       render={({ field }) => (
                         <Input
                           type="text"
@@ -180,11 +187,11 @@ const FinancialDataForm = () => {
                           onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                             e.preventDefault();
                           }}
-                          value={field.value || undefined}
+                          value={field.value || ''}
                           tabIndex={0}
                           id="employeeMonth"
                           dataTestId='employeeMonthTest'
-                          inputMode="text"
+                          inputMode="numeric"
                           required
                           label="Meses"
                           onChange={(e: any) => {
@@ -206,7 +213,7 @@ const FinancialDataForm = () => {
               render={({ field }) => (
                 <Input
                   helperText={errors.monthlySalaryE?.message ? errors.monthlySalaryE?.message : 'Registre el ingreso principal de su actividad económica.'}
-                  helperTextOption={errors.monthlySalaryE?.message ? false : true}
+                  helperTextOption={!errors.monthlySalaryE?.message}
                   type="text"
                   error={!!errors.monthlySalaryE}
                   onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
@@ -327,6 +334,6 @@ const FinancialDataForm = () => {
       </div>
     </div>
   );
-};
+}
 
 export default FinancialDataForm;

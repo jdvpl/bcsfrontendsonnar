@@ -6,41 +6,37 @@ import Button from '../Button';
 import FormContainer from './FormContainer';
 import Heading from '../Headers';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
-import  ContainerButtonForm  from './ContainerButtonForm';
+import ContainerButtonForm from './ContainerButtonForm';
 import { SesionStorageKeys } from '../../../session';
-import { sendNumber } from '../../../services';
-import { routes } from '../../../routes';
-
+import useValidationFormNumber from '../../../hooks/useValidationFormNumber'
 interface FormProps {
   isLoading?: boolean;
   defaultValues?: string;
   questions: Question;
+  setCurrentRouting: any
 }
-
 export interface Question {
   description: string;
   options: Answer[];
 }
-
 interface Answer {
   id: string | number;
   option: string;
 }
-
 export interface FormData {
   number: number | string;
 }
-const KEY = process.env.KEYENCRYPTADIGITAL;
 
-export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
+export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurrentRouting }) => {
   const [dataTU, setDataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
+  const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
   const [, setEncript] = useSessionStorage(SesionStorageKeys.dataTuEncripPhone.key, '');
   const [, setProcessBiometry] = useSessionStorage(
     SesionStorageKeys.dataProcessBiometry.key,
     ''
   );
 
-  const [loaded, setLoaded] = useState(false);
+  const [, setLoaded] = useState(false);
   const router = useRouter();
   const {
     handleSubmit,
@@ -53,18 +49,13 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
   } = useForm<FormData>({
     mode: 'onChange',
   });
-
-  const proccessResponse = (redirect: string) => {
-    setLoaded(true);
-    setTimeout(() => router.push(redirect), 1000);
-  };
-
   const inputValues = watch('number');
   const variants = {
     hidden: { opacity: 1, x: 350, y: 0 },
     enter: { opacity: 1, x: 0, y: 0 },
     exit: { opacity: 0, x: 0 },
   };
+
   useEffect(() => {
     if (!inputValues) {
       setError('number', { message: 'asdasd' });
@@ -72,51 +63,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
     }
     clearErrors('number');
   }, [clearErrors, inputValues, setError]);
-
-  const onSubmit = async (formData: FormData) => {
-    const body = {
-      document_type: dataTU?.document_type,
-      document_number: dataTU?.document_number,
-      phone: formData.number,
-    };
-    const response = await sendNumber(body);
-    if (!response.error) {
-      setDataTU({
-        ...dataTU,
-        personalData: {
-          celular: response.response.data.phone,
-          phoneNumber: formData.number,
-        },
-      });
-      setEncript(formData.number);
-      setTimeout(() => proccessResponse(routes.otp), 1000);
-    } else if (response.status === 403) {
-        const code = response.response.internal_code;
-        switch (code) {
-          case 'VQ-01':
-            router.push('/');
-            break;
-          case 'VQ-03':
-            router.push('/validacion-biometrica/');
-            break;
-          case 'PF-00':
-            router.push('/validacion/error-validacionIdentidad/');
-            break;
-          case 'PF-02':
-            router.push('/validacion/error-validacionSucursal');
-            break;
-          case 'PF-03':
-            setProcessBiometry('no');
-            router.push('/validacion-biometrica/');
-            break;
-          default:
-            router.push('/validacion-biometrica/');
-            break;
-        }
-      } else {
-        router.push('/validacion/error/');
-      }
-  };
+  const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry, dataQuestions, setCurrentRouting)
   return (
     <motion.div
       initial="hidden"
@@ -192,7 +139,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions }) => {
                       role="paragraph"
                       aria-hidden="true"
                       htmlFor="number"
-                      className={`flex items-center bg-white cursor-pointer  w-full border  rounded-md px-5 py-[17px]
+                      className={`font-montserratRegular flex items-center bg-white cursor-pointer  w-full border  rounded-md px-5 py-[17px]
                         border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black  shadow-small-300  font-semibold
                         ${answer.id === inputValues
                           ? 'shadow-none border-primario-600 text-primario-600'

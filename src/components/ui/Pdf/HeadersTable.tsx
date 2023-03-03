@@ -2,12 +2,12 @@ import { Font, StyleSheet, Text, View } from '@react-pdf/renderer'
 import { basePath } from '../../../../next.config';
 
 Font.register({ family: 'Roboto', src: `${basePath}/fonts/RobotoBold.ttf` });
-function HeadersTable() {
+function HeadersTable({ simulatorCoreFallen }: any) {
 
   const styles = StyleSheet.create({
     cellText: {
-      fontSize: '7px',
-      fontWeight: 'bold'
+      fontSize: simulatorCoreFallen ? '9px' : '7px',
+      fontWeight: 'bold',
     },
     tableRow: {
       display: 'flex',
@@ -29,13 +29,13 @@ function HeadersTable() {
       backgroundColor: '#005DA2',
       color: "#fff",
       marginHorizontal: '0.2%',
-      width: '12.5%',
+      width: simulatorCoreFallen ? '20%' : '12.5%',
       height: 30
     },
     ligthBlue: {
       backgroundColor: '#0386E6',
       color: '#fff',
-      width: '12.5%',
+      width: simulatorCoreFallen ? '20%' : '12.5%',
       height: 30
     },
     em: {
@@ -60,20 +60,24 @@ function HeadersTable() {
       <View style={[styles.cell, styles.tableHeader]}>
         <Text style={[styles.cellText]}>Cuota sin seguro</Text>
       </View>
-      <View style={[styles.cell, styles.tableHeader]}>
-        <Text style={[styles.cellText]}>Seguro de vida</Text>
-      </View>
-      <View style={[styles.cell, styles.tableHeader]}>
-        <Text style={[styles.cellText]}>Seguro IRT
-        </Text>
-        <Text style={styles.textsmall}>(Incendio, rayo y </Text>
-        <Text style={styles.textsmall}>terremoto) </Text>
+      {simulatorCoreFallen ? null :
+        <>
+          <View style={[styles.cell, styles.tableHeader]}>
+            <Text style={[styles.cellText]}>Seguro de vida</Text>
+          </View>
+          <View style={[styles.cell, styles.tableHeader]}>
+            <Text style={[styles.cellText]}>Seguro IRT</Text>
+            <Text style={styles.textsmall}>(Incendio, rayo y </Text>
+            <Text style={styles.textsmall}>terremoto) </Text>
+          </View>
+          <View style={[styles.cell, styles.tableHeader]}>
+            <Text style={[styles.cellText]}>Cuota total con </Text>
+            <Text style={[styles.cellText]}>seguros </Text>
+          </View>
 
-      </View>
-      <View style={[styles.cell, styles.tableHeader]}>
-        <Text style={[styles.cellText]}>Cuota total con </Text>
-        <Text style={[styles.cellText]}>seguros </Text>
-      </View>
+        </>
+      }
+
       <View style={[styles.cell, styles.ligthBlue]}>
         <Text style={[styles.cellText]}>Saldo Final</Text>
       </View>

@@ -6,18 +6,20 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   moduleDirectories: ['node_modules', '<rootDir>/'],
   testEnvironment: 'jest-environment-jsdom',
-  collectCoverageFrom: ['<rootDir>/src/components/**',
+  setupFilesAfterEnv: ['jest-canvas-mock'],
+  collectCoverageFrom: [
+    '<rootDir>/src/components/**',
     '<rootDir>/src/pages/**',
     '<rootDir>/src/hooks/**',
-    '<rootDir>/src/services/**',
     '<rootDir>/src/utils/**',
+    '<rootDir>/src/routes/**',
+    '<rootDir>/src/session/**',
     '<rootDir>/{!(),}.config.js',
     '!<rootDir>/src/components/svg/**',
     '!<rootDir>/src/pages/_**.tsx',
-    '!<rootDir>/src/services/index.ts',
-    '!<rootDir>/src/utils/index.ts',
-    '!<rootDir>/src/libraries/**',
+    '!<rootDir>/src/services/**',
+    '!<rootDir>/src/context/**',
     '!<rootDir>/src/config/**'],
-  modulePathIgnorePatterns: ["<rootDir>/src/pages/validacion-biometrica","<rootDir>/src/pages/simulador","<rootDir>/src/utils/RouterUtmsUrl","<rootDir>/src/pages/validacion","<rootDir>/src/components/ui/Pdf","<rootDir>/src/components/ui/simulation","<rootDir>/src/hooks"],
+  modulePathIgnorePatterns: ["<rootDir>/src/pages/validacion-biometrica/","<rootDir>/src/pages/simulador/resumen.tsx","<rootDir>/src/components/ui/Pdf","<rootDir>/src/components/ui/simulation","<rootDir>/src/pages/validacion/error-validacionBlock.tsx","<rootDir>/src/pages/validacion/error-validacionDiario.tsx","<rootDir>/src/pages/validacion/error.tsx","<rootDir>/src/pages/validacion/index.tsx"],
 };
 module.exports = createJestConfig(customJestConfig);

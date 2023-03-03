@@ -1,11 +1,12 @@
 export interface iDataUser {
-  birthDt: string,
+  birthDay: string,
   cellPhone: string,
-  emailAddr: string,
-  addr1: string,
-  city: string,
+  email: string,
+  address: string,
+  birthCity: string,
   firstName: string,
-  isClient: boolean
+  isClient: boolean,
+  residenceCity: string,
 }
 
 export interface iPersonalData {
@@ -18,4 +19,16 @@ export interface iPersonalData {
   email: string;
   currentCity: any;
   currentAddress: string;
+}
+
+export interface iPersonalDataSent {
+  birthDate: string;
+  birthCity: string;
+  currentCity: string;
+  hasAdviser: boolean;
+  nameAdviser: string;
+  phone: string;
+  gender: string;
+  currentAddress: string;
+  email: string;
 }

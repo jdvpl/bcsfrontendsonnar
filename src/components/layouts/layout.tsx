@@ -30,13 +30,12 @@ const Layout: React.FC<LayoutProps> = ({ className, navTitle, children }) => {
         <div className={`${className || 'bg-white '} min-h-screen`}>
           <header className="hidden lg:flex pt-[60px] min-h-[100px] md:w-full lg:justify-center lg:pb-6">
             <div
-              className="lg:w-[1160px] lg:max-w-[100%] mx-4  flex justify-between items-baseline"
+              className="lg:w-[1160px] lg:max-w-[100%] mx-4  flex justify-between items-baseline ml-40"
               itemScope
-              itemType="http://schema.org/Organization"
+              itemType="https://schema.org/Organization"
               itemProp="logo"
             >
               <LogoBcs />
-              <LogoForm />
             </div>
           </header>
           <main className="flex flex-col px-[16px] pt-[40px] md:pt-0 sm:px-[16px] md:px-[30px] max-w-full lg:pt-0 md:justify-center items-center self-start md:self-center text w-full lg:min-h-[100%] lg:h-full">

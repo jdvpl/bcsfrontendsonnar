@@ -1,19 +1,14 @@
-import { useState } from 'react';
+import React from 'react';
 import { RateForm } from '../../Form/ratingForm';
 import Icons from '../../icons';
+import useRatingModal from './useRatingModal';
 
 export function RatingModal() {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
-  const onOpenModal = (): void => {
-    setIsOpen(!isOpen);
-    setTimeout(() => {
-      document.getElementById('modal')?.classList.add('hidden');
-    }, 1000);
-  };
+  const { isOpen, onOpenModal } = useRatingModal();
   return (
     <div
       id="modal"
-      className={`bg-black/70 w-screen h-screen fixed top-0 flex justify-center content-center ${
+      className={`bg-black/70 z-50 w-screen h-screen fixed top-0 flex justify-center content-center ${
         isOpen && 'overflow-y-auto'
       }`}
     >

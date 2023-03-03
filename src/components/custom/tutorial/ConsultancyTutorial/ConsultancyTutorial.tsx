@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import Close from '../../../svg/Close';
 import Typography from '../../../ui/Typography';
 import useConsultancyTutorial from './useConsultancyTutorial';
@@ -6,8 +6,6 @@ import useConsultancyTutorial from './useConsultancyTutorial';
 function ConsultancyTutorial({ nextTutorialStepRef, prevTutorialStepRef }: any) {
   const { isOpen, renderBody, actualTutorialStep, onHandleModal } =
     useConsultancyTutorial({ nextTutorialStepRef, prevTutorialStepRef });
-  console.log({nextTutorialStepRef});
-  console.log({prevTutorialStepRef});
   return (
     <>
       {isOpen ? (
@@ -17,7 +15,7 @@ function ConsultancyTutorial({ nextTutorialStepRef, prevTutorialStepRef }: any) 
         >
           {/* Header */}
           <div
-            className={`w-full mt-[62px] xl:pl-[118px] xl:pr-[142px] md:pl-[106px] md:pr-[107px] xs:pl-[17px] xs:pr-[16px] flex items-center justify-between h-[60px] md:mb-[282px] xl:[217px] ${
+            className={`w-full xl:mt-[62px] md:mt-[68px] xs:mt-[36px] mt-[36px] xl:pl-[118px] xl:pr-[142px] md:pl-[106px] md:pr-[107px] xs:pl-[17px] xs:pr-[16px] flex items-center justify-between h-[60px] md:mb-[282px] xl:[217px] ${
               actualTutorialStep === 0 || actualTutorialStep === 5
                 ? 'xs:mb-[205px] sm:mb-[217px]'
                 : 'xs:mb-[86px] sm:mb-[86px]'
@@ -25,9 +23,9 @@ function ConsultancyTutorial({ nextTutorialStepRef, prevTutorialStepRef }: any) 
           >
             <Typography
               variant="h2"
-              className="text-white xs:text-[14px] sm:text-[18px] xl:text-[28px]"
+              className="text-white xs:text-[14px] sm:text-[14px] md:text-[14px] lg:text-[20px] lg:font-poppinsSemiBold font-montserratSemiBold"
             >
-              Instructivo asesoría
+              Instructivo guía interactiva
             </Typography>
             <button
               data-testid="button-close-tutorial-container"

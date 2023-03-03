@@ -12,129 +12,8 @@ import ViewTable from "./ViewTable";
 // Create styles
 Font.register({ family: 'Roboto', src: `${basePath}/fonts/RobotoBold.ttf` });
 Font.register({ family: 'RobotoLight', src: `${basePath}/fonts/RobotoLight.ttf` });
+import React from 'react'
 
-const styles = StyleSheet.create({
-  mainView: {
-    width: "100%"
-  },
-
-  colgL1: {
-    width: '8.33333333%'
-  },
-
-  colLg10: {
-    width: "83.33333333%",
-  },
-  colLg30: {
-    width: "30%",
-  },
-  mAuto: {
-    marginLeft: "auto",
-    marginRight: "auto",
-  },
-  mt5: {
-    marginTop: "20"
-  },
-  colLg4: {
-    width: "33.33333333%",
-  },
-  colLg6: {
-    width: "50%",
-  },
-  colLg7: {
-    width: "58.333333%",
-  },
-  colLg8: {
-    width: "66.6666666%",
-  },
-  dFlex: {
-    display: "flex",
-  },
-  row: {
-    display: "flex",
-    flexDirection: "row",
-  },
-  justifyBetween: {
-    justifyContent: 'space-between'
-  },
-  JustifyContentCenter: {
-    justifyContent: "center",
-  },
-  // table
-  em: {
-    fontWeight: 'extrabold',
-    fontFamily: 'Roboto'
-  },
-  tableRow: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-  cell: {
-    borderWidth: 1,
-    display: 'flex',
-    justifyContent: 'center',
-    alignContent: 'center',
-    textAlign: 'center',
-    flexWrap: 'wrap'
-  },
-  cellText: {
-    fontSize: '10px',
-  },
-  textSize: {
-    fontSize: '10px',
-    fontWeight: 'extralight'
-  },
-  card: {
-    backgroundColor: "#F3F4F6",
-    padding: 8,
-    width: '33%',
-    borderRadius: '8%',
-    display: 'flex',
-    justifyContent: 'center'
-  },
-  cardHeaderText: {
-    fontSize: '10px'
-  },
-  cardHeaderBody: {
-    fontSize: '12px',
-    marginTop: 5,
-  },
-  mb10: {
-    marginBottom: 20
-  },
-  mt3: {
-    marginTop: 3
-  },
-  my20: {
-    marginVertical: 20
-  },
-  textDetailText: {
-    fontSize: '10px'
-  },
-  icon: {
-    width: 15,
-    height: 15,
-    marginHorizontal: 7,
-    marginTop: 8
-  },
-  textLight: {
-    fontFamily: 'RobotoLight'
-  },
-  leftImageSigned: {
-    position: 'absolute',
-    bottom: "33%",
-    width: "30%",
-    right: '30%',
-    objectFit: "cover"
-  },
-  rightImageSigned: {
-    position: 'absolute',
-    bottom: "40%",
-    width: '100%',
-    height: '30%',
-    objectFit: 'cover'
-  }
-});
 interface iPdfProps {
   infoData?: any,
 }
@@ -142,9 +21,136 @@ interface itableProps {
   children: any, col: any, th: any
 }
 function PDFDocumentData({ infoData }: iPdfProps) {
+
+
+  const simulatorCoreFallen = !infoData?.simulatorCoreFallen;
   const data = infoData?.quotes;
   const quantiyPages = infoData?.quotes?.length;
-  const numberOfPages = Array(quantiyPages - 1).fill(0)
+  const numberOfPages = Array(quantiyPages - 1).fill(0);
+
+  const styles = StyleSheet.create({
+    mainView: {
+      width: "100%"
+    },
+
+    colgL1: {
+      width: '8.33333333%'
+    },
+
+    colLg10: {
+      width: "83.33333333%",
+    },
+    colLg30: {
+      width: "30%",
+    },
+    mAuto: {
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
+    mt5: {
+      marginTop: "20"
+    },
+    colLg4: {
+      width: "33.33333333%",
+    },
+    colLg6: {
+      width: "50%",
+    },
+    colLg7: {
+      width: "58.333333%",
+    },
+    colLg8: {
+      width: "66.6666666%",
+    },
+    dFlex: {
+      display: "flex",
+    },
+    row: {
+      display: "flex",
+      flexDirection: "row",
+    },
+    justifyBetween: {
+      justifyContent: 'space-between'
+    },
+    JustifyContentCenter: {
+      justifyContent: "center",
+    },
+    // table
+    em: {
+      fontWeight: 'extrabold',
+      fontFamily: 'Roboto'
+    },
+    tableRow: {
+      display: 'flex',
+      flexDirection: 'row',
+    },
+    cell: {
+      borderWidth: 1,
+      display: 'flex',
+      justifyContent: 'center',
+      alignContent: 'center',
+      textAlign: 'center',
+      flexWrap: 'wrap'
+    },
+    cellText: {
+      fontSize: '10px',
+    },
+    textSize: {
+      fontSize: '10px',
+      fontWeight: 'extralight'
+    },
+    card: {
+      backgroundColor: "#F3F4F6",
+      padding: 8,
+      width: '33%',
+      borderRadius: '8%',
+      display: 'flex',
+      justifyContent: 'center'
+    },
+    cardHeaderText: {
+      fontSize: '10px'
+    },
+    cardHeaderBody: {
+      fontSize: '12px',
+      marginTop: 5,
+    },
+    mb10: {
+      marginBottom: 20
+    },
+    mt3: {
+      marginTop: 3
+    },
+    my20: {
+      marginVertical: 20
+    },
+    textDetailText: {
+      fontSize: '10px'
+    },
+    icon: {
+      width: 15,
+      height: 15,
+      marginHorizontal: 7,
+      marginTop: 8
+    },
+    textLight: {
+      fontFamily: 'RobotoLight'
+    },
+    leftImageSigned: {
+      position: 'absolute',
+      bottom: "33%",
+      width: "30%",
+      right: '30%',
+      objectFit: "cover"
+    },
+    rightImageSigned: {
+      position: 'absolute',
+      bottom: "40%",
+      width: '100%',
+      height: '30%',
+      objectFit: 'cover'
+    }
+  });
+
   return (
     <Document>
       <Page size="A4" orientation="portrait">
@@ -209,7 +215,7 @@ function PDFDocumentData({ infoData }: iPdfProps) {
                 </View>
               </View>
               <View>
-                <ViewTable data={data} position={0} />
+                <ViewTable data={data} position={0} simulatorCoreFallen={simulatorCoreFallen} />
               </View>
             </View>
             <View style={[styles.colgL1]}>
@@ -228,14 +234,13 @@ function PDFDocumentData({ infoData }: iPdfProps) {
               </View>
               {/* table */}
               <View style={[styles.colLg10, styles.mAuto]}>
-                <ViewTable data={data} position={i + 1} />
+                <ViewTable data={data} position={i + 1} simulatorCoreFallen={simulatorCoreFallen} />
               </View>
               {/*  */}
               <View style={[styles.colgL1]}>
                 <Image src={`${basePath}/images/rightSignedImage.png`} style={styles.rightImageSigned} />
               </View>
             </View>
-
           </Page>
         ))
       }

@@ -9,11 +9,15 @@ export interface SimulationData {
   percentageFinance: number;
   percentageQuota: number;
   financeValue: number;
-  financeValueE?:number;
+  financeValueE?: number;
   termFinance: number;
   insuranceCheck: boolean;
   dateOfBirth: string;
   year?: string;
   day?: string;
   month?: string;
+  office?: string;
+  stratum?: number;
+  houseStatus?: string;
+  amortizationType?: string;
 }

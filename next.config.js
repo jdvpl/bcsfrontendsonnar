@@ -7,10 +7,10 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   env: {
-    KYCAPIURL: process.env.KYCAPIURL,
-    MAINTENANCE: process.env.MAINTENANCE,
-    KEYKYCHASH: process.env.KEYKYCHASH,
+    KEYENCRYPTADIGITAL: process.env.KEYENCRYPTADIGITAL,
     KEYSESSIONSTORAGE: process.env.KEYSESSIONSTORAGE,
+    TAGMANAGER:process.env.TAGMANAGER,
+    APIURLMORTGAGE:process.env.APIURLMORTGAGE,
   },
   images: {
     loader: 'akamai',

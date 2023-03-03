@@ -1,37 +1,48 @@
 import { useRouter } from 'next/router';
+import React, { useEffect, useMemo } from 'react'
 import { FormData, RegisterForm } from '../../components/ui/Form';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../session';
 import LogoBcs from '../../components/svg/LogoBcs';
-import { routes } from '../../routes';
-import React from 'react'
-import { sendAuthorization } from '../../services';
+import { onSubmitStartProcess } from '../../hooks/functions';
+import TagManager from 'react-gtm-module';
+import { clearSessionStorage } from '../../utils';
+
 function InicioSolicitud() {
   const router = useRouter();
-
   const [dataUser, setDataUser] = useSessionStorage(
     SesionStorageKeys.dataUser.key,
     {}
   );
-  const onSubmit = async (formData: FormData) => {
-    const labels = { policy_and_terms_label: 'Acepta tratamiento de datos personales y consulta en centrales de riesgo', commercial_terms_label: 'Autoriza que su información sea utilizada con fines comerciales' }
-    const data = { ...formData, ...labels }
-    const response = await sendAuthorization(data)
-    setDataUser(formData);
-    if (!response.error) {
-      router.push(routes.authentication)
-    }
-  }
+  useEffect(() => {
 
+    TagManager.dataLayer({
+      dataLayer: {
+        event: 'load_form_auth',
+        category: 'load_page',
+        action: 'load_form_auth',
+        label: 'load_form_auth',
+      },
+    });
+
+  }, []
+  );
+
+  useMemo(
+    () => {
+      clearSessionStorage()
+    },
+    []
+  )
   return (
     <>
-      <div className="container flex lg:mt-[0] sm:w-[343px] md:w-[528px] lg:w-[1100px] pt-5 xs:ml-4">
+      <div className="flex lg:mt-[0] sm:w-[343px] md:w-[528px] lg:w-[1160px] pt-5 xs:ml-4 lg:pl-[140px] lg:pt-10 md:pl-[100px] md:pt-10">
         <LogoBcs />
       </div>
       <div className="flex justify-center">
         <div className="mt-[1rem] sm:w-[343px] md:w-[528px] lg:w-[684px]">
           <RegisterForm
-            onSubmit={(formData: FormData) => onSubmit(formData)}
+            onSubmit={(formData: FormData) => onSubmitStartProcess(formData, setDataUser, router)}
             defaultValues={{
               ...dataUser,
             }}

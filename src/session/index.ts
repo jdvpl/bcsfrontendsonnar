@@ -32,10 +32,7 @@ export const SesionStorageKeys = {
     key: 'personalData',
     description: 'This key saves the data of form',
   },
-  personalInfoDataBack: {
-    key: 'personalDataInfo',
-    description: 'This key saves the data that we get from backend'
-  },
+
   financialDataForm: {
     key: 'fdf',
     description: 'This key saves the data of form',
@@ -43,5 +40,17 @@ export const SesionStorageKeys = {
   mortgageValues: {
     key: 'MortgageValues',
     description: 'This key save the data of credit data form'
+  },
+  protectedRoutes: {
+    key: 'PRK',
+    description: 'This ket saves the router flux'
+  },
+  basicDataUser: {
+    key: 'BDUbasic',
+    description: 'this saves the basicData of user'
+  },
+  applicationResponse:{
+    key: 'applicationResponse',
+    description: 'this saves the response of application risk boxes'
   }
 };

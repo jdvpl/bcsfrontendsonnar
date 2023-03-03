@@ -4,23 +4,23 @@ import { SesionStorageKeys } from '../../session'
 import Button from '../ui/Button'
 import AdvisoryForm from './AdvisoryForm'
 
-const Advisory = ({ setShowModal }: any) => {
+function Advisory({ setShowModal }: any) {
   const [showMessage, setshowMessage] = useState<boolean>(true)
   const [dataUser, setDataUser] = useSessionStorage(
     SesionStorageKeys.dataUser.key,
     {}
   );
-  const closeModal = () => {
+  const closeModal = async () => {
     const datainfo = { advisoryType: null, otherAdvisoryType: null };
-    setDataUser({ ...dataUser, ...datainfo })
+    await setDataUser({ ...dataUser, ...datainfo })
     setShowModal(false)
   }
   return (
-    <div className='m-auto flex-col '>
+    <div className='m-auto flex-col' data-testid="modalAdvisory">
       {showMessage ? (
-        <div className='mt-[48px] flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 '>
+        <div className='mt-[60px] lg:mt-[95px] md:mt-[72px] xs:mt-[60px] flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 '>
           <Button
-            isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[343px] mb-[12px] shadow-none"
+            isLanding="w-full xs:w-[250px] sm:w-[253px] md:w-[253px] lg:w-[343px] mb-[12px] shadow-none"
             name="solicitarCredito"
             data-testid="btn-advisoryTest"
             tabIndex={0}

@@ -3,9 +3,10 @@ import React from 'react'
 import LogoBcs from '../../svg/LogoBcs'
 import LogoForm from '../../svg/LogoForm'
 import Icons from '../icons';
-
-const Header = () => {
+import useMediaQueryResponsive from '../../../hooks/useMediaQuery';
+function Header() {
   const router = useRouter();
+  const { heightHeader } = useMediaQueryResponsive();
   return (
     <div className="container flex lg:mt-[0] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-between  ">
       <div className="mt-4 hidden md:block lg:block">
@@ -15,7 +16,7 @@ const Header = () => {
         <Icons icon='bcs-arrow-one-left' size="text-[1.2rem]" />
       </div>
       <div className="mt-6 w-[180px] md:w-[180px] lg:w-[280px] xs:mr-4">
-        <LogoForm />
+        <LogoForm height={heightHeader} />
       </div>
     </div>
   )

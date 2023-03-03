@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
-import React from 'react'
+import React from 'react';
+import { titleSection } from '../../lib/consultancy';
 import Consultancy from '../../pages/asesoria';
 
 describe('<Consultancy />', () => {
@@ -8,7 +9,7 @@ describe('<Consultancy />', () => {
     component = render(<Consultancy />);
   });
   test('contain alert text', () => {
-    component.getByText('Esto es lo primero que debe saber para comprar una vivienda');
+    component.getByText('Conozca los tipos de vivienda y las ventajas de cada una');
   });
   test('Render simulation button', () => {
     component.getByText('Volver al Inicio');
@@ -34,5 +35,20 @@ describe('<Consultancy />', () => {
   test('Render simulation insurance text', () => {
     component.getByText('¿Qué es vivienda No VIS?');
   });
-
+  test('', () => {
+    expect(titleSection[0]).toBe(
+      'Conozca los tipos de vivienda y las ventajas de cada una'
+    );
+  });
+  test('', () => {
+    expect(titleSection[1]).toBe(
+      'Organice sus finanzas y planifique el pago de su vivienda'
+    );
+  });
+  test('', () => {
+    expect(titleSection[2]).toBe('Tenga en cuenta los siguientes gastos adicionales');
+  });
+  test('Get Title Sections', () => {
+    expect(titleSection[3]).toBe('¡Felicitaciones, ha logrado su meta!');
+  });
 });

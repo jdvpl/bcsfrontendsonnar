@@ -5,21 +5,15 @@ import { useRouter } from 'next/router';
 import Stepper from '../../components/ui/Stepper';
 import { Question, ValidationForm } from '../../components/ui/Form/ValidationForm';
 import { ValidationFormNumber } from '../../components/ui/Form/validationFormNumber';
-import VerificationForm from '../../components/ui/Form/verificationForm';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import Layout from '../../components/layouts/layout';
 import AnimationComponent from '../../components/commons/Animation';
 import NavTitle from '../../components/commons/NavTitle';
 import { SesionStorageKeys } from '../../session';
-import { sendQuestions } from '../../services';
-import { routes } from '../../routes';
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
-
-interface InitDataSend {
-  document_type: string;
-  document_number: string;
-}
-
+import { onSubmitResponse } from '../../hooks/functions';
+import TagManager from 'react-gtm-module';
+import useProtectedRoutes from '../../hooks/useProtectedRoutes';
 interface Quest {
   items: Question[];
 }
@@ -27,73 +21,68 @@ const Index: React.FC = () => {
   const router = useRouter();
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
   const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
+  const [, setBasicData] = useSessionStorage(SesionStorageKeys.basicDataUser.key, '');
   const [dataNumber, setDataNumber] = useState<any | null>(null);
-  const [dataValid, setDataValid] = useState(false);
-  const [progress, setprogress] = useState('');
-  const [loading, setIsLoading] = useState(false);
+  const [dataValid] = useState(false);
+  const [progress, setProgress] = useState<number>(25);
+  const [loading] = useState(false);
 
   const data: Quest = dataQuestions;
 
   useEffect(() => {
-    setprogress('25%');
+    TagManager.dataLayer({
+      dataLayer: {
+        event: 'load_anwsers',
+        category: 'load_page',
+        action: 'load_anwsers',
+        label: 'load_anwsers',
+      },
+    });
   }, []);
-
-  const onSubmitResponse = async (initData: InitDataSend) => {
-    const body = {
-      document_type: dataTU?.document_type,
-      document_number: dataTU?.document_number,
-      items: initData,
-    };
-    const response = await sendQuestions(body);
-    if (response.error) {
-      const code = response.response.internal_code;
-      switch (code) {
-        case 'VQ-01':
-          router.push(routes.startProccess);
-          break;
-        case 'VQ-02':
-          router.push(routes.validacionErrorValidacionIdentidad);
-          break;
-        case 'VQ-03':
-          router.push(routes.validacionBiometrica);
-          break;
-        default:
-          break;
-      }
-    } else if (!response.error) {
-      const { step } = response.response.data;
-      if (step === 'AUTH') {
-        setDataValid(true);
-      } else if (step === 'VQ') {
-        setDataNumber(response.response.data);
-      }
-    }
-  };
+  const { setCurrentRouting } = useProtectedRoutes();
   return (
     <>
       <Head>
-        <title>Validación de identidad - BCS Viviendamiga Digital</title>
+        <title>Validación de identidad - BCS Credito Hipotecario</title>
       </Head>
       <InactivityWarper>
         <Layout navTitle={<NavTitle noBack />}>
           {loading && <AnimationComponent show="" valid={loading} loaded={false} />}
-          <Stepper steps={4} actualStep={1} title="Validación de identidad" />
+          {!dataValid && (
+            <Stepper
+              steps={5}
+              actualStep={1}
+              percentage={progress}
+              title="Validación de identidad"
+            />
+          )}
           {data && !dataNumber && !dataValid && (
             <AnimatePresence>
               <ValidationForm
                 questions={data?.items}
                 onSubmit={(dataSend: any) => {
-                  onSubmitResponse(dataSend);
-                  setprogress('75%');
+                  onSubmitResponse(
+                    dataSend,
+                    dataTU,
+                    router,
+                    setDataNumber,
+                    dataQuestions?.processId,
+                    setCurrentRouting,
+                    setBasicData
+                  );
+                  setProgress(50);
                 }}
               />
             </AnimatePresence>
           )}
+
           <AnimatePresence>
-            {dataValid ? <VerificationForm onSubmit={(dataLogin: any) => {}} /> : ''}
-          </AnimatePresence>
-          <AnimatePresence>
-            {dataNumber && <ValidationFormNumber questions={dataNumber} />}
+            {dataNumber && (
+              <ValidationFormNumber
+                questions={dataNumber}
+                setCurrentRouting={setCurrentRouting}
+              />
+            )}
           </AnimatePresence>
         </Layout>
       </InactivityWarper>

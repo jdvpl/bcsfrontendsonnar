@@ -9,13 +9,14 @@ import LogoForm from '../../components/svg/LogoForm';
 import { Icons } from '../../components/ui/icons';
 import Stepper from '../../components/ui/Stepper';
 import Typography from '../../components/ui/Typography';
-import { stepperTitles } from '../../lib/consultancy';
+import { stepperTitles, titleSection } from '../../lib/consultancy';
 import useConsultancy from './useConsultancy';
+import TagManager from 'react-gtm-module';
 
 const ConditionalWrapper: FC<any> = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
-const Consultancy = () => {
+function Consultancy() {
   const prevTutorialStepRef = useRef(null);
   const nextTutorialStepRef = useRef(null);
   const [itemActive, setItemActive] = useState('');
@@ -37,6 +38,16 @@ const Consultancy = () => {
       isMobile,
       itemActive,
     });
+  useEffect(() => {
+    TagManager.dataLayer({
+      dataLayer: {
+        event: 'load_guide',
+        category: 'load',
+        action: 'load_guide',
+        label: 'load_guide',
+      },
+    });
+  }, []);
 
   return (
     <>
@@ -71,19 +82,18 @@ const Consultancy = () => {
         </div>
 
         <div className="lg:w-[825px] mx-auto md:w-[528px] w-[full] xs:w-full">
-          <Typography
-            variant="h2"
-            className="lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center leading-5"
-          >
-            Esto es lo primero que debe saber para comprar una vivienda
-          </Typography>
           <Stepper
             steps={4}
             actualStep={actualStep}
-            percentage={40}
             className="lg:w-[684px] md:w-[456px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px]"
             title={stepperTitles[actualStep - 1]}
           />
+          <Typography
+            variant="h2"
+            className="lg:w-[445px] leading-[32px] md:w-[445px] sm:w-[303px] w-[303px] mx-auto lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center  font-poppinsSemiBold"
+          >
+            {titleSection[actualStep - 1]}
+          </Typography>
         </div>
       </div>
 
@@ -163,7 +173,7 @@ const Consultancy = () => {
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-20"
                 />
               </div>
-              <a className="text-primario-20 font-bold md:underline text-center text-[14px]">
+              <a className="text-primario-100 font-bold font-montserratRegular text-center text-[14px] ">
                 {actualStep === 1 ? 'Volver al Inicio' : 'Anterior'}
               </a>
             </div>
@@ -179,7 +189,7 @@ const Consultancy = () => {
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-20"
                 />
               </div>
-              <a className=" text-primario-20 md:order-2 xs:order-1 font-bold md:underline text-center text-[14px]">
+              <a className=" text-primario-100 font-montserratRegular  md:order-2 xs:order-1 font-bold text-center text-[14px]">
                 {actualStep === 4 ? 'Salir' : 'Siguiente'}
               </a>
             </div>
@@ -201,13 +211,13 @@ const Consultancy = () => {
       >
         <a
           href={`${basePath}`}
-          className=" text-primario-20 font-bold underline  text-[14px]"
+          className=" text-primario-100 font-montserratRegular font-bold text-[14px]"
         >
           Volver al inicio
         </a>
       </div>
     </>
   );
-};
+}
 
 export default Consultancy;

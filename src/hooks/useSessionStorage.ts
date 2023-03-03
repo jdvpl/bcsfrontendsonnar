@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import useAES from './useAES';
-const { decryptPass, encriptPass } = useAES();
+import { decryptPass, encriptPass } from '../utils';
+
 const KEY = process.env.KEYSESSIONSTORAGE ? process.env.KEYSESSIONSTORAGE : '';
 
 export function getSessionStorageOrDefault(
@@ -20,7 +20,7 @@ export function getSessionStorageOrDefault(
 
 export function useSessionStorage(
   key: string,
-  defaultValue: Record<string, string> | string
+  defaultValue: Record<string, string> | string | any
 ) {
   const [value, setValue] = useState(getSessionStorageOrDefault(key, defaultValue));
 

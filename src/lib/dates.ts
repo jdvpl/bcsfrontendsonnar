@@ -158,7 +158,7 @@ export const months = [
     number: '08',
   },
   {
-    month: 'September',
+    month: 'Septiembre',
     number: '09',
   },
   {

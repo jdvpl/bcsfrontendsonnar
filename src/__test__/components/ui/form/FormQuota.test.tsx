@@ -1,8 +1,9 @@
 import { render, screen, getByRole, waitFor } from '@testing-library/react';
-import React from 'react'
+import React from 'react';
 import Simulator from '../../../../pages/simulador';
-
-const mkFn = jest.fn()
+import { fireEvent, act } from '@testing-library/react';
+import FormQuota from '../../../../components/ui/Form/FormQuota';
+const mkFn = jest.fn();
 describe('All tests of formQuota', () => {
   let component: any;
   beforeEach(() => {
@@ -19,5 +20,13 @@ describe('All tests of formQuota', () => {
   });
   test('Render 7 inputs ', () => {
     expect(component.container.querySelectorAll('input').length).toBe(7);
+  });
+});
+
+describe('<FormQuota />', () => {
+  it('Should render FormQuota component correctly', async () => {
+    const mockOnSubmit = jest.fn();
+    const component = render(<FormQuota onSubmit={mockOnSubmit} isLoading={true} />);
+    component.getByText('Un momento');
   });
 });

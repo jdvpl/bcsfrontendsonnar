@@ -11,21 +11,20 @@ export interface FormData {
   advisoryType: string;
   otherAdvisoryType?: string;
 }
-const AdvisoryForm = ({ setShowModal }: any) => {
+function AdvisoryForm({ setShowModal }: any) {
   const optionsMenu = [
     { value: 'campaign', label: 'Campaña' },
     { value: 'bank_advisor', label: 'Asesor banco' },
     { value: 'builder', label: 'Constructora' },
+    { value: 'real_estate', label: 'Inmobiliaria' },
     { value: 'other', label: 'Otro' },
   ]
   const {
-    register,
     handleSubmit,
     watch,
-    setError,
     control,
     setValue,
-    formState: { errors, isValid },
+    formState: { errors },
   } = useForm<FormData>({ mode: 'onChange' });
   const advisoryTypeOption = watch('advisoryType');
   const otherAdvisoryType = watch('otherAdvisoryType');
@@ -62,13 +61,13 @@ const AdvisoryForm = ({ setShowModal }: any) => {
   }
 
   return (
-    <div>
-      <p className="text-center mt-9">
+    <div data-testid="advisoryForm">
+      <p className="text-center mt-9 font-montserratRegular font-normal text-primario-900">
         ¿Quién lo asesoró?
       </p>
       <div className='lg:w-[528px] md:w-[433px] sm:w-[312px] w-[259px] m-auto mt-[41px]'>
         <form onSubmit={handleSubmit(onHandleSubmit)}>
-          <div className=" mt-3 m-auto text-left">
+          <div className="mt-3 m-auto text-left">
             <ReactHookFormSelect
               onChange={(e: any) => setValue('advisoryType', e.target.value)}
               placeholder="Tipo de asesoría"
@@ -89,34 +88,36 @@ const AdvisoryForm = ({ setShowModal }: any) => {
               ))}
             </ReactHookFormSelect>
           </div>
-          {advisoryTypeOption === 'other' ? <div className="flex flex-col mt-4">
-            <Controller
-              rules={{ required: advisoryTypeOption === 'other' }}
-              render={({ field }) => (
-                <Input
-                  helperText='Por favor escribe el tipo de asesoría'
-                  type="text"
-                  error={!!errors.otherAdvisoryType}
-                  dataTestId="otherAdvioryTypeTest"
-                  value={field.value}
-                  onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                    e.preventDefault();
-                  }}
-                  id="otherAdvisoryType"
-                  inputMode="text"
-                  label="¿Cuál?"
-                  onChange={
-                    (e: any) => setValue('otherAdvisoryType', e.target.value)}
-                />
-              )}
-              name="otherAdvisoryType"
-              control={control}
-            />
-          </div> : null}
+          <div className="mt-3 m-auto text-left">
+            {advisoryTypeOption === 'other' ? <div >
+              <Controller
+                rules={{ required: advisoryTypeOption === 'other' }}
+                render={({ field }) => (
+                  <Input
+                    helperText='Por favor escribe el tipo de asesoría'
+                    type="text"
+                    error={!!errors.otherAdvisoryType}
+                    dataTestId="otherAdvioryTypeTest"
+                    value={field.value}
+                    onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                      e.preventDefault();
+                    }}
+                    id="otherAdvisoryType"
+                    inputMode="text"
+                    label="¿Cuál?"
+                    onChange={
+                      (e: any) => setValue('otherAdvisoryType', e.target.value)}
+                  />
+                )}
+                name="otherAdvisoryType"
+                control={control}
+              />
+            </div> : null}
+          </div>
 
           <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-[50px] pb-[40px]">
             <Button
-              isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[375px]"
+              isLanding="w-full xs:w-[250px] sm:w-[253px] md:w-[253px] lg:w-[343px]"
               type="submit"
               data-testid="advisoryFormtest"
               disabled={disable}

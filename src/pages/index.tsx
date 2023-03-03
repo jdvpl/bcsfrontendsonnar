@@ -1,300 +1,224 @@
-import { deviceType } from 'react-device-detect';
+import SelectiveHomeCards from './../components/ui/Home/SelectiveHomeCards';
 import React, { useEffect } from 'react';
-import { useMediaQuery } from "react-responsive";
+import { deviceType } from 'react-device-detect';
+import TagManager from 'react-gtm-module';
+import { basePath } from '../../next.config';
 import LogoBcsWhite from '../components/svg/LogoBcsWhite';
+import LogoViviendaWhite from '../components/svg/LogoViviendaWhite';
+import LogoViviendaBlue from '../components/svg/LogoViviendaBlue';
+import Questions from '../components/ui/Accordion';
+import SelectiveCard from '../components/ui/Card/SelectiveCard';
+import Step from '../components/ui/Card/Step';
 import Typography from '../components/ui/Typography';
+import useMediaQueryResponsive from '../hooks/useMediaQuery';
 import { useSessionStorage } from '../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../session';
-import LogoViviendaWhite from '../components/svg/LogoViviendaWhite';
-import SelectiveCard from '../components/ui/Card/SelectiveCard';
-import { routes } from '../routes';
-import LogoBcs from '../components/svg/LogoBcs';
-import { Icons } from '../components/ui/icons';
-import Questions from '../components/ui/Accordion';
-import { basePath } from '../../next.config';
 
 export default function Home() {
   const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, deviceType);
-  const isMobile = useMediaQuery({
-    query: "(max-width:575px)"
-  })
-  const isTablet = useMediaQuery({
-    query: "(min-width: 576px) and (max-width: 1023px)"
-  })
-  const isBrowser = useMediaQuery({
-    query: "(min-width: 1024px) "
-  })
+
+  const { isMobile, isTablet, heightHeader, isSafari, isMedium, isLG, isSM } =
+    useMediaQueryResponsive();
   useEffect(
     () => () => {
       setDevice(deviceType);
     },
     [device]
   );
+  useEffect(() => {
+    console.log({ KEYENCRYPTADIGITAL: process.env.KEYENCRYPTADIGITAL });
+    console.log({ KEYSESSIONSTORAGE: process.env.KEYSESSIONSTORAGE });
+    console.log({ TAGMANAGER: process.env.TAGMANAGER });
+    console.log({ APIURLMORTGAGE: process.env.APIURLMORTGAGE });
+    TagManager.dataLayer({
+      dataLayer: {
+        event: 'load_landing',
+        category: 'load_page',
+        action: 'load_landing',
+        label: 'load_landing',
+      },
+    });
+  }, []);
+  const titleClasses = isSafari
+    ? 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-[2rem] md:mt-1 xs:mt-5 lg:mt-[100px]  lg:flex lg:justify-center lg:ml-[40rem]  xs:ml-1 sm:ml-3 lg:mr-40 xl:mt-[150px] xs:mt-[34px] sm:mt-[44px]'
+    : 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-[2rem] md:mt-1 xs:mt-5 lg:mt-[100px]  lg:flex lg:justify-center lg:ml-[40rem]  xs:ml-1 sm:ml-3 lg:mr-40 xl:mt-[150px] xs:mt-[34px] sm:mt-[44px] xxxl:mt-[290px] xxxl:pl-40';
 
+  const headerDescriptionClasess = isSafari
+    ? 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-0 md:mt-5 xs:mt-[17px] lg:mt-[6px]  lg:flex lg:justify-center lg:ml-[40rem]  ml-5 xxl:pr-10'
+    : 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-0 md:mt-5 xs:mt-[17px] lg:mt-[6px]  lg:flex lg:justify-center lg:ml-[40rem]  ml-5 xxl:pr-10 xxxl:pl-40';
   return (
-    <div data-testid="landingPage" className="overflow-hidden">
-      <div className="lg:bg-[url('../public/images/backgroundLg.svg')] xl:bg-[url('../public/images/backgroundLg.svg')] xxl:bg-[url('../public/images/backgroundLg.svg')] md:bg-[url('../public/images/backgroundMd.svg')] sm:bg-[url('../public/images/backgroundSm.svg')] xs:bg-[url('../public/images/backgroundSm.svg')] bg-no-repeat  -z-30 bg-cover xs:bg-bottom sm:bg-bottom md:bg-bottom lg:bg-center xl:bg-bottom xs:h-[540px] sm:h-[580px] md:h-[650px] lg:h-[755px] xl:h-[715px] xxl:bg-top xxl:h-[910px]">
+    <div data-testid="landingPage" className="overflow-hidden landingPage">
+      <div
+        className={`lg:bg-landing-lg xl:bg-landing-xl xxl:bg-bg-landing-xxl xxxl:bg-landing-xxxl md:bg-landing-md sm:bg-landing-sm smd:bg-landing-smd bg-landing-xs bg-no-repeat  -z-30 bg-cover xs:bg-bottom sm:bg-bottom md:bg-bottom lg:bg-center xl:bg-center xs:h-[419px] sm:h-[484px] smdd:h-[460px] smd:h-[484px]  md:h-[401px] lg:h-[596px] xl:h-[668px] xxl:bg-center xxl:h-[100%] xxxl:h-[100%] bgImageLanding xxxl:bg-center`}
+      >
         <div
-          className=" container flex justify-start items-baseline xs:pt-3 xs:pl-2 sm:pt-3 ms:pl-2 md:pl-6 md:pt-6 lg:pt-5 lg:pl-10 xl:pt-5 xxl:pl-0 xxl:ml-20"
+          className="flex justify-start items-baseline xs:pl-4 sm:pt-7 xs:pt-7 sm:pl-4  md:pl-6 md:pt-6 lg:pt-5 lg:pl-10 xl:pt-5 xxl:pl-0 xxl:ml-20 iconHeader"
           itemScope
           itemProp="logo"
         >
-          {isMobile ? <LogoBcsWhite /> : null}
-          {isBrowser ? <LogoBcs /> : null}
-          {isTablet ? <LogoBcsWhite /> : null}
+          <LogoBcsWhite />
         </div>
-        <div className="xs:pt-3 sm:pt-3 md:flex md:justify-end md:mr-[7rem] lg:flex lg:justify-center lg:mt-[6rem] lg:pl-[20rem] xxl:mt-[9rem] md:mt-[4rem]">
-          <div className="md:flex md:flex-col">
-            <p className="text-white font-normal xs:text-[24px] sm:text-[24px] leading-[30px] font-heading xs:ml-7 sm:ml-7 xs:mb-1 sm:mb-1">
+        <div className={titleClasses}>
+          <div className="md:flex md:flex-col ">
+            <p className="text-white xs:text-[22px] sm:text-[22px] leading-[30px]  xs:ml-5 sm:ml-2 xs:mb-[3px] sm:mb-1 font-poppinsExtraLight md:text-primario-900">
               Bienvenido a
+              <figure
+                itemProp="logo"
+                className="mt-1 md:mt-1 m-0 p-0 w-full sm:pr-[3px] xs:pr-[0px] md:pr-0 smdd:pr-5 xmd:pr-20 pr-0 "
+              >
+                {isMedium ? (
+                  <LogoViviendaBlue />
+                ) : (
+                  <LogoViviendaWhite
+                    height={heightHeader}
+                    width={isSafari ? '300' : '100%'}
+                    vWidth={isSM ? '400' : '380'}
+                  />
+                )}
+              </figure>
             </p>
-            <figure itemProp="logo" className="xs:ml-7 sm:ml-7 w-[280px] m-0 p-0 ">
-              <LogoViviendaWhite />
-            </figure>
           </div>
         </div>
         {/* title */}
 
-        <div className="xs:flex sm:flex xs:justify-end sm:justify-end xs:pr-2 sm:pr-6 xs:pt-2 md:pr-[4.5rem] md:mt-5 xs:mt-5 lg:mt-[6px] sm:pt-5 lg:flex lg:justify-center lg:pl-[26rem] ">
-          <div className="flex flex-col">
-            <h4 className="text-white xs:w-[170px] sm:w-[170px] md:w-[265px] lg:w-[394px] font-semibold text-[20px] leading-6 ">
-              ¿Desea comprar vivienda, pero no sabe cómo iniciar?
+        <div className={headerDescriptionClasess}>
+          <div className="md:flex md:flex-col">
+            <h4 className="text-white  md:w-[285px] lg:w-[394px] font-semibold lg:text-[24px] md:text-[20px] leading-6 wcontainerHeader font-montserratSemiBold sm:text-[20px] xs:text-[20px] md:text-primario-900 xxl:text-[28px] ">
+              ¿Desea comprar vivienda?
             </h4>
-            <p className="text-white xs:w-[170px] sm:w-[170px] md:w-[320px] lg:w-[394px]  font-light text-[18px] leading-5 mt-3">
-              El buen vecino le ayudará a lograr sus sueños, sin hacer las largas filas,
-              ni papeleos extensos.
+            <p className="text-white md:text-primario-900 sm:w-[335px] w-[290px] md:w-[275px] lg:w-[415.5px] xxl:w-[380px] font-light leading-[22px] md:leading-[20px] mt-[10px] wcontainerHeader text-[16px] md:text-[18px] md:mr-[40px]  font-monserratLight sm:text-[16px] sm:leading-[18px] xs:text-[14px] xs:leading-4 lg:text-[18px] xxl:mt-8 xs:mt-5">
+              Aquí le ayudaremos a lograr sus sueños, sin hacer largas filas, ni papeleos
+              extensos.
             </p>
           </div>
         </div>
-        <div className="container mx-auto mt-10 md:w-[90%] lg:w-[70%] xxl:w-[60%] md:grid md:grid-cols-3 md:mt-[5rem] gap-4 lg:mt-[5rem] xxl:mt-[12rem]">
-          <SelectiveCard
-            icon="bcs-hand-mobile"
-            size="text-[2.5rem]"
-            color="text-primario-300"
-            data-testid="consultancyTestBtn"
-            label={`Iniciar asesoría ${device !== 'mobile' ? 'interactiva' : ''}`}
-            description="Aquí encontrará todo lo que debe saber para comprar una vivienda."
-            pathTo={routes.consultancy}
-            className="sm:mt-4 xs:mt-4"
-            onclick
-          />
-          <SelectiveCard
-            icon="bcs-hand-simbol"
-            size="text-[2.5rem]"
-            color="text-primario-300"
-            label="Simule su crédito"
-            data-testid="simuladorTestBtn"
-            description="Con nuestro simulador podrá calcular el valor del crédito y sus cuotas."
-            pathTo={routes.simulador}
-            className="sm:mt-4 xs:mt-4"
-            onclick
-          />
-          <SelectiveCard
-            icon="bcs-document-one"
-            size="text-[2.5rem]"
-            color="text-primario-300"
-            data-testid="SoliciteTest"
-            label="Solicite su crédito"
-            description="Obtenga la aprobación de su crédito en línea y compre la vivienda que desea."
-            pathTo={routes.onboarding}
-            className="sm:mt-4 xs:mt-4"
-            onclick
-          />
+        <SelectiveHomeCards isMobile={isMobile} />
+      </div>
+      <div className="md:mt-[245px] lg:mt-[240px] sm:mt-[90px] mt-[121px] h-[452px] sm:bg-requirements-sm lg:bg-requirements-lg xl:bg-requirements-xl bg-requirements-xs xxl:bg-requirements-xxl xxxl:bg-requirements-xxxl bg-no-repeat bg-cover md:h-[310px] md:bg-requirements-md lg:h-[370px] xl:h-[360px] xl:mt-[208px] pb-40 xxl:h-[297px] sm:h-[490px] smd:mt-[93px] smd:h-[460px] smd:bg-requirements-smd xxl:mt-[192px]">
+        <div className="lg:w-[1020px] xxl:w-[1100px] md:w-[700px] m-auto xxl:mt-[144px] ">
+          <Typography
+            variant="h2"
+            className="text-center sm:my-8 xs:my-8 lg:mt-[42px] xl-mt-[42px] md:mt-[26px] font-poppinsSemiBold sm:pt-8 xl:mt-[59px] pt-8 text-[28px] lg:pt-[64px]"
+          >
+            Requisitos
+          </Typography>
+
+          <div className="grid lg:grid-cols-2 xxl:grid-cols-4 md:grid-cols-2 md:gap-3 justify-items-center xxl:flex lg:mt-8">
+            <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
+              <SelectiveCard
+                description="Tener entre 18 y 70 años."
+                onclick={false}
+                hasTitle={false}
+                icon="bcs-document-18"
+                color="text-complementario-100"
+                size="text-[1.6rem]"
+                className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100"
+                classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[100px] lg:w-full"
+              />
+            </div>
+            <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
+            <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
+              <SelectiveCard
+                description="Ser empleado o pensionado."
+                onclick={false}
+                hasTitle={false}
+                icon="bcs-user-heart"
+                color="text-complementario-100"
+                size="text-[2rem]"
+                className="sm:mb-3 xs:mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
+                classNamesDescription="ml-[5px] lg:w-[120px] md:w-[105px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[115px] lg:w-full"
+              />
+            </div>
+            <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
+            <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
+              <SelectiveCard
+                description="Pagar salud y pensión."
+                onclick={false}
+                hasTitle={false}
+                icon="bcs-hand-money"
+                color="text-complementario-100"
+                size="text-[2rem]"
+                className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
+                classNamesDescription="ml-[5px] lg:w-[120px] md:w-[90px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[100px] lg:w-full"
+              />
+            </div>
+            <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
+            <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
+              <SelectiveCard
+                description="Tener el celular a la mano."
+                onclick={false}
+                hasTitle={false}
+                icon="bcs-mobile-grade"
+                color="text-complementario-100"
+                size="text-[2rem]"
+                className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
+                classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[120px] lg:w-full "
+              />
+            </div>
+          </div>
         </div>
       </div>
-      <div className="xs:mt-[20rem] sm:mt-[20rem] md:mt-[87px] lg:mt-[42px] bg-gris-90 pb-10">
-        <Typography
-          variant="h2"
-          className="text-center sm:my-[3rem] xs:my-[3rem] lg:mt-[42px] xl-mt-[42px] md:pt-[80px] lg:pt-[80px] lg:mb-[64px] pt-20"
-        >
-          Requisitos
-        </Typography>
-        <div className="md:grid md:grid-cols-9 gap-3 md:w-10/12 lg:w-4/5 container place-items-center lg:mb-[40px]">
-          <SelectiveCard
-            description="Tener entre 18 y 69 años."
-            onclick={false}
-            hasTitle={false}
-            icon="bcs-document-18"
-            color="text-primario-300"
-            size="text-[1.6rem]"
-            className="col-span-4 sm:mb-3 xs:mb-3 md:mb-0"
-          />
-          <div className="md:h-[46px] bg-complementario-70 md:w-[2px] md:pb-4" />
 
-          <SelectiveCard
-            description="Pagar salud y pensión."
-            onclick={false}
-            hasTitle={false}
-            icon="bcs-hand-money"
-            color="text-primario-300"
-            size="text-[2rem]"
-            className="col-span-4 sm:mb-3 xs:mb-3 md:mb-0"
-          />
-
-          <SelectiveCard
-            description="Ser asalariado o pensionado."
-            onclick={false}
-            hasTitle={false}
-            icon="bcs-user-job"
-            color="text-primario-300"
-            size="text-[2rem]"
-            className="col-span-4 sm:mb-3 xs:mb-3 md:mb-0"
-          />
-          <div className="md:h-[46px] bg-complementario-70 md:w-[2px] md:pb-4 md:align-middle align-middle" />
-          <SelectiveCard
-            description="Tener el celular a la mano."
-            onclick={false}
-            hasTitle={false}
-            icon="bcs-mobile-grade"
-            color="text-primario-300"
-            size="text-[2rem]"
-            className="col-span-4 sm:mb-3 xs:mb-3 md:mb-0"
-          />
-        </div>
-      </div>
       {/* steps  */}
-      <div className="container bg-white relative">
-        <Typography variant="h2" className="text-center my-20 lg:mt-[84px] lg:mb-[64px]">
-          En 4 pasos solicite su{' '}
-          <span className="md:block">Crédito de Vivienda Digital</span>
-        </Typography>
-        <div className="grid sm:grid-cols-2 xs:grid-cols-2 md:grid-cols-4 gap-4">
-          <div>
-            <div className="bg-gris-80 sm:w-[88px] xs:w-[88px] sm:h-[96px] xs:h-[96px] m-auto flex justify-center rounded-md p-5">
-              <Icons icon="bcs-push" size="text-[2.5rem]" color="text-primario-300" />
-            </div>
-            <div className="flex justify-center ">
-              {/* number */}
-              <div className="flex justify-center mt-4 relative w-[88px] lg:mr-6">
-                <Typography variant="h1" className="text-primario-300 flex">
-                  1
-                </Typography>
-                <span className="rounded-full border border-complementario-100 absolute top-[-4px] xs:right-[0.5rem] sm:right-[0.5rem] right-[7.2rem] w-[16px]h-[16px]">
-                  <Icons icon="bcs-check" color="text-secundario-20" iconclassNames="" />
-                </span>
-              </div>
-              {/* number */}
-            </div>
-            <Typography
-              variant="bodyS3"
-              className="lg:mt-[16px] text-complementario-100 text-center flex justify-center m-auto flex-col sm:w-[85px] xs:w-[85px] lg:w-[155px]"
-            >
-              Ingrese a <span className="xs:block sm:block">“Solicitar Crédito”</span>
-            </Typography>
+      <div className="bg-white flex justify-between sm:w-[309px] smd:w-[385px] smd:m-auto xl:w-[1047px] xl:m-auto md:w-full">
+        <div className="lg:ml-[36px] md:ml-[30px] m-auto md:m-0 xl:ml-1 smd:ml-2 ">
+          <Typography
+            variant="h2"
+            className="md:text-left text-center lg:mt-[149px] xl:mt-[148px] md:mt-[93px] mt-[80px]  font-poppinsSemiBold text-[28px] ml-5 md:ml-0"
+          >
+            Tan solo en <span className="block lg:inline">cuatro pasos</span>
+          </Typography>
+          <div className="mt-8 ml-5 md:ml-0 smd:ml-1">
+            <Step titleNumber="1" description={`Ingrese a “Solicitar Crédito”`} />
+            <Step titleNumber="2" description={`Valide su identidad`} />
+            <Step titleNumber="3" description={`Diligencie el formulario`} />
+            <Step titleNumber="4" description={`Obtenga la preaprobación`} />
           </div>
-          {/* second card */}
-          <div>
-            <div className="bg-gris-80 sm:w-[88px] xs:w-[88px] sm:h-[96px] xs:h-[96px] m-auto flex justify-center rounded-md p-5">
-              <Icons
-                icon="bcs-women-check"
-                size="text-[2.5rem]"
-                color="text-primario-300"
-              />
-            </div>
-            <div className="flex justify-center">
-              {/* number */}
-              <div className="flex justify-center mt-4 relative w-[88px] lg:mr-5">
-                <Typography variant="h1" className="text-primario-300 flex">
-                  2
-                </Typography>
-                <span className="rounded-full border border-complementario-100 absolute top-[-4px] xs:right-[0.5rem] sm:right-[0.5rem] right-[7.2rem] w-[16px]h-[16px]">
-                  <Icons icon="bcs-check" color="text-secundario-20" iconclassNames="" />
-                </span>
-              </div>
-              {/* number */}
-            </div>
-            <Typography
-              variant="bodyS3"
-              className="lg:mt-[16px] text-complementario-100 text-center flex justify-center m-auto flex-col sm:w-[92px] xs:w-[92px]"
-            >
-              Valide <span className="xs:block sm:block">su identidad</span>
-            </Typography>
-          </div>
-          <div>
-            <div className="bg-gris-80 sm:w-[88px] xs:w-[88px] sm:h-[96px] xs:h-[96px] m-auto flex justify-center rounded-md p-5">
-              <Icons
-                icon="bcs-hand-mobile"
-                size="text-[2.5rem]"
-                color="text-primario-300"
-              />
-            </div>
-            <div className="flex justify-center">
-              {/* number */}
-              <div className="flex justify-center mt-4 relative w-[88px] lg:mr-5">
-                <Typography variant="h1" className="text-primario-300 flex">
-                  3
-                </Typography>
-                <span className="rounded-full border border-complementario-100 absolute top-[-4px] xs:right-[0.5rem] sm:right-[0.5rem] right-[7.2rem] w-[16px]h-[16px]">
-                  <Icons icon="bcs-check" color="text-secundario-20" iconclassNames="" />
-                </span>
-              </div>
-              {/* number */}
-            </div>
-            <Typography
-              variant="bodyS3"
-              className="lg:mt-[16px] text-complementario-100 text-center flex justify-center m-auto flex-col sm:w-[92px] xs:w-[92px]"
-            >
-              Diligencie <span className="block">el formulario</span>
-            </Typography>
-          </div>
-          <div>
-            <div className="bg-gris-80 sm:w-[88px] xs:w-[88px] sm:h-[96px] xs:h-[96px] m-auto flex justify-center rounded-md p-5">
-              <Icons
-                icon="bcs-mobile-check"
-                size="text-[2.5rem]"
-                color="text-primario-300"
-              />
-            </div>
-            <div className="flex justify-center lg:mr-3">
-              {/* number */}
-              <div className="flex justify-center mt-4 relative w-[88px] lg:mr-4">
-                <Typography variant="h1" className="text-primario-300 flex">
-                  4
-                </Typography>
-                <span className="rounded-full border border-complementario-100 absolute top-[-4px] xs:right-[0.5rem] sm:right-[0.5rem] right-[7.2rem] w-[16px]h-[16px]">
-                  <Icons icon="bcs-check" color="text-secundario-20" iconclassNames="" />
-                </span>
-              </div>
-              {/* number */}
-            </div>
-            <Typography
-              variant="bodyS3"
-              className="lg:mt-[16px] text-complementario-100 text-center flex justify-center flex-col"
-            >
-              Obtenga <span className="block">la aprobación</span>
-            </Typography>
-          </div>
+        </div>
+        <div className="relative md:flex items-center justify-center lg:h-[585px] lg:w-[534px] xl:w-[487px] md:w-[381px] md:h-[471px] hidden md:mt-[62px] lg:mt-[64px] xl:mt-[63px] ">
+          <img
+            src={
+              isTablet
+                ? `${basePath}/images/stepsmd.svg`
+                : isLG
+                ? `${basePath}/images/stepslg.svg`
+                : ``
+            }
+            alt=""
+            className="left-0 "
+          />
         </div>
       </div>
       {/* beneficios */}
-      <div className="">
-        <Typography variant="h2" className="mt-[84px] text-center lg:mb-[105px]">
+      <div className="md:mt-[100px] mt-[80px] lg:mt-20">
+        <Typography
+          variant="h2"
+          className=" text-center lg:mb-[105px] text-[32px] font-poppinsSemiBold md:mt-0 mt-[66px]"
+        >
           Beneficios
         </Typography>
-        <div className="bg-gris-80 md:grid md:grid-cols-2 sm:grid sm:grid-col-1 xs:mt-[12rem] md:mt-[5rem] relative md:h-[412px] gap-10">
-          <div className="relative xs:top-[-150px] md:top-[-25px] flex justify-center md:justify-end ">
+        <div className="bgBenefits md:grid md:grid-cols-2 sm:grid sm:grid-col-1 xs:mt-[12rem] md:mt-[5rem] relative md:h-[314px] gap-5 h-[520px] sm:h-[532px] lg:h-[400px]">
+          <div className="relative xs:top-[-140px]  md:top-[-25px] flex justify-center md:justify-end ">
             <img
               src={`${basePath}/images/beneficios.png`}
               alt="beneficios"
-              className="w-[302px] h-[420px] md:h-[450px]"
+              className="lg:w-[279px] lg:h-[451px] md:w-[220px] sm:w-[278px] sm:h-[448px] h-[409px] md:h-[354px]"
             />
           </div>
 
-          <div className="listInitial lg:w-[378px] relative block mx-5 top-[-140px] md:top-0 ">
-            <ul>
-              <li className="text-[20px] font-light leading-[22px] mt-[64px] text-complementario-100">
-                Aprobación inmediata en línea
+          <div className="listInitial lg:w-[440px] relative block mx-5 sm:top-[-128px] xs:top-[-110px] md:top-0 xs:w-[260px] sm:w-[90%] smd:w-[80%] smd:m-auto md:mt-[-20px] md:w-[70%] lg:mt-0 xxxl:ml-10">
+            <ul className="font-monserratLight mb-0 ">
+              <li className="lg:text-[20px] text-[16px] font-light leading-[22px] lg:mt-[127px] md:mt-20 text-complementario-100 ">
+                Preaprobación inmediata en línea
               </li>
-              <li className="text-[20px] font-light leading-[22px] mt-8 text-complementario-100">
-                Extensión del subsidio FRECH durante toda la vigencia del crédito
-              </li>
-              <li className="text-[20px] font-light leading-[22px] mt-8 text-complementario-100">
+
+              <li className="lg:text-[20px] text-[16px] font-light leading-[22px] mt-3 text-complementario-100">
                 Sin documentación física
               </li>
-              <li className="text-[20px] font-light leading-[22px] mt-8 text-complementario-100">
+              <li className="lg:text-[20px] text-[16px] font-light leading-[22px] mt-3 text-complementario-100">
                 Para clientes y no clientes
               </li>
-              <li className="text-[20px] font-light leading-[22px] mt-8 text-complementario-100">
+              <li className="lg:text-[20px] text-[16px] font-normal leading-[22px] mt-3 text-complementario-100 ">
                 Abonos extraordinarios a capital para reducir el plazo o el valor de la
                 cuota
               </li>
@@ -303,7 +227,7 @@ export default function Home() {
         </div>
       </div>
       {/* questions */}
-      <div className="mx-3 md:mx-[92px] lg:mt-[10px]">
+      <div className=" md:mx-[92px] lg:mt-[10px] ">
         <Questions />
       </div>
     </div>

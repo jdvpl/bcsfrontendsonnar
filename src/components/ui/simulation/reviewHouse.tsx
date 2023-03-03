@@ -29,8 +29,8 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
     {lifeInsurance ? (
       <Card
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px] "
-        title="Cuota mensual total con seguros"
-        value={monthlyCouteInsurance?.toString()}
+        title="Cuota mensual sin seguros"
+        value={monthlyCoute?.toString()}
         text="text-[32px] pl-[8px] pt-2 flex items-baseline"
         urlsvg=""
         classtitle="h-[18px] pt-[16px] text-[16px]"
@@ -42,22 +42,53 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
     ) : null}
 
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#F3F4F6]  mb-[16px] font-semibold rounded-[8px] "
-      title="Cuota mensual sin seguros"
-      value={monthlyCoute?.toString()}
-      text="text-[32px] pl-[8px] pt-2 flex items-baseline"
-      urlsvg=""
-      classtitle="h-[18px] pt-[16px] text-[16px]"
-      subvalue="pesos"
-      textsub="30"
-      tooltiptext=""
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+      title="Valor financiado aproximado"
+      value={financedValue?.toString()}
+      text="text-[20px] pl-[23px] font-semibold"
       urlsvgendicon=""
+      urlsvg={`${basePath}/images/Money.svg`}
+      classtitle="h-[14px] text-[13px] ml-2"
+      tooltiptext=""
+    />
+    
+    <Card
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+      title="Plazo"
+      value={termFinance?.toString()}
+      text="text-[20px] pl-[23px] font-semibold"
+      urlsvgendicon=""
+      urlsvg={`${basePath}/images/Calendar.svg`}
+      classtitle="h-[14px] text-[13px] ml-2"
+      tooltiptext=""
     />
     <Card
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[116px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+      title="Tasa aproximada"
+      value={rate}
+      text="text-[20px] pl-[23px] font-semibold"
+      urlsvg={`${basePath}/images/Charts.svg`}
+      urlsvgendicon=""
+      classtitle="h-[14px] text-[13px] ml-2"
+      tooltiptext=""
+      description
+      descriptionHtml={
+        <p className="pl-[33px]">
+          <p className="flex">
+            <p className="font-bold text-[14px] mr-1">MV: </p><span className="text-[14px]">Tasa nominal mes
+            vencido</span>
+          </p>
+          <p className="flex">
+            <p className="font-bold text-[14px]  mr-1">EA:</p><span className="text-[14px]">Tasa efectiva anual</span>
+          </p>
+        </p>
+      }
+    />
+    {/* <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Seguro de vida"
       value={lifeInsurance?.toString()}
-      text="text-[20px] pl-[18px] font-semibold"
+      text="text-[20px] pl-[23px] font-semibold"
       urlsvg={`${basePath}/images/Insurage.svg`}
       classtitle="h-[14px] text-[13px] ml-2"
       tooltip
@@ -71,12 +102,12 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       }
     />
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+      className="xs:w-[290px] xs:h-[85px]  sm:w-[343px] md:w-[448px]  sm:h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Seguro de Incendio, Rayo y Terremoto"
       value={fireInsurance?.toString()}
-      text="text-[20px] pl-[18px] font-semibold"
+      text="text-[20px] pl-[23px] font-semibold"
       urlsvg={`${basePath}/images/Home.svg`}
-      classtitle="h-[14px] text-[13px] ml-2"
+      classtitle="xs:mb-[23px] sm:mb-[0px] h-[14px] text-[13px] ml-2 "
       tooltip
       id="fireInsuranceHouse"
       urlsvgendicon=""
@@ -87,41 +118,9 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
           directa de los riesgos amparados.{' '}
         </p>
       }
-    />
-    <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
-      title="Plazo"
-      value={termFinance?.toString()}
-      text="text-[20px] pl-[18px] font-semibold"
-      urlsvgendicon=""
-      urlsvg={`${basePath}/images/Calendar.svg`}
-      classtitle="h-[14px] text-[13px] ml-2"
-      tooltiptext=""
-    />
-    <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
-      title="Tasa"
-      value={rate}
-      text="text-[20px] pl-[18px] font-semibold"
-      urlsvg={`${basePath}/images/Charts.svg`}
-      urlsvgendicon=""
-      classtitle="h-[14px] text-[13px]"
-      tooltip
-      tooltiptext={
-        <p className="text-white">
-          La tasa de interés es el precio que se debe pagar por utilizar una cantidad de
-          dinero durante un tiempo determinado.
-          <br />
-          <p className="flex text-white">
-            <p className="font-bold text-white mr-1">Tasa %MV: </p> Tasa nóminal mes
-            vencido
-          </p>
-          <p className="flex text-white">
-            <p className="font-bold text-white mr-1">Tasa EA:</p>Tasa efectiva anual
-          </p>
-        </p>
-      }
-    />
+    /> */}
+    
+    
 
     <div className="xs:w-[290px] sm:w-[343px] md:w-[448px] flex justify-end mb-[12px]">
       {dataPdf?.quotes?.length > 0 ? <BtnPdfDownloader pdf={dataPdf} /> : null}

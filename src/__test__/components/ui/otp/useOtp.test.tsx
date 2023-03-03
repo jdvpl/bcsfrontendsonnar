@@ -1,5 +1,8 @@
 import useOtp from '../../../../components/custom/otp/useOtp';
 
+
+const dataQuestions = { processId: 'PRE00000023' }
+const setCurrentRouting = jest.fn();
 describe('useOtp when onValidateOTP fetch is successfully', () => {
   let dataTU;
   let otp;
@@ -58,6 +61,8 @@ describe('useOtp when onValidateOTP fetch is successfully', () => {
       timer,
       reSendOTPCode,
       validateOTOCode,
+      dataQuestions,
+      setCurrentRouting
     });
     await onValidateOTP();
   });
@@ -136,6 +141,8 @@ describe('useOtp when onValidateOTP fetch is error ', () => {
       timer,
       reSendOTPCode,
       validateOTOCode,
+      dataQuestions,
+      setCurrentRouting
     });
     await onValidateOTP();
   });
@@ -211,6 +218,8 @@ describe('useOtp when onResendOTP fetch is successfully', () => {
       timer,
       reSendOTPCode,
       validateOTOCode,
+      dataQuestions,
+      setCurrentRouting
     });
     await onResendOTP();
   });
@@ -289,6 +298,8 @@ describe('useOtp when onResendOTP fetch is error ', () => {
       timer,
       reSendOTPCode,
       validateOTOCode,
+      dataQuestions,
+      setCurrentRouting
     });
     await onResendOTP();
   });
