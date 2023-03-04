@@ -82,7 +82,6 @@ const RevisionImagenes: React.FC = () => {
           }),
         }
       );
-      console.log({ response });
       if (response.ok) {
         setIsLoading(false);
         redirectLoader('/validacion-biometrica/indexSelfie');

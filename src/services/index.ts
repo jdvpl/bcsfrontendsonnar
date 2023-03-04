@@ -216,22 +216,11 @@ export const fetchSarlaft = async (body: any) => {
     return { error: true, response: e.response?.data?.message };
   }
 };
-const hhh = (data: any, obj: any) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(
-      resolve({
-        result: '',
-        data: 'U2FsdGVkX19zq94N9vmDgVbTEzquYGosVwr627+EEpAzP6rxkZ92CxHxAEiuFj+WpmUGP8+dxqXBsoq+SVAsN2KPYiDV44PZFHFE2ElTHAkqpQ4iv5X6yi44I9rndPkio9Spw/NYwaIFmo4q2xanN0+dXiyOCZDZp6feMMH5I004MEcXlZia5+PSIZNAY+IUPObnrYR6jV7j0G0i2SaUI9NKRdBgO7C2GKgq2WPQ8kRWHNKGrL2la5o9ql8oqQor+5bLvB+94YfvBNEQa/dIzceZT7EMxmNz0a9ue8QDYQYuVxWBgN3pGEz2SCmrD9Dj',
-      }),
-      300000
-    );
-  });
-};
 
 export const riskBoxes = async (body: any) => {
   try {
     const bodyEncrypt = await allResponse({ ...body, processId: getProcessId() }, KEY);
-    const response:any = await hhh('/api-composer/composer/risk-boxes', {
+    const response:any = await clientAxiosBackend.post('/api-composer/composer/risk-boxes', {
       data: bodyEncrypt,
     });
     const data = await allResponseDecrypted(response.data, KEY);

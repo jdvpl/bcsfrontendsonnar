@@ -175,7 +175,6 @@ export default function useValidations(
     };
 
     const data: any = await riskBoxes(body);
-    console.log(data);
     if (data?.response?.result?.customerStatus?.finalOffer?.isViable) {
       setApplicationResponse(data?.response?.result?.customerStatus);
       setCurrentRouting(routes.finalcialData, false);
