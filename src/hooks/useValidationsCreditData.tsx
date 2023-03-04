@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   maxHouseValueNoVis,
   maxHouseValueVis,
@@ -45,6 +45,7 @@ export default function useValidations(
     SesionStorageKeys?.applicationResponse.key,
     {}
   );
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   const handleClearErrors = () => {
     clearErrors('typeHouse');
@@ -107,6 +108,7 @@ export default function useValidations(
       setValue('financeValue', 0);
     }
   };
+
   useEffect(() => {
     if (Object.entries(mortgageValues).length > 0) {
       setValue('typeHouse', mortgageValues.typeHouse);
@@ -128,6 +130,7 @@ export default function useValidations(
   }, [houseValue, financeValue, termFinance, typeHouse]);
 
   const onSubmit = async () => {
+    setLoading(true);
     // eslint-disable-next-line no-console
     setDataForm({
       typeHouse,
@@ -173,16 +176,14 @@ export default function useValidations(
 
     const data: any = await riskBoxes(body);
     console.log(data);
-
-    if (!data?.response?.error) {
-      setApplicationResponse({ data });
+    if (data?.response?.result?.customerStatus?.finalOffer?.isViable) {
+      setApplicationResponse(data?.response?.result?.customerStatus);
       setCurrentRouting(routes.finalcialData, false);
       setCurrentRouting(routes.creditData, false);
       setCurrentRouting(routes.ResumenSolicitud);
       router.push(routes.ResumenSolicitud);
-    }else{
+    } else {
       router.push(routes.errorValidacion);
-
     }
   };
 
@@ -231,5 +232,6 @@ export default function useValidations(
     automationFinanceValue,
     onSubmit,
     isValid,
+    isLoading,
   };
 }

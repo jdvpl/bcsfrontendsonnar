@@ -19,7 +19,6 @@ import Modal from '../../components/ui/Modal';
 import { useBackDetector } from '../../hooks/useBackDetector';
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
 
-
 function ApplicationApproval({ modalExit = false }: any) {
   const { setCurrentRouting } = useProtectedRoutes();
   const [dataInfo] = useSessionStorage(SesionStorageKeys.basicDataUser.key, {});
@@ -27,23 +26,37 @@ function ApplicationApproval({ modalExit = false }: any) {
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
   const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const router = useRouter();
-  const { getPdf } = useDownloadPdf(dataQuestions, dataTU, valuesMortgage);
   const [showModalExit, setshowModalExit] = useState(modalExit);
-  const [componentModalExit,] = useState({
+  const [componentModalExit] = useState({
     children: <ExitModal setshowModalExit={setshowModalExit} />,
-    title: <span className='md:text-[28px] font-poppinsSemiBold'>Está a punto de abandonar su solicitud</span>,
+    title: (
+      <span className="md:text-[28px] font-poppinsSemiBold">
+        Está a punto de abandonar su solicitud
+      </span>
+    ),
     id: '',
   });
+  const [applicationResponse] = useSessionStorage(
+    SesionStorageKeys?.applicationResponse.key,
+    {}
+  );
+  const { getPdf } = useDownloadPdf(
+    dataQuestions,
+    dataTU,
+    valuesMortgage,
+    applicationResponse
+  );
+
   const closeModalExit = () => {
     setshowModalExit(false);
   };
   useBackDetector(() => {
-    setshowModalExit(true)
+    setshowModalExit(true);
   }, router.asPath);
 
   return (
     <div>
-      <InactivityWarper >
+      <InactivityWarper>
         <Header />
       </InactivityWarper>
       <RatingModal />
@@ -77,7 +90,9 @@ function ApplicationApproval({ modalExit = false }: any) {
           <Card
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA] font-semibold rounded-[8px] m-auto"
             title="Monto preaprobado"
-            value={`${convertToColombianPesos(valuesMortgage?.financeValue)}`}
+            value={`${convertToColombianPesos(
+              applicationResponse?.finalOffer?.offer?.financeValue
+            )}`}
             text="md:text-[32px] text-[25px] pl-[16px] pt-2 flex items-baseline font-poppinsSemiBold"
             urlsvg=""
             classtitle="h-[18px] pt-[16px] text-[16px] pl-0 font-poppinsSemiBold"
@@ -92,7 +107,7 @@ function ApplicationApproval({ modalExit = false }: any) {
             className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[12px] pl-[16px] rounded-[8px] mb-[12px] font-light m-auto"
             title="Plazo"
             urlsvgendicon=""
-            value="15 años"
+            value={`${applicationResponse?.finalOffer?.offer?.termFinance} años`}
             text="text-[20px] pl-[18px] font-semibold font-poppinsSemiBold"
             urlsvg={`${basePath}/images/Calendar.svg`}
             classtitle="h-[14px] text-[13px] font-montserratRegular"
@@ -110,8 +125,8 @@ function ApplicationApproval({ modalExit = false }: any) {
                 .replace(/\b\w/g, (l: string) =>
                   l.toUpperCase()
                 )} - ${valuesMortgage?.office?.city
-                  ?.toLowerCase()
-                  .replace(/\b\w/g, (l: string) => l.toUpperCase())} `}
+                ?.toLowerCase()
+                .replace(/\b\w/g, (l: string) => l.toUpperCase())} `}
               text="text-[20px] pl-[18px] font-semibold font-poppinsSemiBold"
               urlsvg={`${basePath}/images/location.svg`}
               classtitle="h-[14px] text-[13px] font-montserratRegular"
@@ -150,13 +165,16 @@ function ApplicationApproval({ modalExit = false }: any) {
         <div className="listInitial md:w-[440px] sm:w-[343px] w-[293px] m-auto mt-8 font-montserratRegular text-primario-900">
           <ul className="">
             <li className="mt-3 text-lg font-light">
-              Descargue la carta. Tenga presente que su preaprobación está sujeta a las políticas del Banco.
+              Descargue la carta. Tenga presente que su preaprobación está sujeta a las
+              políticas del Banco.
             </li>
             <li className="mt-3 text-lg font-light">
-              Entregue la carta para formalizar la compra o separación del inmueble al vendedor.
+              Entregue la carta para formalizar la compra o separación del inmueble al
+              vendedor.
             </li>
             <li className="mt-3 text-lg font-light">
-              Realice la legalización del inmueble. (Avalúo, estudio de títulos y escrituración).
+              Realice la legalización del inmueble. (Avalúo, estudio de títulos y
+              escrituración).
             </li>
             <li className="mt-3 text-lg font-light">
               Reciba su nueva vivienda y disfrute de este sueño cumplido.

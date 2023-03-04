@@ -3,8 +3,6 @@ import { convertToColombianPesos, downLoadPdf } from '../../utils';
 import { getPDF } from '../../services';
 import { iCreditData } from '../../interfaces/iCreditData';
 
-
-
 jest.mock('../../services');
 jest.mock('../../utils');
 
@@ -12,6 +10,7 @@ describe('useDownloadPdf', () => {
   let dataQuestions: any;
   let dataTU: any;
   let valuesMortgage: Partial<iCreditData>;
+  let applicationResponse: any;
 
   beforeEach(() => {
     dataQuestions = {
@@ -22,9 +21,22 @@ describe('useDownloadPdf', () => {
       document_type: 'testDocumentType',
     };
     valuesMortgage = {
-      financeValue: "1000000",
+      financeValue: '1000000',
       amortizationType: 'testAmortizationType',
       termFinance: 'testTermFinance',
+    };
+    applicationResponse = {
+      finalOffer: {
+        isViable: true,
+        offer: {
+          financeValue: 57763534,
+          monthlyInstallment: 1399999.99,
+          rate: '1.32% MV - 17.05% EA',
+          termFinance: "testTermFinance",
+          lifeInsurance: '',
+          fireInsurance: '',
+        },
+      },
     };
   });
 
@@ -42,7 +54,7 @@ describe('useDownloadPdf', () => {
         },
       };
       (getPDF as jest.Mock).mockResolvedValue(response);
-      await useDownloadPdf(dataQuestions, dataTU, valuesMortgage).getPdf();
+      await useDownloadPdf(dataQuestions, dataTU, valuesMortgage,applicationResponse).getPdf();
       expect(getPDF).toHaveBeenCalledWith({
         proccessId: dataQuestions.processId,
         documentNumber: dataTU.document_number,
@@ -60,7 +72,7 @@ describe('useDownloadPdf', () => {
         response: null,
       };
       (getPDF as jest.Mock).mockResolvedValue(response);
-      await useDownloadPdf(dataQuestions, dataTU, valuesMortgage).getPdf();
+      await useDownloadPdf(dataQuestions, dataTU, valuesMortgage,applicationResponse).getPdf();
       expect(getPDF).toHaveBeenCalledWith({
         proccessId: dataQuestions.processId,
         documentNumber: dataTU.document_number,
