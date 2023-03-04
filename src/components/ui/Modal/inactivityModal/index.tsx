@@ -8,7 +8,7 @@ export function InactivityModal() {
   const { onCloseModal, getOutToHome, isOpen, timer } = useInactivityModal();
   return (
     <div
-      id="modal"
+      id="modalInactivity"
       className={`bg-black/70 w-screen h-screen z-40 fixed top-0 left-0 flex justify-center content-center ${isOpen ? 'overflow-y-auto' : 'hidden'
         }`}
     >
