@@ -4,34 +4,34 @@ import { maxHouseValueNoVis } from '../../lib/simulator';
 import { routes } from '../../routes';
 import { createMockRouter } from '../utils/createMockRouter';
 import { iCreditData } from '../../interfaces/iCreditData';
-
-const mortgageValues = {};
-const amortizationType = 'Pesos';
-const router = createMockRouter({});
-jest.useFakeTimers();
-jest.mock('../../services', () => ({
-  riskBoxes: jest.fn().mockResolvedValue({
-    response: {
-      result: {
-        customerStatus: {
-          finalOffer: {
-            isViable: true,
-            offer: {
-              financeValue: 57763534,
-              monthlyInstallment: 1399999.99,
-              rate: '1.32% MV - 17.05% EA',
-              termFinance: 5,
-              lifeInsurance: '',
-              fireInsurance: '',
-            },
+import { riskBoxes } from '../../services';
+const mockData = {
+  response: {
+    result: {
+      customerStatus: {
+        finalOffer: {
+          isViable: true,
+          offer: {
+            financeValue: 57763534,
+            monthlyInstallment: 1399999.99,
+            rate: '1.32% MV - 17.05% EA',
+            termFinance: 10,
+            lifeInsurance: '',
+            fireInsurance: '',
           },
-          status: 200,
         },
+        status: 200,
       },
     },
-    error: false,
-  }),
+  },
+  error: false,
+};
+const mortgageValues = {};
+const amortizationType = 'Pesos';
+jest.mock('../../services', () => ({
+  riskBoxes: jest.fn(),
 }));
+
 
 describe('useValidations is successfully', () => {
   const houseValue: any = 10000000;
@@ -172,7 +172,21 @@ describe('Validate percentage function', () => {
     });
   });
   it('should called  routes finalcialData and creditData with false', async () => {
+    riskBoxes.mockResolvedValueOnce(mockData);
     const setCurrentRouting = jest.fn();
+    const customRouter = createMockRouter({});
+    const mortgageValuesData: iCreditData = {
+      typeHouse: 'vis',
+      houseStatus: 'new',
+      houseValue: '2000000000',
+      financeValue: '140000000',
+      termFinance: '9',
+      insuranceCheck: 'true',
+      choseOffice: '',
+      office: '',
+      stratum: '3',
+      amortizationType: 'Pesos',
+    };
     const { result } = renderHook(() =>
       useValidations(
         'novis',
@@ -189,14 +203,16 @@ describe('Validate percentage function', () => {
         null,
         null,
         null,
-        router,
+        customRouter,
         null,
         setCurrentRouting,
-        {},
+        mortgageValuesData,
         amortizationType
       )
     );
-    await result?.current?.onSubmit();
+    await act(async () => {
+      await result?.current?.onSubmit();
+    });
     expect(setCurrentRouting).toHaveBeenCalledWith(routes.finalcialData, false);
     expect(setCurrentRouting).toHaveBeenCalledWith(routes.creditData, false);
   });
@@ -230,7 +246,7 @@ describe('isValid Method test', () => {
     setValue = jest.fn();
     jest.resetAllMocks();
   });
-  it('should return true', () => {
+  it('should return true', async () => {
     const { result } = renderHook(() =>
       useValidations(
         typeHouse,
@@ -266,7 +282,7 @@ describe('isValid Method test', () => {
       result.current.automationFinanceValue(0);
     });
 
-    act(async () => {
+    await act(async () => {
       await result.current.onSubmit();
     });
   });

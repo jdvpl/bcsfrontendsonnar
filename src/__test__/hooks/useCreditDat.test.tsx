@@ -3,32 +3,33 @@ import useValidations from '../../hooks/useValidationsCreditData';
 import { routes } from '../../routes';
 import { createMockRouter } from '../utils/createMockRouter';
 import { iCreditData } from '../../interfaces/iCreditData';
+import { act } from 'react-dom/test-utils';
 
 const amortizationType = 'Pesos';
-jest.useFakeTimers();
-jest.mock('../../services', () => ({
-  riskBoxes: jest.fn().mockResolvedValue({
-    response: {
-      result: {
-        customerStatus: {
-          finalOffer: {
-            isViable: false,
-            offer: {
-              financeValue: 57763534,
-              monthlyInstallment: 1399999.99,
-              rate: '1.32% MV - 17.05% EA',
-              termFinance: 5,
-              lifeInsurance: '',
-              fireInsurance: '',
-            },
-          },
-          status: 200,
-        },
-      },
-    },
-    error: false,
-  }),
-}));
+// jest.useFakeTimers();
+// jest.mock('../../services', () => ({
+//   riskBoxes: jest.fn().mockResolvedValue({
+//     response: {
+//       result: {
+//         customerStatus: {
+//           finalOffer: {
+//             isViable: false,
+//             offer: {
+//               financeValue: 57763534,
+//               monthlyInstallment: 1399999.99,
+//               rate: '1.32% MV - 17.05% EA',
+//               termFinance: 5,
+//               lifeInsurance: '',
+//               fireInsurance: '',
+//             },
+//           },
+//           status: 200,
+//         },
+//       },
+//     },
+//     error: false,
+//   }),
+// }));
 
 it('redirect to error validation when does not viable ', async () => {
   const setCurrentRouting = jest.fn();
@@ -68,6 +69,8 @@ it('redirect to error validation when does not viable ', async () => {
       amortizationType
     )
   );
-  await result?.current?.onSubmit();
+  await act(async () => {
+    await result?.current?.onSubmit();
+  });
   expect(customRouter.push).toHaveBeenCalledWith(routes.errorValidacion);
 });
