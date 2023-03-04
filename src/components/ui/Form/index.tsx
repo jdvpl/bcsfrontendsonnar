@@ -190,7 +190,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
           />
           <label
             htmlFor="chk_policy_and_terms"
-            className="inline-block font-normal text-black p-0 m-0 pl-[10px]"
+            className="inline-block font-normal text-black p-0 m-0 pl-[10px] font-montserratRegular cursor-pointer"
             role="tabpanel"
             tabIndex={0}
             itemScope
@@ -243,7 +243,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
           />
           <label
             htmlFor="chk-terminos"
-            className="inline-block font-normal text-black p-0 m-0 pl-[10px]"
+            className="inline-block font-normal text-black p-0 m-0 pl-[10px] font-montserratRegular cursor-pointer"
             role="tabpanel"
             tabIndex={0}
             itemScope
@@ -262,8 +262,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
                 setShowModal(true);
                 setComponentModal({
                   children: <CommercialAuthorization />,
-                  title:
-                    'Autoriza que su información sea utilizada con fines comerciales',
+                  title: <span className='font-poppinsSemiBold'>Autoriza que su información sea utilizada con fines comerciales</span>,
                   id: 'modal-commercial',
                   heightModal: 'lg:h-[50%]'
                 });
@@ -273,8 +272,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
                   setShowModal(true);
                   setComponentModal({
                     children: <CommercialAuthorization />,
-                    title:
-                      'Autoriza que su información sea utilizada con fines comerciales',
+                    title: <span className='font-poppinsSemiBold'>Autoriza que su información sea utilizada con fines comerciales</span>,
                     id: 'modal-commercial',
                     heightModal: 'lg:h-[50%]'
                   });

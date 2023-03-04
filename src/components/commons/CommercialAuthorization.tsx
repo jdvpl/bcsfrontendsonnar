@@ -2,12 +2,12 @@ import React from 'react';
 
 function CommercialAuthorization() {
   return <div data-testid="comercialAuth" className="m-0 md:mt-0 sm:mt-[29px] text-left">
-    <ul className="list-disc pl-[20px] md:pl-[40px] sm:text-[16px] md:text-[18px]">
+    <ul className="list-disc pl-[20px] md:pl-[40px] sm:text-[16px] md:text-[18px] font-montserratRegular">
       <li>
         <p>
           •&nbsp;
           <span className="font-bold">
-          Ofrecimiento de bienes, productos y servicios
+            Ofrecimiento de bienes, productos y servicios
           </span>
           , mediante campañas comerciales o convenios de marca compartida.
         </p>

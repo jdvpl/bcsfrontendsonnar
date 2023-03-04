@@ -241,7 +241,8 @@ export const riskBoxes = async (body: any) => {
 };
 export const delKeysRedis = async (body: any) => {
   try {
-    const { data: response } = await clientAxiosBackend.post('commons/delete-keys', body);
+    const bodyEncrypt = await allResponse(body, KEY);
+    const { data: response } = await clientAxiosBackend.post('commons/delete-keys', { data: bodyEncrypt });
     return {
       response: {
         result: response?.response,
@@ -258,9 +259,10 @@ export const getPDF = async (body: iPdfLetter) => {
     const { data: response } = await clientAxiosBackend.post('/commons/generate/pdf', {
       data: bodyEncrypt,
     });
+    const data = await allResponseDecrypted(response.data, KEY);
     return {
       response: {
-        result: response,
+        result: data,
       },
       error: false,
     };
