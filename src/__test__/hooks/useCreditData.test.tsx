@@ -172,7 +172,7 @@ describe('Validate percentage function', () => {
     });
   });
   it('should called  routes finalcialData and creditData with false', async () => {
-    riskBoxes.mockResolvedValueOnce(mockData);
+    (riskBoxes as jest.Mock).mockResolvedValueOnce(mockData);
     const setCurrentRouting = jest.fn();
     const customRouter = createMockRouter({});
     const mortgageValuesData: iCreditData = {
