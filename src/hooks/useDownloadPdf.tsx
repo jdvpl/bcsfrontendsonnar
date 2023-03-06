@@ -6,16 +6,17 @@ import { iCreditData } from './../interfaces/iCreditData';
 export default function useDownloadPdf(
   dataQuestions: any,
   dataTU: any,
-  valuesMortgage: Partial<iCreditData>
+  valuesMortgage: Partial<iCreditData>,
+  applicationResponse:any
 ) {
   const getPdf = async () => {
     const response = await getPDF({
       proccessId: dataQuestions.processId,
       documentNumber: dataTU.document_number,
       documentType: dataTU.document_type,
-      maxAmount: convertToColombianPesos(valuesMortgage.financeValue),
+      maxAmount: convertToColombianPesos(applicationResponse?.finalOffer?.offer?.financeValue),
       amortizationType: valuesMortgage.amortizationType,
-      termFinance: valuesMortgage.termFinance?.toString()
+      termFinance: applicationResponse?.finalOffer?.offer?.termFinance?.toString()
     })
     if (!response.error) {
       const pdf = response.response?.result?.doc;

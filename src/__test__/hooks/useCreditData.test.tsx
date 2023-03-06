@@ -3,27 +3,36 @@ import useValidations from '../../hooks/useValidationsCreditData';
 import { maxHouseValueNoVis } from '../../lib/simulator';
 import { routes } from '../../routes';
 import { createMockRouter } from '../utils/createMockRouter';
-
-import { riskBoxes } from '../../services';
 import { iCreditData } from '../../interfaces/iCreditData';
-
-const mortgageValues = {}
-const amortizationType = "Pesos";
-const router = createMockRouter({});
-jest.useFakeTimers();
-jest.mock('../../services');
-(riskBoxes as jest.Mock).mockReturnValueOnce({
+import { riskBoxes } from '../../services';
+const mockData = {
   response: {
-    status: 403,
     result: {
-      data: 'ALLOWED',
-    },
-    json: () => {
-      return { internal_code: 'IV-05' };
+      customerStatus: {
+        finalOffer: {
+          isViable: true,
+          offer: {
+            financeValue: 57763534,
+            monthlyInstallment: 1399999.99,
+            rate: '1.32% MV - 17.05% EA',
+            termFinance: 10,
+            lifeInsurance: '',
+            fireInsurance: '',
+          },
+        },
+        status: 200,
+      },
     },
   },
   error: false,
-});
+};
+const mortgageValues = {};
+const amortizationType = 'Pesos';
+jest.mock('../../services', () => ({
+  riskBoxes: jest.fn(),
+}));
+
+
 describe('useValidations is successfully', () => {
   const houseValue: any = 10000000;
   const financeValue: any = 1000000;
@@ -41,8 +50,8 @@ describe('useValidations is successfully', () => {
   const router = jest.fn();
 
   const houseType = 'vis';
-  const mkFn = jest.fn()
-  const setDataForm = jest.fn()
+  const mkFn = jest.fn();
+  const setDataForm = jest.fn();
   const errors: any = [];
   beforeEach(async () => {
     clearErrors = jest.fn();
@@ -69,7 +78,9 @@ describe('useValidations is successfully', () => {
         stratum,
         router,
         errors,
-        mkFn, mortgageValues, amortizationType
+        mkFn,
+        mortgageValues,
+        amortizationType
       )
     );
   });
@@ -95,7 +106,6 @@ describe('useValidations is successfully', () => {
   let setValue: any;
   const houseType = 'vis';
 
-
   beforeEach(async () => {
     clearErrors = jest.fn();
     setPercentageFinance = jest.fn();
@@ -112,32 +122,59 @@ describe('useValidations is successfully', () => {
         clearErrors,
         setError,
         setPercentageFinance,
-        setValue, jest.fn(), "", "", "", "", "", jest.fn(), "", jest.fn(), {}, amortizationType)
+        setValue,
+        jest.fn(),
+        '',
+        '',
+        '',
+        '',
+        '',
+        jest.fn(),
+        '',
+        jest.fn(),
+        {},
+        amortizationType
+      )
     );
   });
   it('setError should call 2 time', async () => {
     expect(setError.mock.calls.length).toBe(2);
   });
-
 });
 
-describe('', () => {
-
+describe('Validate percentage function', () => {
   it('should calculate percentage finance correctly', () => {
-    const { result } = renderHook(() => useValidations('novis', 200, 140, 0, jest.fn(), jest.fn(), jest.fn(), jest.fn(), jest.fn(), "", "", null, null, null, jest.fn(), null, jest.fn(), {}, amortizationType));
+    const { result } = renderHook(() =>
+      useValidations(
+        'novis',
+        200,
+        140,
+        0,
+        jest.fn(),
+        jest.fn(),
+        jest.fn(),
+        jest.fn(),
+        jest.fn(),
+        '',
+        '',
+        null,
+        null,
+        null,
+        jest.fn(),
+        null,
+        jest.fn(),
+        {},
+        amortizationType
+      )
+    );
     act(() => {
       result.current.calculatePercentageFinance();
     });
   });
   it('should called  routes finalcialData and creditData with false', async () => {
+    (riskBoxes as jest.Mock).mockResolvedValueOnce(mockData);
     const setCurrentRouting = jest.fn();
-    const { result } = renderHook(() => useValidations('novis', 200, 140, 0, jest.fn(), jest.fn(), jest.fn(), jest.fn(), jest.fn(), "", "", null, null, null, router, null, setCurrentRouting, {}, amortizationType));
-    await result?.current?.onSubmit()
-    expect(setCurrentRouting).toHaveBeenCalledWith(routes.finalcialData, false)
-    expect(setCurrentRouting).toHaveBeenCalledWith(routes.creditData, false)
-  });
-  it('Should render the mortgage value when user gets back', async () => {
-    const setCurrentRouting = jest.fn();
+    const customRouter = createMockRouter({});
     const mortgageValuesData: iCreditData = {
       typeHouse: 'vis',
       houseStatus: 'new',
@@ -145,23 +182,41 @@ describe('', () => {
       financeValue: '140000000',
       termFinance: '9',
       insuranceCheck: 'true',
-      choseOffice: "",
+      choseOffice: '',
       office: '',
       stratum: '3',
-      amortizationType: 'Pesos'
-    }
-    const { result } = renderHook(() => useValidations('novis', 200, 140, 0, jest.fn(), jest.fn(), jest.fn(), jest.fn(), jest.fn(), "", "", null, null, null, router, null, setCurrentRouting, mortgageValuesData, amortizationType));
-
-    await result?.current?.onSubmit()
-    expect(setCurrentRouting).toHaveBeenCalledWith(routes.finalcialData, false)
-    expect(setCurrentRouting).toHaveBeenCalledWith(routes.creditData, false)
+      amortizationType: 'Pesos',
+    };
+    const { result } = renderHook(() =>
+      useValidations(
+        'novis',
+        200,
+        140,
+        0,
+        jest.fn(),
+        jest.fn(),
+        jest.fn(),
+        jest.fn(),
+        jest.fn(),
+        '',
+        '',
+        null,
+        null,
+        null,
+        customRouter,
+        null,
+        setCurrentRouting,
+        mortgageValuesData,
+        amortizationType
+      )
+    );
+    await act(async () => {
+      await result?.current?.onSubmit();
+    });
+    expect(setCurrentRouting).toHaveBeenCalledWith(routes.finalcialData, false);
+    expect(setCurrentRouting).toHaveBeenCalledWith(routes.creditData, false);
   });
-
-})
-
-
-
-
+});
 
 describe('isValid Method test', () => {
   const houseValue: any = 10000000;
@@ -191,7 +246,7 @@ describe('isValid Method test', () => {
     setValue = jest.fn();
     jest.resetAllMocks();
   });
-  it('should return true', () => {
+  it('should return true', async () => {
     const { result } = renderHook(() =>
       useValidations(
         typeHouse,
@@ -210,7 +265,9 @@ describe('isValid Method test', () => {
         stratum,
         router,
         errors,
-        mkFn, mortgageValues, amortizationType
+        mkFn,
+        mortgageValues,
+        amortizationType
       )
     );
     act(() => {
@@ -225,7 +282,7 @@ describe('isValid Method test', () => {
       result.current.automationFinanceValue(0);
     });
 
-    act(async () => {
+    await act(async () => {
       await result.current.onSubmit();
     });
   });

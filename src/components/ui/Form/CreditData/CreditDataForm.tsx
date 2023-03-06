@@ -14,12 +14,16 @@ import { SesionStorageKeys } from '../../../../session';
 import AutoCompleteCustom from '../../../../hooks/autocomplete';
 import useCreditForm from '../../../../hooks/useCreditForm';
 import useProtectedRoutes from '../../../../hooks/useProtectedRoutes';
+import { ApplicationLoader } from '../../Loaders/ApplicationLoader';
 
 export function CreditDataForm() {
-  const [insuranceCheck,] = useState(true);
+  const [insuranceCheck] = useState(true);
   const [percentageFinance, setPercentageFinance] = useState(0.7);
   const [dataForm] = useSessionStorage(SesionStorageKeys.dataFormSimulation.key, {});
-  const [mortgageValues, setDataForm] = useSessionStorage(SesionStorageKeys.mortgageValues.key, {});
+  const [mortgageValues, setDataForm] = useSessionStorage(
+    SesionStorageKeys.mortgageValues.key,
+    {}
+  );
   const [personalData] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
   const [offices, setOffices] = useState<any>([]);
   const router = useRouter();
@@ -44,8 +48,8 @@ export function CreditDataForm() {
   const termFinance = watch('termFinance', dataForm?.termFinance || 0);
   const office = watch('office', dataForm?.office || 0);
   const stratum = watch('stratum', 0);
-  const amortizationType = watch('amortizationType', "Pesos");
-  const { automationFinanceValue, onSubmit, isValid } = useValidations(
+  const amortizationType = watch('amortizationType', 'Pesos');
+  const { automationFinanceValue, onSubmit, isValid, isLoading } = useValidations(
     typeHouse,
     houseValue,
     financeValue,
@@ -78,6 +82,7 @@ export function CreditDataForm() {
   }, []);
   return (
     <div className="flex flex-col items-center">
+      {isLoading ? <ApplicationLoader /> : null}
       {/* Form When Person chose Hose */}
       <div className="flex flex-col items-center gap-y-[12px] w-full mb-[30px]">
         <div
@@ -236,9 +241,7 @@ export function CreditDataForm() {
         {/* Card Chose Housing */}
         <div className="cardShadow min-h-[106px] mt-[23px] rounded-xl pt-[24px] pb-[23px] px-[24px] w-full flex flex-col gap-4">
           <div>
-            <span
-              className="w-full font-montserratRegular font-semibold text-primario-900 text-[16px] leading-[18px]"
-            >
+            <span className="w-full font-montserratRegular font-semibold text-primario-900 text-[16px] leading-[18px]">
               Elija como continuar el proceso
             </span>
           </div>
@@ -297,7 +300,9 @@ export function CreditDataForm() {
                     </div>
                   ) : null}
                 </div>
-                <span className="font-normal text-primario-900 font-montserratRegular">Recibir visita asesor</span>
+                <span className="font-normal text-primario-900 font-montserratRegular">
+                  Recibir visita asesor
+                </span>
               </button>
             ) : null}
           </div>

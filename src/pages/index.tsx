@@ -58,21 +58,21 @@ export default function Home() {
           <div className="md:flex md:flex-col ">
             <p className="text-white xs:text-[22px] sm:text-[22px] leading-[30px]  xs:ml-5 sm:ml-2 xs:mb-[3px] sm:mb-1 font-poppinsExtraLight md:text-primario-900">
               Bienvenido a
-              <figure
-                itemProp="logo"
-                className="mt-1 md:mt-1 m-0 p-0 w-full sm:pr-[3px] xs:pr-[0px] md:pr-0 smdd:pr-5 xmd:pr-20 pr-0 "
-              >
-                {isMedium ? (
-                  <LogoViviendaBlue />
-                ) : (
-                  <LogoViviendaWhite
-                    height={heightHeader}
-                    width={isSafari ? '300' : '100%'}
-                    vWidth={isSM ? '400' : '380'}
-                  />
-                )}
-              </figure>
             </p>
+            <figure
+              itemProp="logo"
+              className="xs:ml-5 sm:ml-2 mt-1 md:mt-1 m-0 p-0 w-full sm:pr-[3px] xs:pr-[0px] md:pr-0 smdd:pr-5 xmd:pr-20 pr-0 "
+            >
+              {isMedium ? (
+                <LogoViviendaBlue />
+              ) : (
+                <LogoViviendaWhite
+                  height={heightHeader}
+                  width={isSafari ? '300' : '100%'}
+                  vWidth={isSM ? '400' : '380'}
+                />
+              )}
+            </figure>
           </div>
         </div>
         {/* title */}
@@ -177,8 +177,8 @@ export default function Home() {
               isTablet
                 ? `${basePath}/images/stepsmd.svg`
                 : isLG
-                  ? `${basePath}/images/stepslg.svg`
-                  : ``
+                ? `${basePath}/images/stepslg.svg`
+                : ``
             }
             alt=""
             className="left-0 "

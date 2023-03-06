@@ -10,6 +10,7 @@ interface ReviewApplicationProps {
   rate: string;
   id?: string;
   insuranceCheck?: boolean;
+  monthlyInstallment?:string;
 }
 
 function ReviewApplication({
@@ -18,6 +19,7 @@ function ReviewApplication({
   lifeInsurance,
   termFinance,
   rate,
+  monthlyInstallment,
   insuranceCheck = true,
 }: ReviewApplicationProps) {
   return (
@@ -36,7 +38,7 @@ function ReviewApplication({
       <Card
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px]"
         title="Cuota mensual aproximada"
-        value="$850.000"
+        value={`${monthlyInstallment} pesos`}
         text="text-[32px] pl-[16px] pt-2 flex items-baseline font-poppinsSemiBold"
         urlsvg=""
         classtitle="h-[18px] pt-[16px] text-[16px] font-poppinsSemiBold"

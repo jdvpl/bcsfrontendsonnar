@@ -19,6 +19,10 @@ function ResumenApplication() {
   const { setCurrentRouting } = useProtectedRoutes();
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
   const { isLoading, onSubmit } = useSummaryApplication(router, setCurrentRouting);
+  const [applicationResponse] = useSessionStorage(
+    SesionStorageKeys?.applicationResponse.key,
+    {}
+  );
 
   return (
     <div>
@@ -48,13 +52,16 @@ function ResumenApplication() {
         </div>
         <ReviewApplication
           financedValue={`${convertToColombianPesos(
-            Math.floor(valuesMortgage.financeValue)
+            Math.floor(applicationResponse?.finalOffer?.offer?.financeValue)
           )}`}
-          termFinance={`${valuesMortgage.termFinance} años`}
-          rate="1,6% NV - 23% EA"
-          lifeInsurance="$44.000"
-          fireInsurance="$44.000"
+          termFinance={`${applicationResponse?.finalOffer?.offer?.termFinance} años`}
+          rate={applicationResponse?.finalOffer?.offer?.rate}
+          lifeInsurance={applicationResponse?.finalOffer?.offer?.lifeInsurance}
+          fireInsurance={applicationResponse?.finalOffer?.offer?.fireInsurance}
           insuranceCheck={valuesMortgage?.insuranceCheck}
+          monthlyInstallment={`${convertToColombianPesos(
+            Math.floor(applicationResponse?.finalOffer?.offer?.monthlyInstallment)
+          )}`}
         />
 
         <div className="flex flex-col items-center gap-y-5">
