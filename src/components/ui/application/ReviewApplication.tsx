@@ -10,7 +10,7 @@ interface ReviewApplicationProps {
   rate: string;
   id?: string;
   insuranceCheck?: boolean;
-  monthlyInstallment?:string;
+  monthlyInstallment?: string;
 }
 
 function ReviewApplication({
@@ -38,7 +38,7 @@ function ReviewApplication({
       <Card
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px]"
         title="Cuota mensual aproximada"
-        value={`${monthlyInstallment} pesos`}
+        value={`${monthlyInstallment}`}
         text="text-[32px] pl-[16px] pt-2 flex items-baseline font-poppinsSemiBold"
         urlsvg=""
         classtitle="h-[18px] pt-[16px] text-[16px] font-poppinsSemiBold"
@@ -79,26 +79,30 @@ function ReviewApplication({
         classtitle="h-[14px] text-[13px] font-montserratRegular"
         tooltiptext=""
       />
-      <Card
-        data-testid="lifeInsurance"
-        className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[78px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
-        title="Seguro de vida"
-        value={lifeInsurance?.toString()}
-        text="text-[20px] pl-[18px] font-semibold font-poppinsSemiBold"
-        urlsvg={`${basePath}/images/Insurage.svg`}
-        classtitle="h-[14px] text-[13px] font-montserratRegular"
-        tooltiptext=""
-      />
-      <Card
-        data-testid="fireInsurance"
-        className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[78px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
-        title="Seguro de Incendio, Rayo y Terremoto"
-        value={fireInsurance?.toString()}
-        text="text-[20px] pl-[18px] font-semibold font-poppinsSemiBold"
-        urlsvg={`${basePath}/images/Money.svg`}
-        classtitle="h-[14px] text-[13px] font-montserratRegulars"
-        tooltiptext=""
-      />
+      {lifeInsurance ? (
+        <Card
+          data-testid="lifeInsurance"
+          className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[78px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+          title="Seguro de vida"
+          value={lifeInsurance?.toString()}
+          text="text-[20px] pl-[18px] font-semibold font-poppinsSemiBold"
+          urlsvg={`${basePath}/images/Insurage.svg`}
+          classtitle="h-[14px] text-[13px] font-montserratRegular"
+          tooltiptext=""
+        />
+      ) : null}
+      {fireInsurance ? (
+        <Card
+          data-testid="fireInsurance"
+          className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[78px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+          title="Seguro de Incendio, Rayo y Terremoto"
+          value={fireInsurance?.toString()}
+          text="text-[20px] pl-[18px] font-semibold font-poppinsSemiBold"
+          urlsvg={`${basePath}/images/Money.svg`}
+          classtitle="h-[14px] text-[13px] font-montserratRegulars"
+          tooltiptext=""
+        />
+      ) : null}
     </div>
   );
 }
