@@ -410,7 +410,6 @@ export default function useConsultancyTutorial({
 
   useEffect(() => {
     setIsOpen(!openedTutorial);
-    console.log(openedTutorial);
     intervalRef.current = window.setInterval(() => {
       setTimer((time) => time - 1);
     }, 1000);
