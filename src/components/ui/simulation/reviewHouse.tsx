@@ -51,7 +51,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       classtitle="h-[14px] text-[13px] ml-2"
       tooltiptext=""
     />
-    
+
     <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Plazo"
@@ -76,7 +76,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         <p className="pl-[33px]">
           <p className="flex">
             <p className="font-bold text-[14px] mr-1">MV: </p><span className="text-[14px]">Tasa nominal mes
-            vencido</span>
+              vencido</span>
           </p>
           <p className="flex">
             <p className="font-bold text-[14px]  mr-1">EA:</p><span className="text-[14px]">Tasa efectiva anual</span>
@@ -84,7 +84,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         </p>
       }
     />
-    {/* <Card
+    <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Seguro de vida"
       value={lifeInsurance?.toString()}
@@ -118,10 +118,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
           directa de los riesgos amparados.{' '}
         </p>
       }
-    /> */}
-    
-    
-
+    />
     <div className="xs:w-[290px] sm:w-[343px] md:w-[448px] flex justify-end mb-[12px]">
       {dataPdf?.quotes?.length > 0 ? <BtnPdfDownloader pdf={dataPdf} /> : null}
     </div>

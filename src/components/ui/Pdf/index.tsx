@@ -23,7 +23,7 @@ interface itableProps {
 function PDFDocumentData({ infoData }: iPdfProps) {
 
 
-  const simulatorCoreFallen = !infoData?.simulatorCoreFallen;
+  const simulatorCoreFallen = infoData?.simulatorCoreFallen;
   const data = infoData?.quotes;
   const quantiyPages = infoData?.quotes?.length;
   const numberOfPages = Array(quantiyPages - 1).fill(0);

@@ -39,6 +39,7 @@ export default function useValidations(
     {}
   );
   const [dataBasicData] = useSessionStorage(SesionStorageKeys?.dataBasicData.key, {});
+  const [basicDataUser] = useSessionStorage(SesionStorageKeys?.basicDataUser.key, {});
   const [dataTu] = useSessionStorage(SesionStorageKeys?.dataUser.key, {});
   const [, setApplicationResponse] = useSessionStorage(
     SesionStorageKeys?.applicationResponse.key,
@@ -153,10 +154,17 @@ export default function useValidations(
         office,
         stratum,
       },
-      financialData: financialDataForm,
+      financialData: {
+        ...financialDataForm,
+        contractType: financialDataForm?.contractType || '',
+        employeeYear: financialDataForm?.employeeYear || '',
+        employeeMonth: financialDataForm?.employeeMonth || '',
+        enterprise: financialDataForm?.enterprise || '',
+      },
       personalData: {
         middleName: '',
         secondLastName: '',
+        ...basicDataUser,
         ...dataBasicData,
         age: calculateAgeMethod2(dataBasicData?.birthDate),
       },
@@ -164,14 +172,17 @@ export default function useValidations(
     };
 
     const data: any = await riskBoxes(body);
-    console.log(data)
+    console.log(data);
 
     if (!data?.response?.error) {
-      setApplicationResponse({data});
+      setApplicationResponse({ data });
       setCurrentRouting(routes.finalcialData, false);
       setCurrentRouting(routes.creditData, false);
       setCurrentRouting(routes.ResumenSolicitud);
       router.push(routes.ResumenSolicitud);
+    }else{
+      router.push(routes.errorValidacion);
+
     }
   };
 
