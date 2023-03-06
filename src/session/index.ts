@@ -52,5 +52,9 @@ export const SesionStorageKeys = {
   applicationResponse:{
     key: 'applicationResponse',
     description: 'this saves the response of application risk boxes'
+  },
+  openedTutorial:{
+    key: 'openedTutorial',
+    description:'this key saves if you opened the tutorial'
   }
 };

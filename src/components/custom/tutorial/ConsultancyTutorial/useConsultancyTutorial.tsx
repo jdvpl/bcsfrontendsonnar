@@ -3,12 +3,18 @@ import Button from '../../../ui/Button';
 import Icons from '../../../ui/icons';
 import Typography from '../../../ui/Typography';
 import Close from '../../../svg/Close';
+import { useSessionStorage } from '../../../../hooks/useSessionStorage';
+import { SesionStorageKeys } from '../../../../session';
 
 export default function useConsultancyTutorial({
   nextTutorialStepRef,
   prevTutorialStepRef,
 }: any) {
   const [timer, setTimer] = useState(10);
+  const [openedTutorial, setOpenedTutorial] = useSessionStorage(
+    SesionStorageKeys.openedTutorial.key,
+    false
+  );
   const [isOpen, setIsOpen] = useState(true);
   const [actualTutorialStep, setActualTutorialStep] = useState(0);
   const intervalRef = useRef<number>();
@@ -17,23 +23,28 @@ export default function useConsultancyTutorial({
     clearStylesPrevStep();
     clearStylesNextStep();
     setIsOpen(!isOpen);
+    setOpenedTutorial(true);
   };
   const clearStylesPrevStep = () => {
     prevTutorialStepRef?.current?.classList?.remove('z-[95]');
-    prevTutorialStepRef?.current?.classList?.remove('text-white','underline');
+    prevTutorialStepRef?.current?.classList?.remove('text-white', 'underline');
     prevTutorialStepRef?.current
       ?.querySelector('div')
       .classList?.add('border-primario-20');
-    prevTutorialStepRef?.current?.querySelector('a')?.classList?.add('text-primario-100','text-semibold');
+    prevTutorialStepRef?.current
+      ?.querySelector('a')
+      ?.classList?.add('text-primario-100', 'text-semibold');
     prevTutorialStepRef?.current?.querySelector('i')?.classList?.add('text-primario-20');
   };
   const clearStylesNextStep = () => {
     nextTutorialStepRef?.current?.classList?.remove('z-[95]');
-    nextTutorialStepRef?.current?.classList?.remove('text-white','underline');
+    nextTutorialStepRef?.current?.classList?.remove('text-white', 'underline');
     nextTutorialStepRef?.current
       ?.querySelector('div')
       .classList?.add('border-primario-20');
-    nextTutorialStepRef?.current?.querySelector('a')?.classList?.add('text-primario-100','text-semibold');
+    nextTutorialStepRef?.current
+      ?.querySelector('a')
+      ?.classList?.add('text-primario-100', 'text-semibold');
     nextTutorialStepRef?.current?.querySelector('i')?.classList?.add('text-primario-20');
   };
   const handelActualStep = () => {
@@ -76,7 +87,10 @@ export default function useConsultancyTutorial({
 
               <div className="flex gap-[5px]">
                 <Icons icon="bcs-clock" iconclassNames="text-white text-[14px]" />{' '}
-                <span className="text-white text-[14px] font-montserratRegular font-medium"> {timer} Segundos</span>
+                <span className="text-white text-[14px] font-montserratRegular font-medium">
+                  {' '}
+                  {timer} Segundos
+                </span>
               </div>
             </div>
           </>
@@ -89,16 +103,14 @@ export default function useConsultancyTutorial({
           offsetHeight: offsetHeightP,
         } = prevTutorialStepRef?.current;
 
-        prevTutorialStepRef?.current?.classList?.add('z-[95]', 'text-white','underline');
+        prevTutorialStepRef?.current?.classList?.add('z-[95]', 'text-white', 'underline');
         prevTutorialStepRef?.current
           ?.querySelector('div')
           .classList?.remove('border-primario-20');
-          prevTutorialStepRef?.current
-          ?.querySelector('a')
-          .classList?.add('w-[150px]');
+        prevTutorialStepRef?.current?.querySelector('a').classList?.add('w-[150px]');
         prevTutorialStepRef?.current
           ?.querySelector('a')
-          .classList?.remove('text-primario-100','font-bold');
+          .classList?.remove('text-primario-100', 'font-bold');
         prevTutorialStepRef?.current
           ?.querySelector('i')
           .classList?.remove('text-primario-20');
@@ -163,13 +175,13 @@ export default function useConsultancyTutorial({
           offsetTop: offsetTopN,
           offsetHeight: offsetHeightN,
         } = nextTutorialStepRef?.current;
-        nextTutorialStepRef?.current?.classList.add('z-[95]', 'text-white','underline');
+        nextTutorialStepRef?.current?.classList.add('z-[95]', 'text-white', 'underline');
         nextTutorialStepRef?.current
           ?.querySelector('div')
           ?.classList.remove('border-primario-20');
         nextTutorialStepRef?.current
           ?.querySelector('a')
-          ?.classList.remove('text-primario-100','font-bold');
+          ?.classList.remove('text-primario-100', 'font-bold');
         nextTutorialStepRef?.current
           ?.querySelector('i')
           ?.classList.remove('text-primario-20');
@@ -236,7 +248,9 @@ export default function useConsultancyTutorial({
                      bg-primario-100`}
                 >
                   <div className="flex justify-center">
-                    <span className={`text-center text-white text-[18px] p-0 font-medium font-montserratMedium`}>
+                    <span
+                      className={`text-center text-white text-[18px] p-0 font-medium font-montserratMedium`}
+                    >
                       Tema {item}
                     </span>
                   </div>
@@ -392,7 +406,10 @@ export default function useConsultancyTutorial({
     }
   };
 
+  const saveOpenTutorial = () => {};
+
   useEffect(() => {
+    setIsOpen(!openedTutorial);
     intervalRef.current = window.setInterval(() => {
       setTimer((time) => time - 1);
     }, 1000);
@@ -401,9 +418,17 @@ export default function useConsultancyTutorial({
 
   useEffect(() => {
     if (timer <= 0) {
+      setOpenedTutorial(true);
       clearInterval(intervalRef.current);
     }
   }, [timer]);
 
-  return { isOpen, renderBody, actualTutorialStep, onHandleModal, handelActualStep };
+  return {
+    isOpen,
+    renderBody,
+    actualTutorialStep,
+    onHandleModal,
+    handelActualStep,
+    saveOpenTutorial,
+  };
 }
