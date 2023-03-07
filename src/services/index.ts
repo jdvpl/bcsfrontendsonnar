@@ -260,7 +260,6 @@ export const getPDF = async (body: iPdfLetter) => {
       data: bodyEncrypt,
     });
     const data = await allResponseDecrypted(response.data, KEY);
-    console.log("🚀 ~ file: index.ts:260 ~ getPDF ~ data:", data)
     return {
       response: {
         result: data,
