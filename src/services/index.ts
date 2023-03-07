@@ -220,7 +220,7 @@ export const fetchSarlaft = async (body: any) => {
 export const riskBoxes = async (body: any) => {
   try {
     const bodyEncrypt = await allResponse({ ...body, processId: getProcessId() }, KEY);
-    const response:any = await clientAxiosBackend.post('/api-composer/composer/risk-boxes', {
+    const response: any = await clientAxiosBackend.post('/api-composer/composer/risk-boxes', {
       data: bodyEncrypt,
     });
     const data = await allResponseDecrypted(response.data, KEY);
@@ -257,6 +257,7 @@ export const getPDF = async (body: iPdfLetter) => {
       data: bodyEncrypt,
     });
     const data = await allResponseDecrypted(response.data, KEY);
+    console.log("🚀 ~ file: index.ts:260 ~ getPDF ~ data:", data)
     return {
       response: {
         result: data,

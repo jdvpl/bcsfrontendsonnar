@@ -105,7 +105,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
         <div>
           <Typography
             variant="bodyM4"
-            className="m-auto text-center mb-[36px] lg:mt-[24px] md:mt-[10px] text-[18px] text-complementario-100 sm:w-[306px] lg:w-[629px] md:w-[311px] font-montserratRegular"
+            className="m-auto text-center mb-[36px] lg:mt-[24px] md:mt-[10px] text-[18px] text-primario-900 sm:w-[306px] lg:w-[629px] md:w-[311px] font-montserratRegular"
           >
             Para iniciar la solicitud de su crédito ingrese los siguientes datos.
           </Typography>
@@ -190,7 +190,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
           />
           <label
             htmlFor="chk_policy_and_terms"
-            className="inline-block font-normal text-black p-0 m-0 pl-[10px] font-montserratRegular cursor-pointer"
+            className="inline-block font-normal text-primario-900 p-0 m-0 pl-[10px] font-montserratRegular cursor-pointer"
             role="tabpanel"
             tabIndex={0}
             itemScope
@@ -243,7 +243,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
           />
           <label
             htmlFor="chk-terminos"
-            className="inline-block font-normal text-black p-0 m-0 pl-[10px] font-montserratRegular cursor-pointer"
+            className="inline-block font-normal text-primario-900 p-0 m-0 pl-[10px] font-montserratRegular cursor-pointer"
             role="tabpanel"
             tabIndex={0}
             itemScope

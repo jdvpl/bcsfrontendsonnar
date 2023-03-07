@@ -5,7 +5,6 @@ function CommercialAuthorization() {
     <ul className="list-disc pl-[20px] md:pl-[40px] sm:text-[16px] md:text-[18px] font-montserratRegular">
       <li>
         <p>
-          •&nbsp;
           <span className="font-bold">
             Ofrecimiento de bienes, productos y servicios
           </span>
@@ -14,14 +13,13 @@ function CommercialAuthorization() {
       </li>
       <li className="mt-4">
         <p>
-          •&nbsp;
           <span className="font-bold">Hacer estudios</span> sobre sus gustos, hábitos e
           intereses.
         </p>
       </li>
       <li className="mt-4">
         <p>
-          • Que terceros le&nbsp;
+          Que terceros le&nbsp;
           <span className="font-bold">
             ofrezcan bienes, productos o servicios financieros complementarios&nbsp;
           </span>

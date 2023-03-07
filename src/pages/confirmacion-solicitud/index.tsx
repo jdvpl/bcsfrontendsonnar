@@ -125,8 +125,8 @@ function ApplicationApproval({ modalExit = false }: any) {
                 .replace(/\b\w/g, (l: string) =>
                   l.toUpperCase()
                 )} - ${valuesMortgage?.office?.city
-                ?.toLowerCase()
-                .replace(/\b\w/g, (l: string) => l.toUpperCase())} `}
+                  ?.toLowerCase()
+                  .replace(/\b\w/g, (l: string) => l.toUpperCase())} `}
               text="text-[20px] pl-[18px] font-semibold font-poppinsSemiBold"
               urlsvg={`${basePath}/images/location.svg`}
               classtitle="h-[14px] text-[13px] font-montserratRegular"

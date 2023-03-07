@@ -56,14 +56,14 @@ function Authentication() {
         <div className="mt-20 lg:h-[300px] md:w-[350px] md:h-[300px] sm:w-[234px] sm:h-[200px] xs:h-[200px] xs:w-[234px] m-auto ">
           <img src={`${basePath}/images/authentication.svg`} alt="" />
         </div>
-        <Typography variant='h3' className='text-center mt-[52px] text-primario-900 font-[24px]'>
+        <Typography variant='h3' className='text-center mt-[52px] text-primario-900 font-[24px] font-poppinsSemiBold'>
           Por seguridad <span className='xs:block sm:inline'>validaremos</span>
           <span className="block">
             su información
           </span>
         </Typography>
 
-        {deviceType === 'browser' ? <Typography variant='bodyS3' className='text-center mt-3'>
+        {deviceType === 'browser' ? <Typography variant='bodyS3' className='text-center mt-3 font-monserratLight text-[18px]'>
           Sugerimos realizar este proceso
           <span className="block">
 
