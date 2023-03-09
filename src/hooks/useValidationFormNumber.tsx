@@ -16,6 +16,7 @@ const useValidationFormNumber = (dataTU: any, setDataTU: any, setEncript: any, s
       phone: formData.number,
       processId: dataQuestions.processId
     };
+    console.log({body});
     const response = await sendNumber(body);
     if (!response.error) {
       setDataTU({

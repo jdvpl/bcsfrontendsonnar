@@ -1,4 +1,6 @@
+import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { routes } from '../../../routes';
+import { SesionStorageKeys } from '../../../session';
 import { OTPCodeRequest, ValidateOTC } from './index';
 
 export default function useOtp({
@@ -17,6 +19,7 @@ export default function useOtp({
   otc,
   setCurrentRouting
 }: any) {
+  const [basicDataUser] = useSessionStorage(SesionStorageKeys.basicDataUser.key, '');
   const onValidateOTP = async () => {
     setIsLoading(true);
     const body: ValidateOTC = {
@@ -24,7 +27,8 @@ export default function useOtp({
       document_type: dataTU?.document_type,
       pin: otp,
       processId: dataQuestions.processId,
-      otc
+      otc,
+      phone: basicDataUser?.cellPhone
     };
     const response = await validateOTOCode(body);
     if (!response.error) {
@@ -46,9 +50,10 @@ export default function useOtp({
       const body: OTPCodeRequest = {
         document_number: dataTU?.document_number,
         document_type: dataTU?.document_type,
-        phone: dataTU?.personalData?.phoneNumber,
+        phone: basicDataUser?.cellPhone,
         processId: dataQuestions.processId,
-        otc
+        otc,
+        emailAddr: basicDataUser?.email,
       };
       const response = await reSendOTPCode(body);
       if (!response.error) {
