@@ -4,7 +4,7 @@ import checkAnimation from '../../../lib/loader.json';
 
 const SimulatorLoader = () => {
   return (
-    <div className="bg-white fixed top-0 left-0 w-screen h-screen z-10 flex flex-col items-center justify-center">
+    <div className="bg-white fixed top-0 left-0 w-screen h-screen z-30 flex flex-col items-center justify-center">
       <Lottie
         loop
         animationData={checkAnimation}
