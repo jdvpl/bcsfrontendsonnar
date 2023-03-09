@@ -33,9 +33,7 @@ export default function useOtp({
       setCurrentRouting(routes.otp, false);
       setCurrentRouting(routes.otc, false);
       setCurrentRouting(routes.personalData);
-      setTimeout(() => {
-        router.push(routes.personalData);
-      }, 2000);
+      router.push(routes.personalData);
     } else {
       setError(true);
       setIsLoading(false);
