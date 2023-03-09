@@ -1,6 +1,4 @@
-import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { routes } from '../../../routes';
-import { SesionStorageKeys } from '../../../session';
 import { OTPCodeRequest, ValidateOTC } from './index';
 
 export default function useOtp({
@@ -17,9 +15,9 @@ export default function useOtp({
   reSendOTPCode,
   dataQuestions,
   otc,
-  setCurrentRouting
+  setCurrentRouting,
+  basicDataUser
 }: any) {
-  const [basicDataUser] = useSessionStorage(SesionStorageKeys.basicDataUser.key, '');
   const onValidateOTP = async () => {
     setIsLoading(true);
     const body: ValidateOTC = {

@@ -1,4 +1,5 @@
 import useOtp from '../../../../components/custom/otp/useOtp';
+import { createMockRouter } from '../../../utils/createMockRouter';
 
 
 const dataQuestions = { processId: 'PRE00000023' }
@@ -14,6 +15,7 @@ describe('useOtp when onValidateOTP fetch is successfully', () => {
   let setIsValid: any;
   let setError: any;
   let setWasResend: any;
+  let router: any = createMockRouter({});
 
   beforeEach(async () => {
     setIsLoading = jest.fn();
@@ -59,6 +61,7 @@ describe('useOtp when onValidateOTP fetch is successfully', () => {
       wasResend,
       setWasResend,
       timer,
+      router,
       reSendOTPCode,
       validateOTOCode,
       dataQuestions,

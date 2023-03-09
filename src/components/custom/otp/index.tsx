@@ -41,7 +41,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
-
+  const [basicDataUser] = useSessionStorage(SesionStorageKeys.basicDataUser.key, '');
   const { setCurrentRouting } = useProtectedRoutes();
 
   const { onValidateOTP, onResendOTP } = useOtp({
@@ -58,7 +58,8 @@ const Otp: FC<otpProps> = ({ otc }) => {
     validateOTOCode,
     dataQuestions,
     otc,
-    setCurrentRouting
+    setCurrentRouting,
+    basicDataUser
   });
   useEffect(() => {
     if (otp?.length === 6) {
