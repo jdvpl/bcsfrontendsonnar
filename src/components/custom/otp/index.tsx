@@ -18,14 +18,16 @@ export interface ValidateOTC {
   document_number: string;
   document_type: string;
   processId: string;
-  otc?: boolean
+  otc?: boolean,
+  phone?:string
 }
 export interface OTPCodeRequest {
   document_type: string;
   document_number: string;
   phone: string;
   processId: string;
-  otc?: boolean
+  otc?: boolean;
+  emailAddr?:string;
 }
 
 const Otp: FC<otpProps> = ({ otc }) => {

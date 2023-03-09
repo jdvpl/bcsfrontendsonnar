@@ -15,7 +15,8 @@ export default function useOtp({
   reSendOTPCode,
   dataQuestions,
   otc,
-  setCurrentRouting
+  setCurrentRouting,
+  basicDataUser
 }: any) {
   const onValidateOTP = async () => {
     setIsLoading(true);
@@ -24,7 +25,8 @@ export default function useOtp({
       document_type: dataTU?.document_type,
       pin: otp,
       processId: dataQuestions.processId,
-      otc
+      otc,
+      phone: basicDataUser?.cellPhone
     };
     const response = await validateOTOCode(body);
     if (!response.error) {
@@ -33,9 +35,7 @@ export default function useOtp({
       setCurrentRouting(routes.otp, false);
       setCurrentRouting(routes.otc, false);
       setCurrentRouting(routes.personalData);
-      setTimeout(() => {
-        router.push(routes.personalData);
-      }, 2000);
+      router.push(routes.personalData);
     } else {
       setError(true);
       setIsLoading(false);
@@ -48,9 +48,10 @@ export default function useOtp({
       const body: OTPCodeRequest = {
         document_number: dataTU?.document_number,
         document_type: dataTU?.document_type,
-        phone: dataTU?.personalData?.phoneNumber,
+        phone: basicDataUser?.cellPhone,
         processId: dataQuestions.processId,
-        otc
+        otc,
+        emailAddr: basicDataUser?.email,
       };
       const response = await reSendOTPCode(body);
       if (!response.error) {
