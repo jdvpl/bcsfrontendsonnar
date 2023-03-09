@@ -18,14 +18,16 @@ export interface ValidateOTC {
   document_number: string;
   document_type: string;
   processId: string;
-  otc?: boolean
+  otc?: boolean;
+  phone?: string;
 }
 export interface OTPCodeRequest {
   document_type: string;
   document_number: string;
   phone: string;
   processId: string;
-  otc?: boolean
+  otc?: boolean;
+  emailAddr: string;
 }
 
 const Otp: FC<otpProps> = ({ otc }) => {
@@ -39,7 +41,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
-
+  const [basicDataUser] = useSessionStorage(SesionStorageKeys.basicDataUser.key, '');
   const { setCurrentRouting } = useProtectedRoutes();
 
   const { onValidateOTP, onResendOTP } = useOtp({
@@ -56,7 +58,8 @@ const Otp: FC<otpProps> = ({ otc }) => {
     validateOTOCode,
     dataQuestions,
     otc,
-    setCurrentRouting
+    setCurrentRouting,
+    basicDataUser
   });
   useEffect(() => {
     if (otp?.length === 6) {
@@ -94,7 +97,6 @@ const Otp: FC<otpProps> = ({ otc }) => {
           </span>
         }
       </h4>
-
       <div className="text-normal mb-[24px]">
         <OtpInput
           className="otp-div"
