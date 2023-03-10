@@ -27,7 +27,6 @@ export default function useOtp({
       processId: dataQuestions.processId,
       otc,
       phone: basicDataUser?.cellPhone,
-      emailAddr: basicDataUser?.email,
     };
     const response = await validateOTOCode(body);
     if (!response.error) {

@@ -20,7 +20,7 @@ export interface ValidateOTC {
   processId: string;
   otc?: boolean;
   phone?: string;
-  emailAddr: string;
+  emailAddr?: string;
 }
 export interface OTPCodeRequest {
   document_type: string;
