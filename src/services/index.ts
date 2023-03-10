@@ -145,7 +145,7 @@ export const validateOTOCode = async (data: ValidateOTC) => {
 };
 export const reSendOTPCode = async (data: OTPCodeRequest) => {
   try {
-    const { otc, document_number, document_type, processId, phone, emailAddr } = data;
+    const { otc, document_number, document_type, processId, phone, emailAddr} = data;
     const dataInfo = await allResponse(
       { document_number, document_type, processId, phone, emailAddr },
       KEY
