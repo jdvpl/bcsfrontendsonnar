@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
-import { deviceType } from 'react-device-detect';
 import LogoBcs from '../../components/svg/LogoBcs'
 import LogoForm from '../../components/svg/LogoForm'
 import { basePath } from '../../../next.config';
@@ -37,7 +36,7 @@ function Authentication() {
   }, []
   );
   const { setCurrentRouting } = useProtectedRoutes();
-  const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, setCurrentRouting);
+  const { onSubmit, isBrowser } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, setCurrentRouting);
   return (
     <div>
       {showAnimation ? <AnimationComponent show="" valid={validated} loaded={loaded} /> : null}
@@ -63,7 +62,7 @@ function Authentication() {
           </span>
         </Typography>
 
-        {deviceType === 'browser' ? <Typography variant='bodyS3' className='text-center mt-3 font-monserratLight text-[18px]' data-testid="phoneFromTest" role="phoneFromTest">
+        {isBrowser ? <Typography variant='bodyS3' className='text-center mt-3 font-monserratLight text-[18px]' data-testid="phoneFromTest" role="phoneFromTest">
           Sugerimos realizar este proceso
           <span className="block">
 
