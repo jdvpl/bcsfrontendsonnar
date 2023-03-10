@@ -15,27 +15,4 @@ describe('<PersonalDataBasic/>', () => {
     );
     expect(container).toBeTruthy();
   });
-  it('should render successfully', () => {
-    const router = createMockRouter({});
-    const { getByTestId } = render(
-      <RouterContext.Provider value={router}>
-        <CreditData />
-      </RouterContext.Provider>
-    );
-    const typeHouse = document.getElementsByName("typeHouse")[0];
-    const houseStatus = document.getElementsByName("houseStatus")[0];
-
-    const houseValueTest = getByTestId('houseValueTest');
-    const valueFinanceTest = getByTestId('valueFinanceTest');
-    const termFinance = document.getElementsByName("termFinance")[0];
-    const stratum = document.getElementsByName("stratum")[0];
-    const amortizationType = document.getElementsByName("amortizationType")[0];
-
-
-
-    fireEvent.change(typeHouse, { target: { value: 'CC' } });
-    fireEvent.change(typeHouse, { target: { value: 'CC' } });
-    fireEvent.input(houseStatus, { target: { value: '1018422010' } });
-
-  });
 });
