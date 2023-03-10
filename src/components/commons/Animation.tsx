@@ -47,7 +47,7 @@ function AnimationComponent({ show, loaded, valid }: AnimationData) {
             className="mx-auto w-[60px] h-[60px]"
             play
           />
-          <div className='relative top-[50px]'>
+          <div className='relative top-[50px]' data-testid="loading-message">
             <p className="font-montserratRegular text-center font-[20px] leading-[22px] text-complementario-100 mb-4">
               Un momento
             </p>
