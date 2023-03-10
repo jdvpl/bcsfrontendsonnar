@@ -2,6 +2,7 @@ import React from 'react';
 import Card from './Card';
 import { basePath } from '../../../../next.config';
 import BtnPdfDownloader from './BtnPdfDownloader';
+import { cardStyle } from './reviewHouse';
 
 interface ReviewSalaryProps {
   financedValue: string;
@@ -14,7 +15,6 @@ interface ReviewSalaryProps {
   id?: string;
   dataPdf: any;
 }
-const fetchresumen = () => alert('No hay resumen aun, no molesten');
 export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
   financedValue,
   fireInsurance,
@@ -27,7 +27,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
 }) => (
   <div className="flex flex-col items-center ">
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px]"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px] bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px] h-[88px]"
       title="Valor financiado aproximado"
       value={financedValue?.toString()}
       text="text-[32px] pl-[8px] pt-2 flex items-baseline font-poppinsSemiBold"
@@ -39,7 +39,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
     />
 
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
+      className={cardStyle + " h-[76px]"}
       title="Cuota mensual total con seguros"
       value={amountQuotatotal?.toString()}
       text="text-[20px] pl-[23px] font-semibold flex items-baseline font-poppinsSemiBold"
@@ -51,7 +51,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       tooltiptext=""
     />
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] text-[14px] font-light"
+      className={cardStyle + " text-[14px] font-light h-[76px]"}
       title="Plazo"
       value={termFinance?.toString()}
       text="text-[20px] pl-[23px] font-semibold flex items-baseline font-poppinsSemiBold"
@@ -61,7 +61,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
     />
 
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[116px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+      className={cardStyle + " h-[116px]"}
       title="Tasa aproximada"
       value={rate}
       text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
@@ -83,7 +83,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       }
     />
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
+      className={cardStyle + " h-[76px]"}
       title="Seguro de vida"
       value={lifeInsurance?.toString()}
       text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
@@ -99,7 +99,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
     />
 
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
+      className={cardStyle + " h-[76px]"}
       title="Seguro de Incendio, Rayo y Terremoto"
       value={fireInsurance?.toString()}
       text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"

@@ -3,6 +3,8 @@ import Card from './Card';
 import { basePath } from '../../../../next.config';
 import BtnPdfDownloader from './BtnPdfDownloader';
 
+export const cardStyle="xs:w-[290px] sm:w-[343px] md:w-[448px] bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+
 interface ReviewHouseProps {
   financedValue: string;
   fireInsurance?: string;
@@ -42,10 +44,10 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
     ) : null}
 
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light font-poppinsSemiBold"
+      className={cardStyle+" h-[76px]"}
       title="Valor financiado aproximado"
       value={financedValue?.toString()}
-      text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
+      text="text-[20px] pl-[23px] font-semibold"
       urlsvgendicon=""
       urlsvg={`${basePath}/images/Money.svg`}
       classtitle="h-[14px] text-[13px] ml-2 font-monserratLight"
@@ -53,7 +55,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
     />
 
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light font-poppinsSemiBold"
+      className={cardStyle+" h-[76px]"}
       title="Plazo"
       value={termFinance?.toString()}
       text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
@@ -63,7 +65,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       tooltiptext=""
     />
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[116px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+      className={cardStyle+" h-[116px]"}
       title="Tasa aproximada"
       value={rate}
       text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
@@ -85,7 +87,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       }
     />
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+      className={cardStyle+" h-[76px]"}
       title="Seguro de vida"
       value={lifeInsurance?.toString()}
       text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
@@ -102,7 +104,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       }
     />
     <Card
-      className="xs:w-[290px] xs:h-[85px]  sm:w-[343px] md:w-[448px]  sm:h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+      className={cardStyle+" h-[76px] xs:h-[85px] "}
       title="Seguro de Incendio, Rayo y Terremoto"
       value={fireInsurance?.toString()}
       text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
