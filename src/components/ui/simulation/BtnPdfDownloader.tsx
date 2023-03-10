@@ -12,7 +12,7 @@ function BtnPdfDownloader({ pdf }: dataPdf) {
     fileName="Plan_de_pagos_simulador.pdf"
     className="flex items-center my-3"
   >
-    <a className="pr-[8px] pt-[5px] pb-[5px] text-primario-900 font-bold underline text-[14px]">
+    <a className="pr-[8px] pt-[5px] pb-[5px] text-primario-900 text-[16px] font-montserratRegular font-medium ">
       Descargar simulación
     </a>
     <img className="hover:cursor-pointer" src={`${basePath}/images/Frame.svg`} />
