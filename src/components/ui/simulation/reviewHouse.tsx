@@ -28,12 +28,12 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
   <div className="flex flex-col items-center ">
     {lifeInsurance ? (
       <Card
-        className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px] "
+        className="xs:w-[290px] sm:w-[343px] md:w-[448px] h-[88px] bg-[#C4D1DA] mb-[16px] font-semibold rounded-[8px]"
         title="Cuota mensual sin seguros"
         value={monthlyCoute?.toString()}
-        text="text-[32px] pl-[8px] pt-2 flex items-baseline"
+        text="text-[32px] pl-[8px] pt-2 flex items-baseline font-poppinsSemiBold"
         urlsvg=""
-        classtitle="h-[18px] pt-[16px] text-[16px]"
+        classtitle="h-[18px] pt-[16px] text-[16px] font-montserratSemiBold"
         subvalue="pesos"
         textsub="30"
         tooltiptext=""
@@ -42,34 +42,34 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
     ) : null}
 
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light font-poppinsSemiBold"
       title="Valor financiado aproximado"
       value={financedValue?.toString()}
-      text="text-[20px] pl-[23px] font-semibold"
+      text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
       urlsvgendicon=""
       urlsvg={`${basePath}/images/Money.svg`}
-      classtitle="h-[14px] text-[13px] ml-2"
+      classtitle="h-[14px] text-[13px] ml-2 font-monserratLight"
       tooltiptext=""
     />
 
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light font-poppinsSemiBold"
       title="Plazo"
       value={termFinance?.toString()}
-      text="text-[20px] pl-[23px] font-semibold"
+      text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
       urlsvgendicon=""
       urlsvg={`${basePath}/images/Calendar.svg`}
-      classtitle="h-[14px] text-[13px] ml-2"
+      classtitle="h-[14px] text-[13px] ml-2 font-monserratLight"
       tooltiptext=""
     />
     <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[116px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Tasa aproximada"
       value={rate}
-      text="text-[20px] pl-[23px] font-semibold"
+      text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
       urlsvg={`${basePath}/images/Charts.svg`}
       urlsvgendicon=""
-      classtitle="h-[14px] text-[13px] ml-2"
+      classtitle="h-[14px] text-[13px] ml-2 font-monserratLight"
       tooltiptext=""
       description
       descriptionHtml={
@@ -88,9 +88,9 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Seguro de vida"
       value={lifeInsurance?.toString()}
-      text="text-[20px] pl-[23px] font-semibold"
+      text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
       urlsvg={`${basePath}/images/Insurage.svg`}
-      classtitle="h-[14px] text-[13px] ml-2"
+      classtitle="h-[14px] text-[13px] ml-2 font-monserratLight"
       tooltip
       id="lifeInsuranceHouse"
       urlsvgendicon=""
@@ -105,9 +105,9 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       className="xs:w-[290px] xs:h-[85px]  sm:w-[343px] md:w-[448px]  sm:h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Seguro de Incendio, Rayo y Terremoto"
       value={fireInsurance?.toString()}
-      text="text-[20px] pl-[23px] font-semibold"
+      text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
       urlsvg={`${basePath}/images/Home.svg`}
-      classtitle="xs:mb-[23px] sm:mb-[0px] h-[14px] text-[13px] ml-2 "
+      classtitle="xs:mb-[23px] sm:mb-[0px] h-[14px] text-[13px] ml-2 font-monserratLight"
       tooltip
       id="fireInsuranceHouse"
       urlsvgendicon=""
