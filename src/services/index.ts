@@ -119,9 +119,9 @@ export const sendNumber = async (data: any) => {
 };
 export const validateOTOCode = async (data: ValidateOTC) => {
   try {
-    const { otc, document_number, document_type, pin, processId, phone, emailAddr} = data;
+    const { otc, document_number, document_type, pin, processId, phone} = data;
     const dataInfo = await allResponse(
-      { document_number, document_type, pin, processId, phone, emailAddr },
+      { document_number, document_type, pin, processId, phone },
       KEY
     );
     const { data: response } = await clientAxiosBackend.post(
