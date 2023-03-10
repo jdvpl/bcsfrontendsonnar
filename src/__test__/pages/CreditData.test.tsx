@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import CreditData from '../../pages/datos-credito';
 import { RouterContext } from 'next/dist/shared/lib/router-context';

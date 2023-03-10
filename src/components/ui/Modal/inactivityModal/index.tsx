@@ -16,18 +16,18 @@ export function InactivityModal() {
         className={`${isOpen ? 'slideInUp' : 'slideOutDown'
           } bg-white w-[343px] h-[428px] md:w-[528px] rounded-xl pt-[64px] md:mt-[94px] px-[16px] mt-[47px]`}
       >
-        <h3 className="text-gris-100 text-center w-[311px] mx-auto px-2 text-[24px]">
+        <h3 className="text-gris-100 text-center w-[311px] mx-auto px-2 text-[24px] font-poppinsSemiBold">
           Ha estado inactivo en los últimos minutos
         </h3>
         <Typography
           variant="bodyM4"
-          className="mt-[24px] md:mt-[32px] text-center w-[258px] m-auto text-primario-900 font-light text-[18px] leading-5 subpixel-antialiased	"
+          className="mt-[24px] md:mt-[32px] text-center w-[258px] m-auto text-primario-900 font-light text-[18px] leading-5 subpixel-antialiased	font-montserratRegular"
         >
           ¿Desea continuar con la <br />
           solicitud del crédito?
         </Typography>
         <div className="w-full  flex-col flex items-center">
-          <Button isLanding="w-[253px] mt-[24px] mb-[42px]" onClick={onCloseModal}>
+          <Button isLanding="w-[253px] mt-[24px] mb-[42px] font-montserratRegular" onClick={onCloseModal}>
             Continuar
           </Button>
           <button
@@ -39,10 +39,10 @@ export function InactivityModal() {
             className={`text-center cursor-pointer text-[18px] text-primario-20 text-base leading-[14px] -tracking-[0.2px] font-semibold
                     disabled:text-azul_gris-40 disabled:font-normal disabled:text-sm disabled:leading-[18px] mb-[41px]`}
           >
-            <span id="reSend">Salir</span>
+            <span id="reSend" className='font-montserratRegular'>Salir</span>
           </button>
           <div>
-            <p className="text-gris-30 text-center font-[600] mb-[42px]">
+            <p className="text-gris-30 text-center font-[600] mb-[42px] font-montserratRegular">
               <Icons icon="bcs-clock" size="text-center text-[20px] text-gris-30" />{' '}
               {timer} Segundos
             </p>

@@ -1,5 +1,7 @@
 import { routes } from '../routes';
 import { getQuestions } from '../services';
+import { isBrowser } from 'react-device-detect';
+
 
 export default function useAuthentication(setShowAnimation: (data: boolean) => void, setValidated: (data: boolean) => void, dataUser: any, setDataQuestions: (data: any) => void, router: any, setCurrentRouting: any) {
   const onSubmit = async () => {
@@ -50,5 +52,5 @@ export default function useAuthentication(setShowAnimation: (data: boolean) => v
       router.push(routes.errorValidacion);
     }
   }
-  return { onSubmit }
+  return { onSubmit, isBrowser }
 }

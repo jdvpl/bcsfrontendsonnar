@@ -150,8 +150,20 @@ describe('useAuthentication', () => {
         json: jest.fn().mockResolvedValueOnce({ internal_code: 'IV-09' }),
       },
     });
-    const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, fkMock);
+    const { onSubmit, isBrowser } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, fkMock);
     await onSubmit();
     expect(router.push).toHaveBeenCalledWith(routes.validacionIdentidad);
+    expect(isBrowser).toBe(true)
+  });
+  it('isBrowser tobe true', async () => {
+    (getQuestions as jest.Mock).mockResolvedValueOnce({
+      response: {
+        status: 403,
+        data: {},
+        json: jest.fn().mockResolvedValueOnce({ internal_code: 'IV-09' }),
+      },
+    });
+    const { isBrowser } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, fkMock);
+    expect(isBrowser).toBe(true);
   });
 });

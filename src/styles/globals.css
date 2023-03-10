@@ -64,9 +64,11 @@
   }
 
   input {
-    @apply text-lg leading-[16px] font-montserratRegular text-[14px] !important;
+    @apply text-lg leading-[16px] font-montserratRegular text-[14px];
   }
-
+  label{
+    @apply font-montserratMedium;
+  }
   option {
     @apply py-3;
   }
@@ -1294,3 +1296,8 @@ svg {
 #personalDataForm .MuiPaper-elevation {
   display: none !important;
 }
+
+.css-fxj79j-MuiFormLabel-root-MuiInputLabel-root{
+  color: #00253d !important;
+}
+
