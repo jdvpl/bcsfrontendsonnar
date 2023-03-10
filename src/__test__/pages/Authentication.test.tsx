@@ -1,4 +1,5 @@
 import 'jest-canvas-mock';
+import '@testing-library/jest-dom';
 import { render, waitFor, screen } from '@testing-library/react';
 import React from 'react'
 import { RouterContext } from 'next/dist/shared/lib/router-context';
@@ -41,7 +42,14 @@ describe('Authentication', () => {
     const identityValidation = screen.getByTestId('btnOnboarding');
     await waitFor(() => userEvent.click(identityValidation));
   })
-
-
-
+  test('should appear the text', async () => {
+    const router = createMockRouter({});
+    const { queryByTestId } = render(
+      <RouterContext.Provider value={router}>
+        <Authentication />
+      </RouterContext.Provider>
+    );
+    const phoneFromTest = queryByTestId('phoneFromTest');
+    expect(phoneFromTest!).not.toBeInTheDocument()
+  })
 });
