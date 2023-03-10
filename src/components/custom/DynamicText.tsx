@@ -1,7 +1,7 @@
 import React from 'react'
 import Typography from '../ui/Typography'
 
-const DynamicText = ({ isBrowser }) => {
+const DynamicText = ({ isBrowser }: any) => {
   return (
     <div>
       {isBrowser ? <Typography variant='bodyS3' className='text-center mt-3 font-monserratLight text-[18px]' data-testid="phoneFromTest" role="phoneFromTest">
