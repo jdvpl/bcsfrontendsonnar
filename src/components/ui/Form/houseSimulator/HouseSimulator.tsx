@@ -1,19 +1,19 @@
 import { MenuItem } from '@mui/material';
-import React, { useState, ClipboardEvent } from 'react';
-import { Controller, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
-import ReactHookFormSelect from '../../Select/newSelect';
-import Input from '../../inputs/index';
-import { convertToColombianPesos} from '../../../../utils';
-import { days, months } from '../../../../lib/dates';
-import Button from '../../Button';
-import {  SimulationData } from '../../../../interfaces';
-import { yearsAvailable } from '../../../../lib/simulator';
-import useHouseSimulator from './useHouseSimulator';
+import { ClipboardEvent, useState } from 'react';
+import { Controller, useForm } from 'react-hook-form';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
+import { SimulationData } from '../../../../interfaces';
+import { days, months } from '../../../../lib/dates';
+import { yearsAvailable } from '../../../../lib/simulator';
 import { SesionStorageKeys } from '../../../../session';
+import { convertToColombianPesos } from '../../../../utils';
 import Alert from '../../Alert';
+import Button from '../../Button';
+import Input from '../../inputs/index';
 import SimulatorLoader from '../../Loaders/SimulatorLoader';
+import ReactHookFormSelect from '../../Select/newSelect';
+import useHouseSimulator from './useHouseSimulator';
 
 function HouseSimulator() {
   const router = useRouter();
@@ -268,7 +268,7 @@ function HouseSimulator() {
             data-testid="btnOpenQuotaSimulation"
             disabled={!(isValid && Object.entries(errors).length === 0)}
           >
-            Simular
+            <span className="text-[16px]">Simular</span>
           </Button>
         </div>
       )}
