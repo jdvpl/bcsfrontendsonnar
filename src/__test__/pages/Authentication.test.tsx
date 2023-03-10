@@ -6,6 +6,7 @@ import { RouterContext } from 'next/dist/shared/lib/router-context';
 import userEvent from "@testing-library/user-event";
 import { createMockRouter } from '../utils/createMockRouter';
 import Authentication from '../../pages/autenticacion';
+import useAuthentication from '../../hooks/useAuthentication';
 jest.mock('../../services', () => ({
   getQuestions: jest.fn(),
 }));
