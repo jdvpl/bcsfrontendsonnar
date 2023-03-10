@@ -12,6 +12,7 @@ import AnimationComponent from '../../components/commons/Animation';
 import TagManager from 'react-gtm-module';
 import useAuthentication from '../../hooks/useAuthentication'
 import useProtectedRoutes from '../../hooks/useProtectedRoutes';
+import DynamicText from '../../components/custom/DynamicText';
 
 function Authentication() {
   const router = useRouter();
@@ -61,14 +62,7 @@ function Authentication() {
             su información
           </span>
         </Typography>
-
-        {isBrowser ? <Typography variant='bodyS3' className='text-center mt-3 font-monserratLight text-[18px]' data-testid="phoneFromTest" role="phoneFromTest">
-          Sugerimos realizar este proceso
-          <span className="block">
-
-            desde un celular.
-          </span>
-        </Typography> : ''}
+        <DynamicText isBrowser={isBrowser} />
 
         <div className="flex justify-center mt-8">
           <Button
