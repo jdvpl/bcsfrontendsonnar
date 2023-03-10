@@ -17,13 +17,15 @@ const KEY = process.env.KEYENCRYPTADIGITAL;
  */
 export const sendAuthorization = async (body: any) => {
   try {
+    const dataInfo = await allResponse(body, KEY);
     const { data: response } = await clientAxiosBackend.post(
       '/customer/data-processing',
-      body
+      { data: dataInfo }
     );
+    const infoAllow = await allResponseDecrypted(response.data, KEY);
     return {
       response: {
-        result: response,
+        result: infoAllow,
       },
       error: false,
     };
