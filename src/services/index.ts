@@ -119,9 +119,15 @@ export const sendNumber = async (data: any) => {
 };
 export const validateOTOCode = async (data: ValidateOTC) => {
   try {
-    const { otc, document_number, document_type, pin, processId, phone} = data;
+    const { otc, document_number, document_type, pin, processId, phone } = data;
+    let dataToEcrypt;
+    if (otc) {
+      dataToEcrypt = { document_number, document_type, pin, processId, phone }
+    } else {
+      dataToEcrypt = { document_number, document_type, pin, processId }
+    }
     const dataInfo = await allResponse(
-      { document_number, document_type, pin, processId, phone },
+      dataToEcrypt,
       KEY
     );
     const { data: response } = await clientAxiosBackend.post(
@@ -142,7 +148,7 @@ export const validateOTOCode = async (data: ValidateOTC) => {
 };
 export const reSendOTPCode = async (data: OTPCodeRequest) => {
   try {
-    const { otc, document_number, document_type, processId, phone, emailAddr} = data;
+    const { otc, document_number, document_type, processId, phone, emailAddr } = data;
     const dataInfo = await allResponse(
       { document_number, document_type, processId, phone, emailAddr },
       KEY
