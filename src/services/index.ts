@@ -17,13 +17,15 @@ const KEY = process.env.KEYENCRYPTADIGITAL;
  */
 export const sendAuthorization = async (body: any) => {
   try {
+    const dataInfo = await allResponse(body, KEY);
     const { data: response } = await clientAxiosBackend.post(
       '/customer/data-processing',
-      body
+      { data: dataInfo }
     );
+    const infoAllow = await allResponseDecrypted(response.data, KEY);
     return {
       response: {
-        result: response,
+        result: infoAllow,
       },
       error: false,
     };
@@ -122,11 +124,14 @@ export const validateOTOCode = async (data: ValidateOTC) => {
     const { otc, document_number, document_type, pin, processId, phone } = data;
     let dataToEcrypt;
     if (otc) {
-      dataToEcrypt = { document_number, document_type, pin, processId, phone };
+      dataToEcrypt = { document_number, document_type, pin, processId, phone }
     } else {
-      dataToEcrypt = { document_number, document_type, pin, processId };
+      dataToEcrypt = { document_number, document_type, pin, processId }
     }
-    const dataInfo = await allResponse(dataToEcrypt, KEY);
+    const dataInfo = await allResponse(
+      dataToEcrypt,
+      KEY
+    );
     const { data: response } = await clientAxiosBackend.post(
       otc ? '/customer/otc/validate' : '/api-composer/composer/validate-otp',
       { data: dataInfo },
@@ -145,7 +150,7 @@ export const validateOTOCode = async (data: ValidateOTC) => {
 };
 export const reSendOTPCode = async (data: OTPCodeRequest) => {
   try {
-    const { otc, document_number, document_type, processId, phone, emailAddr} = data;
+    const { otc, document_number, document_type, processId, phone, emailAddr } = data;
     const dataInfo = await allResponse(
       { document_number, document_type, processId, phone, emailAddr },
       KEY

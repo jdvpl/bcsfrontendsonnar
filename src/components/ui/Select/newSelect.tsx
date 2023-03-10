@@ -55,7 +55,7 @@ const ReactHookFormSelect: React.FC<any> = ({
         </svg>
       </div>
       <InputLabel
-        className="font-montserratRegular"
+        className="font-montserratMedium text-[10px] bg-white text-primario-900"
         htmlFor={labelId}
         id={labelId}
         sx={{
@@ -85,6 +85,7 @@ const ReactHookFormSelect: React.FC<any> = ({
                 fontSize: '14px',
                 '.MuiFormLabel-root': {
                   fontSize: '14px',
+
                 },
                 ',MuiInputLabel-outlined': {
                   fontSize: '14px',

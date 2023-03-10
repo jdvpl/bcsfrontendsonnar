@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
-import { deviceType } from 'react-device-detect';
 import LogoBcs from '../../components/svg/LogoBcs'
 import LogoForm from '../../components/svg/LogoForm'
 import { basePath } from '../../../next.config';
@@ -13,6 +12,7 @@ import AnimationComponent from '../../components/commons/Animation';
 import TagManager from 'react-gtm-module';
 import useAuthentication from '../../hooks/useAuthentication'
 import useProtectedRoutes from '../../hooks/useProtectedRoutes';
+import DynamicText from '../../components/custom/DynamicText';
 
 function Authentication() {
   const router = useRouter();
@@ -37,7 +37,7 @@ function Authentication() {
   }, []
   );
   const { setCurrentRouting } = useProtectedRoutes();
-  const { onSubmit } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, setCurrentRouting);
+  const { onSubmit, isBrowser } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, setCurrentRouting);
   return (
     <div>
       {showAnimation ? <AnimationComponent show="" valid={validated} loaded={loaded} /> : null}
@@ -56,20 +56,13 @@ function Authentication() {
         <div className="mt-20 lg:h-[300px] md:w-[350px] md:h-[300px] sm:w-[234px] sm:h-[200px] xs:h-[200px] xs:w-[234px] m-auto ">
           <img src={`${basePath}/images/authentication.svg`} alt="" />
         </div>
-        <Typography variant='h3' className='text-center mt-[52px] text-primario-900 font-[24px]'>
+        <Typography variant='h3' className='text-center mt-[52px] text-primario-900 font-[24px] font-poppinsSemiBold'>
           Por seguridad <span className='xs:block sm:inline'>validaremos</span>
           <span className="block">
             su información
           </span>
         </Typography>
-
-        {deviceType === 'browser' ? <Typography variant='bodyS3' className='text-center mt-3'>
-          Sugerimos realizar este proceso
-          <span className="block">
-
-            desde un celular.
-          </span>
-        </Typography> : ''}
+        <DynamicText isBrowser={isBrowser} />
 
         <div className="flex justify-center mt-8">
           <Button
