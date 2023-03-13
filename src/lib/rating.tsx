@@ -61,5 +61,3 @@ export const RATING_OPTIONS_BETTER: RatingsOptions[] = [
     value: 'Otro',
   },
 ];
-
-export const cardTextStyles = 'text-[20px] pl-[23px] font-semibold font-poppinsSemiBold';

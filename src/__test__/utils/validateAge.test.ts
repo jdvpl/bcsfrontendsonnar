@@ -1,4 +1,3 @@
-import { cardTextStyles } from "../../lib/rating";
 import { validateAge } from "../../utils";
 
 describe('validateAge', () => {
@@ -47,7 +46,4 @@ describe('validateAge', () => {
 
     expect(setError).not.toHaveBeenCalled();
   });
-  it('should call rating styles',()=>{
-    expect(cardTextStyles).toBe('text-[20px] pl-[23px] font-semibold font-poppinsSemiBold')
-  })
 });

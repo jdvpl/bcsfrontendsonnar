@@ -2,8 +2,8 @@ import React from 'react';
 import Card from './Card';
 import { basePath } from '../../../../next.config';
 import BtnPdfDownloader from './BtnPdfDownloader';
-import { cardTextStyles } from '../../../lib/rating';
 
+export const cardTextStyles = 'text-[20px] pl-[23px] font-semibold font-poppinsSemiBold';
 interface ReviewHouseProps {
   financedValue: string;
   fireInsurance?: string;

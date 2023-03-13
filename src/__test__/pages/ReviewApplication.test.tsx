@@ -7,6 +7,7 @@ import ResumenSolicitud from '../../pages/resumen-solicitud/index';
 import { createMockRouter } from '../utils/createMockRouter';
 import 'jest-canvas-mock';
 import React from 'react'
+import { cardTextStyles } from '../../components/ui/simulation/reviewHouse';
 
 const fcMk = jest.fn();
 describe('<Resumen-Solicitud/>', () => {
@@ -43,4 +44,10 @@ describe('<Resumen-Solicitud/>', () => {
     await waitFor(() => userEvent.click(btnExit));
     expect(router.push).toHaveBeenCalledWith(routes.home);
   });
+  it('should call rating styles',()=>{
+    expect(cardTextStyles).toMatch('text-[20px] pl-[23px] font-semibold font-poppinsSemiBold')
+  })
+  it('should call rating styles',()=>{
+    expect(cardTextStyles).not.toMatch('text-[21px] pl-[23px] font-semibold font-poppinsSemiBold')
+  })
 });
