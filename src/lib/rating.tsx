@@ -62,4 +62,4 @@ export const RATING_OPTIONS_BETTER: RatingsOptions[] = [
   },
 ];
 
-export const cardStyle="xs:w-[290px] sm:w-[343px] md:w-[448px] bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+export const cardTextStyles = 'text-[20px] pl-[23px] font-semibold font-poppinsSemiBold';
