@@ -60,5 +60,9 @@ export const SesionStorageKeys = {
   pdfData: {
     key: 'spd',
     description: 'this key saves the data of the pdf into session storage'
+  },
+  orderNumber: {
+    key: 'orderN',
+    description: 'this key saves the data of the order number'
   }
 };

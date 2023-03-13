@@ -45,6 +45,10 @@ export default function useValidations(
     SesionStorageKeys?.applicationResponse.key,
     {}
   );
+  const [, setOrderNumber] = useSessionStorage(
+    SesionStorageKeys?.orderNumber.key,
+    {}
+  );
   const [isLoading, setLoading] = useState<boolean>(false);
 
   const handleClearErrors = () => {
@@ -176,6 +180,7 @@ export default function useValidations(
 
     const data: any = await riskBoxes(body);
     if (data?.response?.result?.customerStatus?.finalOffer?.isViable) {
+      setOrderNumber(data?.response?.result?.orderNumber);
       setApplicationResponse(data?.response?.result?.customerStatus);
       setCurrentRouting(routes.finalcialData, false);
       setCurrentRouting(routes.creditData, false);
