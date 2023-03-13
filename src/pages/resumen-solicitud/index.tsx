@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import Typography from '../../components/ui/Typography';
 import ReviewApplication from '../../components/ui/application/ReviewApplication';
@@ -10,23 +10,41 @@ import Stepper from '../../components/ui/Stepper';
 import { routes } from '../../routes';
 import Alert from '../../components/ui/Alert/index';
 import { ApplicationLoader } from '../../components/ui/Loaders/ApplicationLoader';
-import useSummaryApplication from '../../hooks/useReviewApplication';
 import HeaderForm from '../../components/ui/Headers/HeaderForm';
 import useProtectedRoutes from '../../hooks/useProtectedRoutes';
+import useDownloadPdf from '../../hooks/useDownloadPdf';
 
 function ResumenApplication() {
   const router = useRouter();
   const { setCurrentRouting } = useProtectedRoutes();
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
-  const { isLoading, onSubmit } = useSummaryApplication(router, setCurrentRouting);
+  const [loading, setLoading] = useState<boolean>(false)
+
   const [applicationResponse] = useSessionStorage(
     SesionStorageKeys?.applicationResponse.key,
     {}
   );
+  const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
+  const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
+  const [dataPersonalBasic,] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
 
+  const [basicDataUser,] = useSessionStorage(SesionStorageKeys.basicDataUser.key, {});
+  const [, setPdfData] = useSessionStorage(SesionStorageKeys.pdfData.key, {});
+  const { getPdf } = useDownloadPdf(
+    dataQuestions,
+    dataTU,
+    valuesMortgage,
+    applicationResponse,
+    setCurrentRouting,
+    router,
+    dataPersonalBasic,
+    setLoading,
+    basicDataUser,
+    setPdfData
+  );
   return (
     <div>
-      {isLoading ? <ApplicationLoader /> : null}
+      {loading ? <ApplicationLoader /> : null}
       <HeaderForm />
 
       <div className="lg:w-[825px] mx-auto md:w-[528px] mb-[64px] xs:mb-[40px] xs:w-[288px] sm:w-[343px] mt-9">
@@ -67,7 +85,7 @@ function ResumenApplication() {
         <div className="flex flex-col items-center gap-y-5">
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] mt-[24px] shadow-none font-monserratLight"
-            onClick={onSubmit}
+            onClick={getPdf}
             name="solicitarCredito"
             data-testid="btn-next"
             tabIndex={0}
