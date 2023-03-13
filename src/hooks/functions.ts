@@ -1,8 +1,8 @@
-import { routes } from '../routes';
-import { sendAuthorization, sendQuestions } from '../services';
-import { FormData } from '../components/ui/Form';
-import TagManager from 'react-gtm-module';
-
+import { routes } from "../routes";
+import { sendAuthorization, sendQuestions } from "../services";
+import { FormData } from '../components/ui/Form'
+import TagManager from "react-gtm-module";
+import { iPersonalDataResponse } from '../interfaces/iPersonalDataResponse'
 interface InitDataSend {
   document_type: string;
   document_number: string;
@@ -46,7 +46,7 @@ export const onSubmitResponse = async (
     }
   } else if (!response.error) {
     const step = response.response?.data?.question?.step;
-    const info = {
+    const info: iPersonalDataResponse = {
       isClient: response.response.data.isClient,
       clientType: response.response.data.clientType,
       ...response.response.data.clientBasicData,

@@ -49,12 +49,20 @@ export const SesionStorageKeys = {
     key: 'BDUbasic',
     description: 'this saves the basicData of user'
   },
-  applicationResponse:{
+  applicationResponse: {
     key: 'applicationResponse',
     description: 'this saves the response of application risk boxes'
   },
-  openedTutorial:{
+  openedTutorial: {
     key: 'openedTutorial',
-    description:'this key saves if you opened the tutorial'
+    description: 'this key saves if you opened the tutorial'
+  },
+  pdfData: {
+    key: 'spd',
+    description: 'this key saves the data of the pdf into session storage'
+  },
+  orderNumber: {
+    key: 'orderN',
+    description: 'this key saves the data of the order number'
   }
 };

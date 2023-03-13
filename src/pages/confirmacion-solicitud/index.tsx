@@ -11,7 +11,7 @@ import Typography from '../../components/ui/Typography';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { routes } from '../../routes';
 import { SesionStorageKeys } from '../../session';
-import { convertToColombianPesos } from '../../utils';
+import { convertToColombianPesos, downLoadPdf } from '../../utils';
 import useProtectedRoutes from '../../hooks/useProtectedRoutes';
 import useDownloadPdf from '../../hooks/useDownloadPdf';
 import ExitModal from '../../components/commons/ExitModal';
@@ -23,8 +23,6 @@ function ApplicationApproval({ modalExit = false }: any) {
   const { setCurrentRouting } = useProtectedRoutes();
   const [dataInfo] = useSessionStorage(SesionStorageKeys.basicDataUser.key, {});
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
-  const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
-  const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const router = useRouter();
   const [showModalExit, setshowModalExit] = useState(modalExit);
   const [componentModalExit] = useState({
@@ -40,13 +38,13 @@ function ApplicationApproval({ modalExit = false }: any) {
     SesionStorageKeys?.applicationResponse.key,
     {}
   );
-  const { getPdf } = useDownloadPdf(
-    dataQuestions,
-    dataTU,
-    valuesMortgage,
-    applicationResponse
-  );
+  const [pdfData] = useSessionStorage(SesionStorageKeys.pdfData.key, {});
 
+  const downloadPDF = async () => {
+    const pdf = pdfData?.doc;
+    const name = pdfData?.name;
+    downLoadPdf(pdf, name);
+  }
   const closeModalExit = () => {
     setshowModalExit(false);
   };
@@ -142,7 +140,7 @@ function ApplicationApproval({ modalExit = false }: any) {
             className="mb-8"
             data-testid="btn-Confirmation"
             tabIndex={0}
-            onClick={getPdf}
+            onClick={downloadPDF}
             id="btn-next"
           >
             <span className="font-medium font-monserratLight text-[18px]">
