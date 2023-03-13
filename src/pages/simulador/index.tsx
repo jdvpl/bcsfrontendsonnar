@@ -6,7 +6,7 @@ import Typography from '../../components/ui/Typography';
 import HouseSimulator from '../../components/ui/Form/houseSimulator/HouseSimulator';
 import useSimulator from './useSimulator';
 import TagManager from 'react-gtm-module';
-
+export const cardTextStyles = 'text-[20px] pl-[23px] font-semibold font-poppinsSemiBold';
 function Simulator() {
   const { simulatioTypeOption, setsimulatioTypeOption, onSubmit, isLoading } = useSimulator();
   useEffect(() => {

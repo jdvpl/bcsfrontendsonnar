@@ -12,7 +12,6 @@ import { getDataPDF } from '../../services';
 import { SesionStorageKeys } from '../../session';
 import CheckLoader from '../../components/ui/Loaders/CheckLoader';
 import { routes } from '../../routes';
-
 const intialDataPdfInfo = {
   approximateFinancedValue: 0,
   term: 0,

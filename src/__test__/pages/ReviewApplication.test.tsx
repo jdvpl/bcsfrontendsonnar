@@ -7,7 +7,7 @@ import ResumenSolicitud from '../../pages/resumen-solicitud/index';
 import { createMockRouter } from '../utils/createMockRouter';
 import 'jest-canvas-mock';
 import React from 'react'
-import { cardTextStyles } from '../../components/ui/simulation/reviewHouse';
+import { cardTextStyles } from '../../pages/simulador';
 
 const fcMk = jest.fn();
 describe('<Resumen-Solicitud/>', () => {
