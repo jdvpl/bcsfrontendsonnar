@@ -76,7 +76,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
       variants={variants}
       transition={{ type: 'linear' }}
     >
-      {isLoadingForm && <div className="absolute z-[100] top-0 left-0 w-screen h-screen flex justify-center items-center bg-primario-100">
+      {isLoadingForm && <div className="absolute z-[100] top-0 left-0 w-full h-screen flex justify-center items-center bg-primario-100">
         <SimulatorLoader/>
         </div>}
       <section itemScope itemType="https://schema.org/Person">

@@ -14,7 +14,6 @@ interface ReviewSalaryProps {
   id?: string;
   dataPdf: any;
 }
-const fetchresumen = () => alert('No hay resumen aun, no molesten');
 export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
   financedValue,
   fireInsurance,

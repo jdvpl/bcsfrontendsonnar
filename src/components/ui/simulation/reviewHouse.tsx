@@ -14,6 +14,7 @@ interface ReviewHouseProps {
   id?: string;
   dataPdf: any;
 }
+const cardTextStyles = 'text-[20px] pl-[23px] font-semibold font-poppinsSemiBold';
 export const ReviewHouse: React.FC<ReviewHouseProps> = ({
   financedValue,
   fireInsurance,
@@ -45,7 +46,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light font-poppinsSemiBold"
       title="Valor financiado aproximado"
       value={financedValue?.toString()}
-      text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
+      text={cardTextStyles}
       urlsvgendicon=""
       urlsvg={`${basePath}/images/Money.svg`}
       classtitle="h-[14px] text-[13px] ml-2 font-monserratLight"
@@ -56,7 +57,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light font-poppinsSemiBold"
       title="Plazo"
       value={termFinance?.toString()}
-      text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
+      text={cardTextStyles}
       urlsvgendicon=""
       urlsvg={`${basePath}/images/Calendar.svg`}
       classtitle="h-[14px] text-[13px] ml-2 font-monserratLight"
@@ -66,7 +67,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[116px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Tasa aproximada"
       value={rate}
-      text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
+      text={cardTextStyles}
       urlsvg={`${basePath}/images/Charts.svg`}
       urlsvgendicon=""
       classtitle="h-[14px] text-[13px] ml-2 font-monserratLight"
@@ -75,11 +76,12 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       descriptionHtml={
         <p className="pl-[33px]">
           <p className="flex">
-            <p className="font-bold text-[14px] mr-1">MV: </p><span className="text-[14px]">Tasa nominal mes
-              vencido</span>
+            <p className="font-bold text-[14px] mr-1">MV: </p>
+            <span className="text-[14px]">Tasa nominal mes vencido</span>
           </p>
           <p className="flex">
-            <p className="font-bold text-[14px]  mr-1">EA:</p><span className="text-[14px]">Tasa efectiva anual</span>
+            <p className="font-bold text-[14px]  mr-1">EA:</p>
+            <span className="text-[14px]">Tasa efectiva anual</span>
           </p>
         </p>
       }
@@ -88,7 +90,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Seguro de vida"
       value={lifeInsurance?.toString()}
-      text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
+      text={cardTextStyles}
       urlsvg={`${basePath}/images/Insurage.svg`}
       classtitle="h-[14px] text-[13px] ml-2 font-monserratLight"
       tooltip
@@ -105,7 +107,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       className="xs:w-[290px] xs:h-[85px]  sm:w-[343px] md:w-[448px]  sm:h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Seguro de Incendio, Rayo y Terremoto"
       value={fireInsurance?.toString()}
-      text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
+      text={cardTextStyles}
       urlsvg={`${basePath}/images/Home.svg`}
       classtitle="xs:mb-[23px] sm:mb-[0px] h-[14px] text-[13px] ml-2 font-monserratLight"
       tooltip
