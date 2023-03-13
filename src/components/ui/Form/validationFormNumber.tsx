@@ -8,7 +8,9 @@ import Heading from '../Headers';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import ContainerButtonForm from './ContainerButtonForm';
 import { SesionStorageKeys } from '../../../session';
-import useValidationFormNumber from '../../../hooks/useValidationFormNumber'
+import useValidationFormNumber from '../../../hooks/useValidationFormNumber';
+import SimulatorLoader from '../Loaders/SimulatorLoader';
+
 interface FormProps {
   isLoading?: boolean;
   defaultValues?: string;
@@ -35,8 +37,8 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
     SesionStorageKeys.dataProcessBiometry.key,
     ''
   );
-
   const [, setLoaded] = useState(false);
+  const [isLoadingForm, setIsLoadingForm] = useState(false);
   const router = useRouter();
   const {
     handleSubmit,
@@ -50,6 +52,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
     mode: 'onChange',
   });
   const inputValues = watch('number');
+
   const variants = {
     hidden: { opacity: 1, x: 350, y: 0 },
     enter: { opacity: 1, x: 0, y: 0 },
@@ -63,6 +66,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
     }
     clearErrors('number');
   }, [clearErrors, inputValues, setError]);
+
   const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry, dataQuestions, setCurrentRouting)
   return (
     <motion.div
@@ -72,6 +76,9 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
       variants={variants}
       transition={{ type: 'linear' }}
     >
+      {isLoadingForm && <div className="absolute z-[100] top-0 left-0 w-full h-screen flex justify-center items-center bg-primario-100">
+        <SimulatorLoader/>
+        </div>}
       <section itemScope itemType="https://schema.org/Person">
         <form
           data-testid="formNumber"
@@ -166,6 +173,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
             </div>
             <ContainerButtonForm>
               <Button
+                onClick={()=>setIsLoadingForm(true)}
                 isLoading={!!errors?.number?.message}
                 type="submit"
                 name="btn-send-phone"

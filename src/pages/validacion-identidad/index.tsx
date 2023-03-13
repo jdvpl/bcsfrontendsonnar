@@ -14,6 +14,7 @@ import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
 import { onSubmitResponse } from '../../hooks/functions';
 import TagManager from 'react-gtm-module';
 import useProtectedRoutes from '../../hooks/useProtectedRoutes';
+import SimulatorLoader from '../../components/ui/Loaders/SimulatorLoader';
 interface Quest {
   items: Question[];
 }
@@ -25,7 +26,7 @@ const Index: React.FC = () => {
   const [dataNumber, setDataNumber] = useState<any | null>(null);
   const [dataValid] = useState(false);
   const [progress, setProgress] = useState<number>(25);
-  const [loading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const data: Quest = dataQuestions;
 
@@ -47,7 +48,8 @@ const Index: React.FC = () => {
       </Head>
       <InactivityWarper>
         <Layout navTitle={<NavTitle noBack />}>
-          {loading && <AnimationComponent show="" valid={loading} loaded={false} />}
+          {/* {loading && <AnimationComponent show="" valid={loading} loaded={false} />} */}
+          {loading && <SimulatorLoader />}
           {!dataValid && (
             <Stepper
               steps={5}
@@ -68,7 +70,7 @@ const Index: React.FC = () => {
                     setDataNumber,
                     dataQuestions?.processId,
                     setCurrentRouting,
-                    setBasicData
+                    setBasicData, setLoading
                   );
                   setProgress(50);
                 }}
