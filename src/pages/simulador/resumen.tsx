@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import LogoBcs from '../../components/svg/LogoBcs';
 import LogoForm from '../../components/svg/LogoForm';
-import Typography from '../../components/ui/Typography';
 import ReviewHouse from '../../components/ui/simulation/reviewHouse';
 import ReviewSalary from '../../components/ui/simulation/reviewSalary';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
@@ -13,7 +12,6 @@ import { getDataPDF } from '../../services';
 import { SesionStorageKeys } from '../../session';
 import CheckLoader from '../../components/ui/Loaders/CheckLoader';
 import { routes } from '../../routes';
-
 const intialDataPdfInfo = {
   approximateFinancedValue: 0,
   term: 0,
@@ -67,27 +65,24 @@ function Resumen() {
             </div>
           </div>
           <div className=" xs:w-[290px] sm:w-[343px]  lg:w-[684px] md:w-[584px] m-auto">
-            <Typography variant="h2" className="mt-8 mb-[52px] text-center">
+            <h2 className="mt-8 text-center ont-poppinsSemiBold font-semibold md:text-[28px] text-[20px]">
               Simulador del crédito
-            </Typography>
+            </h2>
             <div>
-              <Typography
-                variant="bodyS3"
-                className="text-center xs:w-[290px] sm:w-[343px] md:w-[656px] lg:mt-[52px] pmx-3 text-primario-900"
-              >
+              <p className="text-center mt-2 pmx-3 text-primario-900 font-montserratRegular font-normal leading-[18px] text-[16px]">
                 Los valores presentados en el simulador son aproximados y únicamente
                 informativos, no constituyen ningún tipo de asesoría, ni obligan al Banco
                 en su calidad de emisor.
-              </Typography>
+              </p>
             </div>
-            <div className="flex gap-1 my-5">
+            <div className="flex gap-1 mb-5 md:mt-[41px] mt-9">
               <button
                 type="button"
                 disabled={simulationTypeOption === 'salary'}
                 className={
                   simulationTypeOption === 'house'
-                    ? ` font-semibold button-shadow text-[14px] w-full max-w-[23.438rem] rounded-l-lg h-[3rem] transition-all duration-500 text-white bg-primario-100 hover:bg-primario-400  shadow-none`
-                    : ` font-semibold button-shadow text-[14px] w-full max-w-[23.438rem] rounded-l-lg h-[3rem] text-complementario-70 bg-gris-90 shadow-none`
+                    ? `font-montserratRegular font-medium button-shadow text-[12px] leading-[14px] w-full max-w-[23.438rem] rounded-l-lg h-[3rem] transition-all duration-500 text-white bg-primario-100 hover:bg-primario-400  shadow-none`
+                    : `font-montserratRegular font-medium button-shadow text-[12px] leading-[14px] w-full max-w-[23.438rem] rounded-l-lg h-[3rem] text-complementario-70 bg-gris-90 shadow-none`
                 }
                 onClick={() => setsimulatioTypeOption('house')}
               >
@@ -98,8 +93,8 @@ function Resumen() {
                 disabled={simulationTypeOption === 'house'}
                 className={
                   simulationTypeOption === 'salary'
-                    ? ` font-semibold button-shadow text-[14px] w-full max-w-[23.438rem] rounded-r-lg h-[3rem] transition-all duration-500 text-white bg-primario-100 hover:bg-primario-400  shadow-none`
-                    : ` font-semibold button-shadow text-[14px] w-full max-w-[23.438rem] rounded-r-lg h-[3rem] text-complementario-70 bg-gris-90 shadow-none`
+                    ? `font-montserratRegular font-medium button-shadow text-[12px] leading-[14px] w-full max-w-[23.438rem] rounded-r-lg h-[3rem] transition-all duration-500 text-white bg-primario-100 hover:bg-primario-400  shadow-none`
+                    : `font-montserratRegular font-medium button-shadow text-[12px] leading-[14px] w-full max-w-[23.438rem] rounded-r-lg h-[3rem] text-complementario-70 bg-gris-90 shadow-none`
                 }
                 onClick={() => setsimulatioTypeOption('salary')}
               >
@@ -168,18 +163,21 @@ function Resumen() {
                 tabIndex={0}
                 id="btn-next"
               >
-                Solicitar crédito
+                <span className="text-[16px] font-medium">Solicitar crédito</span>
               </Button>
               <Button
-                isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] shadow-none"
+                isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] border-primario-100"
                 onClick={() => urlAndUtms(router, routes.simulador)}
                 name="solicitarCredito"
                 data-testid="btn-openAccount1"
                 tabIndex={0}
                 id="btn-next"
+                className="border-2 border-primario-100"
                 variant="secondary"
               >
-                Volver a simular
+                <span className="text-[16px] font-medium">
+                  Volver a simular
+                </span>
               </Button>
             </div>
           </div>

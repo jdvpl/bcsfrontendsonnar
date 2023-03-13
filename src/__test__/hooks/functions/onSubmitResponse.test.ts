@@ -64,7 +64,7 @@ describe('', () => {
     setDataValid = jest.fn();
     setDataNumber = jest.fn();
     sendQuestions = jest.fn();
-    await onSubmitResponse(initData, dataTU, router, setDataValid, setDataNumber, setCurrentRouting, setDataBasicUser);
+    await onSubmitResponse(initData, dataTU, router, setDataValid, setDataNumber, setCurrentRouting, setDataBasicUser,jest.fn());
   });
   test('', async () => {
     let initData: any;
@@ -88,7 +88,7 @@ describe('', () => {
     setDataValid = jest.fn();
     setDataNumber = jest.fn();
     sendQuestions = jest.fn();
-    await onSubmitResponse(initData, dataTU, router, setDataValid, setDataNumber, setCurrentRouting, setDataBasicUser);
+    await onSubmitResponse(initData, dataTU, router, setDataValid, setDataNumber, setCurrentRouting, setDataBasicUser,jest.fn());
   });
   test('', async () => {
     let initData: any;
@@ -111,7 +111,7 @@ describe('', () => {
     setDataValid = jest.fn();
     setDataNumber = jest.fn();
     sendQuestions = jest.fn();
-    await onSubmitResponse(initData, dataTU, router, setDataValid, setDataNumber, setCurrentRouting, setDataBasicUser);
+    await onSubmitResponse(initData, dataTU, router, setDataValid, setDataNumber, setCurrentRouting, setDataBasicUser,jest.fn());
   });
   test('', async () => {
     let initData: any;
@@ -134,7 +134,7 @@ describe('', () => {
     setDataValid = jest.fn();
     setDataNumber = jest.fn();
     sendQuestions = jest.fn();
-    await onSubmitResponse(initData, dataTU, router, setDataValid, setDataNumber, setCurrentRouting, setDataBasicUser);
+    await onSubmitResponse(initData, dataTU, router, setDataValid, setDataNumber, setCurrentRouting, setDataBasicUser,jest.fn());
   });
   test('', async () => {
     let initData: any;
@@ -157,7 +157,7 @@ describe('', () => {
     setDataValid = jest.fn();
     setDataNumber = jest.fn();
     sendQuestions = jest.fn();
-    await onSubmitResponse(initData, dataTU, router, setDataValid, setDataNumber, setCurrentRouting, setDataBasicUser);
+    await onSubmitResponse(initData, dataTU, router, setDataValid, setDataNumber, setCurrentRouting, setDataBasicUser,jest.fn());
   });
   test('', async () => {
     let initData: any;
@@ -180,6 +180,6 @@ describe('', () => {
     setDataValid = jest.fn();
     setDataNumber = jest.fn();
     sendQuestions = jest.fn();
-    await onSubmitResponse(initData, dataTU, router, setDataValid, setDataNumber, setCurrentRouting, setDataBasicUser);
+    await onSubmitResponse(initData, dataTU, router, setDataValid, setDataNumber, setCurrentRouting, setDataBasicUser,jest.fn());
   });
 });

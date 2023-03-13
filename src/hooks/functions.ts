@@ -7,12 +7,22 @@ interface InitDataSend {
   document_type: string;
   document_number: string;
 }
-export const onSubmitResponse = async (initData: InitDataSend, dataTU: any, router: any, setDataNumber: any, processId: string, setCurrentRouting: any, setBasicData: any) => {
+export const onSubmitResponse = async (
+  initData: InitDataSend,
+  dataTU: any,
+  router: any,
+  setDataNumber: any,
+  processId: string,
+  setCurrentRouting: any,
+  setBasicData: any,
+  setLoading: any
+) => {
+  setLoading(true);
   const body = {
     document_type: dataTU?.document_type,
     document_number: dataTU?.document_number,
     items: initData,
-    processId
+    processId,
   };
 
   const response = await sendQuestions(body);
@@ -32,15 +42,15 @@ export const onSubmitResponse = async (initData: InitDataSend, dataTU: any, rout
         break;
     }
     if (response.response?.statusCode === 500) {
-      router.push(routes.servicError)
+      router.push(routes.servicError);
     }
   } else if (!response.error) {
     const step = response.response?.data?.question?.step;
     const info: iPersonalDataResponse = {
       isClient: response.response.data.isClient,
       clientType: response.response.data.clientType,
-      ...response.response.data.clientBasicData
-    }
+      ...response.response.data.clientBasicData,
+    };
     setBasicData(info);
     if (step === 'AUTH') {
       setCurrentRouting(routes.validacionIdentidad, false);
@@ -48,14 +58,18 @@ export const onSubmitResponse = async (initData: InitDataSend, dataTU: any, rout
       router.push(routes.otc);
     } else if (step === 'VQ') {
       setDataNumber(response.response.data.question);
+      setLoading(false);
     }
   } else {
-    router.push(routes.errorValidacion)
+    router.push(routes.errorValidacion);
   }
 };
 
-
-export const onSubmitStartProcess = async (formData: FormData, setDataUser: any, router: any) => {
+export const onSubmitStartProcess = async (
+  formData: FormData,
+  setDataUser: any,
+  router: any
+) => {
   TagManager.dataLayer({
     dataLayer: {
       event: 'go_auth',
@@ -70,11 +84,11 @@ export const onSubmitStartProcess = async (formData: FormData, setDataUser: any,
   setDataUser(formData);
   if (!response.error) {
     if (response.response.result) {
-      router.push(routes.authentication)
+      router.push(routes.authentication);
     } else {
       router.push(routes.validacionErrorValidacionIdentidad);
     }
   } else {
     router.push(routes.validacionErrorValidacionIdentidad);
   }
-}
+};
