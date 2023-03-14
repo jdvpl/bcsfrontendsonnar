@@ -41,9 +41,9 @@ export default function useSimulator() {
     if (!response.error) {
       router.push(routes.simuladorResumen);
       setdataFormResponse(response.response.data);
+    } else {
       setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   return { simulatioTypeOption, setsimulatioTypeOption, onSubmit, isLoading };

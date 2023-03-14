@@ -166,13 +166,12 @@ function Resumen() {
                 <span className="text-[16px] font-medium">Solicitar crédito</span>
               </Button>
               <Button
-                isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] border-primario-100"
+                isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] border-primario-100 border hover:border-primario-100"
                 onClick={() => urlAndUtms(router, routes.simulador)}
                 name="solicitarCredito"
                 data-testid="btn-openAccount1"
                 tabIndex={0}
                 id="btn-next"
-                className="border-2 border-primario-100"
                 variant="secondary"
               >
                 <span className="text-[16px] font-medium">

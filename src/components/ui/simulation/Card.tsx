@@ -73,7 +73,7 @@ export const Card: React.FC<CardProps> = ({
       }
 
       {endicon ?
-        <div className='absolute left-[220px] top-[20px] sm:left-[280px] md:left-[380px] top-[10px] cursor-pointer'>
+        <div className='absolute left-[220px] top-[20px] sm:left-[280px] md:left-[380px] cursor-pointer'>
           <img
             src={urlsvgendicon}
             alt={altsvg}

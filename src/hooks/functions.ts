@@ -41,9 +41,7 @@ export const onSubmitResponse = async (
       default:
         break;
     }
-    if (response.response?.statusCode === 500) {
-      router.push(routes.servicError);
-    }
+
   } else if (!response.error) {
     const step = response.response?.data?.question?.step;
     const info: iPersonalDataResponse = {
