@@ -90,7 +90,7 @@ function Consultancy() {
           />
           <Typography
             variant="h2"
-            className="lg:w-[445px] leading-[32px] md:w-[445px] sm:w-[303px] w-[303px] mx-auto lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center  font-poppinsSemiBold"
+            className="lg:w-[515px] leading-[32px] md:w-[445px] sm:w-[303px] w-[303px] mx-auto lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center  font-poppinsSemiBold"
           >
             {titleSection[actualStep - 1]}
           </Typography>
@@ -98,16 +98,15 @@ function Consultancy() {
       </div>
 
       {/* Content */}
-      <div className="lg:w-[1127px] md:w-[528px] xs:flex-col md:flex-row w-[95%] xs:w-[95%] lg:gap-x-[120px] gap-x-[34px] mx-auto flex items-center mb-[77px]">
+      <div className="lg:w-[1127px] md:w-[528px] xs:flex-col md:flex-row w-[95%] xs:w-[95%] lg:gap-x-[120px] gap-x-[34px] mx-auto flex items-center mb-[25px]">
         <img
           className="w-[100%] xs:max-w-[340px] xs:h-[180px] md:hidden object-contain"
           src={`${basePath}/images/consultancy/${actualStep}.svg`}
         />
 
         <div
-          className={`${
-            itemActive !== '' ? 'sm:ml-[-95px]' : ''
-          } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
+          className={`${itemActive !== '' ? 'sm:ml-[-95px]' : ''
+            } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
           style={{
             backgroundImage: `url(${basePath}/images/consultancy/${actualStep}.svg)`,
             backgroundRepeat: 'no-repeat',
@@ -205,9 +204,8 @@ function Consultancy() {
 
       {/* Link to Home */}
       <div
-        className={`w-full text-center mb-[80px] xs:hidden md:block${
-          actualStep === 1 || actualStep === 4 ? 'hidden' : ''
-        }`}
+        className={`w-full text-center mb-[80px] xs:hidden md:block${actualStep === 1 || actualStep === 4 ? 'hidden' : ''
+          }`}
       >
         <a
           href={`${basePath}`}

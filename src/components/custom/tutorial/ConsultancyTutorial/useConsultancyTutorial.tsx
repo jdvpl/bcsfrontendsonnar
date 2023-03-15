@@ -306,7 +306,7 @@ export default function useConsultancyTutorial({
                 <div
                   className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center  h-[171px]`}
                 >
-                  <p className="z-40 text-[18px] w-[200px] mb-[20px] text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
+                  <p className="z-40 text-[16px] w-[200px] mb-[20px] text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
                     Para cerrar la ventana, haga clic aquí.
                   </p>
                   <button
@@ -352,7 +352,7 @@ export default function useConsultancyTutorial({
                     <div
                       className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center gap-y-[28px] h-[171px]`}
                     >
-                      <p className="z-40 text-[18px] w-[200px] text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
+                      <p className="z-40 text-[16px] w-[200px] text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
                         Para cerrar la ventana, haga clic aquí.
                       </p>
                       <button
@@ -372,7 +372,7 @@ export default function useConsultancyTutorial({
                   <span className="font-semibold text-primario-900 font-montserratMedium lg:text-[20px] text-[16px]">
                     Texto descriptivo
                   </span>
-                  <p className="break-words lg:font-heading font-medium font-montserratMedium">
+                  <p className="break-words font-montserratRegular mt-4">
                     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
                   </p>
                 </div>
