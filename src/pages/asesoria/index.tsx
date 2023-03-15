@@ -9,7 +9,7 @@ import LogoForm from '../../components/svg/LogoForm';
 import { Icons } from '../../components/ui/icons';
 import Stepper from '../../components/ui/Stepper';
 import Typography from '../../components/ui/Typography';
-import { stepperTitles, titleSection } from '../../lib/consultancy';
+import { stepperTitles, titleSection } from '../../components/custom/consultancy/consultancy';
 import useConsultancy from './useConsultancy';
 import TagManager from 'react-gtm-module';
 
@@ -90,7 +90,7 @@ function Consultancy() {
           />
           <Typography
             variant="h2"
-            className="lg:w-[445px] leading-[32px] md:w-[445px] sm:w-[303px] w-[303px] mx-auto lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center  font-poppinsSemiBold"
+            className="lg:w-[515px] leading-[32px] md:w-[445px] sm:w-[303px] w-[303px] mx-auto lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center  font-poppinsSemiBold"
           >
             {titleSection[actualStep - 1]}
           </Typography>
@@ -98,16 +98,15 @@ function Consultancy() {
       </div>
 
       {/* Content */}
-      <div className="lg:w-[1127px] md:w-[528px] xs:flex-col md:flex-row w-[95%] xs:w-[95%] lg:gap-x-[120px] gap-x-[34px] mx-auto flex items-center mb-[77px]">
+      <div className="lg:w-[1127px] md:w-[528px] xs:flex-col md:flex-row w-[95%] xs:w-[95%] lg:gap-x-[120px] gap-x-[34px] mx-auto flex items-center mb-[25px]">
         <img
           className="w-[100%] xs:max-w-[340px] xs:h-[180px] md:hidden object-contain"
           src={`${basePath}/images/consultancy/${actualStep}.svg`}
         />
 
         <div
-          className={`${
-            itemActive !== '' ? 'sm:ml-[-95px]' : ''
-          } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
+          className={`${itemActive !== '' ? 'sm:ml-[-95px]' : ''
+            } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
           style={{
             backgroundImage: `url(${basePath}/images/consultancy/${actualStep}.svg)`,
             backgroundRepeat: 'no-repeat',
@@ -167,13 +166,13 @@ function Consultancy() {
               onClick={prevStep}
               className="md:order-1 cursor-pointer  flex xs:gap-x-3 items-center xs:justify-center xs:flex-row md:flex-col lg:w-[150px]"
             >
-              <div className="rounded-full xs:w-[24px] md:w-[40px] xs:h-[24px] md:h-[40px] border-primario-20 flex justify-center items-center border-2 md:mb-[33px]">
+              <div className="rounded-full xs:w-[24px] md:w-[40px] xs:h-[24px] md:h-[40px] border-primario-300 flex justify-center items-center border-2 md:mb-[33px]">
                 <Icons
                   icon="bcs-arrow-two-left"
-                  iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-20"
+                  iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
                 />
               </div>
-              <a className="text-primario-100 font-bold font-montserratRegular text-center text-[14px] ">
+              <a className="text-primario-300 font-bold font-montserratRegular text-center text-[14px] ">
                 {actualStep === 1 ? 'Volver al Inicio' : 'Anterior'}
               </a>
             </div>
@@ -183,13 +182,13 @@ function Consultancy() {
               onClick={nextStep}
               className="md:order-3 cursor-pointer  flex xs:gap-x-3 items-center flex-row md:flex-col lg:w-[150px]"
             >
-              <div className="rounded-full xs:w-[24px] md:w-[40px] md:order-1 xs:order-2 xs:h-[24px] md:h-[40px] border-primario-20 flex justify-center items-center border-2 md:mb-[33px]">
+              <div className="rounded-full xs:w-[24px] md:w-[40px] md:order-1 xs:order-2 xs:h-[24px] md:h-[40px] border-primario-300 flex justify-center items-center border-2 md:mb-[33px]">
                 <Icons
                   icon="bcs-arrow-two-right"
-                  iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-20"
+                  iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
                 />
               </div>
-              <a className=" text-primario-100 font-montserratRegular  md:order-2 xs:order-1 font-bold text-center text-[14px]">
+              <a className=" text-primario-300 font-montserratRegular  md:order-2 xs:order-1 font-bold text-center text-[14px]">
                 {actualStep === 4 ? 'Salir' : 'Siguiente'}
               </a>
             </div>
@@ -205,9 +204,8 @@ function Consultancy() {
 
       {/* Link to Home */}
       <div
-        className={`w-full text-center mb-[80px] xs:hidden md:block${
-          actualStep === 1 || actualStep === 4 ? 'hidden' : ''
-        }`}
+        className={`w-full text-center mb-[80px] xs:hidden md:block${actualStep === 1 || actualStep === 4 ? 'hidden' : ''
+          }`}
       >
         <a
           href={`${basePath}`}
