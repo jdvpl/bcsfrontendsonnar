@@ -30,22 +30,22 @@ export default function useConsultancyTutorial({
     prevTutorialStepRef?.current?.classList?.remove('text-white', 'underline');
     prevTutorialStepRef?.current
       ?.querySelector('div')
-      .classList?.add('border-primario-20');
+      .classList?.add('border-primario-300');
     prevTutorialStepRef?.current
       ?.querySelector('a')
-      ?.classList?.add('text-primario-100', 'text-semibold');
-    prevTutorialStepRef?.current?.querySelector('i')?.classList?.add('text-primario-20');
+      ?.classList?.add('text-primario-300', 'text-semibold');
+    prevTutorialStepRef?.current?.querySelector('i')?.classList?.add('text-primario-300');
   };
   const clearStylesNextStep = () => {
     nextTutorialStepRef?.current?.classList?.remove('z-[95]');
     nextTutorialStepRef?.current?.classList?.remove('text-white', 'underline');
     nextTutorialStepRef?.current
       ?.querySelector('div')
-      .classList?.add('border-primario-20');
+      .classList?.add('border-primario-300');
     nextTutorialStepRef?.current
       ?.querySelector('a')
-      ?.classList?.add('text-primario-100', 'text-semibold');
-    nextTutorialStepRef?.current?.querySelector('i')?.classList?.add('text-primario-20');
+      ?.classList?.add('text-primario-300', 'text-semibold');
+    nextTutorialStepRef?.current?.querySelector('i')?.classList?.add('text-primario-300');
   };
   const handelActualStep = () => {
     if (actualTutorialStep === 1) {
@@ -106,14 +106,14 @@ export default function useConsultancyTutorial({
         prevTutorialStepRef?.current?.classList?.add('z-[95]', 'text-white', 'underline');
         prevTutorialStepRef?.current
           ?.querySelector('div')
-          .classList?.remove('border-primario-20');
+          .classList?.remove('border-primario-300');
         prevTutorialStepRef?.current?.querySelector('a').classList?.add('w-[150px]');
         prevTutorialStepRef?.current
           ?.querySelector('a')
-          .classList?.remove('text-primario-100', 'font-bold');
+          .classList?.remove('text-primario-300', 'font-bold');
         prevTutorialStepRef?.current
           ?.querySelector('i')
-          .classList?.remove('text-primario-20');
+          .classList?.remove('text-primario-300');
         return (
           <>
             {/* toolTip mobile */}
@@ -178,13 +178,13 @@ export default function useConsultancyTutorial({
         nextTutorialStepRef?.current?.classList.add('z-[95]', 'text-white', 'underline');
         nextTutorialStepRef?.current
           ?.querySelector('div')
-          ?.classList.remove('border-primario-20');
+          ?.classList.remove('border-primario-300');
         nextTutorialStepRef?.current
           ?.querySelector('a')
-          ?.classList.remove('text-primario-100', 'font-bold');
+          ?.classList.remove('text-primario-300', 'font-bold');
         nextTutorialStepRef?.current
           ?.querySelector('i')
-          ?.classList.remove('text-primario-20');
+          ?.classList.remove('text-primario-300');
         return (
           <>
             <div

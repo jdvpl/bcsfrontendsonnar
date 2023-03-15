@@ -166,13 +166,13 @@ function Consultancy() {
               onClick={prevStep}
               className="md:order-1 cursor-pointer  flex xs:gap-x-3 items-center xs:justify-center xs:flex-row md:flex-col lg:w-[150px]"
             >
-              <div className="rounded-full xs:w-[24px] md:w-[40px] xs:h-[24px] md:h-[40px] border-primario-20 flex justify-center items-center border-2 md:mb-[33px]">
+              <div className="rounded-full xs:w-[24px] md:w-[40px] xs:h-[24px] md:h-[40px] border-primario-300 flex justify-center items-center border-2 md:mb-[33px]">
                 <Icons
                   icon="bcs-arrow-two-left"
-                  iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-20"
+                  iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
                 />
               </div>
-              <a className="text-primario-100 font-bold font-montserratRegular text-center text-[14px] ">
+              <a className="text-primario-300 font-bold font-montserratRegular text-center text-[14px] ">
                 {actualStep === 1 ? 'Volver al Inicio' : 'Anterior'}
               </a>
             </div>
@@ -182,13 +182,13 @@ function Consultancy() {
               onClick={nextStep}
               className="md:order-3 cursor-pointer  flex xs:gap-x-3 items-center flex-row md:flex-col lg:w-[150px]"
             >
-              <div className="rounded-full xs:w-[24px] md:w-[40px] md:order-1 xs:order-2 xs:h-[24px] md:h-[40px] border-primario-20 flex justify-center items-center border-2 md:mb-[33px]">
+              <div className="rounded-full xs:w-[24px] md:w-[40px] md:order-1 xs:order-2 xs:h-[24px] md:h-[40px] border-primario-300 flex justify-center items-center border-2 md:mb-[33px]">
                 <Icons
                   icon="bcs-arrow-two-right"
-                  iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-20"
+                  iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
                 />
               </div>
-              <a className=" text-primario-100 font-montserratRegular  md:order-2 xs:order-1 font-bold text-center text-[14px]">
+              <a className=" text-primario-300 font-montserratRegular  md:order-2 xs:order-1 font-bold text-center text-[14px]">
                 {actualStep === 4 ? 'Salir' : 'Siguiente'}
               </a>
             </div>
