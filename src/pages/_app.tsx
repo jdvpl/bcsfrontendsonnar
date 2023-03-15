@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import '../styles/globals.css';
 import { AplicationProvider } from '../context/AplicationContext';
 import TagManager from 'react-gtm-module';
+import CustomHead from '../components/ui/customHead/customHead';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const [initialRenderComplete, setInitialRenderComplete] = useState<boolean>(false);
@@ -24,6 +25,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   if (!initialRenderComplete) return <></>;
   return (
     <>
+      <CustomHead />
       <AplicationProvider>
         <Component {...pageProps} />
       </AplicationProvider>

@@ -76,7 +76,6 @@ export default function Home() {
           </div>
         </div>
         {/* title */}
-
         <div className={headerDescriptionClasess}>
           <div className="md:flex md:flex-col">
             <h4 className="text-white  md:w-[285px] lg:w-[394px] font-semibold lg:text-[24px] md:text-[20px] leading-6 wcontainerHeader font-montserratSemiBold sm:text-[20px] xs:text-[20px] md:text-primario-900 xxl:text-[28px] ">
@@ -98,7 +97,6 @@ export default function Home() {
           >
             Requisitos
           </Typography>
-
           <div className="grid lg:grid-cols-2 xxl:grid-cols-4 md:grid-cols-2 md:gap-3 justify-items-center xxl:flex lg:mt-8">
             <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
               <SelectiveCard
@@ -154,7 +152,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       {/* steps  */}
       <div className="bg-white flex justify-between sm:w-[309px] smd:w-[385px] smd:m-auto xl:w-[1047px] xl:m-auto md:w-full">
         <div className="lg:ml-[36px] md:ml-[30px] m-auto md:m-0 xl:ml-1 smd:ml-2 ">
@@ -177,8 +174,8 @@ export default function Home() {
               isTablet
                 ? `${basePath}/images/stepsmd.svg`
                 : isLG
-                ? `${basePath}/images/stepslg.svg`
-                : ``
+                  ? `${basePath}/images/stepslg.svg`
+                  : ``
             }
             alt=""
             className="left-0 "
@@ -201,13 +198,11 @@ export default function Home() {
               className="lg:w-[279px] lg:h-[451px] md:w-[220px] sm:w-[278px] sm:h-[448px] h-[409px] md:h-[354px]"
             />
           </div>
-
           <div className="listInitial lg:w-[440px] relative block mx-5 sm:top-[-128px] xs:top-[-110px] md:top-0 xs:w-[260px] sm:w-[90%] smd:w-[80%] smd:m-auto md:mt-[-20px] md:w-[70%] lg:mt-0 xxxl:ml-10">
             <ul className="font-monserratLight mb-0 ">
               <li className="lg:text-[20px] text-[16px] font-light leading-[22px] lg:mt-[127px] md:mt-20 text-complementario-100 ">
                 Preaprobación inmediata en línea
               </li>
-
               <li className="lg:text-[20px] text-[16px] font-light leading-[22px] mt-3 text-complementario-100">
                 Sin documentación física
               </li>
