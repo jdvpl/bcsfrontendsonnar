@@ -29,12 +29,12 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
   <div className="flex flex-col items-center ">
     {lifeInsurance ? (
       <Card
-        className="xs:w-[290px] sm:w-[343px] md:w-[448px] h-[88px] bg-[#C4D1DA] mb-[16px] font-semibold rounded-[8px]"
+        className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px] bg-[#C4D1DA] mb-[16px] font-semibold rounded-[8px] flex flex-col justify-center"
         title="Cuota mensual sin seguros"
         value={monthlyCoute?.toString()}
-        text="text-[32px] pl-[8px] pt-2 flex items-baseline font-poppinsSemiBold"
+        text="text-[32px] pl-[8px] flex items-baseline font-poppinsSemiBold"
         urlsvg=""
-        classtitle="h-[18px] pt-[16px] text-[16px] font-montserratSemiBold"
+        classtitle="text-[16px] font-montserratSemiBold"
         subvalue="pesos"
         textsub="30"
         tooltiptext=""
@@ -43,78 +43,78 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
     ) : null}
 
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light font-poppinsSemiBold"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px] py-4  bg-[#F3F4F6] pl-[16px] rounded-[8px] mb-[12px] font-light font-poppinsSemiBold"
       title="Valor financiado aproximado"
       value={financedValue?.toString()}
       text={cardTextStyles}
       urlsvgendicon=""
       urlsvg={`${basePath}/images/Money.svg`}
-      classtitle="h-[14px] text-[13px] ml-2 font-monserratLight"
+      classtitle="text-[14px] ml-2 font-monserratLight"
       tooltiptext=""
     />
 
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light font-poppinsSemiBold"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px] py-4  bg-[#F3F4F6]  pl-[16px] rounded-[8px] mb-[12px] font-light font-poppinsSemiBold"
       title="Plazo"
       value={termFinance?.toString()}
       text={cardTextStyles}
       urlsvgendicon=""
       urlsvg={`${basePath}/images/Calendar.svg`}
-      classtitle="h-[14px] text-[13px] ml-2 font-monserratLight"
+      classtitle="h-[14px] text-[14px] ml-2 font-monserratLight"
       tooltiptext=""
     />
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[116px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]    bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Tasa aproximada"
       value={rate}
       text={cardTextStyles}
       urlsvg={`${basePath}/images/Charts.svg`}
       urlsvgendicon=""
-      classtitle="h-[14px] text-[13px] ml-2 font-monserratLight"
+      classtitle="h-[14px] text-[14px] ml-2 font-monserratLight"
       tooltiptext=""
       description
       descriptionHtml={
         <p className="pl-[33px]">
           <p className="flex">
-            <p className="font-bold text-[14px] mr-1">MV: </p>
-            <span className="text-[14px]">Tasa nominal mes vencido</span>
+            <p className="font-bold text-[14px] mr-1 font-monserratLight ">MV: </p>
+            <span className="text-[14px] font-monserratLight">Tasa nominal mes vencido</span>
           </p>
           <p className="flex">
-            <p className="font-bold text-[14px]  mr-1">EA:</p>
-            <span className="text-[14px]">Tasa efectiva anual</span>
+            <p className="font-bold text-[14px]  mr-1 font-monserratLight">EA:</p>
+            <span className="text-[14px] font-monserratLight">Tasa efectiva anual</span>
           </p>
         </p>
       }
     />
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]   bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Seguro de vida"
       value={lifeInsurance?.toString()}
       text={cardTextStyles}
       urlsvg={`${basePath}/images/Insurage.svg`}
-      classtitle="h-[14px] text-[13px] ml-2 font-monserratLight"
+      classtitle="h-[14px] text-[14px] ml-2 font-monserratLight"
       tooltip
       id="lifeInsuranceHouse"
       urlsvgendicon=""
       tooltiptext={
-        <p className="flex text-white">
+        <p className="flex text-white font-montserratRegular text-[14px]">
           Seguro diseñado para proteger a sus asegurados en caso de presentarse muerte,
           incapacidad total y permanente, y demás riesgos previstos en la póliza.{' '}
         </p>
       }
     />
     <Card
-      className="xs:w-[290px] xs:h-[85px]  sm:w-[343px] md:w-[448px]  sm:h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+      className="xs:w-[290px]  sm:w-[343px] md:w-[448px]    bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Seguro de Incendio, Rayo y Terremoto"
       value={fireInsurance?.toString()}
       text={cardTextStyles}
       urlsvg={`${basePath}/images/Home.svg`}
-      classtitle="xs:mb-[23px] sm:mb-[0px] h-[14px] text-[13px] ml-2 font-monserratLight"
+      classtitle="xs:mb-[23px] sm:mb-[0px] h-[14px] text-[14px] ml-2 font-monserratLight"
       tooltip
       id="fireInsuranceHouse"
       urlsvgendicon=""
       tooltiptext={
-        <p className="flex text-white">
+        <p className="flex text-white font-montserratRegular text-[14px]">
           Póliza que protege al inmueble hipotecado al Banco contra las pérdidas y daños
           materiales originados de forma accidental, súbita e imprevista como consecuencia
           directa de los riesgos amparados.{' '}

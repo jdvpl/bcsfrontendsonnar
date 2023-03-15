@@ -49,7 +49,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           }  
         ${
           variant === 'secondary'
-            ? `valid:text-primario-100  py-[10px]  hover:shadow-none border-primario-100 bg-white text-primario-100 hover:border-primario-80  border-[${border}px] focus:text-white focus:shadow-none disabled:text-azul_gris-70 disabled:bg-gris-80 disabled:border-0 font-montserratRegular`
+            ? `valid:text-primario-100  py-[10px]  hover:shadow-none border-primario-100 bg-white text-primario-100 hover:border-primario-80  border-[${border}px] focus:text-primario-100 focus:shadow-none disabled:text-azul_gris-70 disabled:bg-gris-80 disabled:border-0 font-montserratRegular`
             : ''
         }
         ${className || ''}

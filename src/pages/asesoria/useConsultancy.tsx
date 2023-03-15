@@ -1,5 +1,5 @@
 import React from 'react';
-import { initialOptions } from '../../lib/consultancy';
+import { initialOptions } from '../../components/custom/consultancy/consultancy';
 import { routes } from '../../routes';
 import Button from '../../components/ui/Button';
 

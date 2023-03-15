@@ -26,19 +26,19 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
 }) => (
   <div className="flex flex-col items-center ">
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px]"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px] h-[88px] bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px] flex flex-col justify-center"
       title="Valor financiado aproximado"
       value={financedValue?.toString()}
-      text="text-[32px] pl-[8px] pt-2 flex items-baseline font-poppinsSemiBold"
+      text="text-[32px] pl-[8px] flex items-baseline font-poppinsSemiBold"
       urlsvg=""
-      classtitle="h-[18px] pt-[16px] text-[16px]"
+      classtitle="h-[18px] text-[16px] font-montserratSemiBold"
       subvalue="pesos"
       textsub="30"
       tooltiptext=""
     />
 
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px] bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px]"
       title="Cuota mensual total con seguros"
       value={amountQuotatotal?.toString()}
       text="text-[20px] pl-[23px] font-semibold flex items-baseline font-poppinsSemiBold"
@@ -50,7 +50,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       tooltiptext=""
     />
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] text-[14px] font-light"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px] text-[14px] font-light"
       title="Plazo"
       value={termFinance?.toString()}
       text="text-[20px] pl-[23px] font-semibold flex items-baseline font-poppinsSemiBold"
@@ -60,7 +60,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
     />
 
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[116px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]   bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Tasa aproximada"
       value={rate}
       text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
@@ -72,17 +72,17 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       descriptionHtml={
         <p className="pl-[33px]">
           <p className="flex">
-            <p className="font-bold text-[14px] mr-1">MV: </p><span className="text-[14px]">Tasa nominal mes
+            <p className="font-bold text-[14px] mr-1  font-monserratLight">MV: </p><span className="text-[14px] font-monserratLight">Tasa nominal mes
               vencido</span>
           </p>
           <p className="flex">
-            <p className="font-bold text-[14px]  mr-1">EA:</p><span className="text-[14px]">Tasa efectiva anual</span>
+            <p className="font-bold text-[14px]  mr-1  font-monserratLight">EA:</p><span className="text-[14px] font-monserratLight">Tasa efectiva anual</span>
           </p>
         </p>
       }
     />
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]    bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]   bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px]"
       title="Seguro de vida"
       value={lifeInsurance?.toString()}
       text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
@@ -98,7 +98,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
     />
 
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[76px]   bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]   bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px]"
       title="Seguro de Incendio, Rayo y Terremoto"
       value={fireInsurance?.toString()}
       text="text-[20px] pl-[23px] font-semibold font-poppinsSemiBold"
@@ -107,7 +107,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       id="fireInsuranceSalary"
       tooltip
       tooltiptext={
-        <p className="flex text-white cs">
+        <p className="flex text-white cs font-montserratRegular text-[14px]">
           Póliza que protege al inmueble hipotecado al Banco contra las pérdidas y daños
           materiales originados de forma accidental, súbita e imprevista como consecuencia
           directa de los riesgos amparados.{' '}
