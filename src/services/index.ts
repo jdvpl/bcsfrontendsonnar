@@ -6,8 +6,7 @@ import { iFormDataSimulation } from '../interfaces';
 import { getProcessId } from '../utils';
 const { allResponse, allResponseDecrypted } = useAES();
 import { iPdfLetter } from '../interfaces/ipdfLetter';
-import axios from 'axios';
-
+import { RequestRiskBoxes } from '../interfaces/IRequestRiskBoxes'
 const KEY = process.env.KEYENCRYPTADIGITAL;
 
 //? this save the authorization data.
@@ -226,7 +225,7 @@ export const fetchSarlaft = async (body: any) => {
   }
 };
 
-export const riskBoxes = async (body: any) => {
+export const riskBoxes = async (body: RequestRiskBoxes) => {
   try {
     const bodyEncrypt = await allResponse({ ...body, processId: getProcessId() }, KEY);
     const response: any = await clientAxiosBackend.post(
@@ -265,8 +264,8 @@ export const delKeysRedis = async (body: any) => {
 export const getPDF = async (body: iPdfLetter) => {
   try {
     const bodyEncrypt = await allResponse(body, KEY);
-    const { data: response } = await axios.post(
-      '/commons/generate/pdf', {
+    const { data: response } = await clientAxiosBackend.post(
+      '/api-composer/composer/documents', {
       data: bodyEncrypt,
     });
     const data = await allResponseDecrypted(response.data, KEY);

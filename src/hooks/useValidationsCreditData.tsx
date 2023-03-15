@@ -12,6 +12,7 @@ import { SesionStorageKeys } from '../session';
 import { calculateAgeMethod2 } from '../utils';
 import { riskBoxes } from '../services';
 import { routes } from '../routes';
+import { RequestRiskBoxes } from '../interfaces/IRequestRiskBoxes';
 
 export default function useValidations(
   typeHouse: string,
@@ -149,11 +150,11 @@ export default function useValidations(
       amortizationType,
     });
 
-    const body = {
+    const body: RequestRiskBoxes = {
       creditData: {
         typeHouse,
         houseStatus,
-        houseValue,
+        houseValue: houseValue.toString(),
         financeValue,
         termFinance,
         insuranceCheck,
@@ -180,7 +181,7 @@ export default function useValidations(
 
     const data: any = await riskBoxes(body);
     if (data?.response?.result?.customerStatus?.finalOffer?.isViable) {
-      setOrderNumber(data?.response?.result?.orderNumber);
+      setOrderNumber(data?.response?.result?.orderNumber || '123456');
       setApplicationResponse(data?.response?.result?.customerStatus);
       setCurrentRouting(routes.finalcialData, false);
       setCurrentRouting(routes.creditData, false);

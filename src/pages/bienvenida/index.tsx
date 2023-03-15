@@ -41,7 +41,8 @@ function Bienvenida() {
             <li className='mt-3'>Ser asalariado o pensionado</li>
             <li className='mt-3'>Estar al día con sus pagos</li>
             <li className='mt-3'>Pagar salud y pensión</li>
-            <li className='mt-3'>Solicitar como único titular</li>
+            <li className='mt-3'>Postular como único titular</li>
+            <li className='mt-3'>Solicitar sin subsidios del gobierno</li>
           </ul>
         </div>
         <div className="flex justify-center mt-8 mb-11 ">
