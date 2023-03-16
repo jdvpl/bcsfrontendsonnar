@@ -71,7 +71,6 @@ function AdvisoryForm({ setShowModal }: any) {
     setDataUser({ ...dataUser, ...datainfo })
     setShowModal(false)
   }
-
   return (
     <div data-testid="advisoryForm">
       <p className="text-center mt-9 font-montserratRegular font-normal text-primario-900">
