@@ -54,7 +54,7 @@ describe('AdvisoryForm', () => {
     fireEvent.input(advisoryType, { target: { value: 'bank_advisor' } })
     fireEvent.paste(advisoryType, "real_estate")
     const inputDocument = queryByTestId('inputDocument');
-    fireEvent.input(inputDocument!, { target: { value: "1235678890" } });
+    fireEvent.input(inputDocument!, { target: { value: "123456789" } });
     fireEvent.paste(inputDocument!, "nada");
     const advisoryFormtest = getByTestId('advisoryFormtest');
     fireEvent.click(advisoryFormtest);

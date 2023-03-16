@@ -6,7 +6,7 @@ import { SesionStorageKeys } from '../../session';
 import Button from '../ui/Button';
 import Input from '../ui/inputs';
 import ReactHookFormSelect from '../ui/Select/newSelect'
-
+import useHandleChangeDocumentAdvisorBank from '../../hooks/useHandleChangeDocumentAdvisorBank'
 export interface FormData {
   advisoryType: string;
   otherAdvisoryType?: string;
@@ -71,6 +71,8 @@ function AdvisoryForm({ setShowModal }: any) {
     setDataUser({ ...dataUser, ...datainfo })
     setShowModal(false)
   }
+  const { handleDocument } = useHandleChangeDocumentAdvisorBank(setError)
+
   return (
     <div data-testid="advisoryForm">
       <p className="text-center mt-9 font-montserratRegular font-normal text-primario-900">
@@ -141,23 +143,7 @@ function AdvisoryForm({ setShowModal }: any) {
                     id="documentNumberBankAdvisor"
                     inputMode="numeric"
                     label="Documento de identidad del asesor"
-                    onChange={(e: any) => {
-                      if (field.value?.length === 10 && !!e.nativeEvent.data) {
-                        setError('documentNumberBankAdvisor', {
-                          type: 'manual',
-                          message: 'Máximo 10 caracteres permitidos',
-                        });
-                        e.preventDefault();
-                        return;
-                      }
-                      if (field.value?.length === 9) {
-                        setError('documentNumberBankAdvisor', {
-                          type: 'manual',
-                          message: undefined,
-                        });
-                      }
-                      field.onChange(e.target.value.replace(/[^0-9]/g, ''));
-                    }}
+                    onChange={(e: any) => handleDocument(e, field)}
                   />
                 )}
                 name="documentNumberBankAdvisor"
