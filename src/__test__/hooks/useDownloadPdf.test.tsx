@@ -29,8 +29,8 @@ describe('useDownloadPdf', () => {
     fullName: "Juan Daniel Suarez"
   }
   dataTU = {
-    document_number: 'testDocumentNumber',
-    document_type: 'testDocumentType',
+    documentNumber: 'testDocumentNumber',
+    documentType: 'testDocumentType',
   };
   valuesMortgage = {
     financeValue: '1000000',
@@ -68,9 +68,9 @@ describe('useDownloadPdf', () => {
       (getPDF as jest.Mock).mockResolvedValue(response);
       await useDownloadPdf(dataQuestions, dataTU, valuesMortgage, applicationResponse, setCurrentRouting, router, dataPersonalBasic, jest.fn(), basicDataUser, jest.fn()).getPdf();
       expect(getPDF).toHaveBeenCalledWith({
-        proccessId: dataQuestions.processId,
-        document_number: dataTU.document_number,
-        document_type: dataTU.document_type,
+        processId: dataQuestions.processId,
+        documentNumber: dataTU.document_number,
+        documentType: dataTU.document_type,
         maxAmount: convertToColombianPesos(valuesMortgage.financeValue),
         amortizationType: valuesMortgage.amortizationType,
         termFinance: valuesMortgage.termFinance?.toString(),
@@ -88,7 +88,7 @@ describe('useDownloadPdf', () => {
       (getPDF as jest.Mock).mockResolvedValue(response);
       await useDownloadPdf(dataQuestions, dataTU, valuesMortgage, applicationResponse, setCurrentRouting, jest.fn(), {}, jest.fn(), basicDataUser, jest.fn()).getPdf();
       expect(getPDF).toHaveBeenCalledWith({
-        proccessId: dataQuestions.processId,
+        processId: dataQuestions.processId,
         document_number: dataTU.document_number,
         document_type: dataTU.document_type,
         maxAmount: convertToColombianPesos(valuesMortgage.financeValue),

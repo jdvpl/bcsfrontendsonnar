@@ -31,7 +31,7 @@ function PersonalData() {
     {}
   );
   const closeModal = async () => {
-    const datainfo = { advisoryType: null, otherAdvisoryType: null };
+    const datainfo = { advisoryType: null, otherAdvisoryType: null, documentNumberBankAdvisor: null };
     await setDataUser({ ...dataUser, ...datainfo })
     setShowModal(false)
   }
