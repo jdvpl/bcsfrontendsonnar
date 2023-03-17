@@ -33,7 +33,7 @@ const AutoCompleteCustom: React.FC<InputProps> = ({
 }) => {
   const OPTIONS_LIMIT = 10;
   const defaultFilterOptions = createFilterOptions();
-  const [haveValue, setHaveValue] = useState(defaultValue ? true : false);
+  const [isFocus, setIsFocus] = useState(defaultValue ? true : false);
   const [internalState, setInternalState] = useState('');
   const filterOptions = (options: any, state: any) => {
     return defaultFilterOptions(options, state).slice(0, OPTIONS_LIMIT);
@@ -48,10 +48,10 @@ const AutoCompleteCustom: React.FC<InputProps> = ({
     >
       <label
         className={`transition-all duration-300 ease-in-out absolute  font-montserratRegular
-        ${internalState ? "-top-[6.5px] z-10 left-2 bg-white px-1 text-[10px] leading-[12px]" : "ml-3 text-[14px] leading-[16px] top-2/4 -translate-y-2/4"} 
+        ${internalState || isFocus ? "-top-[6.5px] z-10 left-2 bg-white px-1 text-[10px] leading-[12px]" : "ml-3 text-[14px] leading-[16px] top-2/4 -translate-y-2/4"} 
         ${error ? "text-rojo-20" : "text-complementario-100 hover:text-complementario-100 peer-focus:hover:text-complementario-100"}`}
       >
-        {haveValue ? label : placeholder}
+        {internalState ? label : placeholder}
       </label>
       <Autocomplete
         filterOptions={filterOptions}
@@ -62,15 +62,12 @@ const AutoCompleteCustom: React.FC<InputProps> = ({
         }}
         defaultValue={defaultValue}
         data-testid={'searchAutocompleteInput'}
-        onSelect={(value) => setInternalState("value")}
         onChange={(_, value: any) => {
           if (value) {
             onChange?.(value);
-            setHaveValue(true);
             setInternalState("value");
           } else {
             onChange?.({});
-            setHaveValue(false);
             setInternalState('');
           }
         }}
@@ -96,16 +93,14 @@ const AutoCompleteCustom: React.FC<InputProps> = ({
         }}
         renderInput={(params) => (
           <TextField
-            onBlur={() => setInternalState(internalState === "focus" ? "" : "value")}
-            onFocus={() => setInternalState("focus")}
+            onBlur={() => setIsFocus(false)}
+            onFocus={() => setIsFocus(true)}
             defaultValue={placeholder ? placeholder : undefined}
             {...params}
             onChange={(e) => {
               if (e.target.value) {
-                setHaveValue(true);
                 setInternalState(e.target.value)
               } else {
-                setHaveValue(false);
                 setInternalState("")
               }
             }}
