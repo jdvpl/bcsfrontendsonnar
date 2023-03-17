@@ -78,15 +78,15 @@ function Input({
   ...props
 }: InputProps) {
 
-  const labelStyles = `
-  absolute top-[50%] translate-y-[-50%] left-3 text-[14px] leading-[16px] font-montserratRegular ${error?"text-rojo-20":"text-complementario-100"} transition-all duration-300 ease-in-out 
-  peer-focus:left-2 peer-focus:top-0 peer-focus:text-[10px] peer-focus:leading-[12px] peer-focus:bg-white peer-focus:px-1 
-  peer-valid:left-2 peer-valid:top-0 peer-valid:text-[10px] peer-valid:leading-[12px] peer-valid:bg-white peer-valid:px-1
+  const labelStyles = `-z-1
+  absolute top-[50%] translate-y-[-50%] ${startIcon ? "left-[36px] " : "left-3 "} text-[14px] leading-[16px] font-montserratRegular ${error ? "text-rojo-20" : "text-complementario-100"} transition-all duration-300 ease-in-out 
+  peer-focus:left-2 peer-focus:top-0 peer-focus:text-[10px] peer-focus:leading-[12px] peer-focus:bg-white peer-focus:px-1 peer-focus:z-10
+  peer-valid:left-2 peer-valid:top-0 peer-valid:text-[10px] peer-valid:leading-[12px] peer-valid:bg-white peer-valid:px-1 peer-valid:z-10
   `
-  
-  const inputStyles = `valid:text-primario-900 peer pl-3 appearance-none font-montserratRegular text-[14px] leading-[16px] 
+
+  const inputStyles = `valid:text-primario-900 ${startIcon ? "pl-[36px]" : "pl-3"} peer  appearance-none font-montserratRegular text-[14px] leading-[16px] 
   h-[48px] bg-transparent border-[0.5px] rounded-[8px] bg-[transparent] w-full 
-  ${error?"border-rojo-20 hover:border-rojo-20 focus:border-rojo-20 ":"border-complementario-50 hover:border-primario-20 focus:border-primario-20 "} 
+  ${error ? "border-rojo-20 hover:border-rojo-20 focus:border-rojo-20 " : "border-complementario-50 hover:border-primario-20 focus:border-primario-20 "} 
   peer-focus:border focus:outline-none`
 
   return (
@@ -94,12 +94,12 @@ function Input({
       <div className="relative z-0 w-full">
         {startIcon && (
           <i
-            className={`top-[16px] ml-2 absolute before:font-black leading-4 text-[16px] ${startIcon} text-complementario-50 `}
+            className={`top-[16px] left-3 absolute before:font-black leading-4 text-[16px] ${startIcon} text-complementario-100 `}
           />
         )}
         {endIcon && (
           <i
-            className={`top-[16px] right-0 mr-2 absolute before:font-black leading-4 text-[16px] ${endIcon} text-complementario-50`}
+            className={`top-[16px] right-3 absolute before:font-black leading-4 text-[16px] ${endIcon} text-complementario-100`}
           />
         )}
         <input
