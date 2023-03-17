@@ -78,8 +78,8 @@ function Input({
   ...props
 }: InputProps) {
 
-  const labelStyles = `-z-1
-  absolute top-[50%] translate-y-[-50%] ${startIcon ? "left-[36px] " : "left-3 "} text-[14px] leading-[16px] font-montserratRegular ${error ? "text-rojo-20" : "text-complementario-100"} transition-all duration-300 ease-in-out 
+  const labelStyles = `-z-1 ${error ? "text-rojo-20" : "text-complementario-100"}
+  absolute top-[50%] translate-y-[-50%] ${startIcon ? "left-[36px] " : "left-3 "} text-[14px] leading-[16px] font-montserratRegular transition-all duration-300 ease-in-out 
   peer-focus:left-2 peer-focus:top-0 peer-focus:text-[10px] peer-focus:leading-[12px] peer-focus:bg-white peer-focus:px-1 peer-focus:z-10
   peer-valid:left-2 peer-valid:top-0 peer-valid:text-[10px] peer-valid:leading-[12px] peer-valid:bg-white peer-valid:px-1 peer-valid:z-10
   `

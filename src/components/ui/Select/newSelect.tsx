@@ -41,7 +41,7 @@ const ReactHookFormSelect: React.FC<any> = ({
   }, []);
   return (
     <FormControl {...props} fullWidth className={`relative ${props?.className}`}>
-      <div className={`absolute ${left} ${spacing} top-1/3`}>
+      <div className={`absolute   top-1/3 right-3`}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -54,94 +54,84 @@ const ReactHookFormSelect: React.FC<any> = ({
           <path fillRule="evenodd" clipRule="evenodd" d={initialIcon} fill="#496374" />
         </svg>
       </div>
-      <InputLabel
-        className="font-montserratMedium text-[10px] bg-white text-primario-900"
+      <label
+        className={`absolute -top-[6.5px] z-10 left-2 bg-white px-1 font-montserratRegular text-[10px] leading-[12px] ${error ? "text-rojo-20" : "text-complementario-100 hover:text-complementario-100 peer-focus:hover:text-complementario-100"}`}
         htmlFor={labelId}
         id={labelId}
-        sx={{
-          color: error && '#ce1126',
-          left: -4,
-        }}
       >
         {label}
-      </InputLabel>
+      </label>
       {!hideMenuItem ? (
         <Controller
           defaultValue={defaultValue || ''}
           rules={rules}
           render={({ field }) => (
-            <Select
-              data-testid={dataTestId}
-              SelectDisplayProps={{
-                // @ts-ignore
-                'data-testid': `select`,
-              }}
-              id={labelId}
-              margin="none"
-              {...field}
-              key={props.id}
-              sx={{
-                color: error ? '#ce1126' : '#00253D',
-                fontSize: '14px',
-                '.MuiFormLabel-root': {
-                  fontSize: '14px',
-
-                },
-                ',MuiInputLabel-outlined': {
-                  fontSize: '14px',
-                },
-                '.MuiOutlinedInput-notchedOutline': {
-                  borderColor: error ? '#ce1126' : initialBorder,
-                  borderWidth: '1px',
-                },
-                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                  borderColor: error ? '#ce1126' : '#2972C8',
-                  borderWidth: '1px',
-                },
-                '&:hover .MuiOutlinedInput-notchedOutline': {
-                  borderColor: error ? '#ce1126' : '#2972C8',
-                  borderWidth: '1px',
-                },
-                '.MuiSvgIcon-root ': {
-                  fill: 'white',
-                  height: '16px',
-                  width: '16px',
-                },
-                '.MuiFormControl-marginNormal': {
-                  marginTop: '0px !important',
-                },
-                '.css-1iledgx-MuiFormControl-root': {
-                  marginTop: '0px !important',
-                },
-              }}
-              onOpen={() =>
-                setInitialIcon(
-                  'M8.19129 3.80299L15.9063 11.7994C16.0312 11.9243 16.0312 12.08 15.9063 12.1741C15.8747 12.2366 15.7814 12.2674 15.719 12.2674C15.6565 12.2674 15.5941 12.2366 15.5317 12.1741L8.00395 4.365L0.476257 12.1741C0.351365 12.2674 0.194833 12.2674 0.0699399 12.1741C-0.0233133 12.08 -0.0233133 11.9243 0.0699399 11.7994L7.81662 3.80299C7.90987 3.7089 8.09721 3.7089 8.19129 3.80299Z'
-                )
-              }
-              onClose={() =>
-                setInitialIcon(
-                  'M15.5316 3.83C15.6257 3.7051 15.8131 3.7051 15.9063 3.83C16.0312 3.92409 16.0312 4.07979 15.9063 4.20468L8.19119 12.2012C8.12875 12.2321 8.0663 12.2637 8.00385 12.2637C7.9414 12.2637 7.84815 12.2321 7.81651 12.2012L0.0705653 4.20468C-0.0235218 4.07979 -0.0235218 3.92409 0.0705653 3.83C0.19546 3.7051 0.351161 3.7051 0.476055 3.83L8.00385 11.6384L15.5316 3.83Z'
-                )
-              }
-              className="borde-rojo"
-              color="primary"
-              defaultValue={defaultValue || ''}
-              onChange={selectValue}
-              labelId={labelId}
-              label={label}
-            >
-              {children}
-            </Select>
-          )}
+            <>
+              <Select
+                data-testid={dataTestId}
+                SelectDisplayProps={{
+                  // @ts-ignore
+                  'data-testid': `select`,
+                }}
+                id={labelId}
+                margin="none"
+                {...field}
+                key={props.id}
+                sx={{
+                  color: '#00253d',
+                  fontStyle: "normal",
+                  height: '48px',
+                  borderRadius: '8px',
+                  '.MuiSvgIcon-root ': {
+                    fill: 'transparent',
+                    height: '16px',
+                    width: '16px',
+                  },
+                  '&:hover .MuiOutlinedInput-notchedOutline': {
+                    borderColor: error ? '#e9132b' : '#0386e6',
+                    borderWidth: '0.5px',
+                  },
+                  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                    borderColor: error ? '#e9132b' : '#0386e6',
+                    borderWidth: '0.5px',
+                  },
+                  '.MuiOutlinedInput-notchedOutline': {
+                    borderColor: error ? '#ce1126' : "#89a3b5",
+                    borderWidth: '0.5px',
+                  }
+                }}
+                onOpen={() =>
+                  setInitialIcon(
+                    'M8.19129 3.80299L15.9063 11.7994C16.0312 11.9243 16.0312 12.08 15.9063 12.1741C15.8747 12.2366 15.7814 12.2674 15.719 12.2674C15.6565 12.2674 15.5941 12.2366 15.5317 12.1741L8.00395 4.365L0.476257 12.1741C0.351365 12.2674 0.194833 12.2674 0.0699399 12.1741C-0.0233133 12.08 -0.0233133 11.9243 0.0699399 11.7994L7.81662 3.80299C7.90987 3.7089 8.09721 3.7089 8.19129 3.80299Z'
+                  )
+                }
+                onClose={() =>
+                  setInitialIcon(
+                    'M15.5316 3.83C15.6257 3.7051 15.8131 3.7051 15.9063 3.83C16.0312 3.92409 16.0312 4.07979 15.9063 4.20468L8.19119 12.2012C8.12875 12.2321 8.0663 12.2637 8.00385 12.2637C7.9414 12.2637 7.84815 12.2321 7.81651 12.2012L0.0705653 4.20468C-0.0235218 4.07979 -0.0235218 3.92409 0.0705653 3.83C0.19546 3.7051 0.351161 3.7051 0.476055 3.83L8.00385 11.6384L15.5316 3.83Z'
+                  )
+                }
+                color="primary"
+                defaultValue={defaultValue || ''}
+                onChange={selectValue}
+                labelId={labelId}
+                label={label}
+              >
+                {children}
+              </Select>
+              {/* <label htmlFor="floating_text" className={`${labelStyles}`}>
+                {label}
+              </label> */}
+            </>
+          )
+          }
           name={name}
           control={control}
         />
       ) : (
         <Select></Select>
       )}
-      {helperText ? <HelperText className='font-montserratRegular text-complementario-50' text={helperText} error={error} /> : null}
-    </FormControl>
+      {helperText ? <HelperText text={helperText} error={error} /> : null}
+    </FormControl >
   );
 };
 export default ReactHookFormSelect;

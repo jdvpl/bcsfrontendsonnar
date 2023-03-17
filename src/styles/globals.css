@@ -787,10 +787,14 @@ div .MuiInputBase-root {
   @apply text-lg leading-[16px] font-montserratRegular text-[14px]  !important
 }
 
-.MuiMenuItem-root{
-  @apply text-lg leading-[16px] font-montserratRegular text-[14px] text-primario-900 h-9 font-normal !important
-} */
+ */
 
+.MuiMenuItem-root {
+  @apply leading-[16px] font-montserratRegular font-normal px-4 text-[14px] text-primario-900 h-9 !important;
+}
+.MuiInputBase-input {
+  @apply leading-[16px] font-montserratRegular font-normal text-[14px] text-primario-900  !important;
+}
 .border-active {
   border-color: #798c98 !important;
   border-width: 1px !important;
