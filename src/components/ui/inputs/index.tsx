@@ -84,7 +84,7 @@ function Input({
   peer-valid:left-2 peer-valid:top-0 peer-valid:text-[10px] peer-valid:leading-[12px] peer-valid:bg-white peer-valid:px-1 peer-valid:z-10
   `
 
-  const inputStyles = `valid:text-primario-900 ${startIcon ? "pl-[36px]" : "pl-3"} peer  appearance-none font-montserratRegular text-[14px] leading-[16px] 
+  const inputStyles = `valid:text-primario-900 ${startIcon ? "pl-[36px]" : "pl-3"} ${endIcon ? "pr-[36px]" : "pr-3"}  peer  appearance-none font-montserratRegular text-[14px] leading-[16px] 
   h-[48px] bg-transparent border-[0.5px] rounded-[8px] bg-[transparent] w-full 
   ${error ? "border-rojo-20 hover:border-rojo-20 focus:border-rojo-20 " : "border-complementario-50 hover:border-primario-20 focus:border-primario-20 "} 
   peer-focus:border focus:outline-none`
