@@ -20,6 +20,8 @@ interface InputProps {
   onChange?: (value: any) => any;
   zIndex?: number;
   error?: boolean;
+  arrayOptions?: any;
+  getLabelHandler?: any;
 }
 
 const NewAutoComplete: React.FC<InputProps> = ({
@@ -30,18 +32,29 @@ const NewAutoComplete: React.FC<InputProps> = ({
   defaultValue,
   onChange,
   zIndex = 20,
-  error = false
+  error = false,
+  getLabelHandler = (option: any) => option.name,
+  arrayOptions = cityData.details
 }) => {
-  const [clearError] = useState(false);
   const OPTIONS_LIMIT = 10;
   const defaultFilterOptions = createFilterOptions();
-
   const filterOptions = (options: any, state: any) => {
     return defaultFilterOptions(options, state).slice(0, OPTIONS_LIMIT);
   };
   const [isFocus, setIsFocus] = useState(defaultValue ? true : false);
   const [internalState, setInternalState] = useState('');
-  const arrayCitys: any[] = cityData.details;
+
+  const [clearError] = useState(false);
+
+  const defaultOnchange = (_: any, value: any) => {
+    if (value) {
+      onChange?.(value);
+      setInternalState("value");
+    } else {
+      onChange?.({});
+      setInternalState('');
+    }
+  }
 
   return (
     <div
@@ -65,25 +78,11 @@ const NewAutoComplete: React.FC<InputProps> = ({
           filterOptions={filterOptions}
           id={id}
           autoComplete={true}
-          getOptionLabel={(option: any) => option.name}
+          getOptionLabel={(option) => getLabelHandler(option)}
           defaultValue={defaultValue}
           data-testid={'searchAutocompleteInput'}
-          onChange={(_, value: any) => {
-            if (value) {
-              onChange?.({
-                id: value.id,
-                name: value.name,
-                parentId: value.parentid,
-                hasAdviser: value?.hasAdviser,
-                nameAdviser: value?.nameAdviser,
-              });
-              setInternalState("value");
-            } else {
-              onChange?.({});
-              setInternalState('');
-            }
-          }}
-          options={arrayCitys}
+          onChange={defaultOnchange}
+          options={arrayOptions}
           sx={{
             color: '#00253d',
             fontStyle: "normal",
