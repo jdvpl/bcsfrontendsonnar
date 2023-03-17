@@ -17,6 +17,7 @@ interface InputProps {
   arrayOptions: any;
   onChange?: (value: any) => any;
   zIndex?: number;
+  error?: boolean;
 }
 
 const AutoCompleteCustom: React.FC<InputProps> = ({
@@ -27,124 +28,108 @@ const AutoCompleteCustom: React.FC<InputProps> = ({
   defaultValue,
   onChange,
   arrayOptions,
+  error = false,
   zIndex = 20,
 }) => {
-  const [clearError] = useState(false);
   const OPTIONS_LIMIT = 10;
   const defaultFilterOptions = createFilterOptions();
-
+  const [haveValue, setHaveValue] = useState(defaultValue ? true : false);
+  const [internalState, setInternalState] = useState('');
   const filterOptions = (options: any, state: any) => {
     return defaultFilterOptions(options, state).slice(0, OPTIONS_LIMIT);
   };
-  const [initialBorder, setBorder] = useState('#B0C2CD');
-  const [internalState, setInternalState] = useState('');
-
-  //   const arrayOptions: any[] = cityData.details;
 
   return (
     <div
       id="select-autocomplete"
       data-testid={'searchAutocomplete'}
       itemScope
-      className="flex flex-col justify-start"
+      className="flex flex-col justify-start relative"
     >
-      {/* eslint-disable-line no-use-before-define */}
-
-      {/* <div className="position-relative" id={id} tabIndex={0}> */}
-
+      <label
+        className={`transition-all duration-300 ease-in-out absolute  font-montserratRegular
+        ${internalState ? "-top-[6.5px] z-10 left-2 bg-white px-1 text-[10px] leading-[12px]" : "ml-3 text-[14px] leading-[16px] top-2/4 -translate-y-2/4"} 
+        ${error ? "text-rojo-20" : "text-complementario-100 hover:text-complementario-100 peer-focus:hover:text-complementario-100"}`}
+      >
+        {haveValue ? label : placeholder}
+      </label>
       <Autocomplete
         filterOptions={filterOptions}
         id={id}
-        placeholder="Seleccione la sucrusal de su preferencia"
-        blurOnSelect
-        clearOnBlur
-        clearOnEscape
-        clearIcon={false}
         autoComplete={true}
         getOptionLabel={(option: any) => {
           return `${option?.address?.toLowerCase().replace(/\b\w/g, (l: string) => l.toUpperCase())} ${option?.nameOffice?.toLowerCase().replace(/\b\w/g, (l: string) => l.toUpperCase())} - ${option?.city?.toLowerCase().replace(/\b\w/g, (l: string) => l.toUpperCase())}`;
         }}
         defaultValue={defaultValue}
         data-testid={'searchAutocompleteInput'}
+        onSelect={(value) => setInternalState("value")}
         onChange={(_, value: any) => {
           if (value) {
             onChange?.(value);
-            setBorder('#798C98');
-            setInternalState(value);
+            setHaveValue(true);
+            setInternalState("value");
           } else {
             onChange?.({});
+            setHaveValue(false);
             setInternalState('');
-            setBorder('#F35163');
           }
         }}
         options={arrayOptions}
         sx={{
-          width: '100%',
-          color: '#00253D',
-          fontSize: '14px',
-          '.MuiFormLabel-root': {
-            fontSize: '14px',
-          },
-          ',MuiInputLabel-outlined': {
-            fontSize: '14px',
-          },
-          '.MuiOutlinedInput-notchedOutline': {
-            borderColor: initialBorder,
-            borderWidth: '1px',
-          },
-          '.MuiInputBase-root': {
-            paddingTop: '6px !important',
-          },
-          '.MuiOutlinedInput-root': {
-            paddingTop: '6px !important',
-          },
-          ' .MuiAutocomplete-inputRoot': {
-            paddingTop: '6px !important',
-          },
-          ' .Mui-focused .MuiOutlinedInput-notchedOutline': {
-            borderWidth: '1px !important',
+          color: '#00253d',
+          fontStyle: "normal",
+          height: '48px',
+          borderRadius: '8px',
+          '.MuiSvgIcon-root ': {
+            fill: 'transparent',
+            height: '16px',
+            width: '16px',
           },
           '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-            borderColor: '#0072C8',
-            borderWidth: '1px !important',
+            borderColor: error ? '#e9132b !important' : '#0386e6 !important',
+            borderWidth: '0.5px !important',
           },
           '&:hover .MuiOutlinedInput-notchedOutline': {
-            borderColor: '#0072C8 !important',
-            borderWidth: '1px',
-          },
-          '.MuiOutlinedInput-notchedOutline > span': {
-            paddingLeft: '0px',
-            paddingRight: '0px',
-          },
-          '.MuiSvgIcon-root ': {
-            fill: 'white',
-            height: '16px',
-            width: '16px',
-          },
-          '.MuiAutocomplete-popupIndicator': {
-            width: '16px',
-            height: '16px',
-            position: 'absolute',
-          },
-          '.MuiAutocomplete-endAdornment': {
-            width: '16px',
-            height: '16px',
-            right: '17px !important',
-            top: '20px !important',
-          },
+            borderColor: error ? '#e9132b !important' : '#0386e6 !important',
+            borderWidth: '0.5px !important',
+          }
         }}
         renderInput={(params) => (
           <TextField
+            onBlur={() => setInternalState(internalState === "focus" ? "" : "value")}
+            onFocus={() => setInternalState("focus")}
             defaultValue={placeholder ? placeholder : undefined}
             {...params}
-            label={label}
-            placeholder={placeholder}
+            onChange={(e) => {
+              if (e.target.value) {
+                setHaveValue(true);
+                setInternalState(e.target.value)
+              } else {
+                setHaveValue(false);
+                setInternalState("")
+              }
+            }}
             itemProp="homeLocation"
+            sx={{
+              '.MuiOutlinedInput-root': {
+                height: '48px',
+                color: '#00253d'
+              },
+              '.MuiSvgIcon-root': {
+                fill: 'transparent',
+                height: '16px',
+                width: '16px',
+              },
+              '.MuiOutlinedInput-notchedOutline': {
+                borderColor: error ? '#ce1126' : "#89a3b5",
+                borderWidth: '0.5px',
+                borderRadius: '8px',
+              },
+            }}
           />
         )}
       />
     </div>
-    // </div>
   );
 };
 

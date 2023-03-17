@@ -789,12 +789,14 @@ div .MuiInputBase-root {
 
  */
 
-.MuiMenuItem-root {
+.MuiMenuItem-root,.MuiAutocomplete-listbox li {
   @apply leading-[16px] font-montserratRegular font-normal px-4 text-[14px] text-primario-900 h-9 !important;
 }
-.MuiInputBase-input {
+.MuiInputBase-input,.MuiAutocomplete-input {
   @apply leading-[16px] font-montserratRegular font-normal text-[14px] text-primario-900  !important;
 }
+
+
 .border-active {
   border-color: #798c98 !important;
   border-width: 1px !important;
