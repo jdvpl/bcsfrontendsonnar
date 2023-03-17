@@ -21,9 +21,9 @@ export default function useDownloadPdf(
   const getPdf = async () => {
     setLoading(true);
     const response = await getPDF({
-      proccessId: dataQuestions.processId,
-      document_number: dataTU.document_number,
-      document_type: dataTU.document_type,
+      processId: dataQuestions.processId,
+      documentNumber: dataTU.document_number,
+      documentType: dataTU.document_type,
       maxAmount: convertToColombianPesos(applicationResponse?.finalOffer?.offer?.financeValue),
       amortizationType: valuesMortgage.amortizationType,
       termFinance: applicationResponse?.finalOffer?.offer?.termFinance?.toString(),

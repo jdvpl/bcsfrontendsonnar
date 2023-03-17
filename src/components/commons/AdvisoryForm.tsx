@@ -6,15 +6,16 @@ import { SesionStorageKeys } from '../../session';
 import Button from '../ui/Button';
 import Input from '../ui/inputs';
 import ReactHookFormSelect from '../ui/Select/newSelect'
-
+import useHandleChangeDocumentAdvisorBank from '../../hooks/useHandleChangeDocumentAdvisorBank'
 export interface FormData {
   advisoryType: string;
   otherAdvisoryType?: string;
+  documentNumberBankAdvisor?: string;
 }
 function AdvisoryForm({ setShowModal }: any) {
   const optionsMenu = [
-    { value: 'campaign', label: 'Campaña' },
     { value: 'bank_advisor', label: 'Asesor banco' },
+    { value: 'campaign', label: 'Campaña' },
     { value: 'builder', label: 'Constructora' },
     { value: 'real_estate', label: 'Inmobiliaria' },
     { value: 'other', label: 'Otro' },
@@ -24,10 +25,12 @@ function AdvisoryForm({ setShowModal }: any) {
     watch,
     control,
     setValue,
+    setError,
     formState: { errors },
   } = useForm<FormData>({ mode: 'onChange' });
   const advisoryTypeOption = watch('advisoryType');
   const otherAdvisoryType = watch('otherAdvisoryType');
+  const documentNumberBankAdvisor = watch('documentNumberBankAdvisor');
   const [disable, setdisable] = useState(true);
   const [dataUser, setDataUser] = useSessionStorage(
     SesionStorageKeys.dataUser.key,
@@ -47,18 +50,28 @@ function AdvisoryForm({ setShowModal }: any) {
         setdisable(false)
       }
     }
-  }, [advisoryTypeOption, otherAdvisoryType])
+    if (advisoryTypeOption === "bank_advisor") {
+      if (!documentNumberBankAdvisor) {
+        setdisable(true);
+      } else {
+        setdisable(false)
+      }
+    }
+  }, [advisoryTypeOption, otherAdvisoryType, documentNumberBankAdvisor])
 
   const onHandleSubmit = (formData: FormData) => {
     let datainfo: any;
     if (formData.advisoryType === 'other') {
-      datainfo = formData;
+      datainfo = { ...formData, documentNumberBankAdvisor: null };
+    } else if (formData.advisoryType === "bank_advisor") {
+      datainfo = { ...formData, otherAdvisoryType: null };
     } else {
       datainfo = { advisoryType: formData.advisoryType, otherAdvisoryType: null }
     }
     setDataUser({ ...dataUser, ...datainfo })
     setShowModal(false)
   }
+  const { handleDocument } = useHandleChangeDocumentAdvisorBank(setError)
 
   return (
     <div data-testid="advisoryForm">
@@ -110,6 +123,30 @@ function AdvisoryForm({ setShowModal }: any) {
                   />
                 )}
                 name="otherAdvisoryType"
+                control={control}
+              />
+            </div> : null}
+            {advisoryTypeOption === 'bank_advisor' ? <div >
+              <Controller
+                rules={{ required: advisoryTypeOption === 'bank_advisor', minLength: 5, maxLength: 10 }}
+                render={({ field }) => (
+                  <Input
+                    helperText="Número incorrecto"
+                    type="text"
+                    error={!!errors.documentNumberBankAdvisor}
+                    onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                      e.preventDefault();
+                    }}
+                    dataTestId="inputDocument"
+                    value={field.value || ''}
+                    tabIndex={0}
+                    id="documentNumberBankAdvisor"
+                    inputMode="numeric"
+                    label="Documento de identidad del asesor"
+                    onChange={(e: any) => handleDocument(e, field)}
+                  />
+                )}
+                name="documentNumberBankAdvisor"
                 control={control}
               />
             </div> : null}

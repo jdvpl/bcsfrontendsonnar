@@ -1,7 +1,7 @@
 export interface iPdfLetter {
-  proccessId: string;
-  document_number: string;
-  document_type: string;
+  processId: string;
+  documentNumber: string;
+  documentType: string;
   maxAmount?: string;
   amortizationType?: string;
   termFinance?: string;

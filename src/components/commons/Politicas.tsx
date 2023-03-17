@@ -68,26 +68,7 @@ function Politicas() {
         Para compartir mis datos de contacto y de titularidad de productos financieros con las entidades que son parte del conglomerado financiero al que el Banco Caja Social pertenece, para ofrecer sus productos y servicios complementarios. Las empresas que conforman el conglomerado financiero se encuentran en el aviso de privacidad que se puede consultar en el sitio web de la entidad.
       </li>
     </ul>
-    <p className='my-3 font-bold font-poppinsSemiBold'>
-      FINALIDADES NO ESENCIALES:
-    </p>
-    <p className='text-base font-montserratRegular'>
-      Autorizo que mi información personal sea compartida con las siguientes finalidades:
-    </p>
-    <ul className="list-decimal pl-[30px] mt-4 font-montserratRegular">
-      <li className="mt-3 text-base ">
-        Para el ofrecimiento de bienes, productos y servicios que puedan ser de mi interés, mediante la realización de campañas comerciales o el desarrollo de convenios de marca compartida: Sí____  No_____
-      </li>
-      <li className="mt-3 text-base ">
-        Para hacer estudios sobre mis gustos, hábitos e intereses: Sí _____ No _____
-      </li>
-      <li className="mt-3 text-base">
-        Para que terceros me ofrezcan bienes, productos o servicios financieros complementarios a los adquiridos con el Banco: Sí ____ No ______
-      </li>
-    </ul>
-    <p className="mt-6 text-base font-montserratRegular">
-      Con la firma de la presente autorización declaro que se me informaron los nombres de los aliados y terceros con los que se compartirá la información en cada una de las anteriores finalidades, y que se me dio a conocer de manera clara que los podré consultar en el sitio web de la(s) entidad(es).
-    </p>
+
     <p className="font-bold mt-4 font-poppinsSemiBold">
       <span>III.CON LA FIRMA DE LA PRESENTE AUTORIZACIÓN DECLARO QUE ME INFORMARON QUE:</span>
     </p>
