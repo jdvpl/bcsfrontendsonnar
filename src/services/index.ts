@@ -229,19 +229,18 @@ export const fetchSarlaft = async (body: any) => {
 export const riskBoxes = async (body: RequestRiskBoxes) => {
   try {
     // TODO
-    // const bodyEncrypt = await allResponse({ ...body, processId: getProcessId() }, KEY);
+    const bodyEncrypt = await allResponse({ ...body, processId: getProcessId() }, KEY);
     const dataBody = { ...body, processId: getProcessId() }
-    const response: any = await axios.post(
-      'https://319eff0f-60c7-423e-9499-06c2be96c214.mock.pstmn.io/risk-boxes',
-      // '/api-composer/composer/risk-boxes',
+    const response: any = await clientAxiosBackend.post(
+      '/api-composer/composer/risk-boxes',
       {
-        data: dataBody,
+        data: bodyEncrypt,
       }
     );
-    // const data = await allResponseDecrypted(response.data.data, KEY);
+    const data = await allResponseDecrypted(response.data.data, KEY);
     return {
       response: {
-        result: response.data,
+        result: data,
       },
       error: false,
     };
