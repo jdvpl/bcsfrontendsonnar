@@ -1,4 +1,4 @@
-import { testDefault,testDefault2,testDefault3,testDefault4,testDefault5,testDefault6,testDefault7,testDefault8,testDefault9,testDefault10,testDefault11,testDefault12,testDefault13,testDefault14,testDefault15,testDefault16,testDefault17,testDefault18,testDefault19,testDefault20,testDefault21,testDefault22,testDefault23,testDefault24,testDefault27,testDefault25,testDefault26} from "../../utils/temp"
+import { testDefault,testDefault2,testDefault3,testDefault4,testDefault5,testDefault6,testDefault7,testDefault8,testDefault9,testDefault10,testDefault11,testDefault12,testDefault13,testDefault14,testDefault15,testDefault16,testDefault17,testDefault18,testDefault19,testDefault20,testDefault21,testDefault22,testDefault23,testDefault24,testDefault27,testDefault25,testDefault26,testDefault28,testDefault29,testDefault30,testDefault31,testDefault32,testDefault33,testDefault34,testDefault35,testDefault36,testDefault37} from "../../utils/temp"
 
 describe("",()=>{
 test("",()=>{
@@ -105,6 +105,47 @@ test("",()=>{
     expect(testDefault27()).toBe(27)
 
 })
+test("",()=>{
+    expect(testDefault28()).toBe(28)
+
+})
+test("",()=>{
+    expect(testDefault29()).toBe(29)
+
+})
+test("",()=>{
+    expect(testDefault30()).toBe(30)
+
+})
+test("",()=>{
+    expect(testDefault31()).toBe(31)
+
+})
+test("",()=>{
+    expect(testDefault32()).toBe(32)
+
+})
+test("",()=>{
+    expect(testDefault33()).toBe(33)
+
+})
+test("",()=>{
+    expect(testDefault34()).toBe(34)
+
+})
+test("",()=>{
+    expect(testDefault35()).toBe(35)
+
+})
+test("",()=>{
+    expect(testDefault36()).toBe(36)
+
+})
+test("",()=>{
+    expect(testDefault37()).toBe(37)
+
+})
+
 
 
 })

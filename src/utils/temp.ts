@@ -81,6 +81,36 @@ export const testDefault26 =()=>{
 export const testDefault27 =()=>{
     return 27
 }
+export const testDefault28 =()=>{
+    return 28
+}
+export const testDefault29 =()=>{
+    return 29
+}
+export const testDefault30 =()=>{
+    return 30
+}
+export const testDefault31 =()=>{
+    return 31
+}
+export const testDefault32 =()=>{
+    return 32
+}
+export const testDefault33 =()=>{
+    return 33
+}
+export const testDefault34 =()=>{
+    return 34
+}
+export const testDefault35 =()=>{
+    return 35
+}
+export const testDefault36 =()=>{
+    return 36
+}
+export const testDefault37 =()=>{
+    return 37
+}
 
 
 // porfa copie unas 
