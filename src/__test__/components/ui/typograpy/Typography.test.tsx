@@ -32,6 +32,11 @@ describe('Typography', () => {
     const element = getByTestId("typographyTest").tagName
     expect(element).toMatch('P');
   });
+  it('renders P caption correctly', () => {
+    const { getByTestId } = render(<Typography variant='caption2'>Example text</Typography>);
+    const element = getByTestId("typographyTest").tagName
+    expect(element).toMatch('P');
+  });
 
   it('applies the correct variant class', () => {
     render(<Typography variant="h1">Example text</Typography>);

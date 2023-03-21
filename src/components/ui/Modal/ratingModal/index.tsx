@@ -17,7 +17,7 @@ export function RatingModal() {
         w-full bg-white outline-none focus:outline-none sm:my-[5vh] sm:w-[375px] md:w-[528px] lg:w-[528px]`}
       >
         <div onClick={onOpenModal} className="cursor-pointer text-end">
-          <Icons icon="bcs-icon-300" size="text-primario-500 text-end font-bold" />
+          <Icons icon="bcs-icon-300" size="text-primario-500 text-end font-bold" data-testid="iconRating" />
         </div>
         <RateForm />
       </div>
