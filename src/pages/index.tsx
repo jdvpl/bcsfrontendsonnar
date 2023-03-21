@@ -38,11 +38,11 @@ export default function Home() {
   }, []);
   const titleClasses = isSafari
     ? 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-[2rem] md:mt-1 xs:mt-5 lg:mt-[100px]  lg:flex lg:justify-center lg:ml-[40rem]  xs:ml-1 sm:ml-3 lg:mr-40 xl:mt-[150px] xs:mt-[34px] sm:mt-[44px]'
-    : 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-[2rem] md:mt-1 xs:mt-5 lg:mt-[100px]  lg:flex lg:justify-center lg:ml-[40rem]  xs:ml-1 sm:ml-3 lg:mr-40 xl:mt-[150px] xs:mt-[34px] sm:mt-[44px] xxxl:mt-[290px] xxxl:pl-40';
+    : 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-[2rem] md:mt-1 xs:mt-5 lg:mt-[100px]  lg:flex lg:justify-center lg:ml-[40rem]  xs:ml-1 sm:ml-3 lg:mr-40 xl:mt-[150px] xs:mt-[34px] sm:mt-[44px] xxxl:mt-[290px] xxxl:pl-40 xxl:pr-0';
 
   const headerDescriptionClasess = isSafari
     ? 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-0 md:mt-5 xs:mt-[17px] lg:mt-[6px]  lg:flex lg:justify-center lg:ml-[40rem]  ml-5 xxl:pr-10'
-    : 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-0 md:mt-5 xs:mt-[17px] lg:mt-[6px]  lg:flex lg:justify-center lg:ml-[40rem]  ml-5 xxl:pr-10 xxxl:pl-40';
+    : 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-0 md:mt-5 xs:mt-[17px] lg:mt-[6px]  lg:flex lg:justify-center lg:ml-[40rem]  ml-5 xxl:pr-1 xxxl:pl-40';
   return (
     <div data-testid="landingPage" className="overflow-hidden landingPage">
       <div
