@@ -1,5 +1,5 @@
 import SelectiveHomeCards from './../components/ui/Home/SelectiveHomeCards';
-import React, { useEffect } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { deviceType } from 'react-device-detect';
 import TagManager from 'react-gtm-module';
 import { basePath } from '../../next.config';
@@ -13,11 +13,12 @@ import Typography from '../components/ui/Typography';
 import useMediaQueryResponsive from '../hooks/useMediaQuery';
 import { useSessionStorage } from '../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../session';
+import { ConditionalWrapper } from './asesoria';
 
 export default function Home() {
   const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, deviceType);
 
-  const { isMobile, isTablet, heightHeader, isSafari, isMedium, isLG, isSM } =
+  const { isMobile, isTablet, heightHeader, isSafari, isMedium, isLG, isSM, isXXl } =
     useMediaQueryResponsive();
   useEffect(
     () => () => {
@@ -89,7 +90,7 @@ export default function Home() {
         </div>
         <SelectiveHomeCards isMobile={isMobile} />
       </div>
-      <div className="md:mt-[245px] lg:mt-[240px] sm:mt-[90px] mt-[121px] h-[452px] sm:bg-requirements-sm lg:bg-requirements-lg xl:bg-requirements-xl bg-requirements-xs xxl:bg-requirements-xxl xxxl:bg-requirements-xxxl bg-no-repeat bg-cover md:h-[310px] md:bg-requirements-md lg:h-[370px] xl:h-[360px] xl:mt-[208px] pb-40 xxl:h-[297px] sm:h-[490px] smd:mt-[93px] smd:h-[460px] smd:bg-requirements-smd xxl:mt-[192px]">
+      <div className="md:mt-[245px] lg:mt-[240px] sm:mt-[90px] mt-[121px] h-[642px] sm:bg-requirements-sm lg:bg-requirements-lg xl:bg-requirements-xl bg-requirements-xs xxl:bg-requirements-xxl xxxl:bg-requirements-xxxl bg-no-repeat bg-cover md:h-[396px] md:bg-requirements-md lg:h-[476px] xl:h-[467px] xl:mt-[208px] pb-40 xxl:h-[297px] sm:h-[647px] smd:mt-[93px] smd:h-[640px] smd:bg-requirements-smd xxl:mt-[192px]">
         <div className="lg:w-[1020px] xxl:w-[1100px] md:w-[700px] m-auto xxl:mt-[144px] ">
           <Typography
             variant="h2"
@@ -97,58 +98,108 @@ export default function Home() {
           >
             Requisitos
           </Typography>
-          <div className="grid lg:grid-cols-2 xxl:grid-cols-4 md:grid-cols-2 md:gap-3 justify-items-center xxl:flex lg:mt-8">
-            <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
-              <SelectiveCard
-                description="Tener entre 18 y 70 años."
-                onclick={false}
-                hasTitle={false}
-                icon="bcs-document-18"
-                color="text-complementario-100"
-                size="text-[1.6rem]"
-                className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100"
-                classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[100px] lg:w-full"
-              />
-            </div>
-            <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
-            <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
-              <SelectiveCard
-                description="Ser empleado o pensionado."
-                onclick={false}
-                hasTitle={false}
-                icon="bcs-user-heart"
-                color="text-complementario-100"
-                size="text-[2rem]"
-                className="sm:mb-3 xs:mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
-                classNamesDescription="ml-[5px] lg:w-[120px] md:w-[105px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[115px] lg:w-full"
-              />
-            </div>
-            <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
-            <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
-              <SelectiveCard
-                description="Pagar salud y pensión."
-                onclick={false}
-                hasTitle={false}
-                icon="bcs-hand-money"
-                color="text-complementario-100"
-                size="text-[2rem]"
-                className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
-                classNamesDescription="ml-[5px] lg:w-[120px] md:w-[90px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[100px] lg:w-full"
-              />
-            </div>
-            <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
-            <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
-              <SelectiveCard
-                description="Tener el celular a la mano."
-                onclick={false}
-                hasTitle={false}
-                icon="bcs-mobile-grade"
-                color="text-complementario-100"
-                size="text-[2rem]"
-                className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
-                classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[120px] lg:w-full "
-              />
-            </div>
+          <div className="grid lg:grid-cols-2  md:grid-cols-2 md:gap-3 justify-items-center xxl:flex xxl:flex-col lg:mt-8">
+            <ConditionalWrapper
+              condition={isXXl}
+              wrapper={(children: ReactNode) => (
+                <div className="flex xxl:w-[1130px] justify-evenly">
+                  {children}
+                </div>
+              )}
+            >
+              {/* 1 */}
+              <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[291px] smd:w-[382px]">
+                <SelectiveCard
+                  description="Tener entre 18 y 70 años."
+                  onclick={false}
+                  hasTitle={false}
+                  icon="bcs-document-18"
+                  color="text-complementario-100"
+                  size="text-[1.6rem]"
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[150px] lg:w-full text-[12px] md:w-full xxl:w-[60%]"
+                />
+              </div>
+              <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
+              {/* 2 */}
+              <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[291px] smd:w-[382px]">
+                <SelectiveCard
+                  description="Pagar salud y pensión."
+                  onclick={false}
+                  hasTitle={false}
+                  icon="bcs-hand-money"
+                  color="text-complementario-100"
+                  size="text-[2rem]"
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[90px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[110px] lg:w-full xxl:w-[57%]"
+                />
+              </div>
+              <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
+              {/* 3 */}
+              <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[292px] smd:w-[382px]">
+                <SelectiveCard
+                  description="Ser empleado o pensionado."
+                  onclick={false}
+                  hasTitle={false}
+                  icon="bcs-user-heart"
+                  color="text-complementario-100"
+                  size="text-[2rem]"
+                  className="sm:mb-3 xs:mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[105px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[125px] lg:w-full md:w-[200px] xxl:w-[60%]"
+                />
+              </div>
+            </ConditionalWrapper>
+
+            <ConditionalWrapper
+              condition={isXXl}
+              wrapper={(children: ReactNode) => (
+                <div className="flex xxl:w-[1130px] justify-evenly">
+                  {children}
+                </div>
+              )}
+            >
+              {/* 4 */}
+              <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[291px] smd:w-[382px]">
+                <SelectiveCard
+                  description="Tener el celular a la mano."
+                  onclick={false}
+                  hasTitle={false}
+                  icon="bcs-mobile-check"
+                  color="text-complementario-100"
+                  size="text-[2rem]"
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[160px] lg:w-full md:w-full xxl:w-[65%]"
+                />
+              </div>
+              <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
+              {/* 5 */}
+              <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[292px] smd:w-[382px]">
+                <SelectiveCard
+                  description="Postular como único titular"
+                  onclick={false}
+                  hasTitle={false}
+                  icon="bcs-user-heart"
+                  color="text-complementario-100"
+                  size="text-[2rem]"
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[170px] lg:w-full md:w-full xxl:w-[65%]"
+                />
+              </div>
+              <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
+              {/* 6 */}
+              <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[292px] smd:w-[382px]">
+                <SelectiveCard
+                  description="Solicitar sin subsidios del gobierno"
+                  onclick={false}
+                  hasTitle={false}
+                  icon="bcs-user-heart"
+                  color="text-complementario-100"
+                  size="text-[2rem]"
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[170px] lg:w-full md:w-full xxl:w-[86%]"
+                />
+              </div>
+            </ConditionalWrapper>
           </div>
         </div>
       </div>
@@ -221,6 +272,6 @@ export default function Home() {
       <div className=" md:mx-[92px] lg:mt-[10px] ">
         <Questions />
       </div>
-    </div>
+    </div >
   );
 }

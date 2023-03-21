@@ -34,9 +34,11 @@ function Bienvenida() {
             de comprar vivienda
           </span>
         </Typography>
-        <Typography variant='h4' className='text-center lg:mt-10 md:mt-3 text-primario-900 text-[18px] font-bold mt-3 sm:font-semibold xs:font-semibold font-montserratSemiBold'>Requisitos de solicitud:</Typography>
+
+
         <div className="listInitial flex justify-center font-monserratLight text-[18px] text-primario-900">
-          <ul className='md:mt-3'>
+          <ul className='md:mt-10'>
+            <Typography variant='h4' className='text-left   text-primario-900 text-[18px] font-bold sm:font-semibold xs:font-semibold font-montserratSemiBold '>Requisitos de solicitud:</Typography>
             <li className='mt-3'>Tener entre 18 y 70 años</li>
             <li className='mt-3'>Ser asalariado o pensionado</li>
             <li className='mt-3'>Estar al día con sus pagos</li>

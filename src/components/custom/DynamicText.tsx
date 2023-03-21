@@ -8,7 +8,7 @@ const DynamicText = ({ isBrowser }: any) => {
         Sugerimos realizar este proceso
         <span className="block">
 
-          desde un celular.
+          desde un celular
         </span>
       </Typography> : ''}
     </div>

@@ -7,8 +7,8 @@ import dynamicClassesSelective from './SelectiveClassnames';
 import React from 'react'
 
 export interface ISelectiveCardProps extends IconsProps {
-  label?:React.ReactNode| string;
-  description:  string;
+  label?: React.ReactNode | string;
+  description: string;
   pathTo?: string;
   className?: string;
   hasTitle?: boolean;
@@ -48,22 +48,22 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
           icon={icon}
           color={color}
           size={size}
-          iconclassNames="group-hover:text-white"
+          iconclassNames="group-hover:text-white cursor-pointer"
         />
       </div>
-      <label className="label-shipping" htmlFor="shipping-home">
-        <div>
+      <label className="label-shipping" htmlFor="shipping-home cursor-pointer">
+        <div className='cursor-pointer'>
           {hasTitle && (
             <Typography
               variant="bodyM2"
-              className={` lg:mt-[14px] lg:mb-[18px] leading-[1.125rem]  m-0 tracking-normal font-semibold  group-hover:text-white ${titleClasses} ${activeClasses}`}
+              className={` lg:mt-[14px] lg:mb-[18px] leading-[1.125rem]  m-0 tracking-normal font-semibold cursor-pointer group-hover:text-white ${titleClasses} ${activeClasses}`}
             >
               {label}
             </Typography>
           )}
           <Typography
             variant="bodyS3"
-            className={`hasTitle leading-[1.125rem]  text-[1rem]  mt-2 group-hover:text-white font-ligth ${classNamesDescription} ${activeClassesDesc}`}
+            className={`hasTitle leading-[1.125rem]  text-[1rem]  mt-2 group-hover:text-white font-ligth cursor-pointer ${classNamesDescription} ${activeClassesDesc}`}
           >
             {description}
           </Typography>

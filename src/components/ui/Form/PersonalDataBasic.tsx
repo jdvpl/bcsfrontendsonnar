@@ -37,12 +37,12 @@ function PersonalDataBasic({ userInfo }: any) {
   const [showModalExit, setshowModalExit] = useState(false);
   const [componentModal,] = useState({
     children: <OfficeBranch setShowModal={setShowModal} />,
-    title: <span className='md:text-[2rem] font-poppinsSemiBold'>Si sus datos han cambiado actualícelos llamando a la línea amiga</span>,
+    title: <span className='md:text-[24px] font-poppinsSemiBold'>Si sus datos han cambiado actualícelos llamando a la línea amiga</span>,
     id: '',
   });
   const [componentModalExit,] = useState({
     children: <ExitModal setshowModalExit={setshowModalExit} />,
-    title: <span className='md:text-[28px] font-poppinsSemiBold'>Está a punto de abandonar su solicitud</span>,
+    title: <span className='md:text-[24px] font-poppinsSemiBold'>Está a punto de abandonar su solicitud</span>,
     id: '',
   });
   const currentAddress = watch('currentAddress', '');

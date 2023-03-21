@@ -13,7 +13,7 @@ import { stepperTitles, titleSection } from '../../components/custom/consultancy
 import useConsultancy from './useConsultancy';
 import TagManager from 'react-gtm-module';
 
-const ConditionalWrapper: FC<any> = ({ condition, wrapper, children }) =>
+export const ConditionalWrapper: FC<any> = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
 function Consultancy() {
