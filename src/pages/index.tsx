@@ -94,7 +94,8 @@ export default function Home() {
         <div className="lg:w-[1020px] xxl:w-[1100px] md:w-[700px] m-auto xxl:mt-[144px] ">
           <Typography
             variant="h2"
-            className="text-center sm:my-8 xs:my-8 lg:mt-[42px] xl-mt-[42px] md:mt-[26px] font-poppinsSemiBold sm:pt-8 xl:mt-[59px] pt-8 text-[28px] lg:pt-[64px]"
+            typeFont='Bold'
+            className="text-center sm:my-8 xs:my-8 lg:mt-[42px] xl-mt-[42px] md:mt-[26px]  sm:pt-8 xl:mt-[59px] pt-8  lg:pt-[64px]"
           >
             Requisitos
           </Typography>
@@ -164,7 +165,7 @@ export default function Home() {
                   description="Tener el celular a la mano."
                   onclick={false}
                   hasTitle={false}
-                  icon="bcs-mobile-check"
+                  icon="bcs-icon-300"
                   color="text-complementario-100"
                   size="text-[2rem]"
                   className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
@@ -178,7 +179,7 @@ export default function Home() {
                   description="Postular como único titular"
                   onclick={false}
                   hasTitle={false}
-                  icon="bcs-user-heart"
+                  icon="bcs-icon-300"
                   color="text-complementario-100"
                   size="text-[2rem]"
                   className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
@@ -192,11 +193,11 @@ export default function Home() {
                   description="Solicitar sin subsidios del gobierno"
                   onclick={false}
                   hasTitle={false}
-                  icon="bcs-user-heart"
+                  icon="bcs-icon-300"
                   color="text-complementario-100"
                   size="text-[2rem]"
                   className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[170px] lg:w-full md:w-full xxl:w-[86%]"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[170px] lg:w-full md:w-full xxl:w-[90%]"
                 />
               </div>
             </ConditionalWrapper>
@@ -208,7 +209,8 @@ export default function Home() {
         <div className="lg:ml-[36px] md:ml-[30px] m-auto md:m-0 xl:ml-1 smd:ml-2 ">
           <Typography
             variant="h2"
-            className="md:text-left text-center lg:mt-[149px] xl:mt-[148px] md:mt-[93px] mt-[80px]  font-poppinsSemiBold text-[28px] ml-5 md:ml-0"
+            typeFont='Bold'
+            className="md:text-left text-center lg:mt-[149px] xl:mt-[148px] md:mt-[93px] mt-[80px] ml-5 md:ml-0"
           >
             Tan solo en <span className="block lg:inline">cuatro pasos</span>
           </Typography>
@@ -237,7 +239,8 @@ export default function Home() {
       <div className="md:mt-[100px] mt-[80px] lg:mt-20">
         <Typography
           variant="h2"
-          className=" text-center lg:mb-[105px] text-[32px] font-poppinsSemiBold md:mt-0 mt-[66px]"
+          typeFont='Bold'
+          className=" text-center lg:mb-[105px]  md:mt-0 mt-[66px]"
         >
           Beneficios
         </Typography>
@@ -250,7 +253,7 @@ export default function Home() {
             />
           </div>
           <div className="listInitial  lg:w-[440px] relative block mx-5 sm:top-[-128px] xs:top-[-110px] md:top-0 xs:w-[260px] sm:w-[90%] smd:w-[80%] smd:m-auto md:mt-[-20px] md:place-items-center lg:mt-0 xxxl:ml-10">
-            <ul className="font-monserratLight mb-0 ">
+            <ul className="font-monserratLight mb-0">
               <li className="lg:text-[20px] text-[16px] font-light leading-[22px] lg:mt-[127px] md:mt-20 text-complementario-100 ">
                 Preaprobación inmediata en línea
               </li>
@@ -260,10 +263,7 @@ export default function Home() {
               <li className="lg:text-[20px] text-[16px] font-light leading-[22px] mt-3 text-complementario-100">
                 Para clientes y no clientes
               </li>
-              <li className="lg:text-[20px] text-[16px] font-normal leading-[22px] mt-3 text-complementario-100 ">
-                Abonos extraordinarios a capital para reducir el plazo o el valor de la
-                cuota
-              </li>
+
             </ul>
           </div>
         </div>

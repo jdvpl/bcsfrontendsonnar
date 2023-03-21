@@ -56,13 +56,14 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
           {hasTitle && (
             <Typography
               variant="bodyM2"
+              typeFont='Bold'
               className={` lg:mt-[14px] lg:mb-[18px] leading-[1.125rem]  m-0 tracking-normal font-semibold cursor-pointer group-hover:text-white ${titleClasses} ${activeClasses}`}
             >
               {label}
             </Typography>
           )}
           <Typography
-            variant="bodyS3"
+            variant="bodyM3"
             className={`hasTitle leading-[1.125rem]  text-[1rem]  mt-2 group-hover:text-white font-ligth cursor-pointer ${classNamesDescription} ${activeClassesDesc}`}
           >
             {description}

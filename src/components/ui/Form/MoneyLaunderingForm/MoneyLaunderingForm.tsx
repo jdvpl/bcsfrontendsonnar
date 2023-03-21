@@ -36,8 +36,9 @@ export function MoneyLaunderingForm() {
         {MoneyLaunderingOptions?.map((option, i) => (
           <div key={i} className="cardShadow min-h-[96px] w-full mb-3 rounded-md px-6 py-3">
             <Typography
-              variant="bodyS3"
-              className="text-complementario-100 font-light mb-[12px] md:max-w-full max-w-[95%] font-montserratRegular"
+              variant="bodyM2"
+              typeFont='Regular'
+              className="text-complementario-100 font-light mb-[12px] md:max-w-full max-w-[95%]"
             >
               {option?.label}
               {option?.toolTip !== '' ? (

@@ -131,10 +131,11 @@ const Otp: FC<otpProps> = ({ otc }) => {
           {isLoading && <OTLoader />}
           {error && (
             <div className="w-[294px] h-[28px] bg-[#ffd4ce40] px-[9px] py-[8px] flex items-center rounded-[4px]">
-              <Icons icon="bcs-advertising" size="text-rojo-200 mr-[10px]" />
+              <Icons icon="bcs-icon-10" size="text-rojo-200 mr-[10px]" />
               <Typography
-                variant="caption4"
-                className="font-normal text-rojo-200 text-[12px] font-montserratRegular"
+                variant="overline1"
+                typeFont='Regular'
+                className="font-normal text-rojo-200 text-[12px]"
               >
                 Código inválido, intente nuevamente
               </Typography>
@@ -143,7 +144,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
           {isValid && (
             <div>
               <div className="bg-verde-70  h-[48px] w-[48.22px] flex items-center justify-center rounded-full">
-                <Icons icon="bcs-check" size="text-white" />
+                <Icons icon="bcs-icon-10" size="text-white" />
               </div>
             </div>
           )}
@@ -153,7 +154,8 @@ const Otp: FC<otpProps> = ({ otc }) => {
         <Typography
           onClick={onResendOTP}
           variant="caption1"
-          className={`text-[14px] font-montserratRegular leading-4 ${timer === 0 && wasResend === false
+          typeFont='Regular'
+          className={` leading-4 ${timer === 0 && wasResend === false
             ? 'text-primario-20 cursor-pointer'
             : 'text-gris-200'
             } mb-[12px]`}
@@ -166,8 +168,8 @@ const Otp: FC<otpProps> = ({ otc }) => {
 
       {timer === 0 || isValid ? null : (
         <div className="flex justify-center items-center gap-1">
-          <Icons icon="bcs-clock" size="text-gris-30 font-semibold" />
-          <Typography variant="caption2" className="text-gris-30 font-semibold font-montserratRegular">
+          <Icons icon="bcs-icon-200" size="text-gris-30 font-semibold" />
+          <Typography variant="caption2" typeFont='Regular' className="text-gris-30">
             {timer} segundos
           </Typography>
         </div>

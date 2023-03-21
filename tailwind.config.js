@@ -24,16 +24,16 @@ module.exports = {
       xxxl: '2560px',
     },
     fontFamily: {
-      sans: ['Roboto', 'sans-serif'],
-      heading: ['Roboto', 'sans-serif'],
       monserratLight:['MontserratLight','sans-serif'],
       montserratSemiBold:['MontserratSemiBold','sans-serif'],
+      montserratRegular:['MontserratRegular','sans-serif'],
+      montserratMedium:['MontserratMedium','sans-serif'],
+      montserratExtraLight:['MontserratExtraLight','sans-serif'],
       poppinsLight:['PoppinsLight','sans-serif'],
+      poppinsRegular:['PoppinsRegular','sans-serif'],
       poppinsBold:['PoppinsBold','sans-serif'],
       poppinsSemiBold:['PoppinsSemiBold','sans-serif'],
       poppinsExtraLight:['PoppinsExtraLight','sans-serif'],
-      montserratRegular:['MontserratRegular','sans-serif'],
-      montserratMedium:['MontserratMedium','sans-serif'],
     },
     colors: {
       primario: {

@@ -90,7 +90,8 @@ function Consultancy() {
           />
           <Typography
             variant="h2"
-            className="lg:w-[515px] leading-[32px] md:w-[445px] sm:w-[303px] w-[303px] mx-auto lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center  font-poppinsSemiBold"
+            typeFont='Bold'
+            className="lg:w-[515px] md:w-[445px] sm:w-[303px] w-[303px] mx-auto lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center"
           >
             {titleSection[actualStep - 1]}
           </Typography>

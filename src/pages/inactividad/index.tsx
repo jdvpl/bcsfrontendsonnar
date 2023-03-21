@@ -22,6 +22,7 @@ export default function InactivityScreen() {
 
         <Typography
           variant="h3"
+          typeFont='Regular'
           className="text-center w-[343px] px-5 mb-[114.01px] md:mb-[42px]"
         >
           El proceso se ha cerrado por inactividad

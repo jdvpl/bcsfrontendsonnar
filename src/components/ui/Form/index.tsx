@@ -94,7 +94,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
       className="w-full p-2 md:py-5 lg:p-4 bg-white "
       autoComplete="off"
     >
-      <Typography variant="h2" className="text-center text-primario-900 font-poppinsSemiBold text-[28px]">
+      <Typography variant="h2" typeFont='Bold' className="text-center text-primario-900  ">
         Bienvenido a
       </Typography>
       <figure itemProp="logo" className="flex justify-center lg:w-[300px] md:w-[240px] w-[250px] m-auto mt-4">
@@ -104,7 +104,8 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
       <div className="text-gray-100">
         <div>
           <Typography
-            variant="bodyM4"
+            variant="bodyM2"
+            typeFont='Bold'
             className="m-auto text-center mb-[36px] lg:mt-[24px] md:mt-[10px] text-[18px] text-primario-900 sm:w-[306px]  md:w-[311px] lg:w-[448px] font-montserratRegular"
           >
             Para iniciar la solicitud de su crédito ingrese los siguientes datos.

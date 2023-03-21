@@ -46,7 +46,7 @@ function Authentication() {
           <LogoBcs />
         </div>
         <div className="xs:block sm:block md:hidden lg:hidden mt-6 cursor-pointer xs:ml-4" onClick={() => router.back()} role="btnGoBack" data-testid="getbackRouteTest">
-          <Icons icon='bcs-arrow-one-left' size="text-[1.2rem]" />
+          <Icons icon='bcs-icon-300' size="text-[1.2rem]" />
         </div>
         <div className="mt-6 w-[180px] md:w-[180px] lg:w-[280px] xs:mr-4">
           <LogoForm />
@@ -56,7 +56,7 @@ function Authentication() {
         <div className="mt-20 lg:h-[300px] md:w-[350px] md:h-[300px] sm:w-[234px] sm:h-[200px] xs:h-[200px] xs:w-[234px] m-auto ">
           <img src={`${basePath}/images/authentication.svg`} alt="" />
         </div>
-        <Typography variant='h3' className='text-center mt-[52px] text-primario-900 font-[24px] font-poppinsSemiBold'>
+        <Typography variant='h3' typeFont='Bold' className='text-center mt-[52px] text-primario-900'>
           Por seguridad <span className='xs:block sm:inline'>validaremos</span>
           <span className="block">
             su información
