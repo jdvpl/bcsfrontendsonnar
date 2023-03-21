@@ -4,7 +4,7 @@ import houseAnimation from '../../../lib/houseAnimation.json';
 
 export const ApplicationLoader = () => {
   return (
-    <div className="bg-white fixed top-0 left-0 w-screen h-screen z-10 flex flex-col justify-center items-center">
+    <div className="bg-white fixed top-0 left-0 w-screen h-screen z-20 flex flex-col justify-center items-center">
       <Lottie
         loop
         animationData={houseAnimation}
