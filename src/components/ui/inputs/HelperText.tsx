@@ -7,7 +7,7 @@ interface HelperTextProps {
 }
 
 export function HelperText({ text, error, className = '' }: HelperTextProps) {
-  return <div className={`flex items-center help pl-2 ${className}`}>
+  return <div className={`flex items-center help pl-2 pt-1 ${className}`}>
     <svg
       width="12"
       height="12"
@@ -31,7 +31,7 @@ export function HelperText({ text, error, className = '' }: HelperTextProps) {
       />
     </svg>
     <p
-      className={`font-light text-[0.625rem] pt-[1px] m-0 leading-[18px] ${error ? 'text-rojo-100' : 'text-azul_gris-100'
+      className={`font-montserratRegular font-light text-[10px] pt-[1px] m-0 leading-[12px] ${error ? 'text-rojo-20' : 'text-azul_gris-100'
         } float-left whitespace-nowrap`}
     >
       <span tabIndex={0} role="paragraph">

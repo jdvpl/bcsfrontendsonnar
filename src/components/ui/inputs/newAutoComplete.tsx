@@ -5,7 +5,6 @@ import TextField from '@mui/material/TextField';
 import Autocomplete, { createFilterOptions } from '@mui/material/Autocomplete';
 import ExampleInfo from '../../commons/ExampleInfo';
 import Icons from '../icons';
-import { InputAdornment } from '@mui/material';
 interface InputProps {
   placeholder?: string;
   type?: string;
@@ -20,6 +19,9 @@ interface InputProps {
   value?: any;
   onChange?: (value: any) => any;
   zIndex?: number;
+  error?: boolean;
+  arrayOptions?: any;
+  getLabelHandler?: any;
 }
 
 const NewAutoComplete: React.FC<InputProps> = ({
@@ -30,18 +32,29 @@ const NewAutoComplete: React.FC<InputProps> = ({
   defaultValue,
   onChange,
   zIndex = 20,
+  error = false,
+  getLabelHandler = (option: any) => option.name,
+  arrayOptions = cityData.details
 }) => {
-  const [clearError] = useState(false);
   const OPTIONS_LIMIT = 10;
   const defaultFilterOptions = createFilterOptions();
-
   const filterOptions = (options: any, state: any) => {
     return defaultFilterOptions(options, state).slice(0, OPTIONS_LIMIT);
   };
-  const [initialBorder, setBorder] = useState('#798c98a6');
+  const [isFocus, setIsFocus] = useState(defaultValue ? true : false);
   const [internalState, setInternalState] = useState('');
 
-  const arrayCitys: any[] = cityData.details;
+  const [clearError] = useState(false);
+
+  const defaultOnchange = (_: any, value: any) => {
+    if (value) {
+      onChange?.(value);
+      setInternalState("value");
+    } else {
+      onChange?.({});
+      setInternalState('');
+    }
+  }
 
   return (
     <div
@@ -51,129 +64,75 @@ const NewAutoComplete: React.FC<InputProps> = ({
       itemType="https://schema.org/Person"
       className="flex flex-col justify-start relative"
     >
+      <label
+        className={`transition-all duration-300 ease-in-out absolute  font-montserratRegular
+        ${internalState || isFocus ? "-top-[6.5px] z-10 left-2 bg-white px-1 text-[10px] leading-[12px]" : "left-[36px] text-[14px] leading-[16px] top-2/4 -translate-y-2/4"} 
+        ${error ? "text-rojo-20" : "text-complementario-100 hover:text-complementario-100 peer-focus:hover:text-complementario-100"}`}
+      >
+        {internalState ? label : placeholder}
+      </label>
       {/* eslint-disable-line no-use-before-define */}
-      <Icons icon="bcs-search" size="text-[17px] absolute left-2 top-3" />
+      <Icons icon="bcs-search" size="text-[17px] absolute left-2 top-[15px]  " />
       <div className="" id={id}>
         <Autocomplete
           filterOptions={filterOptions}
           id={id}
-          blurOnSelect
-          clearOnBlur
-          clearOnEscape
-          clearIcon={false}
           autoComplete={true}
-          getOptionLabel={(option: any) => option.name}
+          getOptionLabel={(option) => getLabelHandler(option)}
           defaultValue={defaultValue}
           data-testid={'searchAutocompleteInput'}
-          onChange={(_, value: any) => {
-            if (value) {
-              onChange?.({
-                id: value.id,
-                name: value.name,
-                parentId: value.parentid,
-                hasAdviser: value?.hasAdviser,
-                nameAdviser: value?.nameAdviser,
-              });
-              setBorder('#798C98');
-              setInternalState(value);
-            } else {
-              onChange?.({});
-              setInternalState('');
-              setBorder('#F35163');
-            }
-          }}
-          options={arrayCitys}
+          onChange={defaultOnchange}
+          options={arrayOptions}
           sx={{
-            width: '100%',
-            color: '#00253D',
-            fontSize: '14px',
-            '.MuiFormLabel-root': {
-              fontSize: '14px',
-              width: 'fit-content !important',
-            },
-            '&.Mui-focused .MuiFormLabel-root': {
-              fontSize: '14px',
-              width: 'fit-content !important',
-              color: '#0072c8',
-              paddingLeft: '4px',
-              margin: '0px',
-              left: '-4px',
-            },
-            '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#2972C8',
-              borderWidth: '1px',
-            },
-            '.MuiInputLabel-outlined': {
-              fontSize: '14px',
-            },
-            '.MuiOutlinedInput-notchedOutline': {
-              borderColor: initialBorder,
-              borderWidth: '1px',
-            },
-            '.MuiInputBase-root': {
-              paddingTop: '6px !important',
-              borderColor: initialBorder,
-            },
-            '&.Mui-focused .MuiInputBase-root': {
-              borderColor: 'red',
-            },
-            '.MuiOutlinedInput-root': {
-              paddingTop: '6px !important',
-            },
-            ' .MuiAutocomplete-inputRoot': {
-              paddingTop: '6px !important',
-            },
-            ' .Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderWidth: '1px !important',
+            color: '#00253d',
+            fontStyle: "normal",
+            height: '48px',
+            borderRadius: '8px',
+            '.MuiSvgIcon-root ': {
+              fill: 'transparent',
+              height: '16px',
+              width: '16px',
             },
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#2972C8',
-              borderWidth: '1px !important',
+              borderColor: error ? '#e9132b !important' : '#0386e6 !important',
+              borderWidth: '0.5px !important',
             },
-            '&:hover .MuiOutlinedInput-notchedOutline > label': {
-              borderColor: '#2972C8 !important',
-              borderWidth: '1px',
-            },
-            '&:hover .MuiOutlinedInput-root': {
-              borderColor: '#2972C8 !important',
-            },
-            '.MuiOutlinedInput-notchedOutline > span': {
-              paddingLeft: '0px',
-              paddingRight: '0px',
-            },
-            '.MuiSvgIcon-root ': {
-              fill: 'white',
-              height: '16px',
-              width: '16px',
-            },
-            '.MuiAutocomplete-popupIndicator': {
-              width: '16px',
-              height: '16px',
-              position: 'absolute',
-            },
-            '.MuiAutocomplete-endAdornment': {
-              width: '16px',
-              height: '16px',
-              right: '17px !important',
-              top: '20px !important',
-            },
+            '&:hover .MuiOutlinedInput-notchedOutline': {
+              borderColor: error ? '#e9132b !important' : '#0386e6 !important',
+              borderWidth: '0.5px !important',
+            }
           }}
           renderInput={(params) => (
             <TextField
-              defaultValue={defaultValue ? defaultValue?.name : undefined}
+              onBlur={() => setIsFocus(false)}
+              onFocus={() => setIsFocus(true)}
+              defaultValue={placeholder ? placeholder : undefined}
               {...params}
+              onChange={(e) => {
+                if (e.target.value) {
+                  setInternalState(e.target.value)
+                } else {
+                  setInternalState("")
+                }
+              }}
+              itemProp="homeLocation"
               sx={{
-                '.MuiFormLabel-root': {
-                  fontSize: '14px',
-                  width: 'fit-content !important',
-                  paddingLeft: params?.inputProps?.value ? '0px' : '20px',
-                },
                 '.MuiOutlinedInput-root': {
-                  paddingLeft: '30px !important',
+                  height: '48px',
+                  color: '#00253d',
+                  paddingLeft: "32px"
+                },
+                '.MuiSvgIcon-root': {
+                  fill: 'transparent',
+                  height: '16px',
+                  width: '16px',
+                },
+                '.MuiOutlinedInput-notchedOutline': {
+                  borderColor: error ? '#ce1126' : "#89a3b5",
+                  borderWidth: '0.5px',
+                  borderRadius: '8px',
                 },
               }}
-              label={label}
-              itemProp="homeLocation"
             />
           )}
         />

@@ -1,5 +1,5 @@
 import React, { useEffect, ClipboardEvent, useState } from 'react';
-import { MenuItem, Typography } from '@mui/material';
+import { MenuItem } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import Button from '../../Button';
@@ -11,10 +11,10 @@ import { yearsAvailable } from '../../../../lib/simulator';
 import useValidations from '../../../../hooks/useValidationsCreditData';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
-import AutoCompleteCustom from '../../../../hooks/autocomplete';
 import useCreditForm from '../../../../hooks/useCreditForm';
 import useProtectedRoutes from '../../../../hooks/useProtectedRoutes';
 import { ApplicationLoader } from '../../Loaders/ApplicationLoader';
+import NewAutoComplete from '../../inputs/newAutoComplete';
 
 export function CreditDataForm() {
   const [insuranceCheck] = useState(true);
@@ -268,12 +268,15 @@ export function CreditDataForm() {
                   name="office"
                   defaultValue={undefined}
                   render={({ field: { onChange } }) => (
-                    <AutoCompleteCustom
+                    <NewAutoComplete
                       id="currentCity"
                       defaultValue={undefined}
                       placeholder="Oficina de preferencia"
                       label="Sucursal"
                       arrayOptions={offices}
+                      getLabelHandler={(option: any) => {
+                        return `${option?.address?.toLowerCase().replace(/\b\w/g, (l: string) => l.toUpperCase())} ${option?.nameOffice?.toLowerCase().replace(/\b\w/g, (l: string) => l.toUpperCase())} - ${option?.city?.toLowerCase().replace(/\b\w/g, (l: string) => l.toUpperCase())}`;
+                      }}
                       onChange={(e: any) => {
                         if (e?.idOffice) {
                           return onChange(e);
