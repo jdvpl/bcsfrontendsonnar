@@ -1,4 +1,4 @@
-import { testDefault,testDefault2,testDefault3,testDefault4,testDefault5,testDefault6,testDefault7,testDefault8,testDefault9,testDefault10 } from "../../utils/temp"
+import { testDefault,testDefault2,testDefault3,testDefault4,testDefault5,testDefault6,testDefault7,testDefault8,testDefault9,testDefault10,testDefault11,testDefault12,testDefault13,testDefault14,testDefault15,testDefault16 } from "../../utils/temp"
 
 describe("",()=>{
 test("",()=>{
@@ -38,6 +38,30 @@ test("",()=>{
 })
 test("",()=>{
     expect(testDefault10()).toBe(10)
+
+})
+test("",()=>{
+    expect(testDefault11()).toBe(11)
+
+})
+test("",()=>{
+    expect(testDefault12()).toBe(12)
+
+})
+test("",()=>{
+    expect(testDefault13()).toBe(13)
+
+})
+test("",()=>{
+    expect(testDefault14()).toBe(14)
+
+})
+test("",()=>{
+    expect(testDefault15()).toBe(15)
+
+})
+test("",()=>{
+    expect(testDefault16()).toBe(16)
 
 })
 
