@@ -48,6 +48,39 @@ export const testDefault15 =()=>{
 export const testDefault16 =()=>{
     return 16
 }
+export const testDefault17 =()=>{
+    return 17
+}
+export const testDefault18 =()=>{
+    return 18
+}
+export const testDefault19 =()=>{
+    return 19
+}
+export const testDefault20 =()=>{
+    return 20
+}
+export const testDefault21 =()=>{
+    return 21
+}
+export const testDefault22 =()=>{
+    return 22
+}
+export const testDefault23 =()=>{
+    return 23
+}
+export const testDefault24 =()=>{
+    return 24
+}
+export const testDefault25 =()=>{
+    return 25
+}
+export const testDefault26 =()=>{
+    return 26
+}
+export const testDefault27 =()=>{
+    return 27
+}
 
 
 // porfa copie unas 
