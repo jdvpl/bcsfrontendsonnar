@@ -168,7 +168,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
 
       {timer === 0 || isValid ? null : (
         <div className="flex justify-center items-center gap-1">
-          <Icons icon="bcs-icon-200" size="text-gris-30 font-semibold" />
+          <Icons icon="bcs-icon-300" size="text-gris-30 font-semibold" />
           <Typography variant="caption2" typeFont='Regular' className="text-gris-30">
             {timer} segundos
           </Typography>
