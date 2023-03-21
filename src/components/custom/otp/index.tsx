@@ -131,7 +131,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
           {isLoading && <OTLoader />}
           {error && (
             <div className="w-[294px] h-[28px] bg-[#ffd4ce40] px-[9px] py-[8px] flex items-center rounded-[4px]">
-              <Icons icon="bcs-icon-10" size="text-rojo-200 mr-[10px]" />
+              <Icons icon="bcs-icon-300" size="text-rojo-200 mr-[10px]" />
               <Typography
                 variant="overline1"
                 typeFont='Regular'
