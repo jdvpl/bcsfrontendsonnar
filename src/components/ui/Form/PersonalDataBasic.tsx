@@ -288,7 +288,7 @@ function PersonalDataBasic({ userInfo }: any) {
                 render={() => (
                   <Input
                     type="text"
-                    startIcon='bcs-search'
+                    startIcon='bcs-icon-300'
                     error={!!errors.birthCity}
                     onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                       e.preventDefault();
@@ -352,7 +352,7 @@ function PersonalDataBasic({ userInfo }: any) {
                     }
                     helperTextOption
                     type="text"
-                    startIcon='bcs-location'
+                    startIcon='bcs-icon-7'
                     error={!!errors.currentAddress}
                     onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                       e.preventDefault();
