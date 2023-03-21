@@ -22,6 +22,16 @@ describe('Typography', () => {
     render(<Typography variant='bodyM3'>Example text</Typography>);
     expect(screen.getByTestId('typographyTest')).toHaveTextContent('Example text');
   });
+  it('renders P correctly', () => {
+    const { getByTestId } = render(<Typography variant='bodyM1'>Example text</Typography>);
+    const element = getByTestId("typographyTest").tagName
+    expect(element).toMatch('P');
+  });
+  it('renders P caption correctly', () => {
+    const { getByTestId } = render(<Typography variant='caption1'>Example text</Typography>);
+    const element = getByTestId("typographyTest").tagName
+    expect(element).toMatch('P');
+  });
 
   it('applies the correct variant class', () => {
     render(<Typography variant="h1">Example text</Typography>);
