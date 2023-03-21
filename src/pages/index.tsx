@@ -113,7 +113,7 @@ export default function Home() {
                   description="Tener entre 18 y 70 años."
                   onclick={false}
                   hasTitle={false}
-                  icon="bcs-document-18"
+                  icon="bcs-icon-33"
                   color="text-complementario-100"
                   size="text-[1.6rem]"
                   className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100"
@@ -127,7 +127,7 @@ export default function Home() {
                   description="Pagar salud y pensión."
                   onclick={false}
                   hasTitle={false}
-                  icon="bcs-hand-money"
+                  icon="bcs-icon-44"
                   color="text-complementario-100"
                   size="text-[2rem]"
                   className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
@@ -141,7 +141,7 @@ export default function Home() {
                   description="Ser empleado o pensionado."
                   onclick={false}
                   hasTitle={false}
-                  icon="bcs-user-heart"
+                  icon="bcs-icon-7"
                   color="text-complementario-100"
                   size="text-[2rem]"
                   className="sm:mb-3 xs:mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
@@ -204,7 +204,7 @@ export default function Home() {
         </div>
       </div>
       {/* steps  */}
-      <div className="bg-white flex justify-between sm:w-[309px] smd:w-[385px] smd:m-auto xl:w-[1047px] xl:m-auto md:w-full">
+      <div className="bg-white flex justify-between sm:w-[309px] smd:w-[385px] smd:m-auto xl:w-[1047px] xl:m-auto md:w-full lgsm:w-[850px]">
         <div className="lg:ml-[36px] md:ml-[30px] m-auto md:m-0 xl:ml-1 smd:ml-2 ">
           <Typography
             variant="h2"
@@ -241,7 +241,7 @@ export default function Home() {
         >
           Beneficios
         </Typography>
-        <div className="bgBenefits md:grid md:grid-cols-2 sm:grid sm:grid-col-1 xs:mt-[12rem] md:mt-[5rem] relative md:h-[314px] gap-5 h-[520px] sm:h-[532px] lg:h-[400px]">
+        <div className=" md:w-[700px] lgsm:w-[850px] lg:w-[1000px] xl:w-[1100px] xxl:w-[1200px] bgBenefits md:grid md:grid-cols-2 sm:grid sm:grid-col-1 xs:mt-[12rem] md:mt-[5rem] relative md:h-[314px] gap-5 h-[520px] sm:h-[532px] lg:h-[400px]">
           <div className="relative xs:top-[-140px]  md:top-[-25px] flex justify-center md:justify-end ">
             <img
               src={`${basePath}/images/beneficios.png`}
@@ -249,7 +249,7 @@ export default function Home() {
               className="lg:w-[279px] lg:h-[451px] md:w-[220px] sm:w-[278px] sm:h-[448px] h-[409px] md:h-[354px]"
             />
           </div>
-          <div className="listInitial lg:w-[440px] relative block mx-5 sm:top-[-128px] xs:top-[-110px] md:top-0 xs:w-[260px] sm:w-[90%] smd:w-[80%] smd:m-auto md:mt-[-20px] md:w-[70%] lg:mt-0 xxxl:ml-10">
+          <div className="listInitial  lg:w-[440px] relative block mx-5 sm:top-[-128px] xs:top-[-110px] md:top-0 xs:w-[260px] sm:w-[90%] smd:w-[80%] smd:m-auto md:mt-[-20px] md:place-items-center lg:mt-0 xxxl:ml-10">
             <ul className="font-monserratLight mb-0 ">
               <li className="lg:text-[20px] text-[16px] font-light leading-[22px] lg:mt-[127px] md:mt-20 text-complementario-100 ">
                 Preaprobación inmediata en línea

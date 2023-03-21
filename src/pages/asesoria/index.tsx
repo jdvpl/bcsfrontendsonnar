@@ -73,7 +73,7 @@ function Consultancy() {
           </div>
           <div className="lg:hidden cursor-pointer">
             <a href={basePath}>
-              <Icons icon="bcs-arrow-one-left" />
+              <Icons icon="bcs-icon-1506" />
             </a>
           </div>
           <div className="lg:w-[280px] w-[180px]">
@@ -168,7 +168,7 @@ function Consultancy() {
             >
               <div className="rounded-full xs:w-[24px] md:w-[40px] xs:h-[24px] md:h-[40px] border-primario-300 flex justify-center items-center border-2 md:mb-[33px]">
                 <Icons
-                  icon="bcs-arrow-two-left"
+                  icon="bcs-icon-1506"
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
                 />
               </div>
@@ -184,7 +184,7 @@ function Consultancy() {
             >
               <div className="rounded-full xs:w-[24px] md:w-[40px] md:order-1 xs:order-2 xs:h-[24px] md:h-[40px] border-primario-300 flex justify-center items-center border-2 md:mb-[33px]">
                 <Icons
-                  icon="bcs-arrow-two-right"
+                  icon="bcs-icon-28"
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
                 />
               </div>
