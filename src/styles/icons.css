@@ -1,6 +1,6 @@
 /* icons */
 [class^="bcs-"]:before, [class*=" bcs-"]:before {
-  font-family: "bcs";
+  font-family: bcs, sans-serif;
   font-style: normal;
 
   display: inline-block;
