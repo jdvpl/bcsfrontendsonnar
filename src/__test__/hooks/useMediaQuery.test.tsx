@@ -16,6 +16,7 @@ describe('useMediaQueryResponsive', () => {
     useMediaQuery.mockReturnValueOnce(false)
     useMediaQuery.mockReturnValueOnce(false)
     useMediaQuery.mockReturnValueOnce(false)
+    useMediaQuery.mockReturnValueOnce(false)
     const result = useMediaQueryResponsive();
     expect(result).toEqual({
       isMobile: true,
@@ -23,6 +24,7 @@ describe('useMediaQueryResponsive', () => {
       isBrowser: false,
       isXS: false,
       isSM: false,
+      isXXl: false,
       isMD: false,
       isMedium: false,
       isLG: false,

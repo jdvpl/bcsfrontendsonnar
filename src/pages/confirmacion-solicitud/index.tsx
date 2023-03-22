@@ -13,7 +13,6 @@ import { routes } from '../../routes';
 import { SesionStorageKeys } from '../../session';
 import { convertToColombianPesos, downLoadPdf } from '../../utils';
 import useProtectedRoutes from '../../hooks/useProtectedRoutes';
-import useDownloadPdf from '../../hooks/useDownloadPdf';
 import ExitModal from '../../components/commons/ExitModal';
 import Modal from '../../components/ui/Modal';
 import { useBackDetector } from '../../hooks/useBackDetector';
@@ -73,13 +72,15 @@ function ApplicationApproval({ modalExit = false }: any) {
         </div>
         <Typography
           variant="h1"
-          className="text-center mt-[52px] text-primario-900 text-[32px] font-semibold font-poppinsSemiBold"
+          typeFont='Bold'
+          className="text-center mt-[52px] text-primario-900"
         >
           ¡{dataInfo.firstName}, felicitaciones!
         </Typography>
         <Typography
           variant="h4"
-          className="text-center mt-3 text-primario-900 text-[18px] font-semibold leading-[20px] font-poppinsSemiBold"
+          typeFont='Bold'
+          className="text-center mt-3 text-primario-900"
         >
           Su crédito hipotecario
           <span className="block">ha sido preaprobado</span>
@@ -144,7 +145,7 @@ function ApplicationApproval({ modalExit = false }: any) {
             id="btn-next"
           >
             <span className="font-medium font-monserratLight text-[18px]">
-              <Icons icon="bcs-arrow-one-down" /> Carta de preaprobación
+              <Icons icon="bcs-icon-300" /> Carta de preaprobación
             </span>
           </Button>
         </div>
@@ -154,7 +155,8 @@ function ApplicationApproval({ modalExit = false }: any) {
         <div className="mt-8 md:w-[440px] sm:w-[343px] w-[293px] m-auto">
           <Typography
             variant="bodyM3"
-            className="text-center mt-3 text-primario-900 text-[18px] font-semibold leading-[20px] font-montserratRegular"
+            typeFont='Regular'
+            className="text-center mt-3 text-primario-900 "
           >
             Conozca los próximos pasos <br />
             para el desembolso de su crédito

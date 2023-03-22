@@ -91,10 +91,10 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
     <form
       id="form-login"
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full p-2 md:py-5 lg:p-4 bg-white"
+      className="w-full p-2 md:py-5 lg:p-4 bg-white "
       autoComplete="off"
     >
-      <Typography variant="h2" className="text-center text-primario-900 font-poppinsSemiBold text-[28px]">
+      <Typography variant="h2" typeFont='Bold' className="text-center text-primario-900  ">
         Bienvenido a
       </Typography>
       <figure itemProp="logo" className="flex justify-center lg:w-[300px] md:w-[240px] w-[250px] m-auto mt-4">
@@ -104,12 +104,13 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
       <div className="text-gray-100">
         <div>
           <Typography
-            variant="bodyM4"
-            className="m-auto text-center mb-[36px] lg:mt-[24px] md:mt-[10px] text-[18px] text-primario-900 sm:w-[306px] lg:w-[629px] md:w-[311px] font-montserratRegular"
+            variant="bodyM2"
+            typeFont='Bold'
+            className="m-auto text-center mb-[36px] lg:mt-[24px] md:mt-[10px] text-[18px] text-primario-900 sm:w-[306px]  md:w-[311px] lg:w-[448px] font-montserratRegular"
           >
             Para iniciar la solicitud de su crédito ingrese los siguientes datos.
           </Typography>
-          <div className="w-full mt-3">
+          <div className="w-full mt-3 lg:w-[448px] m-auto">
             <ReactHookFormSelect
               onChange={(e: any) => setValue('document_type', e.target.value)}
               placeholder="Tipo de documento"
@@ -130,7 +131,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
             </ReactHookFormSelect>
           </div>
         </div>
-        <div className="flex flex-col mt-4">
+        <div className="flex flex-col mt-4 lg:w-[448px] m-auto">
           <Controller
             rules={{ required: true, minLength: 5, maxLength: 10 }}
             render={({ field }) => (
@@ -175,8 +176,8 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
         </div>
       </div>
 
-      <div className="mt-[28px] md:mt-[24px] lg:mt-[32px] ml-1 text-xs mb-[32px]">
-        <div className="flex items-start ">
+      <div className="mt-[28px] md:mt-[24px] lg:mt-[32px] ml-1 text-xs mb-[32px] ">
+        <div className="flex items-start lg:w-[448px] m-auto">
           <input
             {...register('policy_and_terms')}
             className="inline-block p-0 m-0  h-[18px] w-[18.6px] min-w-[18.6px] "
@@ -229,7 +230,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
             </span>
           </label>
         </div>
-        <div className="flex items-start mt-4">
+        <div className="flex items-start mt-4 lg:w-[448px] m-auto">
           <input
             {...register('commercial_terms')}
             className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"

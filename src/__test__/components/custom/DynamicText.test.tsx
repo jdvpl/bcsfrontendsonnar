@@ -7,5 +7,10 @@ describe('ContainerButtonForm', () => {
     const { baseElement } = render(<DynamicText isBrowser={true} />);
     expect(baseElement).toBeTruthy();
   });
+  test('should render "P" successfully', () => {
+    const { getByTestId } = render(<DynamicText isBrowser={true} />);
+    const typographyTest = getByTestId('typographyTest');
+    expect(typographyTest.tagName).toMatch('P')
+  });
 
 });

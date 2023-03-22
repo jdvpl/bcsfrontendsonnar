@@ -13,10 +13,10 @@ export const ApplicationLoader = () => {
         speed={0.4}
       />
       <Typography
-        style={{ fontFamily: 'Montserrat' }}
         variant="bodyM3"
         id="message-loader"
-        className="Montserrat font-semibold  text-[16px] tracking-wide	text-center leading-5 xl:w-[366px] md:w-[273px] sm:w-[251px] xs:w-[256px]"
+        typeFont='Bold'
+        className="tracking-wide	text-center leading-5 xl:w-[366px] md:w-[273px] sm:w-[251px] xs:w-[256px]"
       >
         Tener vivienda propia pronto <br /> será una realidad
       </Typography>

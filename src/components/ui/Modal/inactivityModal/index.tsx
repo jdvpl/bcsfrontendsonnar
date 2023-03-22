@@ -20,8 +20,9 @@ export function InactivityModal() {
           Ha estado inactivo en los últimos minutos
         </h3>
         <Typography
-          variant="bodyM4"
-          className="mt-[24px] md:mt-[32px] text-center w-[258px] m-auto text-primario-900 font-light text-[18px] leading-5 subpixel-antialiased	font-montserratRegular"
+          variant="bodyM2"
+          typeFont='Regular'
+          className="mt-[24px] md:mt-[32px] text-center w-[258px] m-auto text-primario-900 subpixel-antialiased"
         >
           ¿Desea continuar con la <br />
           solicitud del crédito?
@@ -43,7 +44,7 @@ export function InactivityModal() {
           </button>
           <div>
             <p className="text-gris-30 text-center font-[600] mb-[42px] font-montserratRegular">
-              <Icons icon="bcs-clock" size="text-center text-[20px] text-gris-30" />{' '}
+              <Icons icon="bcs-icon-300" size="text-center text-[20px] text-gris-30" />{' '}
               {timer} Segundos
             </p>
           </div>

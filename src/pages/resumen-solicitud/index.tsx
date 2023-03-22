@@ -58,8 +58,9 @@ function ResumenApplication() {
       </div>
       <div className=" xs:w-[290px] sm:w-[343px]  lg:w-[684px] md:w-[584px] m-auto">
         <Typography
+          typeFont='Bold'
           variant="h2"
-          className="mt-8 mb-[40px] text-center font-poppinsSemiBold"
+          className="mt-8 mb-[40px] text-center"
         >
           Conozca la oferta que hemos
           <br />
