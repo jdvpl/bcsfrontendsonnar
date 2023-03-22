@@ -7,6 +7,7 @@ import { getProcessId } from '../utils';
 const { allResponse, allResponseDecrypted } = useAES();
 import { iPdfLetter } from '../interfaces/ipdfLetter';
 import { RequestRiskBoxes } from '../interfaces/IRequestRiskBoxes'
+import axios from 'axios';
 const KEY = process.env.KEYENCRYPTADIGITAL;
 
 //? this save the authorization data.
@@ -227,7 +228,9 @@ export const fetchSarlaft = async (body: any) => {
 
 export const riskBoxes = async (body: RequestRiskBoxes) => {
   try {
+    // TODO
     const bodyEncrypt = await allResponse({ ...body, processId: getProcessId() }, KEY);
+    const dataBody = { ...body, processId: getProcessId() }
     const response: any = await clientAxiosBackend.post(
       '/api-composer/composer/risk-boxes',
       {
@@ -242,6 +245,7 @@ export const riskBoxes = async (body: RequestRiskBoxes) => {
       error: false,
     };
   } catch (e: any) {
+    console.log(e)
     return { error: true, response: e.response?.data?.message };
   }
 };

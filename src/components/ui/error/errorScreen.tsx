@@ -36,10 +36,10 @@ export const ErrorLayout: React.FC<CardProps> = ({
             title={altsvg}
           />
         </div>
-        <Typography variant='h3' className='text-center mt-[52px] text-primario-900 font-[24px] font-poppinsSemiBold text-[24px]'>
+        <Typography variant='h3' typeFont='Bold' className='text-center mt-[52px] text-primario-900 font-[24px] font-poppinsSemiBold text-[24px]'>
           {title}
         </Typography>
-        <Typography variant='bodyM4' className='text-center mt-3 text-primario-900 font-[18px] font-montserratRegular'>{text}</Typography>
+        <Typography variant='bodyM2' typeFont='Regular' className='text-center mt-3 text-primario-900 font-[18px] font-montserratRegular'>{text}</Typography>
         <div className="flex justify-center mt-8 mb-[20px]">
           {btnactivate ?
             <Button

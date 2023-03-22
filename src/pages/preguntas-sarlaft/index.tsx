@@ -21,7 +21,8 @@ function MoneyLaunderingPage() {
       </div>
       <Typography
         variant="h2"
-        className="text-center font-poppinsSemiBold md:mb-[42px] sm:mb-[33px] xs:mb-[36px] mb-[36px] md:text-[28px] xs:text-[20px] font-semibold text-primario-900"
+        typeFont='Bold'
+        className="text-center md:mb-[42px] sm:mb-[33px] xs:mb-[36px] mb-[36px]  xs:text-[20px]  text-primario-900"
       >
         Confirme la siguiente información
       </Typography>

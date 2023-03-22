@@ -1,5 +1,5 @@
 import SelectiveHomeCards from './../components/ui/Home/SelectiveHomeCards';
-import React, { useEffect } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { deviceType } from 'react-device-detect';
 import TagManager from 'react-gtm-module';
 import { basePath } from '../../next.config';
@@ -13,11 +13,12 @@ import Typography from '../components/ui/Typography';
 import useMediaQueryResponsive from '../hooks/useMediaQuery';
 import { useSessionStorage } from '../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../session';
+import { ConditionalWrapper } from './asesoria';
 
 export default function Home() {
   const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, deviceType);
 
-  const { isMobile, isTablet, heightHeader, isSafari, isMedium, isLG, isSM } =
+  const { isMobile, isTablet, heightHeader, isSafari, isMedium, isLG, isSM, isXXl } =
     useMediaQueryResponsive();
   useEffect(
     () => () => {
@@ -37,11 +38,11 @@ export default function Home() {
   }, []);
   const titleClasses = isSafari
     ? 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-[2rem] md:mt-1 xs:mt-5 lg:mt-[100px]  lg:flex lg:justify-center lg:ml-[40rem]  xs:ml-1 sm:ml-3 lg:mr-40 xl:mt-[150px] xs:mt-[34px] sm:mt-[44px]'
-    : 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-[2rem] md:mt-1 xs:mt-5 lg:mt-[100px]  lg:flex lg:justify-center lg:ml-[40rem]  xs:ml-1 sm:ml-3 lg:mr-40 xl:mt-[150px] xs:mt-[34px] sm:mt-[44px] xxxl:mt-[290px] xxxl:pl-40';
+    : 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-[2rem] md:mt-1 xs:mt-5 lg:mt-[100px]  lg:flex lg:justify-center lg:ml-[40rem]  xs:ml-1 sm:ml-3 lg:mr-40 xl:mt-[150px] xs:mt-[34px] sm:mt-[44px] xxxl:mt-[290px] xxxl:pl-40 xxl:pr-0';
 
   const headerDescriptionClasess = isSafari
     ? 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-0 md:mt-5 xs:mt-[17px] lg:mt-[6px]  lg:flex lg:justify-center lg:ml-[40rem]  ml-5 xxl:pr-10'
-    : 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-0 md:mt-5 xs:mt-[17px] lg:mt-[6px]  lg:flex lg:justify-center lg:ml-[40rem]  ml-5 xxl:pr-10 xxxl:pl-40';
+    : 'xs:flex sm:flex  md:justify-end  sm:pr-6 xs:pt-2 md:pr-0 md:mt-5 xs:mt-[17px] lg:mt-[6px]  lg:flex lg:justify-center lg:ml-[40rem]  ml-5 xxl:pr-1 xxxl:pl-40';
   return (
     <div data-testid="landingPage" className="overflow-hidden landingPage">
       <div
@@ -89,75 +90,127 @@ export default function Home() {
         </div>
         <SelectiveHomeCards isMobile={isMobile} />
       </div>
-      <div className="md:mt-[245px] lg:mt-[240px] sm:mt-[90px] mt-[121px] h-[452px] sm:bg-requirements-sm lg:bg-requirements-lg xl:bg-requirements-xl bg-requirements-xs xxl:bg-requirements-xxl xxxl:bg-requirements-xxxl bg-no-repeat bg-cover md:h-[310px] md:bg-requirements-md lg:h-[370px] xl:h-[360px] xl:mt-[208px] pb-40 xxl:h-[297px] sm:h-[490px] smd:mt-[93px] smd:h-[460px] smd:bg-requirements-smd xxl:mt-[192px]">
+      <div className="md:mt-[245px] lg:mt-[240px] sm:mt-[90px] mt-[121px] h-[642px] sm:bg-requirements-sm lg:bg-requirements-lg xl:bg-requirements-xl bg-requirements-xs xxl:bg-requirements-xxl xxxl:bg-requirements-xxxl bg-no-repeat bg-cover md:h-[396px] md:bg-requirements-md lg:h-[476px] xl:h-[467px] xl:mt-[208px] pb-40 xxl:h-[297px] sm:h-[647px] smd:mt-[93px] smd:h-[640px] smd:bg-requirements-smd xxl:mt-[192px]">
         <div className="lg:w-[1020px] xxl:w-[1100px] md:w-[700px] m-auto xxl:mt-[144px] ">
           <Typography
             variant="h2"
-            className="text-center sm:my-8 xs:my-8 lg:mt-[42px] xl-mt-[42px] md:mt-[26px] font-poppinsSemiBold sm:pt-8 xl:mt-[59px] pt-8 text-[28px] lg:pt-[64px]"
+            typeFont='Bold'
+            className="text-center sm:my-8 xs:my-8 lg:mt-[42px] xl-mt-[42px] md:mt-[26px]  sm:pt-8 xl:mt-[59px] pt-8  lg:pt-[64px]"
           >
             Requisitos
           </Typography>
-          <div className="grid lg:grid-cols-2 xxl:grid-cols-4 md:grid-cols-2 md:gap-3 justify-items-center xxl:flex lg:mt-8">
-            <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
-              <SelectiveCard
-                description="Tener entre 18 y 70 años."
-                onclick={false}
-                hasTitle={false}
-                icon="bcs-document-18"
-                color="text-complementario-100"
-                size="text-[1.6rem]"
-                className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100"
-                classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[100px] lg:w-full"
-              />
-            </div>
-            <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
-            <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
-              <SelectiveCard
-                description="Ser empleado o pensionado."
-                onclick={false}
-                hasTitle={false}
-                icon="bcs-user-heart"
-                color="text-complementario-100"
-                size="text-[2rem]"
-                className="sm:mb-3 xs:mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
-                classNamesDescription="ml-[5px] lg:w-[120px] md:w-[105px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[115px] lg:w-full"
-              />
-            </div>
-            <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
-            <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
-              <SelectiveCard
-                description="Pagar salud y pensión."
-                onclick={false}
-                hasTitle={false}
-                icon="bcs-hand-money"
-                color="text-complementario-100"
-                size="text-[2rem]"
-                className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
-                classNamesDescription="ml-[5px] lg:w-[120px] md:w-[90px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[100px] lg:w-full"
-              />
-            </div>
-            <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
-            <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px]xxl:w-[292px]">
-              <SelectiveCard
-                description="Tener el celular a la mano."
-                onclick={false}
-                hasTitle={false}
-                icon="bcs-mobile-grade"
-                color="text-complementario-100"
-                size="text-[2rem]"
-                className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
-                classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[120px] lg:w-full "
-              />
-            </div>
+          <div className="grid lg:grid-cols-2  md:grid-cols-2 md:gap-3 justify-items-center xxl:flex xxl:flex-col lg:mt-8">
+            <ConditionalWrapper
+              condition={isXXl}
+              wrapper={(children: ReactNode) => (
+                <div className="flex xxl:w-[1130px] justify-evenly">
+                  {children}
+                </div>
+              )}
+            >
+              {/* 1 */}
+              <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[291px] smd:w-[382px]">
+                <SelectiveCard
+                  description="Tener entre 18 y 70 años."
+                  onclick={false}
+                  hasTitle={false}
+                  icon="bcs-icon-33"
+                  color="text-complementario-100"
+                  size="text-[1.6rem]"
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[150px] lg:w-full text-[12px] md:w-full xxl:w-[60%]"
+                />
+              </div>
+              <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
+              {/* 2 */}
+              <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[291px] smd:w-[382px]">
+                <SelectiveCard
+                  description="Pagar salud y pensión."
+                  onclick={false}
+                  hasTitle={false}
+                  icon="bcs-icon-44"
+                  color="text-complementario-100"
+                  size="text-[2rem]"
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[90px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[110px] lg:w-full xxl:w-[57%]"
+                />
+              </div>
+              <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
+              {/* 3 */}
+              <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[292px] smd:w-[382px]">
+                <SelectiveCard
+                  description="Ser empleado o pensionado."
+                  onclick={false}
+                  hasTitle={false}
+                  icon="bcs-icon-7"
+                  color="text-complementario-100"
+                  size="text-[2rem]"
+                  className="sm:mb-3 xs:mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[105px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[125px] lg:w-full md:w-[200px] xxl:w-[60%]"
+                />
+              </div>
+            </ConditionalWrapper>
+
+            <ConditionalWrapper
+              condition={isXXl}
+              wrapper={(children: ReactNode) => (
+                <div className="flex xxl:w-[1130px] justify-evenly">
+                  {children}
+                </div>
+              )}
+            >
+              {/* 4 */}
+              <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[291px] smd:w-[382px]">
+                <SelectiveCard
+                  description="Tener el celular a la mano."
+                  onclick={false}
+                  hasTitle={false}
+                  icon="bcs-icon-300"
+                  color="text-complementario-100"
+                  size="text-[2rem]"
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[160px] lg:w-full md:w-full xxl:w-[65%]"
+                />
+              </div>
+              <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
+              {/* 5 */}
+              <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[292px] smd:w-[382px]">
+                <SelectiveCard
+                  description="Postular como único titular"
+                  onclick={false}
+                  hasTitle={false}
+                  icon="bcs-icon-300"
+                  color="text-complementario-100"
+                  size="text-[2rem]"
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[170px] lg:w-full md:w-full xxl:w-[65%]"
+                />
+              </div>
+              <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
+              {/* 6 */}
+              <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[292px] smd:w-[382px]">
+                <SelectiveCard
+                  description="Solicitar sin subsidios del gobierno"
+                  onclick={false}
+                  hasTitle={false}
+                  icon="bcs-icon-300"
+                  color="text-complementario-100"
+                  size="text-[2rem]"
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[170px] lg:w-full md:w-full xxl:w-[90%]"
+                />
+              </div>
+            </ConditionalWrapper>
           </div>
         </div>
       </div>
       {/* steps  */}
-      <div className="bg-white flex justify-between sm:w-[309px] smd:w-[385px] smd:m-auto xl:w-[1047px] xl:m-auto md:w-full">
+      <div className="bg-white flex justify-between sm:w-[309px] smd:w-[385px] smd:m-auto xl:w-[1047px] xl:m-auto md:w-full lgsm:w-[850px]">
         <div className="lg:ml-[36px] md:ml-[30px] m-auto md:m-0 xl:ml-1 smd:ml-2 ">
           <Typography
             variant="h2"
-            className="md:text-left text-center lg:mt-[149px] xl:mt-[148px] md:mt-[93px] mt-[80px]  font-poppinsSemiBold text-[28px] ml-5 md:ml-0"
+            typeFont='Bold'
+            className="md:text-left text-center lg:mt-[149px] xl:mt-[148px] md:mt-[93px] mt-[80px] ml-5 md:ml-0"
           >
             Tan solo en <span className="block lg:inline">cuatro pasos</span>
           </Typography>
@@ -186,11 +239,12 @@ export default function Home() {
       <div className="md:mt-[100px] mt-[80px] lg:mt-20">
         <Typography
           variant="h2"
-          className=" text-center lg:mb-[105px] text-[32px] font-poppinsSemiBold md:mt-0 mt-[66px]"
+          typeFont='Bold'
+          className=" text-center lg:mb-[105px]  md:mt-0 mt-[66px]"
         >
           Beneficios
         </Typography>
-        <div className="bgBenefits md:grid md:grid-cols-2 sm:grid sm:grid-col-1 xs:mt-[12rem] md:mt-[5rem] relative md:h-[314px] gap-5 h-[520px] sm:h-[532px] lg:h-[400px]">
+        <div className=" md:w-[700px] lgsm:w-[850px] lg:w-[1000px] xl:w-[1100px] xxl:w-[1200px] bgBenefits md:grid md:grid-cols-2 sm:grid sm:grid-col-1 xs:mt-[12rem] md:mt-[5rem] relative md:h-[314px] gap-5 h-[520px] sm:h-[532px] lg:h-[400px]">
           <div className="relative xs:top-[-140px]  md:top-[-25px] flex justify-center md:justify-end ">
             <img
               src={`${basePath}/images/beneficios.png`}
@@ -198,8 +252,8 @@ export default function Home() {
               className="lg:w-[279px] lg:h-[451px] md:w-[220px] sm:w-[278px] sm:h-[448px] h-[409px] md:h-[354px]"
             />
           </div>
-          <div className="listInitial lg:w-[440px] relative block mx-5 sm:top-[-128px] xs:top-[-110px] md:top-0 xs:w-[260px] sm:w-[90%] smd:w-[80%] smd:m-auto md:mt-[-20px] md:w-[70%] lg:mt-0 xxxl:ml-10">
-            <ul className="font-monserratLight mb-0 ">
+          <div className="listInitial  lg:w-[440px] relative block mx-5 sm:top-[-128px] xs:top-[-110px] md:top-0 xs:w-[260px] sm:w-[90%] smd:w-[80%] smd:m-auto md:mt-[-20px] md:place-items-center lg:mt-0 xxxl:ml-10">
+            <ul className="font-monserratLight mb-0">
               <li className="lg:text-[20px] text-[16px] font-light leading-[22px] lg:mt-[127px] md:mt-20 text-complementario-100 ">
                 Preaprobación inmediata en línea
               </li>
@@ -209,10 +263,7 @@ export default function Home() {
               <li className="lg:text-[20px] text-[16px] font-light leading-[22px] mt-3 text-complementario-100">
                 Para clientes y no clientes
               </li>
-              <li className="lg:text-[20px] text-[16px] font-normal leading-[22px] mt-3 text-complementario-100 ">
-                Abonos extraordinarios a capital para reducir el plazo o el valor de la
-                cuota
-              </li>
+
             </ul>
           </div>
         </div>
@@ -221,6 +272,6 @@ export default function Home() {
       <div className=" md:mx-[92px] lg:mt-[10px] ">
         <Questions />
       </div>
-    </div>
+    </div >
   );
 }

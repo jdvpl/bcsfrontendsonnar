@@ -23,6 +23,10 @@ export default function useMediaQueryResponsive() {
   const isLG = useMediaQuery({
     query: "(min-width: 1080px)"
   })
+  const isXXl = useMediaQuery({
+    query: "(min-width: 1440px)"
+  })
+
   const isMedium = useMediaQuery({
     query: "(min-width: 744px)"
   })
@@ -36,6 +40,7 @@ export default function useMediaQueryResponsive() {
     isSM,
     isMD,
     isLG,
+    isXXl,
     heightHeader,
     isSafari,
     isEdge, isFirefox, isOpera, isMedium
