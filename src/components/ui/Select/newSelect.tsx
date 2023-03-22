@@ -53,7 +53,7 @@ const ReactHookFormSelect: React.FC<any> = ({
         </svg>
       </div>
       <label
-        className={`${haveValue ? "-top-[6.5px] z-10 left-2 bg-white px-1 text-[10px] leading-[12px]" : "left-3 text-[14px] leading-[16px] top-2/4 -translate-y-2/4"} absolute  font-montserratRegular ${error ? "text-rojo-20" : "text-complementario-100 hover:text-complementario-100 peer-focus:hover:text-complementario-100"}`}
+        className={`${haveValue || control?._formValues?.[name] ? "-top-[6.5px] z-10 left-2 bg-white px-1 text-[10px] leading-[12px]" : "left-3 text-[14px] leading-[16px] top-2/4 -translate-y-2/4"} absolute  font-montserratRegular ${error ? "text-rojo-20" : "text-complementario-100 hover:text-complementario-100 peer-focus:hover:text-complementario-100"}`}
         htmlFor={labelId}
         id={labelId}
       >
