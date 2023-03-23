@@ -44,7 +44,7 @@ export function InactivityModal() {
           </button>
           <div>
             <p className="text-gris-30 text-center font-[600] mb-[42px] font-montserratRegular">
-              <Icons icon="bcs-icon-300" size="text-center text-[20px] text-gris-30" />{' '}
+              <Icons icon="bcs-icon-15" size="text-center text-[20px] text-gris-30" />{' '}
               {timer} Segundos
             </p>
           </div>

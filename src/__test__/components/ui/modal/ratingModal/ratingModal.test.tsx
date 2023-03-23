@@ -17,6 +17,6 @@ describe('<RatingModal />', () => {
   test('should find the icon', () => {
     const iconRating = component.getByTestId("iconRating");
     expect(iconRating.tagName).toMatch('I');
-    expect(iconRating).toHaveClass('bcs-icon-300')
+    expect(iconRating).toHaveClass('bcs-icon-23')
   })
 });

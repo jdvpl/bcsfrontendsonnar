@@ -145,7 +145,7 @@ function ApplicationApproval({ modalExit = false }: any) {
             id="btn-next"
           >
             <span className="font-medium font-monserratLight text-[18px]">
-              <Icons icon="bcs-icon-300" /> Carta de preaprobación
+              <Icons icon="bcs-icon-49" /> Carta de preaprobación
             </span>
           </Button>
         </div>

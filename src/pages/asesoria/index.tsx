@@ -185,7 +185,7 @@ function Consultancy() {
             >
               <div className="rounded-full xs:w-[24px] md:w-[40px] md:order-1 xs:order-2 xs:h-[24px] md:h-[40px] border-primario-300 flex justify-center items-center border-2 md:mb-[33px]">
                 <Icons
-                  icon="bcs-icon-28"
+                  icon="bcs-icon-337"
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
                 />
               </div>

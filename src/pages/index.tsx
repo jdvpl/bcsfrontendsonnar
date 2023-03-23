@@ -114,11 +114,11 @@ export default function Home() {
                   description="Tener entre 18 y 70 años."
                   onclick={false}
                   hasTitle={false}
-                  icon="bcs-icon-33"
-                  color="text-complementario-100"
+                  icon="bcs-icon-37"
+                  color="text-complementario-100 cursor-default"
                   size="text-[1.6rem]"
-                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100"
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[150px] lg:w-full text-[12px] md:w-full xxl:w-[60%]"
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100 cursor-default "
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[150px] lg:w-full text-[12px] md:w-full xxl:w-[60%] cursor-default"
                 />
               </div>
               <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
@@ -128,11 +128,11 @@ export default function Home() {
                   description="Pagar salud y pensión."
                   onclick={false}
                   hasTitle={false}
-                  icon="bcs-icon-44"
-                  color="text-complementario-100"
+                  icon="bcs-icon-7"
+                  color="text-complementario-100 cursor-default"
                   size="text-[2rem]"
-                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[90px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[110px] lg:w-full xxl:w-[57%]"
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100 cursor-default"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[90px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[110px] lg:w-full xxl:w-[57%] cursor-default"
                 />
               </div>
               <div className="w-[2px] hidden  bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
@@ -142,11 +142,11 @@ export default function Home() {
                   description="Ser empleado o pensionado."
                   onclick={false}
                   hasTitle={false}
-                  icon="bcs-icon-7"
-                  color="text-complementario-100"
+                  icon="bcs-icon-14"
+                  color="text-complementario-100 cursor-default"
                   size="text-[2rem]"
                   className="sm:mb-3 xs:mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[105px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[125px] lg:w-full md:w-[200px] xxl:w-[60%]"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[105px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[125px] lg:w-full md:w-[200px] xxl:w-[60%] cursor-default"
                 />
               </div>
             </ConditionalWrapper>
@@ -165,7 +165,7 @@ export default function Home() {
                   description="Tener el celular a la mano."
                   onclick={false}
                   hasTitle={false}
-                  icon="bcs-icon-300"
+                  icon="bcs-icon-33"
                   color="text-complementario-100"
                   size="text-[2rem]"
                   className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
@@ -179,7 +179,7 @@ export default function Home() {
                   description="Postular como único titular"
                   onclick={false}
                   hasTitle={false}
-                  icon="bcs-icon-300"
+                  icon="bcs-icon-764"
                   color="text-complementario-100"
                   size="text-[2rem]"
                   className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
@@ -193,7 +193,7 @@ export default function Home() {
                   description="Solicitar sin subsidios del gobierno"
                   onclick={false}
                   hasTitle={false}
-                  icon="bcs-icon-300"
+                  icon="bcs-icon-1484"
                   color="text-complementario-100"
                   size="text-[2rem]"
                   className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"

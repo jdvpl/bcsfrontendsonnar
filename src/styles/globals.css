@@ -955,6 +955,11 @@ input[type='checkbox']:checked {
   accent-color: #0386e6 !important;
 } */
 
+input[type='checkbox']:checked {
+  accent-color: #0386e6 !important;
+}
+
+
 .listInitial ul {
   list-style: none;
 }

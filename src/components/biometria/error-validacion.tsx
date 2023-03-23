@@ -14,7 +14,7 @@ const ValidationMessageBiometry: React.FC = () => (
         <LogoBcs />
       </div>
       <div className="xs:block sm:block lg:hidden mt-4 cursor-pointer" onClick={() => router.back()} data-testid="getbackRouteTest">
-        <Icons icon='bcs-icon-300' size="text-[1.2rem]" />
+        <Icons icon='bcs-icon-44' size="text-[1.2rem]" />
       </div>
       <div className="mt-4 w-[180px] md:w-[180px] lg:w-[280px]">
         <LogoForm />

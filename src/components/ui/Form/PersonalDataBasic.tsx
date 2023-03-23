@@ -90,7 +90,8 @@ function PersonalDataBasic({ userInfo }: any) {
       )}
       <div className="w-full">
         <form onSubmit={handleSubmit(onSubmit)} data-testid="personaldataTest">
-          <div className="grid grid-cols-3 gap-x-2 items-end">
+
+          {!userInfo.isClient && <div className="grid grid-cols-3 gap-x-2 items-end">
             <div>
               <p className="text-[10px] w-full font-montserratRegular font-medium text-complementario-100 mb-3">
                 Fecha de nacimiento:
@@ -109,7 +110,7 @@ function PersonalDataBasic({ userInfo }: any) {
                 margin="normal"
                 onFocus={showPopup}
                 disabled={showModal}
-                rules={{ required: true }}
+                rules={{ required: !userInfo.isClient }}
                 spacing="mr-[6px]"
               >
                 {days?.map((element, i) => (
@@ -133,7 +134,7 @@ function PersonalDataBasic({ userInfo }: any) {
               onFocus={showPopup}
               disabled={showModal}
               hideMenuItem={showModal}
-              rules={{ required: true }}
+              rules={{ required: !userInfo.isClient }}
               spacing="mr-[6px]"
             >
               {months.map((element, i) => (
@@ -146,7 +147,7 @@ function PersonalDataBasic({ userInfo }: any) {
             <Controller
               name="yearDt"
               control={control}
-              rules={{ required: true }}
+              rules={{ required: !userInfo.isClient }}
               render={({ field }) => (
                 <Input
                   // containerClassName="col-span-2"
@@ -169,7 +170,7 @@ function PersonalDataBasic({ userInfo }: any) {
               )}
             />
           </div>
-
+          }
 
           <div className="w-full mt-4">
             <Controller
@@ -288,7 +289,7 @@ function PersonalDataBasic({ userInfo }: any) {
                 render={() => (
                   <Input
                     type="text"
-                    startIcon='bcs-icon-300'
+                    startIcon='bcs-icon-1'
                     error={!!errors.birthCity}
                     onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                       e.preventDefault();
@@ -352,7 +353,7 @@ function PersonalDataBasic({ userInfo }: any) {
                     }
                     helperTextOption
                     type="text"
-                    startIcon='bcs-icon-7'
+                    startIcon='bcs-icon-1'
                     error={!!errors.currentAddress}
                     onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                       e.preventDefault();
