@@ -1,22 +1,21 @@
 import React, { HTMLAttributes } from 'react';
 import cn from 'classnames';
-
-export type TagType = 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'span';
-
 export type HeadingType = HTMLAttributes<HTMLHeadingElement>;
 export type ParagraphType = HTMLAttributes<HTMLParagraphElement>;
 export type SpanType = HTMLAttributes<HTMLSpanElement>;
-export type TypeFont = 'Bold' | 'Regular' | 'Light'
-export type Variants = 'h1' | 'h2' | 'h3' | 'h4' | 'bodyM1' | 'bodyM2' | 'bodyM3' | 'caption1' | 'caption2' | 'overline1' | 'overline2';
-export type TypographyProps = (HeadingType | ParagraphType | SpanType) & { variant: Variants } & { typeFont?: TypeFont };
+export type ULType = HTMLAttributes<HTMLUListElement>;
+export type AType = HTMLAttributes<HTMLAnchorElement>;
 
-const headings = ['h1', 'h2', 'h3', 'h4', 'h5'];
-const paragraphs = [
-  'bodyM1',
-  'bodyM2',
-  'bodyM3',
-];
+
+export type TypeFont = 'Bold' | 'Regular' | 'Light'
+export type Variants = 'h1' | 'h2' | 'h3' | 'h4' | 'bodyM1' | 'bodyM2' | 'bodyM3' | 'caption1' | 'caption2' | 'overline1' | 'overline2' | 'ul' | 'a';
+export type TypographyProps = (HeadingType | ParagraphType | SpanType | ULType | AType) & { variant: Variants } & { typeFont?: TypeFont };
+
+const headings = ['h1', 'h2', 'h3', 'h4'];
+const paragraphs = ['bodyM1', 'bodyM2', 'bodyM3'];
 const spans = ['caption1', 'caption2', 'overline1', 'overline2'];
+const listUl = ['ul'];
+const alist = ['a'];
 function Typography({
   children,
   variant = 'bodyM1',
@@ -60,7 +59,7 @@ function Typography({
         lineHeight: "16px",
       },
       caption2: {
-        fontSize: "14px",
+        fontSize: "12px",
         lineHeight: "16px",
       },
       overline1: {
@@ -71,10 +70,18 @@ function Typography({
         fontSize: "10px",
         lineHeight: "12px",
       },
+      ul: {
+        fontSize: "16px",
+        lineHeight: "18px",
+      },
+      a: {
+        fontSize: "16px",
+        lineHeight: "18px",
+      }
     };
     const style = styleMap[variant] || {};
     const fontStyle = fontStyles();
-    return `text-${style.fontSize} leading-${style.lineHeight} ${fontStyle}`;
+    return `text-[${style.fontSize}] leading-[${style.lineHeight}] ${fontStyle}`;
   };
 
   const fontStyles = () => {
@@ -116,7 +123,17 @@ function Typography({
         Bold: 'font-montserratMedium',
         Regular: 'font-montserratRegular',
         Light: 'font-monserratLight'
-      }
+      },
+      ul: {
+        Bold: 'font-montserratMedium',
+        Regular: 'font-montserratRegular',
+        Light: 'font-montserratExtraLight'
+      },
+      a: {
+        Bold: 'font-montserratMedium',
+        Regular: 'font-montserratRegular',
+        Light: 'font-montserratExtraLight'
+      },
     };
     const fontVariant = Object.keys(fontVariants).find((variantKey) => variant.startsWith(variantKey));
     const fontStylesForVariant = fontVariants[fontVariant || ''];
@@ -131,7 +148,9 @@ function Typography({
     [`${variant}`]: headings.includes(variant),
     [`p`]: paragraphs.includes(variant),
     [`span`]: spans.includes(variant),
-  }) as TagType;
+    [`ul`]: listUl.includes(variant),
+    [`a`]: alist.includes(variant),
+  }) as any;
 
   return (
     <Tag {...props} className={`${className} ${componentStyles()}`} data-testid="typographyTest">

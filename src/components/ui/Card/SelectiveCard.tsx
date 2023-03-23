@@ -48,29 +48,30 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
           icon={icon}
           color={color}
           size={size}
-          iconclassNames="group-hover:text-white cursor-pointer"
+          iconclassNames={`group-hover:text-white ${hasTitle && 'cursor-pointer'} `}
         />
       </div>
       <label className="label-shipping" htmlFor="shipping-home cursor-pointer">
-        <div className='cursor-pointer'>
+        <div className={`${hasTitle && 'cursor-pointer'}`}>
           {hasTitle && (
             <Typography
               variant="bodyM2"
               typeFont='Bold'
-              className={` lg:mt-[14px] lg:mb-[18px] leading-[1.125rem]  m-0 tracking-normal font-semibold cursor-pointer group-hover:text-white ${titleClasses} ${activeClasses}`}
+              className={` lg:mt-[14px] lg:mb-[18px]  m-0 tracking-normal ${hasTitle && 'cursor-pointer'} group-hover:text-white ${titleClasses} ${activeClasses}`}
             >
               {label}
             </Typography>
           )}
           <Typography
             variant="bodyM3"
-            className={`hasTitle leading-[1.125rem]  text-[1rem]  mt-2 group-hover:text-white font-ligth cursor-pointer ${classNamesDescription} ${activeClassesDesc}`}
+            typeFont='Regular'
+            className={`hasTitle  mt-2 group-hover:text-white  ${hasTitle && 'cursor-pointer'} ${classNamesDescription} ${activeClassesDesc}`}
           >
             {description}
           </Typography>
         </div>
-      </label>
-    </div>
+      </label >
+    </div >
   );
 };
 

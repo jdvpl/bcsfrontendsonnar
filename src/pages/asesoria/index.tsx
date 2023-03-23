@@ -12,6 +12,7 @@ import Typography from '../../components/ui/Typography';
 import { stepperTitles, titleSection } from '../../components/custom/consultancy/consultancy';
 import useConsultancy from './useConsultancy';
 import TagManager from 'react-gtm-module';
+import Header from '../../components/ui/Headers/Header';
 
 export const ConditionalWrapper: FC<any> = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
@@ -27,7 +28,7 @@ function Consultancy() {
   });
   const router = useRouter();
 
-  const { nextStep, prevStep, openModal, onCloseModal, renderContent, OptionList } =
+  const { nextStep, prevStep, onCloseModal, renderContent, OptionList } =
     useConsultancy({
       actualStep,
       setActualStep,
@@ -66,22 +67,10 @@ function Consultancy() {
       ) : null}
 
       {/* Header */}
+      <Header />
       <div className="w-[90%] xs:w-[95%] md:w-[90%] m-auto">
-        <div className="flex justify-between lg:w-[1080px] mx-auto mb-[38px] xs:mt-[36px] md:mt-[64px] lg:mb-[82px] lg:mt-[59px] lg:h-[29px] h-[18px]">
-          <div className="hidden lg:block">
-            <LogoBcs />
-          </div>
-          <div className="lg:hidden cursor-pointer">
-            <a href={basePath}>
-              <Icons icon="bcs-icon-1506" />
-            </a>
-          </div>
-          <div className="lg:w-[280px] w-[180px]">
-            <LogoForm />
-          </div>
-        </div>
 
-        <div className="lg:w-[825px] mx-auto md:w-[528px] w-[full] xs:w-full">
+        <div className="lg:w-[825px] mx-auto md:w-[528px] w-[full] xs:w-full lg:mt-[82px] mt-[22px]">
           <Stepper
             steps={4}
             actualStep={actualStep}
