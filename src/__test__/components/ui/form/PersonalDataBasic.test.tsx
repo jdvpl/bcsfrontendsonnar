@@ -37,7 +37,7 @@ describe('<PersonalDataBasic/>', () => {
     const { getByTestId, queryByTestId } = render(<RouterContext.Provider value={router} >
       <PersonalDataBasic userInfo={userInfo} />
     </RouterContext.Provider >);
-    const yearDtTest = getByTestId('yearDtTest');
+    const yearDtTest = getByTestId('phoneTest');
     fireEvent.focus(yearDtTest);
     const modalDataTest = queryByTestId('modalDataTest');
     expect(modalDataTest).toBeInTheDocument()

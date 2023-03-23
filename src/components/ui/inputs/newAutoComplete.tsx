@@ -72,7 +72,7 @@ const NewAutoComplete: React.FC<InputProps> = ({
         {internalState ? label : placeholder}
       </label>
       {/* eslint-disable-line no-use-before-define */}
-      <Icons icon="bcs-icon-300" size="text-[17px] absolute left-2 top-[15px]  " />
+      <Icons icon="bcs-icon-2" size="text-[17px] absolute left-2 top-[15px]  " />
       <div className="" id={id}>
         <Autocomplete
           filterOptions={filterOptions}

@@ -13,7 +13,7 @@ const Alert: FC<propAlert> = ({ message, colorMessage = 'text-[#2F6EAE]', bgBann
     role="alert"
   >
     <span className="absolute top-[10px]  left-0 flex items-center px-3">
-      <Icons icon="bcs-icon-300" color="text-[#2F6EAE]" size='text-[16px]' />
+      <Icons icon="bcs-icon-51" color="text-[#2F6EAE]" size='text-[16px]' />
     </span>
     <span className={`font-montserratRegular block ml-6 mr-3 font-normal text-[12px] ${colorMessage}`}>
       {' '}
