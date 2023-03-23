@@ -10,12 +10,12 @@ const Questions: FC = () => {
       className="mb-[15vh] lg:mb-[10vh] flex flex-col m-auto lg:w-[920px] md:w-[587px] sm:w-[343px] w-[286px]"
       itemScope
       itemType="https://schema.org/FAQPage"
+      role="tabpanel"
+      tabIndex={0}
     >
       <h2
         id="questions"
         className="text-center min-w-[291px] lg:mb-[48px] mt-[80px]  md:mb-[48px] md:mt-[80px] w-full text-[28px] leading-[34px]  mb-8 lg:text-[32px] lg:leading-[34px] font-poppinsSemiBold"
-        role="paragraph"
-        tabIndex={0}
       >
         Preguntas frecuentes
       </h2>
