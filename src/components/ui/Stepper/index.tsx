@@ -1,5 +1,6 @@
 import React from 'react';
 import NoSSRWrapper from '../../../hooks/noSSR';
+import Typography from '../Typography';
 
 interface stepsProps {
   steps: number;
@@ -21,11 +22,13 @@ function Stepper({
   return (
     <NoSSRWrapper>
       <div className={className}>
-        <p
-          className={`text-[12px] leading-4 text-primario-900 font-semibold font-montserratRegular ${classTitle}`}
+        <Typography
+          variant='caption2'
+          typeFont='Bold'
+          className={`text-primario-900  ${classTitle}`}
         >
           {title}
-        </p>
+        </Typography>
         <div className="w-full flex gap-1 my-2">
           {renderSteps?.map((item, index) => (
             <div className="w-full bg-complementario-80" key={index}>
@@ -34,22 +37,23 @@ function Stepper({
                   style={{
                     width: `${actualStep === index + 1 ? percentage : '100'}%`,
                   }}
-                  className={`bg-${
-                    actualStep >= index + 1 ? 'primario-20' : 'complementario-80'
-                  } h-1`}
+                  className={`bg-${actualStep >= index + 1 ? 'primario-20' : 'complementario-80'
+                    } h-1`}
                 />
               </div>
             </div>
           ))}
         </div>
-        <p
+        <Typography
+          variant='caption2'
+          typeFont='Regular'
           tabIndex={0}
           role="paragraph"
           className="text-complementario-100 text-xs ln-16 font-montserratRegular"
           data-testid="stepNumber"
         >
           Paso {actualStep} de {steps}
-        </p>
+        </Typography>
       </div>
     </NoSSRWrapper>
   );

@@ -37,10 +37,15 @@ describe('Typography', () => {
     const element = getByTestId("typographyTest").tagName
     expect(element).toMatch('P');
   });
+  it('renders UL correctly', () => {
+    const { getByTestId } = render(<Typography variant='ul'>Example text</Typography>);
+    const element = getByTestId("typographyTest").tagName
+    expect(element).toMatch('UL');
+  });
 
   it('applies the correct variant class', () => {
     render(<Typography variant="h1">Example text</Typography>);
-    expect(screen.getByTestId('typographyTest')).toHaveClass('text-32px leading-36px');
+    expect(screen.getByTestId('typographyTest')).toHaveClass('text-[32px] leading-[36px]');
   });
 
   it('applies the correct font class', () => {

@@ -6,7 +6,7 @@ export interface IconsProps {
   icon?: IconListAvailable;
   size?: string;
   color?: string;
-  title: string;
+  title?: string;
   iconclassNames?: string;
 }
 
@@ -14,7 +14,7 @@ export const Icons: FC<IconsProps> = ({
   icon,
   size,
   color,
-  title,
+  title = icon,
   iconclassNames = '',
   ...props
 }) => (

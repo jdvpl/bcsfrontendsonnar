@@ -52,30 +52,30 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
           icon={icon}
           color={color}
           size={size}
-          iconclassNames="group-hover:text-white cursor-pointer"
-          title={title}
+          iconclassNames={`group-hover:text-white ${hasTitle && 'cursor-pointer'} `}
         />
       </div>
-      <label className="label-shipping" htmlFor="shipping-home">
-        <div className="cursor-pointer">
+      <label className="label-shipping" htmlFor="shipping-home cursor-pointer">
+        <div className={`${hasTitle && 'cursor-pointer'}`}>
           {hasTitle && (
             <Typography
               variant="bodyM2"
-              typeFont="Bold"
-              className={`lg:mt-[14px] lg:mb-[18px] leading-[1.125rem] m-0 tracking-normal cursor-pointer font-semibold group-hover:text-white ${titleClasses} ${activeClasses}`}
+              typeFont='Bold'
+              className={` lg:mt-[14px] lg:mb-[18px]  m-0 tracking-normal ${hasTitle && 'cursor-pointer'} group-hover:text-white ${titleClasses} ${activeClasses}`}
             >
               {label}
             </Typography>
           )}
           <Typography
             variant="bodyM3"
-            className={`hasTitle leading-[1.125rem] text-[1rem] mt-2 group-hover:text-white cursor-pointer font-ligth ${classNamesDescription} ${activeClassesDesc}`}
+            typeFont='Regular'
+            className={`hasTitle  mt-2 group-hover:text-white  ${hasTitle && 'cursor-pointer'} ${classNamesDescription} ${activeClassesDesc}`}
           >
             {description}
           </Typography>
         </div>
-      </label>
-    </div>
+      </label >
+    </div >
   );
 };
 
