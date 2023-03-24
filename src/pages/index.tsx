@@ -127,8 +127,7 @@ export default function Home() {
                   color="text-complementario-100"
                   size="text-[1.6rem]"
                   className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100 "
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full    mb-3 md:text-[15px] lg:text-[16px] xs:w-[150px] lg:w-full text-[12px] md:w-full xxl:w-[60%] "
-                />
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full    mb-3 md:text-[15px] lg:text-[16px] xs:w-[150px] lg:w-full text-[12px] md:w-full xxl:w-[60%] " title={''} />
               </div>
               <div className="w-[2px] hidden bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
               {/* 2 */}
