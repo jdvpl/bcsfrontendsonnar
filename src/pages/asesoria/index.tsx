@@ -9,7 +9,10 @@ import LogoForm from '../../components/svg/LogoForm';
 import { Icons } from '../../components/ui/icons';
 import Stepper from '../../components/ui/Stepper';
 import Typography from '../../components/ui/Typography';
-import { stepperTitles, titleSection } from '../../components/custom/consultancy/consultancy';
+import {
+  stepperTitles,
+  titleSection,
+} from '../../components/custom/consultancy/consultancy';
 import useConsultancy from './useConsultancy';
 import TagManager from 'react-gtm-module';
 
@@ -73,7 +76,7 @@ function Consultancy() {
           </div>
           <div className="lg:hidden cursor-pointer">
             <a href={basePath}>
-              <Icons icon="bcs-icon-1506" />
+              <Icons icon="bcs-icon-1506" title="" />
             </a>
           </div>
           <div className="lg:w-[280px] w-[180px]">
@@ -90,7 +93,7 @@ function Consultancy() {
           />
           <Typography
             variant="h2"
-            typeFont='Bold'
+            typeFont="Bold"
             className="lg:w-[515px] md:w-[445px] sm:w-[303px] w-[303px] mx-auto lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center"
           >
             {titleSection[actualStep - 1]}
@@ -106,8 +109,9 @@ function Consultancy() {
         />
 
         <div
-          className={`${itemActive !== '' ? 'sm:ml-[-95px]' : ''
-            } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
+          className={`${
+            itemActive !== '' ? 'sm:ml-[-95px]' : ''
+          } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
           style={{
             backgroundImage: `url(${basePath}/images/consultancy/${actualStep}.svg)`,
             backgroundRepeat: 'no-repeat',
@@ -171,6 +175,7 @@ function Consultancy() {
                 <Icons
                   icon="bcs-icon-1506"
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
+                  title=""
                 />
               </div>
               <a className="text-primario-300 font-bold font-montserratRegular text-center text-[14px] ">
@@ -187,6 +192,7 @@ function Consultancy() {
                 <Icons
                   icon="bcs-icon-337"
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
+                  title=""
                 />
               </div>
               <a className=" text-primario-300 font-montserratRegular  md:order-2 xs:order-1 font-bold text-center text-[14px]">
@@ -205,8 +211,9 @@ function Consultancy() {
 
       {/* Link to Home */}
       <div
-        className={`w-full text-center mb-[80px] xs:hidden md:block${actualStep === 1 || actualStep === 4 ? 'hidden' : ''
-          }`}
+        className={`w-full text-center mb-[80px] xs:hidden md:block${
+          actualStep === 1 || actualStep === 4 ? 'hidden' : ''
+        }`}
       >
         <a
           href={`${basePath}`}

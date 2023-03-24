@@ -1,29 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import LogoBcs from '../../components/svg/LogoBcs'
-import LogoForm from '../../components/svg/LogoForm'
+import LogoBcs from '../../components/svg/LogoBcs';
+import LogoForm from '../../components/svg/LogoForm';
 import { basePath } from '../../../next.config';
 import Typography from '../../components/ui/Typography';
-import Button from '../../components/ui/Button'
+import Button from '../../components/ui/Button';
 import Icons from '../../components/ui/icons';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../session';
 import AnimationComponent from '../../components/commons/Animation';
 import TagManager from 'react-gtm-module';
-import useAuthentication from '../../hooks/useAuthentication'
+import useAuthentication from '../../hooks/useAuthentication';
 import useProtectedRoutes from '../../hooks/useProtectedRoutes';
 import DynamicText from '../../components/custom/DynamicText';
 
 function Authentication() {
   const router = useRouter();
   const [, setDataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, {});
-  const [dataUser,] = useSessionStorage(
-    SesionStorageKeys.dataUser.key,
-    {}
-  );
+  const [dataUser] = useSessionStorage(SesionStorageKeys.dataUser.key, {});
   const [showAnimation, setShowAnimation] = useState(false);
   const [validated, setValidated] = useState(false);
-  const [loaded,] = useState(false);
+  const [loaded] = useState(false);
   useEffect(() => {
     TagManager.dataLayer({
       dataLayer: {
@@ -33,20 +30,32 @@ function Authentication() {
         label: 'load_onboarding_auth',
       },
     });
-
-  }, []
-  );
+  }, []);
   const { setCurrentRouting } = useProtectedRoutes();
-  const { onSubmit, isBrowser } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, setCurrentRouting);
+  const { onSubmit, isBrowser } = useAuthentication(
+    setShowAnimation,
+    setValidated,
+    dataUser,
+    setDataQuestions,
+    router,
+    setCurrentRouting
+  );
   return (
     <div>
-      {showAnimation ? <AnimationComponent show="" valid={validated} loaded={loaded} /> : null}
+      {showAnimation ? (
+        <AnimationComponent show="" valid={validated} loaded={loaded} />
+      ) : null}
       <div className="container flex lg:mt-[0] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-between  ">
         <div className="mt-4 hidden md:block lg:block">
           <LogoBcs />
         </div>
-        <div className="xs:block sm:block md:hidden lg:hidden mt-6 cursor-pointer xs:ml-4" onClick={() => router.back()} role="btnGoBack" data-testid="getbackRouteTest">
-          <Icons icon='bcs-icon-44' size="text-[1.2rem]" />
+        <div
+          className="xs:block sm:block md:hidden lg:hidden mt-6 cursor-pointer xs:ml-4"
+          onClick={() => router.back()}
+          role="btnGoBack"
+          data-testid="getbackRouteTest"
+        >
+          <Icons icon="bcs-icon-44" size="text-[1.2rem]" title="" />
         </div>
         <div className="mt-6 w-[180px] md:w-[180px] lg:w-[280px] xs:mr-4">
           <LogoForm />
@@ -56,11 +65,13 @@ function Authentication() {
         <div className="mt-20 lg:h-[300px] md:w-[350px] md:h-[300px] sm:w-[234px] sm:h-[200px] xs:h-[200px] xs:w-[234px] m-auto ">
           <img src={`${basePath}/images/authentication.svg`} alt="" />
         </div>
-        <Typography variant='h3' typeFont='Bold' className='text-center mt-[52px] text-primario-900'>
-          Por seguridad <span className='xs:block sm:inline'>validaremos</span>
-          <span className="block">
-            su información
-          </span>
+        <Typography
+          variant="h3"
+          typeFont="Bold"
+          className="text-center mt-[52px] text-primario-900"
+        >
+          Por seguridad <span className="xs:block sm:inline">validaremos</span>
+          <span className="block">su información</span>
         </Typography>
         <DynamicText isBrowser={isBrowser} />
 
@@ -78,7 +89,7 @@ function Authentication() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Authentication;

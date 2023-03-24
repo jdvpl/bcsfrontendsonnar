@@ -64,7 +64,7 @@ export default function useConsultancyTutorial({
           <>
             <Typography
               variant="h2"
-              typeFont='Bold'
+              typeFont="Bold"
               className="font-montserratSemiBold xl:leading-[34px] md:leading-[30px] xs:leading-[22px] text-center mx-auto text-white xs:text-[18px] md:text-[26px] xl:text-[28px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
             >
               Acompáñenos en un corto recorrido antes de iniciar la guía interactiva y
@@ -87,7 +87,11 @@ export default function useConsultancyTutorial({
               </button>
 
               <div className="flex gap-[5px]">
-                <Icons icon="bcs-icon-1002" iconclassNames="text-white text-[14px]" />{' '}
+                <Icons
+                  icon="bcs-icon-1002"
+                  iconclassNames="text-white text-[14px]"
+                  title="Tiempo"
+                />{' '}
                 <span className="text-white text-[14px] font-montserratRegular font-medium">
                   {' '}
                   {timer} Segundos
@@ -326,14 +330,16 @@ export default function useConsultancyTutorial({
                     key={item}
                     variant="secondary"
                     // ${itemActive && !isMobile === option?.label ? 'translate-x-[16px]' : ''}
-                    isLanding={`p-0 z-10 md:w-[253px] ${item === 1 ? 'md:translate-x-[20px]' : ''
-                      } xs:w-[100%] font-semibold rounded-[8px] lg:h-48px 
+                    isLanding={`p-0 z-10 md:w-[253px] ${
+                      item === 1 ? 'md:translate-x-[20px]' : ''
+                    } xs:w-[100%] font-semibold rounded-[8px] lg:h-48px 
                       ${item === 1 ? 'bg-primario-100' : 'bg-white'} `}
                   >
                     <div className="flex justify-center">
                       <span
-                        className={`text-center ${item === 1 ? 'text-white' : 'text-primario-100'
-                          }  text-[18px] p-0 font-medium font-montserratMedium`}
+                        className={`text-center ${
+                          item === 1 ? 'text-white' : 'text-primario-100'
+                        }  text-[18px] p-0 font-medium font-montserratMedium`}
                       >
                         Tema {item}
                       </span>
@@ -383,7 +389,11 @@ export default function useConsultancyTutorial({
         return (
           <>
             <div className="w-[48px] h-[48px] rounded-full mx-auto border-white border-[1px] flex justify-center items-center mb-[45px]">
-              <Icons icon="bcs-icon-100" iconclassNames="text-white" />
+              <Icons
+                icon="bcs-icon-100"
+                iconclassNames="text-white"
+                title="Información"
+              />
             </div>
             <Typography
               variant="h2"
@@ -405,7 +415,7 @@ export default function useConsultancyTutorial({
     }
   };
 
-  const saveOpenTutorial = () => { };
+  const saveOpenTutorial = () => {};
 
   useEffect(() => {
     setIsOpen(!openedTutorial);

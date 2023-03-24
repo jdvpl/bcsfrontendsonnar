@@ -43,7 +43,7 @@ function ApplicationApproval({ modalExit = false }: any) {
     const pdf = pdfData?.doc;
     const name = pdfData?.name;
     downLoadPdf(pdf, name);
-  }
+  };
   const closeModalExit = () => {
     setshowModalExit(false);
   };
@@ -72,14 +72,14 @@ function ApplicationApproval({ modalExit = false }: any) {
         </div>
         <Typography
           variant="h1"
-          typeFont='Bold'
+          typeFont="Bold"
           className="text-center mt-[52px] text-primario-900"
         >
           ¡{dataInfo.firstName}, felicitaciones!
         </Typography>
         <Typography
           variant="h4"
-          typeFont='Bold'
+          typeFont="Bold"
           className="text-center mt-3 text-primario-900"
         >
           Su crédito hipotecario
@@ -124,8 +124,8 @@ function ApplicationApproval({ modalExit = false }: any) {
                 .replace(/\b\w/g, (l: string) =>
                   l.toUpperCase()
                 )} - ${valuesMortgage?.office?.city
-                  ?.toLowerCase()
-                  .replace(/\b\w/g, (l: string) => l.toUpperCase())} `}
+                ?.toLowerCase()
+                .replace(/\b\w/g, (l: string) => l.toUpperCase())} `}
               text="text-[20px] pl-[18px] font-semibold font-poppinsSemiBold"
               urlsvg={`${basePath}/images/location.svg`}
               classtitle="h-[14px] text-[13px] font-montserratRegular"
@@ -145,7 +145,7 @@ function ApplicationApproval({ modalExit = false }: any) {
             id="btn-next"
           >
             <span className="font-medium font-monserratLight text-[18px]">
-              <Icons icon="bcs-icon-49" /> Carta de preaprobación
+              <Icons icon="bcs-icon-49" title="Preaprobación" /> Carta de preaprobación
             </span>
           </Button>
         </div>
@@ -155,7 +155,7 @@ function ApplicationApproval({ modalExit = false }: any) {
         <div className="mt-8 md:w-[440px] sm:w-[343px] w-[293px] m-auto">
           <Typography
             variant="bodyM3"
-            typeFont='Regular'
+            typeFont="Regular"
             className="text-center mt-3 text-primario-900 "
           >
             Conozca los próximos pasos <br />
