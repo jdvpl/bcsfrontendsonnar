@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useState, useEffect, useRef, FC } from 'react';
+import React, { useState, useEffect, useRef, FC, KeyboardEvent } from 'react';
 import OtpInput from 'react-otp-input-rc-17';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../session';
@@ -60,7 +60,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
     dataQuestions,
     otc,
     setCurrentRouting,
-    basicDataUser
+    basicDataUser,
   });
   useEffect(() => {
     if (otp?.length === 6) {
@@ -83,20 +83,24 @@ const Otp: FC<otpProps> = ({ otc }) => {
     }
   }, [timer]);
 
-
   return (
-    <div className="w-scren flex flex-col items-center">
+    <div className="w-scren flex flex-col items-center" role="tabpanel" tabIndex={0}>
       <h4
         id="title"
         className="font-semibold text-[20px] text-primario-900 text-center mt-[40px] mb-[36px]  md:mt-[64px]  md:mb-[52px] lg:mb-[36px] font-poppinsSemiBold"
         data-testid="h4OtpText"
       >
-        {
-          otc ? <span>Ingrese el código enviado  a su <br />celular y correo electrónico</span> : <span>
+        {otc ? (
+          <span>
+            Ingrese el código enviado a su <br />
+            celular y correo electrónico
+          </span>
+        ) : (
+          <span>
             Ingrese el código enviado por <br /> sms a su celular +57
             {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : ''}
           </span>
-        }
+        )}
       </h4>
       <div className="text-normal mb-[24px]">
         <OtpInput
@@ -134,7 +138,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
               <Icons icon="bcs-icon-52" size="text-rojo-200 mr-[10px]" />
               <Typography
                 variant="overline1"
-                typeFont='Regular'
+                typeFont="Regular"
                 className="font-normal text-rojo-200 text-[12px]"
               >
                 Código inválido, intente nuevamente
@@ -151,31 +155,42 @@ const Otp: FC<otpProps> = ({ otc }) => {
         </div>
       )}
       {!wasResend && !isValid && (
-        <Typography
-          onClick={onResendOTP}
-          variant="caption1"
-          typeFont='Regular'
-          className={` leading-4 ${timer === 0 && wasResend === false
-            ? 'text-primario-20 cursor-pointer'
-            : 'text-gris-200'
-            } mb-[12px]`}
+        <div
+          role="tabpanel"
+          tabIndex={0}
+          onKeyDownCapture={(e: KeyboardEvent<HTMLInputElement>) => {
+            if (e.key === 'Enter') {
+              onResendOTP();
+            }
+          }}
         >
-          {timer === 0 && wasResend === false
-            ? 'Volver a enviar código'
-            : 'Volver a enviar código en'}
-        </Typography>
+          <Typography
+            onClick={onResendOTP}
+            variant="caption1"
+            typeFont="Regular"
+            className={` leading-4 ${
+              timer === 0 && wasResend === false
+                ? 'text-primario-20 cursor-pointer'
+                : 'text-gris-200'
+            } mb-[12px]`}
+          >
+            {timer === 0 && wasResend === false
+              ? 'Volver a enviar código'
+              : 'Volver a enviar código en'}
+          </Typography>
+        </div>
       )}
 
       {timer === 0 || isValid ? null : (
         <div className="flex justify-center items-center gap-1">
           <Icons icon="bcs-icon-15" size="text-gris-30 font-semibold" />
-          <Typography variant="caption2" typeFont='Regular' className="text-gris-30">
+          <Typography variant="caption2" typeFont="Regular" className="text-gris-30">
             {timer} segundos
           </Typography>
         </div>
       )}
     </div>
   );
-}
+};
 
 export default Otp;

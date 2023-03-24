@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import router from 'next/router';
 import React from 'react';
-import ErrorImageDesktop from "../icons/errorImageValidationDesktop";
-import QRPage from "../icons/errorQR";
+import ErrorImageDesktop from '../icons/errorImageValidationDesktop';
+import QRPage from '../icons/errorQR';
 import LogoBcs from '../svg/LogoBcs';
 import LogoForm from '../svg/LogoForm';
 import Icons from '../ui/icons';
@@ -13,8 +13,12 @@ const ValidationMessageBiometry: React.FC = () => (
       <div className="mt-4 hidden lg:block">
         <LogoBcs />
       </div>
-      <div className="xs:block sm:block lg:hidden mt-4 cursor-pointer" onClick={() => router.back()} data-testid="getbackRouteTest">
-        <Icons icon='bcs-icon-44' size="text-[1.2rem]" />
+      <div
+        className="xs:block sm:block lg:hidden mt-4 cursor-pointer"
+        onClick={() => router.back()}
+        data-testid="getbackRouteTest"
+      >
+        <Icons icon="bcs-icon-44" size="text-[1.2rem]" />
       </div>
       <div className="mt-4 w-[180px] md:w-[180px] lg:w-[280px]">
         <LogoForm />
@@ -23,17 +27,10 @@ const ValidationMessageBiometry: React.FC = () => (
     <div data-testid="error-biometria" className="flex justify-center ">
       <ErrorImageDesktop />
     </div>
-    <h1
-      tabIndex={0}
-      role="paragraph"
-      className="text-center mt-[52px] text-primario-900"
-      itemProp="error"
-    >
+    <h1 className="text-center mt-[52px] text-primario-900" itemProp="error">
       Validación no exitosa
     </h1>
     <p
-      tabIndex={0}
-      role="paragraph"
       className="text-center text-[18px] leading-[20px]  font-light text-primario-900 lg:-mx-[8px] mt-[6px]"
       itemProp="error"
     >
@@ -48,8 +45,6 @@ const ValidationMessageBiometry: React.FC = () => (
       <QRPage />
     </div>
     <p
-      tabIndex={0}
-      role="paragraph"
       className="text-center text-[18px] leading-[20px]  font-normal text-primario-900 mb-[34px]"
       itemProp="actionStatus"
     >
@@ -74,4 +69,4 @@ const ValidationMessageBiometry: React.FC = () => (
   </section>
 );
 
-export default ValidationMessageBiometry
+export default ValidationMessageBiometry;

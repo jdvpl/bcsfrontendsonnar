@@ -53,9 +53,16 @@ const ReactHookFormSelect: React.FC<any> = ({
         </svg>
       </div>
       <label
-        className={`${haveValue || control?._formValues?.[name] ? "-top-[6.5px] z-10 left-2 bg-white px-1 text-[10px] leading-[12px]" : "left-3 text-[14px] leading-[16px] top-2/4 -translate-y-2/4"} absolute  font-montserratRegular ${error ? "text-rojo-20" : "text-complementario-100 hover:text-complementario-100 peer-focus:hover:text-complementario-100"}`}
+        className={`${
+          haveValue || control?._formValues?.[name]
+            ? '-top-[6.5px] z-10 left-2 bg-white px-1 text-[10px] leading-[12px]'
+            : 'left-3 text-[14px] leading-[16px] top-2/4 -translate-y-2/4'
+        } absolute  font-montserratRegular ${
+          error
+            ? 'text-rojo-20'
+            : 'text-complementario-100 hover:text-complementario-100 peer-focus:hover:text-complementario-100'
+        }`}
         htmlFor={labelId}
-        id={labelId}
       >
         {label}
       </label>
@@ -76,7 +83,7 @@ const ReactHookFormSelect: React.FC<any> = ({
               key={props.id}
               sx={{
                 color: '#00253d',
-                fontStyle: "normal",
+                fontStyle: 'normal',
                 height: '48px',
                 borderRadius: '8px',
                 '.MuiSvgIcon-root ': {
@@ -93,9 +100,9 @@ const ReactHookFormSelect: React.FC<any> = ({
                   borderWidth: '0.5px',
                 },
                 '.MuiOutlinedInput-notchedOutline': {
-                  borderColor: error ? '#ce1126' : "#89a3b5",
+                  borderColor: error ? '#ce1126' : '#89a3b5',
                   borderWidth: '0.5px',
-                }
+                },
               }}
               onOpen={() =>
                 setInitialIcon(
@@ -114,8 +121,7 @@ const ReactHookFormSelect: React.FC<any> = ({
             >
               {children}
             </Select>
-          )
-          }
+          )}
           name={name}
           control={control}
         />
@@ -123,7 +129,7 @@ const ReactHookFormSelect: React.FC<any> = ({
         <Select></Select>
       )}
       {helperText ? <HelperText text={helperText} error={error} /> : null}
-    </FormControl >
+    </FormControl>
   );
 };
 export default ReactHookFormSelect;

@@ -23,11 +23,9 @@ const ExampleInfo: React.FC<{ example?: string }> = ({ example }) => (
       />
     </svg>
     <p className="font-light text-[0.625rem] pt-[1px] m-0 leading-[18px] text-azul_gris-100 float-left whitespace-nowrap">
-      <span tabIndex={0} role="paragraph">
-        {example}
-      </span>
+      <span>{example}</span>
     </p>
   </div>
 );
 
-export default ExampleInfo
+export default ExampleInfo;

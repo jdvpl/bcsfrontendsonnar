@@ -52,17 +52,11 @@ export default function useRatingForm() {
             <div className="w-full md:w-[343px] mb-[24px]">
               <Qualify rate={rate} changeRate={changeRate} />
               <div className="w-full flex flex-col min-h-[400px]">
-                <p
-                  tabIndex={0}
-                  role="paragraph"
-                  className="mt-3 mb-[12px] text-lg leading-5 text-center font-semibold"
-                >
+                <p className="mt-3 mb-[12px] text-lg leading-5 text-center font-semibold">
                   {PARSE_SCORE[rate]?.qualify}
                 </p>
                 <div className="w-full mb-[24px]">
-                  <p tabIndex={0} role="paragraph" className="text-left font-semibold">
-                    {PARSE_SCORE[rate]?.subtitle}
-                  </p>
+                  <p className="text-left font-semibold">{PARSE_SCORE[rate]?.subtitle}</p>
                 </div>
                 <div className="w-full align-bottom">
                   {rate >= 0 && (

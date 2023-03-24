@@ -32,7 +32,6 @@ const ValidationMessage: React.FC = () => {
   const [loaded] = useState(false);
   const { allResponse } = useAES();
 
-  
   const scrollBody = () => {
     if (typeof window === 'object') {
       document.body.classList.remove('body-scroll-hidden');
@@ -73,22 +72,14 @@ const ValidationMessage: React.FC = () => {
         {(isMobile || isTablet) && (
           <div>
             <div className="pt-3 md:pt-0 w-full lg:mt-10">
-              <Stepper
-                steps={5}
-                actualStep={1}
-                title="Validación de identidad"
-              />
+              <Stepper steps={5} actualStep={1} title="Validación de identidad" />
             </div>
             <Heading>
               Por seguridad pediremos tomar foto de su cédula, para validar su identidad.
             </Heading>
             <div className="flex justify-center pb-28 mt-2">
               <div className=" w-[343px]">
-                <p
-                  tabIndex={0}
-                  role="paragraph"
-                  className="font-normal text-lg leading-5 text-primario-900 font-montserratRegular m-0 p-0 text-center"
-                >
+                <p className="font-normal text-lg leading-5 text-primario-900 font-montserratRegular m-0 p-0 text-center">
                   Tenga en cuenta estos consejos:&nbsp;
                 </p>
                 <div className="flex flex-col  mt-[36px] md:mt-[36px] space-y-[24px]">
@@ -105,11 +96,7 @@ const ValidationMessage: React.FC = () => {
                           height="64"
                         />
                       </CardImage>
-                      <p
-                        tabIndex={0}
-                        role="paragraph"
-                        className="text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
-                      >
+                      <p className="text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular">
                         Tome la foto en un lugar con luz, preferiblemente luz natural
                         evitando brillos y reflejos.
                       </p>
@@ -146,11 +133,7 @@ const ValidationMessage: React.FC = () => {
                           height="64"
                         />
                       </CardImage>
-                      <p
-                        tabIndex={0}
-                        role="paragraph"
-                        className="text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
-                      >
+                      <p className="text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular">
                         Tome la foto con el celular en posición horizontal.
                       </p>
                     </div>
@@ -185,11 +168,7 @@ const ValidationMessage: React.FC = () => {
                         height="64"
                       />
                     </CardImage>
-                    <p
-                      tabIndex={0}
-                      role="paragraph"
-                      className="text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
-                    >
+                    <p className="text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular">
                       Asegúrese de que su cédula no tenga imperfecciones.
                     </p>
                   </div>

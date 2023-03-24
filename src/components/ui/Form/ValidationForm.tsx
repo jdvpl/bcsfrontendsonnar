@@ -86,12 +86,14 @@ export const ValidationForm: React.FC<FormProps> = ({ questions, onSubmit }) => 
                       {question.type === 'CLOSED-QUESTION' &&
                         question.options &&
                         question?.options.map((answer) => (
-                          <div id={`answer-${answer.id}`} key={answer.id}>
+                          <div
+                            id={`answer-${answer.id}`}
+                            key={answer.id}
+                            role="tabpanel"
+                            tabIndex={0}
+                          >
                             <input type="radio" value={answer.id} className="hidden" />
                             <label
-                              aria-hidden="true"
-                              tabIndex={0}
-                              role="paragraph"
                               htmlFor="tax-yes"
                               className="font-montserratRegular flex items-center cursor-pointer bg-white w-full border border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black  font-semibold rounded-md px-5 py-[17px] shadow-small-300 overflow-auto"
                               onClick={() => {
@@ -112,6 +114,7 @@ export const ValidationForm: React.FC<FormProps> = ({ questions, onSubmit }) => 
                                   })
                                 );
                               }}
+                              title={answer.option}
                             >
                               <span itemProp="relatedTo" className="hidden" />
                               {answer.option}

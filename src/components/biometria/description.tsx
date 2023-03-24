@@ -2,16 +2,13 @@ import React from 'react';
 import { ItemOne, ItemThree, ItemTwo } from '../icons/biometria/items';
 import { childrenProps } from '../../interfaces';
 
-
-const CardImage: React.FC<childrenProps> = ({ children }) => <div className="flex mr-6">{children}</div>;
+const CardImage: React.FC<childrenProps> = ({ children }) => (
+  <div className="flex mr-6">{children}</div>
+);
 
 const Description: React.FC = () => (
   <div data-testid="descripcion-biometrica" className="">
-    <p
-      tabIndex={0}
-      role="paragraph"
-      className="font-semibold text-lg leading-5 text-primario-900 "
-    >
+    <p className="font-semibold text-lg leading-5 text-primario-900 ">
       Tenga en cuenta estos consejos:&nbsp;
     </p>
     <div className="flex flex-col  mt-[26px] space-y-[24px] ">
@@ -20,11 +17,7 @@ const Description: React.FC = () => (
           <CardImage>
             <ItemOne />
           </CardImage>
-          <p
-            tabIndex={0}
-            role="paragraph"
-            className=" text-primario-900 font-normal text-base leading-[18px] pr-6"
-          >
+          <p className=" text-primario-900 font-normal text-base leading-[18px] pr-6">
             Tome la foto en un lugar con luz, preferiblemente luz natural evitando brillos
             y reflejos.
           </p>
@@ -47,11 +40,7 @@ const Description: React.FC = () => (
           <CardImage>
             <ItemTwo />
           </CardImage>
-          <p
-            tabIndex={0}
-            role="paragraph"
-            className=" text-primario-900 font-normal text-base leading-[18px] pr-6"
-          >
+          <p className=" text-primario-900 font-normal text-base leading-[18px] pr-6">
             Tome la foto con el celular en posición horizontal.
           </p>
         </div>
@@ -72,11 +61,7 @@ const Description: React.FC = () => (
         <CardImage>
           <ItemThree />
         </CardImage>
-        <p
-          tabIndex={0}
-          role="paragraph"
-          className=" text-primario-900 font-normal text-base leading-[18px] pr-6"
-        >
+        <p className=" text-primario-900 font-normal text-base leading-[18px] pr-6">
           Asegúrese de que su cédula no tenga fallas o imperfecciones.
         </p>
       </div>
@@ -84,4 +69,4 @@ const Description: React.FC = () => (
   </div>
 );
 
-export default Description
+export default Description;

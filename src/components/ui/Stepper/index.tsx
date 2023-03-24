@@ -23,8 +23,8 @@ function Stepper({
     <NoSSRWrapper>
       <div className={className}>
         <Typography
-          variant='caption2'
-          typeFont='Bold'
+          variant="caption2"
+          typeFont="Bold"
           className={`text-primario-900  ${classTitle}`}
         >
           {title}
@@ -37,18 +37,17 @@ function Stepper({
                   style={{
                     width: `${actualStep === index + 1 ? percentage : '100'}%`,
                   }}
-                  className={`bg-${actualStep >= index + 1 ? 'primario-20' : 'complementario-80'
-                    } h-1`}
+                  className={`bg-${
+                    actualStep >= index + 1 ? 'primario-20' : 'complementario-80'
+                  } h-1`}
                 />
               </div>
             </div>
           ))}
         </div>
         <Typography
-          variant='caption2'
-          typeFont='Regular'
-          tabIndex={0}
-          role="paragraph"
+          variant="caption2"
+          typeFont="Regular"
           className="text-complementario-100 text-xs ln-16 font-montserratRegular"
           data-testid="stepNumber"
         >

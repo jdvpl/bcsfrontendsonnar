@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { KeyboardEvent, useEffect, useState } from 'react';
 
 interface HowItemProps {
   children: string | JSX.Element;
@@ -26,7 +26,13 @@ const scrollBody = () => {
   }
 };
 
-function Modal({ compont, showModal = false, onClose, advisory = false, heightModal = 'lg:h-[90%]' }: Props) {
+function Modal({
+  compont,
+  showModal = false,
+  onClose,
+  advisory = false,
+  heightModal = 'lg:h-[90%]',
+}: Props) {
   const [show, setShow] = useState('');
 
   useEffect(() => {
@@ -53,7 +59,9 @@ function Modal({ compont, showModal = false, onClose, advisory = false, heightMo
     >
       <div className="modal-background">
         <div className="modal justify-center items-center lg:items-center md:items-center flex overflow-x-hidden fixed inset-0 z-10 outline-none focus:outline-none">
-          <div className={`relative ${heightModal} md:h-[63%] h-[83%]   w-[300px]  mx-auto max-w-3xl lg:w-[684px] md:w-[530px] sm:w-[343px]`}>
+          <div
+            className={`relative ${heightModal} md:h-[63%] h-[83%]   w-[300px]  mx-auto max-w-3xl lg:w-[684px] md:w-[530px] sm:w-[343px]`}
+          >
             {/* content */}
             <div className="border-0 sm:rounded-b-none md:rounded-lg rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
               {/* header */}
@@ -63,7 +71,11 @@ function Modal({ compont, showModal = false, onClose, advisory = false, heightMo
                   role="button"
                   aria-hidden="true"
                   onClick={() => onClose()}
-                  onKeyDown={() => onClose()}
+                  onKeyDownCapture={(e: KeyboardEvent<HTMLInputElement>) => {
+                    if (e.key === 'Enter') {
+                      onClose();
+                    }
+                  }}
                   id={`${compont?.id}-x`}
                   data-testid="btn-close"
                   title="Cerrar"
@@ -92,7 +104,15 @@ function Modal({ compont, showModal = false, onClose, advisory = false, heightMo
                 )}
               </div>
               {/* body */}
-              <div className={advisory ? '' : "text-[16px] md:text-[18px] text-left leading-5 md:mx-[30px] md:mt-[40px] md:mb-[60px] m-[16px] sm:m-[25px] text-[#4A4E60] overflow-y-auto h-full"}>
+              <div
+                className={
+                  advisory
+                    ? ''
+                    : 'text-[16px] md:text-[18px] text-left leading-5 md:mx-[30px] md:mt-[40px] md:mb-[60px] m-[16px] sm:m-[25px] text-[#4A4E60] overflow-y-auto h-full'
+                }
+                role="tabpanel"
+                tabIndex={0}
+              >
                 {compont?.children}
               </div>
               {/* footer */}

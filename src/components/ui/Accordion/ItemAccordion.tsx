@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { KeyboardEvent } from 'react';
 import { childrenProps } from '../../../interfaces';
 import Icons from '../icons';
 import Typography from '../Typography';
@@ -24,8 +24,9 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
   return (
     <div
       data-testid="accordion"
-      className={`w-full bg-white shadow-small-300 ${active ? 'border-[1px] border-complementario-70 rounded-md' : 'rounded-t-md'
-        } `}
+      className={`w-full bg-white shadow-small-300 ${
+        active ? 'border-[1px] border-complementario-70 rounded-md' : 'rounded-t-md'
+      } `}
       itemScope
       itemProp="mainEntity"
       itemType="https://schema.org/Question"
@@ -33,7 +34,7 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
       <div
         id={`question-${id}`}
         onClick={handleSelected}
-        onKeyDownCapture={(e) => {
+        onKeyDownCapture={(e: KeyboardEvent<HTMLInputElement>) => {
           if (e.key === 'Enter') {
             handleSelected();
           }
@@ -41,34 +42,29 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
         role="button"
         tabIndex={0}
         aria-expanded={active}
-        className={`flex justify-between items-center cursor-pointer px-[20px] text-azul_gris-100 ${active
+        className={`flex justify-between items-center cursor-pointer px-[20px] text-azul_gris-100 ${
+          active
             ? 'bg-gris-80 rounded-t-md border-b-complementario-70 border-b-[1px]'
             : 'bg-white border-[1px] border-complementario-70 rounded-t-md'
-          }`}
+        }`}
       >
         <Typography
-          variant='bodyM3'
-          typeFont='Bold'
+          variant="bodyM3"
+          typeFont="Bold"
           id={`title-question-${id}`}
-          className={`${active ? 'py-[21px]' : 'py-4'
-            }  head-accordiom-color text-complementario-100`}
+          className={`${
+            active ? 'py-[21px]' : 'py-4'
+          }  head-accordiom-color text-complementario-100`}
           itemProp="name"
         >
           {title}
         </Typography>
         <div>
-          {
-            active ?
-              <Icons
-                icon='bcs-icon-48'
-                color='text-[#0072C8]'
-              />
-              :
-              <Icons
-                icon='bcs-icon-50'
-                color='text-[#0072C8]'
-              />
-          }
+          {active ? (
+            <Icons icon="bcs-icon-48" color="text-[#0072C8]" />
+          ) : (
+            <Icons icon="bcs-icon-50" color="text-[#0072C8]" />
+          )}
         </div>
       </div>
       <div
