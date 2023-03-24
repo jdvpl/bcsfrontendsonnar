@@ -59,9 +59,13 @@ export default function Home() {
         </div>
         <section className={titleClasses} role="tabpanel" tabIndex={0}>
           <div className="md:flex md:flex-col ">
-            <p className="text-white xs:text-[22px] sm:text-[22px] leading-[30px]  xs:ml-5 sm:ml-2 xs:mb-[3px] sm:mb-1 font-poppinsExtraLight md:text-primario-900">
+            <Typography
+              variant="h2"
+              typeFont="Light"
+              className="text-white xs:text-[22px] sm:text-[22px]  xs:ml-5 sm:ml-2 xs:mb-[3px] sm:mb-1 md:text-primario-900"
+            >
               Bienvenido a
-            </p>
+            </Typography>
             <figure
               itemProp="logo"
               className="xs:ml-5 sm:ml-2 mt-1 md:mt-1 m-0 p-0 w-full sm:pr-[3px] xs:pr-[0px] md:pr-0 smdd:pr-5 xmd:pr-20 pr-0 "
@@ -86,13 +90,21 @@ export default function Home() {
           tabIndex={0}
         >
           <div className="md:flex md:flex-col">
-            <h4 className="text-white  md:w-[285px] lg:w-[394px] font-semibold lg:text-[24px] md:text-[20px] leading-6 wcontainerHeader font-montserratSemiBold sm:text-[20px] xs:text-[20px] md:text-primario-900 xxl:text-[28px] ">
+            <Typography
+              variant="h2"
+              typeFont="Bold"
+              className="text-white  md:w-[285px] lg:w-[394px] lg:text-[24px] md:text-[20px] leading-6 wcontainerHeader sm:text-[20px] xs:text-[20px] md:text-primario-900 xxl:text-[28px]"
+            >
               ¿Desea comprar vivienda?
-            </h4>
-            <p className="text-white md:text-primario-900 sm:w-[335px] w-[290px] md:w-[275px] lg:w-[415.5px] xxl:w-[380px] font-light leading-[22px] md:leading-[20px] mt-[10px] wcontainerHeader text-[16px] md:text-[18px] md:mr-[40px]  font-monserratLight sm:text-[16px] sm:leading-[18px] xs:text-[14px] xs:leading-4 lg:text-[18px] xxl:mt-8 xs:mt-5">
+            </Typography>
+            <Typography
+              variant="bodyM2"
+              typeFont="Light"
+              className="text-white md:text-primario-900 sm:w-[335px] w-[290px] md:w-[275px] lg:w-[415.5px] xxl:w-[380px] md:leading-[20px] mt-[10px] wcontainerHeader text-[16px] md:text-[18px] md:mr-[40px]  sm:text-[16px] sm:leading-[18px] xs:text-[14px] xs:leading-4 lg:text-[18px] xxl:mt-8 xs:mt-5"
+            >
               Aquí le ayudaremos a lograr sus sueños, sin hacer largas filas, ni papeleos
               extensos.
-            </p>
+            </Typography>
           </div>
         </section>
         <SelectiveHomeCards isMobile={isMobile} />
@@ -273,18 +285,16 @@ export default function Home() {
               className="lg:w-[279px] lg:h-[451px] md:w-[220px] sm:w-[278px] sm:h-[448px] h-[409px] md:h-[354px]"
             />
           </div>
-          <div className="listInitial lg:w-[440px] relative block mx-5 sm:top-[-128px] xs:top-[-110px] md:top-0 xs:w-[260px] sm:w-[90%] smd:w-[80%] smd:m-auto md:mt-[-20px] md:place-items-center lg:mt-0 xxxl:ml-10">
-            <ul className="font-monserratLight mb-0">
-              <li className="lg:text-[20px] text-[16px] font-light leading-[22px] lg:mt-[127px] md:mt-20 text-complementario-100">
+          <div className="listInitial  lg:w-[440px] relative block mx-5 sm:top-[-128px] xs:top-[-110px] md:top-0 xs:w-[260px] sm:w-[90%] smd:w-[80%] smd:m-auto md:mt-[-20px] md:place-items-center lg:mt-0 xxxl:ml-10">
+            <Typography variant="ul" typeFont="Light" className="mb-0 lg:text-[20px]">
+              <li className="  lg:mt-[127px] md:mt-20 text-complementario-100 ">
                 Preaprobación inmediata en línea
               </li>
-              <li className="lg:text-[20px] text-[16px] font-light leading-[22px] mt-3 text-complementario-100">
-                Sin documentación física
-              </li>
-              <li className="lg:text-[20px] text-[16px] font-light leading-[22px] mt-3 text-complementario-100">
+              <li className=" mt-3 text-complementario-100">Sin documentación física</li>
+              <li className="mt-3 text-complementario-100">
                 Para clientes y no clientes
               </li>
-            </ul>
+            </Typography>
           </div>
         </div>
       </section>

@@ -73,7 +73,7 @@ export default function usePersonalData(setValue: any, userInfo: iDataUser,
 
 
   const onSubmit = async (data: iPersonalData) => {
-    const birthDate = `${data.yearDt}-${data.monthDt}-${data.dayDt}`;
+    const birthDate = userInfo.isClient ? `${date[0]}-${date[1]}-${date[2]}` : `${data.yearDt}-${data.monthDt}-${data.dayDt}`;
     const birthCity = data.birthCity?.option;
     const currentCity = data.currentCity?.option;
     const hasAdviser = userInfo.isClient ? getHasAdviserNameAdviser(userInfo.residenceCity) : null;

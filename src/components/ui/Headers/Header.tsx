@@ -8,7 +8,7 @@ function Header() {
   const router = useRouter();
   const { heightHeader } = useMediaQueryResponsive();
   return (
-    <div className="container flex lg:mt-[0] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-between  ">
+    <div className="container flex lg:mt-[0] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-between ">
       <div className="mt-4 hidden md:block lg:block">
         <LogoBcs />
       </div>

@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import Icons from '../icons';
 import Typography from '../Typography';
 
 export interface stepProps {
@@ -20,7 +19,7 @@ const Step: FC<stepProps> = ({ titleNumber, description }) => {
         <Typography
           variant="bodyM3"
           typeFont="Light"
-          className="text-complementario-100  md:text-[16px] lg:text-[16px] font-monserratLight text-left"
+          className="text-complementario-100 text-left"
         >
           {description}
         </Typography>

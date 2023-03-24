@@ -1,5 +1,7 @@
 import React from 'react';
 import { childrenProps } from '../../../interfaces';
+import Icons from '../icons';
+import Typography from '../Typography';
 
 interface Props {
   id: string;
@@ -46,7 +48,9 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
             : 'bg-white border-[1px] border-complementario-70 rounded-t-md'
         }`}
       >
-        <h2
+        <Typography
+          variant="bodyM3"
+          typeFont="Bold"
           id={`title-question-${id}`}
           className={`font-monserratLight text-base leading-[18px] text-[16px] ${
             active ? 'py-[16px]' : 'py-4'
@@ -54,25 +58,13 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
           itemProp="name"
         >
           {title}
-        </h2>
+        </Typography>
         <div>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className={`w-[24px] ml-[20px] ${active ? 'transform rotate-180' : ''}`}
-            aria-label="ver respuesta"
-          >
-            <rect width="24" height="24" fill="transparent" />
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M23.2975 5.74402C23.4386 5.55668 23.7196 5.55668 23.8595 5.74402C24.0468 5.88515 24.0468 6.1187 23.8595 6.30605L12.2868 18.3009C12.1931 18.3471 12.0994 18.3946 12.0058 18.3946C11.9121 18.3946 11.7722 18.3471 11.7248 18.3009L0.105848 6.30605C-0.0352826 6.1187 -0.0352826 5.88515 0.105848 5.74402C0.293189 5.55668 0.526742 5.55668 0.714083 5.74402L12.0058 17.4566L23.2975 5.74402Z"
-              fill="#0072C8"
-            />
-          </svg>
+          {active ? (
+            <Icons icon="bcs-icon-48" color="text-[#0072C8]" title="Cerrar" />
+          ) : (
+            <Icons icon="bcs-icon-50" color="text-[#0072C8]" title="Abrir" />
+          )}
         </div>
       </div>
       <div
@@ -87,7 +79,7 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
       >
         <div
           id={`description-question-${id}`}
-          className="px-[16px] py-4 font-monserratLight text-base leading-5 font-light text-complementario-100"
+          className="px-[16px] py-4 text-complementario-100"
           itemProp="text"
         >
           {children}
