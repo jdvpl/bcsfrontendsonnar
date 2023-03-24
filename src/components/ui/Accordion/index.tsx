@@ -11,6 +11,8 @@ const Questions: FC = () => {
       className="mb-[15vh] lg:mb-[10vh] flex flex-col m-auto lg:w-[920px] md:w-[587px] sm:w-[343px] w-[286px]"
       itemScope
       itemType="https://schema.org/FAQPage"
+      role="tabpanel"
+      tabIndex={0}
     >
       <Typography
         variant='h2'

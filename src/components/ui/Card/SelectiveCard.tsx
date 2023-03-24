@@ -4,7 +4,7 @@ import { FC } from 'react';
 import Icons, { IconsProps } from '../icons';
 import Typography from '../Typography/index';
 import dynamicClassesSelective from './SelectiveClassnames';
-import React from 'react'
+import React from 'react';
 
 export interface ISelectiveCardProps extends IconsProps {
   label?: React.ReactNode | string;
@@ -16,6 +16,7 @@ export interface ISelectiveCardProps extends IconsProps {
   classNamesDescription?: string;
   titleClasses?: string;
   active?: boolean;
+  title: string;
 }
 const SelectiveCard: FC<ISelectiveCardProps> = ({
   label,
@@ -30,18 +31,21 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
   classNamesDescription = 'md:w-[224px]',
   titleClasses = '',
   active = false,
+  title,
   ...props
 }) => {
   const router = useRouter();
   const classNames = dynamicClassesSelective(hasTitle, className, active);
-  const activeClasses = active ? 'text-white' : 'text-primario-900'
-  const activeClassesDesc = active ? 'text-white' : 'text-complementario-100'
+  const activeClasses = active ? 'text-white' : 'text-primario-900';
+  const activeClassesDesc = active ? 'text-white' : 'text-complementario-100';
   return (
     <div
       data-testid="selectiveCardTest"
       {...props}
       className={classNames.mainClasesParentDiv}
       {...(onclick ? { onClick: () => router.push(pathTo) } : {})}
+      role="tabpanel"
+      tabIndex={0}
     >
       <div className={classNames.iconContainerStyle}>
         <Icons

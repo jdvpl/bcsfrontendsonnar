@@ -4,15 +4,18 @@ import Typography from '../Typography'
 export interface stepProps {
   titleNumber: string;
   description: string;
-
 }
 const Step: FC<stepProps> = ({ titleNumber, description }) => {
   return (
-    <div className='flex mt-6 gap-[20px] '>
-      <Typography variant="h4" typeFont='Regular' className=" text-primario-300 text-center mt-5 text-[22px]">
+    <li className="flex mt-6 gap-[20px] ">
+      <Typography
+        variant="bodyM1"
+        typeFont="Regular"
+        className=" text-primario-300 text-center mt-5 text-[22px]"
+      >
         {titleNumber}
       </Typography>
-      <div className='bg-gris-90 border-b border-b-primario-100 lg:w-[424px] md:w-[264px]   pb-[20px] pt-[21px] pl-4 sm:w-[305px] w-[250px] smd:w-[330px]'>
+      <div className="bg-gris-90 border-b border-b-primario-100 lg:w-[424px] md:w-[264px]   pb-[20px] pt-[21px] pl-4 sm:w-[305px] w-[250px] smd:w-[330px]">
         <Typography
           variant="bodyM3"
           typeFont='Light'
@@ -21,8 +24,8 @@ const Step: FC<stepProps> = ({ titleNumber, description }) => {
           {description}
         </Typography>
       </div>
-    </div>
-  )
-}
+    </li>
+  );
+};
 
-export default Step
+export default Step;

@@ -24,7 +24,7 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
   return (
     <div
       data-testid="accordion"
-      className={`w-full bg-white  shadow-small-300   ${active ? 'border-[1px] border-complementario-70 rounded-md  ' : ' rounded-t-md '
+      className={`w-full bg-white shadow-small-300 ${active ? 'border-[1px] border-complementario-70 rounded-md' : 'rounded-t-md'
         } `}
       itemScope
       itemProp="mainEntity"
@@ -33,12 +33,17 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
       <div
         id={`question-${id}`}
         onClick={handleSelected}
-        onKeyDown={handleSelected}
+        onKeyDownCapture={(e) => {
+          if (e.key === 'Enter') {
+            handleSelected();
+          }
+        }}
         role="button"
         tabIndex={0}
+        aria-expanded={active}
         className={`flex justify-between items-center cursor-pointer px-[20px] text-azul_gris-100 ${active
-          ? 'bg-gris-80  rounded-t-md border-b-complementario-70 border-b-[1px]'
-          : 'bg-white border-[1px] border-complementario-70  rounded-t-md'
+            ? 'bg-gris-80 rounded-t-md border-b-complementario-70 border-b-[1px]'
+            : 'bg-white border-[1px] border-complementario-70 rounded-t-md'
           }`}
       >
         <Typography
@@ -68,7 +73,7 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
       </div>
       <div
         className={
-          active ? 'max-h-fit ' : 'max-h-0 overflow-hidden transition-all duration-300 '
+          active ? 'max-h-fit' : 'max-h-0 overflow-hidden transition-all duration-300'
         }
         itemScope
         itemProp="acceptedAnswer"
@@ -80,8 +85,6 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
           id={`description-question-${id}`}
           className="px-[16px] py-4 text-complementario-100"
           itemProp="text"
-          role="paragraph"
-          tabIndex={0}
         >
           {children}
         </div>
