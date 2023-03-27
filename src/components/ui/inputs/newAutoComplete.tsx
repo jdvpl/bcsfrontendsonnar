@@ -107,11 +107,11 @@ const NewAutoComplete: React.FC<InputProps> = ({
             },
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
               borderColor: error ? '#e9132b !important' : '#0386e6 !important',
-              borderWidth: '0.5px !important',
+              borderWidth: '1px !important',
             },
             '&:hover .MuiOutlinedInput-notchedOutline': {
               borderColor: error ? '#e9132b !important' : '#0386e6 !important',
-              borderWidth: '0.5px !important',
+              borderWidth: '1px !important',
             },
           }}
           renderInput={(params) => (
@@ -141,7 +141,7 @@ const NewAutoComplete: React.FC<InputProps> = ({
                 },
                 '.MuiOutlinedInput-notchedOutline': {
                   borderColor: error ? '#ce1126' : '#89a3b5',
-                  borderWidth: '0.5px',
+                  borderWidth: '1px',
                   borderRadius: '8px',
                 },
               }}

@@ -155,7 +155,7 @@ const RevisionImagenes: React.FC = () => {
                   onClick={() => changePhoto('delantero')}
                   type="button"
                   data-testid="changeFront"
-                  className="br-complete-gray mt-7 px-2 py-2 align-items-center flex-column d-flex justify-content-center border-secondary-300 border-[0.5px] max-w-[84px] max-h-[74px]"
+                  className="br-complete-gray mt-7 px-2 py-2 align-items-center flex-column d-flex justify-content-center border-secondary-300 border-[1px] max-w-[84px] max-h-[74px]"
                 >
                   <img src={`${basePath}/images/camara.png`} className="mb-1" alt="" />
                   <p className="text-center text-[12px] font-montserratRegular font-medium text-primario-100">
@@ -182,7 +182,7 @@ const RevisionImagenes: React.FC = () => {
                   onClick={() => changePhoto('trasero')}
                   type="button"
                   data-testid="changeBack"
-                  className="br-complete-gray mt-7 px-2 py-2 align-items-center flex-column d-flex justify-content-center border-secondary-300 border-[0.5px] max-w-[84px] max-h-[74px]"
+                  className="br-complete-gray mt-7 px-2 py-2 align-items-center flex-column d-flex justify-content-center border-secondary-300 border-[1px] max-w-[84px] max-h-[74px]"
                 >
                   <img src={`${basePath}/images/camara.png`} className="mb-1" alt="" />
                   <p className="text-center text-[12px] font-montserratRegular font-medium text-primario-100">

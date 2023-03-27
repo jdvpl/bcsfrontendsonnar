@@ -86,15 +86,15 @@ const ReactHookFormSelect: React.FC<any> = ({
                 },
                 '&:hover .MuiOutlinedInput-notchedOutline': {
                   borderColor: error ? '#e9132b' : '#0386e6',
-                  borderWidth: '0.5px',
+                  borderWidth: '1px',
                 },
                 '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
                   borderColor: error ? '#e9132b' : '#0386e6',
-                  borderWidth: '0.5px',
+                  borderWidth: '1px',
                 },
                 '.MuiOutlinedInput-notchedOutline': {
                   borderColor: error ? '#ce1126' : "#89a3b5",
-                  borderWidth: '0.5px',
+                  borderWidth: '1px',
                 }
               }}
               onOpen={() =>

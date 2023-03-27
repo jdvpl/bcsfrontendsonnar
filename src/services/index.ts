@@ -6,7 +6,7 @@ import { iFormDataSimulation } from '../interfaces';
 import { getProcessId } from '../utils';
 const { allResponse, allResponseDecrypted } = useAES();
 import { iPdfLetter } from '../interfaces/ipdfLetter';
-import { RequestRiskBoxes } from '../interfaces/IRequestRiskBoxes'
+import { RequestRiskBoxes } from '../interfaces/IRequestRiskBoxes';
 import axios from 'axios';
 const KEY = process.env.KEYENCRYPTADIGITAL;
 
@@ -18,7 +18,7 @@ const KEY = process.env.KEYENCRYPTADIGITAL;
  */
 export const sendAuthorization = async (body: any) => {
   try {
-    const dataInfo = await allResponse(body, KEY);
+    const dataInfo = await allResponse({ ...body, processId: 'solicitud-inicial' }, KEY);
     const { data: response } = await clientAxiosBackend.post(
       '/customer/data-processing',
       { data: dataInfo }
@@ -125,14 +125,11 @@ export const validateOTOCode = async (data: ValidateOTC) => {
     const { otc, document_number, document_type, pin, processId, phone } = data;
     let dataToEcrypt;
     if (otc) {
-      dataToEcrypt = { document_number, document_type, pin, processId, phone }
+      dataToEcrypt = { document_number, document_type, pin, processId, phone };
     } else {
-      dataToEcrypt = { document_number, document_type, pin, processId }
+      dataToEcrypt = { document_number, document_type, pin, processId };
     }
-    const dataInfo = await allResponse(
-      dataToEcrypt,
-      KEY
-    );
+    const dataInfo = await allResponse(dataToEcrypt, KEY);
     const { data: response } = await clientAxiosBackend.post(
       otc ? '/customer/otc/validate' : '/api-composer/composer/validate-otp',
       { data: dataInfo },
@@ -230,7 +227,7 @@ export const riskBoxes = async (body: RequestRiskBoxes) => {
   try {
     // TODO
     const bodyEncrypt = await allResponse({ ...body, processId: getProcessId() }, KEY);
-    const dataBody = { ...body, processId: getProcessId() }
+    const dataBody = { ...body, processId: getProcessId() };
     const response: any = await clientAxiosBackend.post(
       '/api-composer/composer/risk-boxes',
       {
@@ -245,7 +242,7 @@ export const riskBoxes = async (body: RequestRiskBoxes) => {
       error: false,
     };
   } catch (e: any) {
-    console.log(e)
+    console.log(e);
     return { error: true, response: e.response?.data?.message };
   }
 };
@@ -269,9 +266,11 @@ export const getPDF = async (body: iPdfLetter) => {
   try {
     const bodyEncrypt = await allResponse(body, KEY);
     const { data: response } = await clientAxiosBackend.post(
-      '/api-composer/composer/documents', {
-      data: bodyEncrypt,
-    });
+      '/api-composer/composer/documents',
+      {
+        data: bodyEncrypt,
+      }
+    );
     const data = await allResponseDecrypted(response.data, KEY);
     return {
       response: {

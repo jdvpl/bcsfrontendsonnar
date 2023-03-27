@@ -85,7 +85,7 @@ function Input({
   `
 
   const inputStyles = `valid:text-primario-900 ${startIcon ? "pl-[36px]" : "pl-3"} ${endIcon ? "pr-[36px]" : "pr-3"}  peer  appearance-none font-montserratRegular text-[14px] leading-[16px] 
-  h-[48px] bg-transparent border-[0.5px] rounded-[8px] bg-[transparent] w-full 
+  h-[48px] bg-transparent border-[1px] rounded-[8px] bg-[transparent] w-full 
   ${error ? "border-rojo-20 hover:border-rojo-20 focus:border-rojo-20 " : "border-complementario-50 hover:border-primario-20 focus:border-primario-20 "} 
   peer-focus:border focus:outline-none`
 

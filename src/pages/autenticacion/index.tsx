@@ -16,8 +16,11 @@ import DynamicText from '../../components/custom/DynamicText';
 
 function Authentication() {
   const router = useRouter();
-  const [, setDataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, {});
-  const [dataUser] = useSessionStorage(SesionStorageKeys.dataUser.key, {});
+  const [dataQuestions, setDataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, {});
+  const [dataUser,] = useSessionStorage(
+    SesionStorageKeys.dataUser.key,
+    {}
+  );
   const [showAnimation, setShowAnimation] = useState(false);
   const [validated, setValidated] = useState(false);
   const [loaded] = useState(false);
@@ -32,14 +35,7 @@ function Authentication() {
     });
   }, []);
   const { setCurrentRouting } = useProtectedRoutes();
-  const { onSubmit, isBrowser } = useAuthentication(
-    setShowAnimation,
-    setValidated,
-    dataUser,
-    setDataQuestions,
-    router,
-    setCurrentRouting
-  );
+  const { onSubmit, isBrowser } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, setCurrentRouting,dataQuestions);
   return (
     <div>
       {showAnimation ? (
