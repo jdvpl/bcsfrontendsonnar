@@ -61,6 +61,7 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
             <Typography
               variant="bodyM2"
               typeFont='Bold'
+              componentHTML='p'
               className={` lg:mt-[14px] lg:mb-[18px]  m-0 tracking-normal ${hasTitle && 'cursor-pointer'} group-hover:text-white ${titleClasses} ${activeClasses}`}
             >
               {label}
@@ -69,6 +70,7 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
           <Typography
             variant="bodyM3"
             typeFont='Regular'
+            componentHTML='p'
             className={`hasTitle  mt-2 group-hover:text-white  ${hasTitle && 'cursor-pointer'} ${classNamesDescription} ${activeClassesDesc}`}
           >
             {description}

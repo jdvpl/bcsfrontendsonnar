@@ -42,8 +42,8 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
         tabIndex={0}
         aria-expanded={active}
         className={`flex justify-between items-center cursor-pointer px-[20px] text-azul_gris-100 ${active
-            ? 'bg-gris-80 rounded-t-md border-b-complementario-70 border-b-[1px]'
-            : 'bg-white border-[1px] border-complementario-70 rounded-t-md'
+          ? 'bg-gris-80 rounded-t-md border-b-complementario-70 border-b-[1px]'
+          : 'bg-white border-[1px] border-complementario-70 rounded-t-md'
           }`}
       >
         <Typography
@@ -83,7 +83,7 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
       >
         <div
           id={`description-question-${id}`}
-          className="px-[16px] py-4 text-complementario-100"
+          className="px-[16px] py-4 text-complementario-100 lg:w-[892px]"
           itemProp="text"
         >
           {children}

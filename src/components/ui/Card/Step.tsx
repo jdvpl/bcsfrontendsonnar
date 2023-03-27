@@ -11,6 +11,7 @@ const Step: FC<stepProps> = ({ titleNumber, description }) => {
       <Typography
         variant="bodyM1"
         typeFont="Regular"
+        componentHTML='p'
         className=" text-primario-300 text-center mt-5 text-[22px]"
       >
         {titleNumber}
@@ -19,6 +20,7 @@ const Step: FC<stepProps> = ({ titleNumber, description }) => {
         <Typography
           variant="bodyM3"
           typeFont='Light'
+          componentHTML='p'
           className="text-complementario-100 text-left"
         >
           {description}

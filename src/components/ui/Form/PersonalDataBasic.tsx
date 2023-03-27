@@ -18,6 +18,7 @@ import usePersonalData from '../../../hooks/usePersonalData';
 import { getCityById, validateAddress } from '../../../utils';
 import { useBackDetector } from '../../../hooks/useBackDetector'
 import useProtectedRoutes from '../../../hooks/useProtectedRoutes';
+import Typography from '../Typography';
 
 function PersonalDataBasic({ userInfo }: any) {
   const router = useRouter();
@@ -37,12 +38,12 @@ function PersonalDataBasic({ userInfo }: any) {
   const [showModalExit, setshowModalExit] = useState(false);
   const [componentModal,] = useState({
     children: <OfficeBranch setShowModal={setShowModal} />,
-    title: <span className='md:text-[24px] font-poppinsSemiBold'>Si sus datos han cambiado actualícelos llamando a la línea amiga</span>,
+    title: <Typography variant='h3' componentHTML='h3' typeFont='Bold' className=''>Si sus datos han cambiado actualícelos llamando a la línea amiga</Typography>,
     id: '',
   });
   const [componentModalExit,] = useState({
     children: <ExitModal setshowModalExit={setshowModalExit} />,
-    title: <span className='md:text-[24px] font-poppinsSemiBold'>Está a punto de abandonar su solicitud</span>,
+    title: <Typography variant='h3' componentHTML='h3' typeFont='Bold' className=''>Está a punto de abandonar su solicitud</Typography>,
     id: '',
   });
   const currentAddress = watch('currentAddress', '');
@@ -93,9 +94,9 @@ function PersonalDataBasic({ userInfo }: any) {
 
           {!userInfo.isClient && <div className="grid grid-cols-3 gap-x-2 items-end">
             <div>
-              <p className="text-[10px] w-full font-montserratRegular font-medium text-complementario-100 mb-3">
+              <Typography variant='overline2' componentHTML='p' typeFont='Regular' className=" w-full  text-complementario-100 mb-3">
                 Fecha de nacimiento:
-              </p>
+              </Typography>
               <ReactHookFormSelect
                 className={`col-span-2`}
                 onChange={(e: any) => setValue('dayDt', e.target.value)}

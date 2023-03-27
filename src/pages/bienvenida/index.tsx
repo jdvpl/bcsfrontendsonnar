@@ -34,12 +34,10 @@ function Bienvenida() {
             de comprar vivienda
           </span>
         </Typography>
-
-
         <div className="listInitial flex justify-center font-monserratLight text-[18px] text-primario-900">
           <ul className='md:mt-10'>
             <Typography variant='h4' typeFont='Bold' className='text-left   text-primario-900'>Requisitos de solicitud:</Typography>
-            <li className='mt-3'>Tener entre 18 y 70 años</li>
+            <li className='mt-5'>Tener entre 18 y 70 años</li>
             <li className='mt-3'>Ser asalariado o pensionado</li>
             <li className='mt-3'>Estar al día con sus pagos</li>
             <li className='mt-3'>Pagar salud y pensión</li>

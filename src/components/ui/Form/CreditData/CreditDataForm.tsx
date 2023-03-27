@@ -15,6 +15,7 @@ import useCreditForm from '../../../../hooks/useCreditForm';
 import useProtectedRoutes from '../../../../hooks/useProtectedRoutes';
 import { ApplicationLoader } from '../../Loaders/ApplicationLoader';
 import NewAutoComplete from '../../inputs/newAutoComplete';
+import Typography from '../../Typography';
 
 export function CreditDataForm() {
   const [insuranceCheck] = useState(true);
@@ -241,9 +242,9 @@ export function CreditDataForm() {
         {/* Card Chose Housing */}
         <div className="cardShadow min-h-[106px] mt-[23px] rounded-xl pt-[24px] pb-[23px] px-[24px] w-full flex flex-col gap-4">
           <div>
-            <span className="w-full font-montserratRegular font-semibold text-primario-900 text-[16px] leading-[18px]">
+            <Typography variant='bodyM3' componentHTML='span' typeFont='Bold' className="w-full  text-primario-900 ">
               Elija como continuar el proceso
-            </span>
+            </Typography>
           </div>
           <div className="flex flex-col gap-5">
             <button
@@ -256,9 +257,9 @@ export function CreditDataForm() {
                   <div className="w-[10px] h-[10px] bg-primario-200 rounded-full"> </div>
                 ) : null}
               </div>
-              <span className="font-normal text-primario-900 font-montserratRegular ml-[10px]">
+              <Typography variant='bodyM3' componentHTML='span' typeFont='Regular' className="font-normal text-primario-900 ml-[10px]">
                 Acercarme a una oficina
-              </span>
+              </Typography>
             </button>
 
             {choseOffice ? (
@@ -303,9 +304,9 @@ export function CreditDataForm() {
                     </div>
                   ) : null}
                 </div>
-                <span className="font-normal text-primario-900 font-montserratRegular">
+                <Typography variant='bodyM3' componentHTML='span' typeFont='Regular' className="font-normal text-primario-900 ">
                   Recibir visita asesor
-                </span>
+                </Typography>
               </button>
             ) : null}
           </div>

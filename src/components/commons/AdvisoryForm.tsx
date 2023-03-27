@@ -7,6 +7,7 @@ import Button from '../ui/Button';
 import Input from '../ui/inputs';
 import ReactHookFormSelect from '../ui/Select/newSelect'
 import useHandleChangeDocumentAdvisorBank from '../../hooks/useHandleChangeDocumentAdvisorBank'
+import Typography from '../ui/Typography';
 export interface FormData {
   advisoryType: string;
   otherAdvisoryType?: string;
@@ -75,9 +76,9 @@ function AdvisoryForm({ setShowModal }: any) {
 
   return (
     <div data-testid="advisoryForm">
-      <p className="text-center mt-9 font-montserratRegular font-normal text-primario-900">
+      <Typography variant='bodyM3' componentHTML='p' className="text-center mt-9 text-primario-900">
         ¿Quién lo asesoró?
-      </p>
+      </Typography>
       <div className='lg:w-[528px] md:w-[433px] sm:w-[312px] w-[259px] m-auto mt-[41px]'>
         <form onSubmit={handleSubmit(onHandleSubmit)}>
           <div className="mt-3 m-auto text-left">

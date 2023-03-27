@@ -8,6 +8,7 @@ import {
 import Qualify from '../../../custom/qualify';
 import Button from '../../Button';
 import { CardOption } from '../../Card/OptionCard';
+import Typography from '../../Typography';
 
 export default function useRatingForm() {
   const [rate, setRate] = useState<number>(-1);
@@ -31,9 +32,9 @@ export default function useRatingForm() {
         return (
           <>
             <div className="w-full sm:w-[343px] md:w-[348px]">
-              <h4 className="font-semibold text-center md:text-[28px] md:leading-[30px] ">
+              <Typography variant='h4' typeFont='Bold' componentHTML='h4' className=" text-center md:text-[28px] md:leading-[30px] ">
                 ¡Gracias por calificar su experiencia!
-              </h4>
+              </Typography>
             </div>
             <div className="mt-[16px] w-full md:w-[343px]">
               <Qualify rate={rate} changeRate={changeRate} isEditable={false} />
@@ -45,24 +46,27 @@ export default function useRatingForm() {
         return (
           <>
             <div className="w-[368px] lg:w-[400px] mt-[20px] mb-[16px]">
-              <h4 className="font-semibold text-center md:text-[28px] md:leading-[30px]">
+              <Typography variant='h4' componentHTML='h4' typeFont='Bold' className=" text-center md:text-[28px] md:leading-[30px]">
                 ¿Cómo califica su experiencia solicitando su crédito de vivienda?
-              </h4>
+              </Typography>
             </div>
             <div className="w-full md:w-[343px] mb-[24px]">
               <Qualify rate={rate} changeRate={changeRate} />
               <div className="w-full flex flex-col min-h-[400px]">
-                <p
+                <Typography
+                  variant='bodyM2'
+                  componentHTML='p'
+                  typeFont='Bold'
                   tabIndex={0}
                   role="paragraph"
-                  className="mt-3 mb-[12px] text-lg leading-5 text-center font-semibold"
+                  className="mt-3 mb-[12px] text-lg leading-5 text-center"
                 >
                   {PARSE_SCORE[rate]?.qualify}
-                </p>
+                </Typography>
                 <div className="w-full mb-[24px]">
-                  <p tabIndex={0} role="paragraph" className="text-left font-semibold">
+                  <Typography variant='bodyM3' componentHTML='p' typeFont='Bold' tabIndex={0} role="paragraph" className="text-left">
                     {PARSE_SCORE[rate]?.subtitle}
-                  </p>
+                  </Typography>
                 </div>
                 <div className="w-full align-bottom">
                   {rate >= 0 && (

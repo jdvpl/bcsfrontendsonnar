@@ -38,7 +38,7 @@ export default function useValidationFinancialDataForm(
         message: 'Los ingresos mínimos permitidos son de 1 SMMLV.',
       });
     }
-    if (occupation === "14") {
+    if (occupation === "Employee") {
       if (employeeYear && (employeeYear?.length > 2 || +employeeYear > 40)) {
         setError('employeeYearE', {
           type: 'error',

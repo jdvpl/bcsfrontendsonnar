@@ -9,7 +9,7 @@ describe('ContainerButtonForm', () => {
   });
   test('should render "P" successfully', () => {
     const { getByTestId } = render(<DynamicText isBrowser={true} />);
-    const typographyTest = getByTestId('typographyTest');
+    const typographyTest = getByTestId('phoneFromTest');
     expect(typographyTest.tagName).toMatch('P')
   });
 
