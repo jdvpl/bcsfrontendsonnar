@@ -2361,7 +2361,7 @@ input[type='checkbox']:checked {
 }
 
 .special-list li:before {
-  content: '\e831'; /* FontAwesome Unicode */
+  content: '\e874'; /* FontAwesome Unicode */
   font-family: 'bcs', sans-serif;
   color: #00b5ff;
   font-size: 17px;

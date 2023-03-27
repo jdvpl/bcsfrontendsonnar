@@ -10,7 +10,8 @@ export default function useConsultancyTutorial({
   nextTutorialStepRef,
   prevTutorialStepRef,
 }: any) {
-  const [timer, setTimer] = useState(10);
+  // TODO change seconds
+  const [timer, setTimer] = useState(1);
   const [openedTutorial, setOpenedTutorial] = useSessionStorage(
     SesionStorageKeys.openedTutorial.key,
     false
@@ -63,9 +64,10 @@ export default function useConsultancyTutorial({
         return (
           <>
             <Typography
-              variant="h2"
+              variant="h1"
               typeFont='Bold'
-              className="font-montserratSemiBold xl:leading-[34px] md:leading-[30px] xs:leading-[22px] text-center mx-auto text-white xs:text-[18px] md:text-[26px] xl:text-[28px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
+              componentHTML='h2'
+              className="text-center mx-auto text-white xs:text-[18px] md:text-[26px] md:w-[575px] sm:w-[343px] xs:w-[284.17px]"
             >
               Acompáñenos en un corto recorrido antes de iniciar la guía interactiva y
               conozca como navegar en ella.
@@ -75,23 +77,27 @@ export default function useConsultancyTutorial({
                 data-testid="nextStep"
                 disabled={!(timer === 0)}
                 onClick={handelActualStep}
-                isLanding="sm:w-[343px] xs:w-[284.17px] font-montserratRegular font-medium"
+                isLanding="sm:w-[343px] xs:w-[284.17px]"
               >
-                Continuar
+                <Typography variant='bodyM3' componentHTML='span' typeFont='Bold' className={`${timer !== 0 && 'text-primario-100 opacity-25'}`}>
+                  Continuar
+                </Typography>
               </Button>
-              <button
+              <Typography
+                variant='bodyM3'
+                componentHTML='button'
+                typeFont='Bold'
                 onClick={onHandleModal}
-                className="text-[18px] text-white font-montserratRegular font-medium mx-auto mt-[46px] xs:mb-[42px] md:mb-[49px] xl:mb-[42px]"
+                className="text-[18px] text-white mx-auto mt-[46px] xs:mb-[42px] md:mb-[49px] xl:mb-[42px]"
               >
                 Omitir
-              </button>
+              </Typography>
 
-              <div className="flex gap-[5px]">
-                <Icons icon="bcs-icon-1002" iconclassNames="text-white text-[14px]" />{' '}
-                <span className="text-white text-[14px] font-montserratRegular font-medium">
-                  {' '}
+              <div className="flex ">
+                <Icons icon="bcs-icon-15" iconclassNames="text-white text-[24px]" />{' '}
+                <Typography variant='bodyM3' typeFont='Bold' componentHTML='span' className="text-white mt-3">
                   {timer} Segundos
-                </span>
+                </Typography>
               </div>
             </div>
           </>
@@ -129,18 +135,24 @@ export default function useConsultancyTutorial({
               <div
                 className={`bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute flex flex-col items-center  gap-y-[28px] h-[171px]`}
               >
-                <p
+                <Typography
+                  variant='bodyM3'
+                  typeFont='Bold'
+                  componentHTML='p'
                   data-testid="text-next-step"
-                  className="z-40 text-[16px] font-medium font-montserratMedium text-center mx-auto leading-[20px] text-primario-900"
+                  className="z-40 text-center mx-auto  text-primario-900"
                 >
                   Para salir de la guía interactiva haga clic aquí.
-                </p>
-                <button
+                </Typography>
+                <Typography
+                  componentHTML='button'
+                  variant='bodyM3'
+                  typeFont='Bold'
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-center font-montserratMedium mx-auto"
+                  className="text-primario-20 w-fit text-center mx-auto"
                 >
                   Siguiente
-                </button>
+                </Typography>
               </div>
             </div>
 
@@ -156,15 +168,18 @@ export default function useConsultancyTutorial({
               <div
                 className={`bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute  md:flex flex-col items-center gap-y-[28px] h-[171px]`}
               >
-                <p className="z-40 text-[16px]  text-center mx-auto  font-medium font-montserratMedium leading-[20px] text-primario-900">
+                <Typography variant='bodyM3' typeFont='Bold' componentHTML='p' className="z-40   text-center mx-auto  text-primario-900">
                   Para salir de la guía interactiva haga clic aquí.
-                </p>
-                <button
+                </Typography>
+                <Typography
+                  variant='bodyM3'
+                  componentHTML='button'
+                  typeFont='Bold'
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-center font-montserratMedium mx-auto"
+                  className="text-primario-20 w-fit text-center mx-auto"
                 >
                   Siguiente
-                </button>
+                </Typography>
               </div>
             </div>
           </>
@@ -199,15 +214,18 @@ export default function useConsultancyTutorial({
               <div
                 className={`z-[100]  bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute flex flex-col items-center justify-center gap-y-[28px] h-[171px]`}
               >
-                <p className="z-40 text-[16px]  text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
+                <Typography variant='bodyM3' componentHTML='p' typeFont='Bold' className="z-40 text-center mx-auto  text-primario-900">
                   Para continuar con la guía interactiva haga clic aquí.
-                </p>
-                <button
+                </Typography>
+                <Typography
+                  componentHTML='button'
+                  variant='bodyM3'
+                  typeFont='Bold'
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-center font-montserratMedium mx-auto"
+                  className="text-primario-20 w-fit text-center mx-auto"
                 >
                   Siguiente
-                </button>
+                </Typography>
               </div>
             </div>
 
@@ -222,15 +240,18 @@ export default function useConsultancyTutorial({
               <div
                 className={`z-[100] sm:hidden bg-white rounded-lg w-[253px] px-[30px] pt-[41px] pb-[31px] absolute  md:flex flex-col items-center justify-center gap-y-[28px] h-[171px]`}
               >
-                <p className="z-40 text-[16px] p-0  text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
+                <Typography variant='bodyM3' componentHTML='p' typeFont='Bold' className="z-40 p-0  text-center mx-auto text-primario-900">
                   Para continuar con la guía interactiva haga clic aquí.
-                </p>
-                <button
+                </Typography>
+                <Typography
+                  componentHTML='button'
+                  variant='bodyM3'
+                  typeFont='Bold'
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-center font-montserratMedium mx-auto"
+                  className="text-primario-20 w-fit text-center mx-auto"
                 >
                   Siguiente
-                </button>
+                </Typography>
               </div>
             </div>
           </>
@@ -245,15 +266,18 @@ export default function useConsultancyTutorial({
                   key={item}
                   variant="secondary"
                   // ${itemActive && !isMobile === option?.label ? 'translate-x-[16px]' : ''}
-                  isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%] font-semibold rounded-[8px] lg:h-48px 
-                     bg-primario-100`}
+                  isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%] rounded-[8px] lg:h-48px 
+                    bg-primario-100`}
                 >
                   <div className="flex justify-center">
-                    <span
-                      className={`text-center text-white text-[18px] p-0 font-medium font-montserratMedium`}
+                    <Typography
+                      variant='bodyM3'
+                      componentHTML='span'
+                      typeFont='Bold'
+                      className={`text-center text-white text-[18px] p-0 `}
                     >
                       Tema {item}
-                    </span>
+                    </Typography>
                   </div>
                 </Button>
               ))}
@@ -265,15 +289,18 @@ export default function useConsultancyTutorial({
               <div
                 className={`bg-white rounded-lg w-[253px] z-10 px-[30px] pt-[31px] pb-[31px] flex flex-col items-center h-[171px]`}
               >
-                <p className="z-40 text-[16px] w-[199px] mb-[20px] text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
+                <Typography variant='bodyM3' typeFont='Bold' componentHTML='p' className="z-40 text-[16px] w-[199px] mb-[20px] text-center mx-auto  text-primario-900">
                   Seleccione cada botón para conocer el detalle de su enunciado.
-                </p>
-                <button
+                </Typography>
+                <Typography
+                  componentHTML='button'
+                  variant='bodyM3'
+                  typeFont='Bold'
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-center font-montserratMedium mx-auto"
+                  className="text-primario-20 w-fit text-center mx-auto"
                 >
                   Siguiente
-                </button>
+                </Typography>
               </div>
             </div>
 
@@ -283,15 +310,18 @@ export default function useConsultancyTutorial({
               <div
                 className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[31px] pb-[31px] flex flex-col items-center h-[171px]`}
               >
-                <p className="z-40 text-[18px] mb-[10px] w-[200px] text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
+                <Typography variant='bodyM3' typeFont='Bold' componentHTML='p' className="z-40 text-[18px] mb-[10px] w-[200px] text-center mx-auto text-primario-900">
                   Seleccione cada botón para conocer el detalle de su enunciado.
-                </p>
-                <button
+                </Typography>
+                <Typography
+                  componentHTML='button'
+                  variant='bodyM3'
+                  typeFont='Bold'
                   onClick={handelActualStep}
-                  className="text-primario-20 w-fit text-center font-montserratMedium mx-auto z-40"
+                  className="text-primario-20 w-fit text-center mx-auto z-40"
                 >
                   Siguiente
-                </button>
+                </Typography>
               </div>
             </div>
           </div>
@@ -307,15 +337,18 @@ export default function useConsultancyTutorial({
                 <div
                   className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center  h-[171px]`}
                 >
-                  <p className="z-40 text-[16px] w-[200px] mb-[20px] text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
+                  <Typography componentHTML='p' variant='bodyM3' typeFont='Bold' className="z-40  w-[200px] mb-[20px] text-center mx-auto  text-primario-900">
                     Para cerrar la ventana, haga clic aquí.
-                  </p>
-                  <button
+                  </Typography>
+                  <Typography
+                    componentHTML='button'
+                    variant='bodyM3'
+                    typeFont='Bold'
                     onClick={handelActualStep}
-                    className="text-primario-20 w-fit text-center font-montserratMedium mx-auto z-40"
+                    className="text-primario-20 w-fit text-center mx-auto z-40"
                   >
                     Terminar
-                  </button>
+                  </Typography>
                 </div>
               </div>
 
@@ -327,16 +360,19 @@ export default function useConsultancyTutorial({
                     variant="secondary"
                     // ${itemActive && !isMobile === option?.label ? 'translate-x-[16px]' : ''}
                     isLanding={`p-0 z-10 md:w-[253px] ${item === 1 ? 'md:translate-x-[20px]' : ''
-                      } xs:w-[100%] font-semibold rounded-[8px] lg:h-48px 
+                      } xs:w-[100%]  rounded-[8px] lg:h-48px 
                       ${item === 1 ? 'bg-primario-100' : 'bg-white'} `}
                   >
                     <div className="flex justify-center">
-                      <span
+                      <Typography
+                        variant='bodyM3'
+                        componentHTML='span'
+                        typeFont='Bold'
                         className={`text-center ${item === 1 ? 'text-white' : 'text-primario-100'
-                          }  text-[18px] p-0 font-medium font-montserratMedium`}
+                          }  text-[18px] p-0 `}
                       >
                         Tema {item}
-                      </span>
+                      </Typography>
                     </div>
                   </Button>
                 ))}
@@ -351,15 +387,18 @@ export default function useConsultancyTutorial({
                     <div
                       className={`bg-white rounded-lg w-[253px] z-40 px-[30px] pt-[41px] pb-[31px] flex flex-col items-center gap-y-[28px] h-[171px]`}
                     >
-                      <p className="z-40 text-[16px] w-[200px] text-center mx-auto font-medium font-montserratMedium leading-[20px] text-primario-900">
+                      <Typography variant='bodyM1' typeFont='Bold' componentHTML='p' className="z-40 w-[200px] text-center mx-auto text-primario-900">
                         Para cerrar la ventana, haga clic aquí.
-                      </p>
-                      <button
+                      </Typography>
+                      <Typography
+                        componentHTML='button'
+                        variant='bodyM3'
+                        typeFont='Bold'
                         onClick={handelActualStep}
-                        className="text-primario-20 w-fit text-center font-montserratMedium mx-auto z-40"
+                        className="text-primario-20 w-fit text-center mx-auto z-40"
                       >
                         Terminar
-                      </button>
+                      </Typography>
                     </div>
                   </div>
 
@@ -368,12 +407,12 @@ export default function useConsultancyTutorial({
                       <Close />
                     </div>
                   </div>
-                  <span className="font-semibold text-primario-900 font-montserratMedium lg:text-[20px] text-[16px]">
+                  <Typography variant='bodyM1' typeFont='Bold' componentHTML='p' className="f text-primario-900 ">
                     Texto descriptivo
-                  </span>
-                  <p className="break-words font-montserratRegular mt-4">
+                  </Typography>
+                  <Typography componentHTML='p' variant='bodyM3' className="break-words mt-4">
                     XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-                  </p>
+                  </Typography>
                 </div>
               </div>
             </div>
@@ -387,7 +426,9 @@ export default function useConsultancyTutorial({
             </div>
             <Typography
               variant="h2"
-              className="xl:leading-[34px] md:leading-[30px] xs:leading-[22px] font-poppinsSemiBold text-center mx-auto text-white xs:text-[20px] md:text-[28px] lg:text-[32px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
+              componentHTML='h2'
+              typeFont='Bold'
+              className="xl:leading-[34px] md:leading-[30px] xs:leading-[22px] text-center mx-auto text-white xs:text-[20px] md:text-[28px] lg:text-[32px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
             >
               El recorrido ha terminado.
               <br /> ¡Está listo para continuar!
@@ -395,7 +436,7 @@ export default function useConsultancyTutorial({
             <div className="w-[full] flex flex-col items-center xl:mt-[48px] md:mt-[60px] sm:mt-[46px] xs:mt-[36px]">
               <Button
                 onClick={onHandleModal}
-                isLanding="sm:w-[343px] xs:w-[284.17px] text-[18px] font-medium font-montserratMedium"
+                isLanding="sm:w-[343px] xs:w-[284.17px]"
               >
                 Iniciar guía interactiva
               </Button>

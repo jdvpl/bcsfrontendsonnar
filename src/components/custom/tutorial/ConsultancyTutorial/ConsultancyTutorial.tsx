@@ -11,18 +11,19 @@ function ConsultancyTutorial({ nextTutorialStepRef, prevTutorialStepRef }: any) 
       {isOpen ? (
         <div
           data-testid="tutorial-container"
-          className="w-full bg-black/90 absolute top-0 z-[90] pb-[400px] min-h-[200vh]"
+          className="w-full bg-black/90 absolute top-0 z-[90] pb-[400px] min-h-[100vh]"
         >
           {/* Header */}
           <div
-            className={`w-full xl:mt-[62px] md:mt-[68px] xs:mt-[36px] mt-[36px] xl:pl-[118px] xl:pr-[142px] md:pl-[106px] md:pr-[107px] xs:pl-[17px] xs:pr-[16px] flex items-center justify-between h-[60px] md:mb-[282px] xl:[217px] ${actualTutorialStep === 0 || actualTutorialStep === 5
-                ? 'xs:mb-[205px] sm:mb-[217px]'
-                : 'xs:mb-[86px] sm:mb-[86px]'
+            className={`w-full xl:mt-[35px] md:mt-[68px] xs:mt-[36px] mt-[36px] xl:pl-[118px] xl:pr-[142px] md:pl-[106px] md:pr-[107px] xs:pl-[17px] xs:pr-[16px] flex items-center justify-between h-[60px] md:mb-[282px] xl:[217px] ${actualTutorialStep === 0 || actualTutorialStep === 5
+              ? 'xs:mb-[205px] sm:mb-[217px]'
+              : 'xs:mb-[86px] sm:mb-[86px]'
               }`}
           >
             <Typography
               variant="h2"
               typeFont='Bold'
+              componentHTML='h2'
               className="text-white xs:text-[14px] sm:text-[14px] md:text-[14px] lg:text-[20px] "
             >
               Instructivo guía interactiva
