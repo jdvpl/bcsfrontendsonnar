@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
-import Typography from '../Typography'
+import React, { FC } from 'react';
+import Typography from '../Typography';
 
 export interface stepProps {
   titleNumber: string;
@@ -18,7 +18,7 @@ const Step: FC<stepProps> = ({ titleNumber, description }) => {
       <div className="bg-gris-90 border-b border-b-primario-100 lg:w-[424px] md:w-[264px]   pb-[20px] pt-[21px] pl-4 sm:w-[305px] w-[250px] smd:w-[330px]">
         <Typography
           variant="bodyM3"
-          typeFont='Light'
+          typeFont="Light"
           className="text-complementario-100 text-left"
         >
           {description}
