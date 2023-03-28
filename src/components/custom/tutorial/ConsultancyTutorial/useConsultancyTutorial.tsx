@@ -94,7 +94,7 @@ export default function useConsultancyTutorial({
               </Typography>
 
               <div className="flex ">
-                <Icons icon="bcs-icon-15" iconclassNames="text-white text-[24px]" />{' '}
+                <Icons title='Segundos restantes' icon="bcs-icon-15" iconclassNames="text-white text-[24px]" />{' '}
                 <Typography variant='bodyM3' typeFont='Bold' componentHTML='span' className="text-white mt-3">
                   {timer} Segundos
                 </Typography>
@@ -422,7 +422,11 @@ export default function useConsultancyTutorial({
         return (
           <>
             <div className="w-[48px] h-[48px] rounded-full mx-auto border-white border-[1px] flex justify-center items-center mb-[45px]">
-              <Icons icon="bcs-icon-100" iconclassNames="text-white" />
+              <Icons
+                icon="bcs-icon-100"
+                iconclassNames="text-white"
+                title="Información"
+              />
             </div>
             <Typography
               variant="h2"
@@ -446,7 +450,7 @@ export default function useConsultancyTutorial({
     }
   };
 
-  const saveOpenTutorial = () => { };
+  const saveOpenTutorial = () => {};
 
   useEffect(() => {
     setIsOpen(!openedTutorial);

@@ -60,7 +60,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
     dataQuestions,
     otc,
     setCurrentRouting,
-    basicDataUser
+    basicDataUser,
   });
   useEffect(() => {
     if (otp?.length === 6) {
@@ -83,7 +83,6 @@ const Otp: FC<otpProps> = ({ otc }) => {
     }
   }, [timer]);
 
-
   return (
     <div className="w-scren flex flex-col items-center">
       <h4
@@ -91,12 +90,17 @@ const Otp: FC<otpProps> = ({ otc }) => {
         className="font-semibold text-[20px] text-primario-900 text-center mt-[40px] mb-[36px]  md:mt-[64px]  md:mb-[52px] lg:mb-[36px] font-poppinsSemiBold"
         data-testid="h4OtpText"
       >
-        {
-          otc ? <span>Ingrese el código enviado  a su <br />celular y correo electrónico</span> : <span>
+        {otc ? (
+          <span>
+            Ingrese el código enviado a su <br />
+            celular y correo electrónico
+          </span>
+        ) : (
+          <span>
             Ingrese el código enviado por <br /> sms a su celular +57
             {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : ''}
           </span>
-        }
+        )}
       </h4>
       <div className="text-normal mb-[24px]">
         <OtpInput
@@ -131,10 +135,14 @@ const Otp: FC<otpProps> = ({ otc }) => {
           {isLoading && <OTLoader />}
           {error && (
             <div className="w-[294px] h-[28px] bg-[#ffd4ce40] px-[9px] py-[8px] flex items-center rounded-[4px]">
-              <Icons icon="bcs-icon-52" size="text-rojo-200 mr-[10px]" />
+              <Icons
+                icon="bcs-icon-52"
+                size="text-rojo-200 mr-[10px]"
+                title="Advertencia"
+              />
               <Typography
                 variant="overline1"
-                typeFont='Regular'
+                typeFont="Regular"
                 className="font-normal text-rojo-200 text-[12px]"
               >
                 Código inválido, intente nuevamente
@@ -144,7 +152,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
           {isValid && (
             <div>
               <div className="bg-verde-70  h-[48px] w-[48.22px] flex items-center justify-center rounded-full">
-                <Icons icon="bcs-icon-24" size="text-white" />
+                <Icons icon="bcs-icon-24" size="text-white" title="Información" />
               </div>
             </div>
           )}
@@ -154,11 +162,12 @@ const Otp: FC<otpProps> = ({ otc }) => {
         <Typography
           onClick={onResendOTP}
           variant="caption1"
-          typeFont='Regular'
-          className={` leading-4 ${timer === 0 && wasResend === false
-            ? 'text-primario-20 cursor-pointer'
-            : 'text-gris-200'
-            } mb-[12px]`}
+          typeFont="Regular"
+          className={` leading-4 ${
+            timer === 0 && wasResend === false
+              ? 'text-primario-20 cursor-pointer'
+              : 'text-gris-200'
+          } mb-[12px]`}
         >
           {timer === 0 && wasResend === false
             ? 'Volver a enviar código'
@@ -168,14 +177,14 @@ const Otp: FC<otpProps> = ({ otc }) => {
 
       {timer === 0 || isValid ? null : (
         <div className="flex justify-center items-center gap-1">
-          <Icons icon="bcs-icon-15" size="text-gris-30 font-semibold" />
-          <Typography variant="caption2" typeFont='Regular' className="text-gris-30">
+          <Icons icon="bcs-icon-15" size="text-gris-30 font-semibold" title="Tiempo" />
+          <Typography variant="caption2" typeFont="Regular" className="text-gris-30">
             {timer} segundos
           </Typography>
         </div>
       )}
     </div>
   );
-}
+};
 
 export default Otp;

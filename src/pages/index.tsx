@@ -246,8 +246,8 @@ export default function Home() {
               isTablet
                 ? `${basePath}/images/stepsmd.svg`
                 : isLG
-                  ? `${basePath}/images/stepslg.svg`
-                  : ``
+                ? `${basePath}/images/stepslg.svg`
+                : ``
             }
             alt="Imagen con interfaz de solicitud de Crédito Hipotecario"
             title="Imagen con interfaz de solicitud de Crédito Hipotecario"

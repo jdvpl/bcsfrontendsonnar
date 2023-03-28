@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
-import Typography from '../Typography'
+import React, { FC } from 'react';
+import Typography from '../Typography';
 
 export interface stepProps {
   titleNumber: string;

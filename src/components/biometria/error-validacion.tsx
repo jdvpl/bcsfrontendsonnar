@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import router from 'next/router';
 import React from 'react';
-import ErrorImageDesktop from "../icons/errorImageValidationDesktop";
-import QRPage from "../icons/errorQR";
+import ErrorImageDesktop from '../icons/errorImageValidationDesktop';
+import QRPage from '../icons/errorQR';
 import LogoBcs from '../svg/LogoBcs';
 import LogoForm from '../svg/LogoForm';
 import Icons from '../ui/icons';
@@ -14,8 +14,12 @@ const ValidationMessageBiometry: React.FC = () => (
       <div className="mt-4 hidden lg:block">
         <LogoBcs />
       </div>
-      <div className="xs:block sm:block lg:hidden mt-4 cursor-pointer" onClick={() => router.back()} data-testid="getbackRouteTest">
-        <Icons icon='bcs-icon-44' size="text-[1.2rem]" />
+      <div
+        className="xs:block sm:block lg:hidden mt-4 cursor-pointer"
+        onClick={() => router.back()}
+        data-testid="getbackRouteTest"
+      >
+        <Icons icon="bcs-icon-44" size="text-[1.2rem]" title="Banco Caja Social" />
       </div>
       <div className="mt-4 w-[180px] md:w-[180px] lg:w-[280px]">
         <LogoForm />
@@ -82,4 +86,4 @@ const ValidationMessageBiometry: React.FC = () => (
   </section>
 );
 
-export default ValidationMessageBiometry
+export default ValidationMessageBiometry;

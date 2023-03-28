@@ -1854,15 +1854,15 @@
 } */
 
 .border-text-area {
-  border: 0.5px solid #798c98;
+  border: 1px solid #798c98;
 }
 
 .border-text-area:focus-within {
-  border: 0.5px solid #798c98 !important;
+  border: 1px solid #798c98 !important;
 }
 
 .border-text-area:focus-visible {
-  border: 0.5px solid #798c98 !important;
+  border: 1px solid #798c98 !important;
   outline: none !important;
 }
 
@@ -2114,15 +2114,15 @@
 }
 
 .border-text-area {
-  border: 0.5px solid #798c98;
+  border: 1px solid #798c98;
 }
 
 .border-text-area:focus-within {
-  border: 0.5px solid #798c98 !important;
+  border: 1px solid #798c98 !important;
 }
 
 .border-text-area:focus-visible {
-  border: 0.5px solid #798c98 !important;
+  border: 1px solid #798c98 !important;
   outline: none !important;
 }
 

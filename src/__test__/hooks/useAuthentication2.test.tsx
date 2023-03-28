@@ -176,7 +176,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router, fkMock
+        router, fkMock,{}
       )
     );
     act(() => {
@@ -200,7 +200,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router, fkMock
+        router, fkMock,{}
       )
     );
     act(() => {
@@ -224,7 +224,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router, fkMock
+        router, fkMock,{}
       )
     );
     act(() => {
@@ -248,7 +248,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router, fkMock
+        router, fkMock,{}
       )
     );
     act(() => {
@@ -272,7 +272,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router, fkMock
+        router, fkMock,{}
       )
     );
     act(() => {
@@ -296,7 +296,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router, fkMock
+        router, fkMock,{}
       )
     );
     act(() => {
@@ -320,7 +320,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router, fkMock
+        router, fkMock,{}
       )
     );
     act(() => {
@@ -344,7 +344,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router, fkMock
+        router, fkMock,{}
       )
     );
     act(() => {
@@ -368,7 +368,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router, fkMock
+        router, fkMock ,{}
       )
     );
     act(() => {
@@ -392,7 +392,7 @@ describe('useAuthentication', () => {
         setValidated,
         dataUser,
         setDataQuestions,
-        router, fkMock
+        router, fkMock,{}
       )
     );
     act(() => {

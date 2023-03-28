@@ -43,7 +43,7 @@ function ApplicationApproval({ modalExit = false }: any) {
     const pdf = pdfData?.doc;
     const name = pdfData?.name;
     downLoadPdf(pdf, name);
-  }
+  };
   const closeModalExit = () => {
     setshowModalExit(false);
   };
@@ -91,6 +91,7 @@ function ApplicationApproval({ modalExit = false }: any) {
           variant="h4"
           componentHTML='h4'
           typeFont='Bold'
+
           className="text-center mt-3 text-primario-900"
         >
           Su crédito hipotecario
@@ -146,6 +147,7 @@ function ApplicationApproval({ modalExit = false }: any) {
           />
         </div>
         {/* ) : null} */}
+
         <div className="mt-8 flex justify-center">
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[438px]"
@@ -158,8 +160,9 @@ function ApplicationApproval({ modalExit = false }: any) {
             id="btn-next"
           >
             <Typography variant='bodyM3' typeFont='Bold' componentHTML='span'>
-              <Icons icon="bcs-icon-49" /> Carta de preaprobación
+              <Icons icon="bcs-icon-49"  title="Preaprobación"/> Carta de preaprobación
             </Typography>
+
           </Button>
         </div>
         <Typography variant='bodyM3' componentHTML='div' className="sm:w-[350px] w-[293px] md:w-[398px] lg:w-[448px] m-auto">
@@ -170,6 +173,7 @@ function ApplicationApproval({ modalExit = false }: any) {
             variant="bodyM3"
             typeFont='Regular'
             componentHTML='p'
+
             className="text-center mt-3 text-primario-900 "
           >
             Conozca los próximos pasos <br />

@@ -7,7 +7,10 @@ import Close from '../../components/svg/Close';
 import { Icons } from '../../components/ui/icons';
 import Stepper from '../../components/ui/Stepper';
 import Typography from '../../components/ui/Typography';
-import { stepperTitles, titleSection } from '../../components/custom/consultancy/consultancy';
+import {
+  stepperTitles,
+  titleSection,
+} from '../../components/custom/consultancy/consultancy';
 import useConsultancy from './useConsultancy';
 import TagManager from 'react-gtm-module';
 import Header from '../../components/ui/Headers/Header';
@@ -26,17 +29,16 @@ function Consultancy() {
   });
   const router = useRouter();
 
-  const { nextStep, prevStep, onCloseModal, renderContent, OptionList } =
-    useConsultancy({
-      actualStep,
-      setActualStep,
-      router,
-      setActiveIndex,
-      activeIndex,
-      setItemActive,
-      isMobile,
-      itemActive,
-    });
+  const { nextStep, prevStep, onCloseModal, renderContent, OptionList } = useConsultancy({
+    actualStep,
+    setActualStep,
+    router,
+    setActiveIndex,
+    activeIndex,
+    setItemActive,
+    isMobile,
+    itemActive,
+  });
   useEffect(() => {
     TagManager.dataLayer({
       dataLayer: {
@@ -67,7 +69,6 @@ function Consultancy() {
       {/* Header */}
       <Header />
       <div className="w-[90%] xs:w-[95%] md:w-[90%] m-auto">
-
         <div className="lg:w-[825px] mx-auto md:w-[528px] w-[full] xs:w-full lg:mt-[82px] mt-[22px]">
           <Stepper
             steps={4}
@@ -94,8 +95,9 @@ function Consultancy() {
         />
 
         <div
-          className={`${itemActive !== '' ? 'sm:ml-[-95px]' : ''
-            } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
+          className={`${
+            itemActive !== '' ? 'sm:ml-[-95px]' : ''
+          } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
           style={{
             backgroundImage: `url(${basePath}/images/consultancy/${actualStep}.svg)`,
             backgroundRepeat: 'no-repeat',
@@ -159,6 +161,7 @@ function Consultancy() {
                 <Icons
                   icon="bcs-icon-1506"
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
+                  title=""
                 />
               </div>
               <a className="text-primario-300 font-bold font-montserratRegular text-center text-[14px] ">
@@ -175,6 +178,7 @@ function Consultancy() {
                 <Icons
                   icon="bcs-icon-337"
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
+                  title=""
                 />
               </div>
               <a className=" text-primario-300 font-montserratRegular  md:order-2 xs:order-1 font-bold text-center text-[14px]">
@@ -193,8 +197,9 @@ function Consultancy() {
 
       {/* Link to Home */}
       <div
-        className={`w-full text-center mb-[80px] xs:hidden md:block${actualStep === 1 || actualStep === 4 ? 'hidden' : ''
-          }`}
+        className={`w-full text-center mb-[80px] xs:hidden md:block${
+          actualStep === 1 || actualStep === 4 ? 'hidden' : ''
+        }`}
       >
         <Typography
           variant='bodyM3'

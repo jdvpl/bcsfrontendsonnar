@@ -38,8 +38,8 @@ const Questions: FC = () => {
                 className='text-complementario-100'
               >
                 Para el proceso de legalización es necesario contemplar los gastos de
-                avalúo, estudio de títulos y escrituración. Si desea conocer más a cerca de
-                estos conceptos, diríjase a nuestra {''}
+                avalúo, estudio de títulos y escrituración. Si desea conocer más a cerca
+                de estos conceptos, diríjase a nuestra {''}
                 <span className="text-secundario-100 ">
                   <Link href={routes.consultancy}>
                     <span className="border-b-[1px] cursor-pointer border-b-secundario-100">
@@ -101,8 +101,8 @@ const Questions: FC = () => {
                 className='text-complementario-100'
               >
                 Si, el Banco Caja Social permite sumar ingresos siempre y cuando la
-                solicitud se realice en una oficina. En el caso de las solicitudes digitales
-                por ahora solo es permitido un titular.
+                solicitud se realice en una oficina. En el caso de las solicitudes
+                digitales por ahora solo es permitido un titular.
               </Typography>
             </div>
           </ItemAccordion>
@@ -150,9 +150,9 @@ const Questions: FC = () => {
               </Typography>
             </div>
           </ItemAccordion>
-        </div >
-      </div >
-    </section >
+        </div>
+      </div>
+    </section>
   );
 };
 

@@ -9,6 +9,7 @@ import TagManager from 'react-gtm-module';
 import { clearSessionStorage } from '../../utils';
 
 function InicioSolicitud() {
+  const [, setDataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, {});
   const router = useRouter();
   const [dataUser, setDataUser] = useSessionStorage(
     SesionStorageKeys.dataUser.key,
@@ -42,7 +43,7 @@ function InicioSolicitud() {
       <div className="flex justify-center">
         <div className="mt-[1rem] sm:w-[343px] md:w-[528px] lg:w-[684px]">
           <RegisterForm
-            onSubmit={(formData: FormData) => onSubmitStartProcess(formData, setDataUser, router)}
+            onSubmit={(formData: FormData) => onSubmitStartProcess(formData, setDataUser, router,setDataQuestions)}
             defaultValues={{
               ...dataUser,
             }}
