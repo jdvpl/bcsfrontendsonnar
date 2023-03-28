@@ -33,7 +33,7 @@ export default function useConsultancy({
   };
 
   const openModal = (label: string, index: number) => {
-    invokeEvent('show_item_detail', 'action_funnel')
+    invokeEvent('show_item_detail', 'action_funnel');
     setActiveIndex(index);
     setItemActive(label);
   };
@@ -61,17 +61,21 @@ export default function useConsultancy({
             onClick={() => openModal(option?.label, index)}
             variant="secondary"
             border="1"
-            isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%] font-semibold font-montserratRegular rounded-[8px] lg:h-48px ${itemActive === option?.label ? 'bg-primario-100' : ''
-              }
-                ${itemActive === option?.label && isMobile === false
-                ? 'translate-x-[16px]'
-                : ''
-              }`}
+            isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%] font-semibold font-montserratRegular rounded-[8px] lg:h-48px ${
+              itemActive === option?.label ? 'bg-primario-100' : ''
+            }
+                ${
+                  itemActive === option?.label && isMobile === false
+                    ? 'translate-x-[16px]'
+                    : ''
+                }`}
           >
             <div className="flex justify-center">
               <span
-                className={`text-center ${itemActive === option?.label ? 'text-white' : 'text-primario-100'
-                  } text-[18px] p-0`}
+                className={`text-center ${
+                  itemActive === option?.label ? 'text-white' : 'text-primario-100'
+                } text-[18px] p-0`}
+                title={option?.label}
               >
                 {option?.label}
               </span>

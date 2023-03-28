@@ -18,7 +18,12 @@ function BtnPdfDownloader({ pdf }: dataPdf) {
       <a className="pr-[8px] pt-[5px] pb-[5px] text-primario-900 text-[16px] font-montserratRegular font-medium ">
         Descargar simulación
       </a>
-      <img className="hover:cursor-pointer" src={`${basePath}/images/Frame.svg`} />
+      <img
+        className="hover:cursor-pointer"
+        src={`${basePath}/images/Frame.svg`}
+        alt="Descargar simulación"
+        title="Descargar simulación"
+      />
     </PDFDownloadLink>
   );
 }

@@ -12,6 +12,10 @@ export function InactivityModal() {
       className={`bg-black/70 w-screen h-screen z-40 fixed top-0 left-0 flex justify-center content-center ${
         isOpen ? 'overflow-y-auto' : 'hidden'
       }`}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalInactivity"
+      tabIndex={0}
     >
       <div
         className={`${
@@ -38,15 +42,12 @@ export function InactivityModal() {
           <button
             id="reSend"
             type="button"
-            role="btnGotoHome"
             data-testid="btnGotoHome"
             onClick={getOutToHome}
-            className={`text-center cursor-pointer text-[18px] text-primario-20 text-base leading-[14px] -tracking-[0.2px] font-semibold
-                    disabled:text-azul_gris-40 disabled:font-normal disabled:text-sm disabled:leading-[18px] mb-[41px]`}
+            className={`text-center cursor-pointer text-[18px] text-primario-20 text-base leading-[14px] -tracking-[0.2px] font-semibold disabled:text-azul_gris-40 disabled:font-normal disabled:text-sm disabled:leading-[18px] mb-[41px]`}
+            title="Salir"
           >
-            <span id="reSend" className="font-montserratRegular">
-              Salir
-            </span>
+            <span className="font-montserratRegular">Salir</span>
           </button>
           <div>
             <p className="text-gris-30 text-center font-[600] mb-[42px] font-montserratRegular">

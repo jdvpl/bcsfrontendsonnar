@@ -34,6 +34,7 @@ function ReviewApplication({
         classtitle="h-[14px] text-[13px] font-montserratRegular"
         id="amountotal"
         tooltiptext=""
+        altsvg="Monto Total"
       />
       <Card
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA]  mb-[16px] font-semibold rounded-[8px]"
@@ -46,6 +47,7 @@ function ReviewApplication({
         textsub="30"
         tooltiptext=""
         urlsvgendicon=""
+        altsvg="Cuota mensual aproximada"
       />
       <Card
         className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[116px] bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
@@ -69,6 +71,7 @@ function ReviewApplication({
             </p>
           </p>
         }
+        altsvg="Tasa aproximada"
       />
       <Card
         className="xs:w-[290px] sm:w-[343px] md:w-[448px] h-[78px]  bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
@@ -78,6 +81,7 @@ function ReviewApplication({
         urlsvg={`${basePath}/images/Calendar.svg`}
         classtitle="h-[14px] text-[13px] font-montserratRegular"
         tooltiptext=""
+        altsvg="Plazo"
       />
       {lifeInsurance ? (
         <Card
@@ -89,6 +93,7 @@ function ReviewApplication({
           urlsvg={`${basePath}/images/Insurage.svg`}
           classtitle="h-[14px] text-[13px] font-montserratRegular"
           tooltiptext=""
+          altsvg="Seguro de vida"
         />
       ) : null}
       {fireInsurance ? (
@@ -101,6 +106,7 @@ function ReviewApplication({
           urlsvg={`${basePath}/images/Money.svg`}
           classtitle="h-[14px] text-[13px] font-montserratRegulars"
           tooltiptext=""
+          altsvg="Seguro de Incendio, Rayo y Terremoto"
         />
       ) : null}
     </div>

@@ -118,7 +118,7 @@ function Input({
           data-testid={dataTestId}
           {...props}
           className={`${inputStyles} ${classNameInput}`}
-          placeholder=" "
+          placeholder=""
           aria-label={label}
           autoFocus={autofocus}
           onWheelCapture={(e) => {

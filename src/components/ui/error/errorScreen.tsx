@@ -34,7 +34,7 @@ export const ErrorLayout: React.FC<CardProps> = ({
       <HeaderForm />
       <div className="m-auto lg:w-[528px]">
         <div className={ImgClass}>
-          <img data-testid="ImageError" src={urlsvg} alt={altsvg} title={altsvg} />
+          <img data-testid="imageError" src={urlsvg} alt={altsvg} title={altsvg} />
         </div>
         <div role="tabpanel" tabIndex={0}>
           <Typography

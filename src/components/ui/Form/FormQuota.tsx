@@ -209,7 +209,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit, isLoading }) => {
                   disabled={!(isValid && Object.entries(errors).length === 0)}
                   id="btn-next"
                 >
-                  <span className="text-[16px]">Simular</span>
+                  Simular
                 </Button>
               </div>
             </form>

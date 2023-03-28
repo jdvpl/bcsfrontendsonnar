@@ -6,21 +6,21 @@ interface CardProps {
   className?: string;
   typebg?: string;
   urlsvg: string;
-  altsvg?: string;
+  altsvg: string;
   title: string;
   value?: string;
   text: string;
   classtitle?: string;
-  subvalue?: string
+  subvalue?: string;
   textsub?: string;
   tooltip?: boolean;
   tooltiptext: React.ReactNode;
   id?: string;
   endicon?: boolean;
   urlsvgendicon?: string;
-  clickEdit?: any
-  description?: boolean,
-  descriptionHtml?: React.ReactNode
+  clickEdit?: any;
+  description?: boolean;
+  descriptionHtml?: React.ReactNode;
 }
 export const Card: React.FC<CardProps> = ({
   className,
@@ -39,9 +39,9 @@ export const Card: React.FC<CardProps> = ({
   urlsvgendicon,
   clickEdit,
   description,
-  descriptionHtml
+  descriptionHtml,
 }) => (
-  <div className={`${className}`} id={id}>
+  <div className={`${className}`} id={id} role="tabpanel" tabIndex={0}>
     <div className="flex relative">
       <div className="pr-[1px] ml-[2px] mr-[8px]">
         <Image
@@ -51,11 +51,11 @@ export const Card: React.FC<CardProps> = ({
           title={altsvg}
           width="16"
           height="16"
-          className='mx-2'
+          className="mx-2"
         />
       </div>
       <p className={classtitle}>{title}</p>
-      {tooltip ?
+      {tooltip ? (
         <ToolTipInfo
           id="tax"
           info=""
@@ -63,39 +63,33 @@ export const Card: React.FC<CardProps> = ({
           icon={
             <div
               id="-group"
-              className="relative  w-5 h-4 flex flex-col items-center group"
+              className="relative w-5 h-4 flex flex-col items-center group"
             >
               <InfoIco />
             </div>
           }
         />
-        : null
-      }
+      ) : null}
 
-      {endicon ?
-        <div className='absolute left-[220px] top-[20px] sm:left-[280px] md:left-[380px] cursor-pointer'>
+      {endicon ? (
+        <div className="absolute left-[220px] top-[20px] sm:left-[280px] md:left-[380px] cursor-pointer">
           <img
             src={urlsvgendicon}
             alt={altsvg}
             title={altsvg}
             width="19"
             height="19"
-            className='mx-1'
+            className="mx-1"
             onClick={clickEdit}
           />
         </div>
-        : null
-      }
+      ) : null}
     </div>
     <div className={text}>
-      <p className='pl-[10px]'>{value}</p>
-      <p className={`text-[${textsub}px]  pl-[5px]`}>{subvalue}</p>
+      <p className="pl-[10px]">{value}</p>
+      <p className={`text-[${textsub}px] pl-[5px]`}>{subvalue}</p>
     </div>
-    {
-      description ?
-        <div>{descriptionHtml}</div>
-        : null
-    }
+    {description ? <div>{descriptionHtml}</div> : null}
   </div>
 );
 

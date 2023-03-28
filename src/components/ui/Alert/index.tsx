@@ -15,6 +15,7 @@ const Alert: FC<propAlert> = ({
   <div
     className={`relative px-4 py-2 mb-5 text-xs font-normal rounded text-[#2F6EAE] ${bgBanner}`}
     role="alert"
+    tabIndex={0}
   >
     <span className="absolute top-[10px]  left-0 flex items-center px-3">
       <Icons

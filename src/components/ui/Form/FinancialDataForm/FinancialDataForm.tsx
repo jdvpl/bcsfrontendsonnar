@@ -144,7 +144,6 @@ function FinancialDataForm() {
                   control={control}
                   left="right4"
                   data-testid="contractTypeTest"
-                  role="contractTypeRole"
                   valueLength=""
                   name="contractType"
                   className="w-100"

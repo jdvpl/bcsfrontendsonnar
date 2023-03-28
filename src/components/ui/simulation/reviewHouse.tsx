@@ -39,6 +39,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         textsub="30"
         tooltiptext=""
         urlsvgendicon=""
+        altsvg="Cuota mensual sin seguros"
       />
     ) : null}
 
@@ -51,6 +52,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       urlsvg={`${basePath}/images/Money.svg`}
       classtitle="text-[14px] ml-2 font-monserratLight"
       tooltiptext=""
+      altsvg="Valor financiado aproximado"
     />
 
     <Card
@@ -62,6 +64,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       urlsvg={`${basePath}/images/Calendar.svg`}
       classtitle="h-[14px] text-[14px] ml-2 font-monserratLight"
       tooltiptext=""
+      altsvg="Plazo"
     />
     <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]    bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px] font-light"
@@ -77,7 +80,9 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
         <p className="pl-[33px]">
           <p className="flex">
             <p className="font-bold text-[14px] mr-1 font-monserratLight ">MV: </p>
-            <span className="text-[14px] font-monserratLight">Tasa nominal mes vencido</span>
+            <span className="text-[14px] font-monserratLight">
+              Tasa nominal mes vencido
+            </span>
           </p>
           <p className="flex">
             <p className="font-bold text-[14px]  mr-1 font-monserratLight">EA:</p>
@@ -85,16 +90,16 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
           </p>
         </p>
       }
+      altsvg="Tasa aproximada"
     />
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]   bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px] font-light"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px] bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px] font-light"
       title="Seguro de vida"
       value={lifeInsurance?.toString()}
       text={cardTextStyles}
       urlsvg={`${basePath}/images/Insurage.svg`}
       classtitle="h-[14px] text-[14px] ml-2 font-monserratLight"
       tooltip
-      id="lifeInsuranceHouse"
       urlsvgendicon=""
       tooltiptext={
         <p className="flex text-white font-montserratRegular text-[14px]">
@@ -102,6 +107,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
           incapacidad total y permanente, y demás riesgos previstos en la póliza.{' '}
         </p>
       }
+      altsvg="Seguro de vida"
     />
     <Card
       className="xs:w-[290px]  sm:w-[343px] md:w-[448px]    bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px] font-light"
@@ -111,7 +117,6 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
       urlsvg={`${basePath}/images/Home.svg`}
       classtitle="xs:mb-[23px] sm:mb-[0px] h-[14px] text-[14px] ml-2 font-monserratLight"
       tooltip
-      id="fireInsuranceHouse"
       urlsvgendicon=""
       tooltiptext={
         <p className="flex text-white font-montserratRegular text-[14px]">
@@ -120,6 +125,7 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
           directa de los riesgos amparados.{' '}
         </p>
       }
+      altsvg="Seguro de Incendio, Rayo y Terremoto"
     />
     <div className="xs:w-[290px] sm:w-[343px] md:w-[448px] flex justify-end mb-[12px]">
       {dataPdf?.quotes?.length > 0 ? <BtnPdfDownloader pdf={dataPdf} /> : null}

@@ -130,7 +130,6 @@ export const ValidationForm: React.FC<FormProps> = ({ questions, onSubmit }) => 
                             defaultValue={undefined}
                             render={({ field: { onChange } }) => (
                               <NewAutoComplete
-                                id="city-exp"
                                 defaultValue={undefined}
                                 placeholder="Lugar de expedición"
                                 label="Lugar de expedición"

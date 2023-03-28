@@ -51,7 +51,6 @@ function Authentication() {
         <div
           className="xs:block sm:block md:hidden lg:hidden mt-6 cursor-pointer xs:ml-4"
           onClick={() => router.back()}
-          role="btnGoBack"
           data-testid="getbackRouteTest"
         >
           <Icons icon="bcs-icon-44" size="text-[1.2rem]" title="" />
@@ -68,15 +67,17 @@ function Authentication() {
             title="Imagen referente a validación de información"
           />
         </div>
-        <Typography
-          variant="h3"
-          typeFont="Bold"
-          className="text-center mt-[52px] text-primario-900"
-        >
-          Por seguridad <span className="xs:block sm:inline">validaremos</span>
-          <span className="block">su información</span>
-        </Typography>
-        <DynamicText isBrowser={isBrowser} />
+        <div role="tabpanel" tabIndex={0}>
+          <Typography
+            variant="h3"
+            typeFont="Bold"
+            className="text-center mt-[52px] text-primario-900"
+          >
+            Por seguridad <span className="xs:block sm:inline">validaremos</span>
+            <span className="block">su información</span>
+          </Typography>
+          <DynamicText isBrowser={isBrowser} />
+        </div>
 
         <div className="flex justify-center mt-8">
           <Button
