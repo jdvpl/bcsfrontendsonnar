@@ -17,6 +17,7 @@ import Layout from '../../components/layouts/layout';
 import NavTitle from '../../components/commons/NavTitle';
 import { basePath } from '../../../next.config';
 import ContainerButtonForm from '../../components/ui/Form/ContainerButtonForm';
+import { invokeEvent } from '../../utils';
 
 const KEY = process.env.KEYENCRYPTADIGITAL;
 
@@ -38,6 +39,7 @@ const ValidationMessage: React.FC = () => {
     }
   };
   useEffect(() => {
+    invokeEvent('load_biometry', 'load_page');
     scrollBody();
     if (biometryProcess) {
       setShowAnimation(false);

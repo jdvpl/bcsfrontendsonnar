@@ -18,7 +18,7 @@ const ValidationMessageBiometry: React.FC = () => (
         onClick={() => router.back()}
         data-testid="getbackRouteTest"
       >
-        <Icons icon="bcs-icon-44" size="text-[1.2rem]" />
+        <Icons icon="bcs-icon-44" size="text-[1.2rem]" title="Banco Caja Social" />
       </div>
       <div className="mt-4 w-[180px] md:w-[180px] lg:w-[280px]">
         <LogoForm />

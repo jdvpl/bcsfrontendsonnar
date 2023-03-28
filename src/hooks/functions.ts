@@ -1,8 +1,7 @@
-import { routes } from "../routes";
-import { sendAuthorization, sendQuestions } from "../services";
-import { FormData } from '../components/ui/Form'
-import TagManager from "react-gtm-module";
-import { iPersonalDataResponse } from '../interfaces/iPersonalDataResponse'
+import { routes } from '../routes';
+import { sendAuthorization, sendQuestions } from '../services';
+import { FormData } from '../components/ui/Form';
+import { iPersonalDataResponse } from '../interfaces/iPersonalDataResponse';
 interface InitDataSend {
   document_type: string;
   document_number: string;
@@ -15,7 +14,7 @@ export const onSubmitResponse = async (
   processId: string,
   setCurrentRouting: any,
   setBasicData: any,
-  setLoading: any
+  setLoading: any,
 ) => {
   setLoading(true);
   const body = {
@@ -41,7 +40,6 @@ export const onSubmitResponse = async (
       default:
         break;
     }
-
   } else if (!response.error) {
     const step = response.response?.data?.question?.step;
     const info: iPersonalDataResponse = {
@@ -66,23 +64,22 @@ export const onSubmitResponse = async (
 export const onSubmitStartProcess = async (
   formData: FormData,
   setDataUser: any,
-  router: any
+  router: any,
+  setDataQuestions:any
 ) => {
-  TagManager.dataLayer({
-    dataLayer: {
-      event: 'go_auth',
-      category: 'action_funnel',
-      action: 'go_auth',
-      label: 'go_auth',
-    },
-  });
-  const labels = { policy_and_terms_label: 'Acepta tratamiento de datos personales y consulta en centrales de riesgo', commercial_terms_label: 'Autoriza que su información sea utilizada con fines comerciales' }
-  const data = { ...formData, ...labels }
+  const labels = {
+    policy_and_terms_label:
+      'Acepta tratamiento de datos personales y consulta en centrales de riesgo',
+    commercial_terms_label:
+      'Autoriza que su información sea utilizada con fines comerciales',
+  };
+  const data = { ...formData, ...labels };
   const response = await sendAuthorization(data);
   setDataUser(formData);
   if (!response.error) {
-    if (response.response.result) {
+    if (response.response?.result?.processId) {
       router.push(routes.authentication);
+      setDataQuestions({ processId: response.response?.result?.processId });
     } else {
       router.push(routes.validacionErrorValidacionIdentidad);
     }

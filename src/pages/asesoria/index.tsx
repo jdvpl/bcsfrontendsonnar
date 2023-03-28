@@ -9,10 +9,15 @@ import LogoForm from '../../components/svg/LogoForm';
 import { Icons } from '../../components/ui/icons';
 import Stepper from '../../components/ui/Stepper';
 import Typography from '../../components/ui/Typography';
-import { stepperTitles, titleSection } from '../../components/custom/consultancy/consultancy';
+import {
+  stepperTitles,
+  titleSection,
+} from '../../components/custom/consultancy/consultancy';
 import useConsultancy from './useConsultancy';
-import TagManager from 'react-gtm-module';
+
 import Header from '../../components/ui/Headers/Header';
+import { invokeEvent } from '../../utils';
+import { routes } from '../../routes';
 
 export const ConditionalWrapper: FC<any> = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
@@ -28,27 +33,25 @@ function Consultancy() {
   });
   const router = useRouter();
 
-  const { nextStep, prevStep, onCloseModal, renderContent, OptionList } =
-    useConsultancy({
-      actualStep,
-      setActualStep,
-      router,
-      setActiveIndex,
-      activeIndex,
-      setItemActive,
-      isMobile,
-      itemActive,
-    });
+  const { nextStep, prevStep, onCloseModal, renderContent, OptionList } = useConsultancy({
+    actualStep,
+    setActualStep,
+    router,
+    setActiveIndex,
+    activeIndex,
+    setItemActive,
+    isMobile,
+    itemActive,
+  });
+
+  const goHome = () => {
+    invokeEvent('back_home', 'action_funnel');
+    router.push(routes.home);
+  }
+
   useEffect(() => {
-    TagManager.dataLayer({
-      dataLayer: {
-        event: 'load_guide',
-        category: 'load',
-        action: 'load_guide',
-        label: 'load_guide',
-      },
-    });
-  }, []);
+    invokeEvent('load_consultancy', 'load_page')
+  }, [])
 
   return (
     <>
@@ -69,7 +72,6 @@ function Consultancy() {
       {/* Header */}
       <Header />
       <div className="w-[90%] xs:w-[95%] md:w-[90%] m-auto">
-
         <div className="lg:w-[825px] mx-auto md:w-[528px] w-[full] xs:w-full lg:mt-[82px] mt-[22px]">
           <Stepper
             steps={4}
@@ -79,7 +81,7 @@ function Consultancy() {
           />
           <Typography
             variant="h2"
-            typeFont='Bold'
+            typeFont="Bold"
             className="lg:w-[515px] md:w-[445px] sm:w-[303px] w-[303px] mx-auto lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center"
           >
             {titleSection[actualStep - 1]}
@@ -160,6 +162,7 @@ function Consultancy() {
                 <Icons
                   icon="bcs-icon-1506"
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
+                  title=""
                 />
               </div>
               <a className="text-primario-300 font-bold font-montserratRegular text-center text-[14px] ">
@@ -176,6 +179,7 @@ function Consultancy() {
                 <Icons
                   icon="bcs-icon-337"
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
+                  title=""
                 />
               </div>
               <a className=" text-primario-300 font-montserratRegular  md:order-2 xs:order-1 font-bold text-center text-[14px]">
@@ -194,11 +198,11 @@ function Consultancy() {
 
       {/* Link to Home */}
       <div
-        className={`w-full text-center mb-[80px] xs:hidden md:block${actualStep === 1 || actualStep === 4 ? 'hidden' : ''
+        className={`cursor-pointer w-full text-center mb-[80px] xs:hidden md:block${actualStep === 1 || actualStep === 4 ? 'hidden' : ''
           }`}
       >
         <a
-          href={`${basePath}`}
+          onClick={goHome}
           className=" text-primario-100 font-montserratRegular font-bold text-[14px]"
         >
           Volver al inicio

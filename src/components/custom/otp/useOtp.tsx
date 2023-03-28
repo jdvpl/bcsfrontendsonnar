@@ -1,4 +1,5 @@
 import { routes } from '../../../routes';
+import { invokeEvent } from '../../../utils';
 import { OTPCodeRequest, ValidateOTC } from './index';
 
 export default function useOtp({
@@ -16,7 +17,7 @@ export default function useOtp({
   dataQuestions,
   otc,
   setCurrentRouting,
-  basicDataUser
+  basicDataUser,
 }: any) {
   const onValidateOTP = async () => {
     setIsLoading(true);
@@ -30,6 +31,7 @@ export default function useOtp({
     };
     const response = await validateOTOCode(body);
     if (!response.error) {
+      invokeEvent(`complete_${otc ? 'otc' : 'otp'}`, 'action_funnel');
       setIsValid(true);
       setIsLoading(false);
       setCurrentRouting(routes.otp, false);

@@ -5,6 +5,7 @@ import Typography from '../../../ui/Typography';
 import Close from '../../../svg/Close';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
+import { invokeEvent } from '../../../../utils';
 
 export default function useConsultancyTutorial({
   nextTutorialStepRef,
@@ -24,6 +25,12 @@ export default function useConsultancyTutorial({
     clearStylesNextStep();
     setIsOpen(!isOpen);
     setOpenedTutorial(true);
+    
+    if (actualTutorialStep === 5) {
+      invokeEvent('complete_guide', 'action_funnel')
+    } else {
+      invokeEvent('skip_guide', 'action_funnel')
+    }
   };
   const clearStylesPrevStep = () => {
     prevTutorialStepRef?.current?.classList?.remove('z-[95]');
@@ -87,7 +94,11 @@ export default function useConsultancyTutorial({
               </button>
 
               <div className="flex gap-[5px]">
-                <Icons icon="bcs-icon-1002" iconclassNames="text-white text-[14px]" />{' '}
+                <Icons
+                  icon="bcs-icon-1002"
+                  iconclassNames="text-white text-[14px]"
+                  title="Tiempo"
+                />{' '}
                 <span className="text-white text-[14px] font-montserratRegular font-medium">
                   {' '}
                   {timer} Segundos
@@ -385,7 +396,11 @@ export default function useConsultancyTutorial({
         return (
           <>
             <div className="w-[48px] h-[48px] rounded-full mx-auto border-white border-[1px] flex justify-center items-center mb-[45px]">
-              <Icons icon="bcs-icon-100" iconclassNames="text-white" />
+              <Icons
+                icon="bcs-icon-100"
+                iconclassNames="text-white"
+                title="Información"
+              />
             </div>
             <Typography
               variant="h2"
@@ -422,6 +437,10 @@ export default function useConsultancyTutorial({
       clearInterval(intervalRef.current);
     }
   }, [timer]);
+
+  useEffect(() => {
+    invokeEvent('load_guide', 'load_page')
+  }, [])
 
   return {
     isOpen,

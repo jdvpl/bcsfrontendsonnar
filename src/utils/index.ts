@@ -12,6 +12,8 @@ import {
   minHouseValueVis,
   SMMLV,
 } from '../lib/simulator';
+import TagManager from 'react-gtm-module';
+import { routes } from '../routes';
 
 export const clearSessionStorage = () => {
   sessionStorage.clear();
@@ -116,7 +118,7 @@ export const getHasAdviserNameAdviser = (id: string) => {
   const data = cities.details.filter((element) => element.id == id)[0];
   return {
     hasAdviser: data.hasAdviser,
-    nameAdviser: data.nameAdviser
+    nameAdviser: data.nameAdviser,
   };
 };
 
@@ -239,16 +241,17 @@ export const emailMasked = (email: string) => {
   } else {
     return email;
   }
-}
+};
 
 export const downLoadPdf = (pdf: any, name: string) => {
+  invokeEvent('download_pre_approved _letter','action_funnel');
   const linkSource = `data:application/pdf;base64,${pdf}`;
-  const downloadLink = document.createElement("a");
+  const downloadLink = document.createElement('a');
   const fileName = `${name}.pdf`;
   downloadLink.href = linkSource;
   downloadLink.download = fileName;
-  downloadLink.click()
-}
+  downloadLink.click();
+};
 
 export const calculateAgeMethod2 = (dob: string): number => {
   var hoy = new Date();
@@ -262,3 +265,26 @@ export const calculateAgeMethod2 = (dob: string): number => {
 
   return edad;
 };
+
+export const invokeEvent = (
+  event: string,
+  category: string,
+) => {
+  TagManager.dataLayer({
+    dataLayer: {
+      event: event,
+      category: category,
+      action: event,
+      label: event,
+    },
+  });
+};
+
+export const parsePathToEvent = (path: string) => {
+  const event = {
+    [routes.simulador]: 'go_simulator',
+    [routes.consultancy]: 'go_guide',
+    [routes.onboarding]: 'go_welcome',
+  }
+  return event[path];
+}

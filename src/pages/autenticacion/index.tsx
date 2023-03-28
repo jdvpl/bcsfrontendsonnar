@@ -9,28 +9,21 @@ import Icons from '../../components/ui/icons';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../session';
 import AnimationComponent from '../../components/commons/Animation';
-import TagManager from 'react-gtm-module';
 import useAuthentication from '../../hooks/useAuthentication';
 import useProtectedRoutes from '../../hooks/useProtectedRoutes';
 import DynamicText from '../../components/custom/DynamicText';
+import { invokeEvent } from '../../utils';
 
 function Authentication() {
   const router = useRouter();
-  const [, setDataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, {});
+  const [dataQuestions, setDataQuestions] = useSessionStorage(
+    SesionStorageKeys.DataQuestions.key,
+    {}
+  );
   const [dataUser] = useSessionStorage(SesionStorageKeys.dataUser.key, {});
   const [showAnimation, setShowAnimation] = useState(false);
   const [validated, setValidated] = useState(false);
   const [loaded] = useState(false);
-  useEffect(() => {
-    TagManager.dataLayer({
-      dataLayer: {
-        event: 'load_onboarding_auth',
-        category: 'load_page',
-        action: 'load_onboarding_auth',
-        label: 'load_onboarding_auth',
-      },
-    });
-  }, []);
   const { setCurrentRouting } = useProtectedRoutes();
   const { onSubmit, isBrowser } = useAuthentication(
     setShowAnimation,
@@ -38,8 +31,14 @@ function Authentication() {
     dataUser,
     setDataQuestions,
     router,
-    setCurrentRouting
+    setCurrentRouting,
+    dataQuestions
   );
+
+  useEffect(() => {
+    invokeEvent('load_authentication', 'load_page');
+  }, []);
+
   return (
     <div>
       {showAnimation ? (
@@ -55,7 +54,7 @@ function Authentication() {
           role="btnGoBack"
           data-testid="getbackRouteTest"
         >
-          <Icons icon="bcs-icon-44" size="text-[1.2rem]" />
+          <Icons icon="bcs-icon-44" size="text-[1.2rem]" title="" />
         </div>
         <div className="mt-6 w-[180px] md:w-[180px] lg:w-[280px] xs:mr-4">
           <LogoForm />

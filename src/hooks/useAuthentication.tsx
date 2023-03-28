@@ -1,9 +1,17 @@
 import { routes } from '../routes';
 import { getQuestions } from '../services';
 import { isBrowser } from 'react-device-detect';
+import { invokeEvent } from '../utils';
 
-
-export default function useAuthentication(setShowAnimation: (data: boolean) => void, setValidated: (data: boolean) => void, dataUser: any, setDataQuestions: (data: any) => void, router: any, setCurrentRouting: any) {
+export default function useAuthentication(
+  setShowAnimation: (data: boolean) => void,
+  setValidated: (data: boolean) => void,
+  dataUser: any,
+  setDataQuestions: (data: any) => void,
+  router: any,
+  setCurrentRouting: any,
+  dataQuestions: any
+) {
   const onSubmit = async () => {
     setShowAnimation(true);
     setValidated(true);
@@ -14,15 +22,17 @@ export default function useAuthentication(setShowAnimation: (data: boolean) => v
       dataTreatment: dataUser.policy_and_terms,
       productRegulation: dataUser.policy_and_terms,
       commercialPurposes: dataUser.commercial_terms,
+      processId:dataQuestions?.processId,
     };
     const response = await getQuestions(body);
     if (!response?.error) {
-      setDataQuestions(response?.response?.data);
+      invokeEvent('start_authentication','action_funnel');
+      setDataQuestions({ ...dataQuestions, ...response?.response?.data });
       router.push(routes.validacionIdentidad);
       return;
     }
     if (response.response?.status === 403) {
-      setDataQuestions(response.response.data);
+      setDataQuestions({ ...dataQuestions, ...response.response.data });
       const dataResponse: any = await response.response.json();
       const code = dataResponse.internal_code;
       switch (code) {
@@ -51,6 +61,6 @@ export default function useAuthentication(setShowAnimation: (data: boolean) => v
     } else {
       router.push(routes.errorValidacion);
     }
-  }
-  return { onSubmit, isBrowser }
+  };
+  return { onSubmit, isBrowser };
 }

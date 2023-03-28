@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Typography from '../../components/ui/Typography';
 import ReviewApplication from '../../components/ui/application/ReviewApplication';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import Button from '../../components/ui/Button/index';
-import { convertToColombianPesos } from '../../utils/index';
+import { convertToColombianPesos, invokeEvent } from '../../utils/index';
 import { SesionStorageKeys } from '../../session';
 import Stepper from '../../components/ui/Stepper';
 import { routes } from '../../routes';
@@ -42,6 +42,16 @@ function ResumenApplication() {
     basicDataUser,
     setPdfData
   );
+
+  const getOut = () => {
+    invokeEvent('get_out_summary_offer', 'action_funnel');
+    router.push(routes.home);
+  };
+
+  useEffect(() => {
+    invokeEvent('load_sumary_application', 'load_page');
+  }, []);
+
   return (
     <div>
       {loading ? <ApplicationLoader /> : null}
@@ -93,7 +103,7 @@ function ResumenApplication() {
           </Button>
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[15px] shadow-none"
-            onClick={() => router.push(routes.home)}
+            onClick={getOut}
             name="solicitarCredito"
             data-testid="btn-exit"
             tabIndex={0}

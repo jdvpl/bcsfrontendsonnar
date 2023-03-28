@@ -18,7 +18,7 @@ const Questions: FC = () => {
         variant="h2"
         typeFont="Bold"
         id="questions"
-        className="text-center min-w-[291px] lg:mb-[48px] mt-[80px]  md:mb-[48px] md:mt-[80px] w-full  mb-8 "
+        className="text-center min-w-[291px] lg:mb-[48px] mt-[80px]  md:mb-[48px] md:mt-[80px] w-full text-[28px] leading-[34px]  mb-8 lg:text-[32px] lg:leading-[34px] font-poppinsSemiBold"
       >
         Preguntas frecuentes
       </Typography>

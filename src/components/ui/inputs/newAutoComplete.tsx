@@ -34,7 +34,7 @@ const NewAutoComplete: React.FC<InputProps> = ({
   zIndex = 20,
   error = false,
   getLabelHandler = (option: any) => option.name,
-  arrayOptions = cityData.details
+  arrayOptions = cityData.details,
 }) => {
   const OPTIONS_LIMIT = 10;
   const defaultFilterOptions = createFilterOptions();
@@ -49,12 +49,12 @@ const NewAutoComplete: React.FC<InputProps> = ({
   const defaultOnchange = (_: any, value: any) => {
     if (value) {
       onChange?.(value);
-      setInternalState("value");
+      setInternalState('value');
     } else {
       onChange?.({});
       setInternalState('');
     }
-  }
+  };
 
   return (
     <div
@@ -66,13 +66,25 @@ const NewAutoComplete: React.FC<InputProps> = ({
     >
       <label
         className={`transition-all duration-300 ease-in-out absolute  font-montserratRegular
-        ${internalState || isFocus ? "-top-[6.5px] z-10 left-2 bg-white px-1 text-[10px] leading-[12px]" : "left-[36px] text-[14px] leading-[16px] top-2/4 -translate-y-2/4"} 
-        ${error ? "text-rojo-20" : "text-complementario-100 hover:text-complementario-100 peer-focus:hover:text-complementario-100"}`}
+        ${
+          internalState || isFocus
+            ? '-top-[6.5px] z-10 left-2 bg-white px-1 text-[10px] leading-[12px]'
+            : 'left-[36px] text-[14px] leading-[16px] top-2/4 -translate-y-2/4'
+        } 
+        ${
+          error
+            ? 'text-rojo-20'
+            : 'text-complementario-100 hover:text-complementario-100 peer-focus:hover:text-complementario-100'
+        }`}
       >
         {internalState ? label : placeholder}
       </label>
       {/* eslint-disable-line no-use-before-define */}
-      <Icons icon="bcs-icon-2" size="text-[17px] absolute left-2 top-[15px]  " />
+      <Icons
+        icon="bcs-icon-2"
+        size="text-[17px] absolute left-2 top-[15px]"
+        title="Información"
+      />
       <div className="" id={id}>
         <Autocomplete
           filterOptions={filterOptions}
@@ -85,7 +97,7 @@ const NewAutoComplete: React.FC<InputProps> = ({
           options={arrayOptions}
           sx={{
             color: '#00253d',
-            fontStyle: "normal",
+            fontStyle: 'normal',
             height: '48px',
             borderRadius: '8px',
             '.MuiSvgIcon-root ': {
@@ -95,12 +107,12 @@ const NewAutoComplete: React.FC<InputProps> = ({
             },
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
               borderColor: error ? '#e9132b !important' : '#0386e6 !important',
-              borderWidth: '0.5px !important',
+              borderWidth: '1px !important',
             },
             '&:hover .MuiOutlinedInput-notchedOutline': {
               borderColor: error ? '#e9132b !important' : '#0386e6 !important',
-              borderWidth: '0.5px !important',
-            }
+              borderWidth: '1px !important',
+            },
           }}
           renderInput={(params) => (
             <TextField
@@ -110,9 +122,9 @@ const NewAutoComplete: React.FC<InputProps> = ({
               {...params}
               onChange={(e) => {
                 if (e.target.value) {
-                  setInternalState(e.target.value)
+                  setInternalState(e.target.value);
                 } else {
-                  setInternalState("")
+                  setInternalState('');
                 }
               }}
               itemProp="homeLocation"
@@ -120,7 +132,7 @@ const NewAutoComplete: React.FC<InputProps> = ({
                 '.MuiOutlinedInput-root': {
                   height: '48px',
                   color: '#00253d',
-                  paddingLeft: "32px"
+                  paddingLeft: '32px',
                 },
                 '.MuiSvgIcon-root': {
                   fill: 'transparent',
@@ -128,8 +140,8 @@ const NewAutoComplete: React.FC<InputProps> = ({
                   width: '16px',
                 },
                 '.MuiOutlinedInput-notchedOutline': {
-                  borderColor: error ? '#ce1126' : "#89a3b5",
-                  borderWidth: '0.5px',
+                  borderColor: error ? '#ce1126' : '#89a3b5',
+                  borderWidth: '1px',
                   borderRadius: '8px',
                 },
               }}

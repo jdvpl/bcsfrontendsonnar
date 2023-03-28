@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import TagManager from 'react-gtm-module';
+
 import { iFormDataSimulation, SimulationData } from '../../../../interfaces';
 import {
   calculateAge,
@@ -12,6 +12,7 @@ import {
 import { routes } from '../../../../routes';
 import { sendSimulationData } from '../../../../services';
 import { useRouter } from 'next/router';
+import { invokeEvent } from '../../../../utils/index';
 
 export default function useHouseSimulator({
   typeHouse,
@@ -34,14 +35,6 @@ export default function useHouseSimulator({
 
   const onSubmit = async (formData: SimulationData) => {
     setIsLoading(true);
-    TagManager.dataLayer({
-      dataLayer: {
-        event: 'go_simulator',
-        category: 'action_funnel',
-        action: 'go_simulator',
-        label: 'go_simulator',
-      },
-    });
     const body: iFormDataSimulation = {
       typeHouse: formData?.typeHouse,
       houseValue: Math.floor(formData.houseValue),
@@ -57,6 +50,7 @@ export default function useHouseSimulator({
     };
     const response = await sendSimulationData(body);
     if (!response.error) {
+      invokeEvent('simulate_by_house_value','action_funnel');
       router.push(routes.simuladorResumen);
       setDataFormResponse(response?.response?.data);
       setDataFormQuota(body);

@@ -5,6 +5,7 @@ import {
   RATING_OPTIONS,
   RATING_OPTIONS_BETTER,
 } from '../../../../lib/rating';
+import { invokeEvent } from '../../../../utils';
 import Qualify from '../../../custom/qualify';
 import Button from '../../Button';
 import { CardOption } from '../../Card/OptionCard';
@@ -24,6 +25,11 @@ export default function useRatingForm() {
 
   const onChangeActualOption = (newOption: RatingsOptions): void => {
     setActualOption(newOption);
+  };
+
+  const sendQualify = () => {
+    setQualify(true)
+    invokeEvent('qualify_offer', 'action_funnel');
   };
   const renderForm = () => {
     switch (qualify) {
@@ -99,7 +105,7 @@ export default function useRatingForm() {
               variant="primary"
               isLanding="w-full md:w-[343px]"
               disabled={rate < 0}
-              onClick={(): void => setQualify(true)}
+              onClick={sendQualify}
             >
               Enviar calificación
             </Button>

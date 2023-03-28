@@ -5,6 +5,8 @@ import { useState } from 'react';
 import { iFormDataSimulation } from '../../interfaces/formSimulation';
 import { sendSimulationData } from '../../services/index';
 import { routes } from '../../routes';
+import { invokeEvent } from '../../utils';
+
 
 export default function useSimulator() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -21,6 +23,7 @@ export default function useSimulator() {
   const [simulatioTypeOption, setsimulatioTypeOption] = useState<'house' | 'salary'>(
     'house'
   );
+
   const onSubmit = async (formData: iFormDataSimulation) => {
     setIsLoading(true);
     const body: iFormDataSimulation = {
@@ -39,6 +42,7 @@ export default function useSimulator() {
     setdataFormQuota(body);
     const response = await sendSimulationData(body);
     if (!response.error) {
+      invokeEvent('simulate_by_salary','action_funnel')
       router.push(routes.simuladorResumen);
       setdataFormResponse(response.response.data);
     } else {

@@ -52,8 +52,8 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
           variant="bodyM3"
           typeFont="Bold"
           id={`title-question-${id}`}
-          className={`${
-            active ? 'py-[21px]' : 'py-4'
+          className={`font-monserratLight text-base leading-[18px] text-[16px] ${
+            active ? 'py-[16px]' : 'py-4'
           }  head-accordiom-color text-complementario-100`}
           itemProp="name"
         >
@@ -61,9 +61,9 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
         </Typography>
         <div>
           {active ? (
-            <Icons icon="bcs-icon-48" color="text-[#0072C8]" />
+            <Icons icon="bcs-icon-48" color="text-[#0072C8]" title="Cerrar" />
           ) : (
-            <Icons icon="bcs-icon-50" color="text-[#0072C8]" />
+            <Icons icon="bcs-icon-50" color="text-[#0072C8]" title="Abrir" />
           )}
         </div>
       </div>
