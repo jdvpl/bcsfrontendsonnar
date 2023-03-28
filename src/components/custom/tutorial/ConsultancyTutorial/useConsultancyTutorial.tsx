@@ -113,7 +113,7 @@ export default function useConsultancyTutorial({
           offsetWidth: offsetWidthP,
           offsetTop: offsetTopP,
           offsetHeight: offsetHeightP,
-        } = prevTutorialStepRef?.current;
+        } = prevTutorialStepRef?.current || {};
 
         prevTutorialStepRef?.current?.classList?.add('z-[95]', 'text-white', 'underline');
         prevTutorialStepRef?.current
@@ -186,7 +186,7 @@ export default function useConsultancyTutorial({
           offsetWidth: offsetWidthN,
           offsetTop: offsetTopN,
           offsetHeight: offsetHeightN,
-        } = nextTutorialStepRef?.current;
+        } = nextTutorialStepRef?.current || {};
         nextTutorialStepRef?.current?.classList.add('z-[95]', 'text-white', 'underline');
         nextTutorialStepRef?.current
           ?.querySelector('div')

@@ -6,7 +6,7 @@ import { routes } from '../../routes';
 import useDeleteKeys from '../../hooks/useDeleteKeys';
 
 
-export default function Error() {
+export default function ValidationError() {
   useDeleteKeys();
   const router = useRouter();
   return (

@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import useDeleteKeys from '../../hooks/useDeleteKeys';
 
 
-export default function Error() {
+export default function RejectionError() {
   useDeleteKeys();
   const router = useRouter();
   return (

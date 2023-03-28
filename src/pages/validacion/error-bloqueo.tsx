@@ -5,7 +5,7 @@ import { routes } from '../../routes';
 import { useRouter } from 'next/router';
 
 
-export default function Error() {
+export default function BlockingError() {
   const router = useRouter();
   return (
     <div>
