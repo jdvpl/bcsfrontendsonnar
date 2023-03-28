@@ -12,7 +12,7 @@ import NavTitle from '../../components/commons/NavTitle';
 import { SesionStorageKeys } from '../../session';
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
 import { onSubmitResponse } from '../../hooks/functions';
-import TagManager from 'react-gtm-module';
+
 import useProtectedRoutes from '../../hooks/useProtectedRoutes';
 import SimulatorLoader from '../../components/ui/Loaders/SimulatorLoader';
 interface Quest {
@@ -27,19 +27,8 @@ const Index: React.FC = () => {
   const [dataValid] = useState(false);
   const [progress, setProgress] = useState<number>(25);
   const [loading, setLoading] = useState(false);
-
   const data: Quest = dataQuestions;
 
-  useEffect(() => {
-    TagManager.dataLayer({
-      dataLayer: {
-        event: 'load_anwsers',
-        category: 'load_page',
-        action: 'load_anwsers',
-        label: 'load_anwsers',
-      },
-    });
-  }, []);
   const { setCurrentRouting } = useProtectedRoutes();
   return (
     <>

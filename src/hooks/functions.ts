@@ -1,10 +1,7 @@
 import { routes } from '../routes';
 import { sendAuthorization, sendQuestions } from '../services';
 import { FormData } from '../components/ui/Form';
-import TagManager from 'react-gtm-module';
 import { iPersonalDataResponse } from '../interfaces/iPersonalDataResponse';
-import { useSessionStorage } from './useSessionStorage';
-import { SesionStorageKeys } from '../session';
 interface InitDataSend {
   document_type: string;
   document_number: string;
@@ -70,14 +67,6 @@ export const onSubmitStartProcess = async (
   router: any,
   setDataQuestions:any
 ) => {
-  TagManager.dataLayer({
-    dataLayer: {
-      event: 'go_auth',
-      category: 'action_funnel',
-      action: 'go_auth',
-      label: 'go_auth',
-    },
-  });
   const labels = {
     policy_and_terms_label:
       'Acepta tratamiento de datos personales y consulta en centrales de riesgo',

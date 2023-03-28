@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../session';
 import { HowItemProps } from '../../components/ui/Form';
@@ -8,6 +8,7 @@ import Stepper from '../../components/ui/Stepper';
 import PersonalDataBasic from '../../components/ui/Form/PersonalDataBasic';
 import HeaderForm from '../../components/ui/Headers/HeaderForm';
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
+import { invokeEvent } from '../../utils';
 
 function PersonalData() {
   const [showModal, setShowModal] = useState<boolean>(true);
@@ -35,6 +36,9 @@ function PersonalData() {
     await setDataUser({ ...dataUser, ...datainfo })
     setShowModal(false)
   }
+  useEffect(()=>{
+    invokeEvent('load_personal_data','load_page');
+  },[])
   const keyModal = 'advisoryType' in dataUser;
   return (
     <InactivityWarper>

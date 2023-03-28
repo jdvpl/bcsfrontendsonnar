@@ -5,6 +5,7 @@ import Typography from '../../../ui/Typography';
 import Close from '../../../svg/Close';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
+import { invokeEvent } from '../../../../utils';
 
 export default function useConsultancyTutorial({
   nextTutorialStepRef,
@@ -24,6 +25,12 @@ export default function useConsultancyTutorial({
     clearStylesNextStep();
     setIsOpen(!isOpen);
     setOpenedTutorial(true);
+    
+    if (actualTutorialStep === 5) {
+      invokeEvent('complete_guide', 'action_funnel')
+    } else {
+      invokeEvent('skip_guide', 'action_funnel')
+    }
   };
   const clearStylesPrevStep = () => {
     prevTutorialStepRef?.current?.classList?.remove('z-[95]');
@@ -431,6 +438,10 @@ export default function useConsultancyTutorial({
       clearInterval(intervalRef.current);
     }
   }, [timer]);
+
+  useEffect(() => {
+    invokeEvent('load_guide', 'load_page')
+  }, [])
 
   return {
     isOpen,

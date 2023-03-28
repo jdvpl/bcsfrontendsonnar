@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Typography from '../../components/ui/Typography';
 import ReviewApplication from '../../components/ui/application/ReviewApplication';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import Button from '../../components/ui/Button/index';
-import { convertToColombianPesos } from '../../utils/index';
+import { convertToColombianPesos, invokeEvent } from '../../utils/index';
 import { SesionStorageKeys } from '../../session';
 import Stepper from '../../components/ui/Stepper';
 import { routes } from '../../routes';
@@ -18,7 +18,7 @@ function ResumenApplication() {
   const router = useRouter();
   const { setCurrentRouting } = useProtectedRoutes();
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [applicationResponse] = useSessionStorage(
     SesionStorageKeys?.applicationResponse.key,
@@ -26,9 +26,9 @@ function ResumenApplication() {
   );
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
   const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
-  const [dataPersonalBasic,] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
+  const [dataPersonalBasic] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
 
-  const [basicDataUser,] = useSessionStorage(SesionStorageKeys.basicDataUser.key, {});
+  const [basicDataUser] = useSessionStorage(SesionStorageKeys.basicDataUser.key, {});
   const [, setPdfData] = useSessionStorage(SesionStorageKeys.pdfData.key, {});
   const { getPdf } = useDownloadPdf(
     dataQuestions,
@@ -42,6 +42,16 @@ function ResumenApplication() {
     basicDataUser,
     setPdfData
   );
+
+  const getOut = () => {
+    invokeEvent('get_out_summary_offer', 'action_funnel');
+    router.push(routes.home);
+  };
+
+  useEffect(() => {
+    invokeEvent('load_sumary_application', 'load_page');
+  }, []);
+
   return (
     <div>
       {loading ? <ApplicationLoader /> : null}
@@ -57,17 +67,16 @@ function ResumenApplication() {
         />
       </div>
       <div className=" xs:w-[290px] sm:w-[343px]  lg:w-[684px] md:w-[584px] m-auto">
-        <Typography
-          typeFont='Bold'
-          variant="h2"
-          className="mt-8 mb-[40px] text-center"
-        >
+        <Typography typeFont="Bold" variant="h2" className="mt-8 mb-[40px] text-center">
           Conozca la oferta que hemos
           <br />
           diseñado para usted
         </Typography>
         <div className="xs:w-[290px] sm:w-[343px] md:w-[448px] mx-auto">
-          <Alert message="La tasa de su crédito será la que se encuentre vigente en el momento del desembolso." colorMessage='text-primario-200' />
+          <Alert
+            message="La tasa de su crédito será la que se encuentre vigente en el momento del desembolso."
+            colorMessage="text-primario-200"
+          />
         </div>
         <ReviewApplication
           financedValue={`${convertToColombianPesos(
@@ -96,7 +105,7 @@ function ResumenApplication() {
           </Button>
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[15px] shadow-none"
-            onClick={() => router.push(routes.home)}
+            onClick={getOut}
             name="solicitarCredito"
             data-testid="btn-exit"
             tabIndex={0}

@@ -9,33 +9,27 @@ import Icons from '../../components/ui/icons';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../session';
 import AnimationComponent from '../../components/commons/Animation';
-import TagManager from 'react-gtm-module';
 import useAuthentication from '../../hooks/useAuthentication';
 import useProtectedRoutes from '../../hooks/useProtectedRoutes';
 import DynamicText from '../../components/custom/DynamicText';
+import { invokeEvent } from '../../utils';
 
 function Authentication() {
   const router = useRouter();
   const [dataQuestions, setDataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, {});
-  const [dataUser,] = useSessionStorage(
-    SesionStorageKeys.dataUser.key,
-    {}
-  );
+  const [dataUser] = useSessionStorage(SesionStorageKeys.dataUser.key, {});
   const [showAnimation, setShowAnimation] = useState(false);
   const [validated, setValidated] = useState(false);
   const [loaded] = useState(false);
-  useEffect(() => {
-    TagManager.dataLayer({
-      dataLayer: {
-        event: 'load_onboarding_auth',
-        category: 'load_page',
-        action: 'load_onboarding_auth',
-        label: 'load_onboarding_auth',
-      },
-    });
-  }, []);
   const { setCurrentRouting } = useProtectedRoutes();
   const { onSubmit, isBrowser } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, setCurrentRouting,dataQuestions);
+
+
+  useEffect(() => {
+    invokeEvent('load_authentication', 'load_page');
+  }, []);
+
+
   return (
     <div>
       {showAnimation ? (
@@ -52,39 +46,39 @@ function Authentication() {
           data-testid="getbackRouteTest"
         >
           <Icons icon="bcs-icon-44" size="text-[1.2rem]" title="" />
-        </div>
-        <div className="mt-6 w-[180px] md:w-[180px] lg:w-[280px] xs:mr-4">
-          <LogoForm />
-        </div>
+        </div >
+    <div className="mt-6 w-[180px] md:w-[180px] lg:w-[280px] xs:mr-4">
+      <LogoForm />
+    </div>
+      </div >
+    <div className="m-auto lg:w-[528px]">
+      <div className="mt-20 lg:h-[300px] md:w-[350px] md:h-[300px] sm:w-[234px] sm:h-[200px] xs:h-[200px] xs:w-[234px] m-auto ">
+        <img src={`${basePath}/images/authentication.svg`} alt="" />
       </div>
-      <div className="m-auto lg:w-[528px]">
-        <div className="mt-20 lg:h-[300px] md:w-[350px] md:h-[300px] sm:w-[234px] sm:h-[200px] xs:h-[200px] xs:w-[234px] m-auto ">
-          <img src={`${basePath}/images/authentication.svg`} alt="" />
-        </div>
-        <Typography
-          variant="h3"
-          typeFont="Bold"
-          className="text-center mt-[52px] text-primario-900"
-        >
-          Por seguridad <span className="xs:block sm:inline">validaremos</span>
-          <span className="block">su información</span>
-        </Typography>
-        <DynamicText isBrowser={isBrowser} />
+      <Typography
+        variant="h3"
+        typeFont="Bold"
+        className="text-center mt-[52px] text-primario-900"
+      >
+        Por seguridad <span className="xs:block sm:inline">validaremos</span>
+        <span className="block">su información</span>
+      </Typography>
+      <DynamicText isBrowser={isBrowser} />
 
-        <div className="flex justify-center mt-8">
-          <Button
-            isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] "
-            type="submit"
-            name="abrirCuenta"
-            data-testid="btnOnboarding"
-            onClick={onSubmit}
-            id="btn-next"
-          >
-            Continuar
-          </Button>
-        </div>
+      <div className="flex justify-center mt-8">
+        <Button
+          isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] "
+          type="submit"
+          name="abrirCuenta"
+          data-testid="btnOnboarding"
+          onClick={onSubmit}
+          id="btn-next"
+        >
+          Continuar
+        </Button>
       </div>
     </div>
+    </div >
   );
 }
 

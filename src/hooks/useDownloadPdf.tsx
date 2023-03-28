@@ -1,5 +1,5 @@
 
-import { convertToColombianPesos } from '../utils';
+import { convertToColombianPesos, invokeEvent } from '../utils';
 import { getPDF } from '../services';
 import { iCreditData } from './../interfaces/iCreditData';
 import { routes } from '../routes';
@@ -32,6 +32,7 @@ export default function useDownloadPdf(
       fullName: basicDataUser.isClient ? basicDataUser.fullName : basicDataUser.firstName + " " + basicDataUser.lastName
     })
     if (!response.error) {
+      invokeEvent('acept_offer','action_funnel');
       setPdfData(response.response?.result)
       setCurrentRouting(routes.approvalDataPage);
       router.push(routes.approvalDataPage);

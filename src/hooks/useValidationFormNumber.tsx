@@ -1,5 +1,6 @@
 import { routes } from "../routes";
 import { sendNumber } from "../services";
+import { invokeEvent } from "../utils";
 
 export interface FormData {
   number: number | string;
@@ -25,6 +26,7 @@ const useValidationFormNumber = (dataTU: any, setDataTU: any, setEncript: any, s
           phoneNumber: formData.number,
         },
       });
+      invokeEvent('right_phone','action_funnel');
       setEncript(formData.number);
       setCurrentRouting(routes.validacionIdentidad, false);
       setCurrentRouting(routes.otp)

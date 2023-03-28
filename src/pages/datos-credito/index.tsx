@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CreditDataForm } from '../../components/ui/Form/CreditData/CreditDataForm';
 import HeaderForm from '../../components/ui/Headers/HeaderForm';
 // eslint-disable-next-line import/no-named-as-default
 import Stepper from '../../components/ui/Stepper';
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
+import { invokeEvent } from '../../utils';
 
 function CreditData() {
+  useEffect(() => {
+    invokeEvent('load_credit_data', 'load_page');
+  }, []);
   return (
     <InactivityWarper>
       <div className=" mb-[100px]">

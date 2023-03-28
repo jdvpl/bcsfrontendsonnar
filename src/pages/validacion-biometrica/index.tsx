@@ -17,6 +17,7 @@ import Layout from '../../components/layouts/layout';
 import NavTitle from '../../components/commons/NavTitle';
 import { basePath } from '../../../next.config';
 import ContainerButtonForm from '../../components/ui/Form/ContainerButtonForm';
+import { invokeEvent } from '../../utils';
 
 const KEY = process.env.KEYENCRYPTADIGITAL;
 
@@ -32,13 +33,13 @@ const ValidationMessage: React.FC = () => {
   const [loaded] = useState(false);
   const { allResponse } = useAES();
 
-  
   const scrollBody = () => {
     if (typeof window === 'object') {
       document.body.classList.remove('body-scroll-hidden');
     }
   };
   useEffect(() => {
+    invokeEvent('load_biometry', 'load_page');
     scrollBody();
     if (biometryProcess) {
       setShowAnimation(false);
@@ -73,11 +74,7 @@ const ValidationMessage: React.FC = () => {
         {(isMobile || isTablet) && (
           <div>
             <div className="pt-3 md:pt-0 w-full lg:mt-10">
-              <Stepper
-                steps={5}
-                actualStep={1}
-                title="Validación de identidad"
-              />
+              <Stepper steps={5} actualStep={1} title="Validación de identidad" />
             </div>
             <Heading>
               Por seguridad pediremos tomar foto de su cédula, para validar su identidad.

@@ -5,6 +5,7 @@ import Icons, { IconsProps } from '../icons';
 import Typography from '../Typography/index';
 import dynamicClassesSelective from './SelectiveClassnames';
 import React from 'react';
+import { invokeEvent, parsePathToEvent } from '../../../utils';
 
 export interface ISelectiveCardProps extends IconsProps {
   label?: React.ReactNode | string;
@@ -38,12 +39,20 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
   const classNames = dynamicClassesSelective(hasTitle, className, active);
   const activeClasses = active ? 'text-white' : 'text-primario-900';
   const activeClassesDesc = active ? 'text-white' : 'text-complementario-100';
+
+  const handleClick = () => {
+    if (onclick) {
+      invokeEvent(parsePathToEvent(pathTo),'action_funnel')
+      router.push(pathTo);
+    }
+  }
+
   return (
     <div
       data-testid="selectiveCardTest"
       {...props}
+      onClick={handleClick}
       className={classNames.mainClasesParentDiv}
-      {...(onclick ? { onClick: () => router.push(pathTo) } : {})}
       role="tabpanel"
       tabIndex={0}
     >
