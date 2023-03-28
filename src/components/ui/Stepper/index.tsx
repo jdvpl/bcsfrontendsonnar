@@ -24,6 +24,7 @@ function Stepper({
       <div className={className}>
         <Typography
           variant='caption2'
+          componentHTML='span'
           typeFont='Bold'
           className={`text-primario-900  ${classTitle}`}
         >
@@ -47,6 +48,7 @@ function Stepper({
         <Typography
           variant='caption2'
           typeFont='Regular'
+          componentHTML='span'
           tabIndex={0}
           role="paragraph"
           className="text-complementario-100 text-xs ln-16 font-montserratRegular"

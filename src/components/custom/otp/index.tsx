@@ -143,6 +143,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
               <Typography
                 variant="overline1"
                 typeFont="Regular"
+                componentHTML='p'
                 className="font-normal text-rojo-200 text-[12px]"
               >
                 Código inválido, intente nuevamente
@@ -163,6 +164,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
           onClick={onResendOTP}
           variant="caption1"
           typeFont="Regular"
+          componentHTML='span'
           className={` leading-4 ${
             timer === 0 && wasResend === false
               ? 'text-primario-20 cursor-pointer'
@@ -178,7 +180,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
       {timer === 0 || isValid ? null : (
         <div className="flex justify-center items-center gap-1">
           <Icons icon="bcs-icon-15" size="text-gris-30 font-semibold" title="Tiempo" />
-          <Typography variant="caption2" typeFont="Regular" className="text-gris-30">
+          <Typography componentHTML='span' variant="caption2" typeFont="Regular" className="text-gris-30">
             {timer} segundos
           </Typography>
         </div>

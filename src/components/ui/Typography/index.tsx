@@ -22,6 +22,7 @@ type TypographyProps = {
   onKeyDown?: any,
   itemProp?: string,
   href?: string,
+  type?:string,
 };
 
 const Typography: FC<TypographyProps> = ({
@@ -40,6 +41,7 @@ const Typography: FC<TypographyProps> = ({
   onKeyDown,
   itemProp,
   href,
+  type,
   ...props }: TypographyProps) => {
 
   const componentStyles = () => {
@@ -156,7 +158,8 @@ const Typography: FC<TypographyProps> = ({
         onClick,
         onKeyDown,
         itemProp,
-        href
+        href,
+        type
       },
       children
     );

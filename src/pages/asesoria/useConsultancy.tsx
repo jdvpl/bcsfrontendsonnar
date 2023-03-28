@@ -57,7 +57,7 @@ export default function useConsultancy({
             key={option?.label}
             onClick={() => openModal(option?.label, index)}
             variant="secondary"
-            border="0.5"
+            border="1"
             isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%]  rounded-[8px] lg:h-48px ${itemActive === option?.label ? 'bg-primario-100' : ''
               }
                 ${itemActive === option?.label && isMobile === false

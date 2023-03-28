@@ -91,7 +91,6 @@ function ApplicationApproval({ modalExit = false }: any) {
           variant="h4"
           componentHTML='h4'
           typeFont='Bold'
-
           className="text-center mt-3 text-primario-900"
         >
           Su crédito hipotecario

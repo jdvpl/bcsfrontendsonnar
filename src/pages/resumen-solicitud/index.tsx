@@ -60,6 +60,7 @@ function ResumenApplication() {
         <Typography
           typeFont='Bold'
           variant="h2"
+          componentHTML='h2'
           className="mt-8 mb-[40px] text-center"
         >
           Conozca la oferta que hemos

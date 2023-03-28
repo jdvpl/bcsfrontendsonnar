@@ -64,6 +64,7 @@ function Authentication() {
         <Typography
           variant="h3"
           typeFont="Bold"
+          componentHTML='h3'
           className="text-center mt-[52px] text-primario-900"
         >
           Por seguridad <span className="xs:block sm:inline">validaremos</span>
