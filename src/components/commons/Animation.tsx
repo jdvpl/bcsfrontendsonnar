@@ -1,6 +1,7 @@
 import React from 'react';
 import Lottie from 'react-lottie-player';
 import lottieJson from '../../public/animations/animation-load.json';
+import Typography from '../ui/Typography';
 
 interface AnimationData {
   show?: string;
@@ -29,14 +30,16 @@ function AnimationComponent({ show, loaded, valid }: AnimationData) {
                 fill="#16C776"
               />
             </svg>
-            <p
+            <Typography
+              variant='bodyM2'
+              componentHTML='p'
               tabIndex={0}
               role="paragraph"
-              className="mx-auto sm:mx-[64px] my-[49px] font-normal text-[18px] leading-[20px] text-primario-900 text-center"
+              className="mx-auto sm:mx-[64px] my-[49px] text-primario-900 text-center"
               data-testid="success-message"
             >
               Validación de identidad exitosa
-            </p>
+            </Typography>
           </div>
         )
       ) : (
@@ -48,10 +51,10 @@ function AnimationComponent({ show, loaded, valid }: AnimationData) {
             play
           />
           <div className='relative top-[50px]' data-testid="loading-message">
-            <p className="font-montserratRegular text-center font-[20px] leading-[22px] text-complementario-100 mb-4">
+            <Typography variant='bodyM1' componentHTML='p' className="text-center text-complementario-100 mb-4">
               Un momento
-            </p>
-            <h2 className="font-poppinsSemiBold font-[24px] leading-[28px] text-center">Estamos validando <br className="md:hidden" /> su información</h2>
+            </Typography>
+            <Typography variant='h3' componentHTML='h3' typeFont='Bold' className="text-center">Estamos validando <br className="md:hidden" /> su información</Typography>
           </div>
         </div>
       )}

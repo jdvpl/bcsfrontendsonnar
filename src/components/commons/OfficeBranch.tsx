@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Button from '../ui/Button'
+import Typography from '../ui/Typography'
 
 
 function OfficeBranch({ setShowModal }: any) {
@@ -8,13 +9,13 @@ function OfficeBranch({ setShowModal }: any) {
     setShowModal(false)
   }
   return (
-    <div className='m-auto flex-col mt-8 font-monserratLight mx-5'>
+    <Typography variant='bodyM3' componentHTML='div' typeFont='Light' className='m-auto flex-col mt-8 mx-5'>
 
       <p>Bogotá (601) 307 7060</p>
       <p>Resto del país a la línea gratuita</p>
       <p>01 8000 910 038</p>
       <p>Desde celular #233</p>
-      <p className='font-montserratSemiBold mt-4'>O diríjase a una sucursal </p>
+      <Typography componentHTML='p' typeFont='Bold' variant='bodyM3' className='mt-4'>O diríjase a una sucursal </Typography>
 
       <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-[50px] pb-[40px]">
         <Button
@@ -28,7 +29,7 @@ function OfficeBranch({ setShowModal }: any) {
         </Button>
       </div>
 
-    </div >
+    </Typography>
   )
 }
 

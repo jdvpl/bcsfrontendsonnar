@@ -6,6 +6,7 @@ import QRPage from '../icons/errorQR';
 import LogoBcs from '../svg/LogoBcs';
 import LogoForm from '../svg/LogoForm';
 import Icons from '../ui/icons';
+import Typography from '../ui/Typography';
 
 const ValidationMessageBiometry: React.FC = () => (
   <section itemScope itemType="https//schema.org/Action">
@@ -27,22 +28,27 @@ const ValidationMessageBiometry: React.FC = () => (
     <div data-testid="error-biometria" className="flex justify-center ">
       <ErrorImageDesktop />
     </div>
-    <h1
+    <Typography
+      variant='h2'
+      typeFont='Bold'
+      componentHTML='h2'
       tabIndex={0}
       role="paragraph"
       className="text-center mt-[52px] text-primario-900"
       itemProp="error"
     >
       Validación no exitosa
-    </h1>
-    <p
+    </Typography>
+    <Typography
+      variant='bodyM2'
+      componentHTML='p'
       tabIndex={0}
       role="paragraph"
-      className="text-center text-[18px] leading-[20px]  font-light text-primario-900 lg:-mx-[8px] mt-[6px]"
+      className="text-center text-[18px] text-primario-900 lg:-mx-[8px] mt-[6px]"
       itemProp="error"
     >
       Por favor intente nuevamente <br className="block md:hidden" /> desde su celular.
-    </p>
+    </Typography>
     <div
       tabIndex={0}
       role="img"
@@ -51,10 +57,12 @@ const ValidationMessageBiometry: React.FC = () => (
     >
       <QRPage />
     </div>
-    <p
+    <Typography
+      variant='bodyM2'
+      componentHTML='p'
       tabIndex={0}
       role="paragraph"
-      className="text-center text-[18px] leading-[20px]  font-normal text-primario-900 mb-[34px]"
+      className="text-center text-[18px] leading-[20px]  text-primario-900 mb-[34px]"
       itemProp="actionStatus"
     >
       Escanee el código QR, o ingrese a este link <br />
@@ -74,7 +82,7 @@ const ValidationMessageBiometry: React.FC = () => (
       </span>
       <br />
       desde su celular
-    </p>
+    </Typography>
   </section>
 );
 

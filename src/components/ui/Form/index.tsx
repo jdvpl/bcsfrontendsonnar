@@ -94,7 +94,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
       className="w-full p-2 md:py-5 lg:p-4 bg-white "
       autoComplete="off"
     >
-      <Typography variant="h2" typeFont='Bold' className="text-center text-primario-900  ">
+      <Typography componentHTML='h2' variant="h2" typeFont='Bold' className="text-center text-primario-900  ">
         Bienvenido a
       </Typography>
       <figure itemProp="logo" className="flex justify-center lg:w-[300px] md:w-[240px] w-[250px] m-auto mt-4">
@@ -104,9 +104,10 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
       <div className="text-gray-100">
         <div>
           <Typography
-            variant="bodyM2"
-            typeFont='Bold'
-            className="m-auto text-center mb-[36px] lg:mt-[24px] md:mt-[10px] text-[18px] text-primario-900 sm:w-[306px]  md:w-[311px] lg:w-[448px] font-montserratRegular"
+            variant="bodyM3"
+            typeFont='Regular'
+            componentHTML='h1'
+            className="m-auto text-center mb-[36px] lg:mt-[24px] md:mt-[10px] text-[18px] text-primario-900 sm:w-[306px]  md:w-[311px] lg:w-[350px]"
           >
             Para iniciar la solicitud de su crédito ingrese los siguientes datos.
           </Typography>
@@ -189,16 +190,21 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
             tabIndex={0}
             onChange={handleTerminos}
           />
-          <label
+          <Typography
+            variant='caption2'
+            componentHTML='label'
+            typeFont='Regular'
             htmlFor="chk_policy_and_terms"
-            className="inline-block font-normal text-primario-900 p-0 m-0 pl-[10px] font-montserratRegular cursor-pointer"
+            className="inline-block font-normal text-primario-900 p-0 m-0 pl-[10px]  cursor-pointer"
             role="tabpanel"
             tabIndex={0}
             itemScope
             itemType="https://schema.org/Service"
           >
             Acepta{' '}
-            <span
+            <Typography
+              componentHTML='span'
+              variant='caption2'
               className=" text-primario-20 cursor-pointer"
               id="modal-politics"
               role="link"
@@ -227,8 +233,8 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
               itemProp="termsOfService"
             >
               tratamiento de datos personales y consulta en centrales de riesgo
-            </span>
-          </label>
+            </Typography>
+          </Typography>
         </div>
         <div className="flex items-start mt-4 lg:w-[448px] m-auto">
           <input

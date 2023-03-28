@@ -1,6 +1,7 @@
 import Lottie from 'react-lottie-player';
 import Typography from '../Typography';
 import houseAnimation from '../../../lib/houseAnimation.json';
+import React from 'react';
 
 export const ApplicationLoader = () => {
   return (
@@ -16,6 +17,7 @@ export const ApplicationLoader = () => {
         variant="bodyM3"
         id="message-loader"
         typeFont='Bold'
+        componentHTML='p'
         className="tracking-wide	text-center leading-5 xl:w-[366px] md:w-[273px] sm:w-[251px] xs:w-[256px]"
       >
         Tener vivienda propia pronto <br /> será una realidad

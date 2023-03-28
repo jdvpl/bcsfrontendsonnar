@@ -1,16 +1,20 @@
 import React from 'react';
 import { childrenProps } from '../../../interfaces';
+import Typography from '../Typography';
 
-const Heading: React.FC<childrenProps> = ({ children }) => (
-  <h4
+const Heading: React.FC<childrenProps | any> = ({ children }) => (
+  <Typography
+    variant='h4'
+    typeFont='Bold'
+    componentHTML='h4'
     data-testid="head"
     id="title"
     tabIndex={0}
     role="paragraph"
-    className="font-poppinsSemiBold text-center mt-[40px] md:mt-[64px]  md:text-[28px] md:leading-[30px] tracking-[0.01px]"
+    className="d text-center mt-[40px] md:mt-[64px]  tracking-[0.01px]"
   >
     {children}
-  </h4>
+  </Typography>
 );
 
 export default Heading

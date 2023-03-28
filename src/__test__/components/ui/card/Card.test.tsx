@@ -1,9 +1,20 @@
 import { render } from '@testing-library/react';
 import React from 'react'
-import Card from '../../../../components/ui/simulation/Card';
+import Card, { typeFontsProps } from '../../../../components/ui/simulation/Card';
 
 describe('<Card/>', () => {
   let component: any;
+  const typeFontsPropsNormal: typeFontsProps = {
+    variantTypographyTitle: "caption1",
+    typeFontTypograhyTitle: 'Light',
+    typeTagTypograhyTitle: 'span',
+    variantDescriptionTypography: 'h4',
+    typeDescriptionTagTypograhy: 'h4',
+    typeFontDescriptionTypograhy: 'Bold',
+    typeFontSubcDescriptionTypograhy: 'Bold',
+    typetSubcDescriptionTagTypograhy: 'h2',
+    variantSubDescriptionTypography: 'h1'
+  }
   beforeEach(() => {
     component = render(
       <Card
@@ -17,6 +28,7 @@ describe('<Card/>', () => {
         textsub="30"
         tooltiptext=""
         urlsvgendicon=''
+        typeFontProps={typeFontsPropsNormal}
       />
     );
   });

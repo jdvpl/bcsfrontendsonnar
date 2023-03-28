@@ -55,11 +55,7 @@ export default function Home() {
         </div>
         <section className={titleClasses} role="tabpanel" tabIndex={0}>
           <div className="md:flex md:flex-col ">
-            <Typography
-              variant="h2"
-              typeFont="Light"
-              className="text-white xs:text-[22px] sm:text-[22px]  xs:ml-5 sm:ml-2 xs:mb-[3px] sm:mb-1 md:text-primario-900"
-            >
+            <Typography componentHTML='h2' variant='h2' typeFont='Light' className="text-white   xs:ml-5 sm:ml-2 xs:mb-[3px] sm:mb-1 md:text-primario-900">
               Bienvenido a
             </Typography>
             <figure
@@ -86,18 +82,10 @@ export default function Home() {
           tabIndex={0}
         >
           <div className="md:flex md:flex-col">
-            <Typography
-              variant="h2"
-              typeFont="Bold"
-              className="text-white  md:w-[285px] lg:w-[394px] lg:text-[24px] md:text-[20px] leading-6 wcontainerHeader sm:text-[20px] xs:text-[20px] md:text-primario-900 xxl:text-[28px]"
-            >
+            <Typography componentHTML='h2' variant='h2' typeFont='Bold' className="text-white  md:w-[285px] lg:w-[394px] lg:text-[24px] md:text-[20px] leading-6 wcontainerHeader sm:text-[20px] xs:text-[20px] md:text-primario-900 xxl:text-[28px]">
               ¿Desea comprar vivienda?
             </Typography>
-            <Typography
-              variant="bodyM2"
-              typeFont="Light"
-              className="text-white md:text-primario-900 sm:w-[335px] w-[290px] md:w-[275px] lg:w-[415.5px] xxl:w-[380px] md:leading-[20px] mt-[10px] wcontainerHeader text-[16px] md:text-[18px] md:mr-[40px]  sm:text-[16px] sm:leading-[18px] xs:text-[14px] xs:leading-4 lg:text-[18px] xxl:mt-8 xs:mt-5"
-            >
+            <Typography componentHTML='p' variant='bodyM2' typeFont='Light' className="text-white md:text-primario-900 sm:w-[335px] w-[290px] md:w-[275px] lg:w-[415.5px] xxl:w-[380px] md:leading-[20px] mt-[10px] wcontainerHeader text-[16px] md:text-[18px] md:mr-[40px]  sm:text-[16px] sm:leading-[18px] xs:text-[14px] xs:leading-4 lg:text-[18px] xxl:mt-8 xs:mt-5">
               Aquí le ayudaremos a lograr sus sueños, sin hacer largas filas, ni papeleos
               extensos.
             </Typography>
@@ -114,7 +102,8 @@ export default function Home() {
           <Typography
             variant="h2"
             typeFont="Bold"
-            className="text-center sm:my-8 xs:my-8 lg:mt-[42px] xl-mt-[42px] md:mt-[26px] sm:pt-8 xl:mt-[59px] pt-8 lg:pt-[64px]"
+            componentHTML='h2'
+            className="text-center sm:my-8 xs:my-8 lg:mt-[42px] xl-mt-[42px] md:mt-[26px] sm:pt-8 xl:mt-[59px] pt-8 lg:pt-[50px]"
           >
             Requisitos
           </Typography>
@@ -134,10 +123,8 @@ export default function Home() {
                   icon="bcs-icon-37"
                   color="text-complementario-100"
                   size="text-[1.6rem]"
-                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100"
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[150px] lg:w-full text-[12px] md:w-full xxl:w-[60%]"
-                  title="Tener entre 18 y 70 años"
-                />
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100 "
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full    mb-3 md:text-[15px] lg:text-[16px] xs:w-[150px] lg:w-full text-[12px] md:w-full xxl:w-[55%] " title={''} />
               </div>
               <div className="w-[2px] hidden bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
               {/* 2 */}
@@ -235,6 +222,7 @@ export default function Home() {
           <Typography
             variant="h2"
             typeFont="Bold"
+            componentHTML='h2'
             className="md:text-left text-center lg:mt-[149px] xl:mt-[148px] md:mt-[93px] mt-[80px] ml-5 md:ml-0"
           >
             Tan solo en <span className="block lg:inline">cuatro pasos</span>
@@ -268,29 +256,34 @@ export default function Home() {
         <Typography
           variant="h2"
           typeFont="Bold"
+          componentHTML='h2'
           className=" text-center lg:mb-[105px] md:mt-0 mt-[66px]"
         >
           Beneficios
         </Typography>
-        <div className=" md:w-[700px] lgsm:w-[850px] lg:w-[1000px] xl:w-[1100px] xxl:w-[1200px] bgBenefits md:grid md:grid-cols-2 sm:grid sm:grid-col-1 xs:mt-[12rem] md:mt-[5rem] relative md:h-[314px] gap-5 h-[520px] sm:h-[532px] lg:h-[400px]">
-          <div className="relative xs:top-[-140px] md:top-[-25px] flex justify-center md:justify-end ">
-            <img
-              src={`${basePath}/images/beneficios.png`}
-              alt="Imagen de una pareja estrenando casa"
-              title="Imagen de una pareja estrenando casa"
-              className="lg:w-[279px] lg:h-[451px] md:w-[220px] sm:w-[278px] sm:h-[448px] h-[409px] md:h-[354px]"
-            />
-          </div>
-          <div className="listInitial  lg:w-[440px] relative block mx-5 sm:top-[-128px] xs:top-[-110px] md:top-0 xs:w-[260px] sm:w-[90%] smd:w-[80%] smd:m-auto md:mt-[-20px] md:place-items-center lg:mt-0 xxxl:ml-10">
-            <Typography variant="ul" typeFont="Light" className="mb-0 lg:text-[20px]">
-              <li className="  lg:mt-[127px] md:mt-20 text-complementario-100 ">
-                Preaprobación inmediata en línea
-              </li>
-              <li className=" mt-3 text-complementario-100">Sin documentación física</li>
-              <li className="mt-3 text-complementario-100">
-                Para clientes y no clientes
-              </li>
-            </Typography>
+        <div className="w-full bgBenefits">
+          <div className=" md:w-[700px] lgsm:w-[850px] lg:w-[1000px] xl:w-[1100px] xxl:w-[1200px] xxxl:w-[1400px]  md:grid md:grid-cols-2 sm:grid sm:grid-col-1 xs:mt-[12rem] md:mt-[5rem] relative md:h-[314px] gap-5 h-[520px] sm:h-[532px] lg:h-[400px] xxxl:m-auto">
+            <div className="relative xs:top-[-140px] md:top-[-25px] flex justify-center md:justify-end ">
+              <img
+                src={`${basePath}/images/beneficios.png`}
+                alt="Imagen de una pareja estrenando casa"
+                title="Imagen de una pareja estrenando casa"
+                className="lg:w-[279px] lg:h-[451px] md:w-[220px] sm:w-[278px] sm:h-[448px] h-[409px] md:h-[354px]"
+              />
+            </div>
+            <div className="listInitial  lg:w-[440px] relative block mx-5 sm:top-[-128px] xs:top-[-110px] md:top-0 xs:w-[260px] sm:w-[90%] smd:w-[80%] smd:m-auto md:mt-[-20px] md:place-items-center lg:mt-0 xxxl:ml-10">
+              <Typography variant='bodyM3' componentHTML='ul' typeFont='Light' className="mb-0 lg:text-[20px]">
+                <li className="  lg:mt-[140px] md:mt-20 text-complementario-100 ">
+                  Preaprobación inmediata en línea
+                </li>
+                <li className=" mt-3 text-complementario-100">
+                  Sin documentación física
+                </li>
+                <li className="mt-3 text-complementario-100">
+                  Para clientes y no clientes
+                </li>
+              </Typography>
+            </div>
           </div>
         </div>
       </section>

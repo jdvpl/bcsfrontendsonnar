@@ -2,6 +2,7 @@ import React from 'react'
 import { basePath } from '../../../../../next.config';
 import { RatingsOptions } from '../../../../lib/rating';
 import { TextArea } from '../../inputs/TextArea';
+import Typography from '../../Typography';
 
 export interface CardOptions {
   option: RatingsOptions;
@@ -16,7 +17,10 @@ export function CardOption({
 }: CardOptions) {
   return <div onClick={() => onChangeActualOption(option)} className="w-full">
     <input type="radio" className="hidden" value={option?.value} tabIndex={0} role="btnCardOptionTest" />
-    <label
+    <Typography
+      variant='bodyM3'
+      componentHTML='label'
+      typeFont='Regular'
       className={`text-left flex flex-col min-h-[52px] pl-[20px] py-[8px] mb-3 bg-white 
           cursor-pointer w-full rounded-md 
           border border-complementario-80 focus:shadow-none focus:border-primario-600
@@ -38,12 +42,12 @@ export function CardOption({
       </div>
       {actualOption?.id === '5' && option.id === '5' && (
         <div>
-          <p className="font-semibold text-[16px] ln-18 text-left mt-[23px]">
+          <Typography variant='bodyM3' componentHTML='p' typeFont='Bold' className=" text-left mt-[23px]">
             Por favor escriba su comentario
-          </p>
+          </Typography>
           <TextArea maxLength={60} description="Máximo 60 carácteres permitidos" />
         </div>
       )}
-    </label>
+    </Typography>
   </div>
 }

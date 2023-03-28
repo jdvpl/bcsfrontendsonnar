@@ -70,15 +70,18 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
           {hasTitle && (
             <Typography
               variant="bodyM2"
-              typeFont="Bold"
-              className={`lg:mt-[14px] lg:mb-[18px] leading-[1.125rem] m-0 tracking-normal cursor-pointer font-semibold group-hover:text-white ${titleClasses} ${activeClasses}`}
+              typeFont='Bold'
+              componentHTML='p'
+              className={` lg:mt-[14px] lg:mb-[18px]  m-0 tracking-normal ${hasTitle && 'cursor-pointer'} group-hover:text-white ${titleClasses} ${activeClasses}`}
             >
               {label}
             </Typography>
           )}
           <Typography
             variant="bodyM3"
-            className={`hasTitle leading-[1.125rem] text-[1rem] mt-2 group-hover:text-white cursor-pointer font-ligth ${classNamesDescription} ${activeClassesDesc}`}
+            typeFont='Regular'
+            componentHTML='p'
+            className={`hasTitle  mt-2 group-hover:text-white  ${hasTitle && 'cursor-pointer'} ${classNamesDescription} ${activeClassesDesc}`}
           >
             {description}
           </Typography>

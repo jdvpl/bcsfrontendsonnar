@@ -37,6 +37,7 @@ export function MoneyLaunderingForm() {
           <div key={i} className="cardShadow min-h-[96px] w-full mb-3 rounded-md px-6 py-3">
             <Typography
               variant="bodyM2"
+              componentHTML='p'
               typeFont='Regular'
               className="text-complementario-100 font-light mb-[12px] md:max-w-full max-w-[95%]"
             >

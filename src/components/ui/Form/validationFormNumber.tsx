@@ -10,6 +10,7 @@ import ContainerButtonForm from './ContainerButtonForm';
 import { SesionStorageKeys } from '../../../session';
 import useValidationFormNumber from '../../../hooks/useValidationFormNumber';
 import SimulatorLoader from '../Loaders/SimulatorLoader';
+import Typography from '../Typography';
 
 interface FormProps {
   isLoading?: boolean;
@@ -77,8 +78,8 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
       transition={{ type: 'linear' }}
     >
       {isLoadingForm && <div className="absolute z-[100] top-0 left-0 w-full h-screen flex justify-center items-center bg-primario-100">
-        <SimulatorLoader/>
-        </div>}
+        <SimulatorLoader />
+      </div>}
       <section itemScope itemType="https://schema.org/Person">
         <form
           data-testid="formNumber"
@@ -141,13 +142,16 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
                       value={answer.id}
                       className="hidden"
                     />
-                    <label
+                    <Typography
+                      variant='bodyM3'
+                      componentHTML='label'
+                      typeFont='Regular'
                       tabIndex={0}
                       role="paragraph"
                       aria-hidden="true"
                       htmlFor="number"
-                      className={`font-montserratRegular flex items-center bg-white cursor-pointer  w-full border  rounded-md px-5 py-[17px]
-                        border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black  shadow-small-300  font-semibold
+                      className={`flex items-center bg-white cursor-pointer  w-full border  rounded-md px-5 py-[17px]
+                        border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black  shadow-small-300 
                         ${answer.id === inputValues
                           ? 'shadow-none border-primario-600 text-primario-600'
                           : ''
@@ -167,13 +171,13 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
                         className="hidden"
                       />
                       {answer.option}
-                    </label>
+                    </Typography>
                   </div>
                 ))}
             </div>
             <ContainerButtonForm>
               <Button
-                onClick={()=>setIsLoadingForm(true)}
+                onClick={() => setIsLoadingForm(true)}
                 isLoading={!!errors?.number?.message}
                 type="submit"
                 name="btn-send-phone"

@@ -26,34 +26,23 @@ function Bienvenida() {
         <div className="mt-20 lg:h-[300px] md:w-[292px] md:h-[300px] sm:w-[195px] sm:h-[200px] xs:h-[200px] xs:w-[195px] m-auto ">
           <img src={`${basePath}/images/onboarding.svg`} alt="" />
         </div>
-        <Typography
-          variant="h3"
-          typeFont="Bold"
-          className="text-center mt-[52px] text-primario-900"
-        >
-          Cumpla su sueño {''}
+        <Typography componentHTML='h3' variant='h3' typeFont='Bold' className='text-center mt-[52px] text-primario-900'>
+          Cumpla su sueño {""}
           <span className="md:block sm:block xs:block lg:inline">
             de comprar vivienda
           </span>
         </Typography>
-
-        <div className="listInitial flex justify-center font-monserratLight text-[18px] text-primario-900">
-          <ul className="md:mt-10">
-            <Typography
-              variant="h4"
-              typeFont="Bold"
-              className="text-left   text-primario-900"
-            >
-              Requisitos de solicitud:
-            </Typography>
-            <li className="mt-3">Tener entre 18 y 70 años</li>
-            <li className="mt-3">Ser asalariado o pensionado</li>
-            <li className="mt-3">Estar al día con sus pagos</li>
-            <li className="mt-3">Pagar salud y pensión</li>
-            <li className="mt-3">Postular como único titular</li>
-            <li className="mt-3">Solicitar sin subsidios del gobierno</li>
+        <Typography variant='bodyM2' componentHTML='div' typeFont='Light' className="listInitial flex justify-center  text-[18px] text-primario-900">
+          <ul className='md:mt-10'>
+            <Typography variant='h4' componentHTML='h4' typeFont='Bold' className='text-left text-primario-900'>Requisitos de solicitud:</Typography>
+            <li className='mt-5'>Tener entre 18 y 70 años</li>
+            <li className='mt-3'>Ser asalariado o pensionado</li>
+            <li className='mt-3'>Estar al día con sus pagos</li>
+            <li className='mt-3'>Pagar salud y pensión</li>
+            <li className='mt-3'>Postular como único titular</li>
+            <li className='mt-3'>Solicitar sin subsidios del gobierno</li>
           </ul>
-        </div>
+        </Typography>
         <div className="flex justify-center mt-8 mb-11 ">
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] "
@@ -62,9 +51,14 @@ function Bienvenida() {
             data-testid="btnOnboardingtest"
             onClick={startProcess}
             id="btn-next"
-            className="font-montserratMedium"
           >
-            Iniciar solicitud
+            <Typography
+              variant='bodyM3'
+              typeFont='Bold'
+              componentHTML='span'
+            >
+              Iniciar solicitud
+            </Typography>
           </Button>
         </div>
       </div>

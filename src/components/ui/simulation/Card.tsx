@@ -1,6 +1,9 @@
 import Image from 'next/image';
 import { ToolTipInfo } from '../Tooltip';
 import { InfoIco } from '../Tooltip/info';
+import Typography, { TypeFont, Variants } from '../Typography';
+import React from 'react'
+
 interface CardProps {
   htmlFor?: string;
   className?: string;
@@ -20,8 +23,22 @@ interface CardProps {
   urlsvgendicon?: string;
   clickEdit?: any
   description?: boolean,
-  descriptionHtml?: React.ReactNode
+  descriptionHtml?: React.ReactNode,
+  typeFontProps: typeFontsProps
 }
+
+export interface typeFontsProps {
+  variantTypographyTitle?: Variants,
+  typeFontTypograhyTitle?: TypeFont,
+  typeTagTypograhyTitle?: keyof JSX.IntrinsicElements,
+  variantDescriptionTypography?: Variants,
+  typeDescriptionTagTypograhy?: keyof JSX.IntrinsicElements,
+  typeFontDescriptionTypograhy?: TypeFont,
+  variantSubDescriptionTypography?: Variants,
+  typetSubcDescriptionTagTypograhy?: keyof JSX.IntrinsicElements,
+  typeFontSubcDescriptionTypograhy?: TypeFont
+}
+
 export const Card: React.FC<CardProps> = ({
   className,
   text,
@@ -39,7 +56,8 @@ export const Card: React.FC<CardProps> = ({
   urlsvgendicon,
   clickEdit,
   description,
-  descriptionHtml
+  descriptionHtml,
+  typeFontProps
 }) => (
   <div className={`${className}`} id={id}>
     <div className="flex relative">
@@ -54,7 +72,7 @@ export const Card: React.FC<CardProps> = ({
           className='mx-2'
         />
       </div>
-      <p className={classtitle}>{title}</p>
+      <Typography variant={typeFontProps.variantTypographyTitle || 'bodyM3'} typeFont={typeFontProps.typeFontTypograhyTitle} componentHTML={typeFontProps.typeTagTypograhyTitle || 'p'} className={classtitle}>{title}</Typography>
       {tooltip ?
         <ToolTipInfo
           id="tax"
@@ -88,8 +106,12 @@ export const Card: React.FC<CardProps> = ({
       }
     </div>
     <div className={text}>
-      <p className='pl-[10px]'>{value}</p>
-      <p className={`text-[${textsub}px]  pl-[5px]`}>{subvalue}</p>
+      {value &&
+        <Typography variant={typeFontProps.variantDescriptionTypography || 'bodyM1'} typeFont={typeFontProps.typeFontDescriptionTypograhy} componentHTML={typeFontProps.typeDescriptionTagTypograhy || 'p'} className='pl-[10px]'>{value}</Typography>
+      }
+      {subvalue &&
+        <Typography variant={typeFontProps.variantSubDescriptionTypography || 'bodyM1'} typeFont={typeFontProps.typeFontSubcDescriptionTypograhy} componentHTML={typeFontProps.typetSubcDescriptionTagTypograhy || 'p'} className={`text-[${textsub}px]  pl-[5px] mt-2`}>{subvalue}</Typography>
+      }
     </div>
     {
       description ?

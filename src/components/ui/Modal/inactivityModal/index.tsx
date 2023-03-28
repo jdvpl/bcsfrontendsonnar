@@ -24,6 +24,7 @@ export function InactivityModal() {
         <Typography
           variant="bodyM2"
           typeFont="Regular"
+          componentHTML='p'
           className="mt-[24px] md:mt-[32px] text-center w-[258px] m-auto text-primario-900 subpixel-antialiased"
         >
           ¿Desea continuar con la <br />
@@ -31,12 +32,20 @@ export function InactivityModal() {
         </Typography>
         <div className="w-full  flex-col flex items-center">
           <Button
-            isLanding="w-[253px] mt-[24px] mb-[42px] font-montserratRegular"
+            isLanding="w-[253px] mt-[24px] mb-[42px]"
             onClick={onCloseModal}
           >
+            <Typography
+              variant='bodyM3'
+              componentHTML='span'
+            >
+
             Continuar
+            </Typography>
           </Button>
-          <button
+          <Typography
+            variant='bodyM3'
+            componentHTML='button'
             id="reSend"
             type="button"
             role="btnGotoHome"
@@ -45,19 +54,19 @@ export function InactivityModal() {
             className={`text-center cursor-pointer text-[18px] text-primario-20 text-base leading-[14px] -tracking-[0.2px] font-semibold
                     disabled:text-azul_gris-40 disabled:font-normal disabled:text-sm disabled:leading-[18px] mb-[41px]`}
           >
-            <span id="reSend" className="font-montserratRegular">
+            <Typography variant='bodyM3' componentHTML='span' id="reSend">
               Salir
-            </span>
-          </button>
+            </Typography>
+          </Typography>
           <div>
-            <p className="text-gris-30 text-center font-[600] mb-[42px] font-montserratRegular">
+            <Typography variant='bodyM3' componentHTML='p' className="text-gris-30 text-center font-[600] mb-[42px] ">
               <Icons
                 icon="bcs-icon-15"
                 size="text-center text-[20px] text-gris-30"
                 title="Tiempo"
               />{' '}
               {timer} Segundos
-            </p>
+            </Typography>
           </div>
         </div>
       </div>

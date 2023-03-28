@@ -55,15 +55,20 @@ function Authentication() {
       <div className="mt-20 lg:h-[300px] md:w-[350px] md:h-[300px] sm:w-[234px] sm:h-[200px] xs:h-[200px] xs:w-[234px] m-auto ">
         <img src={`${basePath}/images/authentication.svg`} alt="" />
       </div>
-      <Typography
-        variant="h3"
-        typeFont="Bold"
-        className="text-center mt-[52px] text-primario-900"
-      >
-        Por seguridad <span className="xs:block sm:inline">validaremos</span>
-        <span className="block">su información</span>
-      </Typography>
-      <DynamicText isBrowser={isBrowser} />
+      <div className="m-auto lg:w-[528px]">
+        <div className="mt-20 lg:h-[300px] md:w-[350px] md:h-[300px] sm:w-[234px] sm:h-[200px] xs:h-[200px] xs:w-[234px] m-auto ">
+          <img src={`${basePath}/images/authentication.svg`} alt="" />
+        </div>
+        <Typography
+          variant="h3"
+          typeFont="Bold"
+          componentHTML='h3'
+          className="text-center mt-[52px] text-primario-900"
+        >
+          Por seguridad <span className="xs:block sm:inline">validaremos</span>
+          <span className="block">su información</span>
+        </Typography>
+        <DynamicText isBrowser={isBrowser} />
 
       <div className="flex justify-center mt-8">
         <Button
@@ -78,7 +83,8 @@ function Authentication() {
         </Button>
       </div>
     </div>
-    </div >
+    </div>
+    </div>
   );
 }
 
