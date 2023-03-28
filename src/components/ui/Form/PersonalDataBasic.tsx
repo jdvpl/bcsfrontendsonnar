@@ -90,7 +90,7 @@ function PersonalDataBasic({ userInfo }: any) {
         />
       )}
       <div className="w-full">
-        <form onSubmit={handleSubmit(onSubmit)} data-testid="personaldataTest">
+        <form onSubmit={handleSubmit(onSubmit)} data-testid="personaldataTest" autoComplete="off">
 
           {!userInfo.isClient && <div className="grid grid-cols-3 gap-x-2 items-end">
             <div>
@@ -245,6 +245,7 @@ function PersonalDataBasic({ userInfo }: any) {
                   id="phone"
                   data-testid="phoneTest"
                   inputMode="text"
+                  autoComplete="off"
                   placeholder="Número de celular"
                   label="Número de celular"
                   onChange={(e: any) => setValue('phone', e.target.value)}
@@ -274,6 +275,7 @@ function PersonalDataBasic({ userInfo }: any) {
                   data-testid="emailTest"
                   inputMode="text"
                   placeholder="Correo electrónico"
+                  autoComplete="off"
                   label="Correo electrónico"
                   onChange={(e: any) => setValue('email', e.target.value)}
                 />
