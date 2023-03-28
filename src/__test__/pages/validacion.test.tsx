@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
-import Error from '../../pages/validacion/error-validacionIdentidad';
+import Error from '../../pages/validacion/error-validacion-identidad';
 import ErrorBlock from '../../pages/validacion/error-bloqueo';
 import ErrorAttempts from '../../pages/validacion/error-numero-intentos';
 import ErrorValidacion from '../../pages/validacion/error-validacion';

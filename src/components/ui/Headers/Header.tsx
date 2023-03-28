@@ -4,6 +4,7 @@ import LogoBcs from '../../svg/LogoBcs';
 import LogoForm from '../../svg/LogoForm';
 import Icons from '../icons';
 import useMediaQueryResponsive from '../../../hooks/useMediaQuery';
+
 function Header() {
   const router = useRouter();
   const { heightHeader } = useMediaQueryResponsive();

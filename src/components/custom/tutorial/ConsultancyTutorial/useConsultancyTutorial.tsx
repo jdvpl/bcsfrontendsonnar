@@ -64,7 +64,7 @@ export default function useConsultancyTutorial({
           <>
             <Typography
               variant="h2"
-              typeFont='Bold'
+              typeFont="Bold"
               className="font-montserratSemiBold xl:leading-[34px] md:leading-[30px] xs:leading-[22px] text-center mx-auto text-white xs:text-[18px] md:text-[26px] xl:text-[28px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
             >
               Acompáñenos en un corto recorrido antes de iniciar la guía interactiva y
@@ -326,14 +326,16 @@ export default function useConsultancyTutorial({
                     key={item}
                     variant="secondary"
                     // ${itemActive && !isMobile === option?.label ? 'translate-x-[16px]' : ''}
-                    isLanding={`p-0 z-10 md:w-[253px] ${item === 1 ? 'md:translate-x-[20px]' : ''
-                      } xs:w-[100%] font-semibold rounded-[8px] lg:h-48px 
+                    isLanding={`p-0 z-10 md:w-[253px] ${
+                      item === 1 ? 'md:translate-x-[20px]' : ''
+                    } xs:w-[100%] font-semibold rounded-[8px] lg:h-48px 
                       ${item === 1 ? 'bg-primario-100' : 'bg-white'} `}
                   >
                     <div className="flex justify-center">
                       <span
-                        className={`text-center ${item === 1 ? 'text-white' : 'text-primario-100'
-                          }  text-[18px] p-0 font-medium font-montserratMedium`}
+                        className={`text-center ${
+                          item === 1 ? 'text-white' : 'text-primario-100'
+                        }  text-[18px] p-0 font-medium font-montserratMedium`}
                       >
                         Tema {item}
                       </span>
@@ -389,8 +391,7 @@ export default function useConsultancyTutorial({
               variant="h2"
               className="xl:leading-[34px] md:leading-[30px] xs:leading-[22px] font-poppinsSemiBold text-center mx-auto text-white xs:text-[20px] md:text-[28px] lg:text-[32px] md:w-[537px] sm:w-[343px] xs:w-[284.17px]"
             >
-              El recorrido ha terminado.
-              <br /> ¡Está listo para continuar!
+              El recorrido ha terminado. ¡Está listo para continuar!
             </Typography>
             <div className="w-[full] flex flex-col items-center xl:mt-[48px] md:mt-[60px] sm:mt-[46px] xs:mt-[36px]">
               <Button
@@ -405,7 +406,7 @@ export default function useConsultancyTutorial({
     }
   };
 
-  const saveOpenTutorial = () => { };
+  const saveOpenTutorial = () => {};
 
   useEffect(() => {
     setIsOpen(!openedTutorial);

@@ -18,7 +18,7 @@ function ResumenApplication() {
   const router = useRouter();
   const { setCurrentRouting } = useProtectedRoutes();
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
-  const [loading, setLoading] = useState<boolean>(false)
+  const [loading, setLoading] = useState<boolean>(false);
 
   const [applicationResponse] = useSessionStorage(
     SesionStorageKeys?.applicationResponse.key,
@@ -26,9 +26,9 @@ function ResumenApplication() {
   );
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
   const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
-  const [dataPersonalBasic,] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
+  const [dataPersonalBasic] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
 
-  const [basicDataUser,] = useSessionStorage(SesionStorageKeys.basicDataUser.key, {});
+  const [basicDataUser] = useSessionStorage(SesionStorageKeys.basicDataUser.key, {});
   const [, setPdfData] = useSessionStorage(SesionStorageKeys.pdfData.key, {});
   const { getPdf } = useDownloadPdf(
     dataQuestions,
@@ -57,17 +57,14 @@ function ResumenApplication() {
         />
       </div>
       <div className=" xs:w-[290px] sm:w-[343px]  lg:w-[684px] md:w-[584px] m-auto">
-        <Typography
-          typeFont='Bold'
-          variant="h2"
-          className="mt-8 mb-[40px] text-center"
-        >
-          Conozca la oferta que hemos
-          <br />
-          diseñado para usted
+        <Typography typeFont="Bold" variant="h2" className="mt-8 mb-[40px] text-center">
+          Conozca la oferta que hemos diseñado para usted
         </Typography>
         <div className="xs:w-[290px] sm:w-[343px] md:w-[448px] mx-auto">
-          <Alert message="La tasa de su crédito será la que se encuentre vigente en el momento del desembolso." colorMessage='text-primario-200' />
+          <Alert
+            message="La tasa de su crédito será la que se encuentre vigente en el momento del desembolso."
+            colorMessage="text-primario-200"
+          />
         </div>
         <ReviewApplication
           financedValue={`${convertToColombianPesos(

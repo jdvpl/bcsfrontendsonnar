@@ -11,15 +11,15 @@ export default function Error() {
   return (
     <div>
       <ErrorLayout
-        titlePage="Validación de identidad no exitosa"
         btnactivate
-        altsvg="Imagen de error que indica que la validación de identidad no fue exitosa"
-        title={<p>Validación de identidad no exitosa</p>}
+        altsvg="Imagen no es posible gestionar tu solicitud"
+        title="Lo sentimos"
+        text={<p>No es posible gestionar su solicitud</p>}
+        titlePage="Error Validación Identidad"
+        urlsvg={`${basePath}/images/autenticacion1.svg`}
         btnaction={() => router.push(routes.startProccess)}
-        text={<p>Para intentarlo nuevamente regrese al inicio.</p>}
-        urlsvg={`${basePath}/images/preautenticacion2.svg`}
-        textbtn="Regresar al inicio"
-        ImgClass="mt-20 lg:h-[300px] md:w-[343px] md:h-[300px] sm:w-[228px] sm:h-[200px] xs:h-[200px] xs:w-[228px] m-auto pt-[15px]"
+        textbtn="Cerrar"
+        ImgClass="mt-20 lg:h-[300px] md:w-[340px] md:h-[300px] sm:w-[245px] sm:h-[200px] xs:h-[200px] xs:w-[245px] m-auto pt-[15px]"
       />
     </div>
   );

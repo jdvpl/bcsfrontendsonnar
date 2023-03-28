@@ -20,8 +20,7 @@ function CreditData() {
           />
         </div>
         <h2 className="text-center font-poppinsSemiBold md:leading-[30px] xs:leading-[22px] mb-[52px] md:text-[28px] xs:text-[20px] font-semibold text-primario-900">
-          Defina las condiciones <br className="lg:hidden xs:block" />
-          de su crédito
+          Defina las condiciones de su crédito
         </h2>
         <div className="w-[288px] xs:w-[288px] sm:w-[343px] md:w-[550px] lg:w-[686px] mx-auto">
           <CreditDataForm />

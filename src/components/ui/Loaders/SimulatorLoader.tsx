@@ -12,11 +12,13 @@ const SimulatorLoader = () => {
         play
         speed={0.8}
       />
-      <div className='relative -top-[60px]'>
+      <div className="relative -top-[60px]">
         <p className="font-montserratRegular text-center font-[20px] leading-[22px] text-complementario-100 mb-4">
           Un momento
         </p>
-        <h2 className="font-poppinsSemiBold font-[24px] leading-[28px] text-center">Estamos validando <br className="md:hidden" /> su información</h2>
+        <h2 className="font-poppinsSemiBold font-[24px] leading-[28px] text-center">
+          Estamos validando su información
+        </h2>
       </div>
     </div>
   );

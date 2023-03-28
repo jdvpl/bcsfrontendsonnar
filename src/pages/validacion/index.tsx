@@ -6,7 +6,7 @@ import HeadingError from '../../components/ui/error/heading';
 import SubtitleError from '../../components/ui/error/subtitle';
 import Button from '../../components/ui/Button/index';
 import ImageLoader from '../../components/ui/Loaders/imageLoader';
-import ErrorLayout  from '../../components/layouts/errorLayout';
+import ErrorLayout from '../../components/layouts/errorLayout';
 import { AplicationContext } from '../../context/AplicationContext';
 
 const ValidationMessage: React.FC = () => {
@@ -27,7 +27,7 @@ const ValidationMessage: React.FC = () => {
     sessionStorage.clear();
   }, []);
   return (
-    <ErrorLayout>
+    <ErrorLayout title="Error no es posible continuar por este canal">
       <section itemScope itemType="https://schema.org/Action">
         <div className="flex justify-center w-[239px] h-[200px] mx-auto md:w-[358px] md:h-[300px] relative">
           <ImageLoader
@@ -37,15 +37,9 @@ const ValidationMessage: React.FC = () => {
           />
         </div>
         <HeadingError>
-          No se puede continuar el <br className="block md:hidden" />
-          proceso de <br className="hidden md:block" />
-          apertura
-          <br className="block md:hidden" /> por este canal
+          No se puede continuar el proceso de apertura por este canal
         </HeadingError>
-        <SubtitleError>
-          Diríjase a una sucursal <br className="block md:hidden" />
-          del banco.
-        </SubtitleError>
+        <SubtitleError>Diríjase a una sucursal del banco.</SubtitleError>
         <ContainerButton>
           <Button
             id="btn-go-bank"

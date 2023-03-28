@@ -91,13 +91,10 @@ const Otp: FC<otpProps> = ({ otc }) => {
         data-testid="h4OtpText"
       >
         {otc ? (
-          <span>
-            Ingrese el código enviado a su <br />
-            celular y correo electrónico
-          </span>
+          <span>Ingrese el código enviado a su celular y correo electrónico</span>
         ) : (
           <span>
-            Ingrese el código enviado por <br /> sms a su celular +57
+            Ingrese el código enviado por sms a su celular +57
             {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : ''}
           </span>
         )}

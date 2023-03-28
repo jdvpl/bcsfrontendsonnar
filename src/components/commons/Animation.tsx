@@ -51,7 +51,7 @@ function AnimationComponent({ show, loaded, valid }: AnimationData) {
                 Un momento
               </p>
               <h2 className="font-poppinsSemiBold font-[24px] leading-[28px] text-center">
-                Estamos validando <br className="md:hidden" /> su información
+                Estamos validando su información
               </h2>
             </div>
           </div>
