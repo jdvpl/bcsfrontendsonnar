@@ -1,48 +1,48 @@
 import React from 'react';
-
+import Icons from '../../ui/icons';
+import Typography from '../../ui/Typography'
 export const initialOptions = [
   [
     {
       label: 'Vivienda Nueva',
       value: '1',
       content: () => (
-        <div className="font-montserratRegular">
-          <p className="font-medium my-3">
+        <div className="">
+          <Typography variant='bodyM3' componentHTML='p' typeFont='Light' className="font-medium my-3">
             Es una propiedad que se adquiere directamente al constructor (en la mayoría de
-            los caso) y es entregada por primera vez
-          </p>
-          <p className="font-medium my-3">
+            los casos) y es entregada por primera vez
+          </Typography>
+          <Typography variant='bodyM3' componentHTML='p' typeFont='Light' className="font-medium my-3">
             Existen dos formas de adquirir una vivienda nueva:
-          </p>
+          </Typography>
           <div style={{ paddingLeft: '20px' }}>
-            <ol className="list-decimal mb-3 list-inside">
+            <Typography variant='bodyM3' componentHTML='ol' typeFont='Light' className="list-decimal mb-3 list-inside">
               <li>
-                <span className="font-semibold text-primario-900">Sobre planos: </span>
-                <p className="inline-block font-medium">
-                  {' '}
+                <Typography variant='bodyM3' componentHTML='span' typeFont='Light' >
+                  <Typography variant='bodyM3' componentHTML='span' typeFont='Bold' className=" text-primario-900">Sobre planos: </Typography>
                   Cuando aún está en construcción.
-                </p>
+                </Typography>
               </li>
               <li>
-                <span className="font-semibold text-primario-900">Edificado: </span>
-                <p className="inline-block font-medium">Una vez terminada la obra.</p>
+                <Typography variant='bodyM3' componentHTML='span' typeFont='Bold' className=" text-primario-900">Edificado: </Typography>
+                <Typography variant='bodyM3' componentHTML='span' typeFont='Light' className="inline-block font-medium">Una vez terminada la obra.</Typography>
               </li>
-            </ol>
+            </Typography>
           </div>
-          <span className="font-bold text-primario-900">Ventajas:</span>
-          <ol className="list-decimal mb-3 list-inside ml-2 special-list">
+          <Typography variant='bodyM3' componentHTML='span' typeFont='Bold' className=" text-primario-900">Ventajas:</Typography>
+          <Typography variant='bodyM3' componentHTML='ol' typeFont='Bold' className="list-decimal mb-3 list-inside ml-2 special-list">
             <li className="my-3 ">
-              <span className="font-medium">
+              <Typography variant='bodyM3' componentHTML='span' typeFont='Light' className="">
                 Este tipo de vivienda permite pagar la cuota inicial en un amplio plazo.
-              </span>
+              </Typography>
             </li>
             <li className="my-3 ">
-              <span className="font-medium">
+              <Typography variant='bodyM3' componentHTML='span' typeFont='Light'>
                 Su valorización es rápida, normalmente estas nuevas viviendas están
                 ubicadas en zonas de gran proyección urbanística.
-              </span>
+              </Typography>
             </li>
-          </ol>
+          </Typography>
         </div>
       ),
     },

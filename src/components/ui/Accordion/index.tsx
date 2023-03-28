@@ -15,14 +15,14 @@ const Questions: FC = () => {
       tabIndex={0}
     >
       <Typography
-        variant="h2"
-        typeFont="Bold"
-        id="questions"
-        className="text-center min-w-[291px] lg:mb-[48px] mt-[80px]  md:mb-[48px] md:mt-[80px] w-full text-[28px] leading-[34px]  mb-8 lg:text-[32px] lg:leading-[34px] font-poppinsSemiBold"
+        variant='h2'
+        typeFont='Bold'
+        componentHTML='h2'
+        className="text-center min-w-[291px] lg:mb-[48px] mt-[80px]  md:mb-[48px] md:mt-[80px] w-full  mb-8 "
       >
         Preguntas frecuentes
       </Typography>
-      <div className="w-full lg:max-w-[1200px] ">
+      <div className="w-full ">
         <div id="accordion" className="w-full mx-auto space-y-[11px]">
           <ItemAccordion
             id="1"
@@ -31,7 +31,12 @@ const Questions: FC = () => {
             setSelected={setSelected}
           >
             <div data-testid="itemATest1">
-              <Typography variant="bodyM3" typeFont="Light">
+              <Typography
+                variant='bodyM3'
+                componentHTML='p'
+                typeFont='Light'
+                className='text-complementario-100'
+              >
                 Para el proceso de legalización es necesario contemplar los gastos de
                 avalúo, estudio de títulos y escrituración. Si desea conocer más a cerca
                 de estos conceptos, diríjase a nuestra {''}
@@ -51,10 +56,15 @@ const Questions: FC = () => {
             title="¿El banco me presta el 100% del valor de la vivienda?"
             setSelected={setSelected}
           >
-            <Typography variant="bodyM3" typeFont="Light">
-              No, debido a la ley de vivienda el banco tiene permitido prestar para
-              crédito hipotecario hasta el 80% del valor total del inmueble para vivienda
-              VIS y 70% para vivienda NO VIS.
+            <Typography
+              variant='bodyM3'
+              typeFont='Light'
+              componentHTML='p'
+              className='text-complementario-100'
+            >
+              No, debido a la ley de vivienda el banco tiene permitido prestar para crédito
+              hipotecario hasta el 80% del valor total del inmueble para vivienda VIS y 70%
+              para vivienda NO VIS.
             </Typography>
           </ItemAccordion>
           <ItemAccordion
@@ -64,11 +74,16 @@ const Questions: FC = () => {
             setSelected={setSelected}
           >
             <div data-testid="itemTest3">
-              <Typography variant="bodyM3" typeFont="Light">
-                No existe un orden obligatorio, lo recomendable es que las personas
-                primero conozcan cuanto les puede prestar el banco y posteriormente con
-                ese presupuesto elegir una vivienda, sin embargo si se elige la vivienda
-                primero el proceso de compra sería exactamente el mismo.
+              <Typography
+                variant='bodyM3'
+                typeFont='Light'
+                componentHTML='p'
+                className='text-complementario-100'
+              >
+                No existe un orden obligatorio, lo recomendable es que las personas primero
+                conozcan cuanto les puede prestar el banco y posteriormente con ese
+                presupuesto elegir una vivienda, sin embargo si se elige la vivienda primero
+                el proceso de compra sería exactamente el mismo.
               </Typography>
             </div>
           </ItemAccordion>
@@ -79,7 +94,12 @@ const Questions: FC = () => {
             setSelected={setSelected}
           >
             <div data-testid="itemATest4">
-              <Typography variant="bodyM3" typeFont="Light">
+              <Typography
+                variant='bodyM3'
+                typeFont='Light'
+                componentHTML='p'
+                className='text-complementario-100'
+              >
                 Si, el Banco Caja Social permite sumar ingresos siempre y cuando la
                 solicitud se realice en una oficina. En el caso de las solicitudes
                 digitales por ahora solo es permitido un titular.
@@ -94,10 +114,16 @@ const Questions: FC = () => {
             setSelected={setSelected}
           >
             <div data-testid="itemATest6">
-              <Typography variant="bodyM3" typeFont="Light">
+
+              <Typography
+                variant='bodyM3'
+                typeFont='Light'
+                componentHTML='p'
+                className='text-complementario-100'
+              >
                 Las condiciones que el Banco maneja en este momento son:
               </Typography>
-              <Typography variant="ul" typeFont="Light" className="list-disc ml-6 mt-3">
+              <Typography variant='bodyM3' componentHTML='ul' typeFont='Light' className="list-disc ml-6 mt-3">
                 <li>Tipo de vivienda VIS y No VIS.</li>
                 <li>Aplica para vivienda nueva y usada.</li>
                 <li>Amortización solo en pesos.</li>
@@ -112,11 +138,11 @@ const Questions: FC = () => {
             setSelected={setSelected}
           >
             <div data-testid="itemATest5">
-              <Typography variant="bodyM3" typeFont="Light">
+              <Typography variant='bodyM3' componentHTML='p' typeFont='Light' className='text-complementario-100'>
                 Nosotros tenemos en cuenta los siguientes factores:
               </Typography>
-              <Typography variant="ul" typeFont="Light" className="list-disc ml-6 mt-3">
-                <li>Historial crediticio</li>
+              <Typography variant='bodyM3' componentHTML='ul' typeFont='Light' className="list-disc ml-6 mt-3" >
+                <li className=''>Historial crediticio</li>
                 <li>Comportamiento de pago</li>
                 <li>Reporte centrales de riesgo</li>
                 <li>Capacidad de pago</li>

@@ -10,6 +10,7 @@ import ContainerButtonForm from './ContainerButtonForm';
 import { SesionStorageKeys } from '../../../session';
 import useValidationFormNumber from '../../../hooks/useValidationFormNumber';
 import SimulatorLoader from '../Loaders/SimulatorLoader';
+import Typography from '../Typography';
 
 interface FormProps {
   isLoading?: boolean;
@@ -155,11 +156,14 @@ export const ValidationFormNumber: React.FC<FormProps> = ({
                       value={answer.id}
                       className="hidden"
                     />
-                    <label
+                    <Typography
+                      variant="bodyM3"
+                      componentHTML="label"
+                      typeFont="Regular"
                       aria-hidden="true"
                       htmlFor="number"
-                      className={`font-montserratRegular flex items-center bg-white cursor-pointer  w-full border  rounded-md px-5 py-[17px]
-                        border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black  shadow-small-300  font-semibold
+                      className={`flex items-center bg-white cursor-pointer  w-full border  rounded-md px-5 py-[17px]
+                        border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black  shadow-small-300 
                         ${
                           answer.id === inputValues
                             ? 'shadow-none border-primario-600 text-primario-600'
@@ -175,7 +179,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({
                     >
                       <span itemProp="telephone" className="hidden" />
                       {answer.option}
-                    </label>
+                    </Typography>
                   </div>
                 ))}
             </div>

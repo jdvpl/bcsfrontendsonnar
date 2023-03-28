@@ -31,6 +31,7 @@ function Bienvenida() {
           />
         </div>
         <Typography
+          componentHTML="h3"
           variant="h3"
           typeFont="Bold"
           className="text-center mt-[52px] text-primario-900"
@@ -50,6 +51,7 @@ function Bienvenida() {
             variant="h4"
             typeFont="Bold"
             className="text-primario-900 items-start"
+            componentHTML="span"
           >
             Requisitos de solicitud:
           </Typography>
@@ -61,19 +63,20 @@ function Bienvenida() {
             <li className="mt-3">Postular como único titular</li>
             <li className="mt-3">Solicitar sin subsidios del gobierno</li>
           </ul>
-        </div>
-        <div className="flex justify-center mt-8 mb-11 ">
-          <Button
-            isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] "
-            type="submit"
-            name="abrirCuenta"
-            data-testid="btnOnboardingtest"
-            onClick={startProcess}
-            id="btn-next"
-            className="font-montserratMedium"
-          >
-            Iniciar solicitud
-          </Button>
+          <div className="flex justify-center mt-8 mb-11 ">
+            <Button
+              isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] "
+              type="submit"
+              name="abrirCuenta"
+              data-testid="btnOnboardingtest"
+              onClick={startProcess}
+              id="btn-next"
+            >
+              <Typography variant="bodyM3" typeFont="Bold" componentHTML="span">
+                Iniciar solicitud
+              </Typography>
+            </Button>
+          </div>
         </div>
       </div>
     </div>

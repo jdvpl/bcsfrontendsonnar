@@ -18,6 +18,7 @@ import usePersonalData from '../../../hooks/usePersonalData';
 import { getCityById, validateAddress } from '../../../utils';
 import { useBackDetector } from '../../../hooks/useBackDetector';
 import useProtectedRoutes from '../../../hooks/useProtectedRoutes';
+import Typography from '../Typography';
 
 function PersonalDataBasic({ userInfo }: any) {
   const router = useRouter();
@@ -38,18 +39,18 @@ function PersonalDataBasic({ userInfo }: any) {
   const [componentModal] = useState({
     children: <OfficeBranch setShowModal={setShowModal} />,
     title: (
-      <span className="md:text-[24px] font-poppinsSemiBold">
+      <Typography variant="h3" componentHTML="h3" typeFont="Bold" className="">
         Si sus datos han cambiado actualícelos llamando a la línea amiga
-      </span>
+      </Typography>
     ),
     id: '',
   });
   const [componentModalExit] = useState({
     children: <ExitModal setshowModalExit={setshowModalExit} />,
     title: (
-      <span className="md:text-[24px] font-poppinsSemiBold">
+      <Typography variant="h3" componentHTML="h3" typeFont="Bold" className="">
         Está a punto de abandonar su solicitud
-      </span>
+      </Typography>
     ),
     id: '',
   });
@@ -115,88 +116,73 @@ function PersonalDataBasic({ userInfo }: any) {
         />
       )}
       <div className="w-full">
-        <form onSubmit={handleSubmit(onSubmit)} data-testid="personaldataTest">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          data-testid="personaldataTest"
+          autoComplete="off"
+        >
           {!userInfo.isClient && (
             <div className="grid grid-cols-3 gap-x-2 items-end">
               <div>
-                <p className="text-[10px] w-full font-montserratRegular font-medium text-complementario-100 mb-3">
+                <Typography
+                  variant="overline2"
+                  componentHTML="p"
+                  typeFont="Regular"
+                  className=" w-full  text-complementario-100 mb-3"
+                >
                   Fecha de nacimiento:
-                </p>
+                </Typography>
                 <ReactHookFormSelect
-                  className={`col-span-2`}
-                  onChange={(e: any) => setValue('dayDt', e.target.value)}
-                  placeholder="Dia"
-                  label="Dia"
+                  onChange={(e: any) => setValue('monthDt', e.target.value)}
+                  placeholder="Mes"
+                  label="Mes"
                   defaultValue=""
                   control={control}
                   left="right4"
-                  valueLength=""
-                  name="dayDt"
-                  hideMenuItem={showModal}
+                  name="monthDt"
+                  className={`${showModal ? 'hideMenu' : ''}`}
                   margin="normal"
                   onFocus={showPopup}
                   disabled={showModal}
+                  hideMenuItem={showModal}
                   rules={{ required: !userInfo.isClient }}
                   spacing="mr-[6px]"
                 >
-                  {days?.map((element, i) => (
-                    <MenuItem value={element?.number} key={i}>
-                      {element?.day}
+                  {months.map((element, i) => (
+                    <MenuItem value={element.number} key={i}>
+                      {element.month}
                     </MenuItem>
                   ))}
                 </ReactHookFormSelect>
+
+                <Controller
+                  name="yearDt"
+                  control={control}
+                  rules={{ required: !userInfo.isClient }}
+                  render={({ field }) => (
+                    <Input
+                      type="text"
+                      onChange={(e) => {
+                        field.onChange(e?.target?.value?.replace(/[^0-9]+/g, ''));
+                      }}
+                      error={!!errors.dayDt}
+                      helperText={errors?.dayDt?.message}
+                      value={yearDt}
+                      tabIndex={0}
+                      id="yearDt"
+                      disabled={showModal}
+                      onFocus={showPopup}
+                      data-testid="yearDtTest"
+                      inputMode="numeric"
+                      maxLength={4}
+                      label="Año"
+                    />
+                  )}
+                />
               </div>
-
-              <ReactHookFormSelect
-                onChange={(e: any) => setValue('monthDt', e.target.value)}
-                placeholder="Mes"
-                label="Mes"
-                defaultValue=""
-                control={control}
-                left="right4"
-                name="monthDt"
-                className={`${showModal ? 'hideMenu' : ''}`}
-                margin="normal"
-                onFocus={showPopup}
-                disabled={showModal}
-                hideMenuItem={showModal}
-                rules={{ required: !userInfo.isClient }}
-                spacing="mr-[6px]"
-              >
-                {months.map((element, i) => (
-                  <MenuItem value={element.number} key={i}>
-                    {element.month}
-                  </MenuItem>
-                ))}
-              </ReactHookFormSelect>
-
-              <Controller
-                name="yearDt"
-                control={control}
-                rules={{ required: !userInfo.isClient }}
-                render={({ field }) => (
-                  <Input
-                    type="text"
-                    onChange={(e) => {
-                      field.onChange(e?.target?.value?.replace(/[^0-9]+/g, ''));
-                    }}
-                    error={!!errors.dayDt}
-                    helperText={errors?.dayDt?.message}
-                    value={yearDt}
-                    tabIndex={0}
-                    id="yearDt"
-                    disabled={showModal}
-                    onFocus={showPopup}
-                    data-testid="yearDtTest"
-                    inputMode="numeric"
-                    maxLength={4}
-                    label="Año"
-                  />
-                )}
-              />
             </div>
           )}
-
+          )
           <div className="w-full mt-4">
             <Controller
               control={control}
@@ -220,7 +206,6 @@ function PersonalDataBasic({ userInfo }: any) {
               )}
             />
           </div>
-
           <div className="w-full mt-4">
             <ReactHookFormSelect
               onChange={(e: any) => {
@@ -246,7 +231,6 @@ function PersonalDataBasic({ userInfo }: any) {
               text={'Seleccionar el mismo género indicado en su documento'}
             />
           </div>
-
           <div className="flex flex-col mt-4">
             <Controller
               rules={{ required: !userInfo.cellPhone }}
@@ -267,6 +251,7 @@ function PersonalDataBasic({ userInfo }: any) {
                   id="phone"
                   data-testid="phoneTest"
                   inputMode="text"
+                  autoComplete="off"
                   placeholder="Número de celular"
                   label="Número de celular"
                   onChange={(e: any) => setValue('phone', e.target.value)}
@@ -296,6 +281,7 @@ function PersonalDataBasic({ userInfo }: any) {
                   data-testid="emailTest"
                   inputMode="text"
                   placeholder="Correo electrónico"
+                  autoComplete="off"
                   label="Correo electrónico"
                   onChange={(e: any) => setValue('email', e.target.value)}
                 />
@@ -304,7 +290,6 @@ function PersonalDataBasic({ userInfo }: any) {
               control={control}
             />
           </div>
-
           {userInfo.isClient ? (
             <div className="flex flex-col mt-4">
               <Controller
@@ -382,7 +367,6 @@ function PersonalDataBasic({ userInfo }: any) {
                     }}
                     onFocus={showPopup}
                     value={currentAddress}
-                    tabIndex={0}
                     id="currentAddress"
                     data-testid="currentAddres"
                     inputMode="text"

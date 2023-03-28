@@ -39,34 +39,29 @@ export function MoneyLaunderingForm() {
           <div
             key={i}
             className="cardShadow min-h-[96px] w-full mb-3 rounded-md px-6 py-3"
-            role="tabpanel"
-            tabIndex={0}
           >
-            <div>
-              <Typography
-                variant="bodyM2"
-                typeFont="Regular"
-                className="text-complementario-100 font-light mb-[12px] md:max-w-full max-w-[95%]"
-              >
-                {option?.label}
-                {option?.toolTip !== '' ? (
-                  <ToolTipInfo
-                    id="tax"
-                    info=""
-                    infohtml={
-                      <p className="text-white font-montserratRegular">
-                        {option?.toolTip}
-                      </p>
-                    }
-                    icon={
-                      <div id="-group" className="relative -bottom-[3px] w-5 h-4">
-                        <InfoIco />
-                      </div>
-                    }
-                  />
-                ) : null}
-              </Typography>
-            </div>
+            <Typography
+              variant="bodyM2"
+              componentHTML="p"
+              typeFont="Regular"
+              className="text-complementario-100 font-light mb-[12px] md:max-w-full max-w-[95%]"
+            >
+              {option?.label}
+              {option?.toolTip !== '' ? (
+                <ToolTipInfo
+                  id="tax"
+                  info=""
+                  infohtml={
+                    <p className="text-white font-montserratRegular">{option?.toolTip}</p>
+                  }
+                  icon={
+                    <div id="-group" className="relative -bottom-[3px] w-5 h-4">
+                      <InfoIco />
+                    </div>
+                  }
+                />
+              ) : null}
+            </Typography>
             <div className="flex">
               <div
                 data-testid="firstOption"

@@ -139,6 +139,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
               <Typography
                 variant="overline1"
                 typeFont="Regular"
+                componentHTML="p"
                 className="font-normal text-rojo-200 text-[12px]"
               >
                 Código inválido, intente nuevamente
@@ -155,14 +156,18 @@ const Otp: FC<otpProps> = ({ otc }) => {
         </div>
       )}
       {!wasResend && !isValid && (
-        <div
+        <Typography
+          onClick={onResendOTP}
+          variant="caption1"
+          typeFont="Regular"
+          componentHTML="span"
+          className={` leading-4 ${
+            timer === 0 && wasResend === false
+              ? 'text-primario-20 cursor-pointer'
+              : 'text-gris-200'
+          } mb-[12px]`}
           role="tabpanel"
           tabIndex={0}
-          onKeyDownCapture={(e: KeyboardEvent<HTMLInputElement>) => {
-            if (e.key === 'Enter') {
-              onResendOTP();
-            }
-          }}
         >
           <Typography
             onClick={onResendOTP}
@@ -173,18 +178,24 @@ const Otp: FC<otpProps> = ({ otc }) => {
                 ? 'text-primario-20 cursor-pointer'
                 : 'text-gris-200'
             } mb-[12px]`}
+            componentHTML="span"
           >
             {timer === 0 && wasResend === false
               ? 'Volver a enviar código'
               : 'Volver a enviar código en'}
           </Typography>
-        </div>
+        </Typography>
       )}
 
       {timer === 0 || isValid ? null : (
         <div className="flex justify-center items-center gap-1">
           <Icons icon="bcs-icon-15" size="text-gris-30 font-semibold" title="Tiempo" />
-          <Typography variant="caption2" typeFont="Regular" className="text-gris-30">
+          <Typography
+            componentHTML="span"
+            variant="caption2"
+            typeFont="Regular"
+            className="text-gris-30"
+          >
             {timer} segundos
           </Typography>
         </div>

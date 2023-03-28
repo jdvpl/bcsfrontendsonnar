@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { routes } from '../../routes';
 import Button from '../ui/Button'
+import Typography from '../ui/Typography';
 
 
 function ExitModal({ setshowModalExit }: any) {
@@ -13,11 +14,11 @@ function ExitModal({ setshowModalExit }: any) {
     router.replace(routes.home);
   }
   return (
-    <div className='m-auto flex-col mt-8 font-monserratLight mx-5'>
+    <Typography componentHTML='div' variant='bodyM3' typeFont='Light' className='m-auto flex-col mt-8 mx-5'>
 
-      <p className="text-center font-poppinsLight md:text-[24px] text-[18px] leading-5 md:mx-0 mx-[40px]">
+      <Typography variant='h4' componentHTML='h4' typeFont='Light' className="text-center md:text-[24px] text-[18px] leading-5 md:mx-0 mx-[40px]">
         ¿Desea continuar con el proceso?
-      </p>
+      </Typography>
       <div className="flex flex-col justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-[48px] pb-[40px]">
         <Button
           isLanding="w-full xs:w-[250px] sm:w-[253px] md:w-[253px] lg:w-[343px]"
@@ -44,7 +45,7 @@ function ExitModal({ setshowModalExit }: any) {
         </div>
       </div>
 
-    </div >
+    </Typography >
   )
 }
 

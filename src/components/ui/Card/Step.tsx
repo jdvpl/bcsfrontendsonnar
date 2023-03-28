@@ -11,6 +11,7 @@ const Step: FC<stepProps> = ({ titleNumber, description }) => {
       <Typography
         variant="bodyM1"
         typeFont="Regular"
+        componentHTML='p'
         className=" text-primario-300 text-center mt-5 text-[22px]"
       >
         {titleNumber}
@@ -18,7 +19,8 @@ const Step: FC<stepProps> = ({ titleNumber, description }) => {
       <div className="bg-gris-90 border-b border-b-primario-100 lg:w-[424px] md:w-[264px]   pb-[20px] pt-[21px] pl-4 sm:w-[305px] w-[250px] smd:w-[330px]">
         <Typography
           variant="bodyM3"
-          typeFont="Light"
+          typeFont='Light'
+          componentHTML='p'
           className="text-complementario-100 text-left"
         >
           {description}

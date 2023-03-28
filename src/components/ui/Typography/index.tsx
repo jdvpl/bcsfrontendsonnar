@@ -1,83 +1,107 @@
-import React, { HTMLAttributes } from 'react';
+import React, { FC, ReactNode } from 'react';
 import cn from 'classnames';
-export type HeadingType = HTMLAttributes<HTMLHeadingElement>;
-export type ParagraphType = HTMLAttributes<HTMLParagraphElement>;
-export type SpanType = HTMLAttributes<HTMLSpanElement>;
-export type ULType = HTMLAttributes<HTMLUListElement>;
-export type AType = HTMLAttributes<HTMLAnchorElement>;
 
+export type TypeFont = 'Bold' | 'Regular' | 'Light';
+export type Variants =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'bodyM1'
+  | 'bodyM2'
+  | 'bodyM3'
+  | 'caption1'
+  | 'caption2'
+  | 'overline1'
+  | 'overline2';
 
-export type TypeFont = 'Bold' | 'Regular' | 'Light'
-export type Variants = 'h1' | 'h2' | 'h3' | 'h4' | 'bodyM1' | 'bodyM2' | 'bodyM3' | 'caption1' | 'caption2' | 'overline1' | 'overline2' | 'ul' | 'a';
-export type TypographyProps = (HeadingType | ParagraphType | SpanType | ULType | AType) & { variant: Variants } & { typeFont?: TypeFont };
+type TypographyProps = {
+  componentHTML: keyof JSX.IntrinsicElements;
+  attrs?: JSX.IntrinsicElements[keyof JSX.IntrinsicElements];
+  className?: string;
+  children?: ReactNode;
+  variant: Variants;
+  typeFont?: TypeFont;
+  id?: string;
+  tabIndex?: any;
+  role?: any;
+  htmlFor?: string;
+  itemScope?: any;
+  itemType?: string;
+  onClick?: () => void;
+  onKeyDown?: any;
+  onKeyDownCapture?: any;
+  itemProp?: string;
+  href?: string;
+  type?: string;
+};
 
-const headings = ['h1', 'h2', 'h3', 'h4'];
-const paragraphs = ['bodyM1', 'bodyM2', 'bodyM3'];
-const spans = ['caption1', 'caption2', 'overline1', 'overline2'];
-const listUl = ['ul'];
-const alist = ['a'];
-function Typography({
+const Typography: FC<TypographyProps> = ({
   children,
   variant = 'bodyM1',
-  className,
   typeFont = 'Regular',
+  className,
+  componentHTML = 'p',
+  id,
+  tabIndex,
+  role,
+  htmlFor,
+  itemScope,
+  itemType,
+  onClick,
+  onKeyDown,
+  onKeyDownCapture,
+  itemProp,
+  href,
+  type,
   ...props
-}: TypographyProps) {
-
+}: TypographyProps) => {
   const componentStyles = () => {
     const styleMap = {
       h1: {
-        fontSize: "32px",
-        lineHeight: "36px",
+        fontSize: '32px',
+        lineHeight: '36px',
       },
       h2: {
-        fontSize: "28px",
-        lineHeight: "32px",
+        fontSize: '28px',
+        lineHeight: '32px',
       },
       h3: {
-        fontSize: "24px",
-        lineHeight: "28px",
+        fontSize: '24px',
+        lineHeight: '28px',
       },
       h4: {
-        fontSize: "20px",
-        lineHeight: "24px",
+        fontSize: '20px',
+        lineHeight: '24px',
       },
       bodyM1: {
-        fontSize: "20px",
-        lineHeight: "22px",
+        fontSize: '20px',
+        lineHeight: '22px',
       },
       bodyM2: {
-        fontSize: "18px",
-        lineHeight: "20px",
+        fontSize: '18px',
+        lineHeight: '20px',
       },
       bodyM3: {
-        fontSize: "16px",
-        lineHeight: "18px",
+        fontSize: '16px',
+        lineHeight: '18px',
       },
       caption1: {
-        fontSize: "14px",
-        lineHeight: "16px",
+        fontSize: '14px',
+        lineHeight: '16px',
       },
       caption2: {
-        fontSize: "12px",
-        lineHeight: "16px",
+        fontSize: '12px',
+        lineHeight: '16px',
       },
       overline1: {
-        fontSize: "12px",
-        lineHeight: "14px",
+        fontSize: '12px',
+        lineHeight: '14px',
       },
       overline2: {
-        fontSize: "10px",
-        lineHeight: "12px",
+        fontSize: '10px',
+        lineHeight: '12px',
       },
-      ul: {
-        fontSize: "16px",
-        lineHeight: "18px",
-      },
-      a: {
-        fontSize: "16px",
-        lineHeight: "18px",
-      }
     };
     const style = styleMap[variant] || {};
     const fontStyle = fontStyles();
@@ -87,55 +111,47 @@ function Typography({
   const fontStyles = () => {
     let classes = '';
     const fontVariants: {
-      [key: string]: { [key: string]: string }
+      [key: string]: { [key: string]: string };
     } = {
       h: {
         Bold: 'font-poppinsSemiBold',
         Light: 'font-poppinsExtraLight',
-        Regular: 'font-poppinsRegular'
+        Regular: 'font-poppinsRegular',
       },
       bodyM1: {
         Bold: 'font-montserratSemiBold',
         Regular: 'font-montserratRegular',
-        Light: 'font-montserratExtraLight'
+        Light: 'font-montserratExtraLight',
       },
       bodyM2: {
         Bold: 'font-montserratSemiBold',
         Regular: 'font-montserratRegular',
-        Light: 'font-montserratExtraLight'
+        Light: 'font-montserratExtraLight',
       },
       bodyM3: {
         Bold: 'font-montserratMedium',
         Regular: 'font-montserratRegular',
-        Light: 'font-montserratExtraLight'
+        Light: 'font-montserratExtraLight',
       },
       caption1: {
         Bold: 'font-montserratSemiBold',
         Regular: 'font-montserratMedium',
-        Light: 'font-montserratExtraLight'
+        Light: 'font-montserratExtraLight',
       },
       caption2: {
         Bold: 'font-montserratMedium',
         Regular: 'font-montserratRegular',
-        Light: 'font-monserratLight'
+        Light: 'font-monserratLight',
       },
       overline: {
         Bold: 'font-montserratMedium',
         Regular: 'font-montserratRegular',
-        Light: 'font-monserratLight'
-      },
-      ul: {
-        Bold: 'font-montserratMedium',
-        Regular: 'font-montserratRegular',
-        Light: 'font-montserratExtraLight'
-      },
-      a: {
-        Bold: 'font-montserratMedium',
-        Regular: 'font-montserratRegular',
-        Light: 'font-montserratExtraLight'
+        Light: 'font-monserratLight',
       },
     };
-    const fontVariant = Object.keys(fontVariants).find((variantKey) => variant.startsWith(variantKey));
+    const fontVariant = Object.keys(fontVariants).find((variantKey) =>
+      variant.startsWith(variantKey)
+    );
     const fontStylesForVariant = fontVariants[fontVariant || ''];
     if (typeFont in fontStylesForVariant) {
       classes = fontStylesForVariant[typeFont];
@@ -143,20 +159,37 @@ function Typography({
     return classes;
   };
 
-
-  const Tag = cn({
-    [`${variant}`]: headings.includes(variant),
-    [`p`]: paragraphs.includes(variant),
-    [`span`]: spans.includes(variant),
-    [`ul`]: listUl.includes(variant),
-    [`a`]: alist.includes(variant),
-  }) as any;
+  const Tag = ({ tag, attrs = {}, className, children }: any) => {
+    const element = React.createElement(
+      tag,
+      {
+        ...props,
+        className: cn(attrs.className, className),
+        role,
+        htmlFor,
+        itemScope,
+        itemType,
+        onClick,
+        onKeyDown,
+        onKeyDownCapture,
+        itemProp,
+        href,
+        type,
+      },
+      children
+    );
+    return element;
+  };
 
   return (
-    <Tag {...props} className={`${className} ${componentStyles()}`} data-testid="typographyTest">
+    <Tag
+      tag={componentHTML}
+      className={`${className} ${componentStyles()}`}
+      data-testid="typographyTest"
+    >
       {children}
     </Tag>
   );
-}
+};
 
 export default Typography;

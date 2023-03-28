@@ -4,8 +4,6 @@ import { useMediaQuery } from 'react-responsive';
 import { basePath } from '../../../next.config';
 import ConsultancyTutorial from '../../components/custom/tutorial/ConsultancyTutorial/ConsultancyTutorial';
 import Close from '../../components/svg/Close';
-import LogoBcs from '../../components/svg/LogoBcs';
-import LogoForm from '../../components/svg/LogoForm';
 import { Icons } from '../../components/ui/icons';
 import Stepper from '../../components/ui/Stepper';
 import Typography from '../../components/ui/Typography';
@@ -82,6 +80,7 @@ function Consultancy() {
           <div role="tabpanel" tabIndex={0}>
             <Typography
               variant="h2"
+              componentHTML="h2"
               typeFont="Bold"
               className="lg:w-[515px] md:w-[445px] sm:w-[303px] w-[303px] mx-auto lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center"
             >
@@ -209,13 +208,16 @@ function Consultancy() {
           actualStep === 1 || actualStep === 4 ? 'hidden' : ''
         }`}
       >
-        <a
+        <Typography
+          variant="bodyM3"
+          componentHTML="a"
+          typeFont="Bold"
+          href={`${basePath}`}
+          className=" text-primario-100 "
           onClick={goHome}
-          className=" text-primario-100 font-montserratRegular font-bold text-[14px]"
-          title="Volver al inicio"
         >
           Volver al inicio
-        </a>
+        </Typography>
       </div>
     </>
   );

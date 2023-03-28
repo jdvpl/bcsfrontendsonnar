@@ -9,7 +9,7 @@ import ImageLoader from '../../components/ui/Loaders/imageLoader';
 import ErrorLayout from '../../components/layouts/errorLayout';
 import { AplicationContext } from '../../context/AplicationContext';
 
-const Error: React.FC = () => {
+const ErrorB: React.FC = () => {
   const router = useRouter();
   const {
     setEligirFoto,
@@ -49,4 +49,4 @@ const Error: React.FC = () => {
   );
 };
 
-export default Error;
+export default ErrorB;

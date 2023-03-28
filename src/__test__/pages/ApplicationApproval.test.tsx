@@ -4,7 +4,7 @@ import ApplicationApproval from '../../pages/confirmacion-solicitud';
 import { createMockRouter } from '../utils/createMockRouter';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import { routes } from '../../routes';
-
+import React from 'react'
 
 describe('<ApplicationApproval/>', () => {
   it('should render "Authentication" successfully', () => {

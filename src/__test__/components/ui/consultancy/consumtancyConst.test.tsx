@@ -46,11 +46,5 @@ describe('initialOptions ', () => {
     test('debe tener 4 elementos', () => {
         expect(initialOptions).toHaveLength(4);
     })
-    test('debe tener la clase font-montserratRegular', () => {
-        initialOptions.forEach((item) => {
-            item.forEach((item2) => {
-                expect(item2?.content().props?.className).toMatch("font-montserratRegular");
-            })
-        })
-    })
+
 })

@@ -28,6 +28,7 @@ function MoneyLaunderingPage() {
           variant="h2"
           typeFont="Bold"
           className="text-center md:mb-[42px] sm:mb-[33px] xs:mb-[36px] mb-[36px]  xs:text-[20px]  text-primario-900"
+          componentHTML={'symbol'}
         >
           Confirme la siguiente información
         </Typography>

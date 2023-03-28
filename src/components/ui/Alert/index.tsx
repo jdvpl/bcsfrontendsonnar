@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Icons from '../icons';
-import React from 'react';
-
+import React from 'react'
+import Typography from '../Typography'
 interface propAlert {
   message: string;
   colorMessage?: string;
@@ -21,16 +21,14 @@ const Alert: FC<propAlert> = ({
       <Icons
         icon="bcs-icon-51"
         color="text-[#2F6EAE]"
-        size="text-[16px]"
+        size="text-[12px]"
         title="Información"
       />
     </span>
-    <span
-      className={`font-montserratRegular block ml-6 mr-3 font-normal text-[12px] ${colorMessage}`}
-    >
+    <Typography variant='caption2' componentHTML='span' typeFont='Regular' className={`block ml-6 mr-3 font-normal text-[12px] ${colorMessage}`}>
       {' '}
       {message}
-    </span>
+    </Typography>
   </div>
 );
 

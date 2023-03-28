@@ -68,7 +68,12 @@ function ResumenApplication() {
       </div>
       <div className="xs:w-[290px] sm:w-[343px] lg:w-[684px] md:w-[584px] m-auto">
         <div role="tabpanel" tabIndex={0}>
-          <Typography typeFont="Bold" variant="h2" className="mt-8 mb-[40px] text-center">
+          <Typography
+            typeFont="Bold"
+            variant="h2"
+            className="mt-8 mb-[40px] text-center"
+            componentHTML={'symbol'}
+          >
             Conozca la oferta que hemos diseñado para usted
           </Typography>
         </div>

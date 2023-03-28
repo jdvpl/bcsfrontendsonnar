@@ -12,6 +12,7 @@ import Rechazo from '../../pages/validacion/rechazo-solicitud';
 import { createMockRouter } from '../utils/createMockRouter';
 import { routes } from '../../routes';
 import SiteDown from '../../pages/validacion/error-servicio';
+import IdentityError from '../../pages/validacion/error-validacionIdentidad';
 
 describe('Error', () => {
   test('should render "Error" successfully', () => {
@@ -20,7 +21,7 @@ describe('Error', () => {
     });
     render(
       <RouterContext.Provider value={router}>
-        <Error />
+        <IdentityError />
       </RouterContext.Provider>
     );
     const imageError = screen.getByTestId('imageError');
@@ -167,7 +168,7 @@ describe('Error', () => {
     const router = createMockRouter({});
     const { findByTestId } = render(
       <RouterContext.Provider value={router}>
-        <Error />
+        <IdentityError />
       </RouterContext.Provider>
     );
     const btnOnboarding = await findByTestId('btnOnboarding');

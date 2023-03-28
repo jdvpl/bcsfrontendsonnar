@@ -1,6 +1,7 @@
 import React from 'react';
 import { ItemOne, ItemThree, ItemTwo } from '../icons/biometria/items';
 import { childrenProps } from '../../interfaces';
+import Typography from '../ui/Typography';
 
 const CardImage: React.FC<childrenProps> = ({ children }) => (
   <div className="flex mr-6">{children}</div>
@@ -8,19 +9,28 @@ const CardImage: React.FC<childrenProps> = ({ children }) => (
 
 const Description: React.FC = () => (
   <div data-testid="descripcion-biometrica" className="">
-    <p className="font-semibold text-lg leading-5 text-primario-900 ">
+    <Typography
+      typeFont="Bold"
+      variant="bodyM2"
+      componentHTML="p"
+      className=" text-primario-900 "
+    >
       Tenga en cuenta estos consejos:&nbsp;
-    </p>
+    </Typography>
     <div className="flex flex-col  mt-[26px] space-y-[24px] ">
       <div>
         <div className="flex">
           <CardImage>
             <ItemOne />
           </CardImage>
-          <p className=" text-primario-900 font-normal text-base leading-[18px] pr-6">
+          <Typography
+            variant="bodyM3"
+            componentHTML="p"
+            className=" text-primario-900  text-base leading-[18px] pr-6"
+          >
             Tome la foto en un lugar con luz, preferiblemente luz natural evitando brillos
             y reflejos.
-          </p>
+          </Typography>
         </div>
         <div className="flex justify-end pr-4 mt-2">
           <svg
@@ -40,9 +50,14 @@ const Description: React.FC = () => (
           <CardImage>
             <ItemTwo />
           </CardImage>
-          <p className=" text-primario-900 font-normal text-base leading-[18px] pr-6">
+          <Typography
+            variant="bodyM3"
+            typeFont="Regular"
+            componentHTML="p"
+            className=" text-primario-900  text-base  pr-6"
+          >
             Tome la foto con el celular en posición horizontal.
-          </p>
+          </Typography>
         </div>
         <div className="flex justify-end pr-4 mt-2">
           <svg
@@ -61,9 +76,13 @@ const Description: React.FC = () => (
         <CardImage>
           <ItemThree />
         </CardImage>
-        <p className=" text-primario-900 font-normal text-base leading-[18px] pr-6">
+        <Typography
+          variant="bodyM3"
+          componentHTML="p"
+          className=" text-primario-900  text-base pr-6"
+        >
           Asegúrese de que su cédula no tenga fallas o imperfecciones.
-        </p>
+        </Typography>
       </div>
     </div>
   </div>

@@ -227,7 +227,6 @@ export const riskBoxes = async (body: RequestRiskBoxes) => {
   try {
     // TODO
     const bodyEncrypt = await allResponse({ ...body, processId: getProcessId() }, KEY);
-    const dataBody = { ...body, processId: getProcessId() };
     const response: any = await clientAxiosBackend.post(
       '/api-composer/composer/risk-boxes',
       {
