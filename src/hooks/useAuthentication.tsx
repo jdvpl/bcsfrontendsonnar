@@ -1,6 +1,7 @@
 import { routes } from '../routes';
 import { getQuestions } from '../services';
 import { isBrowser } from 'react-device-detect';
+import { invokeEvent } from '../utils';
 
 export default function useAuthentication(
   setShowAnimation: (data: boolean) => void,
@@ -25,6 +26,7 @@ export default function useAuthentication(
     };
     const response = await getQuestions(body);
     if (!response?.error) {
+      invokeEvent('start_authentication','action_funnel');
       setDataQuestions({ ...dataQuestions, ...response?.response?.data });
       router.push(routes.validacionIdentidad);
       return;

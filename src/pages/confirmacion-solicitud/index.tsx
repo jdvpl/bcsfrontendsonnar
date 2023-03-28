@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { basePath } from '../../../next.config';
 import Alert from '../../components/ui/Alert';
 import Button from '../../components/ui/Button';
@@ -11,7 +11,7 @@ import Typography from '../../components/ui/Typography';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { routes } from '../../routes';
 import { SesionStorageKeys } from '../../session';
-import { convertToColombianPesos, downLoadPdf } from '../../utils';
+import { convertToColombianPesos, downLoadPdf, invokeEvent } from '../../utils';
 import useProtectedRoutes from '../../hooks/useProtectedRoutes';
 import ExitModal from '../../components/commons/ExitModal';
 import Modal from '../../components/ui/Modal';
@@ -59,6 +59,9 @@ function ApplicationApproval({ modalExit = false }: any) {
     typeDescriptionTagTypograhy: 'h1',
     typeFontDescriptionTypograhy: 'Bold',
   }
+  useEffect(() => {
+    invokeEvent('load_confirm_application', 'load_page');
+  });
 
   return (
     <div>
@@ -202,6 +205,7 @@ function ApplicationApproval({ modalExit = false }: any) {
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] shadow-none border-0 m-auto "
             onClick={() => {
+              invokeEvent('get_out_confirm_offer','action_funnel');
               setCurrentRouting(routes.approvalDataPage, false);
               router.push(routes.home);
             }}

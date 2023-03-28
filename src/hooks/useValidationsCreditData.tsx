@@ -9,7 +9,7 @@ import {
 import { iCreditData } from '../interfaces/iCreditData';
 import { useSessionStorage } from './useSessionStorage';
 import { SesionStorageKeys } from '../session';
-import { calculateAgeMethod2 } from '../utils';
+import { calculateAgeMethod2, invokeEvent } from '../utils';
 import { riskBoxes } from '../services';
 import { routes } from '../routes';
 import { RequestRiskBoxes } from '../interfaces/IRequestRiskBoxes';
@@ -155,7 +155,7 @@ export default function useValidations(
         typeHouse,
         houseStatus,
         houseValue: houseValue.toString(),
-        financeValue,
+        financeValue:financeValue,
         termFinance,
         insuranceCheck,
         choseOffice,
@@ -181,6 +181,7 @@ export default function useValidations(
 
     const data: any = await riskBoxes(body);
     if (data?.response?.result?.customerStatus?.finalOffer?.isViable) {
+      invokeEvent('go_confirmation_request','action_funnel');
       setOrderNumber(data?.response?.result?.orderNumber || '123456');
       setApplicationResponse(data?.response?.result?.customerStatus);
       setCurrentRouting(routes.finalcialData, false);

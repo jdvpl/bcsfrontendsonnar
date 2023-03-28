@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { initialOptions } from '../../components/custom/consultancy/consultancy';
 import { routes } from '../../routes';
 import Button from '../../components/ui/Button';
 import Typography from '../../components/ui/Typography';
+import { invokeEvent } from '../../utils';
 
 export default function useConsultancy({
   actualStep,
@@ -18,6 +19,7 @@ export default function useConsultancy({
     if (actualStep < 4) {
       setActualStep(actualStep + 1);
     } else {
+      invokeEvent('complete_consultancy', 'action_funnel');
       router.push(routes.home);
     }
   };
@@ -26,11 +28,13 @@ export default function useConsultancy({
     if (actualStep > 1) {
       setActualStep(actualStep - 1);
     } else {
+      invokeEvent('back_home', 'action_funnel');
       router.push(routes.home);
     }
   };
 
   const openModal = (label: string, index: number) => {
+    invokeEvent('show_item_detail', 'action_funnel')
     setActiveIndex(index);
     setItemActive(label);
   };

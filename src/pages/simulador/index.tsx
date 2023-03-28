@@ -5,22 +5,14 @@ import FormQuota from '../../components/ui/Form/FormQuota';
 import Typography from '../../components/ui/Typography';
 import HouseSimulator from '../../components/ui/Form/houseSimulator/HouseSimulator';
 import useSimulator from './useSimulator';
-import TagManager from 'react-gtm-module';
+import { invokeEvent } from '../../utils';
+
 export const cardTextStyles = 'text-[20px] pl-[23px] font-semibold font-poppinsSemiBold';
 function Simulator() {
   const { simulatioTypeOption, setsimulatioTypeOption, onSubmit, isLoading } = useSimulator();
   useEffect(() => {
-    TagManager.dataLayer({
-      dataLayer: {
-        event: 'load_simulation',
-        category: 'load_page',
-        action: 'load_simulation',
-        label: 'load_simulation',
-      },
-    });
-
-  }, []
-  );
+    invokeEvent('load_simulator', 'load_page')
+  }, [])
   return (
     <div data-testid="simuladorTestC">
       <div className="container flex lg:mt-[0] sm:w-[343px] md:w-[528px] lg:w-[1100px] pt-5 lg:justify-between justify-end">

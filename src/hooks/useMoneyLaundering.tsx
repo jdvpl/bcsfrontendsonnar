@@ -4,6 +4,7 @@ import { useSessionStorage } from './useSessionStorage';
 import { routes } from '../routes';
 import { fetchSarlaft } from '../services';
 import { SesionStorageKeys } from '../session';
+import { invokeEvent } from '../utils';
 
 export default function useMoneyLaundering({ setCurrentRouting }: any) {
   const router = useRouter();
@@ -33,6 +34,7 @@ export default function useMoneyLaundering({ setCurrentRouting }: any) {
           setCurrentRouting(routes.personalData, false);
           setCurrentRouting(routes.sarlaft, false);
           setCurrentRouting(routes.finalcialData);
+          invokeEvent('go_financial_data','action_funnel');
           router.push(routes.finalcialData);
           break;
         case 'RESTRICTED':

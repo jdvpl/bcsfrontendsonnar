@@ -1,7 +1,6 @@
 import SelectiveHomeCards from './../components/ui/Home/SelectiveHomeCards';
 import React, { ReactNode, useEffect } from 'react';
 import { deviceType } from 'react-device-detect';
-import TagManager from 'react-gtm-module';
 import { basePath } from '../../next.config';
 import LogoBcsWhite from '../components/svg/LogoBcsWhite';
 import LogoViviendaWhite from '../components/svg/LogoViviendaWhite';
@@ -15,28 +14,24 @@ import { useSessionStorage } from '../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../session';
 import { ConditionalWrapper } from './asesoria';
 import { SkipContent } from '../components/SkipContent';
+import { invokeEvent } from '../utils';
 
 export default function Home() {
   const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, deviceType);
 
-  const { isMobile, isTablet, heightHeader, isSafari, isMedium, isLG, isSM, isXXl } =
-    useMediaQueryResponsive();
+  const { isMobile, isTablet, heightHeader, isSafari, isMedium, isLG, isSM, isXXl } = useMediaQueryResponsive();
+
   useEffect(
     () => () => {
       setDevice(deviceType);
     },
     [device]
   );
-  useEffect(() => {
-    TagManager.dataLayer({
-      dataLayer: {
-        event: 'load_landing',
-        category: 'load_page',
-        action: 'load_landing',
-        label: 'load_landing',
-      },
-    });
-  }, []);
+
+  useEffect(()=>{
+    invokeEvent("load_landing","load_page");
+  },[])
+
   const titleClasses = isSafari
     ? 'xs:flex sm:flex md:justify-end sm:pr-6 xs:pt-2 md:pr-[2rem] md:mt-1 xs:mt-5 lg:mt-[100px] lg:flex lg:justify-center lg:ml-[40rem] xs:ml-1 sm:ml-3 lg:mr-40 xl:mt-[150px] xs:mt-[34px] sm:mt-[44px]'
     : 'xs:flex sm:flex md:justify-end sm:pr-6 xs:pt-2 md:pr-[2rem] md:mt-1 xs:mt-5 lg:mt-[100px] lg:flex lg:justify-center lg:ml-[40rem] xs:ml-1 sm:ml-3 lg:mr-40 xl:mt-[150px] xs:mt-[34px] sm:mt-[44px] xxxl:mt-[290px] xxxl:pl-40 xxl:pr-0';
@@ -44,7 +39,8 @@ export default function Home() {
   const headerDescriptionClasess = isSafari
     ? 'xs:flex sm:flex md:justify-end sm:pr-6 xs:pt-2 md:pr-0 md:mt-5 xs:mt-[17px] lg:mt-[6px] lg:flex lg:justify-center lg:ml-[40rem] ml-5 xxl:pr-10'
     : 'xs:flex sm:flex md:justify-end sm:pr-6 xs:pt-2 md:pr-0 md:mt-5 xs:mt-[17px] lg:mt-[6px] lg:flex lg:justify-center lg:ml-[40rem] ml-5 xxl:pr-1 xxxl:pl-40';
-  return (
+  
+    return (
     <main data-testid="landingPage" className="overflow-hidden landingPage">
       <SkipContent />
       <div

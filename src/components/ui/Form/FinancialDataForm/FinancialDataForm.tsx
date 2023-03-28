@@ -1,7 +1,5 @@
 import { MenuItem } from '@mui/material';
-import React, {
-  ClipboardEvent,
-} from 'react';
+import React, { ClipboardEvent } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
@@ -15,6 +13,7 @@ import Alert from '../../Alert';
 import useValidationFinancialDataForm from '../../../../hooks/useValidationFinancialDataForm';
 import { routes } from '../../../../routes';
 import useProtectedRoutes from '../../../../hooks/useProtectedRoutes';
+import { invokeEvent } from '../../../../utils/index';
 
 function FinancialDataForm() {
   const router = useRouter();
@@ -45,29 +44,46 @@ function FinancialDataForm() {
     {}
   );
   const onSubmit = async (data: iFinancialData) => {
-    if (data.occupation !== "Employee") {
+    if (data.occupation !== 'Employee') {
       data.employeeMonth = null;
       data.employeeYear = null;
       data.enterprise = null;
       data.contractType = null;
     }
     setFinancialDataForm(data);
-    if (data.contractType === "FreeAppointmentAndRemoval") {
-      router.push(routes.errorCreditBankApplication)
+    if (data.contractType === 'FreeAppointmentAndRemoval') {
+      router.push(routes.errorCreditBankApplication);
     } else {
+      invokeEvent('go_credit_data', 'action_funnel');
       setCurrentRouting(routes.creditData);
-      router.push(routes.creditData)
+      router.push(routes.creditData);
     }
-  }
+  };
 
-  useValidationFinancialDataForm(occupation, enterprise, contractType, employeeYear, employeeMonth, monthlySalary, monthlyExpenses, realStateValue, debtValue, clearErrors, setError, setValue, financialDataForm);
+  useValidationFinancialDataForm(
+    occupation,
+    enterprise,
+    contractType,
+    employeeYear,
+    employeeMonth,
+    monthlySalary,
+    monthlyExpenses,
+    realStateValue,
+    debtValue,
+    clearErrors,
+    setError,
+    setValue,
+    financialDataForm
+  );
 
   return (
-    <div data-testid="FormQuotaTest" className="w-[343px] md:mt-[30px] md:w-[517px] xl:w-[656px] mx-auto">
-      <Alert message='Los aportes a salud y pensión son un criterio obligatorio para la preaprobación del crédito.' />
+    <div
+      data-testid="FormQuotaTest"
+      className="w-[343px] md:mt-[30px] md:w-[517px] xl:w-[656px] mx-auto"
+    >
+      <Alert message="Los aportes a salud y pensión son un criterio obligatorio para la preaprobación del crédito." />
       <div className="w-full mt-3">
         <form onSubmit={handleSubmit(onSubmit)}>
-
           <div className="w-full mt-8">
             <ReactHookFormSelect
               onChange={(e: any) => {
@@ -89,130 +105,134 @@ function FinancialDataForm() {
               <MenuItem value="PensionerOrRetired">Pensionado o jubilado</MenuItem>
             </ReactHookFormSelect>
           </div>
-          {
-            occupation === 'Employee' ? (
-              <>
-                <div className="flex flex-col mt-3">
+          {occupation === 'Employee' ? (
+            <>
+              <div className="flex flex-col mt-3">
+                <Controller
+                  rules={{ required: occupation === 'Employee' }}
+                  render={({ field }) => (
+                    <Input
+                      helperText={errors.enterprise?.message}
+                      type="text"
+                      error={!!errors.enterprise}
+                      onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                        e.preventDefault();
+                      }}
+                      value={field.value || undefined}
+                      tabIndex={0}
+                      id="enterprise"
+                      inputMode="text"
+                      label="Empresa"
+                      dataTestId="enterpriseTest"
+                      placeholder="Empresa"
+                      onChange={(e: any) => setValue('enterprise', e.target.value)}
+                    />
+                  )}
+                  name="enterprise"
+                  control={control}
+                />
+              </div>
+              <div className="flex mt-3">
+                <ReactHookFormSelect
+                  onChange={(e: any) => {
+                    setValue('contractType', e.target.value);
+                  }}
+                  placeholder="Tipo de contrato"
+                  label="Tipo de contrato"
+                  error={!!errors.contractType}
+                  defaultValue=""
+                  control={control}
+                  left="right4"
+                  data-testid="contractTypeTest"
+                  role="contractTypeRole"
+                  valueLength=""
+                  name="contractType"
+                  className="w-100"
+                  margin="normal"
+                  rules={{ required: occupation === 'Employee' }}
+                >
+                  <MenuItem value="IndefiniteTerm">Término indefinido</MenuItem>
+                  <MenuItem value="FixedTerm">Término fijo</MenuItem>
+                  <MenuItem value="ProvisionOfServices">Prestación de servicios</MenuItem>
+                  <MenuItem value="TemporaryOnMission">Temporal-En misión</MenuItem>
+                  <MenuItem value="AdministrativeCareer">Carrera administrativa</MenuItem>
+                  <MenuItem value="FreeAppointmentAndRemoval">
+                    Libre nombramiento y remoción
+                  </MenuItem>
+                  <MenuItem value="Provisional">Provisional</MenuItem>
+                </ReactHookFormSelect>
+              </div>
+              <span className="text-[10px] col-span-6 text-complementario-100">
+                Tiempo laborando en esta empresa
+              </span>
+              <div className="grid gap-2 grid-cols-2 mt-2">
+                <div>
+                  <Controller
+                    rules={{ required: occupation === 'Employee', maxLength: 2 }}
+                    render={({ field }) => (
+                      <Input
+                        type="text"
+                        helperText={errors.employeeYearE?.message}
+                        error={!!errors.employeeYearE}
+                        onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
+                          e.preventDefault();
+                        }}
+                        value={field.value || ''}
+                        tabIndex={0}
+                        id="employeeYear"
+                        inputMode="numeric"
+                        dataTestId="employeeYearTest"
+                        required
+                        label="Años"
+                        onChange={(e: any) => {
+                          field.onChange(e.target.value.replace(/[^0-9]/g, ''));
+                        }}
+                      />
+                    )}
+                    name="employeeYear"
+                    control={control}
+                  />
+                </div>
+                <div>
                   <Controller
                     rules={{ required: occupation === 'Employee' }}
                     render={({ field }) => (
                       <Input
-                        helperText={errors.enterprise?.message}
                         type="text"
-                        error={!!errors.enterprise}
+                        helperText={errors.employeeMonthE?.message}
+                        error={!!errors.employeeMonthE}
                         onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                           e.preventDefault();
                         }}
-                        value={field.value || undefined}
+                        value={field.value || ''}
                         tabIndex={0}
-                        id="enterprise"
-                        inputMode="text"
-                        label="Empresa"
-                        dataTestId='enterpriseTest'
-                        placeholder='Empresa'
-                        onChange={(e: any) => setValue('enterprise', e.target.value)}
+                        id="employeeMonth"
+                        dataTestId="employeeMonthTest"
+                        inputMode="numeric"
+                        required
+                        label="Meses"
+                        onChange={(e: any) => {
+                          field.onChange(e.target.value.replace(/[^0-9]/g, ''));
+                        }}
                       />
                     )}
-                    name="enterprise"
+                    name="employeeMonth"
                     control={control}
                   />
                 </div>
-                <div className="flex mt-3">
-                  <ReactHookFormSelect
-                    onChange={(e: any) => {
-                      setValue('contractType', e.target.value);
-                    }}
-                    placeholder="Tipo de contrato"
-                    label="Tipo de contrato"
-                    error={!!errors.contractType}
-                    defaultValue=""
-                    control={control}
-                    left="right4"
-                    data-testid="contractTypeTest"
-                    role="contractTypeRole"
-                    valueLength=""
-                    name="contractType"
-                    className="w-100"
-                    margin="normal"
-                    rules={{ required: occupation === 'Employee' }}
-                  >
-                    <MenuItem value="IndefiniteTerm">Término indefinido</MenuItem>
-                    <MenuItem value="FixedTerm">Término fijo</MenuItem>
-                    <MenuItem value="ProvisionOfServices">Prestación de servicios</MenuItem>
-                    <MenuItem value="TemporaryOnMission">Temporal-En misión</MenuItem>
-                    <MenuItem value="AdministrativeCareer">Carrera administrativa</MenuItem>
-                    <MenuItem value="FreeAppointmentAndRemoval">Libre nombramiento y remoción</MenuItem>
-                    <MenuItem value="Provisional">Provisional</MenuItem>
-                  </ReactHookFormSelect>
-                </div>
-                <span className="text-[10px] col-span-6 text-complementario-100">
-                  Tiempo laborando en esta empresa
-                </span>
-                <div className='grid gap-2 grid-cols-2 mt-2'>
-                  <div >
-                    <Controller
-                      rules={{ required: occupation === 'Employee', maxLength: 2 }}
-                      render={({ field }) => (
-                        <Input
-                          type="text"
-                          helperText={errors.employeeYearE?.message}
-                          error={!!errors.employeeYearE}
-                          onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                            e.preventDefault();
-                          }}
-                          value={field.value || ''}
-                          tabIndex={0}
-                          id="employeeYear"
-                          inputMode="numeric"
-                          dataTestId='employeeYearTest'
-                          required
-                          label="Años"
-                          onChange={(e: any) => {
-                            field.onChange(e.target.value.replace(/[^0-9]/g, ''));
-                          }}
-                        />
-                      )}
-                      name="employeeYear"
-                      control={control}
-                    />
-                  </div>
-                  <div>
-                    <Controller
-                      rules={{ required: occupation === 'Employee' }}
-                      render={({ field }) => (
-                        <Input
-                          type="text"
-                          helperText={errors.employeeMonthE?.message}
-                          error={!!errors.employeeMonthE}
-                          onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
-                            e.preventDefault();
-                          }}
-                          value={field.value || ''}
-                          tabIndex={0}
-                          id="employeeMonth"
-                          dataTestId='employeeMonthTest'
-                          inputMode="numeric"
-                          required
-                          label="Meses"
-                          onChange={(e: any) => {
-                            field.onChange(e.target.value.replace(/[^0-9]/g, ''));
-                          }}
-                        />
-                      )}
-                      name="employeeMonth"
-                      control={control}
-                    />
-                  </div>
-                </div>
-              </>
-            ) : null
-          }
+              </div>
+            </>
+          ) : null}
           <div className="flex flex-col mt-3">
             <Controller
               rules={{ required: true }}
               render={({ field }) => (
                 <Input
-                  helperText={errors.monthlySalaryE?.message ? errors.monthlySalaryE?.message : 'Registre el ingreso principal de su actividad económica.'}
+                  helperText={
+                    errors.monthlySalaryE?.message
+                      ? errors.monthlySalaryE?.message
+                      : 'Registre el ingreso principal de su actividad económica.'
+                  }
                   helperTextOption={!errors.monthlySalaryE?.message}
                   type="text"
                   error={!!errors.monthlySalaryE}
@@ -223,7 +243,7 @@ function FinancialDataForm() {
                   tabIndex={0}
                   id="monthlySalary"
                   inputMode="text"
-                  dataTestId='monthlySalaryTest'
+                  dataTestId="monthlySalaryTest"
                   placeholder="Total de ingresos mensuales"
                   label="Total de ingresos mensuales"
                   onChange={(e: any) => {
@@ -250,9 +270,9 @@ function FinancialDataForm() {
                   tabIndex={0}
                   id="monthlyExpenses"
                   inputMode="text"
-                  dataTestId='monthlyExpensesTest'
+                  dataTestId="monthlyExpensesTest"
                   label="Total de gastos mensuales"
-                  placeholder='Total de gastos mensuales'
+                  placeholder="Total de gastos mensuales"
                   onChange={(e: any) => {
                     field.onChange(e.target.value.replace(/[^0-9]/g, ''));
                   }}
@@ -277,9 +297,9 @@ function FinancialDataForm() {
                   tabIndex={0}
                   id="realStateValue"
                   inputMode="text"
-                  dataTestId='realStateValueTest'
+                  dataTestId="realStateValueTest"
                   label="Total de valor de sus bienes"
-                  placeholder='Total de valor de sus bienes'
+                  placeholder="Total de valor de sus bienes"
                   onChange={(e: any) => {
                     field.onChange(e.target.value.replace(/[^0-9]/g, ''));
                   }}
@@ -303,10 +323,10 @@ function FinancialDataForm() {
                   value={convertToColombianPesos(field.value)}
                   tabIndex={0}
                   id="debtValue"
-                  dataTestId='debtValueTest'
+                  dataTestId="debtValueTest"
                   inputMode="text"
                   label="Total de valor de sus deudas"
-                  placeholder='Total de valor de sus deudas'
+                  placeholder="Total de valor de sus deudas"
                   onChange={(e: any) => {
                     field.onChange(e.target.value.replace(/[^0-9]/g, ''));
                   }}

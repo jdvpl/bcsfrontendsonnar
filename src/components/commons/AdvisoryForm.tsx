@@ -8,6 +8,7 @@ import Input from '../ui/inputs';
 import ReactHookFormSelect from '../ui/Select/newSelect'
 import useHandleChangeDocumentAdvisorBank from '../../hooks/useHandleChangeDocumentAdvisorBank'
 import Typography from '../ui/Typography';
+import { invokeEvent } from '../../utils';
 export interface FormData {
   advisoryType: string;
   otherAdvisoryType?: string;
@@ -71,6 +72,7 @@ function AdvisoryForm({ setShowModal }: any) {
     }
     setDataUser({ ...dataUser, ...datainfo })
     setShowModal(false)
+    invokeEvent('was_advised','action_funnel');
   }
   const { handleDocument } = useHandleChangeDocumentAdvisorBank(setError)
 

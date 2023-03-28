@@ -1,25 +1,24 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { basePath } from '../../../next.config';
 import Typography from '../../components/ui/Typography';
-import Button from '../../components/ui/Button'
+import Button from '../../components/ui/Button';
 import { routes } from '../../routes';
 import Header from '../../components/ui/Headers/Header';
-import TagManager from 'react-gtm-module';
+import { invokeEvent } from '../../utils';
 
 function Bienvenida() {
   const router = useRouter();
+
   useEffect(() => {
-    TagManager.dataLayer({
-      dataLayer: {
-        event: 'load_onboarding',
-        category: 'load_page',
-        action: 'load_onboarding',
-        label: 'load_onboarding',
-      },
-    });
-  }, []
-  );
+    invokeEvent('load_welcome', 'load_page');
+  }, []);
+
+  const startProcess = () => {
+    router.push(routes.startProccess);
+    invokeEvent('go_to_got_request_from_welcome', 'action_funnel');
+  };
+
   return (
     <div>
       <Header />
@@ -50,7 +49,7 @@ function Bienvenida() {
             type="submit"
             name="abrirCuenta"
             data-testid="btnOnboardingtest"
-            onClick={() => router.push(routes.startProccess)}
+            onClick={startProcess}
             id="btn-next"
           >
             <Typography
@@ -63,8 +62,8 @@ function Bienvenida() {
           </Button>
         </div>
       </div>
-    </div >
-  )
+    </div>
+  );
 }
 
-export default Bienvenida
+export default Bienvenida;

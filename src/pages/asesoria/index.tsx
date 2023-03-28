@@ -12,8 +12,10 @@ import {
   titleSection,
 } from '../../components/custom/consultancy/consultancy';
 import useConsultancy from './useConsultancy';
-import TagManager from 'react-gtm-module';
+
 import Header from '../../components/ui/Headers/Header';
+import { invokeEvent } from '../../utils';
+import { routes } from '../../routes';
 
 export const ConditionalWrapper: FC<any> = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
@@ -39,16 +41,15 @@ function Consultancy() {
     isMobile,
     itemActive,
   });
+
+  const goHome = () => {
+    invokeEvent('back_home', 'action_funnel');
+    router.push(routes.home);
+  }
+
   useEffect(() => {
-    TagManager.dataLayer({
-      dataLayer: {
-        event: 'load_guide',
-        category: 'load',
-        action: 'load_guide',
-        label: 'load_guide',
-      },
-    });
-  }, []);
+    invokeEvent('load_consultancy', 'load_page')
+  }, [])
 
   return (
     <>
@@ -95,9 +96,8 @@ function Consultancy() {
         />
 
         <div
-          className={`${
-            itemActive !== '' ? 'sm:ml-[-95px]' : ''
-          } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
+          className={`${itemActive !== '' ? 'sm:ml-[-95px]' : ''
+            } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
           style={{
             backgroundImage: `url(${basePath}/images/consultancy/${actualStep}.svg)`,
             backgroundRepeat: 'no-repeat',
@@ -197,9 +197,8 @@ function Consultancy() {
 
       {/* Link to Home */}
       <div
-        className={`w-full text-center mb-[80px] xs:hidden md:block${
-          actualStep === 1 || actualStep === 4 ? 'hidden' : ''
-        }`}
+        className={`cursor-pointer w-full text-center mb-[80px] xs:hidden md:block${actualStep === 1 || actualStep === 4 ? 'hidden' : ''
+          }`}
       >
         <Typography
           variant='bodyM3'
@@ -207,6 +206,7 @@ function Consultancy() {
           typeFont='Bold'
           href={`${basePath}`}
           className=" text-primario-100 "
+          onClick={goHome}
         >
           Volver al inicio
         </Typography>

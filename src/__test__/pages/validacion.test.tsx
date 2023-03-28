@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
-import Error from '../../pages/validacion/error-validacionIdentidad';
+import IdentityError from '../../pages/validacion/error-validacionIdentidad';
 import ErrorBlock from '../../pages/validacion/error-bloqueo';
 import ErrorAttempts from '../../pages/validacion/error-numero-intentos';
 import ErrorValidacion from '../../pages/validacion/error-validacion';
@@ -20,7 +20,7 @@ describe('Error', () => {
     });
     render(
       <RouterContext.Provider value={router}>
-        <Error />
+        <IdentityError />
       </RouterContext.Provider>
     );
     const imageError = screen.getByRole('imageError');
@@ -167,7 +167,7 @@ describe('Error', () => {
     const router = createMockRouter({});
     const { findByTestId } = render(
       <RouterContext.Provider value={router}>
-        <Error />
+        <IdentityError />
       </RouterContext.Provider>
     );
     const btnOnboarding = await findByTestId('btnOnboarding');

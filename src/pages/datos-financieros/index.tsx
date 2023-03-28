@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import FinancialDataForm from '../../components/ui/Form/FinancialDataForm/FinancialDataForm'
 import HeaderForm from '../../components/ui/Headers/HeaderForm'
 import Stepper from '../../components/ui/Stepper'
 import Typography from '../../components/ui/Typography'
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper'
+import { invokeEvent } from '../../utils'
 
 function FinancialData() {
+  useEffect(()=>{
+    invokeEvent('load_financial_data','load_page');
+  },[])
   return (
     <InactivityWarper>
       <div data-testid="PersonalDataTest">
