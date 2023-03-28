@@ -52,9 +52,7 @@ function Authentication() {
     </div>
       </div >
     <div className="m-auto lg:w-[528px]">
-      <div className="mt-20 lg:h-[300px] md:w-[350px] md:h-[300px] sm:w-[234px] sm:h-[200px] xs:h-[200px] xs:w-[234px] m-auto ">
-        <img src={`${basePath}/images/authentication.svg`} alt="" />
-      </div>
+  
       <div className="m-auto lg:w-[528px]">
         <div className="mt-20 lg:h-[300px] md:w-[350px] md:h-[300px] sm:w-[234px] sm:h-[200px] xs:h-[200px] xs:w-[234px] m-auto ">
           <img src={`${basePath}/images/authentication.svg`} alt="" />

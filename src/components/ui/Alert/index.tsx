@@ -20,7 +20,7 @@ const Alert: FC<propAlert> = ({
       <Icons
         icon="bcs-icon-51"
         color="text-[#2F6EAE]"
-        size="text-[16px]"
+        size="text-[12px]"
         title="Información"
       />
     </span>
