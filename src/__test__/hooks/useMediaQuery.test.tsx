@@ -17,6 +17,7 @@ describe('useMediaQueryResponsive', () => {
     useMediaQuery.mockReturnValueOnce(false)
     useMediaQuery.mockReturnValueOnce(false)
     useMediaQuery.mockReturnValueOnce(false)
+    useMediaQuery.mockReturnValueOnce(false)
     const result = useMediaQueryResponsive();
     expect(result).toEqual({
       isMobile: true,
@@ -27,6 +28,7 @@ describe('useMediaQueryResponsive', () => {
       isXXl: false,
       isMD: false,
       isMedium: false,
+      isXL:false,
       isLG: false,
       heightHeader: '34',
       isSafari,
@@ -37,6 +39,7 @@ describe('useMediaQueryResponsive', () => {
     });
   });
   test('it should return the expected object browser', () => {
+    useMediaQuery.mockReturnValueOnce(true)
     useMediaQuery.mockReturnValueOnce(true)
     useMediaQuery.mockReturnValueOnce(true)
     useMediaQuery.mockReturnValueOnce(true)

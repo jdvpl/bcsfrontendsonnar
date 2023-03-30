@@ -19,7 +19,7 @@ import { invokeEvent } from '../utils';
 export default function Home() {
   const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, deviceType);
 
-  const { isMobile, isTablet, heightHeader, isSafari, isMedium, isLG, isSM, isXXl } = useMediaQueryResponsive();
+  const { isMobile, isTablet, heightHeader, isSafari, isMedium, isLG, isSM } = useMediaQueryResponsive();
 
   useEffect(
     () => () => {
@@ -93,7 +93,7 @@ export default function Home() {
         </section>
         <SelectiveHomeCards isMobile={isMobile} />
       </div>
-      <div className="md:mt-[245px] lg:mt-[240px] sm:mt-[90px] mt-[121px] h-[642px] sm:bg-requirements-sm lg:bg-requirements-lg xl:bg-requirements-xl bg-requirements-xs xxl:bg-requirements-xxl xxxl:bg-requirements-xxxl bg-no-repeat bg-cover md:h-[396px] md:bg-requirements-md lg:h-[476px] xl:h-[467px] xl:mt-[208px] pb-40 xxl:h-[297px] sm:h-[647px] smd:mt-[93px] smd:h-[640px] smd:bg-requirements-smd xxl:mt-[192px]">
+      <div className="md:mt-[245px] lg:mt-[240px] sm:mt-[90px] mt-[121px] h-[642px] sm:bg-requirements-sm lg:bg-requirements-lg xl:bg-requirements-xl bg-requirements-xs xxl:bg-requirements-xxl xxxl:bg-requirements-xxxl bg-no-repeat bg-cover md:h-[396px] md:bg-requirements-md lg:h-[376px] xl:h-[364px] xl:mt-[208px] pb-40 xxl:h-[297px] sm:h-[647px] smd:mt-[93px] smd:h-[640px] smd:bg-requirements-smd xxl:mt-[192px]">
         <section
           className="lg:w-[1020px] xxl:w-[1100px] md:w-[700px] m-auto xxl:mt-[144px]"
           role="tabpanel"
@@ -103,32 +103,34 @@ export default function Home() {
             variant="h2"
             typeFont="Bold"
             componentHTML='h2'
-            className="text-center sm:my-8 xs:my-8 lg:mt-[42px] xl-mt-[42px] md:mt-[26px] sm:pt-8 xl:mt-[59px] pt-8 lg:pt-[50px]"
+            className="text-center sm:my-8 xs:my-8 lg:mt-[84px] xl-mt-[42px] md:mt-[26px] sm:pt-8  xl:mt-[59px] pt-8 lg:pt-[50px]"
           >
             Requisitos
           </Typography>
-          <div className="grid lg:grid-cols-2 md:grid-cols-2 md:gap-3 justify-items-center xxl:flex xxl:flex-col lg:mt-8">
+
+          <div className="grid  md:grid-cols-3  gap-3 md:gap-4 justify-items-center xxl:flex xxl:flex-col xl:flex xl:flex-col lg:flex lg:flex-col lg:mt-12 md:w-[650px] md:m-auto md:justify-center lg:w-[960px] xxl:mt-5 xxl:w-[1350px] ">
+
             <ConditionalWrapper
-              condition={isXXl}
+              condition={isLG}
               wrapper={(children: ReactNode) => (
                 <div className="flex xxl:w-[1130px] justify-evenly">{children}</div>
               )}
             >
               {/* 1 */}
-              <div className="lg:w-[499px] md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[291px] smd:w-[382px]">
+              <div className="lg:w-[499px] md:w-[280px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[291px] smd:w-[382px]">
                 <SelectiveCard
                   description="Tener entre 18 y 70 años"
                   onclick={false}
                   hasTitle={false}
                   icon="bcs-icon-37"
                   color="text-complementario-100"
-                  size="text-[1.6rem]"
-                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100 "
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full    mb-3 md:text-[15px] lg:text-[16px] xs:w-[150px] lg:w-full text-[12px] md:w-full xxl:w-[55%] " title={''} />
+                  size="text-[1.85rem]"
+                  className="sm:mb-3 mb-3 md:mb-0  xxl:border-none border-complementario-100 "
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full    mb-3 md:text-[15px] lg:text-[16px] xs:w-[150px] lg:w-[54%]  md:w-full xxl:w-[55%] " title={''} />
               </div>
-              <div className="w-[2px] hidden bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
+              <div className="w-[2px] hidden bg-complementario-70 h-[46px] md:grid place-items-center mt-3"></div>
               {/* 2 */}
-              <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[291px] smd:w-[382px]">
+              <div className="lg:w-[499px]  md:w-[330px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[291px] smd:w-[382px]">
                 <SelectiveCard
                   description="Pagar salud y pensión"
                   onclick={false}
@@ -136,14 +138,14 @@ export default function Home() {
                   icon="bcs-icon-7"
                   color="text-complementario-100 cursor-default"
                   size="text-[2rem]"
-                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100 cursor-default"
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[90px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[110px] lg:w-full xxl:w-[57%] cursor-default"
+                  className="sm:mb-3 mb-3 md:mb-0  xxl:border-none border-complementario-100 cursor-default"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-full sm:w-full  mb-3 md:text-[15px] lg:text-[16px] xs:w-full lg:w-[54%] xxl:w-[57%] cursor-default md:w-[200px]"
                   title="Pagar salud y pensión"
                 />
               </div>
-              <div className="w-[2px] hidden bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
+              <div className="w-[2px] hidden bg-complementario-70 h-[46px] lg:grid place-items-center mt-3"></div>
               {/* 3 */}
-              <div className="lg:w-[499px] md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[292px] smd:w-[382px]">
+              <div className="lg:w-[499px] md:w-[280px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[292px] smd:w-[382px]">
                 <SelectiveCard
                   description="Ser empleado o pensionado"
                   onclick={false}
@@ -151,21 +153,23 @@ export default function Home() {
                   icon="bcs-icon-14"
                   color="text-complementario-100 cursor-default"
                   size="text-[2rem]"
-                  className="sm:mb-3 xs:mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100"
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[105px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[125px] lg:w-full md:w-[200px] xxl:w-[60%] cursor-default"
+                  className="sm:mb-3 xs:mb-3 md:mb-0  xxl:border-none border-complementario-100"
+                  classNamesDescription="ml-[5px] lg:w-[120px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[135px] lg:w-[54%] md:w-full xxl:w-[60%] cursor-default md:w-[280px] md:ml-5 ml-0 lg:ml-2"
                   title="Ser empleado o pensionado"
                 />
               </div>
             </ConditionalWrapper>
 
             <ConditionalWrapper
-              condition={isXXl}
+              condition={isLG}
               wrapper={(children: ReactNode) => (
                 <div className="flex xxl:w-[1130px] justify-evenly">{children}</div>
               )}
             >
+
+            <div className="w-[2px] hidden bg-complementario-70 h-[46px] md:grid place-items-center mt-3 lg:hidden"></div>
               {/* 4 */}
-              <div className="lg:w-[499px]  md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[291px] smd:w-[382px]">
+              <div className="lg:w-[499px]  md:w-[330px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[291px] smd:w-[382px]">
                 <SelectiveCard
                   description="Tener el celular a la mano"
                   onclick={false}
@@ -173,38 +177,39 @@ export default function Home() {
                   icon="bcs-icon-33"
                   color="text-complementario-100"
                   size="text-[2rem]"
-                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[160px] lg:w-full md:w-full xxl:w-[65%]"
+                  className="sm:mb-3 mb-3 md:mb-0  xxl:border-none  border-complementario-100"
+                  classNamesDescription="ml-[20px] lg:w-[120px] md:w-[120px] sm:w-full   mb-3 md:text-[15px] lg:text-[16px] xs:w-[160px] lg:w-[60%] md:w-[240px] xxl:w-[65%]"
                   title="Tener el celular a la mano"
                 />
               </div>
-              <div className="w-[2px] hidden bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
+              
+              <div className="w-[2px] hidden bg-complementario-70 h-[46px] lg:grid place-items-center mt-3"></div>
               {/* 5 */}
-              <div className="lg:w-[499px] md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[292px] smd:w-[382px]">
+              <div className="lg:w-[499px] md:w-[280px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[292px] smd:w-[382px]">
                 <SelectiveCard
-                  description="Postular como único titular"
+                  description="Solicitar individualmente"
                   onclick={false}
                   hasTitle={false}
                   icon="bcs-icon-764"
                   color="text-complementario-100"
                   size="text-[2rem]"
-                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100"
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[170px] lg:w-full md:w-full xxl:w-[65%]"
+                  className="sm:mb-3 mb-3 md:mb-0  xxl:border-none border-complementario-100"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[170px] lg:w-[54%] md:w-full xxl:w-[65%]"
                   title="Postular como único titular"
                 />
               </div>
-              <div className="w-[2px] hidden bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
+              <div className="w-[2px] hidden bg-complementario-70 h-[46px] md:grid place-items-center mt-3"></div>
               {/* 6 */}
-              <div className="lg:w-[499px] md:w-[336px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[292px] smd:w-[382px]">
+              <div className="lg:w-[499px] md:w-[330px] sm:w-[338px] w-[289px] xxxl:w-[292px] xxl:w-[292px] smd:w-[382px]">
                 <SelectiveCard
-                  description="Solicitar sin subsidios del gobierno"
+                  description="No aplican subsidios del gobierno"
                   onclick={false}
                   hasTitle={false}
                   icon="bcs-icon-1484"
                   color="text-complementario-100"
                   size="text-[2rem]"
-                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100"
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[170px] lg:w-full md:w-full xxl:w-[90%]"
+                  className="sm:mb-3 mb-3 md:mb-0  xxl:border-none border-complementario-100"
+                  classNamesDescription="ml-[5px]  sm:w-[180px]  mb-3 md:text-[15px] lg:text-[16px] xs:w-[170px] lg:w-[80%] md:w-[180px] xxl:w-[90%]"
                   title="Solicitar sin subsidios del gobierno"
                 />
               </div>
@@ -273,8 +278,14 @@ export default function Home() {
             </div>
             <div className="listInitial  lg:w-[440px] relative block mx-5 sm:top-[-128px] xs:top-[-110px] md:top-0 xs:w-[260px] sm:w-[90%] smd:w-[80%] smd:m-auto md:mt-[-20px] md:place-items-center lg:mt-0 xxxl:ml-10">
               <Typography variant='bodyM3' componentHTML='ul' typeFont='Light' className="mb-0 lg:text-[20px]">
-                <li className="  lg:mt-[140px] md:mt-20 text-complementario-100 ">
+                <li className="  lg:mt-[120px] md:mt-20 text-complementario-100 ">
                   Preaprobación inmediata en línea
+                </li>
+                <li className=" mt-3 text-complementario-100">
+                Financiación de viviendas VIS y No VIS
+                </li>
+                <li className=" mt-3 text-complementario-100">
+                Aplica para vivienda nueva y usada
                 </li>
                 <li className=" mt-3 text-complementario-100">
                   Sin documentación física

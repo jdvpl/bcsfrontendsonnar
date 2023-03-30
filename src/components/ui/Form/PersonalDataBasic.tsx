@@ -260,7 +260,7 @@ function PersonalDataBasic({ userInfo }: any) {
               rules={{ required: !userInfo.email }}
               render={({ field }) => (
                 <Input
-                  helperText="Ejemplo: correo@dominio.com"
+                  helperText="Lo notificaremos siempre a este correo "
                   helperTextOption
                   type="text"
                   error={!!errors.email}

@@ -1,5 +1,6 @@
 import { Font, StyleSheet, Text, View } from '@react-pdf/renderer'
 import { basePath } from '../../../../next.config';
+import React from 'react'
 
 Font.register({ family: 'Roboto', src: `${basePath}/fonts/RobotoBold.ttf` });
 function HeadersTable({ simulatorCoreFallen }: any) {
