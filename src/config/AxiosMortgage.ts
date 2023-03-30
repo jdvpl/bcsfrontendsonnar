@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { axiosErrorMiddleware } from '../utils';
+import { axiosErrorMiddleware, handlerDecrypt } from '../utils/axiosMiddleware';
 
 export const clientAxiosBackend = axios?.create({
-  baseURL: process.env.APIURLMORTGAGE
+  baseURL: process.env.APIURLMORTGAGE,
 });
 
-clientAxiosBackend?.interceptors?.response?.use(null, axiosErrorMiddleware(clientAxiosBackend));
+clientAxiosBackend.interceptors.response.use(handlerDecrypt, axiosErrorMiddleware);
