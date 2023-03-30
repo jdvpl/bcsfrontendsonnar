@@ -132,6 +132,31 @@ function PersonalDataBasic({ userInfo }: any) {
                 >
                   Fecha de nacimiento:
                 </Typography>
+
+                <ReactHookFormSelect
+                  className={`col-span-2`}
+                  onChange={(e: any) => setValue('dayDt', e.target.value)}
+                  placeholder="Dia"
+                  label="Dia"
+                  defaultValue=""
+                  control={control}
+                  left="right4"
+                  valueLength=""
+                  name="dayDt"
+                  hideMenuItem={showModal}
+                  margin="normal"
+                  onFocus={showPopup}
+                  disabled={showModal}
+                  rules={{ required: !userInfo.isClient }}
+                  spacing="mr-[6px]"
+                >
+                  {days?.map((element, i) => (
+                    <MenuItem value={element?.number} key={i}>
+                      {element?.day}
+                    </MenuItem>
+                  ))}
+                </ReactHookFormSelect>
+
                 <ReactHookFormSelect
                   onChange={(e: any) => setValue('monthDt', e.target.value)}
                   placeholder="Mes"
