@@ -45,6 +45,10 @@ it('redirect to error validation when does not viable ', async () => {
     office: '',
     stratum: '3',
     amortizationType: 'Pesos',
+    houseCity:{
+      name:"Bogota",
+      id:"129309"
+    }
   };
   const { result } = renderHook(() =>
     useValidations(
@@ -66,7 +70,8 @@ it('redirect to error validation when does not viable ', async () => {
       null,
       setCurrentRouting,
       mortgageValuesData,
-      amortizationType
+      amortizationType,
+      mortgageValuesData.houseCity
     )
   );
   await act(async () => {

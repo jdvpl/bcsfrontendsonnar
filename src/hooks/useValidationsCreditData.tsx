@@ -33,7 +33,8 @@ export default function useValidations(
   errors: any,
   setCurrentRouting: any,
   mortgageValues: Partial<iCreditData>,
-  amortizationType: any
+  amortizationType: any,
+  houseCity: any
 ) {
   const [financialDataForm] = useSessionStorage(
     SesionStorageKeys?.financialDataForm.key,
@@ -161,6 +162,7 @@ export default function useValidations(
         choseOffice,
         office,
         stratum,
+        houseCity,
       },
       financialData: {
         ...financialDataForm,
@@ -204,6 +206,7 @@ export default function useValidations(
       choseOffice,
       office,
       stratum,
+      houseCity,
     };
 
     var values = Object.values(body);

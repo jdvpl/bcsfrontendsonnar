@@ -81,7 +81,8 @@ describe('useValidations is successfully', () => {
         errors,
         mkFn,
         mortgageValues,
-        amortizationType
+        amortizationType,
+        {}
       )
     );
   });
@@ -134,7 +135,7 @@ describe('useValidations is successfully', () => {
         '',
         jest.fn(),
         {},
-        amortizationType
+        amortizationType,{}
       )
     );
   });
@@ -165,7 +166,7 @@ describe('Validate percentage function', () => {
         null,
         jest.fn(),
         {},
-        amortizationType
+        amortizationType,{}
       )
     );
     act(() => {
@@ -187,6 +188,10 @@ describe('Validate percentage function', () => {
       office: '',
       stratum: '3',
       amortizationType: 'Pesos',
+      houseCity:{
+        id: "1232",
+        name:"Colioas"
+      }
     };
     const { result } = renderHook(() =>
       useValidations(
@@ -208,7 +213,7 @@ describe('Validate percentage function', () => {
         null,
         setCurrentRouting,
         mortgageValuesData,
-        amortizationType
+        amortizationType,{}
       )
     );
     await act(async () => {
@@ -268,7 +273,7 @@ describe('isValid Method test', () => {
         errors,
         mkFn,
         mortgageValues,
-        amortizationType
+        amortizationType,{}
       )
     );
     act(() => {

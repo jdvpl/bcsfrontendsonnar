@@ -50,6 +50,7 @@ export function CreditDataForm() {
   const office = watch('office', dataForm?.office || 0);
   const stratum = watch('stratum', 0);
   const amortizationType = watch('amortizationType', 'Pesos');
+  const houseCity = watch('houseCity', '');
   const { automationFinanceValue, onSubmit, isValid, isLoading } = useValidations(
     typeHouse,
     houseValue,
@@ -69,7 +70,8 @@ export function CreditDataForm() {
     errors,
     setCurrentRouting,
     mortgageValues,
-    amortizationType
+    amortizationType,
+    houseCity
   );
   useEffect(() => {
     if (Object.entries(mortgageValues).length === 0) {
@@ -123,6 +125,31 @@ export function CreditDataForm() {
             <MenuItem value="used">Usada</MenuItem>
           </ReactHookFormSelect>
         </div>
+
+        <div className="w-full">
+          <Controller
+            control={control}
+            name="houseCity"
+            rules={{ required: true }}
+            defaultValue={undefined}
+            render={({ field: { onChange } }) => (
+              <NewAutoComplete
+                id="houseCity"
+                defaultValue={undefined}
+                placeholder="Ciudad de la vivienda"
+                label="Ciudad de la vivienda"
+                onChange={(e: any) => {
+                  if (e?.id) {
+                    return onChange({ name: e.name, id: e.id });
+                  }
+                  return onChange(undefined);
+                }}
+                zIndex={30}
+              />
+            )}
+          />
+        </div>
+
         <Controller
           render={({ field }) => (
             <Input
