@@ -23,7 +23,7 @@ function MoneyLaunderingPage() {
           title="Datos personales"
         />
       </div>
-      <div role="tabpanel" tabIndex={0}>
+      <div role="tabpanel" tabIndex={0} className="text-center mb-[42px]">
         <Typography
           variant="h2"
           typeFont="Bold"

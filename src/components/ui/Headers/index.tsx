@@ -10,7 +10,6 @@ const Heading: React.FC<childrenProps | any> = ({ children }) => (
     data-testid="head"
     id="title"
     tabIndex={0}
-    role="tabpanel"
     className="d text-center mt-[40px] md:mt-[64px]  tracking-[0.01px]"
   >
     {children}

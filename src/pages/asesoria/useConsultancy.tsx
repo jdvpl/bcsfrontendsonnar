@@ -67,6 +67,7 @@ export default function useConsultancy({
             onClick={() => openModal(option?.label, index)}
             variant="secondary"
             border="1"
+            title={option?.label}
             isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%]  rounded-[8px] lg:h-48px ${
               itemActive === option?.label ? 'bg-primario-100' : ''
             }

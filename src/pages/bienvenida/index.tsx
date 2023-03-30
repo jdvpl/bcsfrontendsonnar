@@ -71,6 +71,7 @@ function Bienvenida() {
               data-testid="btnOnboardingtest"
               onClick={startProcess}
               id="btn-next"
+              title="Iniciar solicitud"
             >
               <Typography variant="bodyM3" typeFont="Bold" componentHTML="span">
                 Iniciar solicitud

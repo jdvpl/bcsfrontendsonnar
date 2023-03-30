@@ -176,6 +176,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({
                           encriptPhone: { encriptPhone: answer.option },
                         });
                       }}
+                      title={answer.option}
                     >
                       <span itemProp="telephone" className="hidden" />
                       {answer.option}

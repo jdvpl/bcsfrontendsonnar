@@ -54,22 +54,6 @@ export const ErrorLayout: React.FC<CardProps> = ({
             {text}
           </Typography>
         </div>
-        <Typography
-          variant="h3"
-          componentHTML="h3"
-          typeFont="Bold"
-          className="text-center mt-[52px] text-primario-900  "
-        >
-          {title}
-        </Typography>
-        <Typography
-          variant="bodyM2"
-          componentHTML="p"
-          typeFont="Regular"
-          className="text-center mt-3 text-primario-900 "
-        >
-          {text}
-        </Typography>
         <div className="flex justify-center mt-8 mb-[20px]">
           {btnactivate ? (
             <Button

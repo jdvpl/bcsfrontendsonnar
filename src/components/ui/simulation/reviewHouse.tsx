@@ -60,38 +60,38 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
     ) : null}
 
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px] py-4  bg-[#F3F4F6] pl-[16px] rounded-[8px] mb-[12px]"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px] py-4 bg-[#F3F4F6] pl-[16px] rounded-[8px] mb-[12px]"
       title="Valor financiado aproximado"
       value={financedValue?.toString()}
       text={cardTextStyles}
       urlsvgendicon=""
       urlsvg={`${basePath}/images/Money.svg`}
-      classtitle="text-[14px] ml-2 "
+      classtitle="text-[14px] ml-2"
       tooltiptext=""
       typeFontProps={typeFontsPropsNormal}
       altsvg="Valor financiado aproximado"
     />
 
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px] py-4  bg-[#F3F4F6]  pl-[16px] rounded-[8px] mb-[12px] "
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px] py-4 bg-[#F3F4F6] pl-[16px] rounded-[8px] mb-[12px] "
       title="Plazo"
       value={termFinance?.toString()}
       text={cardTextStyles}
       urlsvgendicon=""
       urlsvg={`${basePath}/images/Calendar.svg`}
-      classtitle="h-[14px] text-[14px] ml-2 "
+      classtitle="h-[14px] text-[14px] ml-2"
       tooltiptext=""
       altsvg="Plazo"
       typeFontProps={typeFontsPropsNormal}
     />
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px]    bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px] "
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px] bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px]"
       title="Tasa aproximada"
       value={rate}
       text={cardTextStyles}
       urlsvg={`${basePath}/images/Charts.svg`}
       urlsvgendicon=""
-      classtitle="h-[14px] text-[14px] ml-2 "
+      classtitle="h-[14px] text-[14px] ml-2"
       tooltiptext=""
       description
       descriptionHtml={

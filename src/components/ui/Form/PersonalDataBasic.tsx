@@ -128,7 +128,7 @@ function PersonalDataBasic({ userInfo }: any) {
                   variant="overline2"
                   componentHTML="p"
                   typeFont="Regular"
-                  className=" w-full  text-complementario-100 mb-3"
+                  className="w-full text-complementario-100 mb-3"
                 >
                   Fecha de nacimiento:
                 </Typography>
@@ -156,58 +156,57 @@ function PersonalDataBasic({ userInfo }: any) {
                     </MenuItem>
                   ))}
                 </ReactHookFormSelect>
-
-                <ReactHookFormSelect
-                  onChange={(e: any) => setValue('monthDt', e.target.value)}
-                  placeholder="Mes"
-                  label="Mes"
-                  defaultValue=""
-                  control={control}
-                  left="right4"
-                  name="monthDt"
-                  className={`${showModal ? 'hideMenu' : ''}`}
-                  margin="normal"
-                  onFocus={showPopup}
-                  disabled={showModal}
-                  hideMenuItem={showModal}
-                  rules={{ required: !userInfo.isClient }}
-                  spacing="mr-[6px]"
-                >
-                  {months.map((element, i) => (
-                    <MenuItem value={element.number} key={i}>
-                      {element.month}
-                    </MenuItem>
-                  ))}
-                </ReactHookFormSelect>
-
-                <Controller
-                  name="yearDt"
-                  control={control}
-                  rules={{ required: !userInfo.isClient }}
-                  render={({ field }) => (
-                    <Input
-                      type="text"
-                      onChange={(e) => {
-                        field.onChange(e?.target?.value?.replace(/[^0-9]+/g, ''));
-                      }}
-                      error={!!errors.dayDt}
-                      helperText={errors?.dayDt?.message}
-                      value={yearDt}
-                      tabIndex={0}
-                      id="yearDt"
-                      disabled={showModal}
-                      onFocus={showPopup}
-                      data-testid="yearDtTest"
-                      inputMode="numeric"
-                      maxLength={4}
-                      label="Año"
-                    />
-                  )}
-                />
               </div>
+
+              <ReactHookFormSelect
+                onChange={(e: any) => setValue('monthDt', e.target.value)}
+                placeholder="Mes"
+                label="Mes"
+                defaultValue=""
+                control={control}
+                left="right4"
+                name="monthDt"
+                className={`${showModal ? 'hideMenu' : ''}`}
+                margin="normal"
+                onFocus={showPopup}
+                disabled={showModal}
+                hideMenuItem={showModal}
+                rules={{ required: !userInfo.isClient }}
+                spacing="mr-[6px]"
+              >
+                {months.map((element, i) => (
+                  <MenuItem value={element.number} key={i}>
+                    {element.month}
+                  </MenuItem>
+                ))}
+              </ReactHookFormSelect>
+
+              <Controller
+                name="yearDt"
+                control={control}
+                rules={{ required: !userInfo.isClient }}
+                render={({ field }) => (
+                  <Input
+                    type="text"
+                    onChange={(e) => {
+                      field.onChange(e?.target?.value?.replace(/[^0-9]+/g, ''));
+                    }}
+                    error={!!errors.dayDt}
+                    helperText={errors?.dayDt?.message}
+                    value={yearDt}
+                    tabIndex={0}
+                    id="yearDt"
+                    disabled={showModal}
+                    onFocus={showPopup}
+                    data-testid="yearDtTest"
+                    inputMode="numeric"
+                    maxLength={4}
+                    label="Año"
+                  />
+                )}
+              />
             </div>
           )}
-          )
           <div className="w-full mt-4">
             <Controller
               control={control}

@@ -34,6 +34,7 @@ type TypographyProps = {
   itemProp?: string;
   href?: string;
   type?: string;
+  title?: string;
 };
 
 const Typography: FC<TypographyProps> = ({
@@ -54,6 +55,7 @@ const Typography: FC<TypographyProps> = ({
   itemProp,
   href,
   type,
+  title,
   ...props
 }: TypographyProps) => {
   const componentStyles = () => {
@@ -175,6 +177,8 @@ const Typography: FC<TypographyProps> = ({
         itemProp,
         href,
         type,
+        tabIndex,
+        title,
       },
       children
     );

@@ -62,15 +62,17 @@ export const Card: React.FC<CardProps> = ({
   <div className={`${className}`} id={id} role="tabpanel" tabIndex={0}>
     <div className="flex relative">
       <div className="pr-[1px] ml-[2px] mr-[8px]">
-        <Image
-          unoptimized
-          src={urlsvg}
-          alt={altsvg}
-          title={altsvg}
-          width="16"
-          height="16"
-          className="mx-2"
-        />
+        {urlsvg && (
+          <Image
+            unoptimized
+            src={urlsvg}
+            alt={altsvg}
+            title={altsvg}
+            width="16"
+            height="16"
+            className="mx-2"
+          />
+        )}
       </div>
       <Typography
         variant={typeFontProps.variantTypographyTitle || 'bodyM3'}
@@ -95,7 +97,6 @@ export const Card: React.FC<CardProps> = ({
           }
         />
       ) : null}
-
       {endicon ? (
         <div className="absolute left-[220px] top-[20px] sm:left-[280px] md:left-[380px] cursor-pointer">
           <img

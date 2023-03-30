@@ -39,6 +39,8 @@ export function MoneyLaunderingForm() {
           <div
             key={i}
             className="cardShadow min-h-[96px] w-full mb-3 rounded-md px-6 py-3"
+            role="tabpanel"
+            tabIndex={0}
           >
             <Typography
               variant="bodyM2"

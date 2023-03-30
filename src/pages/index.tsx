@@ -19,7 +19,8 @@ import { invokeEvent } from '../utils';
 export default function Home() {
   const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, deviceType);
 
-  const { isMobile, isTablet, heightHeader, isSafari, isMedium, isLG, isSM, isXXl } = useMediaQueryResponsive();
+  const { isMobile, isTablet, heightHeader, isSafari, isMedium, isLG, isSM, isXXl } =
+    useMediaQueryResponsive();
 
   useEffect(
     () => () => {
@@ -28,9 +29,9 @@ export default function Home() {
     [device]
   );
 
-  useEffect(()=>{
-    invokeEvent("load_landing","load_page");
-  },[])
+  useEffect(() => {
+    invokeEvent('load_landing', 'load_page');
+  }, []);
 
   const titleClasses = isSafari
     ? 'xs:flex sm:flex md:justify-end sm:pr-6 xs:pt-2 md:pr-[2rem] md:mt-1 xs:mt-5 lg:mt-[100px] lg:flex lg:justify-center lg:ml-[40rem] xs:ml-1 sm:ml-3 lg:mr-40 xl:mt-[150px] xs:mt-[34px] sm:mt-[44px]'
@@ -39,8 +40,8 @@ export default function Home() {
   const headerDescriptionClasess = isSafari
     ? 'xs:flex sm:flex md:justify-end sm:pr-6 xs:pt-2 md:pr-0 md:mt-5 xs:mt-[17px] lg:mt-[6px] lg:flex lg:justify-center lg:ml-[40rem] ml-5 xxl:pr-10'
     : 'xs:flex sm:flex md:justify-end sm:pr-6 xs:pt-2 md:pr-0 md:mt-5 xs:mt-[17px] lg:mt-[6px] lg:flex lg:justify-center lg:ml-[40rem] ml-5 xxl:pr-1 xxxl:pl-40';
-  
-    return (
+
+  return (
     <main data-testid="landingPage" className="overflow-hidden landingPage">
       <SkipContent />
       <div
@@ -55,7 +56,12 @@ export default function Home() {
         </div>
         <section className={titleClasses} role="tabpanel" tabIndex={0}>
           <div className="md:flex md:flex-col ">
-            <Typography componentHTML='h2' variant='h2' typeFont='Light' className="text-white   xs:ml-5 sm:ml-2 xs:mb-[3px] sm:mb-1 md:text-primario-900">
+            <Typography
+              componentHTML="h2"
+              variant="h2"
+              typeFont="Light"
+              className="text-white   xs:ml-5 sm:ml-2 xs:mb-[3px] sm:mb-1 md:text-primario-900"
+            >
               Bienvenido a
             </Typography>
             <figure
@@ -82,10 +88,20 @@ export default function Home() {
           tabIndex={0}
         >
           <div className="md:flex md:flex-col">
-            <Typography componentHTML='h2' variant='h2' typeFont='Bold' className="text-white  md:w-[285px] lg:w-[394px] lg:text-[24px] md:text-[20px] leading-6 wcontainerHeader sm:text-[20px] xs:text-[20px] md:text-primario-900 xxl:text-[28px]">
+            <Typography
+              componentHTML="h2"
+              variant="h2"
+              typeFont="Bold"
+              className="text-white  md:w-[285px] lg:w-[394px] lg:text-[24px] md:text-[20px] leading-6 wcontainerHeader sm:text-[20px] xs:text-[20px] md:text-primario-900 xxl:text-[28px]"
+            >
               ¿Desea comprar vivienda?
             </Typography>
-            <Typography componentHTML='p' variant='bodyM2' typeFont='Light' className="text-white md:text-primario-900 sm:w-[335px] w-[290px] md:w-[275px] lg:w-[415.5px] xxl:w-[380px] md:leading-[20px] mt-[10px] wcontainerHeader text-[16px] md:text-[18px] md:mr-[40px]  sm:text-[16px] sm:leading-[18px] xs:text-[14px] xs:leading-4 lg:text-[18px] xxl:mt-8 xs:mt-5">
+            <Typography
+              componentHTML="p"
+              variant="bodyM2"
+              typeFont="Light"
+              className="text-white md:text-primario-900 sm:w-[335px] w-[290px] md:w-[275px] lg:w-[415.5px] xxl:w-[380px] md:leading-[20px] mt-[10px] wcontainerHeader text-[16px] md:text-[18px] md:mr-[40px]  sm:text-[16px] sm:leading-[18px] xs:text-[14px] xs:leading-4 lg:text-[18px] xxl:mt-8 xs:mt-5"
+            >
               Aquí le ayudaremos a lograr sus sueños, sin hacer largas filas, ni papeleos
               extensos.
             </Typography>
@@ -102,7 +118,7 @@ export default function Home() {
           <Typography
             variant="h2"
             typeFont="Bold"
-            componentHTML='h2'
+            componentHTML="h2"
             className="text-center sm:my-8 xs:my-8 lg:mt-[42px] xl-mt-[42px] md:mt-[26px] sm:pt-8 xl:mt-[59px] pt-8 lg:pt-[50px]"
           >
             Requisitos
@@ -123,8 +139,10 @@ export default function Home() {
                   icon="bcs-icon-37"
                   color="text-complementario-100"
                   size="text-[1.6rem]"
-                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100 "
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full    mb-3 md:text-[15px] lg:text-[16px] xs:w-[150px] lg:w-full text-[12px] md:w-full xxl:w-[55%] " title={''} />
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100 cursor-default"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[90px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[110px] lg:w-full xxl:w-[57%] cursor-default"
+                  title="Tener entre 18 y 70 años"
+                />
               </div>
               <div className="w-[2px] hidden bg-complementario-70 h-[46px] xxl:grid place-items-center mt-3"></div>
               {/* 2 */}
@@ -151,8 +169,8 @@ export default function Home() {
                   icon="bcs-icon-14"
                   color="text-complementario-100 cursor-default"
                   size="text-[2rem]"
-                  className="sm:mb-3 xs:mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100"
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[105px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[125px] lg:w-full md:w-[200px] xxl:w-[60%] cursor-default"
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100 cursor-default"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[90px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[110px] lg:w-full xxl:w-[57%] cursor-default"
                   title="Ser empleado o pensionado"
                 />
               </div>
@@ -173,8 +191,8 @@ export default function Home() {
                   icon="bcs-icon-33"
                   color="text-complementario-100"
                   size="text-[2rem]"
-                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none  border-complementario-100"
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full  font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[160px] lg:w-full md:w-full xxl:w-[65%]"
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100 cursor-default"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[90px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[110px] lg:w-full xxl:w-[57%] cursor-default"
                   title="Tener el celular a la mano"
                 />
               </div>
@@ -188,8 +206,8 @@ export default function Home() {
                   icon="bcs-icon-764"
                   color="text-complementario-100"
                   size="text-[2rem]"
-                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100"
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[170px] lg:w-full md:w-full xxl:w-[65%]"
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100 cursor-default"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[90px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[110px] lg:w-full xxl:w-[57%] cursor-default"
                   title="Postular como único titular"
                 />
               </div>
@@ -203,8 +221,8 @@ export default function Home() {
                   icon="bcs-icon-1484"
                   color="text-complementario-100"
                   size="text-[2rem]"
-                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100"
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[120px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[170px] lg:w-full md:w-full xxl:w-[90%]"
+                  className="sm:mb-3 mb-3 md:mb-0 border-[0.3px] xxl:border-none border-complementario-100 cursor-default"
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[90px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[110px] lg:w-full xxl:w-[57%] cursor-default"
                   title="Solicitar sin subsidios del gobierno"
                 />
               </div>
@@ -222,7 +240,7 @@ export default function Home() {
           <Typography
             variant="h2"
             typeFont="Bold"
-            componentHTML='h2'
+            componentHTML="h2"
             className="md:text-left text-center lg:mt-[149px] xl:mt-[148px] md:mt-[93px] mt-[80px] ml-5 md:ml-0"
           >
             Tan solo en <span className="block lg:inline">cuatro pasos</span>
@@ -256,7 +274,7 @@ export default function Home() {
         <Typography
           variant="h2"
           typeFont="Bold"
-          componentHTML='h2'
+          componentHTML="h2"
           className=" text-center lg:mb-[105px] md:mt-0 mt-[66px]"
         >
           Beneficios
@@ -272,7 +290,12 @@ export default function Home() {
               />
             </div>
             <div className="listInitial  lg:w-[440px] relative block mx-5 sm:top-[-128px] xs:top-[-110px] md:top-0 xs:w-[260px] sm:w-[90%] smd:w-[80%] smd:m-auto md:mt-[-20px] md:place-items-center lg:mt-0 xxxl:ml-10">
-              <Typography variant='bodyM3' componentHTML='ul' typeFont='Light' className="mb-0 lg:text-[20px]">
+              <Typography
+                variant="bodyM3"
+                componentHTML="ul"
+                typeFont="Light"
+                className="mb-0 lg:text-[20px]"
+              >
                 <li className="  lg:mt-[140px] md:mt-20 text-complementario-100 ">
                   Preaprobación inmediata en línea
                 </li>

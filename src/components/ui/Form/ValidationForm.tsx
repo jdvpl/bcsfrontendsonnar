@@ -119,6 +119,7 @@ export const ValidationForm: React.FC<FormProps> = ({ questions, onSubmit }) => 
                                   })
                                 );
                               }}
+                              title={answer.option}
                             >
                               <span itemProp="relatedTo" className="hidden" />
                               {answer.option}

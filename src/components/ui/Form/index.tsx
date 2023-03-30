@@ -200,8 +200,6 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
             typeFont="Regular"
             htmlFor="chk_policy_and_terms"
             className="inline-block font-normal text-primario-900 p-0 m-0 pl-[10px]  cursor-pointer"
-            role="tabpanel"
-            tabIndex={0}
             itemScope
             itemType="https://schema.org/Service"
           >
