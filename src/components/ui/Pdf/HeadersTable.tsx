@@ -30,13 +30,13 @@ function HeadersTable({ simulatorCoreFallen }: any) {
       backgroundColor: '#005DA2',
       color: "#fff",
       marginHorizontal: '0.2%',
-      width: simulatorCoreFallen ? '20%' : '12.5%',
+      width: simulatorCoreFallen ? '20%' : '16.66666666%',
       height: 30
     },
     ligthBlue: {
       backgroundColor: '#0386E6',
       color: '#fff',
-      width: simulatorCoreFallen ? '20%' : '12.5%',
+      width: simulatorCoreFallen ? '20%' : '16.66666%',
       height: 30
     },
     em: {
@@ -63,14 +63,14 @@ function HeadersTable({ simulatorCoreFallen }: any) {
       </View>
       {simulatorCoreFallen ? null :
         <>
-          <View style={[styles.cell, styles.tableHeader]}>
+          {/* <View style={[styles.cell, styles.tableHeader]}>
             <Text style={[styles.cellText]}>Seguro de vida</Text>
           </View>
           <View style={[styles.cell, styles.tableHeader]}>
             <Text style={[styles.cellText]}>Seguro IRT</Text>
             <Text style={styles.textsmall}>(Incendio, rayo y </Text>
             <Text style={styles.textsmall}>terremoto) </Text>
-          </View>
+          </View> */}
           <View style={[styles.cell, styles.tableHeader]}>
             <Text style={[styles.cellText]}>Cuota total con </Text>
             <Text style={[styles.cellText]}>seguros </Text>
