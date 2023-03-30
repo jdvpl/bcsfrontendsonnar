@@ -155,7 +155,7 @@ export default function useValidations(
         typeHouse,
         houseStatus,
         houseValue: houseValue.toString(),
-        financeValue:financeValue,
+        financeValue: Math.floor(financeValue),
         termFinance,
         insuranceCheck,
         choseOffice,
