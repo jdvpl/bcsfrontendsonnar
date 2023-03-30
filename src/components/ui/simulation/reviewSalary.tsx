@@ -17,21 +17,21 @@ interface ReviewSalaryProps {
 }
 
 const typeFontsPropsNormal: typeFontsProps = {
-  variantTypographyTitle: "caption1",
+  variantTypographyTitle: 'caption1',
   typeFontTypograhyTitle: 'Light',
   typeTagTypograhyTitle: 'span',
   variantDescriptionTypography: 'h4',
   typeDescriptionTagTypograhy: 'h4',
   typeFontDescriptionTypograhy: 'Bold',
-}
+};
 const typeFontsPropsBold: typeFontsProps = {
-  variantTypographyTitle: "h4",
+  variantTypographyTitle: 'h4',
   typeFontTypograhyTitle: 'Bold',
   typeTagTypograhyTitle: 'h4',
-  typeDescriptionTagTypograhy:'h1',
-  typeFontDescriptionTypograhy:'Bold',
-  variantDescriptionTypography:'h1'
-}
+  typeDescriptionTagTypograhy: 'h1',
+  typeFontDescriptionTypograhy: 'Bold',
+  variantDescriptionTypography: 'h1',
+};
 export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
   financedValue,
   fireInsurance,
@@ -52,6 +52,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       classtitle="h-[18px]"
       tooltiptext=""
       typeFontProps={typeFontsPropsBold}
+      altsvg="Valor financiado aproximado"
     />
     <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px] bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px]"
@@ -63,6 +64,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       id="lifeInsuranceSalary"
       tooltiptext=""
       typeFontProps={typeFontsPropsNormal}
+      altsvg="Cuota mensual total con seguros"
     />
     <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px]  bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px]"
@@ -73,6 +75,7 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       classtitle="h-[14px] ml-2"
       tooltiptext=""
       typeFontProps={typeFontsPropsNormal}
+      altsvg="Plazo"
     />
     <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px] bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px]"
@@ -83,17 +86,36 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       urlsvgendicon=""
       classtitle="h-[14px] ml-2"
       tooltiptext=""
+      altsvg="Tasa aproximada"
       description
       typeFontProps={typeFontsPropsNormal}
       descriptionHtml={
         <div className="pl-[33px]">
           <div className="flex">
-            <Typography variant='caption1' typeFont='Bold' componentHTML='p'  className="mr-1">MV: </Typography>
-            <Typography variant='caption1' componentHTML='span' typeFont='Light'>Tasa nominal mes vencido</Typography>
+            <Typography
+              variant="caption1"
+              typeFont="Bold"
+              componentHTML="p"
+              className="mr-1"
+            >
+              MV:{' '}
+            </Typography>
+            <Typography variant="caption1" componentHTML="span" typeFont="Light">
+              Tasa nominal mes vencido
+            </Typography>
           </div>
           <div className="flex">
-            <Typography variant='caption1' componentHTML='p' typeFont='Bold' className="mr-1">EA:</Typography>
-            <Typography variant='caption1' componentHTML='span' typeFont='Light'>Tasa efectiva anual</Typography>
+            <Typography
+              variant="caption1"
+              componentHTML="p"
+              typeFont="Bold"
+              className="mr-1"
+            >
+              EA:
+            </Typography>
+            <Typography variant="caption1" componentHTML="span" typeFont="Light">
+              Tasa efectiva anual
+            </Typography>
           </div>
         </div>
       }
@@ -106,9 +128,10 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       urlsvg={`${basePath}/images/Insurage.svg`}
       classtitle="h-[14px] ml-2"
       tooltip
+      altsvg="Seguro de vida"
       typeFontProps={typeFontsPropsNormal}
       tooltiptext={
-        <Typography variant='bodyM3' componentHTML='p'  className="flex text-white">
+        <Typography variant="bodyM3" componentHTML="p" className="flex text-white">
           Seguro diseñado para proteger a sus asegurados en caso de presentarse muerte,
           incapacidad total y permanente, y demás riesgos previstos en la póliza.{' '}
         </Typography>
@@ -123,9 +146,10 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
       classtitle="h-[14px] text-[14px] ml-2"
       id="fireInsuranceSalary"
       tooltip
+      altsvg="Seguro de Incendio, Rayo y Terremoto"
       typeFontProps={typeFontsPropsNormal}
       tooltiptext={
-        <Typography variant='caption1' componentHTML='p' className="flex text-white">
+        <Typography variant="caption1" componentHTML="p" className="flex text-white">
           Póliza que protege al inmueble hipotecado al Banco contra las pérdidas y daños
           materiales originados de forma accidental, súbita e imprevista como consecuencia
           directa de los riesgos amparados.{' '}

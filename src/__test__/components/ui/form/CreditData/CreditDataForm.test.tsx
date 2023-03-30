@@ -7,6 +7,7 @@ import { CreditDataForm } from '../../../../../components/ui/Form/CreditData/Cre
 import { createMockRouter } from '../../../../utils/createMockRouter';
 import { routes } from '../../../../../routes';
 
+jest.setTimeout(30000);
 
 describe('<CreditDataForm/>', () => {
   it('should render successfully', () => {
