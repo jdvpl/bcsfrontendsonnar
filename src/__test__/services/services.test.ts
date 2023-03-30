@@ -1,5 +1,5 @@
 import { getQuestions, sendAuthorization } from '../../services';
-import axios, { AxiosInstance } from 'axios';
+import axios from 'axios';
 
 jest.mock('axios');
 describe('Servics', () => {

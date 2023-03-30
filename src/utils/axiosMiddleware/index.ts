@@ -25,7 +25,6 @@ export const axiosErrorMiddleware = (error: any) => {
   };
 
   if (error.response) {
-    // console.log(error.response.data.internal_code);
     Router.push(
       parseErrorToPath[error.response.data.internal_code] || routes.servicError
     );
@@ -34,6 +33,5 @@ export const axiosErrorMiddleware = (error: any) => {
 };
 
 export const handlerDecrypt = (response: any) => {
-  const data = JSON.parse(decryptPass(response.data.data, KEY));
   return response;
 };

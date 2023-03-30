@@ -40,28 +40,8 @@ describe('axiosErrorMiddleware', () => {
       expect(e).toEqual(error);
     });
   });
+
+  test('should respond with the same parameter send', () => {
+    expect(handlerDecrypt('test')).toEqual('test');
+  });
 });
-
-// describe('handlerDecrypt', () => {
-//   test('should return the decrypted response', () => {
-//     const KEY = 'secret';
-//     const response = {
-//       data: {
-//         data: 'encrypted-data',
-//       },
-//     };
-//     const decryptedData = '{"foo": "bar"}';
-
-//     jest.spyOn(global.JSON, 'parse').mockReturnValue(JSON.parse(decryptedData));
-//     jest.spyOn(global, 'decryptPass').mockReturnValue(decryptedData);
-
-//     const decryptedResponse = handlerDecrypt(response);
-
-//     expect(global.decryptPass).toHaveBeenCalledWith(response.data.data, KEY);
-//     expect(global.JSON.parse).toHaveBeenCalledWith(decryptedData);
-//     expect(decryptedResponse).toEqual(response);
-
-//     global.JSON.parse.mockRestore();
-//     global.decryptPass.mockRestore();
-//   });
-// });
