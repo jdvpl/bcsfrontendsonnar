@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks';
-import useSimulator from '../../pages/simulador/useSimulator';
+import useSimulatorHouse from '../../hooks/useSimulatorHouse';
 import { createMockRouter } from '../utils/createMockRouter';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 import React from 'react';
@@ -8,19 +8,17 @@ import { sendSimulationData } from '../../services';
 
 jest.mock('../../services');
 
-sendSimulationData.mockReturnValueOnce({
+(sendSimulationData as jest.Mock).mockReturnValueOnce({
   response: {
     result: '',
   },
   error: false,
 });
 
-const initialFields = { password: '' };
-const { result } = renderHook(() => useVerificationForm(initialFields, jest.fn()));
 
 const router = createMockRouter({});
 const wrapper = ({ children }: any) => (
-  <RouterContext.Provider value={router}>{children}</RouterContext.Provider>
+  <RouterContext.Provider value={router}>{children}</RouterContext.Provider> 
 );
 describe('<useVerificationForm/>', () => {
   test('set border to #798C98 when password is not empty', () => {
@@ -36,9 +34,11 @@ describe('<useVerificationForm/>', () => {
       monthlySalary: 0,
       amountQuota: 0,
       percentageQuota: 0.3,
+      city:"11001",
+      gender:"M",
+      stratum:"1"
     };
-    const setBorder = jest.fn();
-    const { result } = renderHook(() => useSimulator(), { wrapper });
+    const { result } = renderHook(() => useSimulatorHouse(), { wrapper });
     act(() => {
       result.current.onSubmit(data);
     });
