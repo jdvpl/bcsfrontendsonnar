@@ -11,11 +11,11 @@ describe('axiosErrorMiddleware', () => {
     jest.clearAllMocks();
   });
 
-  test('should redirect to the correct route when the internal_code is found', () => {
+  test('should redirect to the correct route when the internalCode is found', () => {
     const error = {
       response: {
         data: {
-          internal_code: 'PF-01',
+          internalCode: 'PF-01',
         },
       },
     };
@@ -26,11 +26,11 @@ describe('axiosErrorMiddleware', () => {
     });
   });
 
-  test('should redirect to the servicError route when the internal_code is not found', () => {
+  test('should redirect to the servicError route when the internalCode is not found', () => {
     const error = {
       response: {
         data: {
-          internal_code: 'unknown-code',
+          internalCode: 'unknown-code',
         },
       },
     };

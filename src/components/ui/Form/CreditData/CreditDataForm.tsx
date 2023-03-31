@@ -135,6 +135,7 @@ export function CreditDataForm() {
             render={({ field: { onChange } }) => (
               <NewAutoComplete
                 id="houseCity"
+                data-testid="InputHouseLocation"
                 defaultValue={undefined}
                 placeholder="Ciudad de la vivienda"
                 label="Ciudad de la vivienda"
@@ -269,7 +270,12 @@ export function CreditDataForm() {
         {/* Card Chose Housing */}
         <div className="cardShadow min-h-[106px] mt-[23px] rounded-xl pt-[24px] pb-[23px] px-[24px] w-full flex flex-col gap-4">
           <div>
-            <Typography variant='bodyM3' componentHTML='span' typeFont='Bold' className="w-full  text-primario-900 ">
+            <Typography
+              variant="bodyM3"
+              componentHTML="span"
+              typeFont="Bold"
+              className="w-full  text-primario-900 "
+            >
               Elija como continuar el proceso
             </Typography>
           </div>
@@ -284,7 +290,12 @@ export function CreditDataForm() {
                   <div className="w-[10px] h-[10px] bg-primario-200 rounded-full"> </div>
                 ) : null}
               </div>
-              <Typography variant='bodyM3' componentHTML='span' typeFont='Regular' className="font-normal text-primario-900 ml-[10px]">
+              <Typography
+                variant="bodyM3"
+                componentHTML="span"
+                typeFont="Regular"
+                className="font-normal text-primario-900 ml-[10px]"
+              >
                 Acercarme a una oficina
               </Typography>
             </button>
@@ -303,7 +314,17 @@ export function CreditDataForm() {
                       label="Sucursal"
                       arrayOptions={offices}
                       getLabelHandler={(option: any) => {
-                        return `${option?.address?.toLowerCase().replace(/\b\w/g, (l: string) => l.toUpperCase())} ${option?.nameOffice?.toLowerCase().replace(/\b\w/g, (l: string) => l.toUpperCase())} - ${option?.city?.toLowerCase().replace(/\b\w/g, (l: string) => l.toUpperCase())}`;
+                        return `${option?.address
+                          ?.toLowerCase()
+                          .replace(/\b\w/g, (l: string) =>
+                            l.toUpperCase()
+                          )} ${option?.nameOffice
+                          ?.toLowerCase()
+                          .replace(/\b\w/g, (l: string) =>
+                            l.toUpperCase()
+                          )} - ${option?.city
+                          ?.toLowerCase()
+                          .replace(/\b\w/g, (l: string) => l.toUpperCase())}`;
                       }}
                       onChange={(e: any) => {
                         if (e?.idOffice) {
@@ -331,7 +352,12 @@ export function CreditDataForm() {
                     </div>
                   ) : null}
                 </div>
-                <Typography variant='bodyM3' componentHTML='span' typeFont='Regular' className="font-normal text-primario-900 ">
+                <Typography
+                  variant="bodyM3"
+                  componentHTML="span"
+                  typeFont="Regular"
+                  className="font-normal text-primario-900 "
+                >
                   Recibir visita asesor
                 </Typography>
               </button>

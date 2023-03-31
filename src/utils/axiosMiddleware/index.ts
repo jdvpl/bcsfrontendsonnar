@@ -1,6 +1,5 @@
 import Router from 'next/router';
 import { routes } from '../../routes';
-const KEY = process.env.KEYENCRYPTADIGITAL || '';
 
 export const axiosErrorMiddleware = (error: any) => {
   const parseErrorToPath: any = {
@@ -25,7 +24,7 @@ export const axiosErrorMiddleware = (error: any) => {
 
   if (error.response) {
     Router.push(
-      parseErrorToPath[error.response.data.internal_code] || routes.servicError
+      parseErrorToPath[error.response.data.internalCode] || routes.servicError
     );
   }
   return Promise.reject(error);
