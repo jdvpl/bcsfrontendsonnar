@@ -273,3 +273,24 @@ export const parsePathToEvent = (path: string) => {
   };
   return event[path];
 };
+
+export const parseOfficeName = (option: any) => {
+  return `${option?.address
+    ?.toLowerCase()
+    .replace(/\b\w/g, (l: string) => l.toUpperCase())} ${option?.nameOffice
+    ?.toLowerCase()
+    .replace(/\b\w/g, (l: string) => l.toUpperCase())} - ${option?.city
+    ?.toLowerCase()
+    .replace(/\b\w/g, (l: string) => l.toUpperCase())}`;
+};
+
+export const handlerCity = (e: any, onChange: any) => {
+  if (e?.id) {
+    return onChange({ name: e.name, id: e.id });
+  }
+  return onChange(undefined);
+};
+export const handlerInput = (e: any, setValue: any) => {
+  const { value, name } = e?.target;
+  setValue(name, value);
+};

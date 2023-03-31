@@ -6,7 +6,13 @@ import Button from '../../Button';
 import ReactHookFormSelect from '../../Select/newSelect';
 import { SimulationData } from '../../../../interfaces';
 import Input from '../../inputs';
-import { convertToColombianPesos, renderPercentage } from '../../../../utils';
+import {
+  convertToColombianPesos,
+  handlerCity,
+  handlerInput,
+  parseOfficeName,
+  renderPercentage,
+} from '../../../../utils';
 import { yearsAvailable } from '../../../../lib/simulator';
 import useValidations from '../../../../hooks/useValidationsCreditData';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
@@ -93,7 +99,7 @@ export function CreditDataForm() {
           className="w-full grid grid-cols-1 md:grid-cols-2 gap-4"
         >
           <ReactHookFormSelect
-            onChange={(e: any) => setValue('typeHouse', e.target.value)}
+            onChange={(e: any) => handlerInput(e, setValue)}
             placeholder="Tipo de vivienda"
             label="Tipo de vivienda"
             defaultValue="usada"
@@ -109,7 +115,7 @@ export function CreditDataForm() {
             <MenuItem value="vis">VIS</MenuItem>
           </ReactHookFormSelect>
           <ReactHookFormSelect
-            onChange={(e: any) => setValue('houseStatus', e.target.value)}
+            onChange={(e: any) => handlerInput(e, setValue)}
             placeholder="Estado de la vivienda"
             label="Estado de la vivienda"
             defaultValue="usada"
@@ -137,12 +143,7 @@ export function CreditDataForm() {
                 defaultValue={undefined}
                 placeholder="Ciudad de la vivienda"
                 label="Ciudad de la vivienda"
-                onChange={(e: any) => {
-                  if (e?.id) {
-                    return onChange({ name: e.name, id: e.id });
-                  }
-                  return onChange(undefined);
-                }}
+                onChange={(e: any) => handlerCity(e, onChange)}
                 zIndex={30}
               />
             )}
@@ -209,7 +210,7 @@ export function CreditDataForm() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-4">
           <ReactHookFormSelect
-            onChange={(e: any) => setValue('termFinance', e.target.value)}
+            onChange={(e: any) => handlerInput(e, setValue)}
             placeholder="Plazo"
             label="Plazo"
             defaultValue=""
@@ -228,7 +229,7 @@ export function CreditDataForm() {
             ))}
           </ReactHookFormSelect>
           <ReactHookFormSelect
-            onChange={(e: any) => setValue('stratum', e.target.value)}
+            onChange={(e: any) => handlerInput(e, setValue)}
             placeholder="Estrato de la vivienda"
             label="Estrato de la vivienda"
             defaultValue=""
@@ -249,7 +250,7 @@ export function CreditDataForm() {
         </div>
 
         <ReactHookFormSelect
-          onChange={(e: any) => setValue('amortizationType', e.target.value)}
+          onChange={(e: any) => handlerInput(e, setValue)}
           placeholder="Tipo de amortización"
           label="Tipo de amortización"
           defaultValue="Pesos"
@@ -312,17 +313,7 @@ export function CreditDataForm() {
                       label="Sucursal"
                       arrayOptions={offices}
                       getLabelHandler={(option: any) => {
-                        return `${option?.address
-                          ?.toLowerCase()
-                          .replace(/\b\w/g, (l: string) =>
-                            l.toUpperCase()
-                          )} ${option?.nameOffice
-                          ?.toLowerCase()
-                          .replace(/\b\w/g, (l: string) =>
-                            l.toUpperCase()
-                          )} - ${option?.city
-                          ?.toLowerCase()
-                          .replace(/\b\w/g, (l: string) => l.toUpperCase())}`;
+                        return parseOfficeName(option);
                       }}
                       onChange={(e: any) => {
                         if (e?.idOffice) {
