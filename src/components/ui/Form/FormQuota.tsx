@@ -8,6 +8,7 @@ import Alert from '../Alert';
 import Button from '../Button';
 import Input from '../inputs';
 import DateOfBirth from '../inputs/dateOfBirth';
+import NewAutoComplete from '../inputs/newAutoComplete';
 import SimulatorLoader from '../Loaders/SimulatorLoader';
 import ReactHookFormSelect from '../Select/newSelect';
 import useValidations from './useValidationsSalary';
@@ -63,7 +64,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit, isLoading }) => {
       ) : (
         <div
           data-testid="FormQuotaTest"
-          className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto"
+          className="mx-auto "
         >
           <Alert message={errorMessageAlert} />
           <div className="w-full mt-3">
@@ -91,7 +92,49 @@ const FormQuota: FC<FormProps> = ({ onSubmit, isLoading }) => {
                   VIS
                 </MenuItem>
               </ReactHookFormSelect>
-
+              
+              <div className="grid mt-4 grid-col-1 md:grid-cols-2 gap-x-4 gap-y-4">
+                <Controller
+                  control={control}
+                  name="city"
+                  rules={{ required: true }}
+                  defaultValue={undefined}
+                  render={({ field: { onChange } }) => (
+                    <NewAutoComplete
+                      id="birthCity"
+                      defaultValue={undefined}
+                      placeholder="Ciudad de la vivienda"
+                      label="Ciudad de la vivienda"
+                      onChange={(e: any) => {
+                        if (e?.id) {
+                          return onChange({ item: e.name, option: e.id });
+                        }
+                        return onChange(undefined);
+                      }}
+                      zIndex={30}
+                    />
+                  )}
+                />
+                <ReactHookFormSelect
+                onChange={(e: any) => setValue('stratum', e.target.value)}
+                placeholder="Estrato de la vivienda"
+                label="Estrato de la vivienda"
+                defaultValue=""
+                control={control}
+                left="right4"
+                valueLength=""
+                name="stratum"
+                className="w-full md:mt-0 "
+                margin="normal"
+                rules={{ required: true }}
+              >
+                {[1, 2, 3, 4, 5, 6]?.map((y:number) => (
+                  <MenuItem value={y} key={y}>
+                    {y}
+                  </MenuItem>
+                ))}
+              </ReactHookFormSelect>
+            </div>
               <div className="flex flex-col mt-4">
                 <Controller
                   render={({ field }) => (
@@ -197,7 +240,28 @@ const FormQuota: FC<FormProps> = ({ onSubmit, isLoading }) => {
                   )}
                 />
               </div>
+                      <div className="mt-4">
 
+                      
+              <ReactHookFormSelect
+              onChange={(e: any) => {
+                setValue('gender', e.target.value);
+              }}
+              placeholder="Género"
+              label="Género"
+              error={!!errors.gender}
+              control={control}
+              left="right4"
+              dataTestId="genderTest"
+              name="gender"
+              margin="normal"
+              spacing="mr-[-10px]"
+              rules={{ required: true }}
+            >
+              <MenuItem value="F">Femenino</MenuItem>
+              <MenuItem value="M">Masculino</MenuItem>
+            </ReactHookFormSelect>
+            </div>
               <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-10">
                 <Button
                   isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[375px]"

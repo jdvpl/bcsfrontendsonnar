@@ -10,4 +10,7 @@ export interface iFormDataSimulation {
   monthlySalary: number;
   amountQuota: number;
   percentageQuota: number;
+  city:any;
+  gender:string;
+  stratum:string
 }

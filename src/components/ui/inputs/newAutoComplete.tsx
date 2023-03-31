@@ -62,7 +62,7 @@ const NewAutoComplete: React.FC<InputProps> = ({
       data-testid={'searchAutocomplete'}
       itemScope
       itemType="https://schema.org/Person"
-      className="flex flex-col justify-start relative"
+      className="flex flex-col justify-start relative w-full"
     >
       <label
         className={`transition-all duration-300 ease-in-out absolute  font-montserratRegular

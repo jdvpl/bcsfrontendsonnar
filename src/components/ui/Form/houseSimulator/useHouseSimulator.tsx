@@ -35,6 +35,7 @@ export default function useHouseSimulator({
 
   const onSubmit = async (formData: SimulationData) => {
     setIsLoading(true);
+    const city=formData.city?.option;
     const body: iFormDataSimulation = {
       typeHouse: formData?.typeHouse,
       houseValue: Math.floor(formData.houseValue),
@@ -47,6 +48,9 @@ export default function useHouseSimulator({
       monthlySalary: 0,
       amountQuota: 0,
       percentageQuota: 0.3,
+      city: city,
+      gender: formData.gender,
+      stratum: formData.stratum
     };
     const response = await sendSimulationData(body);
     if (!response.error) {

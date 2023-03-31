@@ -214,6 +214,7 @@ function PersonalDataBasic({ userInfo }: any) {
               className="w-100"
               margin="normal"
               spacing="mr-[-10px]"
+              rules={{ required: true }}
             >
               <MenuItem value="F">Femenino</MenuItem>
               <MenuItem value="M">Masculino</MenuItem>
