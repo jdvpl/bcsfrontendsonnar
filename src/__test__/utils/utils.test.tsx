@@ -1,7 +1,23 @@
-
-import { clearSessionStorage, convertToColombianPesos, calculateAge, parserPercentageDecimal, validateAddress, isValidDate, decryptPass, encriptPass, renderPercentage, cellPhoneMaked, emailMasked, downLoadPdf, getHasAdviserNameAdviser, calculateAgeMethod2 } from '../../utils'
+import {
+  clearSessionStorage,
+  convertToColombianPesos,
+  calculateAge,
+  parserPercentageDecimal,
+  validateAddress,
+  isValidDate,
+  decryptPass,
+  encriptPass,
+  renderPercentage,
+  cellPhoneMaked,
+  emailMasked,
+  downLoadPdf,
+  getHasAdviserNameAdviser,
+  calculateAgeMethod2,
+  parseOfficeName,
+  handlerCity,
+  handlerInput,
+} from '../../utils';
 import * as CryptoJS from 'crypto-js';
-
 
 describe('clearSessionStorage', () => {
   it('should clear all items in session storage', () => {
@@ -221,7 +237,7 @@ describe('clearSessionStorage', () => {
   test('Debería crear un elemento "a" con el atributo "download" correcto', async () => {
     // Arrange
     const pdf = 'pdfEnBase64';
-    const dataTU = 'carta'
+    const dataTU = 'carta';
 
     // Act
     await downLoadPdf(pdf, dataTU);
@@ -238,7 +254,6 @@ describe('clearSessionStorage', () => {
     const linkSpy = jest.spyOn(document, 'createElement');
     downLoadPdf(pdf, name);
     expect(linkSpy).toHaveBeenCalledWith('a');
-
   });
 
   test('it should create and download a PDF', () => {
@@ -247,7 +262,9 @@ describe('clearSessionStorage', () => {
     const createElementSpy = jest.spyOn(document, 'createElement');
     downLoadPdf(pdf, name);
     expect(createElementSpy).toHaveBeenCalledWith('a');
-    expect(createElementSpy.mock.results[0].value.href).toBe(`data:application/pdf;base64,abcdefg`);
+    expect(createElementSpy.mock.results[0].value.href).toBe(
+      `data:application/pdf;base64,abcdefg`
+    );
     expect(createElementSpy.mock.results[0].value.download).toBe(`${name}.pdf`);
   });
 
@@ -255,7 +272,8 @@ describe('clearSessionStorage', () => {
     const id = '11001';
     const expectedOutput = {
       hasAdviser: true,
-      nameAdviser: 'CARLOS ALBERTO VARGAS/DIEGO PULIDO/JEIMMY CAROLINA USECHE/JONNATHAN ALEJANDRO NEIRA/CAROLINA ALVAREZ/GIOVANI TOVAR/RAUL GONZALEZ'
+      nameAdviser:
+        'CARLOS ALBERTO VARGAS/DIEGO PULIDO/JEIMMY CAROLINA USECHE/JONNATHAN ALEJANDRO NEIRA/CAROLINA ALVAREZ/GIOVANI TOVAR/RAUL GONZALEZ',
     };
     const result = getHasAdviserNameAdviser(id);
     expect(result).toEqual(expectedOutput);
@@ -265,11 +283,64 @@ describe('clearSessionStorage', () => {
     const id = '8560';
     const expectedOutput = {
       hasAdviser: true,
-      nameAdviser: "PATRICIA CRESPO"
+      nameAdviser: 'PATRICIA CRESPO',
     };
     const result = getHasAdviserNameAdviser(id);
     expect(result).toEqual(expectedOutput);
   });
-
 });
 
+describe('parseOfficeName', () => {
+  test('should format office name and address correctly', () => {
+    const input = {
+      address: '123 Main St.',
+      nameOffice: 'Acme Inc.',
+      city: 'Anytown',
+    };
+    const expectedOutput = '123 Main St. Acme Inc. - Anytown';
+    const actualOutput = parseOfficeName(input);
+    expect(actualOutput).toEqual(expectedOutput);
+  });
+
+  // test('should handle undefined values', () => {
+  //   const input = {
+  //     address: ,
+  //     nameOffice: 'Acme Inc.',
+  //     city: 'Anytown',
+  //   };
+  //   const expectedOutput = ' Acme Inc. - ANYTOWN';
+  //   const actualOutput = parseOfficeName(input);
+  //   expect(actualOutput).toEqual(expectedOutput);
+  // });
+});
+
+describe('handlerCity', () => {
+  test('should call onChange with correct values when e.id is defined', () => {
+    const mockOnChange = jest.fn();
+    const input = { id: 1, name: 'Anytown' };
+    handlerCity(input, mockOnChange);
+    expect(mockOnChange).toHaveBeenCalledWith({ name: 'Anytown', id: 1 });
+  });
+
+  test('should call onChange with undefined when e.id is undefined', () => {
+    const mockOnChange = jest.fn();
+    const input = { name: 'Anytown' };
+    handlerCity(input, mockOnChange);
+    expect(mockOnChange).toHaveBeenCalledWith(undefined);
+  });
+});
+
+describe('handlerInput', () => {
+  test('should call setValue with correct arguments', () => {
+    const mockSetValue = jest.fn();
+    const mockEvent = { target: { value: 'Anytown', name: 'city' } };
+    handlerInput(mockEvent, mockSetValue);
+    expect(mockSetValue).toHaveBeenCalledWith('city', 'Anytown');
+  });
+
+  // test('should not call setValue when e is undefined', () => {
+  //   const mockSetValue = jest.fn();
+  //   handlerInput(undefined, mockSetValue);
+  //   expect(mockSetValue).not.toHaveBeenCalled();
+  // });
+});

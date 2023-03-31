@@ -22,4 +22,5 @@ export interface SimulationData {
   amortizationType?: string;
   city:any;
   gender:string;
+  houseCity?: any;
 }

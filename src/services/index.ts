@@ -7,7 +7,6 @@ import { getProcessId } from '../utils';
 const { allResponse, allResponseDecrypted } = useAES();
 import { iPdfLetter } from '../interfaces/ipdfLetter';
 import { RequestRiskBoxes } from '../interfaces/IRequestRiskBoxes';
-import axios from 'axios';
 const KEY = process.env.KEYENCRYPTADIGITAL;
 
 //? this save the authorization data.

@@ -9,4 +9,5 @@ export interface iCreditData {
   office: string;
   stratum: string;
   amortizationType: string;
+  houseCity: object;
 }
