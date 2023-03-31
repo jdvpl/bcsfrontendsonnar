@@ -125,8 +125,7 @@ export function CreditDataForm() {
             <MenuItem value="used">Usada</MenuItem>
           </ReactHookFormSelect>
         </div>
-
-        <div className="w-full">
+        <div className="w-full" data-testid="InputHouseLocation">
           <Controller
             control={control}
             name="houseCity"
@@ -135,7 +134,6 @@ export function CreditDataForm() {
             render={({ field: { onChange } }) => (
               <NewAutoComplete
                 id="houseCity"
-                data-testid="InputHouseLocation"
                 defaultValue={undefined}
                 placeholder="Ciudad de la vivienda"
                 label="Ciudad de la vivienda"
