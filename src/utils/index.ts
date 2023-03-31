@@ -291,6 +291,5 @@ export const handlerCity = (e: any, onChange: any) => {
   return onChange(undefined);
 };
 export const handlerInput = (e: any, setValue: any) => {
-  const { value, name } = e?.target;
-  setValue(name, value);
+  setValue(e?.target?.name, e?.target?.value);
 };

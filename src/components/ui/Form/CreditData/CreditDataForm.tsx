@@ -9,7 +9,6 @@ import Input from '../../inputs';
 import {
   convertToColombianPesos,
   handlerCity,
-  handlerInput,
   parseOfficeName,
   renderPercentage,
 } from '../../../../utils';
@@ -99,7 +98,7 @@ export function CreditDataForm() {
           className="w-full grid grid-cols-1 md:grid-cols-2 gap-4"
         >
           <ReactHookFormSelect
-            onChange={(e: any) => handlerInput(e, setValue)}
+            onChange={(e: any) => setValue('typeHouse', e.target.value)}
             placeholder="Tipo de vivienda"
             label="Tipo de vivienda"
             defaultValue="usada"
@@ -115,7 +114,7 @@ export function CreditDataForm() {
             <MenuItem value="vis">VIS</MenuItem>
           </ReactHookFormSelect>
           <ReactHookFormSelect
-            onChange={(e: any) => handlerInput(e, setValue)}
+            onChange={(e: any) => setValue('houseStatus', e.target.value)}
             placeholder="Estado de la vivienda"
             label="Estado de la vivienda"
             defaultValue="usada"
@@ -210,7 +209,7 @@ export function CreditDataForm() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-4">
           <ReactHookFormSelect
-            onChange={(e: any) => handlerInput(e, setValue)}
+            onChange={(e: any) => setValue('termFinance', e.target.value)}
             placeholder="Plazo"
             label="Plazo"
             defaultValue=""
@@ -229,7 +228,7 @@ export function CreditDataForm() {
             ))}
           </ReactHookFormSelect>
           <ReactHookFormSelect
-            onChange={(e: any) => handlerInput(e, setValue)}
+            onChange={(e: any) => setValue('stratum', e.target.value)}
             placeholder="Estrato de la vivienda"
             label="Estrato de la vivienda"
             defaultValue=""
@@ -250,7 +249,7 @@ export function CreditDataForm() {
         </div>
 
         <ReactHookFormSelect
-          onChange={(e: any) => handlerInput(e, setValue)}
+          onChange={(e: any) => setValue('amortizationType', e.target.value)}
           placeholder="Tipo de amortización"
           label="Tipo de amortización"
           defaultValue="Pesos"
