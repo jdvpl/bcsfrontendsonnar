@@ -33,33 +33,6 @@ export default function useAuthentication(
     }
     if (response.response?.status === 403) {
       setDataQuestions({ ...dataQuestions, ...response.response.data });
-      const dataResponse: any = await response.response.json();
-      const code = dataResponse.internal_code;
-      switch (code) {
-        case 'RL-02':
-        case 'IV-02':
-        case 'IV-03':
-        case 'IV-05':
-          router.push(routes.validacionErrorValidacionIdentidad);
-          break;
-        case 'IV-08':
-          router.push(routes.validacionErrorDiario);
-          break;
-        case 'IV-09':
-          router.push(routes.validacionBlock);
-          break;
-        case 'PF-01':
-        case 'PF-02':
-          router.push(routes.validacionBiometrica);
-          break;
-        case 'ER-00':
-          router.push(routes.startProccess);
-          break;
-        default:
-          break;
-      }
-    } else {
-      router.push(routes.errorValidacion);
     }
   };
   return { onSubmit, isBrowser };

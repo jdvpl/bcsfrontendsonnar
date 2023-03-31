@@ -32,6 +32,17 @@ describe('<CreditDataForm/>', () => {
     const InputTypeHouse = screen.queryByTestId('InputTypeHouse');
     expect(InputTypeHouse!).toBeInTheDocument();
   });
+  it('should render house city  when choseHouse is true ', async () => {
+    const router = createMockRouter({});
+
+    const { container } = render(
+      <RouterContext.Provider value={router}>
+        <CreditDataForm />
+      </RouterContext.Provider>
+    );
+    const InputTypeHouse = screen.queryByTestId('InputHouseLocation');
+    expect(InputTypeHouse!).toBeInTheDocument();
+  });
   it('should render house type  when choseHouse is false ', async () => {
     const router = createMockRouter({});
 
