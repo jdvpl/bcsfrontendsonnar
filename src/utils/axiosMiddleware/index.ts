@@ -1,5 +1,4 @@
 import Router from 'next/router';
-import { decryptPass } from '..';
 import { routes } from '../../routes';
 const KEY = process.env.KEYENCRYPTADIGITAL || '';
 
