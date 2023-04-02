@@ -62,12 +62,6 @@ describe('InicioSolicitud', () => {
       key: 'ENTER',
       code: 13
     });
-    const commercialTermsTest = screen.getByTestId('commercialTermsTest');
-    await userEvent.click(commercialTermsTest);
-    fireEvent.keyDown(commercialTermsTest, {
-      key: 'ENTER',
-      code: 13
-    });
     const modalDataTest = screen.queryByTestId('modalDataTest');
     const btncloseModal = screen.getByTestId('btn-close');
     await userEvent.click(btncloseModal);
