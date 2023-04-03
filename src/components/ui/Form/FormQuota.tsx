@@ -93,7 +93,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit, isLoading }) => {
                 </MenuItem>
               </ReactHookFormSelect>
               
-              <CityStratum setValue={setValue} rules={{required: true }} errorStratum={!!errors.stratum}  />
+              <CityStratum setValue={setValue} control={control} rules={{required: true }} errorStratum={!!errors.stratum}  />
             
             
               <div className="flex flex-col mt-4">

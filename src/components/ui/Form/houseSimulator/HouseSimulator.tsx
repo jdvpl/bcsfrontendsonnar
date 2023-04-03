@@ -130,7 +130,7 @@ function HouseSimulator() {
               name="houseValue"
               control={control}
             />
-            <CityStratum setValue={setValue}  rules={{required: true }} errorStratum={!!errors.stratum}/>
+            <CityStratum setValue={setValue} control={control} rules={{required: true }} errorStratum={!!errors.stratum}  />
             <div className="flex gap-3 my-4">
               <Controller
                 rules={{
