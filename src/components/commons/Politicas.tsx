@@ -8,7 +8,7 @@ function Politicas() {
   return (
     <div data-testid="terminos" className="w-full relative h-[65vh] overflow-x-hidden overflow-y-auto pdf-viwer">
       <Document renderMode="svg" file={`${basePath}/files/ATDP.pdf`} loading={<FileLoader />} >
-        <Page debug  pageNumber={1}  renderAnnotationLayer={false} renderTextLayer={false} />
+        <Page pageNumber={1}  renderAnnotationLayer={false} renderTextLayer={false} />
         <Page pageNumber={2}  renderAnnotationLayer={false}  renderTextLayer={false} />
         <Page pageNumber={3}  renderAnnotationLayer={false}  renderTextLayer={false} />
       </Document>

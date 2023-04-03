@@ -11,7 +11,7 @@ import Typography from '../../components/ui/Typography';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { routes } from '../../routes';
 import { SesionStorageKeys } from '../../session';
-import { convertToColombianPesos, downLoadPdf, invokeEvent } from '../../utils';
+import { convertToColombianPesos, downLoadPdf, invokeEvent, parseOffice } from '../../utils';
 import useProtectedRoutes from '../../hooks/useProtectedRoutes';
 import ExitModal from '../../components/commons/ExitModal';
 import Modal from '../../components/ui/Modal';
@@ -135,13 +135,7 @@ function ApplicationApproval({ modalExit = false }: any) {
               className="xs:w-[290px] sm:w-[343px] md:w-[448px]  min-h-[76px]  bg-[#F3F4F6] pt-[12px] pb-[12px] pl-[16px] pr-[16px] rounded-[8px] mb-[12px] m-auto"
               title="Continuación proceso"
               urlsvgendicon=""
-              value={`$ ${valuesMortgage?.office?.address
-                ?.toLowerCase()
-                .replace(/\b\w/g, (l: string) =>
-                  l.toUpperCase()
-                )} - ${valuesMortgage?.office?.city
-                  ?.toLowerCase()
-                  .replace(/\b\w/g, (l: string) => l.toUpperCase())} `}
+              value={`$ ${parseOffice(valuesMortgage?.office)}`}
               text=" pl-[18px] "
               urlsvg={`${basePath}/images/location.svg`}
               classtitle="h-[14px]"

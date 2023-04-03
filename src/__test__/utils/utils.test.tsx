@@ -16,6 +16,7 @@ import {
   parseOfficeName,
   handlerCity,
   handlerInput,
+  parseOffice,
 } from '../../utils';
 import * as CryptoJS from 'crypto-js';
 
@@ -337,10 +338,23 @@ describe('handlerInput', () => {
     handlerInput(mockEvent, mockSetValue);
     expect(mockSetValue).toHaveBeenCalledWith('city', 'Anytown');
   });
-
-  // test('should not call setValue when e is undefined', () => {
-  //   const mockSetValue = jest.fn();
-  //   handlerInput(undefined, mockSetValue);
-  //   expect(mockSetValue).not.toHaveBeenCalled();
-  // });
 });
+
+describe('parseOffice', () => {
+  test('should return formatted office address', () => {
+    const office = {
+      address: '123 main street',
+      city: 'new york'
+    }
+    const expected = '123 Main Street - New York'
+    expect(parseOffice(office)).toEqual(expected)
+  })
+  test('should return formatted office address with hyphens in the address', () => {
+    const office = {
+      address: '999 S. Los Angeles Blvd.',
+      city: 'Los Angeles'
+    }
+    const expected = '999 S. Los Angeles Blvd. - Los Angeles'
+    expect(parseOffice(office)).toEqual(expected)
+  })
+})
