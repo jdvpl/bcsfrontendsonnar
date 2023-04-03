@@ -33,13 +33,13 @@ function Bienvenida() {
           </span>
         </Typography>
         <Typography variant='bodyM2' componentHTML='div' typeFont='Light' className="listInitial flex justify-center  text-[18px] text-primario-900">
-          <ul className='md:mt-10'>
-            <Typography variant='h4' componentHTML='h4' typeFont='Bold' className='text-left text-primario-900'>Requisitos de solicitud:</Typography>
+          <ul className='mt-6'>
+            <Typography variant='h4' componentHTML='h4' typeFont='Bold' className='lg:text-left text-center text-primario-900 lg:mt-0'>Requisitos de solicitud:</Typography>
             <li className='mt-5'>Tener entre 18 y 70 años</li>
             <li className='mt-3'>Ser asalariado o pensionado</li>
             <li className='mt-3'>Estar al día con sus pagos</li>
             <li className='mt-3'>Pagar salud y pensión</li>
-            <li className='mt-3'>Postular como único titular</li>
+            <li className='mt-3'>Solicitar individualmente</li>
             <li className='mt-3'>Solicitar sin subsidios del gobierno</li>
           </ul>
         </Typography>

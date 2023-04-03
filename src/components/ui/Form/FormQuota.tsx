@@ -11,7 +11,7 @@ import DateOfBirth from '../inputs/dateOfBirth';
 import SimulatorLoader from '../Loaders/SimulatorLoader';
 import ReactHookFormSelect from '../Select/newSelect';
 import useValidations from './useValidationsSalary';
-
+import CityStratum from '../../commons/CityStratum'
 interface FormProps {
   onSubmit: (data: iFormDataSimulation) => void;
   isLoading: boolean;
@@ -27,7 +27,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit, isLoading }) => {
     clearErrors,
     control,
     setValue,
-    register,
+    getValues,
     formState: { errors, isValid },
   } = useForm<SimulationData>({ mode: 'onChange' });
 
@@ -35,7 +35,8 @@ const FormQuota: FC<FormProps> = ({ onSubmit, isLoading }) => {
   const monthlySalary = watch('monthlySalary', 0);
   const amountQuota = watch('amountQuota', 0);
   const termFinance = watch('termFinance', 0);
-
+  const city=watch('city');
+  console.log(city)
   const getPercentage = (value: any) => {
     if (+amountQuota > 0 && +monthlySalary > 0) {
       const percentage = +amountQuota / +monthlySalary;
@@ -63,7 +64,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit, isLoading }) => {
       ) : (
         <div
           data-testid="FormQuotaTest"
-          className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto"
+          className="mx-auto "
         >
           <Alert message={errorMessageAlert} />
           <div className="w-full mt-3">
@@ -91,7 +92,10 @@ const FormQuota: FC<FormProps> = ({ onSubmit, isLoading }) => {
                   VIS
                 </MenuItem>
               </ReactHookFormSelect>
-
+              
+              <CityStratum setValue={setValue} control={control} rules={{required: true }} errorStratum={!!errors.stratum}  />
+            
+            
               <div className="flex flex-col mt-4">
                 <Controller
                   render={({ field }) => (
@@ -197,7 +201,26 @@ const FormQuota: FC<FormProps> = ({ onSubmit, isLoading }) => {
                   )}
                 />
               </div>
-
+            <div className="mt-4">
+              <ReactHookFormSelect
+              onChange={(e: any) => {
+                setValue('gender', e.target.value);
+              }}
+              placeholder="Género"
+              label="Género"
+              error={!!errors.gender}
+              control={control}
+              left="right4"
+              dataTestId="genderTest"
+              name="gender"
+              margin="normal"
+              spacing="mr-[-10px]"
+              rules={{ required: true }}
+            >
+              <MenuItem value="F">Femenino</MenuItem>
+              <MenuItem value="M">Masculino</MenuItem>
+            </ReactHookFormSelect>
+            </div>
               <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-10">
                 <Button
                   isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[375px]"

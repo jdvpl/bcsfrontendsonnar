@@ -6,14 +6,16 @@ interface propAlert {
   message: string;
   colorMessage?: string;
   bgBanner?: string;
+  className?:string
 }
 const Alert: FC<propAlert> = ({
   message,
   colorMessage = 'text-[#2F6EAE]',
   bgBanner = 'bg-[#EBF8FE]',
+  className,
 }) => (
   <div
-    className={`relative px-4 py-2 mb-5 text-xs font-normal rounded text-[#2F6EAE] ${bgBanner}`}
+    className={`relative px-4 py-2 mb-5 text-xs font-normal rounded text-[#2F6EAE] ${bgBanner} ${className}`}
     role="alert"
   >
     <span className="absolute top-[10px]  left-0 flex items-center px-3">

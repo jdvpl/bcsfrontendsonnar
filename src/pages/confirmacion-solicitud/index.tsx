@@ -192,16 +192,13 @@ function ApplicationApproval({ modalExit = false }: any) {
         <Typography variant='bodyM3' componentHTML='div' typeFont='Light' className="listInitial md:w-[440px] sm:w-[343px] w-[293px] m-auto mt-8  text-primario-900">
           <ul className="">
             <li className="mt-3 text-lg ">
-              Descargue la carta. Tenga presente que su preaprobación está sujeta a las
-              políticas del Banco.
+              Descargue la carta. Tenga presente que su preaprobación está sujeta a las políticas de crédito del Banco.
             </li>
             <li className="mt-3 text-lg ">
-              Entregue la carta para formalizar la compra o separación del inmueble al
-              vendedor.
+              Entregue la carta para formalizar la compra o separación del inmueble al vendedor.
             </li>
             <li className="mt-3 text-lg ">
-              Realice la legalización del inmueble. (Avalúo, estudio de títulos y
-              escrituración).
+              Realice la legalización del inmueble. (Avalúo, estudio de títulos y escrituración).
             </li>
             <li className="mt-3 text-lg">
               Reciba su nueva vivienda y disfrute de este sueño cumplido.

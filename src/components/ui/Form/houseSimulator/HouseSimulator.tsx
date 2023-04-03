@@ -1,6 +1,5 @@
 import { MenuItem } from '@mui/material';
-import { useRouter } from 'next/router';
-import { ClipboardEvent, useState } from 'react';
+import React,{ ClipboardEvent, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SimulationData } from '../../../../interfaces';
@@ -14,9 +13,9 @@ import Input from '../../inputs/index';
 import SimulatorLoader from '../../Loaders/SimulatorLoader';
 import ReactHookFormSelect from '../../Select/newSelect';
 import useHouseSimulator from './useHouseSimulator';
+import CityStratum from '../../../commons/CityStratum'
 
 function HouseSimulator() {
-  const router = useRouter();
   const [percentageFinance, setPercentageFinance] = useState<number>(0.7);
   const [insuranceCheck] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -85,9 +84,9 @@ function HouseSimulator() {
       {isLoading ? (
         <SimulatorLoader />
       ) : (
-        <div className="w-[343px] md:w-[517px] xl:w-[656px] m-auto flex items-center flex-col">
-          <Alert message="Recuerde que la financiación del crédito hipotecario es hasta el 70% del valor comercial de la vivienda y la cuota inicial equivalente al 30% restante debe solventarla con recursos propios." />
-          <div className="grid grid-cols-6 gap-y-4 gap-x-2 w-full mb-8">
+        <div className="mx-auto ">
+          <Alert message="Recuerde que la financiación del crédito hipotecario es hasta el 70% del valor comercial de la vivienda." className='mt-4'/>
+          <div className="w-full mb-8">
             <ReactHookFormSelect
               onChange={(e: any) => setValue('typeHouse', e.target.value)}
               placeholder="Tipo de vivienda"
@@ -97,7 +96,7 @@ function HouseSimulator() {
               left="right4"
               valueLength=""
               name="typeHouse"
-              className="col-span-6"
+              className=""
               margin="normal"
               rules={{ required: true }}
             >
@@ -108,7 +107,7 @@ function HouseSimulator() {
             <Controller
               render={({ field }) => (
                 <Input
-                  containerClassName="col-span-6"
+                  containerClassName="mt-4"
                   type="text"
                   onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                     e.preventDefault();
@@ -131,8 +130,8 @@ function HouseSimulator() {
               name="houseValue"
               control={control}
             />
-
-            <div className="col-span-6 flex gap-3">
+            <CityStratum setValue={setValue} control={control} rules={{required: true }} errorStratum={!!errors.stratum}  />
+            <div className="flex gap-3 my-4">
               <Controller
                 rules={{
                   required: true,
@@ -168,7 +167,7 @@ function HouseSimulator() {
                 %
               </div>
             </div>
-
+            
             <ReactHookFormSelect
               onChange={(e: any) => setValue('termFinance', e.target.value)}
               placeholder="Plazo"
@@ -181,7 +180,7 @@ function HouseSimulator() {
               valueLength=""
               name="termFinance"
               data-testid="termFinance"
-              className="col-span-6"
+              className="mt-4"
               margin="normal"
               rules={{ required: true }}
             >
@@ -195,7 +194,7 @@ function HouseSimulator() {
             <span className="text-[10px] col-span-6 text-complementario-100">
               Fecha de nacimiento:
             </span>
-
+            <div className="grid grid-cols-6 mb-4 mt-1 gap-x-4">
             <ReactHookFormSelect
               className="col-span-2"
               onChange={(e: any) => setValue('day', e.target.value)}
@@ -260,16 +259,39 @@ function HouseSimulator() {
                 />
               )}
             />
+            </div>
+            <ReactHookFormSelect
+              onChange={(e: any) => {
+                setValue('gender', e.target.value);
+              }}
+              placeholder="Género"
+              label="Género"
+              error={!!errors.gender}
+              control={control}
+              left="right4"
+              dataTestId="genderTest"
+              name="gender"
+              className="w-100 mt-0 col-span-6"
+              margin="normal"
+              spacing="mr-[-10px]"
+              rules={{ required: true }}
+            >
+              <MenuItem value="F">Femenino</MenuItem>
+              <MenuItem value="M">Masculino</MenuItem>
+            </ReactHookFormSelect>
           </div>
 
+          <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-10">
           <Button
             type="submit"
-            className="mb-10"
+            className=""
             data-testid="btnOpenQuotaSimulation"
             disabled={!(isValid && Object.entries(errors).length === 0)}
           >
             <span className="text-[16px]">Simular</span>
           </Button>
+          </div>
+
         </div>
       )}
     </form>
