@@ -2449,3 +2449,15 @@ svg {
 }
 
 
+.pdf-viwer::-webkit-scrollbar {
+  width: 4px;
+}
+
+.pdf-viwer::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.pdf-viwer::-webkit-scrollbar-thumb {
+  background-color: #496374;
+  border-radius: 10px;
+}

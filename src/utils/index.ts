@@ -278,10 +278,10 @@ export const parseOfficeName = (option: any) => {
   return `${option?.address
     ?.toLowerCase()
     .replace(/\b\w/g, (l: string) => l.toUpperCase())} ${option?.nameOffice
-    ?.toLowerCase()
-    .replace(/\b\w/g, (l: string) => l.toUpperCase())} - ${option?.city
-    ?.toLowerCase()
-    .replace(/\b\w/g, (l: string) => l.toUpperCase())}`;
+      ?.toLowerCase()
+      .replace(/\b\w/g, (l: string) => l.toUpperCase())} - ${option?.city
+        ?.toLowerCase()
+        .replace(/\b\w/g, (l: string) => l.toUpperCase())}`;
 };
 
 export const handlerCity = (e: any, onChange: any) => {
@@ -293,3 +293,8 @@ export const handlerCity = (e: any, onChange: any) => {
 export const handlerInput = (e: any, setValue: any) => {
   setValue(e?.target?.name, e?.target?.value);
 };
+
+
+export const parseOffice = (office:any) => {
+  return `${office?.address?.toLowerCase().replace(/\b\w/g, (l: string) =>l.toUpperCase())} - ${office?.city?.toLowerCase().replace(/\b\w/g, (l: string) => l.toUpperCase())}`
+}
