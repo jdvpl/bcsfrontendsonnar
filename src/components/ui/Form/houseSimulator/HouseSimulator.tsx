@@ -13,7 +13,7 @@ import Input from '../../inputs/index';
 import SimulatorLoader from '../../Loaders/SimulatorLoader';
 import ReactHookFormSelect from '../../Select/newSelect';
 import useHouseSimulator from './useHouseSimulator';
-import NewAutoComplete from '../../inputs/newAutoComplete';
+import CityStratum from '../../../commons/CityStratum'
 
 function HouseSimulator() {
   const [percentageFinance, setPercentageFinance] = useState<number>(0.7);
@@ -130,48 +130,7 @@ function HouseSimulator() {
               name="houseValue"
               control={control}
             />
-            <div className="grid mt-4 grid-col-1 md:grid-cols-2 gap-x-4 gap-y-4">
-                <Controller
-                  control={control}
-                  name="city"
-                  rules={{ required: true }}
-                  defaultValue={undefined}
-                  render={({ field: { onChange } }) => (
-                    <NewAutoComplete
-                      id="birthCity"
-                      defaultValue={undefined}
-                      placeholder="Ciudad de la vivienda"
-                      label="Ciudad de la vivienda"
-                      onChange={(e: any) => {
-                        if (e?.id) {
-                          return onChange({ item: e.name, option: e.id });
-                        }
-                        return onChange(undefined);
-                      }}
-                      zIndex={30}
-                    />
-                  )}
-                />
-                <ReactHookFormSelect
-                onChange={(e: any) => setValue('stratum', e.target.value)}
-                placeholder="Estrato de la vivienda"
-                label="Estrato de la vivienda"
-                defaultValue=""
-                control={control}
-                left="right4"
-                valueLength=""
-                name="stratum"
-                className="w-full md:mt-0 "
-                margin="normal"
-                rules={{ required: true }}
-              >
-                {[1, 2, 3, 4, 5, 6]?.map((y:number) => (
-                  <MenuItem value={y} key={y}>
-                    {y}
-                  </MenuItem>
-                ))}
-              </ReactHookFormSelect>
-            </div>
+            <CityStratum control={control} setValue={setValue} />
             <div className="flex gap-3 my-4">
               <Controller
                 rules={{
