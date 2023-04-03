@@ -1,20 +1,22 @@
 import { MenuItem } from '@mui/material'
 import React from 'react'
-import { Controller } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import NewAutoComplete from '../ui/inputs/newAutoComplete'
 import ReactHookFormSelect from '../ui/Select/newSelect'
+import {SimulationData} from '../../interfaces/simulator'
 
-export interface iCityStratumProps {
-  control: any;
-  setValue: any,
-}
-const CityStratum = ({ control, setValue }: iCityStratumProps) => {
+const CityStratum = ({setValue,rules,errorStratum}:any) => {
+
+  const {
+    control,
+  } = useForm();
+
   return (
     <div className="grid mt-4 grid-col-1 md:grid-cols-2 gap-x-4 gap-y-4">
       <Controller
         control={control}
         name="city"
-        rules={{ required: true }}
+        rules={rules}
         defaultValue={undefined}
         render={({ field: { onChange } }) => (
           <NewAutoComplete
@@ -24,6 +26,7 @@ const CityStratum = ({ control, setValue }: iCityStratumProps) => {
             label="Ciudad de la vivienda"
             onChange={(e: any) => {
               if (e?.id) {
+                setValue('city',{ item: e.name, option: e.id })
                 return onChange({ item: e.name, option: e.id });
               }
               return onChange(undefined);
@@ -41,9 +44,11 @@ const CityStratum = ({ control, setValue }: iCityStratumProps) => {
         left="right4"
         valueLength=""
         name="stratum"
+        id="stratum"
         className="w-full md:mt-0 "
         margin="normal"
-        rules={{ required: true }}
+        rules={rules}
+        error={errorStratum}
       >
         {[1, 2, 3, 4, 5, 6]?.map((y: number) => (
           <MenuItem value={y} key={y}>

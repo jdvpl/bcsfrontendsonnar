@@ -2,9 +2,7 @@ import { useEffect } from 'react';
 
 import { iFormDataSimulation, SimulationData } from '../../../../interfaces';
 import {
-  calculateAge,
   handleClearErrors,
-  isValidDate,
   validateAge,
   validateFinanceValue,
   validateTypeHouse,

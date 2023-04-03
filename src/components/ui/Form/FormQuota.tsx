@@ -12,6 +12,7 @@ import SimulatorLoader from '../Loaders/SimulatorLoader';
 import ReactHookFormSelect from '../Select/newSelect';
 import useValidations from './useValidationsSalary';
 import CityStratum from '../../commons/CityStratum'
+import NewAutoComplete from '../inputs/newAutoComplete';
 interface FormProps {
   onSubmit: (data: iFormDataSimulation) => void;
   isLoading: boolean;
@@ -27,7 +28,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit, isLoading }) => {
     clearErrors,
     control,
     setValue,
-    register,
+    getValues,
     formState: { errors, isValid },
   } = useForm<SimulationData>({ mode: 'onChange' });
 
@@ -35,7 +36,8 @@ const FormQuota: FC<FormProps> = ({ onSubmit, isLoading }) => {
   const monthlySalary = watch('monthlySalary', 0);
   const amountQuota = watch('amountQuota', 0);
   const termFinance = watch('termFinance', 0);
-
+  const city=watch('city');
+  console.log(city)
   const getPercentage = (value: any) => {
     if (+amountQuota > 0 && +monthlySalary > 0) {
       const percentage = +amountQuota / +monthlySalary;
@@ -92,8 +94,53 @@ const FormQuota: FC<FormProps> = ({ onSubmit, isLoading }) => {
                 </MenuItem>
               </ReactHookFormSelect>
               
-              <CityStratum control={control} setValue={setValue} />
+              <div className="grid mt-4 grid-col-1 md:grid-cols-2 gap-x-4 gap-y-4">
+      <Controller
+        control={control}
+        name="city"
+        rules={{required:true}}
+        defaultValue={undefined}
+        render={({ field: { onChange } }) => (
+          <NewAutoComplete
+            id="birthCity"
+            defaultValue={undefined}
+            placeholder="Ciudad de la vivienda"
+            label="Ciudad de la vivienda"
+            onChange={(e: any) => {
+              if (e?.id) {
+                setValue('city',{ item: e.name, option: e.id })
+                return onChange({ item: e.name, option: e.id });
+              }
+              return onChange(undefined);
+            }}
+            zIndex={30}
+          />
+        )}
+      />
+      <ReactHookFormSelect
+        onChange={(e: any) => setValue('stratum', e.target.value)}
+        placeholder="Estrato de la vivienda"
+        label="Estrato de la vivienda"
+        defaultValue=""
+        control={control}
+        left="right4"
+        valueLength=""
+        name="stratum"
+        id="stratum"
+        className="w-full md:mt-0 "
+        margin="normal"
+        rules={{required:true}}
+        error={!!errors.stratum}
+      >
+        {[1, 2, 3, 4, 5, 6]?.map((y: number) => (
+          <MenuItem value={y} key={y}>
+            {y}
+          </MenuItem>
+        ))}
+      </ReactHookFormSelect>
+    </div>
             
+
               <div className="flex flex-col mt-4">
                 <Controller
                   render={({ field }) => (
@@ -199,9 +246,7 @@ const FormQuota: FC<FormProps> = ({ onSubmit, isLoading }) => {
                   )}
                 />
               </div>
-                      <div className="mt-4">
-
-                      
+            <div className="mt-4">
               <ReactHookFormSelect
               onChange={(e: any) => {
                 setValue('gender', e.target.value);
