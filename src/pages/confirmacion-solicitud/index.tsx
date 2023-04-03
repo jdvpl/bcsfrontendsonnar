@@ -21,6 +21,7 @@ import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
 function ApplicationApproval({ modalExit = false }: any) {
   const { setCurrentRouting } = useProtectedRoutes();
   const [dataInfo] = useSessionStorage(SesionStorageKeys.basicDataUser.key, {});
+  const [dataBasicData] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
   const router = useRouter();
   const [showModalExit, setshowModalExit] = useState(modalExit);
@@ -128,27 +129,39 @@ function ApplicationApproval({ modalExit = false }: any) {
             typeFontProps={{ ...typeFontsPropsNormal, ...{ variantTypographyTitle: 'caption1', typeFontTypograhyTitle: 'Light' } }}
           />
         </div>
-        {/* {valuesMortgage?.choseOffice ? ( */}
-        <div className="mt-3">
-          <Card
-            className="xs:w-[290px] sm:w-[343px] md:w-[448px]  min-h-[76px]  bg-[#F3F4F6] pt-[12px] pb-[12px] pl-[16px] pr-[16px] rounded-[8px] mb-[12px] m-auto"
-            title="Continuación proceso"
-            urlsvgendicon=""
-            value={`${valuesMortgage?.office?.address
-              ?.toLowerCase()
-              .replace(/\b\w/g, (l: string) =>
-                l.toUpperCase()
-              )} - ${valuesMortgage?.office?.city
+        {valuesMortgage?.choseOffice ? (
+          <div className="mt-3">
+            <Card
+              className="xs:w-[290px] sm:w-[343px] md:w-[448px]  min-h-[76px]  bg-[#F3F4F6] pt-[12px] pb-[12px] pl-[16px] pr-[16px] rounded-[8px] mb-[12px] m-auto"
+              title="Continuación proceso"
+              urlsvgendicon=""
+              value={`$ ${valuesMortgage?.office?.address
                 ?.toLowerCase()
-                .replace(/\b\w/g, (l: string) => l.toUpperCase())} `}
-            text=" pl-[18px] "
-            urlsvg={`${basePath}/images/location.svg`}
-            classtitle="h-[14px]"
-            tooltiptext=""
-            typeFontProps={{ ...typeFontsPropsNormal, ...{ variantTypographyTitle: 'caption1', typeFontTypograhyTitle: 'Light' } }}
-          />
-        </div>
-        {/* ) : null} */}
+                .replace(/\b\w/g, (l: string) =>
+                  l.toUpperCase()
+                )} - ${valuesMortgage?.office?.city
+                  ?.toLowerCase()
+                  .replace(/\b\w/g, (l: string) => l.toUpperCase())} `}
+              text=" pl-[18px] "
+              urlsvg={`${basePath}/images/location.svg`}
+              classtitle="h-[14px]"
+              tooltiptext=""
+              typeFontProps={{ ...typeFontsPropsNormal, ...{ variantTypographyTitle: 'caption1', typeFontTypograhyTitle: 'Light' } }}
+            />
+          </div>) :(
+          <div className="mt-3">
+            <Card
+              className="xs:w-[290px] sm:w-[343px] md:w-[448px]  min-h-[76px]  bg-[#F3F4F6] pt-[12px] pb-[12px] pl-[16px] pr-[16px] rounded-[8px] mb-[12px] m-auto"
+              title="Continuación proceso"
+              urlsvgendicon=""
+              value={dataBasicData?.nameAdviser?.split('/')[0]}
+              text=" pl-[18px] "
+              urlsvg={`${basePath}/images/location.svg`}
+              classtitle="h-[14px]"
+              tooltiptext=""
+              typeFontProps={{ ...typeFontsPropsNormal, ...{ variantTypographyTitle: 'caption1', typeFontTypograhyTitle: 'Light' } }}
+            />
+          </div>)} 
 
         <div className="mt-8 flex justify-center">
           <Button
