@@ -19,7 +19,6 @@ export interface FormData {
   document_number: string;
   document_type: string;
   policy_and_terms: boolean;
-  commercial_terms: boolean;
 }
 export interface HowItemProps {
   children: string | JSX.Element;
@@ -236,62 +235,6 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
             </Typography>
           </Typography>
         </div>
-        <div className="flex items-start mt-4 lg:w-[448px] m-auto">
-          <input
-            {...register('commercial_terms')}
-            className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"
-            checked={commercial}
-            aria-checked={commercial}
-            tabIndex={0}
-            type="checkbox"
-            id="chk-terminos"
-            data-testid="chkterminos"
-            onChange={handleCommercial}
-          />
-          <label
-            htmlFor="chk-terminos"
-            className="inline-block font-normal text-primario-900 p-0 m-0 pl-[10px] font-montserratRegular cursor-pointer"
-            role="tabpanel"
-            tabIndex={0}
-            itemScope
-            itemType="https://schema.org/Service"
-          >
-            Autoriza que su información sea utilizada con{' '}
-            <span
-              className=" text-primario-20 cursor-pointer"
-              id="modal-commercial"
-              role="link"
-              aria-hidden="true"
-              aria-expanded="true"
-              data-testid="commercialTermsTest"
-              tabIndex={0}
-              onClick={() => {
-                setShowModal(true);
-                setComponentModal({
-                  children: <CommercialAuthorization />,
-                  title: <span className='font-poppinsSemiBold'>Autoriza que su información sea utilizada con fines comerciales</span>,
-                  id: 'modal-commercial',
-                  heightModal: 'lg:h-[50%]'
-                });
-              }}
-              onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
-                if (e.key === 'Enter') {
-                  setShowModal(true);
-                  setComponentModal({
-                    children: <CommercialAuthorization />,
-                    title: <span className='font-poppinsSemiBold'>Autoriza que su información sea utilizada con fines comerciales</span>,
-                    id: 'modal-commercial',
-                    heightModal: 'lg:h-[50%]'
-                  });
-                }
-              }}
-              itemProp="termsOfService"
-            >
-              fines comerciales
-            </span>
-          </label>
-        </div>
-
         {showModal && (
           <Modal
             showModal={showModal}

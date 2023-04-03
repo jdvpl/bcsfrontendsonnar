@@ -70,8 +70,6 @@ export const onSubmitStartProcess = async (
   const labels = {
     policy_and_terms_label:
       'Acepta tratamiento de datos personales y consulta en centrales de riesgo',
-    commercial_terms_label:
-      'Autoriza que su información sea utilizada con fines comerciales',
   };
   const data = { ...formData, ...labels };
   const response = await sendAuthorization(data);

@@ -1,13 +1,17 @@
 import React from 'react';
 import { basePath } from '../../../next.config';
+import { pdfjs, Document, Page } from 'react-pdf';
+import { FileLoader } from '../ui/Loaders/FileLoader';
+pdfjs.GlobalWorkerOptions.workerSrc = "../../vivienda/files/pdf-worker.js";
 
 function Politicas() {
   return (
-    <div data-testid="terminos" className="relative overflow-hidden h-100vh ">
-      <iframe
-        className="w-full lg:h-[750px] md:h-[500px] h-[400px] pdf-iframe absolute -top-[60px]"
-        src={`${basePath}/files/ATDP.pdf`}
-      ></iframe>
+    <div data-testid="terminos" className="w-full relative h-[65vh] overflow-x-hidden overflow-y-auto pdf-viwer">
+      <Document renderMode="svg" file={`${basePath}/files/ATDP.pdf`} loading={<FileLoader />} >
+        <Page pageNumber={1}  renderAnnotationLayer={false} renderTextLayer={false} />
+        <Page pageNumber={2}  renderAnnotationLayer={false}  renderTextLayer={false} />
+        <Page pageNumber={3}  renderAnnotationLayer={false}  renderTextLayer={false} />
+      </Document>
     </div>
   );
 }
