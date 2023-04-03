@@ -2,7 +2,7 @@ import React from 'react';
 import { basePath } from '../../../next.config';
 import { pdfjs, Document, Page } from 'react-pdf';
 import { FileLoader } from '../ui/Loaders/FileLoader';
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `../../vivienda/files/pdf-worker.js`;
 
 function Politicas() {
   return (
