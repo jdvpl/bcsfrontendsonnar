@@ -139,7 +139,7 @@ export default function Home() {
                   color="text-complementario-100 cursor-default"
                   size="text-[2rem]"
                   className="sm:mb-3 mb-3 md:mb-0  xxl:border-none border-complementario-100 cursor-default"
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-full sm:w-full  mb-3 md:text-[15px] lg:text-[16px] xs:w-full lg:w-[54%] xxl:w-[57%] cursor-default md:w-[200px]"
+                  classNamesDescription="ml-[5px] md:ml-1 lg:w-[120px] md:w-full sm:w-full  mb-3 md:text-[15px] lg:text-[16px] xs:w-full lg:w-[54%] xxl:w-[57%] cursor-default md:w-[200px]"
                   title="Pagar salud y pensión"
                 />
               </div>
@@ -154,7 +154,7 @@ export default function Home() {
                   color="text-complementario-100 cursor-default"
                   size="text-[2rem]"
                   className="sm:mb-3 xs:mb-3 md:mb-0  xxl:border-none border-complementario-100"
-                  classNamesDescription="ml-[5px] lg:w-[120px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[135px] lg:w-[54%] md:w-full xxl:w-[60%] cursor-default md:w-[280px] md:ml-5 ml-0 lg:ml-2"
+                  classNamesDescription="ml-[5px] lg:w-[120px] sm:w-full font-monserratLight mb-3 md:text-[15px] lg:text-[16px] xs:w-[135px] lg:w-[54%] md:w-full xxl:w-[60%] cursor-default md:w-[280px] md:ml-1  lg:ml-2"
                   title="Ser empleado o pensionado"
                 />
               </div>
@@ -178,7 +178,7 @@ export default function Home() {
                   color="text-complementario-100"
                   size="text-[2rem]"
                   className="sm:mb-3 mb-3 md:mb-0  xxl:border-none  border-complementario-100"
-                  classNamesDescription="ml-[20px] lg:w-[120px] md:w-[120px] sm:w-full   mb-3 md:text-[15px] lg:text-[16px] xs:w-[160px] lg:w-[60%] md:w-[240px] xxl:w-[65%]"
+                  classNamesDescription="ml-[5px] md:ml-6 lg:ml-0 lg:w-[120px] md:w-[120px] sm:w-full   mb-3 md:text-[15px] lg:text-[16px] xs:w-[160px] lg:w-[60%] md:w-[240px] xxl:w-[65%]"
                   title="Tener el celular a la mano"
                 />
               </div>
@@ -237,7 +237,7 @@ export default function Home() {
               <Step titleNumber="1" description={`Ingrese a “Solicitar Crédito”`} />
               <Step titleNumber="2" description={`Valide su identidad`} />
               <Step titleNumber="3" description={`Diligencie el formulario`} />
-              <Step titleNumber="4" description={`Obtenga la preaprobación`} />
+              <Step titleNumber="4" description={`Obtenga su preaprobado`} />
             </ul>
           </div>
         </div>

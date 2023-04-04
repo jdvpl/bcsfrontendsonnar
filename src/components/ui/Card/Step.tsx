@@ -9,9 +9,9 @@ const Step: FC<stepProps> = ({ titleNumber, description }) => {
   return (
     <li className="flex mt-6 gap-[20px] ">
       <Typography
-        variant="bodyM1"
-        typeFont="Regular"
-        componentHTML='p'
+        variant="h2"
+        typeFont="Bold"
+        componentHTML='h2'
         className=" text-primario-300 text-center mt-5 text-[22px]"
       >
         {titleNumber}

@@ -40,7 +40,7 @@ function Bienvenida() {
             <li className='mt-3'>Estar al día con sus pagos</li>
             <li className='mt-3'>Pagar salud y pensión</li>
             <li className='mt-3'>Solicitar individualmente</li>
-            <li className='mt-3'>Solicitar sin subsidios del gobierno</li>
+            <li className='mt-3'>No aplican subsidios del gobierno</li>
           </ul>
         </Typography>
         <div className="flex justify-center mt-8 mb-11 ">
