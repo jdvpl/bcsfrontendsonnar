@@ -13,6 +13,7 @@ export const axiosErrorMiddleware = (error: any) => {
     'VQ-01': routes.startProccess,
     'VQ-02': routes.validacionErrorPreguntas,
     'VQ-03': routes.validacionBiometrica,
+    'VQ-04': routes.validacionBiometrica,
     'PF-00': routes.servicError,
     'PF-03': routes.servicError,
     OTP_02: routes.validacionErrorIntentos,
@@ -20,6 +21,7 @@ export const axiosErrorMiddleware = (error: any) => {
     OTP_07: routes.validacionErrorIntentos,
     OTP_08: routes.servicError,
     OTP_09: routes.servicError,
+    AEAC014: routes.errorCreditBankApplication
   };
 
   if (error.response) {
