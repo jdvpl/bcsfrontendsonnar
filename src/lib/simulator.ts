@@ -1,4 +1,4 @@
-export const SMMLV = 1000000;
+export const SMMLV = 1300606;
 export const minHouseValueVis = 50 * SMMLV;
 export const maxHouseValueVis = 150 * SMMLV;
 export const maxHouseValueNoVis = 1400 * SMMLV;

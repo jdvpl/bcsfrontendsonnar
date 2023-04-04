@@ -38,7 +38,7 @@ export default function useMoneyLaundering({ setCurrentRouting }: any) {
           router.push(routes.finalcialData);
           break;
         case 'RESTRICTED':
-          router.push(routes.errorValidacion);
+          router.push(routes.errorCreditBankApplication);
           break;
         default:
           router.push(routes.errorValidacion);
