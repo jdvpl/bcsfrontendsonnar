@@ -15,19 +15,19 @@ function Simulator() {
   return (
     <div data-testid="simuladorTestC">
     <Header/>
-      <div className="lg:w-[760px] md:w-[584px] sm:w-[343px] w-[290px] m-auto">
+      <div className="lg:w-[684px] md:w-[584px] sm:w-[343px] w-[290px] m-auto">
         <Typography componentHTML='h3' typeFont='Bold' variant='h2' className="mt-8 text-center  md:text-[28px] text-[20px]">
           Simulador del crédito
         </Typography>
         <div>
           <Typography variant='bodyM3' componentHTML='p' className="text-center mt-2 pmx-3 text-primario-900 ">
           Realice los cálculos necesarios y conozca los valores aproximados 
-            <span className='inline lg:block'>
+            <span className='inline lg:block'> {" "}
             del crédito de vivienda con amortización en pesos.
             </span>
           </Typography>
         </div>
-        <div className="flex gap-1 md:mb-6  mt-8 lg:mt-[52px] w-[290px] sm:w-[343px] md:w-[584px] lg:w-[760px] mx-auto  ">
+        <div className="flex gap-1 md:mb-6  mt-8 lg:mt-[52px] w-[290px] sm:w-[343px] md:w-[584px] lg:w-[684px] mx-auto  ">
           <button
             data-testid="houseTestBtn"
             type="button"
