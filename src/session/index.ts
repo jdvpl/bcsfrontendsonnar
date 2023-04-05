@@ -64,5 +64,9 @@ export const SesionStorageKeys = {
   orderNumber: {
     key: 'bcsm::p',
     description: 'this key saves the data of the order number'
-  }
+  },
+  marketingCampaing: {
+    key: 'bcsm::q',
+    description: 'this key saves the query of the maketing campaing'
+  },
 };

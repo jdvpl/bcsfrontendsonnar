@@ -247,7 +247,7 @@ function PersonalDataBasic({ userInfo }: any) {
                   inputMode="text"
                   autoComplete="off"
                   placeholder="Número de celular"
-                  label={userInfo.isClient?'': "Número de celular"}
+                  label={"Número de celular"}
                   onChange={(e: any) => setValue('phone', e.target.value)}
                 />
               )}
@@ -277,7 +277,7 @@ function PersonalDataBasic({ userInfo }: any) {
                   inputMode="text"
                   placeholder="Correo electrónico"
                   autoComplete="off"
-                  label= {userInfo.isClient?'':"Correo electrónico"}
+                  label= {"Correo electrónico"}
                   onChange={(e: any) => setValue('email', e.target.value)}
                 />
               )}
