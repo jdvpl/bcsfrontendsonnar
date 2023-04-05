@@ -306,7 +306,6 @@ export function CreditDataForm() {
                   defaultValue={undefined}
                   render={({ field: { onChange } }) => (
                     <NewAutoComplete
-                      id="currentCity"
                       defaultValue={undefined}
                       placeholder="Oficina de preferencia"
                       label="Sucursal"
@@ -353,27 +352,6 @@ export function CreditDataForm() {
           </div>
         </div>
       </div>
-
-      {/* <button
-        className="flex items-center gap-3 w-full cursor-pointer"
-        onClick={() => setInsuranceCheck(!insuranceCheck)}
-      >
-        <input
-          type="checkbox"
-          tabIndex={0}
-          checked={insuranceCheck}
-          id="insuranceCheck"
-          className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"
-          inputMode="numeric"
-          onChange={(e) => setInsuranceCheck(e.target.checked)}
-        />
-
-        <span className="text-[12px] font-montserratRegular leading-[14px] text-primario-900 text-left cursor-pointer">
-          Deseo incluir en la simulación del crédito el valor de los seguros
-          correspondientes.
-        </span>
-      </button> */}
-
       <Button
         isLanding="w-full md:w-[375px] mx-auto mt-[32px]"
         onClick={onSubmit}

@@ -3,14 +3,14 @@ import React from 'react';
 import Image from 'next/image';
 import { basePath } from '../../../next.config';
 import Button from '../../components/ui/Button';
-import  Heading  from '../../components/form/heading';
+import Heading from '../../components/form/heading';
 import Stepper from '../../components/ui/Stepper/index';
 import { childrenProps } from '../../interfaces';
 import useDeviceDetect from '../../hooks/useDeviceDetect';
-import  ContainerButtonForm  from '../../components/form/containerButtonForm';
+import ContainerButtonForm from '../../components/form/containerButtonForm';
 import { urlAndUtms } from '../../utils/RouterUtmsUrl/index';
-import Layout  from '../../components/layouts/layout';
-import  NavTitle  from '../../components/commons/NavTitle';
+import Layout from '../../components/layouts/layout';
+import NavTitle from '../../components/commons/NavTitle';
 
 const CardImage: React.FC<childrenProps> = ({ children }) => (
   <div className="flex mr-6 minw-64">{children}</div>
@@ -32,11 +32,7 @@ const ValidationMessage: React.FC = () => {
           </Heading>
           <div className="flex flex-col items-center pb-28 pt-2">
             <div className="w-100 md:w-[343px]">
-              <p
-                tabIndex={0}
-                role="paragraph"
-                className="font-montserratRegular text-center text-lg leading-5 text-primario-900 "
-              >
+              <p className="font-montserratRegular text-center text-lg leading-5 text-primario-900 ">
                 Tenga en cuenta estos consejos
               </p>
               <div className="flex flex-col mt-[52px] md:mt-[52px] space-y-[24px]">
@@ -53,11 +49,7 @@ const ValidationMessage: React.FC = () => {
                         height="64"
                       />
                     </CardImage>
-                    <p
-                      tabIndex={0}
-                      role="paragraph"
-                      className=" text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
-                    >
+                    <p className=" text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular">
                       Tome la foto en un lugar iluminado, recomendamos luz natural.
                     </p>
                   </div>
@@ -93,11 +85,7 @@ const ValidationMessage: React.FC = () => {
                         height="64"
                       />
                     </CardImage>
-                    <p
-                      tabIndex={0}
-                      role="paragraph"
-                      className="text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
-                    >
+                    <p className="text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular">
                       Tome la foto con el celular en posición vertical.
                     </p>
                   </div>
@@ -133,11 +121,7 @@ const ValidationMessage: React.FC = () => {
                         height="64"
                       />
                     </CardImage>
-                    <p
-                      tabIndex={0}
-                      role="paragraph"
-                      className=" text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
-                    >
+                    <p className=" text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular">
                       No usar gafas ni tapabocas.
                     </p>
                   </div>
@@ -172,11 +156,7 @@ const ValidationMessage: React.FC = () => {
                       height="64"
                     />
                   </CardImage>
-                  <p
-                    tabIndex={0}
-                    role="paragraph"
-                    className=" text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular"
-                  >
+                  <p className=" text-primario-900 font-normal text-base leading-[18px] pr-6 font-montserratRegular">
                     No usar gorras ni sombreros.
                   </p>
                 </div>

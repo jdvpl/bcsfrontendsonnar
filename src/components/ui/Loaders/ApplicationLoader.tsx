@@ -16,11 +16,11 @@ export const ApplicationLoader = () => {
       <Typography
         variant="bodyM3"
         id="message-loader"
-        typeFont='Bold'
-        componentHTML='p'
+        typeFont="Bold"
+        componentHTML="p"
         className="tracking-wide	text-center leading-5 xl:w-[366px] md:w-[273px] sm:w-[251px] xs:w-[256px]"
       >
-        Tener vivienda propia pronto <br /> será una realidad
+        Tener vivienda propia pronto será una realidad
       </Typography>
     </div>
   );

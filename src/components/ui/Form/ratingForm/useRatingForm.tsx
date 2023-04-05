@@ -29,7 +29,7 @@ export default function useRatingForm() {
   };
 
   const sendQualify = () => {
-    setQualify(true)
+    setQualify(true);
     invokeEvent('qualify_offer', 'action_funnel');
   };
   const renderForm = () => {
@@ -38,7 +38,12 @@ export default function useRatingForm() {
         return (
           <>
             <div className="w-full sm:w-[343px] md:w-[348px]">
-              <Typography variant='h4' typeFont='Bold' componentHTML='h4' className=" text-center md:text-[28px] md:leading-[30px] ">
+              <Typography
+                variant="h4"
+                typeFont="Bold"
+                componentHTML="h4"
+                className=" text-center md:text-[28px] md:leading-[30px] "
+              >
                 ¡Gracias por calificar su experiencia!
               </Typography>
             </div>
@@ -52,7 +57,12 @@ export default function useRatingForm() {
         return (
           <>
             <div className="w-[368px] lg:w-[400px] mt-[20px] mb-[16px]">
-              <Typography variant='h4' componentHTML='h4' typeFont='Bold' className=" text-center md:text-[28px] md:leading-[30px]">
+              <Typography
+                variant="h4"
+                componentHTML="h4"
+                typeFont="Bold"
+                className=" text-center md:text-[28px] md:leading-[30px]"
+              >
                 ¿Cómo califica su experiencia solicitando su crédito de vivienda?
               </Typography>
             </div>
@@ -60,17 +70,20 @@ export default function useRatingForm() {
               <Qualify rate={rate} changeRate={changeRate} />
               <div className="w-full flex flex-col min-h-[400px]">
                 <Typography
-                  variant='bodyM2'
-                  componentHTML='p'
-                  typeFont='Bold'
-                  tabIndex={0}
-                  role="paragraph"
+                  variant="bodyM2"
+                  componentHTML="p"
+                  typeFont="Bold"
                   className="mt-3 mb-[12px] text-lg leading-5 text-center"
                 >
                   {PARSE_SCORE[rate]?.qualify}
                 </Typography>
                 <div className="w-full mb-[24px]">
-                  <Typography variant='bodyM3' componentHTML='p' typeFont='Bold' tabIndex={0} role="paragraph" className="text-left">
+                  <Typography
+                    variant="bodyM3"
+                    componentHTML="p"
+                    typeFont="Bold"
+                    className="text-left"
+                  >
                     {PARSE_SCORE[rate]?.subtitle}
                   </Typography>
                 </div>

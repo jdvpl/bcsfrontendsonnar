@@ -77,5 +77,5 @@ it('redirect to error validation when does not viable ', async () => {
   await act(async () => {
     await result?.current?.onSubmit();
   });
-  expect(customRouter.push).toHaveBeenCalledWith(routes.errorValidacion);
+  expect(customRouter.push).toHaveBeenCalledWith(routes.errorCreditBankApplication);
 });

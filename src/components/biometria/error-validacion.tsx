@@ -29,25 +29,25 @@ const ValidationMessageBiometry: React.FC = () => (
       <ErrorImageDesktop />
     </div>
     <Typography
-      variant='h2'
-      typeFont='Bold'
-      componentHTML='h2'
+      variant="h2"
+      typeFont="Bold"
+      componentHTML="h2"
       tabIndex={0}
-      role="paragraph"
+      role="tabpanel"
       className="text-center mt-[52px] text-primario-900"
       itemProp="error"
     >
       Validación no exitosa
     </Typography>
     <Typography
-      variant='bodyM2'
-      componentHTML='p'
+      variant="bodyM2"
+      componentHTML="p"
       tabIndex={0}
-      role="paragraph"
+      role="tabpanel"
       className="text-center text-[18px] text-primario-900 lg:-mx-[8px] mt-[6px]"
       itemProp="error"
     >
-      Por favor intente nuevamente <br className="block md:hidden" /> desde su celular.
+      Por favor intente nuevamente desde su celular.
     </Typography>
     <div
       tabIndex={0}
@@ -58,10 +58,10 @@ const ValidationMessageBiometry: React.FC = () => (
       <QRPage />
     </div>
     <Typography
-      variant='bodyM2'
-      componentHTML='p'
+      variant="bodyM2"
+      componentHTML="p"
       tabIndex={0}
-      role="paragraph"
+      role="tabpanel"
       className="text-center text-[18px] leading-[20px]  text-primario-900 mb-[34px]"
       itemProp="actionStatus"
     >

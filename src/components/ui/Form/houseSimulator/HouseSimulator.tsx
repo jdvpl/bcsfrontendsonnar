@@ -288,7 +288,7 @@ function HouseSimulator() {
             data-testid="btnOpenQuotaSimulation"
             disabled={!(isValid && Object.entries(errors).length === 0)}
           >
-            <span className="text-[16px]">Simular</span>
+            Simular
           </Button>
           </div>
 

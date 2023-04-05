@@ -23,14 +23,16 @@ function MoneyLaunderingPage() {
           title="Datos personales"
         />
       </div>
-      <Typography
-        variant="h2"
-        typeFont='Bold'
-        componentHTML='h2'
-        className="text-center md:mb-[42px] sm:mb-[33px] xs:mb-[36px] mb-[36px]  xs:text-[20px]  text-primario-900"
-      >
-        Confirme la siguiente información
-      </Typography>
+      <div role="tabpanel" tabIndex={0} className="text-center mb-[42px]">
+        <Typography
+          variant="h2"
+          typeFont="Bold"
+          className="text-center md:mb-[42px] sm:mb-[33px] xs:mb-[36px] mb-[36px]  xs:text-[20px]  text-primario-900"
+          componentHTML={'symbol'}
+        >
+          Confirme la siguiente información
+        </Typography>
+      </div>
       <div className="w-[288px] xs:w-[288px] sm:w-[343px] md:w-[448px] mx-auto">
         <MoneyLaunderingForm />
       </div>

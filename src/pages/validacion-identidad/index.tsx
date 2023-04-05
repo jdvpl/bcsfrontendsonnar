@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Stepper from '../../components/ui/Stepper';
@@ -7,7 +7,6 @@ import { Question, ValidationForm } from '../../components/ui/Form/ValidationFor
 import { ValidationFormNumber } from '../../components/ui/Form/validationFormNumber';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import Layout from '../../components/layouts/layout';
-import AnimationComponent from '../../components/commons/Animation';
 import NavTitle from '../../components/commons/NavTitle';
 import { SesionStorageKeys } from '../../session';
 import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
@@ -37,7 +36,6 @@ const Index: React.FC = () => {
       </Head>
       <InactivityWarper>
         <Layout navTitle={<NavTitle noBack />}>
-          {/* {loading && <AnimationComponent show="" valid={loading} loaded={false} />} */}
           {loading && <SimulatorLoader />}
           {!dataValid && (
             <Stepper
@@ -59,14 +57,14 @@ const Index: React.FC = () => {
                     setDataNumber,
                     dataQuestions?.processId,
                     setCurrentRouting,
-                    setBasicData, setLoading
+                    setBasicData,
+                    setLoading
                   );
                   setProgress(50);
                 }}
               />
             </AnimatePresence>
           )}
-
           <AnimatePresence>
             {dataNumber && (
               <ValidationFormNumber

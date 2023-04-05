@@ -2,7 +2,7 @@ import '@testing-library/jest-dom';
 import { fireEvent, render, screen } from '@testing-library/react';
 import React from 'react';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
-import IdentityError from '../../pages/validacion/error-validacionIdentidad';
+import Error from '../../pages/validacion/error-validacion-identidad';
 import ErrorBlock from '../../pages/validacion/error-bloqueo';
 import ErrorAttempts from '../../pages/validacion/error-numero-intentos';
 import ErrorValidacion from '../../pages/validacion/error-validacion';
@@ -12,6 +12,7 @@ import Rechazo from '../../pages/validacion/rechazo-solicitud';
 import { createMockRouter } from '../utils/createMockRouter';
 import { routes } from '../../routes';
 import SiteDown from '../../pages/validacion/error-servicio';
+import IdentityError from '../../pages/validacion/error-validacionIdentidad';
 
 describe('Error', () => {
   test('should render "Error" successfully', () => {
@@ -23,7 +24,7 @@ describe('Error', () => {
         <IdentityError />
       </RouterContext.Provider>
     );
-    const imageError = screen.getByRole('imageError');
+    const imageError = screen.getByTestId('imageError');
     expect(imageError.getAttribute('src')).toBe('/vivienda/images/autenticacion1.svg');
   });
   test('should render "Error" successfully', () => {
@@ -35,7 +36,7 @@ describe('Error', () => {
         <SiteDown />
       </RouterContext.Provider>
     );
-    const imageError = screen.getByRole('imageError');
+    const imageError = screen.getByTestId('imageError');
     expect(imageError.getAttribute('src')).toBe('/vivienda/images/siteDown.svg');
   });
   test('should render "ErrorBlock" successfully', () => {
@@ -45,7 +46,7 @@ describe('Error', () => {
         <ErrorBlock />
       </RouterContext.Provider>
     );
-    const imageError = screen.getByRole('imageError');
+    const imageError = screen.getByTestId('imageError');
     expect(imageError.getAttribute('src')).toBe('/vivienda/images/autenticacion1.svg');
   });
   test('should render "ErrorBlock" successfully', () => {
@@ -67,7 +68,7 @@ describe('Error', () => {
         <ErrorAttempts />
       </RouterContext.Provider>
     );
-    const imageError = screen.getByRole('imageError');
+    const imageError = screen.getByTestId('imageError');
     expect(imageError.getAttribute('src')).toBe('/vivienda/images/autenticacion3.svg');
   });
 
@@ -78,7 +79,7 @@ describe('Error', () => {
         <ErrorValidacion />
       </RouterContext.Provider>
     );
-    const imageError = screen.getByRole('imageError');
+    const imageError = screen.getByTestId('imageError');
     expect(imageError.getAttribute('src')).toBe('/vivienda/images/autenticacion1.svg');
   });
 
@@ -91,7 +92,7 @@ describe('Error', () => {
         <Preguntas />
       </RouterContext.Provider>
     );
-    const imageError = screen.getByRole('imageError');
+    const imageError = screen.getByTestId('imageError');
     expect(imageError.getAttribute('src')).toBe('/vivienda/images/preautenticacion2.svg');
   });
 
@@ -102,7 +103,7 @@ describe('Error', () => {
         <Rechazo />
       </RouterContext.Provider>
     );
-    const imageError = screen.getByRole('imageError');
+    const imageError = screen.getByTestId('imageError');
     expect(imageError.getAttribute('src')).toBe('/vivienda/images/rechazo.svg');
   });
 

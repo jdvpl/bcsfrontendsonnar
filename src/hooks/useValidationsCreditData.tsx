@@ -191,7 +191,7 @@ export default function useValidations(
       setCurrentRouting(routes.ResumenSolicitud);
       router.push(routes.ResumenSolicitud);
     } else {
-      router.push(routes.errorValidacion);
+      router.push(routes.errorCreditBankApplication);
     }
   };
 

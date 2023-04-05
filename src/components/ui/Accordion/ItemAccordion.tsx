@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { KeyboardEvent } from 'react';
 import { childrenProps } from '../../../interfaces';
 import Icons from '../icons';
 import Typography from '../Typography';
@@ -34,7 +34,7 @@ const ItemAccordion: React.FC<Props & childrenProps> = ({
       <div
         id={`question-${id}`}
         onClick={handleSelected}
-        onKeyDownCapture={(e) => {
+        onKeyDownCapture={(e: KeyboardEvent<HTMLInputElement>) => {
           if (e.key === 'Enter') {
             handleSelected();
           }
