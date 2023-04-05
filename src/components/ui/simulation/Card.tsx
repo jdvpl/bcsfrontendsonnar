@@ -44,7 +44,7 @@ export const Card: React.FC<CardProps> = ({
   text,
   value,
   urlsvg,
-  altsvg,
+  altsvg="",
   title,
   classtitle,
   subvalue,
