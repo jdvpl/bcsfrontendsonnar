@@ -4,6 +4,7 @@ import { SesionStorageKeys } from "../session";
 
 const useCampaignDetector=()=>{
   const router = useRouter();
+  console.log(router.query)
   // const [campaing,setCampaign]=useSessionStorage(SesionStorageKeys.marketingCampaing.key,null);
   // if(Object.keys(router.query)){
   //   setCampaign(router.query)
