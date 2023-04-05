@@ -245,6 +245,7 @@ function PersonalDataBasic({ userInfo }: any) {
               className="w-100"
               margin="normal"
               spacing="mr-[-10px]"
+              rules={{ required: true }}
             >
               <MenuItem value="F">Femenino</MenuItem>
               <MenuItem value="M">Masculino</MenuItem>
@@ -269,6 +270,7 @@ function PersonalDataBasic({ userInfo }: any) {
                   }}
                   value={field.value}
                   defaultValue={field.value}
+                  readOnly={userInfo.isClient}
                   tabIndex={0}
                   onFocus={showPopup}
                   disabled={showModal}
@@ -277,7 +279,7 @@ function PersonalDataBasic({ userInfo }: any) {
                   inputMode="text"
                   autoComplete="off"
                   placeholder="Número de celular"
-                  label="Número de celular"
+                  label={userInfo.isClient?'': "Número de celular"}
                   onChange={(e: any) => setValue('phone', e.target.value)}
                 />
               )}
@@ -290,7 +292,7 @@ function PersonalDataBasic({ userInfo }: any) {
               rules={{ required: !userInfo.email }}
               render={({ field }) => (
                 <Input
-                  helperText="Ejemplo: correo@dominio.com"
+                  helperText="Lo notificaremos siempre a este correo "
                   helperTextOption
                   type="text"
                   error={!!errors.email}
@@ -298,6 +300,7 @@ function PersonalDataBasic({ userInfo }: any) {
                     e.preventDefault();
                   }}
                   disabled={showModal}
+                  readOnly={userInfo.isClient}
                   value={field.value}
                   tabIndex={0}
                   id="email"
@@ -306,7 +309,7 @@ function PersonalDataBasic({ userInfo }: any) {
                   inputMode="text"
                   placeholder="Correo electrónico"
                   autoComplete="off"
-                  label="Correo electrónico"
+                  label= {userInfo.isClient?'':"Correo electrónico"}
                   onChange={(e: any) => setValue('email', e.target.value)}
                 />
               )}

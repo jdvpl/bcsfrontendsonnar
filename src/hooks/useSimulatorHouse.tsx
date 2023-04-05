@@ -1,16 +1,16 @@
-import { useSessionStorage } from '../../hooks/useSessionStorage';
-import { SesionStorageKeys } from '../../session/index';
+import { useSessionStorage } from './useSessionStorage';
+import { SesionStorageKeys } from '../session/index';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { iFormDataSimulation } from '../../interfaces/formSimulation';
-import { sendSimulationData } from '../../services/index';
-import { routes } from '../../routes';
-import { invokeEvent } from '../../utils';
+import { iFormDataSimulation } from '../interfaces/formSimulation';
+import { sendSimulationData } from '../services/index';
+import { routes } from '../routes';
+import { invokeEvent } from '../utils';
 
 
-export default function useSimulator() {
+export default function useSimulatorHouse() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [dataFormQuota, setdataFormQuota] = useSessionStorage(
+  const [, setdataFormQuota] = useSessionStorage(
     SesionStorageKeys.dataFormSimulation.key,
     {}
   );
@@ -26,6 +26,7 @@ export default function useSimulator() {
 
   const onSubmit = async (formData: iFormDataSimulation) => {
     setIsLoading(true);
+    const city=formData.city?.option;
     const body: iFormDataSimulation = {
       simulationType: simulatioTypeOption,
       typeHouse: formData.typeHouse,
@@ -38,6 +39,9 @@ export default function useSimulator() {
       houseValue: 0,
       percentageFinance: 0,
       financeValue: 0,
+      city: city,
+      gender: formData.gender,
+      stratum: formData.stratum
     };
     setdataFormQuota(body);
     const response = await sendSimulationData(body);

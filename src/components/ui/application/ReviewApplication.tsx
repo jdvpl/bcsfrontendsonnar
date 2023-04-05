@@ -57,16 +57,14 @@ function ReviewApplication({
       <Card
         className="xs:w-[290px] sm:w-[343px] md:w-[448px] h-[88px] bg-[#C4D1DA] mb-[16px] font-semibold rounded-[8px]"
         title="Cuota mensual aproximada"
-        value={`${monthlyInstallment}`}
-        text="text-[32px] pl-[16px] pt-2 flex items-baseline"
+        value={`${monthlyInstallment} Pesos`}
+        text="text-[32px] pl-[16px] pt-2 flex items-baseline "
         urlsvg=""
-        classtitle="h-[18px] pt-[16px] text-[16px]"
-        subvalue="pesos"
-        textsub="30"
+        classtitle="h-[18px] pt-[16px] text-[16px] "
+        textsub="32"
         tooltiptext=""
         urlsvgendicon=""
-        altsvg="Cuota mensual aproximada"
-        typeFontProps={typeFontsPropsBold}
+        typeFontProps={{...typeFontsPropsBold,...{variantDescriptionTypography:'h1',typeFontDescriptionTypograhy:'Bold'}}}
       />
       <Card
         className="xs:w-[290px] sm:w-[343px] md:w-[448px] h-[116px] bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"

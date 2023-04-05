@@ -41,20 +41,28 @@ function Bienvenida() {
             de comprar vivienda
           </span>
         </Typography>
-
-        <div
-          className="listInitial flex justify-center flex-col font-monserratLight text-[18px] text-primario-900 md:mt-10 items-center"
-          role="tabpanel"
-          tabIndex={0}
-        >
-          <Typography
-            variant="h4"
-            typeFont="Bold"
-            className="text-primario-900 items-start"
-            componentHTML="span"
+        <Typography variant='bodyM2' componentHTML='div' typeFont='Light' className="listInitial flex justify-center  text-[18px] text-primario-900">
+          <ul className='mt-6'>
+            <Typography variant='h4' componentHTML='h4' typeFont='Bold' className='lg:text-left text-center text-primario-900 lg:mt-0'>Requisitos de solicitud:</Typography>
+            <li className='mt-5'>Tener entre 18 y 70 años</li>
+            <li className='mt-3'>Ser asalariado o pensionado</li>
+            <li className='mt-3'>Estar al día con sus pagos</li>
+            <li className='mt-3'>Pagar salud y pensión</li>
+            <li className='mt-3'>Solicitar individualmente</li>
+            <li className='mt-3'>No aplican subsidios del gobierno</li>
+          </ul>
+        </Typography>
+        <div className="flex justify-center mt-8 mb-11 ">
+          <Button
+            isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] "
+            type="submit"
+            name="abrirCuenta"
+            data-testid="btnOnboardingtest"
+            onClick={startProcess}
+            id="btn-next"
           >
             Requisitos de solicitud:
-          </Typography>
+          </Button>
           <ul className="md:mt-2">
             <li className="mt-3">Tener entre 18 y 70 años</li>
             <li className="mt-3">Ser asalariado o pensionado</li>

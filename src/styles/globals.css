@@ -2340,7 +2340,7 @@ input[type='checkbox']:checked {
   display: block;
   position: absolute;
   left: 0;
-  top: -2px;
+  top: -9px;
   width: 8px;
   height: 18px;
   border-width: 0 2.5px 2.5px 0;
@@ -2449,3 +2449,15 @@ svg {
 }
 
 
+.pdf-viwer::-webkit-scrollbar {
+  width: 4px;
+}
+
+.pdf-viwer::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.pdf-viwer::-webkit-scrollbar-thumb {
+  background-color: #496374;
+  border-radius: 10px;
+}

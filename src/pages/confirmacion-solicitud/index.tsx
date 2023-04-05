@@ -11,7 +11,7 @@ import Typography from '../../components/ui/Typography';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import { routes } from '../../routes';
 import { SesionStorageKeys } from '../../session';
-import { convertToColombianPesos, downLoadPdf, invokeEvent } from '../../utils';
+import { convertToColombianPesos, downLoadPdf, invokeEvent, parseOffice } from '../../utils';
 import useProtectedRoutes from '../../hooks/useProtectedRoutes';
 import ExitModal from '../../components/commons/ExitModal';
 import Modal from '../../components/ui/Modal';
@@ -21,6 +21,7 @@ import { InactivityWarper } from '../../components/ui/wrapers/InactivityWarper';
 function ApplicationApproval({ modalExit = false }: any) {
   const { setCurrentRouting } = useProtectedRoutes();
   const [dataInfo] = useSessionStorage(SesionStorageKeys.basicDataUser.key, {});
+  const [dataBasicData] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
   const router = useRouter();
   const [showModalExit, setshowModalExit] = useState(modalExit);
@@ -133,31 +134,35 @@ function ApplicationApproval({ modalExit = false }: any) {
             }}
           />
         </div>
-        {/* {valuesMortgage?.choseOffice ? ( */}
-        <div className="mt-3">
-          <Card
-            className="xs:w-[290px] sm:w-[343px] md:w-[448px]  min-h-[76px]  bg-[#F3F4F6] pt-[12px] pb-[12px] pl-[16px] pr-[16px] rounded-[8px] mb-[12px] m-auto"
-            title="Continuación proceso"
-            urlsvgendicon=""
-            value={`${valuesMortgage?.office?.address
-              ?.toLowerCase()
-              .replace(/\b\w/g, (l: string) =>
-                l.toUpperCase()
-              )} - ${valuesMortgage?.office?.city
-              ?.toLowerCase()
-              .replace(/\b\w/g, (l: string) => l.toUpperCase())} `}
-            text=" pl-[18px] "
-            urlsvg={`${basePath}/images/location.svg`}
-            classtitle="h-[14px]"
-            tooltiptext=""
-            altsvg="Continuación proceso"
-            typeFontProps={{
-              ...typeFontsPropsNormal,
-              ...{ variantTypographyTitle: 'caption1', typeFontTypograhyTitle: 'Light' },
-            }}
-          />
-        </div>
-        {/* ) : null} */}
+        {valuesMortgage?.choseOffice ? (
+          <div className="mt-3">
+            <Card
+              className="xs:w-[290px] sm:w-[343px] md:w-[448px]  min-h-[76px]  bg-[#F3F4F6] pt-[12px] pb-[12px] pl-[16px] pr-[16px] rounded-[8px] mb-[12px] m-auto"
+              title="Continuación proceso"
+              urlsvgendicon=""
+              value={`$ ${parseOffice(valuesMortgage?.office)}`}
+              text=" pl-[18px] "
+              urlsvg={`${basePath}/images/location.svg`}
+              classtitle="h-[14px]"
+              tooltiptext=""
+              altsvg="Continuación proceso"
+              typeFontProps={{ ...typeFontsPropsNormal, ...{ variantTypographyTitle: 'caption1', typeFontTypograhyTitle: 'Light' } }}
+            />
+          </div>) :(
+          <div className="mt-3">
+            <Card
+              className="xs:w-[290px] sm:w-[343px] md:w-[448px]  min-h-[76px]  bg-[#F3F4F6] pt-[12px] pb-[12px] pl-[16px] pr-[16px] rounded-[8px] mb-[12px] m-auto"
+              title="Continuación proceso"
+              urlsvgendicon=""
+              value={dataBasicData?.nameAdviser?.split('/')[0]}
+              text=" pl-[18px] "
+              urlsvg={`${basePath}/images/location.svg`}
+              classtitle="h-[14px]"
+              tooltiptext=""
+              altsvg="Continuación proceso"
+              typeFontProps={{ ...typeFontsPropsNormal, ...{ variantTypographyTitle: 'caption1', typeFontTypograhyTitle: 'Light' } }}
+            />
+          </div>)} 
 
         <div className="mt-8 flex justify-center">
           <Button
@@ -200,16 +205,13 @@ function ApplicationApproval({ modalExit = false }: any) {
         >
           <ul className="">
             <li className="mt-3 text-lg ">
-              Descargue la carta. Tenga presente que su preaprobación está sujeta a las
-              políticas del Banco.
+              Descargue la carta. Tenga presente que su preaprobación está sujeta a las políticas de crédito del Banco.
             </li>
             <li className="mt-3 text-lg ">
-              Entregue la carta para formalizar la compra o separación del inmueble al
-              vendedor.
+              Entregue la carta para formalizar la compra o separación del inmueble al vendedor.
             </li>
             <li className="mt-3 text-lg ">
-              Realice la legalización del inmueble. (Avalúo, estudio de títulos y
-              escrituración).
+              Realice la legalización del inmueble. (Avalúo, estudio de títulos y escrituración).
             </li>
             <li className="mt-3 text-lg">
               Reciba su nueva vivienda y disfrute de este sueño cumplido.

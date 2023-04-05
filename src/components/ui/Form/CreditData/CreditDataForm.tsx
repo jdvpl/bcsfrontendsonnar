@@ -6,7 +6,12 @@ import Button from '../../Button';
 import ReactHookFormSelect from '../../Select/newSelect';
 import { SimulationData } from '../../../../interfaces';
 import Input from '../../inputs';
-import { convertToColombianPesos, renderPercentage } from '../../../../utils';
+import {
+  convertToColombianPesos,
+  handlerCity,
+  parseOfficeName,
+  renderPercentage,
+} from '../../../../utils';
 import { yearsAvailable } from '../../../../lib/simulator';
 import useValidations from '../../../../hooks/useValidationsCreditData';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
@@ -50,6 +55,7 @@ export function CreditDataForm() {
   const office = watch('office', dataForm?.office || 0);
   const stratum = watch('stratum', 0);
   const amortizationType = watch('amortizationType', 'Pesos');
+  const houseCity = watch('houseCity', '');
   const { automationFinanceValue, onSubmit, isValid, isLoading } = useValidations(
     typeHouse,
     houseValue,
@@ -69,7 +75,8 @@ export function CreditDataForm() {
     errors,
     setCurrentRouting,
     mortgageValues,
-    amortizationType
+    amortizationType,
+    houseCity
   );
   useEffect(() => {
     if (Object.entries(mortgageValues).length === 0) {
@@ -123,6 +130,25 @@ export function CreditDataForm() {
             <MenuItem value="used">Usada</MenuItem>
           </ReactHookFormSelect>
         </div>
+        <div className="w-full" data-testid="InputHouseLocation">
+          <Controller
+            control={control}
+            name="houseCity"
+            rules={{ required: true }}
+            defaultValue={undefined}
+            render={({ field: { onChange } }) => (
+              <NewAutoComplete
+                id="houseCity"
+                defaultValue={undefined}
+                placeholder="Ciudad de la vivienda"
+                label="Ciudad de la vivienda"
+                onChange={(e: any) => handlerCity(e, onChange)}
+                zIndex={30}
+              />
+            )}
+          />
+        </div>
+
         <Controller
           render={({ field }) => (
             <Input
@@ -242,7 +268,12 @@ export function CreditDataForm() {
         {/* Card Chose Housing */}
         <div className="cardShadow min-h-[106px] mt-[23px] rounded-xl pt-[24px] pb-[23px] px-[24px] w-full flex flex-col gap-4">
           <div>
-            <Typography variant='bodyM3' componentHTML='span' typeFont='Bold' className="w-full  text-primario-900 ">
+            <Typography
+              variant="bodyM3"
+              componentHTML="span"
+              typeFont="Bold"
+              className="w-full  text-primario-900 "
+            >
               Elija como continuar el proceso
             </Typography>
           </div>
@@ -257,7 +288,12 @@ export function CreditDataForm() {
                   <div className="w-[10px] h-[10px] bg-primario-200 rounded-full"> </div>
                 ) : null}
               </div>
-              <Typography variant='bodyM3' componentHTML='span' typeFont='Regular' className="font-normal text-primario-900 ml-[10px]">
+              <Typography
+                variant="bodyM3"
+                componentHTML="span"
+                typeFont="Regular"
+                className="font-normal text-primario-900 ml-[10px]"
+              >
                 Acercarme a una oficina
               </Typography>
             </button>
@@ -275,17 +311,7 @@ export function CreditDataForm() {
                       label="Sucursal"
                       arrayOptions={offices}
                       getLabelHandler={(option: any) => {
-                        return `${option?.address
-                          ?.toLowerCase()
-                          .replace(/\b\w/g, (l: string) =>
-                            l.toUpperCase()
-                          )} ${option?.nameOffice
-                          ?.toLowerCase()
-                          .replace(/\b\w/g, (l: string) =>
-                            l.toUpperCase()
-                          )} - ${option?.city
-                          ?.toLowerCase()
-                          .replace(/\b\w/g, (l: string) => l.toUpperCase())}`;
+                        return parseOfficeName(option);
                       }}
                       onChange={(e: any) => {
                         if (e?.idOffice) {
@@ -313,7 +339,12 @@ export function CreditDataForm() {
                     </div>
                   ) : null}
                 </div>
-                <Typography variant='bodyM3' componentHTML='span' typeFont='Regular' className="font-normal text-primario-900 ">
+                <Typography
+                  variant="bodyM3"
+                  componentHTML="span"
+                  typeFont="Regular"
+                  className="font-normal text-primario-900 "
+                >
                   Recibir visita asesor
                 </Typography>
               </button>

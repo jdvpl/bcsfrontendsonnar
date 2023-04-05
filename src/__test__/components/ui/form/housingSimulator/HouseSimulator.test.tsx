@@ -17,13 +17,13 @@ describe('<HouseSimulator />', () => {
   });
   test('contain alert text', () => {
     component.getByText(
-      'Recuerde que la financiación del crédito hipotecario es hasta el 70% del valor comercial de la vivienda y la cuota inicial equivalente al 30% restante debe solventarla con recursos propios.'
+      'Recuerde que la financiación del crédito hipotecario es hasta el 70% del valor comercial de la vivienda.'
     );
   });
   test('Render simulation button', () => {
     component.getByText('Simular');
   });
-  test('Render 7 inputs ', () => {
-    expect(component.container.querySelectorAll('input').length).toBe(7);
+  test('Render 10 inputs ', () => {
+    expect(component.container.querySelectorAll('input').length).toBe(10);
   });
 });

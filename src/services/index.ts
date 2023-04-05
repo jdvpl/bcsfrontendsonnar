@@ -7,7 +7,6 @@ import { getProcessId } from '../utils';
 const { allResponse, allResponseDecrypted } = useAES();
 import { iPdfLetter } from '../interfaces/ipdfLetter';
 import { RequestRiskBoxes } from '../interfaces/IRequestRiskBoxes';
-import axios from 'axios';
 const KEY = process.env.KEYENCRYPTADIGITAL;
 
 //? this save the authorization data.
@@ -49,7 +48,7 @@ export const sendAuthorization = async (body: any) => {
  */
 export const getQuestions = async (data: any) => {
   try {
-    const dataInfo = await allResponse(data, KEY);
+    const dataInfo = await allResponse({...data,commercialPurposes:true}, KEY);
     const { data: response } = await clientAxiosBackend.post(
       '/api-composer/composer/allow-list',
       { data: dataInfo },

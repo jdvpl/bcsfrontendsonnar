@@ -16,6 +16,7 @@ export interface CreditData {
   choseOffice: boolean;
   office: Office;
   stratum: number;
+  houseCity: any;
 }
 
 export interface Office {

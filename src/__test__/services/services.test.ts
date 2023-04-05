@@ -1,4 +1,4 @@
-import { getQuestions, sendAuthorization } from "../../services";
+import { getQuestions, sendAuthorization } from '../../services';
 import axios from 'axios';
 
 jest.mock('axios');
@@ -8,19 +8,20 @@ describe('Servics', () => {
     (axios.post as jest.Mock).mockResolvedValue(response);
     const body = {
       commercial_terms: false,
-      commercial_terms_label: "Autoriza que su información sea utilizada con fines comerciales",
-      document_number: "1077870326",
-      document_type: "CC",
+      commercial_terms_label:
+        'Autoriza que su información sea utilizada con fines comerciales',
+      document_number: '1077870326',
+      document_type: 'CC',
       policy_and_terms: true,
-      policy_and_terms_label: "Acepta tratamiento de datos personales y consulta en centrales de riesgo"
-    }
+      policy_and_terms_label:
+        'Acepta tratamiento de datos personales y consulta en centrales de riesgo',
+    };
     const result = await sendAuthorization(body);
     expect(result).toEqual({
       error: true,
       response: undefined,
     });
   });
-
   it('should return an error on failure', async () => {
     const error = new Error('Request failed');
     error.response = { data: { message: undefined } };
