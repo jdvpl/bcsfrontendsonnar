@@ -16,19 +16,28 @@ import { invokeEvent } from '../../utils';
 
 function Authentication() {
   const router = useRouter();
-  const [dataQuestions, setDataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, {});
+  const [dataQuestions, setDataQuestions] = useSessionStorage(
+    SesionStorageKeys.DataQuestions.key,
+    {}
+  );
   const [dataUser] = useSessionStorage(SesionStorageKeys.dataUser.key, {});
   const [showAnimation, setShowAnimation] = useState(false);
   const [validated, setValidated] = useState(false);
   const [loaded] = useState(false);
   const { setCurrentRouting } = useProtectedRoutes();
-  const { onSubmit, isBrowser } = useAuthentication(setShowAnimation, setValidated, dataUser, setDataQuestions, router, setCurrentRouting,dataQuestions);
-
+  const { onSubmit, isBrowser } = useAuthentication(
+    setShowAnimation,
+    setValidated,
+    dataUser,
+    setDataQuestions,
+    router,
+    setCurrentRouting,
+    dataQuestions
+  );
 
   useEffect(() => {
     invokeEvent('load_authentication', 'load_page');
   }, []);
-
 
   return (
     <div>
@@ -42,46 +51,48 @@ function Authentication() {
         <div
           className="xs:block sm:block md:hidden lg:hidden mt-6 cursor-pointer xs:ml-4"
           onClick={() => router.back()}
-          role="btnGoBack"
           data-testid="getbackRouteTest"
         >
           <Icons icon="bcs-icon-44" size="text-[1.2rem]" title="" />
-        </div >
-    <div className="mt-6 w-[180px] md:w-[180px] lg:w-[280px] xs:mr-4">
-      <LogoForm />
-    </div>
-      </div >
-    <div className="m-auto lg:w-[528px]">
-  
+        </div>
+        <div className="mt-6 w-[180px] md:w-[180px] lg:w-[280px] xs:mr-4">
+          <LogoForm />
+        </div>
+      </div>
       <div className="m-auto lg:w-[528px]">
         <div className="mt-20 lg:h-[300px] md:w-[350px] md:h-[300px] sm:w-[234px] sm:h-[200px] xs:h-[200px] xs:w-[234px] m-auto ">
-          <img src={`${basePath}/images/authentication.svg`} alt="" />
+          <img
+            src={`${basePath}/images/authentication.svg`}
+            alt="Imagen referente a validación de información"
+            title="Imagen referente a validación de información"
+          />
         </div>
-        <Typography
-          variant="h3"
-          typeFont="Bold"
-          componentHTML='h3'
-          className="text-center mt-[52px] text-primario-900"
-        >
-          Por seguridad <span className="xs:block sm:inline">validaremos</span>
-          <span className="block">su información</span>
-        </Typography>
-        <DynamicText isBrowser={isBrowser} />
+        <div role="tabpanel" tabIndex={0}>
+          <Typography
+            variant="h3"
+            typeFont="Bold"
+            className="text-center mt-[52px] text-primario-900"
+            componentHTML="h3"
+          >
+            Por seguridad <span className="xs:block sm:inline">validaremos</span>
+            <span className="block">su información</span>
+          </Typography>
+          <DynamicText isBrowser={isBrowser} />
+        </div>
 
-      <div className="flex justify-center mt-8">
-        <Button
-          isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] "
-          type="submit"
-          name="abrirCuenta"
-          data-testid="btnOnboarding"
-          onClick={onSubmit}
-          id="btn-next"
-        >
-          Continuar
-        </Button>
+        <div className="flex justify-center mt-8">
+          <Button
+            isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] "
+            type="submit"
+            name="abrirCuenta"
+            data-testid="btnOnboarding"
+            onClick={onSubmit}
+            id="btn-next"
+          >
+            Continuar
+          </Button>
+        </div>
       </div>
-    </div>
-    </div>
     </div>
   );
 }

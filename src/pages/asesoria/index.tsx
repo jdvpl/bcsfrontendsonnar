@@ -45,11 +45,11 @@ function Consultancy() {
   const goHome = () => {
     invokeEvent('back_home', 'action_funnel');
     router.push(routes.home);
-  }
+  };
 
   useEffect(() => {
-    invokeEvent('load_consultancy', 'load_page')
-  }, [])
+    invokeEvent('load_consultancy', 'load_page');
+  }, []);
 
   return (
     <>
@@ -77,14 +77,16 @@ function Consultancy() {
             className="lg:w-[684px] md:w-[456px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px]"
             title={stepperTitles[actualStep - 1]}
           />
-          <Typography
-            variant="h2"
-            typeFont='Bold'
-            componentHTML='h2'
-            className="lg:w-[515px] md:w-[445px] sm:w-[303px] w-[303px] mx-auto lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center"
-          >
-            {titleSection[actualStep - 1]}
-          </Typography>
+          <div role="tabpanel" tabIndex={0}>
+            <Typography
+              variant="h2"
+              componentHTML="h2"
+              typeFont="Bold"
+              className="lg:w-[515px] md:w-[445px] sm:w-[303px] w-[303px] mx-auto lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center"
+            >
+              {titleSection[actualStep - 1]}
+            </Typography>
+          </div>
         </div>
       </div>
 
@@ -96,18 +98,17 @@ function Consultancy() {
         />
 
         <div
-          className={`${itemActive !== '' ? 'sm:ml-[-95px]' : ''
-            } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
+          className={`${
+            itemActive !== '' ? 'sm:ml-[-95px]' : ''
+          } md:order-2 hidden  mx-auto lg:w-[757.2px] w-[600px] h-[279px] lg:m-auto lg:h-[395px] md:flex flex-col justify-center items-start gap-y-3 box-border`}
           style={{
             backgroundImage: `url(${basePath}/images/consultancy/${actualStep}.svg)`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'contain',
             backgroundPositionY: 'center',
-            // backgroundPositionX: positionImages(),
           }}
         >
           <OptionList />
-
           {itemActive !== '' ? (
             <div
               onClick={onCloseModal}
@@ -155,13 +156,16 @@ function Consultancy() {
               data-testid="prevTutorialStep"
               ref={prevTutorialStepRef}
               onClick={prevStep}
-              className="md:order-1 cursor-pointer  flex xs:gap-x-3 items-center xs:justify-center xs:flex-row md:flex-col lg:w-[150px]"
+              className="md:order-1 cursor-pointer flex xs:gap-x-3 items-center xs:justify-center xs:flex-row md:flex-col lg:w-[150px]"
+              role="tabpanel"
+              tabIndex={0}
+              title={actualStep === 1 ? 'Volver al Inicio' : 'Anterior'}
             >
               <div className="rounded-full xs:w-[24px] md:w-[40px] xs:h-[24px] md:h-[40px] border-primario-300 flex justify-center items-center border-2 md:mb-[33px]">
                 <Icons
                   icon="bcs-icon-1506"
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
-                  title=""
+                  title={actualStep === 1 ? 'Volver al Inicio' : 'Anterior'}
                 />
               </div>
               <a className="text-primario-300 font-bold font-montserratRegular text-center text-[14px] ">
@@ -172,13 +176,16 @@ function Consultancy() {
             <div
               ref={nextTutorialStepRef}
               onClick={nextStep}
-              className="md:order-3 cursor-pointer  flex xs:gap-x-3 items-center flex-row md:flex-col lg:w-[150px]"
+              className="md:order-3 cursor-pointer flex xs:gap-x-3 items-center flex-row md:flex-col lg:w-[150px]"
+              role="tabpanel"
+              tabIndex={0}
+              title={actualStep === 4 ? 'Salir' : 'Siguiente'}
             >
               <div className="rounded-full xs:w-[24px] md:w-[40px] md:order-1 xs:order-2 xs:h-[24px] md:h-[40px] border-primario-300 flex justify-center items-center border-2 md:mb-[33px]">
                 <Icons
                   icon="bcs-icon-337"
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
-                  title=""
+                  title={actualStep === 4 ? 'Salir' : 'Siguiente'}
                 />
               </div>
               <a className=" text-primario-300 font-montserratRegular  md:order-2 xs:order-1 font-bold text-center text-[14px]">
@@ -197,13 +204,14 @@ function Consultancy() {
 
       {/* Link to Home */}
       <div
-        className={`cursor-pointer w-full text-center mb-[80px] xs:hidden md:block${actualStep === 1 || actualStep === 4 ? 'hidden' : ''
-          }`}
+        className={`cursor-pointer w-full text-center mb-[80px] xs:hidden md:block${
+          actualStep === 1 || actualStep === 4 ? 'hidden' : ''
+        }`}
       >
         <Typography
-          variant='bodyM3'
-          componentHTML='a'
-          typeFont='Bold'
+          variant="bodyM3"
+          componentHTML="a"
+          typeFont="Bold"
           href={`${basePath}`}
           className=" text-primario-100 "
           onClick={goHome}

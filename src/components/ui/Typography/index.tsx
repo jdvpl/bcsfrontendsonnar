@@ -1,28 +1,40 @@
 import React, { FC, ReactNode } from 'react';
 import cn from 'classnames';
 
-export type TypeFont = 'Bold' | 'Regular' | 'Light'
-export type Variants = 'h1' | 'h2' | 'h3' | 'h4' | 'bodyM1' | 'bodyM2' | 'bodyM3' | 'caption1' | 'caption2' | 'overline1' | 'overline2';
-
+export type TypeFont = 'Bold' | 'Regular' | 'Light';
+export type Variants =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'bodyM1'
+  | 'bodyM2'
+  | 'bodyM3'
+  | 'caption1'
+  | 'caption2'
+  | 'overline1'
+  | 'overline2';
 
 type TypographyProps = {
   componentHTML: keyof JSX.IntrinsicElements;
   attrs?: JSX.IntrinsicElements[keyof JSX.IntrinsicElements];
   className?: string;
   children?: ReactNode;
-  variant: Variants,
-  typeFont?: TypeFont,
-  id?: string,
-  tabIndex?: any,
-  role?: any,
-  htmlFor?: string,
-  itemScope?: any,
-  itemType?: string,
-  onClick?: () => void,
-  onKeyDown?: any,
-  itemProp?: string,
-  href?: string,
-  type?:string,
+  variant: Variants;
+  typeFont?: TypeFont;
+  id?: string;
+  tabIndex?: any;
+  role?: any;
+  htmlFor?: string;
+  itemScope?: any;
+  itemType?: string;
+  onClick?: () => void;
+  onKeyDown?: any;
+  onKeyDownCapture?: any;
+  itemProp?: string;
+  href?: string;
+  type?: string;
+  title?: string;
 };
 
 const Typography: FC<TypographyProps> = ({
@@ -30,7 +42,7 @@ const Typography: FC<TypographyProps> = ({
   variant = 'bodyM1',
   typeFont = 'Regular',
   className,
-  componentHTML = "p",
+  componentHTML = 'p',
   id,
   tabIndex,
   role,
@@ -39,56 +51,58 @@ const Typography: FC<TypographyProps> = ({
   itemType,
   onClick,
   onKeyDown,
+  onKeyDownCapture,
   itemProp,
   href,
   type,
-  ...props }: TypographyProps) => {
-
+  title,
+  ...props
+}: TypographyProps) => {
   const componentStyles = () => {
     const styleMap = {
       h1: {
-        fontSize: "32px",
-        lineHeight: "36px",
+        fontSize: '32px',
+        lineHeight: '36px',
       },
       h2: {
-        fontSize: "28px",
-        lineHeight: "32px",
+        fontSize: '28px',
+        lineHeight: '32px',
       },
       h3: {
-        fontSize: "24px",
-        lineHeight: "28px",
+        fontSize: '24px',
+        lineHeight: '28px',
       },
       h4: {
-        fontSize: "20px",
-        lineHeight: "24px",
+        fontSize: '20px',
+        lineHeight: '24px',
       },
       bodyM1: {
-        fontSize: "20px",
-        lineHeight: "22px",
+        fontSize: '20px',
+        lineHeight: '22px',
       },
       bodyM2: {
-        fontSize: "18px",
-        lineHeight: "20px",
+        fontSize: '18px',
+        lineHeight: '20px',
       },
       bodyM3: {
-        fontSize: "16px",
-        lineHeight: "18px",
+        fontSize: '16px',
+        lineHeight: '18px',
       },
       caption1: {
-        fontSize: "14px",
-        lineHeight: "16px",
+        fontSize: '14px',
+        lineHeight: '16px',
       },
       caption2: {
-        fontSize: "12px",
-        lineHeight: "16px",
+        fontSize: '12px',
+        lineHeight: '16px',
       },
       overline1: {
-        fontSize: "12px",
-        lineHeight: "14px",
+        fontSize: '12px',
+        lineHeight: '14px',
       },
       overline2: {
-        fontSize: "10px",
-        lineHeight: "12px",
+        fontSize: '10px',
+        lineHeight: '12px',
       },
     };
     const style = styleMap[variant] || {};
@@ -99,45 +113,47 @@ const Typography: FC<TypographyProps> = ({
   const fontStyles = () => {
     let classes = '';
     const fontVariants: {
-      [key: string]: { [key: string]: string }
+      [key: string]: { [key: string]: string };
     } = {
       h: {
         Bold: 'font-poppinsSemiBold',
         Light: 'font-poppinsExtraLight',
-        Regular: 'font-poppinsRegular'
+        Regular: 'font-poppinsRegular',
       },
       bodyM1: {
         Bold: 'font-montserratSemiBold',
         Regular: 'font-montserratRegular',
-        Light: 'font-montserratExtraLight'
+        Light: 'font-montserratExtraLight',
       },
       bodyM2: {
         Bold: 'font-montserratSemiBold',
         Regular: 'font-montserratRegular',
-        Light: 'font-montserratExtraLight'
+        Light: 'font-montserratExtraLight',
       },
       bodyM3: {
         Bold: 'font-montserratMedium',
         Regular: 'font-montserratRegular',
-        Light: 'font-montserratExtraLight'
+        Light: 'font-montserratExtraLight',
       },
       caption1: {
         Bold: 'font-montserratSemiBold',
         Regular: 'font-montserratMedium',
-        Light: 'font-montserratExtraLight'
+        Light: 'font-montserratExtraLight',
       },
       caption2: {
         Bold: 'font-montserratMedium',
         Regular: 'font-montserratRegular',
-        Light: 'font-monserratLight'
+        Light: 'font-monserratLight',
       },
       overline: {
         Bold: 'font-montserratMedium',
         Regular: 'font-montserratRegular',
-        Light: 'font-monserratLight'
+        Light: 'font-monserratLight',
       },
     };
-    const fontVariant = Object.keys(fontVariants).find((variantKey) => variant.startsWith(variantKey));
+    const fontVariant = Object.keys(fontVariants).find((variantKey) =>
+      variant.startsWith(variantKey)
+    );
     const fontStylesForVariant = fontVariants[fontVariant || ''];
     if (typeFont in fontStylesForVariant) {
       classes = fontStylesForVariant[typeFont];
@@ -157,9 +173,12 @@ const Typography: FC<TypographyProps> = ({
         itemType,
         onClick,
         onKeyDown,
+        onKeyDownCapture,
         itemProp,
         href,
-        type
+        type,
+        tabIndex,
+        title,
       },
       children
     );
@@ -167,13 +186,14 @@ const Typography: FC<TypographyProps> = ({
   };
 
   return (
-    <Tag tag={componentHTML} className={`${className} ${componentStyles()}`} data-testid="typographyTest" >
+    <Tag
+      tag={componentHTML}
+      className={`${className} ${componentStyles()}`}
+      data-testid="typographyTest"
+    >
       {children}
     </Tag>
   );
-}
+};
 
 export default Typography;
-
-
-

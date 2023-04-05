@@ -77,17 +77,28 @@ function Input({
   helperTextOption = false,
   ...props
 }: InputProps) {
-
-  const labelStyles = `-z-1 ${error ? "text-rojo-20" : "text-complementario-100"}
-  absolute top-[50%] translate-y-[-50%] ${startIcon ? "left-[36px] " : "left-3 "} text-[14px] leading-[16px] font-montserratRegular transition-all duration-300 ease-in-out 
+  const labelStyles = `-z-1 ${error ? 'text-rojo-20' : 'text-complementario-100'}
+  absolute top-[50%] translate-y-[-50%] ${
+    startIcon ? 'left-[36px] ' : 'left-3 '
+  } text-[14px] leading-[16px] font-montserratRegular transition-all duration-300 ease-in-out 
   peer-focus:left-2 peer-focus:top-0 peer-focus:text-[10px] peer-focus:leading-[12px] peer-focus:bg-white peer-focus:px-1 peer-focus:z-10
-  ${props?.value?"peer-valid:left-2 peer-valid:top-0 peer-valid:text-[10px] peer-valid:leading-[12px] peer-valid:bg-white peer-valid:px-1 peer-valid:z-10":""}
-  `
+  ${
+    props?.value
+      ? 'peer-valid:left-2 peer-valid:top-0 peer-valid:text-[10px] peer-valid:leading-[12px] peer-valid:bg-white peer-valid:px-1 peer-valid:z-10'
+      : ''
+  }
+  `;
 
-  const inputStyles = `valid:text-primario-900 ${startIcon ? "pl-[36px]" : "pl-3"} ${endIcon ? "pr-[36px]" : "pr-3"}  peer  appearance-none font-montserratRegular text-[14px] leading-[16px] 
+  const inputStyles = `valid:text-primario-900 ${startIcon ? 'pl-[36px]' : 'pl-3'} ${
+    endIcon ? 'pr-[36px]' : 'pr-3'
+  }  peer  appearance-none font-montserratRegular text-[14px] leading-[16px] 
   h-[48px] bg-transparent border-[1px] rounded-[8px] bg-[transparent] w-full 
-  ${error ? "border-rojo-20 hover:border-rojo-20 focus:border-rojo-20 " : "border-complementario-50 hover:border-primario-20 focus:border-primario-20 "} 
-  peer-focus:border focus:outline-none`
+  ${
+    error
+      ? 'border-rojo-20 hover:border-rojo-20 focus:border-rojo-20 '
+      : 'border-complementario-50 hover:border-primario-20 focus:border-primario-20 '
+  } 
+  peer-focus:border focus:outline-none`;
 
   return (
     <div className={`${containerClassName} justify-center flex flex-col w-full`}>
@@ -107,7 +118,8 @@ function Input({
           data-testid={dataTestId}
           {...props}
           className={`${inputStyles} ${classNameInput}`}
-          placeholder=" "
+          placeholder=""
+          aria-label={label}
           autoFocus={autofocus}
           onWheelCapture={(e) => {
             const target = e.target as HTMLInputElement;

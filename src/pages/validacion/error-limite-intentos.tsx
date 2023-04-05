@@ -11,7 +11,7 @@ import { AplicationContext } from '../../context/AplicationContext';
 import useDeleteKeys from '../../hooks/useDeleteKeys';
 
 const ErrorValidacionBlock: React.FC = () => {
-  useDeleteKeys()
+  useDeleteKeys();
   const {
     setEligirFoto,
     setFotoDelantera,
@@ -29,22 +29,17 @@ const ErrorValidacionBlock: React.FC = () => {
   }, []);
   const router = useRouter();
   return (
-    <ErrorLayout>
+    <ErrorLayout title="Error número de intentos superados">
       <section itemScope itemType="https://schema.org/Action">
         <div className="flex justify-center w-[267px] h-[200px] mx-auto md:w-[320px] md:h-[300px] relative">
           <ImageLoader
-            src={`${basePath}/images/error4.svg`}
+            src={`${basePath}/images/error1.png`}
             layout="fill"
-            alt="Ha superado el límite de intentos"
-            title="Ha superado el límite de intentos"
+            alt="Imagen de que ha superado el límite de intentos"
+            title="Imagen de que ha superado el límite de intentos"
           />
         </div>
-        <HeadingError>
-          Ha superado el número de
-          <br className="block md:hidden" />
-          <br className="hidden md:block " />
-          intentos permitidos
-        </HeadingError>
+        <HeadingError>Ha superado el número de intentos permitidos</HeadingError>
         <SubtitleError>Ingrese nuevamente en 24 horas.</SubtitleError>
         <ContainerButton>
           <Button id="btn-go-bank" onClick={() => router.push('/')}>

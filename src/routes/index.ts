@@ -6,13 +6,13 @@ export const routes = {
   otc: '/validacion-otc',
   validacionIdentidad: '/validacion-identidad',
   validacionBiometrica: '/validacion-biometrica',
-  validacionErrorValidacionIdentidad: '/validacion/error-validacionIdentidad',
+  validacionErrorValidacionIdentidad: '/validacion/error-validacion-identidad',
   validacionErrorPreguntas: 'validacion/error-validacion-identidad-preguntas',
   validacionErrorIntentos: 'validacion/error-numero-intentos',
   validacionErrorBloqueo: 'validacion/error-bloqueo',
   errorValidacion: '/validacion/error-validacion/',
-  validacionErrorDiario: '/validacion/error-validacionDiario/',
-  validacionBlock: '/validacion/error-validacionBlock/',
+  validacionErrorDiario: '/validacion/error-validacion-diario/',
+  validacionBlock: '/validacion/error-limite-intentos/',
   errorCreditBankApplication: '/validacion/rechazo-solicitud',
   inactivityScreen: '/inactividad',
   simulador: '/simulador',
@@ -29,6 +29,5 @@ export const routes = {
   ResumenSolicitud: '/resumen-solicitud',
   servicError: '/validacion/error-servicio',
   validacionSucursalError: '/validacion/error-validacionSucursal',
-  validacionError: '/validacion/error'
-
+  validacionError: '/validacion/error',
 };

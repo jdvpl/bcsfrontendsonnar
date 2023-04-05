@@ -34,7 +34,7 @@ export default function useConsultancy({
   };
 
   const openModal = (label: string, index: number) => {
-    invokeEvent('show_item_detail', 'action_funnel')
+    invokeEvent('show_item_detail', 'action_funnel');
     setActiveIndex(index);
     setItemActive(label);
   };
@@ -46,7 +46,12 @@ export default function useConsultancy({
 
   const renderContent = () => (
     <div className="lg:w-[411px] text-[14px]">
-      <Typography variant='bodyM1' componentHTML='span' typeFont='Bold' className=" text-primario-900 lg:text-[20px] text-[16px]">
+      <Typography
+        variant="bodyM1"
+        componentHTML="span"
+        typeFont="Bold"
+        className=" text-primario-900 lg:text-[20px] text-[16px]"
+      >
         {itemActive}
       </Typography>
       {initialOptions[actualStep - 1]?.[activeIndex]?.content()}
@@ -62,17 +67,24 @@ export default function useConsultancy({
             onClick={() => openModal(option?.label, index)}
             variant="secondary"
             border="1"
-            isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%]  rounded-[8px] lg:h-48px ${itemActive === option?.label ? 'bg-primario-100' : ''
-              }
-                ${itemActive === option?.label && isMobile === false
-                ? 'translate-x-[16px]'
-                : ''
-              }`}
+            title={option?.label}
+            isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%]  rounded-[8px] lg:h-48px ${
+              itemActive === option?.label ? 'bg-primario-100' : ''
+            }
+                ${
+                  itemActive === option?.label && isMobile === false
+                    ? 'translate-x-[16px]'
+                    : ''
+                }`}
           >
             <div className="flex justify-center">
-              <Typography variant='bodyM3' typeFont='Bold' componentHTML='span'
-                className={`text-center ${itemActive === option?.label ? 'text-white' : 'text-primario-100'
-                  }  p-0`}
+              <Typography
+                variant="bodyM3"
+                typeFont="Bold"
+                componentHTML="span"
+                className={`text-center ${
+                  itemActive === option?.label ? 'text-white' : 'text-primario-100'
+                }  p-0`}
               >
                 {option?.label}
               </Typography>

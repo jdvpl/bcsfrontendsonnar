@@ -3,14 +3,15 @@ import Typography from '../Typography';
 
 const HeadingError: React.FC<childrenProps> = ({ children }) => (
   <Typography
-    variant='h3'
-    componentHTML='h3'
+    variant="h3"
+    componentHTML="h3"
     id="title-error"
     className="text-center mt-[52px] md:-mx-[82px] lg:-mx-[0px]"
+    itemProp="error"
     tabIndex={0}
   >
     {children}
   </Typography>
 );
 
-export default HeadingError
+export default HeadingError;

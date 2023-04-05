@@ -17,8 +17,6 @@ export const Label: React.FC<labelProps> = ({
     className={`text-xs leading-[14px] font-normal  mb-[2px] text-complementario-100
     arial-label="${htmlFor}"
     ${className || (disabled ? 'text-secondary-500' : 'text-azul_gris-100')}`}
-    tabIndex={0}
-    role="paragraph"
   >
     {children}
   </label>

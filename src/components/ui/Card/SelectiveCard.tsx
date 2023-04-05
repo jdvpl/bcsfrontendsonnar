@@ -42,10 +42,10 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
 
   const handleClick = () => {
     if (onclick) {
-      invokeEvent(parsePathToEvent(pathTo),'action_funnel')
+      invokeEvent(parsePathToEvent(pathTo), 'action_funnel');
       router.push(pathTo);
     }
-  }
+  };
 
   return (
     <div
@@ -55,6 +55,7 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
       className={classNames.mainClasesParentDiv}
       role="tabpanel"
       tabIndex={0}
+      title={title}
     >
       <div className={classNames.iconContainerStyle}>
         <Icons

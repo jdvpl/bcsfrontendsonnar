@@ -26,15 +26,24 @@ describe('Routes', () => {
   });
 
   it('should have a validacionErrorValidacionIdentidad route', () => {
-    expect(routes).toHaveProperty('validacionErrorValidacionIdentidad', '/validacion/error-validacionIdentidad');
+    expect(routes).toHaveProperty(
+      'validacionErrorValidacionIdentidad',
+      '/validacion/error-validacion-identidad'
+    );
   });
 
   it('should have a validacionErrorPreguntas route', () => {
-    expect(routes).toHaveProperty('validacionErrorPreguntas', 'validacion/error-validacion-identidad-preguntas');
+    expect(routes).toHaveProperty(
+      'validacionErrorPreguntas',
+      'validacion/error-validacion-identidad-preguntas'
+    );
   });
 
   it('should have a validacionErrorIntentos route', () => {
-    expect(routes).toHaveProperty('validacionErrorIntentos', 'validacion/error-numero-intentos');
+    expect(routes).toHaveProperty(
+      'validacionErrorIntentos',
+      'validacion/error-numero-intentos'
+    );
   });
 
   it('should have a validacionErrorBloqueo route', () => {
@@ -46,11 +55,17 @@ describe('Routes', () => {
   });
 
   it('should have a validacionErrorDiario route', () => {
-    expect(routes).toHaveProperty('validacionErrorDiario', '/validacion/error-validacionDiario/');
+    expect(routes).toHaveProperty(
+      'validacionErrorDiario',
+      '/validacion/error-validacion-diario/'
+    );
   });
 
   it('should have a validacionBlock route', () => {
-    expect(routes).toHaveProperty('validacionBlock', '/validacion/error-validacionBlock/');
+    expect(routes).toHaveProperty(
+      'validacionBlock',
+      '/validacion/error-limite-intentos/'
+    );
   });
 
   it('should have a inactivityScreen route', () => {
@@ -63,7 +78,7 @@ describe('Routes', () => {
 
   it('should have a simuladorResumen route', () => {
     expect(routes).toHaveProperty('simuladorResumen', '/simulador/resumen');
-  })
+  });
   it('should have a onboarding route', () => {
     expect(routes).toHaveProperty('onboarding', '/bienvenida');
   });
@@ -99,4 +114,4 @@ describe('Routes', () => {
   it('should have a ResumenSolicitud route', () => {
     expect(routes).toHaveProperty('ResumenSolicitud', '/resumen-solicitud');
   });
-})
+});

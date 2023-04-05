@@ -3,17 +3,16 @@ import { ItemOne, ItemThree, ItemTwo } from '../icons/biometria/items';
 import { childrenProps } from '../../interfaces';
 import Typography from '../ui/Typography';
 
-
-const CardImage: React.FC<childrenProps> = ({ children }) => <div className="flex mr-6">{children}</div>;
+const CardImage: React.FC<childrenProps> = ({ children }) => (
+  <div className="flex mr-6">{children}</div>
+);
 
 const Description: React.FC = () => (
   <div data-testid="descripcion-biometrica" className="">
     <Typography
-      typeFont='Bold'
-      variant='bodyM2'
-      componentHTML='p'
-      tabIndex={0}
-      role="paragraph"
+      typeFont="Bold"
+      variant="bodyM2"
+      componentHTML="p"
       className=" text-primario-900 "
     >
       Tenga en cuenta estos consejos:&nbsp;
@@ -25,10 +24,8 @@ const Description: React.FC = () => (
             <ItemOne />
           </CardImage>
           <Typography
-            variant='bodyM3'
-            componentHTML='p'
-            tabIndex={0}
-            role="paragraph"
+            variant="bodyM3"
+            componentHTML="p"
             className=" text-primario-900  text-base leading-[18px] pr-6"
           >
             Tome la foto en un lugar con luz, preferiblemente luz natural evitando brillos
@@ -54,11 +51,9 @@ const Description: React.FC = () => (
             <ItemTwo />
           </CardImage>
           <Typography
-            variant='bodyM3'
-            typeFont='Regular'
-            componentHTML='p'
-            tabIndex={0}
-            role="paragraph"
+            variant="bodyM3"
+            typeFont="Regular"
+            componentHTML="p"
             className=" text-primario-900  text-base  pr-6"
           >
             Tome la foto con el celular en posición horizontal.
@@ -82,11 +77,8 @@ const Description: React.FC = () => (
           <ItemThree />
         </CardImage>
         <Typography
-          variant='bodyM3'
-          componentHTML='p'
-
-          tabIndex={0}
-          role="paragraph"
+          variant="bodyM3"
+          componentHTML="p"
           className=" text-primario-900  text-base pr-6"
         >
           Asegúrese de que su cédula no tenga fallas o imperfecciones.
@@ -96,4 +88,4 @@ const Description: React.FC = () => (
   </div>
 );
 
-export default Description
+export default Description;

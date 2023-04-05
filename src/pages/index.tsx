@@ -28,9 +28,9 @@ export default function Home() {
     [device]
   );
 
-  useEffect(()=>{
-    invokeEvent("load_landing","load_page");
-  },[])
+  useEffect(() => {
+    invokeEvent('load_landing', 'load_page');
+  }, []);
 
   const titleClasses = isSafari
     ? 'xs:flex sm:flex md:justify-end sm:pr-6 xs:pt-2 md:pr-[2rem] md:mt-1 xs:mt-5 lg:mt-[100px] lg:flex lg:justify-center lg:ml-[40rem] xs:ml-1 sm:ml-3 lg:mr-40 xl:mt-[150px] xs:mt-[34px] sm:mt-[44px]'
@@ -39,8 +39,8 @@ export default function Home() {
   const headerDescriptionClasess = isSafari
     ? 'xs:flex sm:flex md:justify-end sm:pr-6 xs:pt-2 md:pr-0 md:mt-5 xs:mt-[17px] lg:mt-[6px] lg:flex lg:justify-center lg:ml-[40rem] ml-5 xxl:pr-10'
     : 'xs:flex sm:flex md:justify-end sm:pr-6 xs:pt-2 md:pr-0 md:mt-5 xs:mt-[17px] lg:mt-[6px] lg:flex lg:justify-center lg:ml-[40rem] ml-5 xxl:pr-1 xxxl:pl-40';
-  
-    return (
+
+  return (
     <main data-testid="landingPage" className="overflow-hidden landingPage">
       <SkipContent />
       <div
@@ -55,7 +55,12 @@ export default function Home() {
         </div>
         <section className={titleClasses} role="tabpanel" tabIndex={0}>
           <div className="md:flex md:flex-col ">
-            <Typography componentHTML='h2' variant='h2' typeFont='Light' className="text-white   xs:ml-5 sm:ml-2 xs:mb-[3px] sm:mb-1 md:text-primario-900">
+            <Typography
+              componentHTML="h2"
+              variant="h2"
+              typeFont="Light"
+              className="text-white   xs:ml-5 sm:ml-2 xs:mb-[3px] sm:mb-1 md:text-primario-900"
+            >
               Bienvenido a
             </Typography>
             <figure
@@ -82,10 +87,20 @@ export default function Home() {
           tabIndex={0}
         >
           <div className="md:flex md:flex-col">
-            <Typography componentHTML='h2' variant='h2' typeFont='Bold' className="text-white  md:w-[285px] lg:w-[394px] lg:text-[24px] md:text-[20px] leading-6 wcontainerHeader sm:text-[20px] xs:text-[20px] md:text-primario-900 xxl:text-[28px]">
+            <Typography
+              componentHTML="h2"
+              variant="h2"
+              typeFont="Bold"
+              className="text-white  md:w-[285px] lg:w-[394px] lg:text-[24px] md:text-[20px] leading-6 wcontainerHeader sm:text-[20px] xs:text-[20px] md:text-primario-900 xxl:text-[28px]"
+            >
               ¿Desea comprar vivienda?
             </Typography>
-            <Typography componentHTML='p' variant='bodyM2' typeFont='Light' className="text-white md:text-primario-900 sm:w-[335px] w-[290px] md:w-[275px] lg:w-[415.5px] xxl:w-[380px] md:leading-[20px] mt-[10px] wcontainerHeader text-[16px] md:text-[18px] md:mr-[40px]  sm:text-[16px] sm:leading-[18px] xs:text-[14px] xs:leading-4 lg:text-[18px] xxl:mt-8 xs:mt-5">
+            <Typography
+              componentHTML="p"
+              variant="bodyM2"
+              typeFont="Light"
+              className="text-white md:text-primario-900 sm:w-[335px] w-[290px] md:w-[275px] lg:w-[415.5px] xxl:w-[380px] md:leading-[20px] mt-[10px] wcontainerHeader text-[16px] md:text-[18px] md:mr-[40px]  sm:text-[16px] sm:leading-[18px] xs:text-[14px] xs:leading-4 lg:text-[18px] xxl:mt-8 xs:mt-5"
+            >
               Aquí le ayudaremos a lograr sus sueños, sin hacer largas filas, ni papeleos
               extensos.
             </Typography>
@@ -125,6 +140,7 @@ export default function Home() {
                   icon="bcs-icon-37"
                   color="text-complementario-100"
                   size="text-[1.85rem]"
+                  title="Tener entre 18 y 70 años"
                   className="sm:mb-3 mb-3 md:mb-0  xxl:border-none border-complementario-100 "
                   classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full    mb-3 md:text-[15px] lg:text-[16px] xs:w-[150px] lg:w-[54%]  md:w-full xxl:w-[55%] " title={''} />
               </div>
@@ -227,7 +243,7 @@ export default function Home() {
           <Typography
             variant="h2"
             typeFont="Bold"
-            componentHTML='h2'
+            componentHTML="h2"
             className="md:text-left text-center lg:mt-[149px] xl:mt-[148px] md:mt-[93px] mt-[80px] ml-5 md:ml-0"
           >
             Tan solo en <span className="block lg:inline">cuatro pasos</span>
@@ -261,7 +277,7 @@ export default function Home() {
         <Typography
           variant="h2"
           typeFont="Bold"
-          componentHTML='h2'
+          componentHTML="h2"
           className=" text-center lg:mb-[105px] md:mt-0 mt-[66px]"
         >
           Beneficios

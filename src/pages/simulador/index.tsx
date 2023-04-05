@@ -10,12 +10,12 @@ export const cardTextStyles = 'text-[20px] pl-[23px] font-semibold font-poppinsS
 function Simulator() {
   const { simulatioTypeOption, setsimulatioTypeOption, onSubmit, isLoading } = useSimulatorHouse();
   useEffect(() => {
-    invokeEvent('load_simulator', 'load_page')
-  }, [])
+    invokeEvent('load_simulator', 'load_page');
+  }, []);
   return (
     <div data-testid="simuladorTestC">
     <Header/>
-      <div className="lg:w-[684px] md:w-[584px] sm:w-[343px] w-[290px] m-auto">
+      <div className="lg:w-[684px] md:w-[584px] sm:w-[343px] w-[290px] m-auto" role="tabpanel" tabIndex={0}>
         <Typography componentHTML='h3' typeFont='Bold' variant='h2' className="mt-8 text-center  md:text-[28px] text-[20px]">
           Simulador del crédito
         </Typography>
@@ -37,6 +37,7 @@ function Simulator() {
                 : `font-montserratRegular font-medium button-shadow text-[12px] leading-[14px] w-full max-w-[23.438rem] rounded-l-lg h-[3rem] text-complementario-70 bg-gris-90 shadow-none`
             }
             onClick={() => setsimulatioTypeOption('house')}
+            title="Valor de vivienda"
           >
             Valor de vivienda
           </button>
@@ -49,6 +50,7 @@ function Simulator() {
                 : ` font-montserratRegular font-medium button-shadow text-[12px] leading-[14px] w-full max-w-[23.438rem] rounded-r-lg h-[3rem] text-complementario-70 bg-gris-90 shadow-none`
             }
             onClick={() => setsimulatioTypeOption('salary')}
+            title="Cuanto me prestan"
           >
             Cuanto me prestan
           </button>

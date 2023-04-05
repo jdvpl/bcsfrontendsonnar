@@ -66,17 +66,17 @@ function ResumenApplication() {
           title="Resumen de la solicitud"
         />
       </div>
-      <div className=" xs:w-[290px] sm:w-[343px]  lg:w-[684px] md:w-[584px] m-auto">
-        <Typography
-          typeFont='Bold'
-          variant="h2"
-          componentHTML='h2'
-          className="mt-8 mb-[40px] text-center"
-        >
-          Conozca la oferta que hemos
-          <br />
-          diseñado para usted
-        </Typography>
+      <div className="xs:w-[290px] sm:w-[343px] lg:w-[684px] md:w-[584px] m-auto">
+        <div role="tabpanel" tabIndex={0} className="mt-8 mb-[40px] text-center w-auto">
+          <Typography
+            typeFont="Bold"
+            variant="h2"
+            className="text-[28px]"
+            componentHTML={'symbol'}
+          >
+            Conozca la oferta que hemos diseñado para usted
+          </Typography>
+        </div>
         <div className="xs:w-[290px] sm:w-[343px] md:w-[448px] mx-auto">
           <Alert
             message="La tasa de su crédito será la que se encuentre vigente en el momento del desembolso."

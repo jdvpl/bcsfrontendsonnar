@@ -4,6 +4,7 @@ import LogoBcs from '../../svg/LogoBcs';
 import LogoForm from '../../svg/LogoForm';
 import Icons from '../icons';
 import useMediaQueryResponsive from '../../../hooks/useMediaQuery';
+
 function Header() {
   const router = useRouter();
   const { heightHeader } = useMediaQueryResponsive();
@@ -17,7 +18,7 @@ function Header() {
         onClick={() => router.back()}
         data-testid="getbackRouteTest"
       >
-        <Icons icon="bcs-icon-44" size="text-[1.2rem]" title="Información" />
+        <Icons icon="bcs-icon-44" size="text-[1.2rem]" title="Crédito Hipotecario" />
       </div>
       <div className="mt-6 w-[180px] md:w-[180px] lg:w-[280px] xs:mr-4">
         <LogoForm height={heightHeader} />

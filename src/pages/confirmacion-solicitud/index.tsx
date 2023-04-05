@@ -28,7 +28,7 @@ function ApplicationApproval({ modalExit = false }: any) {
   const [componentModalExit] = useState({
     children: <ExitModal setshowModalExit={setshowModalExit} />,
     title: (
-      <Typography variant='h3' componentHTML='h3' typeFont='Bold' >
+      <Typography variant="h3" componentHTML="h3" typeFont="Bold">
         Está a punto de abandonar su solicitud
       </Typography>
     ),
@@ -53,13 +53,13 @@ function ApplicationApproval({ modalExit = false }: any) {
   }, router.asPath);
 
   const typeFontsPropsNormal: typeFontsProps = {
-    variantTypographyTitle: "bodyM2",
+    variantTypographyTitle: 'bodyM2',
     typeFontTypograhyTitle: 'Bold',
     typeTagTypograhyTitle: 'p',
     variantDescriptionTypography: 'h1',
     typeDescriptionTagTypograhy: 'h1',
     typeFontDescriptionTypograhy: 'Bold',
-  }
+  };
   useEffect(() => {
     invokeEvent('load_confirm_application', 'load_page');
   });
@@ -85,16 +85,16 @@ function ApplicationApproval({ modalExit = false }: any) {
         </div>
         <Typography
           variant="h1"
-          typeFont='Bold'
-          componentHTML='h1'
+          typeFont="Bold"
+          componentHTML="h1"
           className="text-center mt-[52px] text-primario-900"
         >
           ¡{dataInfo.firstName}, felicitaciones!
         </Typography>
         <Typography
           variant="h4"
-          componentHTML='h4'
-          typeFont='Bold'
+          componentHTML="h4"
+          typeFont="Bold"
           className="text-center mt-3 text-primario-900"
         >
           Su crédito hipotecario
@@ -102,7 +102,7 @@ function ApplicationApproval({ modalExit = false }: any) {
         </Typography>
         <div className="mt-[44px]">
           <Card
-            className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px]  bg-[#C4D1DA]  rounded-[8px] m-auto"
+            className="xs:w-[290px] sm:w-[343px] md:w-[448px] h-[88px] bg-[#C4D1DA] rounded-[8px] m-auto"
             title="Monto preaprobado"
             value={`${convertToColombianPesos(
               applicationResponse?.finalOffer?.offer?.financeValue
@@ -112,6 +112,7 @@ function ApplicationApproval({ modalExit = false }: any) {
             classtitle="h-[18px] pt-[16px]  pl-0 "
             textsub="32"
             tooltiptext=""
+            altsvg="Monto preaprobado"
             urlsvgendicon=""
             typeFontProps={typeFontsPropsNormal}
           />
@@ -126,7 +127,11 @@ function ApplicationApproval({ modalExit = false }: any) {
             urlsvg={`${basePath}/images/Calendar.svg`}
             classtitle="h-[14px] "
             tooltiptext=""
-            typeFontProps={{ ...typeFontsPropsNormal, ...{ variantTypographyTitle: 'caption1', typeFontTypograhyTitle: 'Light' } }}
+            altsvg="Plazo"
+            typeFontProps={{
+              ...typeFontsPropsNormal,
+              ...{ variantTypographyTitle: 'caption1', typeFontTypograhyTitle: 'Light' },
+            }}
           />
         </div>
         {valuesMortgage?.choseOffice ? (
@@ -140,6 +145,7 @@ function ApplicationApproval({ modalExit = false }: any) {
               urlsvg={`${basePath}/images/location.svg`}
               classtitle="h-[14px]"
               tooltiptext=""
+              altsvg="Continuación proceso"
               typeFontProps={{ ...typeFontsPropsNormal, ...{ variantTypographyTitle: 'caption1', typeFontTypograhyTitle: 'Light' } }}
             />
           </div>) :(
@@ -153,6 +159,7 @@ function ApplicationApproval({ modalExit = false }: any) {
               urlsvg={`${basePath}/images/location.svg`}
               classtitle="h-[14px]"
               tooltiptext=""
+              altsvg="Continuación proceso"
               typeFontProps={{ ...typeFontsPropsNormal, ...{ variantTypographyTitle: 'caption1', typeFontTypograhyTitle: 'Light' } }}
             />
           </div>)} 
@@ -168,28 +175,34 @@ function ApplicationApproval({ modalExit = false }: any) {
             onClick={downloadPDF}
             id="btn-next"
           >
-            <Typography variant='bodyM3' typeFont='Bold' componentHTML='span'>
-              <Icons icon="bcs-icon-49"  title="Preaprobación"/> Carta de preaprobación
+            <Typography variant="bodyM3" typeFont="Bold" componentHTML="span">
+              <Icons icon="bcs-icon-49" title="Preaprobación" /> Carta de preaprobación
             </Typography>
-
           </Button>
         </div>
-        <Typography variant='bodyM3' componentHTML='div' className="sm:w-[350px] w-[293px] md:w-[398px] lg:w-[448px] m-auto">
+        <Typography
+          variant="bodyM3"
+          componentHTML="div"
+          className="sm:w-[350px] w-[293px] md:w-[398px] lg:w-[448px] m-auto"
+        >
           <Alert message="La carta de preaprobación de su crédito y los próximos pasos serán enviados su correo registrado." />
         </Typography>
         <div className="mt-8 md:w-[440px] sm:w-[343px] w-[293px] m-auto">
           <Typography
             variant="bodyM3"
-            typeFont='Regular'
-            componentHTML='p'
-
+            typeFont="Regular"
+            componentHTML="p"
             className="text-center mt-3 text-primario-900 "
           >
-            Conozca los próximos pasos <br />
-            para el desembolso de su crédito
+            Conozca los próximos pasos para el desembolso de su crédito
           </Typography>
         </div>
-        <Typography variant='bodyM3' componentHTML='div' typeFont='Light' className="listInitial md:w-[440px] sm:w-[343px] w-[293px] m-auto mt-8  text-primario-900">
+        <Typography
+          variant="bodyM3"
+          componentHTML="div"
+          typeFont="Light"
+          className="listInitial md:w-[440px] sm:w-[343px] w-[293px] m-auto mt-8  text-primario-900"
+        >
           <ul className="">
             <li className="mt-3 text-lg ">
               Descargue la carta. Tenga presente que su preaprobación está sujeta a las políticas de crédito del Banco.
@@ -209,7 +222,7 @@ function ApplicationApproval({ modalExit = false }: any) {
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] shadow-none border-0 m-auto "
             onClick={() => {
-              invokeEvent('get_out_confirm_offer','action_funnel');
+              invokeEvent('get_out_confirm_offer', 'action_funnel');
               setCurrentRouting(routes.approvalDataPage, false);
               router.push(routes.home);
             }}

@@ -11,7 +11,7 @@ import { AplicationContext } from '../../context/AplicationContext';
 import useDeleteKeys from '../../hooks/useDeleteKeys';
 
 const ErrorValidacionDiario: React.FC = () => {
-  useDeleteKeys()
+  useDeleteKeys();
   const {
     setEligirFoto,
     setFotoDelantera,
@@ -29,20 +29,17 @@ const ErrorValidacionDiario: React.FC = () => {
   }, []);
   const router = useRouter();
   return (
-    <ErrorLayout>
+    <ErrorLayout title="Error no es posible validar su identidad">
       <section>
         <div className="flex justify-center w-[223px] h-[200px] mx-auto md:w-[320px] md:h-[300px] relative">
           <ImageLoader
-            src={`${basePath}/images/error3.png`}
+            src={`${basePath}/images/error1.png`}
             layout="fill"
             alt="No pudimos validar tu identidad"
             title="No pudimos validar tu identidad"
           />
         </div>
-        <HeadingError>
-          No podemos validar su <br className="block md:hidden" />
-          identidad <br className="hidden md:block " /> en este momento
-        </HeadingError>
+        <HeadingError>No podemos validar su identidad en este momento</HeadingError>
         <SubtitleError>Intente nuevamente en 24 horas</SubtitleError>
         <ContainerButton>
           <Button id="btn-go-bank" onClick={() => router.push('/')}>

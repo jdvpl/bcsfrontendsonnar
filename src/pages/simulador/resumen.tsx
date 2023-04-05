@@ -76,15 +76,17 @@ function Resumen() {
             </div>
           </div>
           <div className=" xs:w-[290px] sm:w-[343px]  lg:w-[684px] md:w-[584px] m-auto">
-            <h2 className="mt-8 text-center ont-poppinsSemiBold font-semibold md:text-[28px] text-[20px]">
-              Simulador del crédito
-            </h2>
-            <div>
-              <p className="text-center mt-2 pmx-3 text-primario-900 font-montserratRegular font-normal leading-[18px] text-[16px]">
-                Los valores presentados en el simulador son aproximados y únicamente
-                informativos, no constituyen ningún tipo de asesoría, ni obligan al Banco
-                en su calidad de emisor.
-              </p>
+            <div role="tabpanel" tabIndex={0}>
+              <h2 className="mt-8 text-center ont-poppinsSemiBold font-semibold md:text-[28px] text-[20px]">
+                Simulador del crédito
+              </h2>
+              <div>
+                <p className="text-center mt-2 pmx-3 text-primario-900 font-montserratRegular font-normal leading-[18px] text-[16px]">
+                  Los valores presentados en el simulador son aproximados y únicamente
+                  informativos, no constituyen ningún tipo de asesoría, ni obligan al
+                  Banco en su calidad de emisor.
+                </p>
+              </div>
             </div>
             <div className="flex gap-1 mb-5 md:mt-[41px] mt-9">
               <button
@@ -96,6 +98,7 @@ function Resumen() {
                     : `font-montserratRegular font-medium button-shadow text-[12px] leading-[14px] w-full max-w-[23.438rem] rounded-l-lg h-[3rem] text-complementario-70 bg-gris-90 shadow-none`
                 }
                 onClick={() => setsimulatioTypeOption('house')}
+                title="Valor de vivienda"
               >
                 Valor de vivienda
               </button>
@@ -108,6 +111,7 @@ function Resumen() {
                     : `font-montserratRegular font-medium button-shadow text-[12px] leading-[14px] w-full max-w-[23.438rem] rounded-r-lg h-[3rem] text-complementario-70 bg-gris-90 shadow-none`
                 }
                 onClick={() => setsimulatioTypeOption('salary')}
+                title="Cuanto me prestan"
               >
                 Cuanto me prestan
               </button>
@@ -174,7 +178,7 @@ function Resumen() {
                 tabIndex={0}
                 id="btn-next"
               >
-                <span className="text-[16px] font-medium">Solicitar crédito</span>
+                Solicitar crédito
               </Button>
               <Button
                 isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] border-primario-100 border hover:border-primario-100"
@@ -182,10 +186,10 @@ function Resumen() {
                 name="solicitarCredito"
                 data-testid="btn-openAccount1"
                 tabIndex={0}
-                id="btn-next"
+                id="btn-back"
                 variant="secondary"
               >
-                <span className="text-[16px] font-medium">Volver a simular</span>
+                Volver a simular
               </Button>
             </div>
           </div>
