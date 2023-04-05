@@ -43,7 +43,7 @@ function Bienvenida() {
         </Typography>
         <Typography variant='bodyM2' componentHTML='div' typeFont='Light' className="listInitial flex justify-center  text-[18px] text-primario-900">
           <ul className='mt-6'>
-            <Typography variant='h4' componentHTML='h4' typeFont='Bold' className='lg:text-left text-center text-primario-900 lg:mt-0'>Requisitos de solicitud:</Typography>
+            <Typography variant='h4' componentHTML='p' typeFont='Bold' className='lg:text-left text-center text-primario-900 lg:mt-0'>Requisitos de solicitud:</Typography>
             <li className='mt-5'>Tener entre 18 y 70 años</li>
             <li className='mt-3'>Ser asalariado o pensionado</li>
             <li className='mt-3'>Estar al día con sus pagos</li>
@@ -53,24 +53,6 @@ function Bienvenida() {
           </ul>
         </Typography>
         <div className="flex justify-center mt-8 mb-11 ">
-          <Button
-            isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] "
-            type="submit"
-            name="abrirCuenta"
-            data-testid="btnOnboardingtest"
-            onClick={startProcess}
-            id="btn-next"
-          >
-            Requisitos de solicitud:
-          </Button>
-          <ul className="md:mt-2">
-            <li className="mt-3">Tener entre 18 y 70 años</li>
-            <li className="mt-3">Ser asalariado o pensionado</li>
-            <li className="mt-3">Estar al día con sus pagos</li>
-            <li className="mt-3">Pagar salud y pensión</li>
-            <li className="mt-3">Postular como único titular</li>
-            <li className="mt-3">Solicitar sin subsidios del gobierno</li>
-          </ul>
           <div className="flex justify-center mt-8 mb-11 ">
             <Button
               isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] "
