@@ -54,7 +54,8 @@ describe('SesionStorageKeys', () => {
       'applicationResponse',
       'openedTutorial',
       'pdfData',
-      'orderNumber'
+      'orderNumber',
+      'marketingCampaing'
     ];
     const keys = Object.keys(SesionStorageKeys);
     expect(keys).toEqual(expectedKeys);
