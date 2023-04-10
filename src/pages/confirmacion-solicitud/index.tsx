@@ -109,8 +109,7 @@ function ApplicationApproval({ modalExit = false }: any) {
             )} pesos`}
             text="md:text-[32px] text-[25px] pl-[16px] pt-2 flex items-baseline "
             urlsvg=""
-            classtitle="h-[18px] pt-[16px]  pl-0 "
-            textsub="32"
+            classtitle="h-[18px] pt-[16px]  pl-0 mb-1"
             tooltiptext=""
             altsvg="Monto preaprobado"
             urlsvgendicon=""

@@ -15,12 +15,13 @@ import { SesionStorageKeys } from '../session';
 import { ConditionalWrapper } from './asesoria';
 import { SkipContent } from '../components/SkipContent';
 import { invokeEvent } from '../utils';
+import useCampaignDetector from '../hooks/useCampaignDetector';
 
 export default function Home() {
   const [device, setDevice] = useSessionStorage(SesionStorageKeys.device.key, deviceType);
 
   const { isMobile, isTablet, heightHeader, isSafari, isMedium, isLG, isSM } = useMediaQueryResponsive();
-
+  useCampaignDetector();
   useEffect(
     () => () => {
       setDevice(deviceType);
