@@ -55,6 +55,7 @@ function ReviewApplication({
         typeFontProps={typeFontsPropsNormal}
       />
       <Card
+        altsvg=""
         className="xs:w-[290px] sm:w-[343px] md:w-[448px] h-[88px] bg-[#C4D1DA] mb-[16px] font-semibold rounded-[8px]"
         title="Cuota mensual aproximada"
         value={`${monthlyInstallment} Pesos`}
@@ -64,7 +65,10 @@ function ReviewApplication({
         textsub="32"
         tooltiptext=""
         urlsvgendicon=""
-        typeFontProps={{...typeFontsPropsBold,...{variantDescriptionTypography:'h1',typeFontDescriptionTypograhy:'Bold'}}}
+        typeFontProps={{
+          ...typeFontsPropsBold,
+          ...{ variantDescriptionTypography: 'h1', typeFontDescriptionTypograhy: 'Bold' },
+        }}
       />
       <Card
         className="xs:w-[290px] sm:w-[343px] md:w-[448px] h-[116px] bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px]"

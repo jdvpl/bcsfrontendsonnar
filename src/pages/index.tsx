@@ -143,7 +143,7 @@ export default function Home() {
                   size="text-[1.85rem]"
                   title="Tener entre 18 y 70 años"
                   className="sm:mb-3 mb-3 md:mb-0  xxl:border-none border-complementario-100 "
-                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full    mb-3 md:text-[15px] lg:text-[16px] xs:w-[150px] lg:w-[54%]  md:w-full xxl:w-[55%] " title={''} />
+                  classNamesDescription="ml-[5px] lg:w-[120px] md:w-[100px] sm:w-full    mb-3 md:text-[15px] lg:text-[16px] xs:w-[150px] lg:w-[54%]  md:w-full xxl:w-[55%] "  />
               </div>
               <div className="w-[2px] hidden bg-complementario-70 h-[46px] md:grid place-items-center mt-3"></div>
               {/* 2 */}
