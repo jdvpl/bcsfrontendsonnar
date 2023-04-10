@@ -111,13 +111,13 @@ export const Card: React.FC<CardProps> = ({
         </div>
       ) : null}
     </div>
-    <div className={text}>
+    <div>
       {value && (
         <Typography
           variant={typeFontProps.variantDescriptionTypography || 'bodyM1'}
           typeFont={typeFontProps.typeFontDescriptionTypograhy}
           componentHTML={typeFontProps.typeDescriptionTagTypograhy || 'p'}
-          className="pl-[10px]"
+          className={`pl-[10px] ${text}`}
         >
           {value}
         </Typography>
