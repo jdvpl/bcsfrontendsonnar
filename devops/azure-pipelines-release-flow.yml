@@ -89,7 +89,7 @@ stages:
           - task: AzureCLI@2
             displayName: "Application: build"
             inputs:
-              azureSubscription: "az-id-qa-sc-loans-e2-000"
+              azureSubscription: "az-id-qa-sc-mrtgg-e2-000"
               scriptType: "bash"
               scriptLocation: "inlineScript"
               inlineScript: |
@@ -152,7 +152,7 @@ stages:
           - task: AzureCLI@2
             displayName: "Application: build"
             inputs:
-              azureSubscription: "az-id-prd-sc-loans-e2-000"
+              azureSubscription: "az-id-prd-sc-mrtgg-e2-000"
               scriptType: "bash"
               scriptLocation: "inlineScript"
               inlineScript: |
