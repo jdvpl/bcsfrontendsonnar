@@ -1,0 +1,189 @@
+trigger:
+  - none
+
+variables:
+  - group: configuration-variables
+
+stages:
+  - stage: test
+    displayName: "Unit Test"
+    jobs:
+      - job: coverage
+        displayName: "Coverage"
+        pool:
+          demands: npm
+        steps:
+          - script: "npm ci"
+            displayName: "Npm: install"
+          - task: SonarCloudPrepare@1
+            inputs:
+              SonarCloud: "SonarCloud"
+              organization: "equipoinnovaciondigital"
+              scannerMode: "CLI"
+              configFile: devops/sonar-project.properties
+            displayName: "Sonar: Prepare"
+          - task: Npm@1
+            inputs:
+              command: custom
+              customCommand: run test:cov
+            displayName: "Npm: Unit Test"
+          - task: SonarCloudAnalyze@1
+            displayName: "Sonar: Analyze"
+          - task: SonarCloudPublish@1
+            inputs:
+              pollingTimeoutSec: "300"
+            displayName: "Sonar: Publish"
+          - task: sonarcloud-buildbreaker@2
+            inputs:
+              SonarCloud: "SonarCloud"
+              organization: "equipoinnovaciondigital"
+            displayName: "Sonar: Validation Status Sonar"
+
+  - stage: Artifact
+    displayName: "Artifact"
+    jobs:
+      - job: drop
+        displayName: "Drop"
+        pool:
+          vmImage: ubuntu-latest
+        steps:
+          - task: CopyFiles@2
+            inputs:
+              Contents: |
+                **/deploy/**
+                **/.azuredevops/**
+              TargetFolder: "$(Build.ArtifactStagingDirectory)"
+              CleanTargetFolder: true
+            displayName: "Artifact: Copy"
+          - task: PublishBuildArtifacts@1
+            inputs:
+              PathtoPublish: "$(Build.ArtifactStagingDirectory)"
+              ArtifactName: "drop"
+              publishLocation: "Container"
+            displayName: "Artifact: Publish"
+      - job: qaBuild
+        displayName: "QA Build"
+        pool:
+          name: id-qa-common
+        steps:
+          - task: Bash@3
+            displayName: "Bash: get secrets filter"
+            inputs:
+              targetType: "inline"
+              script: |
+                # Write your commands here
+
+                tr -d '\015' <$(System.DefaultWorkingDirectory)/deploy/templates/secret-template.yaml > $(System.DefaultWorkingDirectory)/secret-template-filters.yaml
+
+                sed -i 's/#.*//g' $(System.DefaultWorkingDirectory)/secret-template-filters.yaml
+                sed -i 's/ //g' $(System.DefaultWorkingDirectory)/secret-template-filters.yaml
+                sed -i 's/:.*//g' $(System.DefaultWorkingDirectory)/secret-template-filters.yaml
+                sed -i 's/[A-Z][a-z]\+//g' $(System.DefaultWorkingDirectory)/secret-template-filters.yaml
+                sed -i 's/[-a-z0-9]//g' $(System.DefaultWorkingDirectory)/secret-template-filters.yaml
+                sed -i '/^$/d' $(System.DefaultWorkingDirectory)/secret-template-filters.yaml
+
+                variableSet=$(sed ':a;N;$!ba;s/\n/, /g' $(System.DefaultWorkingDirectory)/secret-template-filters.yaml)
+
+                echo "$variableSet"
+                echo “##vso[task.setvariable variable=mySecretsFilter]$variableSet
+          - task: AzureCLI@2
+            displayName: "Application: build"
+            inputs:
+              azureSubscription: "az-id-qa-sc-loans-e2-000"
+              scriptType: "bash"
+              scriptLocation: "inlineScript"
+              inlineScript: |
+                cd $(System.DefaultWorkingDirectory)
+                # Divide la variable MYSECRETSFILTER en una matriz
+                IFS=', ' read -r -a secrets <<< "$MYSECRETSFILTER"
+
+                # Recorre la matriz y establece cada secreto como variable de entorno
+                for secret in "${secrets[@]}"
+                do
+                  value=$(az keyvault secret show --name $secret --vault-name $(keyVaultNameQa)  --query value -o tsv )
+                  export $secret="$value"
+                done
+
+                npm ci
+                npm run export
+          - task: ContainerBuild@0
+            inputs:
+              dockerRegistryServiceConnection: "$(dockerRegistryQa)"
+              repository: "$(Build.Repository.Name)"
+              Dockerfile: "$(System.DefaultWorkingDirectory)/devops/Dockerfile"
+              tags: "$(Build.SourceBranchName)"
+            displayName: "Registry: image"
+          - task: Bash@3
+            displayName: "Bash: delete images"
+            inputs:
+              targetType: "inline"
+              script: |
+                # Muestra las imágenes creadas
+                docker images | egrep $(dockerRegistryQa).azurecr.io/$(Build.Repository.Name)
+
+                # Elimina las imágenes que fueron creadas
+                docker rmi -f $(docker images -q --filter reference="$(dockerRegistryQa).azurecr.io/$(Build.Repository.Name):$(Build.SourceBranchName)")
+      - job: prdBuild
+        dependsOn: qaBuild
+        displayName: "PRD Build"
+        pool:
+          name: id-prd-common
+        steps:
+          - task: Bash@3
+            displayName: "Bash: get secrets filter"
+            inputs:
+              targetType: "inline"
+              script: |
+                # Write your commands here
+
+                tr -d '\015' <$(System.DefaultWorkingDirectory)/deploy/templates/secret-template.yaml > $(System.DefaultWorkingDirectory)/secret-template-filters.yaml
+
+                sed -i 's/#.*//g' $(System.DefaultWorkingDirectory)/secret-template-filters.yaml
+                sed -i 's/ //g' $(System.DefaultWorkingDirectory)/secret-template-filters.yaml
+                sed -i 's/:.*//g' $(System.DefaultWorkingDirectory)/secret-template-filters.yaml
+                sed -i 's/[A-Z][a-z]\+//g' $(System.DefaultWorkingDirectory)/secret-template-filters.yaml
+                sed -i 's/[-a-z0-9]//g' $(System.DefaultWorkingDirectory)/secret-template-filters.yaml
+                sed -i '/^$/d' $(System.DefaultWorkingDirectory)/secret-template-filters.yaml
+
+                variableSet=$(sed ':a;N;$!ba;s/\n/, /g' $(System.DefaultWorkingDirectory)/secret-template-filters.yaml)
+
+                echo "$variableSet"
+                echo “##vso[task.setvariable variable=mySecretsFilter]$variableSet
+          - task: AzureCLI@2
+            displayName: "Application: build"
+            inputs:
+              azureSubscription: "az-id-prd-sc-loans-e2-000"
+              scriptType: "bash"
+              scriptLocation: "inlineScript"
+              inlineScript: |
+                cd $(System.DefaultWorkingDirectory)
+                # Divide la variable MYSECRETSFILTER en una matriz
+                IFS=', ' read -r -a secrets <<< "$MYSECRETSFILTER"
+
+                # Recorre la matriz y establece cada secreto como variable de entorno
+                for secret in "${secrets[@]}"
+                do
+                  value=$(az keyvault secret show --name $secret --vault-name $(keyVaultNamePrd)  --query value -o tsv )
+                  export $secret="$value"
+                done
+
+                echo 'Build: nextJs'
+                npm ci
+                npm run export
+          - task: ContainerBuild@0
+            inputs:
+              dockerRegistryServiceConnection: "$(dockerRegistryPrd)"
+              repository: "$(Build.Repository.Name)"
+              Dockerfile: "$(System.DefaultWorkingDirectory)/devops/Dockerfile"
+              tags: "$(Build.SourceBranchName)"
+            displayName: "Registry: image"
+          - task: Bash@3
+            displayName: "Bash: delete images"
+            inputs:
+              targetType: "inline"
+              script: |
+                # Muestra las imágenes creadas
+                docker images | egrep $(dockerRegistryPrd).azurecr.io/$(Build.Repository.Name)
+
+                # Elimina las imágenes que fueron creadas
+                docker rmi -f $(docker images -q --filter reference="$(dockerRegistryPrd).azurecr.io/$(Build.Repository.Name):$(Build.SourceBranchName)")

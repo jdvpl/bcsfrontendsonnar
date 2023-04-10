@@ -1,0 +1,45 @@
+trigger:
+  - pull_request
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+  - stage: test
+    displayName: "Unit Test"
+    jobs:
+      - job: coverage
+        displayName: "Coverage"
+        pool:
+          demands: npm
+        steps:
+          # - task: npmAuthenticate@0
+          #   inputs:
+          #     workingFile: ".npmrc"
+          #     customEndpoint: "bcs-commons-registry"
+          #   displayName: "Npm: login"
+          - script: "npm ci"
+            displayName: "Npm: install"
+          - task: SonarCloudPrepare@1
+            inputs:
+              SonarCloud: "SonarCloud"
+              organization: "equipoinnovaciondigital"
+              scannerMode: "CLI"
+              configFile: devops/sonar-project.properties
+            displayName: "Sonar: Prepare"
+          - task: Npm@1
+            inputs:
+              command: custom
+              customCommand: run test:cov
+            displayName: "Npm: Unit Test"
+          - task: SonarCloudAnalyze@1
+            displayName: "Sonar: Analyze"
+          - task: SonarCloudPublish@1
+            inputs:
+              pollingTimeoutSec: "300"
+            displayName: "Sonar: Publish"
+          - task: sonarcloud-buildbreaker@2
+            inputs:
+              SonarCloud: "SonarCloud"
+              organization: "equipoinnovaciondigital"
+            displayName: "Sonar: Validation Status Sonar"
