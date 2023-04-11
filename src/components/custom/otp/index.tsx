@@ -96,9 +96,9 @@ const Otp: FC<otpProps> = ({ otc }) => {
         {otc ? (
           <span>Ingrese el código enviado a su <br /> celular y correo electrónico</span>
         ) : (
-          <span>
-            Ingrese el código enviado por mensaje de texto a su celular +57
-            {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : ''}
+          <span className='leading-[26px]'>
+            Ingrese el código enviado por mensaje de texto  <span className='md:block inline'>a su celular +57
+            {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : ''}</span>
           </span>
         )}
       </Typography>
@@ -175,11 +175,11 @@ const Otp: FC<otpProps> = ({ otc }) => {
           <Typography
             onClick={onResendOTP}
             variant="caption1"
-            typeFont="Regular"
+            typeFont="Bold"
             className={` leading-4 ${
               timer === 0 && wasResend === false
                 ? 'text-primario-20 cursor-pointer'
-                : 'text-gris-200'
+                : 'text-primario-900'
             } mb-[12px]`}
             componentHTML="span"
           >
