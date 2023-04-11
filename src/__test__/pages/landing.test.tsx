@@ -39,7 +39,6 @@ describe('Landing page testing', () => {
     expect(router.push).toHaveBeenCalledWith(routes.simulador);
   })
   test('should goTo onboarding page', async () => {
-
     const router = createMockRouter({});
     render(
       <RouterContext.Provider value={router}>

@@ -10,7 +10,7 @@ const useCampaignDetector=()=>{
     if(Object.entries(router.query).length >0){
         setCampaign(router.query)
     }
-  }, [])
+  }, [router.query])
 }
 
 export default useCampaignDetector;
