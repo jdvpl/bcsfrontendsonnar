@@ -102,12 +102,12 @@ function ApplicationApproval({ modalExit = false }: any) {
         </Typography>
         <div className="mt-[44px]">
           <Card
-            className="xs:w-[290px] sm:w-[343px] md:w-[448px] h-[88px] bg-[#C4D1DA] rounded-[8px] m-auto"
+            className="xs:w-[290px] sm:w-[343px] md:w-[448px] min-h-[88px] pb-4 pl-4 bg-[#C4D1DA] mb-[16px] font-semibold rounded-[8px] mx-auto"
             title="Monto preaprobado"
             value={`${convertToColombianPesos(
               applicationResponse?.finalOffer?.offer?.financeValue
             )} pesos`}
-            text="md:text-[32px] text-[25px] pl-[16px] pt-2 flex items-baseline "
+            text="md:text-[32px] text-[20px] pl-[16px] pt-6 flex items-baseline "
             urlsvg=""
             classtitle="h-[18px] pt-[16px]  pl-0 mb-1"
             tooltiptext=""
@@ -153,7 +153,7 @@ function ApplicationApproval({ modalExit = false }: any) {
               className="xs:w-[290px] sm:w-[343px] md:w-[448px]  min-h-[76px]  bg-[#F3F4F6] pt-[12px] pb-[12px] pl-[16px] pr-[16px] rounded-[8px] mb-[12px] m-auto"
               title="Continuación proceso"
               urlsvgendicon=""
-              value={dataBasicData?.nameAdviser?.split('/')[0]}
+              value={"Asesor"}
               text=" pl-[18px] "
               urlsvg={`${basePath}/images/location.svg`}
               classtitle="h-[14px]"
