@@ -85,20 +85,23 @@ const Otp: FC<otpProps> = ({ otc }) => {
 
   return (
     <div className="w-scren flex flex-col items-center" role="tabpanel" tabIndex={0}>
-      <h4
+      <Typography
+        variant='h4'
+        componentHTML='h4'
+        typeFont='Bold'
         id="title"
-        className="font-semibold text-[20px] text-primario-900 text-center mt-[40px] mb-[36px]  md:mt-[64px]  md:mb-[52px] lg:mb-[36px] font-poppinsSemiBold"
+        className="text-primario-900 text-center mt-[40px] mb-[36px]  md:mt-[64px]  md:mb-[52px] lg:mb-[36px] "
         data-testid="h4OtpText"
       >
         {otc ? (
-          <span>Ingrese el código enviado a su celular y correo electrónico</span>
+          <span>Ingrese el código enviado a su <br /> celular y correo electrónico</span>
         ) : (
-          <span>
-            Ingrese el código enviado por sms a su celular +57
-            {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : ''}
+          <span className='leading-[26px]'>
+            Ingrese el código enviado por mensaje de texto  <span className='md:block inline'>a su celular +57
+            {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : ''}</span>
           </span>
         )}
-      </h4>
+      </Typography>
       <div className="text-normal mb-[24px]">
         <OtpInput
           className="otp-div"
@@ -172,11 +175,11 @@ const Otp: FC<otpProps> = ({ otc }) => {
           <Typography
             onClick={onResendOTP}
             variant="caption1"
-            typeFont="Regular"
+            typeFont="Bold"
             className={` leading-4 ${
               timer === 0 && wasResend === false
                 ? 'text-primario-20 cursor-pointer'
-                : 'text-gris-200'
+                : 'text-primario-900'
             } mb-[12px]`}
             componentHTML="span"
           >
