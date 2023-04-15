@@ -161,7 +161,7 @@ function Consultancy() {
               tabIndex={0}
               title={actualStep === 1 ? 'Volver al Inicio' : 'Anterior'}
             >
-              <div className="rounded-full xs:w-[24px] md:w-[40px] xs:h-[24px] md:h-[40px] border-primario-300 flex justify-center items-center border-2 md:mb-[33px]">
+              <div className="rounded-full xs:w-[24px] md:w-[40px] xs:h-[24px] md:h-[40px] border-primario-300 flex justify-center items-center border md:mb-[33px]">
                 <Icons
                   icon="bcs-icon-1506"
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
@@ -181,7 +181,7 @@ function Consultancy() {
               tabIndex={0}
               title={actualStep === 4 ? 'Salir' : 'Siguiente'}
             >
-              <div className="rounded-full xs:w-[24px] md:w-[40px] md:order-1 xs:order-2 xs:h-[24px] md:h-[40px] border-primario-300 flex justify-center items-center border-2 md:mb-[33px]">
+              <div className="rounded-full xs:w-[24px] md:w-[40px] md:order-1 xs:order-2 xs:h-[24px] md:h-[40px] border-primario-300 flex justify-center items-center border md:mb-[33px]">
                 <Icons
                   icon="bcs-icon-337"
                   iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"

@@ -1,13 +1,19 @@
 import React from 'react';
+import { useRouter } from 'next/router';
+import { routes } from '../../routes';
 
 function LogoBcs() {
+  const router = useRouter();
+
   return (
     <svg
+      className="cursor-pointer"
       width="196"
       height="48"
       viewBox="0 0 196 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      onClick={() => router?.push(routes.home)}
     >
       <title>Banco Caja Social, Su Banco Amigo</title>
 
