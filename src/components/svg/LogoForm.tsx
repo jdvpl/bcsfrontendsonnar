@@ -1,13 +1,19 @@
 import React from 'react';
+import { useRouter } from 'next/router';
+import { routes } from '../../routes';
 
 function LogoForm({ height = '34' }) {
+  const router = useRouter();
+
   return (
     <svg
+      className="cursor-pointer"
       width="100%"
       height={height}
       viewBox="0 0 293 33"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      onClick={() => router?.push(routes.home)}
     >
       <title>Crédito Hipotecario</title>
       <path
