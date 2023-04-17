@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'react-lottie-player';
-import lottieJson from '../../public/animations/animation-load.json';
+import lottieJson from '../../lib/loader.json'
 import Typography from '../ui/Typography';
 
 interface AnimationData {

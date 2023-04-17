@@ -45,19 +45,17 @@ export const ReviewHouse: React.FC<ReviewHouseProps> = ({
   dataPdf,
 }) => (
   <div className="flex flex-col items-center ">
-    {lifeInsurance ? (
-      <Card
-        className="xs:w-[290px] sm:w-[343px] md:w-[448px]  h-[88px] bg-[#C4D1DA] mb-[16px]  rounded-[8px] flex flex-col justify-center"
-        title="Cuota mensual sin seguros"
-        value={monthlyCoute?.toString() + ' Pesos'}
-        text=" pl-[8px] flex items-baseline "
-        urlsvg=""
-        tooltiptext=""
-        urlsvgendicon=""
-        altsvg="Cuota mensual sin seguros"
-        typeFontProps={typeFontsPropsBold}
-      />
-    ) : null}
+    <Card
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  min-h-[88px] bg-[#C4D1DA] mb-[16px] py-2  rounded-[8px] flex flex-col justify-center"
+      title="Cuota mensual sin seguros"
+      value={monthlyCoute?.toString() + ' Pesos'}
+      text=" pl-[8px] flex items-baseline "
+      urlsvg=""
+      tooltiptext=""
+      urlsvgendicon=""
+      altsvg="Cuota mensual sin seguros"
+      typeFontProps={typeFontsPropsBold}
+    />
 
     <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px] py-4 bg-[#F3F4F6] pl-[16px] rounded-[8px] mb-[12px]"
