@@ -90,7 +90,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({
       transition={{ type: 'linear' }}
     >
       {isLoadingForm && (
-        <div className="absolute z-[100] top-0 left-0 w-full h-screen flex justify-center items-center bg-primario-100">
+        <div className="absolute z-[900] top-0 left-0 w-full h-screen flex justify-center items-center bg-primario-100">
           <SimulatorLoader />
         </div>
       )}

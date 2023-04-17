@@ -44,16 +44,17 @@ export const ReviewSalary: React.FC<ReviewSalaryProps> = ({
 }) => (
   <div className="flex flex-col items-center ">
     <Card
-      className="xs:w-[290px] sm:w-[343px] md:w-[448px] h-[88px] bg-[#C4D1DA]  mb-[16px] rounded-[8px] flex flex-col justify-center"
+      className="xs:w-[290px] sm:w-[343px] md:w-[448px]  min-h-[88px] bg-[#C4D1DA] mb-[16px] py-2  rounded-[8px] flex flex-col justify-center"
       title="Valor financiado aproximado"
       value={financedValue?.toString() + ' Pesos'}
-      text="pl-[8px] flex items-baseline"
+      text=" pl-[8px] flex items-baseline"
       urlsvg=""
-      classtitle="h-[18px]"
       tooltiptext=""
+      urlsvgendicon=""
+      altsvg="Valor financiado aproximad"
       typeFontProps={typeFontsPropsBold}
-      altsvg="Valor financiado aproximado"
     />
+
     <Card
       className="xs:w-[290px] sm:w-[343px] md:w-[448px] bg-[#F3F4F6] py-4 pl-[16px] rounded-[8px] mb-[12px]"
       title="Cuota mensual total con seguros"
