@@ -1,6 +1,6 @@
 import React from 'react';
 import Lottie from 'react-lottie-player';
-import lottieJson from '../../lib/loader.json'
+import lottieJson from '../../lib/loader.json';
 import Typography from '../ui/Typography';
 
 interface AnimationData {
@@ -40,14 +40,15 @@ function AnimationComponent({ show, loaded, valid }: AnimationData) {
             </div>
           )
         ) : (
-          <div className="my-auto">
+          <div className="bg-white fixed top-0 left-0 w-screen h-screen z-30 flex flex-col items-center justify-center">
             <Lottie
               loop
               animationData={lottieJson}
-              className="mx-auto w-[60px] h-[60px]"
+              className="mx-auto w-[320px] h-[320px]"
               play
+              speed={0.8}
             />
-            <div className="relative top-[50px]" data-testid="loading-message">
+            <div className="relative -top-[60px]">
               <Typography
                 variant="bodyM1"
                 componentHTML="p"
