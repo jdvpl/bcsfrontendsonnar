@@ -48,7 +48,7 @@ function AnimationComponent({ show, loaded, valid }: AnimationData) {
               play
               speed={0.8}
             />
-            <div className="relative -top-[60px]">
+            <div className="relative -top-[60px]"  data-testid="loading-message">
               <Typography
                 variant="bodyM1"
                 componentHTML="p"
