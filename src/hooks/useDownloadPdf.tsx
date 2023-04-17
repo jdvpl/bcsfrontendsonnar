@@ -33,9 +33,9 @@ export default function useDownloadPdf(
     })
     if (!response.error) {
       invokeEvent('acept_offer','action_funnel');
+      router.push(routes.approvalDataPage);
       setPdfData(response.response?.result)
       setCurrentRouting(routes.approvalDataPage);
-      router.push(routes.approvalDataPage);
       setLoading(false);
 
     }
