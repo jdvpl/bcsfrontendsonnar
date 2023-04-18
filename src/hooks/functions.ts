@@ -1,5 +1,5 @@
 import { routes } from '../routes';
-import { sendAuthorization, sendQuestions } from '../services';
+import { saveSourceCampaign, sendAuthorization, sendQuestions } from '../services';
 import { FormData } from '../components/ui/Form';
 import { iPersonalDataResponse } from '../interfaces/iPersonalDataResponse';
 interface InitDataSend {
@@ -65,16 +65,25 @@ export const onSubmitStartProcess = async (
   formData: FormData,
   setDataUser: any,
   router: any,
-  setDataQuestions:any
+  setDataQuestions:any,
+  campaign:any
 ) => {
   const labels = {
     policy_and_terms_label:
       'Acepta tratamiento de datos personales y consulta en centrales de riesgo',
   };
   const data = { ...formData, ...labels };
-  const response = await sendAuthorization(data);
+  const bodySourceCampaign={document_number: formData.document_number,
+    document_type: formData.document_type,campaign:campaign===null?"":JSON.stringify(campaign)}
+  
+    console.log({bodySourceCampaign})
+    const [response,responseCampaign] = await Promise.all([
+      sendAuthorization(data),
+      saveSourceCampaign(bodySourceCampaign)
+    ]) 
+  
   setDataUser(formData);
-  if (!response.error) {
+  if (!response.error && !responseCampaign?.error) {
     if (response.response?.result?.processId) {
       router.push(routes.authentication);
       setDataQuestions({ processId: response.response?.result?.processId });

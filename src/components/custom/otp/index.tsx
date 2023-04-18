@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import React, { useState, useEffect, useRef, FC, KeyboardEvent } from 'react';
+import React, { useState, useEffect, useRef, FC } from 'react';
 import OtpInput from 'react-otp-input-rc-17';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../session';
