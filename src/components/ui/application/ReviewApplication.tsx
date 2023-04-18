@@ -2,6 +2,7 @@ import React from 'react';
 import Card, { typeFontsProps } from '../simulation/Card';
 import { basePath } from '../../../../next.config';
 import Typography from '../Typography';
+import { convertToColombianPesos } from '../../../utils';
 
 interface ReviewApplicationProps {
   financedValue?: string;
@@ -59,7 +60,7 @@ function ReviewApplication({
         className="xs:w-[290px] sm:w-[343px] md:w-[448px] h-[88px] bg-[#C4D1DA] mb-[16px] font-semibold rounded-[8px]"
         title="Cuota mensual aproximada"
         value={`${monthlyInstallment} Pesos`}
-        text="text-[32px] pl-[16px] pt-2 flex items-baseline "
+        text="text-[32px] pl-[16px] pt-2 flex items-baseline mt-2"
         urlsvg=""
         classtitle="h-[18px] pt-[16px] text-[16px] "
         textsub="32"
@@ -137,7 +138,7 @@ function ReviewApplication({
           data-testid="lifeInsurance"
           className="xs:w-[290px] sm:w-[343px] md:w-[448px] h-[78px] bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
           title="Seguro de vida"
-          value={lifeInsurance?.toString()}
+          value={convertToColombianPesos(lifeInsurance)}
           text="text-[20px] pl-[18px]"
           urlsvg={`${basePath}/images/Insurage.svg`}
           tooltiptext=""
@@ -151,7 +152,7 @@ function ReviewApplication({
           data-testid="fireInsurance"
           className="xs:w-[290px] sm:w-[343px] md:w-[448px] h-[78px] bg-[#F3F4F6] pt-[16px] pl-[16px] rounded-[8px] mb-[12px] font-light"
           title="Seguro de Incendio, Rayo y Terremoto"
-          value={fireInsurance?.toString()}
+          value={convertToColombianPesos(fireInsurance)}
           text="text-[20px] pl-[18px]"
           urlsvg={`${basePath}/images/Money.svg`}
           tooltiptext=""

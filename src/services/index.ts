@@ -33,6 +33,24 @@ export const sendAuthorization = async (body: any) => {
     return { error: true, response: e.response?.data?.message };
   }
 };
+export const saveSourceCampaign = async (body: any) => {
+  try {
+    const dataInfo = await allResponse(body, KEY);
+    const { data: response } = await clientAxiosBackend.post(
+      '/reports/source-campaign',
+      { data: dataInfo }
+    );
+    const infoAllow = await allResponseDecrypted(response.data, KEY);
+    return {
+      response: {
+        result: infoAllow,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e.response?.data?.message };
+  }
+};
 //? this endpoint get each question from kyc
 /**
  * It takes in a data object, encrypts it, sends it to the KYC API, decrypts the response, and returns
@@ -225,7 +243,7 @@ export const fetchSarlaft = async (body: any) => {
 export const riskBoxes = async (body: RequestRiskBoxes) => {
   try {
     // TODO
-    const bodyEncrypt = await allResponse({ ...body, processId: getProcessId() }, KEY);
+    const bodyEncrypt = await allResponse({ ...body, processId: getProcessId() }, KEY);    
     const response: any = await clientAxiosBackend.post(
       '/api-composer/composer/risk-boxes',
       {
@@ -240,7 +258,6 @@ export const riskBoxes = async (body: RequestRiskBoxes) => {
       error: false,
     };
   } catch (e: any) {
-    console.log(e);
     return { error: true, response: e.response?.data?.message };
   }
 };

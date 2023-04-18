@@ -36,7 +36,6 @@ const FormQuota: FC<FormProps> = ({ onSubmit, isLoading }) => {
   const amountQuota = watch('amountQuota', 0);
   const termFinance = watch('termFinance', 0);
   const city=watch('city');
-  console.log(city)
   const getPercentage = (value: any) => {
     if (+amountQuota > 0 && +monthlySalary > 0) {
       const percentage = +amountQuota / +monthlySalary;

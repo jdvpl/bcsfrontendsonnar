@@ -30,7 +30,7 @@ const CityStratum = ({setValue,control,rules,errorStratum}:any) => {
         )}
       />
       <ReactHookFormSelect
-        onChange={(e: any) =>{console.log(e); setValue('stratum', e.target.value)}}
+        onChange={(e: any) =>{setValue('stratum', e.target.value)}}
         placeholder="Estrato de la vivienda"
         label="Estrato de la vivienda"
         defaultValue=""
