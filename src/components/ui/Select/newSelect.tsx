@@ -100,9 +100,9 @@ const ReactHookFormSelect: React.FC<any> = ({
                   borderWidth: '1px',
                 },
                 '.MuiOutlinedInput-notchedOutline': {
-                  borderColor: error ? '#ce1126' : "#89a3b5",
+                  borderColor: error ? '#ce1126' : '#89a3b5',
                   borderWidth: '1px',
-                }
+                },
               }}
               onOpen={() =>
                 setInitialIcon(
@@ -116,7 +116,10 @@ const ReactHookFormSelect: React.FC<any> = ({
               }
               color="primary"
               defaultValue={defaultValue || ''}
-              onChange={selectValue}
+              onChange={(e) => {
+                field.onChange(e);
+                selectValue(e);
+              }}
               labelId={labelId}
             >
               {children}
