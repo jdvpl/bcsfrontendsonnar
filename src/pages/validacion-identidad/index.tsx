@@ -31,50 +31,55 @@ const Index: React.FC = () => {
   const { setCurrentRouting } = useProtectedRoutes();
   return (
     <>
-      <Head>
-        <title>Validación de identidad - BCS Credito Hipotecario</title>
-      </Head>
-      <InactivityWarper>
-        <Layout navTitle={<NavTitle noBack />}>
-          {loading && <SimulatorLoader />}
-          {!dataValid && (
-            <Stepper
-              steps={5}
-              actualStep={1}
-              percentage={progress}
-              title="Validación de identidad"
-            />
-          )}
-          {data && !dataNumber && !dataValid && (
-            <AnimatePresence>
-              <ValidationForm
-                questions={data?.items}
-                onSubmit={(dataSend: any) => {
-                  onSubmitResponse(
-                    dataSend,
-                    dataTU,
-                    router,
-                    setDataNumber,
-                    dataQuestions?.processId,
-                    setCurrentRouting,
-                    setBasicData,
-                    setLoading
-                  );
-                  setProgress(50);
-                }}
-              />
-            </AnimatePresence>
-          )}
-          <AnimatePresence>
-            {dataNumber && (
-              <ValidationFormNumber
-                questions={dataNumber}
-                setCurrentRouting={setCurrentRouting}
-              />
-            )}
-          </AnimatePresence>
-        </Layout>
-      </InactivityWarper>
+      {loading ? (
+        <SimulatorLoader />
+      ) : (
+        <>
+          <Head>
+            <title>Validación de identidad - BCS Credito Hipotecario</title>
+          </Head>
+          <InactivityWarper>
+            <Layout navTitle={<NavTitle noBack />}>
+              {!dataValid && (
+                <Stepper
+                  steps={5}
+                  actualStep={1}
+                  percentage={progress}
+                  title="Validación de identidad"
+                />
+              )}
+              {data && !dataNumber && !dataValid && (
+                <AnimatePresence>
+                  <ValidationForm
+                    questions={data?.items}
+                    onSubmit={(dataSend: any) => {
+                      onSubmitResponse(
+                        dataSend,
+                        dataTU,
+                        router,
+                        setDataNumber,
+                        dataQuestions?.processId,
+                        setCurrentRouting,
+                        setBasicData,
+                        setLoading
+                      );
+                      setProgress(50);
+                    }}
+                  />
+                </AnimatePresence>
+              )}
+              <AnimatePresence>
+                {dataNumber && (
+                  <ValidationFormNumber
+                    questions={dataNumber}
+                    setCurrentRouting={setCurrentRouting}
+                  />
+                )}
+              </AnimatePresence>
+            </Layout>
+          </InactivityWarper>
+        </>
+      )}
     </>
   );
 };
