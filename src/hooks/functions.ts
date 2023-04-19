@@ -14,7 +14,7 @@ export const onSubmitResponse = async (
   processId: string,
   setCurrentRouting: any,
   setBasicData: any,
-  setLoading: any,
+  setLoading: any
 ) => {
   setLoading(true);
   const body = {
@@ -52,12 +52,14 @@ export const onSubmitResponse = async (
       setCurrentRouting(routes.validacionIdentidad, false);
       setCurrentRouting(routes.otc);
       router.push(routes.otc);
+      setLoading(false);
     } else if (step === 'VQ') {
       setDataNumber(response.response.data.question);
       setLoading(false);
     }
   } else {
     router.push(routes.errorValidacion);
+    setLoading(false);
   }
 };
 
@@ -65,23 +67,26 @@ export const onSubmitStartProcess = async (
   formData: FormData,
   setDataUser: any,
   router: any,
-  setDataQuestions:any,
-  campaign:any
+  setDataQuestions: any,
+  campaign: any
 ) => {
   const labels = {
     policy_and_terms_label:
       'Acepta tratamiento de datos personales y consulta en centrales de riesgo',
   };
   const data = { ...formData, ...labels };
-  const bodySourceCampaign={document_number: formData.document_number,
-    document_type: formData.document_type,campaign:campaign===null?"":JSON.stringify(campaign)}
-  
-    console.log({bodySourceCampaign})
-    const [response,responseCampaign] = await Promise.all([
-      sendAuthorization(data),
-      saveSourceCampaign(bodySourceCampaign)
-    ]) 
-  
+  const bodySourceCampaign = {
+    document_number: formData.document_number,
+    document_type: formData.document_type,
+    campaign: campaign === null ? '' : JSON.stringify(campaign),
+  };
+
+  console.log({ bodySourceCampaign });
+  const [response, responseCampaign] = await Promise.all([
+    sendAuthorization(data),
+    saveSourceCampaign(bodySourceCampaign),
+  ]);
+
   setDataUser(formData);
   if (!response.error && !responseCampaign?.error) {
     if (response.response?.result?.processId) {
