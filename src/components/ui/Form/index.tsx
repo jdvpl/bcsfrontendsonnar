@@ -19,13 +19,12 @@ export interface FormData {
   document_number: string;
   document_type: string;
   policy_and_terms: boolean;
-  commercial_terms: boolean;
 }
 export interface HowItemProps {
   children: string | JSX.Element;
   title: string | JSX.Element;
   id: string;
-  heightModal?: string
+  heightModal?: string;
 }
 export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) => {
   const {
@@ -50,7 +49,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
     children: '',
     title: '',
     id: '',
-    heightModal: ''
+    heightModal: '',
   });
 
   const handleTerminos = () => {
@@ -91,25 +90,35 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
     <form
       id="form-login"
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full p-2 md:py-5 lg:p-4 bg-white"
+      className="w-full p-2 md:py-5 lg:p-4 bg-white "
       autoComplete="off"
     >
-      <Typography variant="h2" className="text-center text-primario-900 font-poppinsSemiBold text-[28px]">
+      <Typography
+        componentHTML="h2"
+        variant="h2"
+        typeFont="Bold"
+        className="text-center text-primario-900  "
+      >
         Bienvenido a
       </Typography>
-      <figure itemProp="logo" className="flex justify-center lg:w-[300px] md:w-[240px] w-[250px] m-auto mt-4">
+      <figure
+        itemProp="logo"
+        className="flex justify-center lg:w-[300px] md:w-[240px] w-[250px] m-auto mt-4"
+      >
         <LogoForm height={heightHeader} />
       </figure>
 
       <div className="text-gray-100">
         <div>
           <Typography
-            variant="bodyM4"
-            className="m-auto text-center mb-[36px] lg:mt-[24px] md:mt-[10px] text-[18px] text-complementario-100 sm:w-[306px] lg:w-[629px] md:w-[311px] font-montserratRegular"
+            variant="bodyM3"
+            typeFont="Regular"
+            componentHTML="h1"
+            className="m-auto text-center mb-[36px] lg:mt-[24px] md:mt-[10px] text-[18px] text-primario-900 sm:w-[306px]  md:w-[311px] lg:w-[350px]"
           >
             Para iniciar la solicitud de su crédito ingrese los siguientes datos.
           </Typography>
-          <div className="w-full mt-3">
+          <div className="w-full mt-3 lg:w-[448px] m-auto">
             <ReactHookFormSelect
               onChange={(e: any) => setValue('document_type', e.target.value)}
               placeholder="Tipo de documento"
@@ -118,19 +127,17 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
               defaultValue=""
               control={control}
               left="right4"
-              role="typeDocumentRole"
               valueLength=""
               name="document_type"
               className="w-100"
               margin="normal"
-
             >
               <MenuItem value="CC">Cédula de ciudadanía</MenuItem>
               <MenuItem value="CE">Cédula de extranjería</MenuItem>
             </ReactHookFormSelect>
           </div>
         </div>
-        <div className="flex flex-col mt-4">
+        <div className="flex flex-col mt-4 lg:w-[448px] m-auto">
           <Controller
             rules={{ required: true, minLength: 5, maxLength: 10 }}
             render={({ field }) => (
@@ -146,7 +153,6 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
                 tabIndex={0}
                 id="document_number"
                 inputMode="numeric"
-                // maxLength={10}
                 required
                 label="Número de documento"
                 disabled={disabledInput}
@@ -175,8 +181,8 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
         </div>
       </div>
 
-      <div className="mt-[28px] md:mt-[24px] lg:mt-[32px] ml-1 text-xs mb-[32px]">
-        <div className="flex items-start ">
+      <div className="mt-[28px] md:mt-[24px] lg:mt-[32px] ml-1 text-xs mb-[32px] ">
+        <div className="flex items-start lg:w-[448px] m-auto">
           <input
             {...register('policy_and_terms')}
             className="inline-block p-0 m-0  h-[18px] w-[18.6px] min-w-[18.6px] "
@@ -185,26 +191,26 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
             data-testid="chk_policy_and_terms"
             checked={terminos}
             aria-checked={terminos}
-            tabIndex={0}
             onChange={handleTerminos}
           />
-          <label
+          <Typography
+            variant="caption2"
+            componentHTML="label"
+            typeFont="Regular"
             htmlFor="chk_policy_and_terms"
-            className="inline-block font-normal text-black p-0 m-0 pl-[10px] font-montserratRegular cursor-pointer"
-            role="tabpanel"
-            tabIndex={0}
+            className="inline-block font-normal text-primario-900 p-0 m-0 pl-[10px]  cursor-pointer"
             itemScope
             itemType="https://schema.org/Service"
           >
             Acepta{' '}
-            <span
+            <Typography
+              componentHTML="span"
+              variant="caption2"
               className=" text-primario-20 cursor-pointer"
               id="modal-politics"
               role="link"
-              aria-hidden="true"
-              aria-expanded="true"
-              data-testid="politicsTestSpan"
               tabIndex={0}
+              data-testid="politicsTestSpan"
               onClick={() => {
                 setShowModal(true);
                 setComponentModal({
@@ -213,7 +219,7 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
                   id: 'modal-politics',
                 });
               }}
-              onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
+              onKeyDownCapture={(e: KeyboardEvent<HTMLInputElement>) => {
                 if (e.key === 'Enter') {
                   setShowModal(true);
                   setComponentModal({
@@ -226,65 +232,9 @@ export const RegisterForm: React.FC<FormProps> = ({ onSubmit, defaultValues }) =
               itemProp="termsOfService"
             >
               tratamiento de datos personales y consulta en centrales de riesgo
-            </span>
-          </label>
+            </Typography>
+          </Typography>
         </div>
-        <div className="flex items-start mt-4">
-          <input
-            {...register('commercial_terms')}
-            className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"
-            checked={commercial}
-            aria-checked={commercial}
-            tabIndex={0}
-            type="checkbox"
-            id="chk-terminos"
-            data-testid="chkterminos"
-            onChange={handleCommercial}
-          />
-          <label
-            htmlFor="chk-terminos"
-            className="inline-block font-normal text-black p-0 m-0 pl-[10px] font-montserratRegular cursor-pointer"
-            role="tabpanel"
-            tabIndex={0}
-            itemScope
-            itemType="https://schema.org/Service"
-          >
-            Autoriza que su información sea utilizada con{' '}
-            <span
-              className=" text-primario-20 cursor-pointer"
-              id="modal-commercial"
-              role="link"
-              aria-hidden="true"
-              aria-expanded="true"
-              data-testid="commercialTermsTest"
-              tabIndex={0}
-              onClick={() => {
-                setShowModal(true);
-                setComponentModal({
-                  children: <CommercialAuthorization />,
-                  title: <span className='font-poppinsSemiBold'>Autoriza que su información sea utilizada con fines comerciales</span>,
-                  id: 'modal-commercial',
-                  heightModal: 'lg:h-[50%]'
-                });
-              }}
-              onKeyDown={(e: KeyboardEvent<HTMLInputElement>) => {
-                if (e.key === 'Enter') {
-                  setShowModal(true);
-                  setComponentModal({
-                    children: <CommercialAuthorization />,
-                    title: <span className='font-poppinsSemiBold'>Autoriza que su información sea utilizada con fines comerciales</span>,
-                    id: 'modal-commercial',
-                    heightModal: 'lg:h-[50%]'
-                  });
-                }
-              }}
-              itemProp="termsOfService"
-            >
-              fines comerciales
-            </span>
-          </label>
-        </div>
-
         {showModal && (
           <Modal
             showModal={showModal}

@@ -4,10 +4,10 @@ import { basePath } from '../../../next.config';
 import styles from '../../styles/Home.module.css';
 import { childrenProps } from '../../interfaces';
 
- const ErrorLayout: React.FC<childrenProps> = ({ children }) => (
+const ErrorLayout: React.FC<childrenProps> = ({ children, title }) => (
   <div className={styles.container}>
     <Head>
-      <title>BCS Cuentamiga Digital</title>
+      <title>{title} - BCS Crédito Hipotecario</title>
       <link rel="icon" href={`${basePath}/favicon.ico`} />
     </Head>
     <header
@@ -19,8 +19,6 @@ import { childrenProps } from '../../interfaces';
     </header>
     <main
       data-testid="main-errorLayout"
-      tabIndex={0}
-      role="tabpanel"
       className="flex flex-col  mb-[30px] px-[16px] sm:px-[16px] md:px-[30px]  max-w-full mt-[60px]  md:justify-center items-center self-start md:self-center text w-full lg:min-h-[100%] lg:h-full"
     >
       <div className="w-full max-w-[343px]  md:w-[343px] md:min-w-[343px] lg:w-full lg:max-w-full  flex flex-col justify-between h-full">
@@ -30,4 +28,4 @@ import { childrenProps } from '../../interfaces';
   </div>
 );
 
-export default ErrorLayout
+export default ErrorLayout;

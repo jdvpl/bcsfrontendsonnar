@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { iDataUser, iPersonalData, iPersonalDataSent } from "../interfaces/dataUserBasic";
 import { routes } from "../routes";
-import { calculateAge, emailMasked, isValidDate, cellPhoneMaked, getHasAdviserNameAdviser } from "../utils";
+import { calculateAge, emailMasked, isValidDate, cellPhoneMaked, getHasAdviserNameAdviser, invokeEvent } from "../utils";
 
 export default function usePersonalData(setValue: any, userInfo: iDataUser,
   setError: any,
@@ -73,7 +73,7 @@ export default function usePersonalData(setValue: any, userInfo: iDataUser,
 
 
   const onSubmit = async (data: iPersonalData) => {
-    const birthDate = `${data.yearDt}-${data.monthDt}-${data.dayDt}`;
+    const birthDate = userInfo.isClient ? `${date[0]}-${date[1]}-${date[2]}` : `${data.yearDt}-${data.monthDt}-${data.dayDt}`;
     const birthCity = data.birthCity?.option;
     const currentCity = data.currentCity?.option;
     const hasAdviser = userInfo.isClient ? getHasAdviserNameAdviser(userInfo.residenceCity) : null;
@@ -89,6 +89,7 @@ export default function usePersonalData(setValue: any, userInfo: iDataUser,
       currentAddress: userInfo.isClient ? userInfo.address : data.currentAddress,
       email: data.email.trim() === emailMasked(userInfo.email) ? userInfo.email : data.email,
     };
+    invokeEvent('go_sarlaft_questions','action_funnel');
     setDataUser(dataSend);
     setCurrentRouting(routes.sarlaft);
     router.push(routes.sarlaft);

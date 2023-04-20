@@ -1,6 +1,6 @@
 {
   "name": "skeleton",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -15,7 +15,8 @@
     "test:cov": "jest --coverage --silent --ci",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "release": "release-it --ci"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -43,6 +44,7 @@
     "react-responsive": "^9.0.0"
   },
   "devDependencies": {
+    "@release-it/conventional-changelog": "^5.1.1",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/react-hooks": "^7.0.2",
@@ -55,6 +57,7 @@
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "autoprefixer": "^10.4.11",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.23.1",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -70,12 +73,83 @@
     "jest-canvas-mock": "^2.4.0",
     "jest-environment-jsdom": "^29.0.3",
     "postcss": "^8.4.16",
+    "release-it": "^15.10.1",
     "tailwindcss": "^3.1.8",
     "typescript": "^4.8.3"
   },
   "husky": {
     "hooks": {
       "pre-push": "npm run test"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "release-it": {
+    "git": {
+      "commit": true,
+      "commitMessage": "chore: release v${version}",
+      "requireBranch": false,
+      "requireUpstream": false,
+      "tag": false,
+      "tagName": "${version}",
+      "push": true
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": {
+          "name": "conventionalcommits",
+          "types": [
+            {
+              "type": "feat",
+              "section": "A feature commit adds new functionality or features to the codebase"
+            },
+            {
+              "type": "fix",
+              "section": "This type of commit fixes bugs or issues in the codebase"
+            },
+            {
+              "type": "docs",
+              "section": "A documentation commit adds or updates documentation for the codebase"
+            },
+            {
+              "type": "style",
+              "section": "This type of commit is made to improve the code's style or formatting, such as renaming variables or improving code readability"
+            },
+            {
+              "type": "refactor",
+              "section": "Refactoring commits are made to improve the quality of the codebase without changing its behavior"
+            },
+            {
+              "type": "perf",
+              "section": "Improves the performance"
+            },
+            {
+              "type": "test",
+              "section": "A test commit adds or updates tests to ensure that the code is working as expected"
+            },
+            {
+              "type": "build",
+              "section": "Changes that affect the build system or dependencies (npm, gradle, etc)"
+            },
+            {
+              "type": "ci",
+              "section": "Continuous Integration configuration changes in files/scripts (GitLab CI, GitHub Actions)"
+            },
+            {
+              "type": "chore",
+              "section": "Other changes that don't modify src or test files"
+            },
+            {
+              "type": "revert",
+              "section": "Reverts a previous commit"
+            },
+            {}
+          ]
+        }
+      }
     }
   }
 }

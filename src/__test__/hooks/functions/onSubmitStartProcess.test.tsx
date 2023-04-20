@@ -2,7 +2,7 @@ import { onSubmitStartProcess } from '../../../hooks/functions';
 import { sendAuthorization } from '../../../services';
 jest.mock('../../../services');
 
-sendAuthorization
+(sendAuthorization as jest.Mock)
   ?.mockReturnValueOnce({
     error: true,
     response: {
@@ -21,7 +21,11 @@ sendAuthorization
       result: null,
     },
   });
-
+const campaignFull={
+  utm:"test",
+  campaign:'Facebook'
+}
+const campaignEmpty=""
 describe('', () => {
   test('onSubmitStartProcess', async () => {
     let formData = {
@@ -39,7 +43,7 @@ describe('', () => {
 
     setDataUser = jest.fn();
 
-    await onSubmitStartProcess(formData, setDataUser, router);
+    await onSubmitStartProcess(formData, setDataUser, router,jest.fn(),campaignFull);
   });
   test('onSubmitStartProcess', async () => {
     let formData = {
@@ -57,7 +61,7 @@ describe('', () => {
 
     setDataUser = jest.fn();
 
-    await onSubmitStartProcess(formData, setDataUser, router);
+    await onSubmitStartProcess(formData, setDataUser, router,jest.fn(),campaignFull);
   });
   test('onSubmitStartProcess', async () => {
     let formData = {
@@ -75,6 +79,6 @@ describe('', () => {
 
     setDataUser = jest.fn();
 
-    await onSubmitStartProcess(formData, setDataUser, router);
+    await onSubmitStartProcess(formData, setDataUser, router,jest.fn(),campaignFull);
   });
 });

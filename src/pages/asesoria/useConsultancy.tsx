@@ -1,7 +1,9 @@
-import React from 'react';
-import { initialOptions } from '../../lib/consultancy';
+import React, { useEffect } from 'react';
+import { initialOptions } from '../../components/custom/consultancy/consultancy';
 import { routes } from '../../routes';
 import Button from '../../components/ui/Button';
+import Typography from '../../components/ui/Typography';
+import { invokeEvent } from '../../utils';
 
 export default function useConsultancy({
   actualStep,
@@ -17,6 +19,7 @@ export default function useConsultancy({
     if (actualStep < 4) {
       setActualStep(actualStep + 1);
     } else {
+      invokeEvent('complete_consultancy', 'action_funnel');
       router.push(routes.home);
     }
   };
@@ -25,11 +28,13 @@ export default function useConsultancy({
     if (actualStep > 1) {
       setActualStep(actualStep - 1);
     } else {
+      invokeEvent('back_home', 'action_funnel');
       router.push(routes.home);
     }
   };
 
   const openModal = (label: string, index: number) => {
+    invokeEvent('show_item_detail', 'action_funnel');
     setActiveIndex(index);
     setItemActive(label);
   };
@@ -41,9 +46,14 @@ export default function useConsultancy({
 
   const renderContent = () => (
     <div className="lg:w-[411px] text-[14px]">
-      <span className="font-montserratSemiBold font-semibold text-primario-900 lg:text-[20px] text-[16px]">
+      <Typography
+        variant="bodyM1"
+        componentHTML="span"
+        typeFont="Bold"
+        className=" text-primario-900 lg:text-[20px] text-[16px]"
+      >
         {itemActive}
-      </span>
+      </Typography>
       {initialOptions[actualStep - 1]?.[activeIndex]?.content()}
     </div>
   );
@@ -56,8 +66,9 @@ export default function useConsultancy({
             key={option?.label}
             onClick={() => openModal(option?.label, index)}
             variant="secondary"
-            border="0.5"
-            isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%] font-semibold font-montserratRegular rounded-[8px] lg:h-48px ${
+            border="1"
+            title={option?.label}
+            isLanding={`p-0 z-10 md:w-[253px] xs:w-[100%]  rounded-[8px] lg:h-48px ${
               itemActive === option?.label ? 'bg-primario-100' : ''
             }
                 ${
@@ -67,13 +78,16 @@ export default function useConsultancy({
                 }`}
           >
             <div className="flex justify-center">
-              <span
+              <Typography
+                variant="bodyM3"
+                typeFont="Bold"
+                componentHTML="span"
                 className={`text-center ${
                   itemActive === option?.label ? 'text-white' : 'text-primario-100'
-                } text-[18px] p-0`}
+                }  p-0`}
               >
                 {option?.label}
-              </span>
+              </Typography>
             </div>
           </Button>
         ))}

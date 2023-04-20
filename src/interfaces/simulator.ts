@@ -17,7 +17,10 @@ export interface SimulationData {
   day?: string;
   month?: string;
   office?: string;
-  stratum?: number;
+  stratum?: string | number;
   houseStatus?: string;
   amortizationType?: string;
+  city?:any;
+  gender?:string;
+  houseCity?: any;
 }

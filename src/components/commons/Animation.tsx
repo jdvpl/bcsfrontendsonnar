@@ -1,6 +1,7 @@
 import React from 'react';
 import Lottie from 'react-lottie-player';
-import lottieJson from '../../public/animations/animation-load.json';
+import lottieJson from '../../lib/loader.json';
+import Typography from '../ui/Typography';
 
 interface AnimationData {
   show?: string;
@@ -9,7 +10,8 @@ interface AnimationData {
 }
 
 function AnimationComponent({ show, loaded, valid }: AnimationData) {
-  return <div className={`fixed inset-0 z-[100]  bg-white ${show}`}>
+  return (
+    <div className={`fixed inset-0 z-[100]  bg-white ${show}`}>
       <div className="flex flex-col h-screen content-center inset-0 z-40 ">
         {loaded ? (
           valid && (
@@ -30,8 +32,6 @@ function AnimationComponent({ show, loaded, valid }: AnimationData) {
                 />
               </svg>
               <p
-                tabIndex={0}
-                role="paragraph" 
                 className="mx-auto sm:mx-[64px] my-[49px] font-normal text-[18px] leading-[20px] text-primario-900 text-center"
                 data-testid="success-message"
               >
@@ -40,25 +40,36 @@ function AnimationComponent({ show, loaded, valid }: AnimationData) {
             </div>
           )
         ) : (
-          <div className="my-auto">
+          <div className="bg-white fixed top-0 left-0 w-screen h-screen z-30 flex flex-col items-center justify-center">
             <Lottie
               loop
               animationData={lottieJson}
-              className="mx-auto w-[60px] h-[60px]"
+              className="mx-auto w-[320px] h-[320px]"
               play
+              speed={0.8}
             />
-            <p
-              tabIndex={0} 
-              role="paragraph"
-              className="mx-auto sm:mx-[64px] my-[49px] font-normal text-[18px] leading-[20px] text-primario-900 text-center"
-              data-testid="loading-message"
-            >
-              Estamos validando su identidad
-            </p>
+            <div className="relative -top-[60px]"  data-testid="loading-message">
+              <Typography
+                variant="bodyM1"
+                componentHTML="p"
+                className="text-center text-complementario-100 mb-4"
+              >
+                Un momento
+              </Typography>
+              <Typography
+                variant="h3"
+                componentHTML="h3"
+                typeFont="Bold"
+                className="text-center"
+              >
+                Estamos validando su información
+              </Typography>
+            </div>
           </div>
         )}
       </div>
     </div>
+  );
 }
 
 export default AnimationComponent;

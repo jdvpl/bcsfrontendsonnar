@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {
   maxHouseValueNoVis,
   maxHouseValueVis,
@@ -9,9 +9,10 @@ import {
 import { iCreditData } from '../interfaces/iCreditData';
 import { useSessionStorage } from './useSessionStorage';
 import { SesionStorageKeys } from '../session';
-import { calculateAgeMethod2 } from '../utils';
+import { calculateAgeMethod2, invokeEvent } from '../utils';
 import { riskBoxes } from '../services';
 import { routes } from '../routes';
+import { RequestRiskBoxes } from '../interfaces/IRequestRiskBoxes';
 
 export default function useValidations(
   typeHouse: string,
@@ -32,7 +33,8 @@ export default function useValidations(
   errors: any,
   setCurrentRouting: any,
   mortgageValues: Partial<iCreditData>,
-  amortizationType: any
+  amortizationType: any,
+  houseCity: any
 ) {
   const [financialDataForm] = useSessionStorage(
     SesionStorageKeys?.financialDataForm.key,
@@ -45,6 +47,11 @@ export default function useValidations(
     SesionStorageKeys?.applicationResponse.key,
     {}
   );
+  const [, setOrderNumber] = useSessionStorage(
+    SesionStorageKeys?.orderNumber.key,
+    {}
+  );
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   const handleClearErrors = () => {
     clearErrors('typeHouse');
@@ -107,6 +114,7 @@ export default function useValidations(
       setValue('financeValue', 0);
     }
   };
+
   useEffect(() => {
     if (Object.entries(mortgageValues).length > 0) {
       setValue('typeHouse', mortgageValues.typeHouse);
@@ -128,6 +136,7 @@ export default function useValidations(
   }, [houseValue, financeValue, termFinance, typeHouse]);
 
   const onSubmit = async () => {
+    setLoading(true);
     // eslint-disable-next-line no-console
     setDataForm({
       typeHouse,
@@ -142,17 +151,18 @@ export default function useValidations(
       amortizationType,
     });
 
-    const body = {
+    const body: RequestRiskBoxes = {
       creditData: {
         typeHouse,
         houseStatus,
-        houseValue,
-        financeValue,
+        houseValue: houseValue.toString(),
+        financeValue: Math.floor(financeValue),
         termFinance,
         insuranceCheck,
         choseOffice,
         office,
         stratum,
+        houseCity,
       },
       financialData: {
         ...financialDataForm,
@@ -172,17 +182,16 @@ export default function useValidations(
     };
 
     const data: any = await riskBoxes(body);
-    console.log(data);
-
-    if (!data?.response?.error) {
-      setApplicationResponse({ data });
+    if (data?.response?.result?.customerStatus?.finalOffer?.isViable) {
+      invokeEvent('go_confirmation_request','action_funnel');
+      setOrderNumber(data?.response?.result?.orderNumber || '123456');
+      setApplicationResponse(data?.response?.result?.customerStatus);
       setCurrentRouting(routes.finalcialData, false);
       setCurrentRouting(routes.creditData, false);
       setCurrentRouting(routes.ResumenSolicitud);
       router.push(routes.ResumenSolicitud);
-    }else{
-      router.push(routes.errorValidacion);
-
+    } else {
+      router.push(routes.errorCreditBankApplication);
     }
   };
 
@@ -197,6 +206,7 @@ export default function useValidations(
       choseOffice,
       office,
       stratum,
+      houseCity,
     };
 
     var values = Object.values(body);
@@ -231,5 +241,6 @@ export default function useValidations(
     automationFinanceValue,
     onSubmit,
     isValid,
+    isLoading,
   };
 }

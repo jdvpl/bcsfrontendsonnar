@@ -9,6 +9,7 @@ function Close({ height = '17px', width = '17px' }) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <title>Cerrar</title>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

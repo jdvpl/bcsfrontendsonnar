@@ -18,7 +18,7 @@ describe('Bienvenida', () => {
         <Bienvenida />
       </RouterContext.Provider>
     );
-    await waitFor(() => userEvent.click(screen.getByRole('button', { name: 'Iniciar solicitud' })))
+    await waitFor(() => userEvent.click(screen.getByText('Iniciar solicitud')))
     expect(router.push).toHaveBeenCalledWith(routes.startProccess);
   })
 

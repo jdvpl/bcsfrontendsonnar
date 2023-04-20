@@ -4,11 +4,12 @@ import { FC } from 'react';
 import Icons, { IconsProps } from '../icons';
 import Typography from '../Typography/index';
 import dynamicClassesSelective from './SelectiveClassnames';
-import React from 'react'
+import React from 'react';
+import { invokeEvent, parsePathToEvent } from '../../../utils';
 
 export interface ISelectiveCardProps extends IconsProps {
-  label?:React.ReactNode| string;
-  description:  string;
+  label?: React.ReactNode | string;
+  description: string;
   pathTo?: string;
   className?: string;
   hasTitle?: boolean;
@@ -16,6 +17,7 @@ export interface ISelectiveCardProps extends IconsProps {
   classNamesDescription?: string;
   titleClasses?: string;
   active?: boolean;
+  title: string;
 }
 const SelectiveCard: FC<ISelectiveCardProps> = ({
   label,
@@ -30,40 +32,57 @@ const SelectiveCard: FC<ISelectiveCardProps> = ({
   classNamesDescription = 'md:w-[224px]',
   titleClasses = '',
   active = false,
+  title,
   ...props
 }) => {
   const router = useRouter();
   const classNames = dynamicClassesSelective(hasTitle, className, active);
-  const activeClasses = active ? 'text-white' : 'text-primario-900'
-  const activeClassesDesc = active ? 'text-white' : 'text-complementario-100'
+  const activeClasses = active ? 'text-white' : 'text-primario-900';
+  const activeClassesDesc = active ? 'text-white' : 'text-complementario-100';
+
+  const handleClick = () => {
+    if (onclick) {
+      invokeEvent(parsePathToEvent(pathTo), 'action_funnel');
+      router.push(pathTo);
+    }
+  };
+
   return (
     <div
       data-testid="selectiveCardTest"
       {...props}
+      onClick={handleClick}
       className={classNames.mainClasesParentDiv}
-      {...(onclick ? { onClick: () => router.push(pathTo) } : {})}
+      role="tabpanel"
+      tabIndex={0}
+      title={title}
     >
       <div className={classNames.iconContainerStyle}>
         <Icons
           icon={icon}
           color={color}
           size={size}
-          iconclassNames="group-hover:text-white"
+          iconclassNames="group-hover:text-white cursor-pointer"
+          title={title}
         />
       </div>
       <label className="label-shipping" htmlFor="shipping-home">
-        <div>
+        <div className="cursor-pointer">
           {hasTitle && (
             <Typography
               variant="bodyM2"
-              className={` lg:mt-[14px] lg:mb-[18px] leading-[1.125rem]  m-0 tracking-normal font-semibold  group-hover:text-white ${titleClasses} ${activeClasses}`}
+              typeFont='Bold'
+              componentHTML='p'
+              className={` lg:mt-[14px] lg:mb-[18px]  m-0 tracking-normal ${hasTitle && 'cursor-pointer'} group-hover:text-white ${titleClasses} ${activeClasses}`}
             >
               {label}
             </Typography>
           )}
           <Typography
-            variant="bodyS3"
-            className={`hasTitle leading-[1.125rem]  text-[1rem]  mt-2 group-hover:text-white font-ligth ${classNamesDescription} ${activeClassesDesc}`}
+            variant="bodyM3"
+            typeFont='Regular'
+            componentHTML='p'
+            className={`hasTitle  mt-2 group-hover:text-white  ${hasTitle && 'cursor-pointer'} ${classNamesDescription} ${activeClassesDesc}`}
           >
             {description}
           </Typography>

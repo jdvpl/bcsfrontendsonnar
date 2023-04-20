@@ -2,9 +2,8 @@ import { differenceInYears, parse } from 'date-fns';
 import * as CryptoJS from 'crypto-js';
 import { SesionStorageKeys } from '../session';
 import { getSessionStorageOrDefault } from '../hooks/useSessionStorage';
-import { AxiosError, AxiosInstance } from 'axios';
-import Router from 'next/router';
 import cities from '../lib/cities.json';
+
 import {
   maxHouseValueNoVis,
   maxHouseValueVis,
@@ -12,6 +11,8 @@ import {
   minHouseValueVis,
   SMMLV,
 } from '../lib/simulator';
+import TagManager from 'react-gtm-module';
+import { routes } from '../routes';
 
 export const clearSessionStorage = () => {
   sessionStorage.clear();
@@ -91,17 +92,6 @@ export const getProcessId = () => {
   return processId;
 };
 
-export const axiosErrorMiddleware = (axiosInstance: AxiosInstance) => {
-  return (error: AxiosError) => {
-    if (error?.response?.status !== 200) {
-      if (error?.response?.status === 500) {
-        Router.push('/validacion/error-servicio');
-      }
-    }
-    return Promise.reject(error);
-  };
-};
-
 export const renderPercentage = (percentageFinance: any) => {
   if (Math.floor(percentageFinance * 100) > 100) {
     return `> 100`;
@@ -116,7 +106,7 @@ export const getHasAdviserNameAdviser = (id: string) => {
   const data = cities.details.filter((element) => element.id == id)[0];
   return {
     hasAdviser: data.hasAdviser,
-    nameAdviser: data.nameAdviser
+    nameAdviser: data.nameAdviser,
   };
 };
 
@@ -239,16 +229,17 @@ export const emailMasked = (email: string) => {
   } else {
     return email;
   }
-}
+};
 
 export const downLoadPdf = (pdf: any, name: string) => {
+  invokeEvent('download_pre_approved _letter', 'action_funnel');
   const linkSource = `data:application/pdf;base64,${pdf}`;
-  const downloadLink = document.createElement("a");
+  const downloadLink = document.createElement('a');
   const fileName = `${name}.pdf`;
   downloadLink.href = linkSource;
   downloadLink.download = fileName;
-  downloadLink.click()
-}
+  downloadLink.click();
+};
 
 export const calculateAgeMethod2 = (dob: string): number => {
   var hoy = new Date();
@@ -262,3 +253,48 @@ export const calculateAgeMethod2 = (dob: string): number => {
 
   return edad;
 };
+
+export const invokeEvent = (event: string, category: string) => {
+  TagManager.dataLayer({
+    dataLayer: {
+      event: event,
+      category: category,
+      action: event,
+      label: event,
+    },
+  });
+};
+
+export const parsePathToEvent = (path: string) => {
+  const event = {
+    [routes.simulador]: 'go_simulator',
+    [routes.consultancy]: 'go_guide',
+    [routes.onboarding]: 'go_welcome',
+  };
+  return event[path];
+};
+
+export const parseOfficeName = (option: any) => {
+  return `${option?.address
+    ?.toLowerCase()
+    .replace(/\b\w/g, (l: string) => l.toUpperCase())} ${option?.nameOffice
+      ?.toLowerCase()
+      .replace(/\b\w/g, (l: string) => l.toUpperCase())} - ${option?.city
+        ?.toLowerCase()
+        .replace(/\b\w/g, (l: string) => l.toUpperCase())}`;
+};
+
+export const handlerCity = (e: any, onChange: any) => {
+  if (e?.id) {
+    return onChange({ name: e.name, id: e.id });
+  }
+  return onChange(undefined);
+};
+export const handlerInput = (e: any, setValue: any) => {
+  setValue(e?.target?.name, e?.target?.value);
+};
+
+
+export const parseOffice = (office:any) => {
+  return `${office?.address?.toLowerCase().replace(/\b\w/g, (l: string) =>l.toUpperCase())} - ${office?.city?.toLowerCase().replace(/\b\w/g, (l: string) => l.toUpperCase())}`
+}

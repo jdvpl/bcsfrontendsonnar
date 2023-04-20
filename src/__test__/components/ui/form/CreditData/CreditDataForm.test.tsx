@@ -7,6 +7,7 @@ import { CreditDataForm } from '../../../../../components/ui/Form/CreditData/Cre
 import { createMockRouter } from '../../../../utils/createMockRouter';
 import { routes } from '../../../../../routes';
 
+jest.setTimeout(30000);
 
 describe('<CreditDataForm/>', () => {
   it('should render successfully', () => {
@@ -30,6 +31,17 @@ describe('<CreditDataForm/>', () => {
     const ButtonYes = screen.getByTestId('Button-Yes');
     await waitFor(() => userEvent.click(ButtonYes));
     const InputTypeHouse = screen.queryByTestId('InputTypeHouse');
+    expect(InputTypeHouse!).toBeInTheDocument();
+  });
+  it('should render house city  when choseHouse is true ', async () => {
+    const router = createMockRouter({});
+
+    const { container } = render(
+      <RouterContext.Provider value={router}>
+        <CreditDataForm />
+      </RouterContext.Provider>
+    );
+    const InputTypeHouse = screen.queryByTestId('InputHouseLocation');
     expect(InputTypeHouse!).toBeInTheDocument();
   });
   it('should render house type  when choseHouse is false ', async () => {

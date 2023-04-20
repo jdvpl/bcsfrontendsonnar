@@ -74,6 +74,9 @@ describe('useHouseSimulator', () => {
       percentageQuota: 0,
       insuranceCheck: false,
       dateOfBirth: '',
+      stratum: '1',
+      city: "11001",
+      gender: 'M'
     };
     result.current?.onSubmit(formData);
   });

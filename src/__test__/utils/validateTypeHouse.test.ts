@@ -1,3 +1,4 @@
+import { minHouseValueNoVis } from "../../lib/simulator";
 import { validateTypeHouse } from "../../utils";
 
 describe('validateTypeHouse', () => {
@@ -21,7 +22,7 @@ describe('validateTypeHouse', () => {
     const setErrorMock = jest.fn();
 
     // Llama a la función validateTypeHouse con los valores correspondientes
-    validateTypeHouse(14999999, 'novis', setErrorMock);
+    validateTypeHouse(minHouseValueNoVis-1, 'novis', setErrorMock);
 
     // Comprueba que setError se llama con el mensaje de error correcto
     expect(setErrorMock).toHaveBeenCalledTimes(1);
@@ -36,7 +37,7 @@ describe('validateTypeHouse', () => {
     const setErrorMock = jest.fn();
 
     // Llama a la función validateTypeHouse con los valores correspondientes
-    validateTypeHouse(150000000, 'novis', setErrorMock);
+    validateTypeHouse(minHouseValueNoVis, 'novis', setErrorMock);
 
     // Comprueba que setError no se llama
     expect(setErrorMock).not.toHaveBeenCalled();

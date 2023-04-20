@@ -20,7 +20,7 @@ function ViewTable({ data, position, simulatorCoreFallen }: any) {
       textAlign: 'center',
       flexWrap: 'wrap',
       marginLeft: '0.4%',
-      width: simulatorCoreFallen ? '20%' : '12.5%',
+      width: simulatorCoreFallen ? '20%' : '16.666666666%',
       height: 28,
     },
     table: {
@@ -63,12 +63,12 @@ function ViewTable({ data, position, simulatorCoreFallen }: any) {
           </View>
           {simulatorCoreFallen ? null :
             <>
-              <View style={[styles.cell, styles.bggrayCell]}>
+              {/* <View style={[styles.cell, styles.bggrayCell]}>
                 <Text style={[styles.cellText, styles.cellRight]}>{info.lifeInsurance}</Text>
               </View>
               <View style={[styles.cell]}>
                 <Text style={[styles.cellText, styles.cellRight]}>{info.irtInsurance}</Text>
-              </View>
+              </View> */}
               <View style={[styles.cell, styles.bggrayCell]}>
                 <Text style={[styles.cellText, styles.cellRight]}>{info.totalInsuranceFee}</Text>
               </View>

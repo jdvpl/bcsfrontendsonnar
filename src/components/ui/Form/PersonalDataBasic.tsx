@@ -16,13 +16,14 @@ import ExitModal from '../../commons/ExitModal';
 import Modal from '../Modal';
 import usePersonalData from '../../../hooks/usePersonalData';
 import { getCityById, validateAddress } from '../../../utils';
-import { useBackDetector } from '../../../hooks/useBackDetector'
+import { useBackDetector } from '../../../hooks/useBackDetector';
 import useProtectedRoutes from '../../../hooks/useProtectedRoutes';
+import Typography from '../Typography';
 
 function PersonalDataBasic({ userInfo }: any) {
   const router = useRouter();
 
-  const { setCurrentRouting } = useProtectedRoutes()
+  const { setCurrentRouting } = useProtectedRoutes();
   const {
     handleSubmit,
     watch,
@@ -35,22 +36,32 @@ function PersonalDataBasic({ userInfo }: any) {
   } = useForm<iPersonalData>({ mode: 'onChange' });
   const [showModal, setShowModal] = useState<boolean>(false);
   const [showModalExit, setshowModalExit] = useState(false);
-  const [componentModal,] = useState({
+  const [componentModal] = useState({
     children: <OfficeBranch setShowModal={setShowModal} />,
-    title: <span className='md:text-[2rem] font-poppinsSemiBold'>Si sus datos han cambiado actualícelos llamando a la línea amiga</span>,
+    title: (
+      <Typography variant="h3" componentHTML="h3" typeFont="Bold" className="">
+        Si sus datos han cambiado actualícelos llamando a la línea amiga
+      </Typography>
+    ),
     id: '',
   });
-  const [componentModalExit,] = useState({
+  const [componentModalExit] = useState({
     children: <ExitModal setshowModalExit={setshowModalExit} />,
-    title: <span className='md:text-[28px] font-poppinsSemiBold'>Está a punto de abandonar su solicitud</span>,
+    title: (
+      <Typography variant="h3" componentHTML="h3" typeFont="Bold" className="">
+        Está a punto de abandonar su solicitud
+      </Typography>
+    ),
     id: '',
   });
   const currentAddress = watch('currentAddress', '');
   const yearDt = watch('yearDt', '');
   const dayDt = watch('dayDt', '');
   const monthDt = watch('monthDt', '');
-  const [dataPersonalBasic, setDataUser] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
-
+  const [dataPersonalBasic, setDataUser] = useSessionStorage(
+    SesionStorageKeys.dataBasicData.key,
+    {}
+  );
 
   const showPopup = () => {
     if (userInfo.isClient) {
@@ -64,12 +75,28 @@ function PersonalDataBasic({ userInfo }: any) {
     setshowModalExit(false);
   };
   useBackDetector(() => {
-    setshowModalExit(true)
+    setshowModalExit(true);
   }, router.asPath);
 
-  const { onSubmit } = usePersonalData(setValue, userInfo, setError, clearErrors, dayDt, monthDt, yearDt, router, setDataUser, setCurrentRouting, dataPersonalBasic);
+  const { onSubmit } = usePersonalData(
+    setValue,
+    userInfo,
+    setError,
+    clearErrors,
+    dayDt,
+    monthDt,
+    yearDt,
+    router,
+    setDataUser,
+    setCurrentRouting,
+    dataPersonalBasic
+  );
   return (
-    <div data-testid="FormQuotaTest" className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto" id='personalDataForm'>
+    <div
+      data-testid="FormQuotaTest"
+      className="w-[343px] md:w-[517px] xl:w-[656px] mx-auto"
+      id="personalDataForm"
+    >
       {showModal && (
         <Modal
           showModal={showModal}
@@ -89,88 +116,97 @@ function PersonalDataBasic({ userInfo }: any) {
         />
       )}
       <div className="w-full">
-        <form onSubmit={handleSubmit(onSubmit)} data-testid="personaldataTest">
-          <div className="grid grid-cols-3 gap-x-2 items-end">
-            <div>
-              <p className="text-[10px] w-full font-montserratRegular font-medium text-complementario-100 mb-3">
-                Fecha de nacimiento:
-              </p>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          data-testid="personaldataTest"
+          autoComplete="off"
+        >
+          {!userInfo.isClient && (
+            <div className="grid grid-cols-3 gap-x-2 items-end">
+              <div>
+                <Typography
+                  variant="overline2"
+                  componentHTML="p"
+                  typeFont="Regular"
+                  className="w-full text-complementario-100 mb-3"
+                >
+                  Fecha de nacimiento:
+                </Typography>
+
+                <ReactHookFormSelect
+                  className={`col-span-2`}
+                  onChange={(e: any) => setValue('dayDt', e.target.value)}
+                  placeholder="Dia"
+                  label="Dia"
+                  defaultValue=""
+                  control={control}
+                  left="right4"
+                  valueLength=""
+                  name="dayDt"
+                  hideMenuItem={showModal}
+                  margin="normal"
+                  onFocus={showPopup}
+                  disabled={showModal}
+                  rules={{ required: !userInfo.isClient }}
+                  spacing="mr-[6px]"
+                >
+                  {days?.map((element, i) => (
+                    <MenuItem value={element?.number} key={i}>
+                      {element?.day}
+                    </MenuItem>
+                  ))}
+                </ReactHookFormSelect>
+              </div>
+
               <ReactHookFormSelect
-                className={`col-span-2`}
-                onChange={(e: any) => setValue('dayDt', e.target.value)}
-                placeholder="Dia"
-                label="Dia"
+                onChange={(e: any) => setValue('monthDt', e.target.value)}
+                placeholder="Mes"
+                label="Mes"
                 defaultValue=""
                 control={control}
                 left="right4"
-                valueLength=""
-                name="dayDt"
-                hideMenuItem={showModal}
+                name="monthDt"
+                className={`${showModal ? 'hideMenu' : ''}`}
                 margin="normal"
                 onFocus={showPopup}
                 disabled={showModal}
-                rules={{ required: true }}
+                hideMenuItem={showModal}
+                rules={{ required: !userInfo.isClient }}
                 spacing="mr-[6px]"
               >
-                {days?.map((element, i) => (
-                  <MenuItem value={element?.number} key={i} >
-                    {element?.day}
+                {months.map((element, i) => (
+                  <MenuItem value={element.number} key={i}>
+                    {element.month}
                   </MenuItem>
                 ))}
               </ReactHookFormSelect>
+
+              <Controller
+                name="yearDt"
+                control={control}
+                rules={{ required: !userInfo.isClient }}
+                render={({ field }) => (
+                  <Input
+                    type="text"
+                    onChange={(e) => {
+                      field.onChange(e?.target?.value?.replace(/[^0-9]+/g, ''));
+                    }}
+                    error={!!errors.dayDt}
+                    helperText={errors?.dayDt?.message}
+                    value={yearDt}
+                    tabIndex={0}
+                    id="yearDt"
+                    disabled={showModal}
+                    onFocus={showPopup}
+                    data-testid="yearDtTest"
+                    inputMode="numeric"
+                    maxLength={4}
+                    label="Año"
+                  />
+                )}
+              />
             </div>
-
-            <ReactHookFormSelect
-              onChange={(e: any) => setValue('monthDt', e.target.value)}
-              placeholder="Mes"
-              label="Mes"
-              defaultValue=""
-              control={control}
-              left="right4"
-              name="monthDt"
-              className={`${showModal ? 'hideMenu' : ''}`}
-              margin="normal"
-              onFocus={showPopup}
-              disabled={showModal}
-              hideMenuItem={showModal}
-              rules={{ required: true }}
-              spacing="mr-[6px]"
-            >
-              {months.map((element, i) => (
-                <MenuItem value={element.number} key={i} >
-                  {element.month}
-                </MenuItem>
-              ))}
-            </ReactHookFormSelect>
-
-            <Controller
-              name="yearDt"
-              control={control}
-              rules={{ required: true }}
-              render={({ field }) => (
-                <Input
-                  // containerClassName="col-span-2"
-                  type="text"
-                  onChange={(e) => {
-                    field.onChange(e?.target?.value?.replace(/[^0-9]+/g, ''));
-                  }}
-                  error={!!errors.dayDt}
-                  helperText={errors?.dayDt?.message}
-                  value={yearDt}
-                  tabIndex={0}
-                  id="yearDt"
-                  disabled={showModal}
-                  onFocus={showPopup}
-                  data-testid="yearDtTest"
-                  inputMode="numeric"
-                  maxLength={4}
-                  label="Año"
-                />
-              )}
-            />
-          </div>
-
-
+          )}
           <div className="w-full mt-4">
             <Controller
               control={control}
@@ -179,8 +215,8 @@ function PersonalDataBasic({ userInfo }: any) {
               defaultValue={undefined}
               render={({ field: { onChange } }) => (
                 <NewAutoComplete
-                  id="birthCity"
                   defaultValue={undefined}
+                  aria-label="Lugar de nacimiento"
                   placeholder="Lugar de nacimiento"
                   label="Lugar de nacimiento"
                   onChange={(e: any) => {
@@ -194,9 +230,6 @@ function PersonalDataBasic({ userInfo }: any) {
               )}
             />
           </div>
-
-
-
           <div className="w-full mt-4">
             <ReactHookFormSelect
               onChange={(e: any) => {
@@ -212,6 +245,7 @@ function PersonalDataBasic({ userInfo }: any) {
               className="w-100"
               margin="normal"
               spacing="mr-[-10px]"
+              rules={{ required: true }}
             >
               <MenuItem value="F">Femenino</MenuItem>
               <MenuItem value="M">Masculino</MenuItem>
@@ -222,7 +256,6 @@ function PersonalDataBasic({ userInfo }: any) {
               text={'Seleccionar el mismo género indicado en su documento'}
             />
           </div>
-
           <div className="flex flex-col mt-4">
             <Controller
               rules={{ required: !userInfo.cellPhone }}
@@ -237,14 +270,16 @@ function PersonalDataBasic({ userInfo }: any) {
                   }}
                   value={field.value}
                   defaultValue={field.value}
+                  readOnly={userInfo.isClient}
                   tabIndex={0}
                   onFocus={showPopup}
                   disabled={showModal}
                   id="phone"
                   data-testid="phoneTest"
                   inputMode="text"
+                  autoComplete="off"
                   placeholder="Número de celular"
-                  label="Número de celular"
+                  label={"Número de celular"}
                   onChange={(e: any) => setValue('phone', e.target.value)}
                 />
               )}
@@ -257,7 +292,7 @@ function PersonalDataBasic({ userInfo }: any) {
               rules={{ required: !userInfo.email }}
               render={({ field }) => (
                 <Input
-                  helperText="Ejemplo: correo@dominio.com"
+                  helperText="Lo notificaremos siempre a este correo "
                   helperTextOption
                   type="text"
                   error={!!errors.email}
@@ -265,6 +300,7 @@ function PersonalDataBasic({ userInfo }: any) {
                     e.preventDefault();
                   }}
                   disabled={showModal}
+                  readOnly={userInfo.isClient}
                   value={field.value}
                   tabIndex={0}
                   id="email"
@@ -272,7 +308,8 @@ function PersonalDataBasic({ userInfo }: any) {
                   data-testid="emailTest"
                   inputMode="text"
                   placeholder="Correo electrónico"
-                  label="Correo electrónico"
+                  autoComplete="off"
+                  label= {"Correo electrónico"}
                   onChange={(e: any) => setValue('email', e.target.value)}
                 />
               )}
@@ -280,15 +317,14 @@ function PersonalDataBasic({ userInfo }: any) {
               control={control}
             />
           </div>
-
-          {userInfo.isClient ?
+          {userInfo.isClient ? (
             <div className="flex flex-col mt-4">
               <Controller
                 rules={{ required: !userInfo.isClient }}
                 render={() => (
                   <Input
                     type="text"
-                    startIcon='bcs-search'
+                    startIcon="bcs-icon-1"
                     error={!!errors.birthCity}
                     onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                       e.preventDefault();
@@ -310,7 +346,7 @@ function PersonalDataBasic({ userInfo }: any) {
                 control={control}
               />
             </div>
-            :
+          ) : (
             <div className="w-full mt-4">
               <Controller
                 control={control}
@@ -319,7 +355,6 @@ function PersonalDataBasic({ userInfo }: any) {
                 defaultValue={undefined}
                 render={({ field: { onChange } }) => (
                   <NewAutoComplete
-                    id="currentCity"
                     defaultValue={undefined}
                     label="Ciudad de residencia"
                     onChange={(e: any) => {
@@ -338,8 +373,8 @@ function PersonalDataBasic({ userInfo }: any) {
                 )}
               />
             </div>
-          }
-          {!userInfo.isClient &&
+          )}
+          {!userInfo.isClient && (
             <div className="flex flex-col mt-4">
               <Controller
                 rules={{ required: !userInfo.isClient }}
@@ -352,14 +387,13 @@ function PersonalDataBasic({ userInfo }: any) {
                     }
                     helperTextOption
                     type="text"
-                    startIcon='bcs-location'
+                    startIcon="bcs-icon-1"
                     error={!!errors.currentAddress}
                     onPaste={(e: ClipboardEvent<HTMLInputElement>) => {
                       e.preventDefault();
                     }}
                     onFocus={showPopup}
                     value={currentAddress}
-                    tabIndex={0}
                     id="currentAddress"
                     data-testid="currentAddres"
                     inputMode="text"
@@ -388,7 +422,7 @@ function PersonalDataBasic({ userInfo }: any) {
                 control={control}
               />
             </div>
-          }
+          )}
           <div className="flex justify-center items-center lg:px-[20px]  md:mb-0 lg:mb-5 mt-[32px]">
             <Button
               isLanding="w-full xs:w-[288px] sm:w-[343px] md:w-[343px] lg:w-[375px]"
@@ -404,8 +438,8 @@ function PersonalDataBasic({ userInfo }: any) {
             </Button>
           </div>
         </form>
-      </div >
-    </div >
+      </div>
+    </div>
   );
 }
 

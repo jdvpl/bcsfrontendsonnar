@@ -6,6 +6,7 @@ import Heading from '../Headers';
 import ContainerButtonForm from './ContainerButtonForm';
 import Button from '../Button';
 import NewAutoComplete from '../inputs/newAutoComplete';
+import Typography from '../Typography';
 
 export interface FormProps {
   onSubmit: (data: Record<string, string>[] | undefined) => void;
@@ -86,14 +87,20 @@ export const ValidationForm: React.FC<FormProps> = ({ questions, onSubmit }) => 
                       {question.type === 'CLOSED-QUESTION' &&
                         question.options &&
                         question?.options.map((answer) => (
-                          <div id={`answer-${answer.id}`} key={answer.id}>
+                          <div
+                            id={`answer-${answer.id}`}
+                            key={answer.id}
+                            role="tabpanel"
+                            tabIndex={0}
+                          >
                             <input type="radio" value={answer.id} className="hidden" />
-                            <label
+                            <Typography
+                              variant="bodyM3"
+                              typeFont="Regular"
+                              componentHTML="label"
                               aria-hidden="true"
-                              tabIndex={0}
-                              role="paragraph"
                               htmlFor="tax-yes"
-                              className="font-montserratRegular flex items-center cursor-pointer bg-white w-full border border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black  font-semibold rounded-md px-5 py-[17px] shadow-small-300 overflow-auto"
+                              className=" flex items-center cursor-pointer bg-white w-full border border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black   rounded-md px-5 py-[17px] shadow-small-300 overflow-auto"
                               onClick={() => {
                                 setValue(`${question.key}`, answer.id);
                                 if (questions.length - 1 !== index) {
@@ -112,10 +119,11 @@ export const ValidationForm: React.FC<FormProps> = ({ questions, onSubmit }) => 
                                   })
                                 );
                               }}
+                              title={answer.option}
                             >
                               <span itemProp="relatedTo" className="hidden" />
                               {answer.option}
-                            </label>
+                            </Typography>
                           </div>
                         ))}
                       {question.type === 'OPEN-QUESTION' && (
@@ -127,7 +135,6 @@ export const ValidationForm: React.FC<FormProps> = ({ questions, onSubmit }) => 
                             defaultValue={undefined}
                             render={({ field: { onChange } }) => (
                               <NewAutoComplete
-                                id="city-exp"
                                 defaultValue={undefined}
                                 placeholder="Lugar de expedición"
                                 label="Lugar de expedición"

@@ -18,14 +18,17 @@ export interface ValidateOTC {
   document_number: string;
   document_type: string;
   processId: string;
-  otc?: boolean
+  otc?: boolean;
+  phone?: string;
+  emailAddr?: string;
 }
 export interface OTPCodeRequest {
   document_type: string;
   document_number: string;
   phone: string;
   processId: string;
-  otc?: boolean
+  otc?: boolean;
+  emailAddr: string;
 }
 
 const Otp: FC<otpProps> = ({ otc }) => {
@@ -39,7 +42,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const router = useRouter();
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
-
+  const [basicDataUser] = useSessionStorage(SesionStorageKeys.basicDataUser.key, '');
   const { setCurrentRouting } = useProtectedRoutes();
 
   const { onValidateOTP, onResendOTP } = useOtp({
@@ -56,7 +59,8 @@ const Otp: FC<otpProps> = ({ otc }) => {
     validateOTOCode,
     dataQuestions,
     otc,
-    setCurrentRouting
+    setCurrentRouting,
+    basicDataUser,
   });
   useEffect(() => {
     if (otp?.length === 6) {
@@ -79,29 +83,31 @@ const Otp: FC<otpProps> = ({ otc }) => {
     }
   }, [timer]);
 
-
   return (
-    <div className="w-scren flex flex-col items-center">
-      <h4
+    <div className="w-scren flex flex-col items-center" role="tabpanel" tabIndex={0}>
+      <Typography
+        variant='h4'
+        componentHTML='h4'
+        typeFont='Bold'
         id="title"
-        className="font-semibold text-[20px] text-primario-900 text-center mt-[40px] mb-[36px]  md:mt-[64px]  md:mb-[52px] lg:mb-[36px] font-poppinsSemiBold"
+        className="text-primario-900 text-center mt-[40px] mb-[36px]  md:mt-[64px]  md:mb-[52px] lg:mb-[36px] "
         data-testid="h4OtpText"
       >
-        {
-          otc ? <span>Ingrese el código enviado  a su <br />celular y correo electrónico</span> : <span>
-            Ingrese el código enviado por <br /> sms a su celular +57
-            {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : ''}
+        {otc ? (
+          <span>Ingrese el código enviado a su <br /> celular y correo electrónico</span>
+        ) : (
+          <span className='leading-[26px]'>
+            Ingrese el código enviado por mensaje de texto  <span className='md:block inline'>a su celular +57
+            {dataTU?.encriptPhone?.encriptPhone ? dataTU?.encriptPhone?.encriptPhone : ''}</span>
           </span>
-        }
-      </h4>
-
+        )}
+      </Typography>
       <div className="text-normal mb-[24px]">
         <OtpInput
           className="otp-div"
           value={otp}
           onChange={(e: string) => setOtp(e)}
           numInputs={6}
-          // isDisabled={complete || isLoading || disabled}
           isInputNum
           shouldAutoFocus
           data-testid="otp-input"
@@ -128,10 +134,16 @@ const Otp: FC<otpProps> = ({ otc }) => {
           {isLoading && <OTLoader />}
           {error && (
             <div className="w-[294px] h-[28px] bg-[#ffd4ce40] px-[9px] py-[8px] flex items-center rounded-[4px]">
-              <Icons icon="bcs-advertising" size="text-rojo-200 mr-[10px]" />
+              <Icons
+                icon="bcs-icon-52"
+                size="text-rojo-200 mr-[10px]"
+                title="Advertencia"
+              />
               <Typography
-                variant="caption4"
-                className="font-normal text-rojo-200 text-[12px] font-montserratRegular"
+                variant="overline1"
+                typeFont="Regular"
+                componentHTML="p"
+                className="font-normal text-rojo-200 text-[12px]"
               >
                 Código inválido, intente nuevamente
               </Typography>
@@ -140,7 +152,7 @@ const Otp: FC<otpProps> = ({ otc }) => {
           {isValid && (
             <div>
               <div className="bg-verde-70  h-[48px] w-[48.22px] flex items-center justify-center rounded-full">
-                <Icons icon="bcs-check" size="text-white" />
+                <Icons icon="bcs-icon-24" size="text-white" title="Información" />
               </div>
             </div>
           )}
@@ -150,27 +162,49 @@ const Otp: FC<otpProps> = ({ otc }) => {
         <Typography
           onClick={onResendOTP}
           variant="caption1"
-          className={`text-[14px] font-montserratRegular leading-4 ${timer === 0 && wasResend === false
-            ? 'text-primario-20 cursor-pointer'
-            : 'text-gris-200'
-            } mb-[12px]`}
+          typeFont="Regular"
+          componentHTML="span"
+          className={` leading-4 ${
+            timer === 0 && wasResend === false
+              ? 'text-primario-20 cursor-pointer'
+              : 'text-gris-200'
+          } mb-[12px]`}
+          role="tabpanel"
+          tabIndex={0}
         >
-          {timer === 0 && wasResend === false
-            ? 'Volver a enviar código'
-            : 'Volver a enviar código en'}
+          <Typography
+            onClick={onResendOTP}
+            variant="caption1"
+            typeFont="Bold"
+            className={` leading-4 ${
+              timer === 0 && wasResend === false
+                ? 'text-primario-20 cursor-pointer'
+                : 'text-primario-900'
+            } mb-[12px]`}
+            componentHTML="span"
+          >
+            {timer === 0 && wasResend === false
+              ? 'Volver a enviar código'
+              : 'Volver a enviar código en'}
+          </Typography>
         </Typography>
       )}
 
       {timer === 0 || isValid ? null : (
         <div className="flex justify-center items-center gap-1">
-          <Icons icon="bcs-clock" size="text-gris-30 font-semibold" />
-          <Typography variant="caption2" className="text-gris-30 font-semibold font-montserratRegular">
+          <Icons icon="bcs-icon-15" size="text-gris-30 font-semibold" title="Tiempo" />
+          <Typography
+            componentHTML="span"
+            variant="caption2"
+            typeFont="Regular"
+            className="text-gris-30"
+          >
             {timer} segundos
           </Typography>
         </div>
       )}
     </div>
   );
-}
+};
 
 export default Otp;

@@ -8,12 +8,15 @@ import Heading from '../Headers';
 import { useSessionStorage } from '../../../hooks/useSessionStorage';
 import ContainerButtonForm from './ContainerButtonForm';
 import { SesionStorageKeys } from '../../../session';
-import useValidationFormNumber from '../../../hooks/useValidationFormNumber'
+import useValidationFormNumber from '../../../hooks/useValidationFormNumber';
+import SimulatorLoader from '../Loaders/SimulatorLoader';
+import Typography from '../Typography';
+
 interface FormProps {
   isLoading?: boolean;
   defaultValues?: string;
   questions: Question;
-  setCurrentRouting: any
+  setCurrentRouting: any;
 }
 export interface Question {
   description: string;
@@ -27,7 +30,10 @@ export interface FormData {
   number: number | string;
 }
 
-export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurrentRouting }) => {
+export const ValidationFormNumber: React.FC<FormProps> = ({
+  questions,
+  setCurrentRouting,
+}) => {
   const [dataTU, setDataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
   const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
   const [, setEncript] = useSessionStorage(SesionStorageKeys.dataTuEncripPhone.key, '');
@@ -35,8 +41,8 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
     SesionStorageKeys.dataProcessBiometry.key,
     ''
   );
-
   const [, setLoaded] = useState(false);
+  const [isLoadingForm, setIsLoadingForm] = useState(false);
   const router = useRouter();
   const {
     handleSubmit,
@@ -50,6 +56,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
     mode: 'onChange',
   });
   const inputValues = watch('number');
+
   const variants = {
     hidden: { opacity: 1, x: 350, y: 0 },
     enter: { opacity: 1, x: 0, y: 0 },
@@ -63,7 +70,17 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
     }
     clearErrors('number');
   }, [clearErrors, inputValues, setError]);
-  const { onSubmit } = useValidationFormNumber(dataTU, setDataTU, setEncript, setLoaded, router, setProcessBiometry, dataQuestions, setCurrentRouting)
+
+  const { onSubmit } = useValidationFormNumber(
+    dataTU,
+    setDataTU,
+    setEncript,
+    setLoaded,
+    router,
+    setProcessBiometry,
+    dataQuestions,
+    setCurrentRouting
+  );
   return (
     <motion.div
       initial="hidden"
@@ -72,6 +89,11 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
       variants={variants}
       transition={{ type: 'linear' }}
     >
+      {isLoadingForm && (
+        <div className="absolute z-[900] top-0 left-0 w-full h-screen flex justify-center items-center bg-primario-100">
+          <SimulatorLoader />
+        </div>
+      )}
       <section itemScope itemType="https://schema.org/Person">
         <form
           data-testid="formNumber"
@@ -79,7 +101,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
           onSubmit={handleSubmit(onSubmit)}
         >
           <Heading>
-            <span itemProp="telephone" tabIndex={0} role="paragraph" id="title">
+            <span itemProp="telephone" id="title">
               {questions?.description}
             </span>
           </Heading>
@@ -88,6 +110,8 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
               <div
                 id="alert-info"
                 className="flex bg-blue-claro py-[6px] px-[9px] rounded mb-3"
+                role="tabpanel"
+                tabIndex={0}
               >
                 <div className="ml-[3px]">
                   <svg
@@ -112,11 +136,7 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
                     />
                   </svg>
                 </div>
-                <p
-                  tabIndex={0}
-                  role="paragraph"
-                  className="ml-[10px] ln-14 fz-12 text-[#2F6EAE]"
-                >
+                <p className="ml-[10px] ln-14 fz-12 text-[#2F6EAE]">
                   Asegúrese de tener su celular a la mano para poder recibir el código de
                   confirmación
                 </p>
@@ -127,6 +147,8 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
                     className="space-y-[12px]"
                     id={`answer-${answer.id}`}
                     key={answer.id}
+                    role="tabpanel"
+                    tabIndex={0}
                   >
                     <input
                       {...register('number')}
@@ -134,16 +156,18 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
                       value={answer.id}
                       className="hidden"
                     />
-                    <label
-                      tabIndex={0}
-                      role="paragraph"
+                    <Typography
+                      variant="bodyM3"
+                      componentHTML="label"
+                      typeFont="Regular"
                       aria-hidden="true"
                       htmlFor="number"
-                      className={`font-montserratRegular flex items-center bg-white cursor-pointer  w-full border  rounded-md px-5 py-[17px]
-                        border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black  shadow-small-300  font-semibold
-                        ${answer.id === inputValues
-                          ? 'shadow-none border-primario-600 text-primario-600'
-                          : ''
+                      className={`flex items-center bg-white cursor-pointer  w-full border  rounded-md px-5 py-[17px]
+                        border-azul_gris-80 focus:shadow-none focus:border-primario-600 focus:text-primario-600 hover:border-azul_gris-40 text-black  shadow-small-300 
+                        ${
+                          answer.id === inputValues
+                            ? 'shadow-none border-primario-600 text-primario-600'
+                            : ''
                         }`}
                       onClick={() => {
                         setValue(`number`, answer.id);
@@ -152,20 +176,17 @@ export const ValidationFormNumber: React.FC<FormProps> = ({ questions, setCurren
                           encriptPhone: { encriptPhone: answer.option },
                         });
                       }}
+                      title={answer.option}
                     >
-                      <span
-                        itemProp="telephone"
-                        tabIndex={0}
-                        role="paragraph"
-                        className="hidden"
-                      />
+                      <span itemProp="telephone" className="hidden" />
                       {answer.option}
-                    </label>
+                    </Typography>
                   </div>
                 ))}
             </div>
             <ContainerButtonForm>
               <Button
+                onClick={() => setIsLoadingForm(true)}
                 isLoading={!!errors?.number?.message}
                 type="submit"
                 name="btn-send-phone"

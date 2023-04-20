@@ -20,6 +20,11 @@
   font-style: normal;
 }
 @font-face {
+  font-family: 'PoppinsRegular';
+  src: url('font/PoppinsRegular.ttf') format('truetype');
+  font-style: normal;
+}
+@font-face {
   font-family: 'PoppinsSemiBold';
   src: url('font/PoppinsSemiBold.ttf') format('truetype');
   font-style: normal;
@@ -37,5 +42,10 @@
 @font-face {
   font-family: 'MontserratMedium';
   src: url('font/MontserratMedium.ttf') format('truetype');
+  font-style: normal;
+}
+@font-face {
+  font-family: 'MontserratExtraLight';
+  src: url('font/MontserratExtraLight.ttf') format('truetype');
   font-style: normal;
 }

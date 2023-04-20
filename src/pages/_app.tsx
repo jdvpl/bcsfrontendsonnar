@@ -2,6 +2,8 @@ import { AppProps } from 'next/app';
 import { useEffect, useState } from 'react';
 import '../styles/globals.css';
 import { AplicationProvider } from '../context/AplicationContext';
+
+import CustomHead from '../components/ui/customHead/customHead';
 import TagManager from 'react-gtm-module';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
@@ -24,6 +26,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   if (!initialRenderComplete) return <></>;
   return (
     <>
+      <CustomHead />
       <AplicationProvider>
         <Component {...pageProps} />
       </AplicationProvider>

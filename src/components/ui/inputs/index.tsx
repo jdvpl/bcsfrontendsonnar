@@ -77,35 +77,35 @@ function Input({
   helperTextOption = false,
   ...props
 }: InputProps) {
-  const labelStyles = `peer-placeholder-shown:z-[-1] peer-focus:z-0 z-0
-  peer-placeholder-shown:${labelColor} absolute text-sm
-  ${error ? 'text-rojo-100' : `${labelColor}`}
-  ${startIcon ? 'pl-6' : ''}
-  duration-300 transform -translate-y-4 scale-75 top-2
-  origin-[0] bg-white px-2 peer-focus:px-2
-  ${error ? 'peer-focus:text-rojo-100 ' : `peer-focus:text-primario-100`} ml-2
-  peer-placeholder-shown:scale-100
-  peer-focus:ml-2
-  peer-focus:pl-1
-  peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-6
-   peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-[19px] -translate-y-[19px]`;
+  const labelStyles = `-z-1 ${error ? "text-rojo-20" : "text-complementario-100"}
+  absolute top-[50%] translate-y-[-50%] ${startIcon ? "left-[36px] " : "left-3 "} text-[14px] leading-[16px] font-montserratRegular transition-all duration-300 ease-in-out 
+  peer-focus:left-2 peer-focus:top-0 peer-focus:text-[10px] peer-focus:leading-[12px] peer-focus:bg-white peer-focus:px-1 peer-focus:z-10
+  ${props?.readOnly?"left-2 top-[0px] text-[10px] leading-[12px] bg-white px-1 z-[120]":""}
+  ${props?.value ?"peer-valid:left-2 peer-valid:top-0 peer-valid:text-[10px] peer-valid:leading-[12px] peer-valid:bg-white peer-valid:px-1 peer-valid:z-10":""}
+  `
 
-  const inputStyles = `
-    ${startIcon ? 'pl-8' : ''}
-    ${endIcon ? 'pr-8' : ''} h-12 bg-[transparent] block py-2 px-3 w-full text-sm leading-none
-    ${error ? 'text-complementario-100' : 'text-primario-900'} bg-transparent border-[0.03125rem] rounded-md
-    ${error ? 'border-rojo-100 focus:border-rojo-100 hover:border-rojo-100' : 'border-[#798c98a6] hover:border-primario-100 focus:border-primario-100'} appearance-none  peer focus:border focus:outline-none`;
+  const inputStyles = `valid:text-primario-900 ${startIcon ? 'pl-[36px]' : 'pl-3'} ${
+    endIcon ? 'pr-[36px]' : 'pr-3'
+  }  peer  appearance-none font-montserratRegular text-[14px] leading-[16px] 
+  h-[48px] bg-transparent border-[1px] rounded-[8px] bg-[transparent] w-full 
+  ${
+    error
+      ? 'border-rojo-20 hover:border-rojo-20 focus:border-rojo-20 '
+      : 'border-complementario-50 hover:border-primario-20 focus:border-primario-20 '
+  } 
+  peer-focus:border focus:outline-none`;
+
   return (
     <div className={`${containerClassName} justify-center flex flex-col w-full`}>
       <div className="relative z-0 w-full">
         {startIcon && (
           <i
-            className={`top-[16px] ml-2 absolute before:font-black leading-4 text-[16px] ${startIcon} text-complementario-50 `}
+            className={`top-[16px] left-3 absolute before:font-black leading-4 text-[16px] ${startIcon} text-complementario-100 `}
           />
         )}
         {endIcon && (
           <i
-            className={`top-[16px] right-0 mr-2 absolute before:font-black leading-4 text-[16px] ${endIcon} text-complementario-50`}
+            className={`top-[16px] right-3 absolute before:font-black leading-4 text-[16px] ${endIcon} text-complementario-100`}
           />
         )}
         <input
@@ -113,7 +113,8 @@ function Input({
           data-testid={dataTestId}
           {...props}
           className={`${inputStyles} ${classNameInput}`}
-          placeholder=" "
+          placeholder=""
+          aria-label={label}
           autoFocus={autofocus}
           onWheelCapture={(e) => {
             const target = e.target as HTMLInputElement;
@@ -122,7 +123,7 @@ function Input({
             }
           }}
         />
-        <label htmlFor="floating_text" className={`${labelStyles} font-montserratRegular`}>
+        <label htmlFor="floating_text" className={`${labelStyles}`}>
           {label}
         </label>
       </div>

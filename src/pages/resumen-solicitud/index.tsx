@@ -1,28 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Typography from '../../components/ui/Typography';
 import ReviewApplication from '../../components/ui/application/ReviewApplication';
 import { useSessionStorage } from '../../hooks/useSessionStorage';
 import Button from '../../components/ui/Button/index';
-import { convertToColombianPesos } from '../../utils/index';
+import { convertToColombianPesos, invokeEvent } from '../../utils/index';
 import { SesionStorageKeys } from '../../session';
 import Stepper from '../../components/ui/Stepper';
 import { routes } from '../../routes';
 import Alert from '../../components/ui/Alert/index';
 import { ApplicationLoader } from '../../components/ui/Loaders/ApplicationLoader';
-import useSummaryApplication from '../../hooks/useReviewApplication';
 import HeaderForm from '../../components/ui/Headers/HeaderForm';
 import useProtectedRoutes from '../../hooks/useProtectedRoutes';
+import useDownloadPdf from '../../hooks/useDownloadPdf';
 
 function ResumenApplication() {
   const router = useRouter();
   const { setCurrentRouting } = useProtectedRoutes();
   const [valuesMortgage] = useSessionStorage(SesionStorageKeys.mortgageValues.key, '');
-  const { isLoading, onSubmit } = useSummaryApplication(router, setCurrentRouting);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const [applicationResponse] = useSessionStorage(
+    SesionStorageKeys?.applicationResponse.key,
+    {}
+  );
+  const [dataQuestions] = useSessionStorage(SesionStorageKeys.DataQuestions.key, '');
+  const [dataTU] = useSessionStorage(SesionStorageKeys.dataUser.key, '');
+  const [dataPersonalBasic] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
+
+  const [basicDataUser] = useSessionStorage(SesionStorageKeys.basicDataUser.key, {});
+  const [, setPdfData] = useSessionStorage(SesionStorageKeys.pdfData.key, {});
+  const { getPdf } = useDownloadPdf(
+    dataQuestions,
+    dataTU,
+    valuesMortgage,
+    applicationResponse,
+    setCurrentRouting,
+    router,
+    dataPersonalBasic,
+    setLoading,
+    basicDataUser,
+    setPdfData
+  );
+
+  const getOut = () => {
+    invokeEvent('get_out_summary_offer', 'action_funnel');
+    router.push(routes.home);
+  };
+
+  useEffect(() => {
+    invokeEvent('load_sumary_application', 'load_page');
+  }, []);
 
   return (
     <div>
-      {isLoading ? <ApplicationLoader /> : null}
+      {loading ? <ApplicationLoader /> : null}
       <HeaderForm />
 
       <div className="lg:w-[825px] mx-auto md:w-[528px] mb-[64px] xs:mb-[40px] xs:w-[288px] sm:w-[343px] mt-9">
@@ -34,33 +66,41 @@ function ResumenApplication() {
           title="Resumen de la solicitud"
         />
       </div>
-      <div className=" xs:w-[290px] sm:w-[343px]  lg:w-[684px] md:w-[584px] m-auto">
-        <Typography
-          variant="h2"
-          className="mt-8 mb-[40px] text-center font-poppinsSemiBold"
-        >
-          Conozca la oferta que hemos
-          <br />
-          diseñado para usted
-        </Typography>
+      <div className="xs:w-[290px] sm:w-[343px] lg:w-[684px] md:w-[584px] m-auto">
+        <div role="tabpanel" tabIndex={0} className="mt-8 mb-[40px] text-center w-auto">
+          <Typography
+            typeFont="Bold"
+            variant="h2"
+            className="text-[28px]"
+            componentHTML={'symbol'}
+          >
+            Conozca la oferta que hemos diseñado para usted
+          </Typography>
+        </div>
         <div className="xs:w-[290px] sm:w-[343px] md:w-[448px] mx-auto">
-          <Alert message="La tasa de su crédito será la que se encuentre vigente en el momento del desembolso." colorMessage='text-primario-200' />
+          <Alert
+            message="La tasa de su crédito será la que se encuentre vigente en el momento del desembolso."
+            colorMessage="text-primario-200"
+          />
         </div>
         <ReviewApplication
           financedValue={`${convertToColombianPesos(
-            Math.floor(valuesMortgage.financeValue)
+            Math.floor(applicationResponse?.finalOffer?.offer?.financeValue)
           )}`}
-          termFinance={`${valuesMortgage.termFinance} años`}
-          rate="1,6% NV - 23% EA"
-          lifeInsurance="$44.000"
-          fireInsurance="$44.000"
+          termFinance={`${applicationResponse?.finalOffer?.offer?.termFinance} años`}
+          rate={applicationResponse?.finalOffer?.offer?.rate}
+          lifeInsurance={applicationResponse?.finalOffer?.offer?.lifeInsurance}
+          fireInsurance={applicationResponse?.finalOffer?.offer?.fireInsurance}
           insuranceCheck={valuesMortgage?.insuranceCheck}
+          monthlyInstallment={`${convertToColombianPesos(
+            Math.floor(applicationResponse?.finalOffer?.offer?.monthlyInstallment)
+          )}`}
         />
 
         <div className="flex flex-col items-center gap-y-5">
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[12px] mt-[24px] shadow-none font-monserratLight"
-            onClick={onSubmit}
+            onClick={getPdf}
             name="solicitarCredito"
             data-testid="btn-next"
             tabIndex={0}
@@ -70,7 +110,7 @@ function ResumenApplication() {
           </Button>
           <Button
             isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] mb-[15px] shadow-none"
-            onClick={() => router.push(routes.home)}
+            onClick={getOut}
             name="solicitarCredito"
             data-testid="btn-exit"
             tabIndex={0}

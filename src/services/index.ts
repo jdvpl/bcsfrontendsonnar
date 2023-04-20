@@ -5,8 +5,8 @@ import { headersBack } from './HeaderBack';
 import { iFormDataSimulation } from '../interfaces';
 import { getProcessId } from '../utils';
 const { allResponse, allResponseDecrypted } = useAES();
-import { iPdfLetter } from '../interfaces/ipdfLetter'
-
+import { iPdfLetter } from '../interfaces/ipdfLetter';
+import { RequestRiskBoxes } from '../interfaces/IRequestRiskBoxes';
 const KEY = process.env.KEYENCRYPTADIGITAL;
 
 //? this save the authorization data.
@@ -17,13 +17,33 @@ const KEY = process.env.KEYENCRYPTADIGITAL;
  */
 export const sendAuthorization = async (body: any) => {
   try {
+    const dataInfo = await allResponse({ ...body, processId: 'solicitud-inicial' }, KEY);
     const { data: response } = await clientAxiosBackend.post(
       '/customer/data-processing',
-      body
+      { data: dataInfo }
     );
+    const infoAllow = await allResponseDecrypted(response.data, KEY);
     return {
       response: {
-        result: response,
+        result: infoAllow,
+      },
+      error: false,
+    };
+  } catch (e: any) {
+    return { error: true, response: e.response?.data?.message };
+  }
+};
+export const saveSourceCampaign = async (body: any) => {
+  try {
+    const dataInfo = await allResponse(body, KEY);
+    const { data: response } = await clientAxiosBackend.post(
+      '/reports/source-campaign',
+      { data: dataInfo }
+    );
+    const infoAllow = await allResponseDecrypted(response.data, KEY);
+    return {
+      response: {
+        result: infoAllow,
       },
       error: false,
     };
@@ -46,7 +66,7 @@ export const sendAuthorization = async (body: any) => {
  */
 export const getQuestions = async (data: any) => {
   try {
-    const dataInfo = await allResponse(data, KEY);
+    const dataInfo = await allResponse({...data,commercialPurposes:true}, KEY);
     const { data: response } = await clientAxiosBackend.post(
       '/api-composer/composer/allow-list',
       { data: dataInfo },
@@ -119,11 +139,14 @@ export const sendNumber = async (data: any) => {
 };
 export const validateOTOCode = async (data: ValidateOTC) => {
   try {
-    const { otc, document_number, document_type, pin, processId } = data;
-    const dataInfo = await allResponse(
-      { document_number, document_type, pin, processId },
-      KEY
-    );
+    const { otc, document_number, document_type, pin, processId, phone } = data;
+    let dataToEcrypt;
+    if (otc) {
+      dataToEcrypt = { document_number, document_type, pin, processId, phone };
+    } else {
+      dataToEcrypt = { document_number, document_type, pin, processId };
+    }
+    const dataInfo = await allResponse(dataToEcrypt, KEY);
     const { data: response } = await clientAxiosBackend.post(
       otc ? '/customer/otc/validate' : '/api-composer/composer/validate-otp',
       { data: dataInfo },
@@ -142,9 +165,9 @@ export const validateOTOCode = async (data: ValidateOTC) => {
 };
 export const reSendOTPCode = async (data: OTPCodeRequest) => {
   try {
-    const { otc, document_number, document_type, processId } = data;
+    const { otc, document_number, document_type, processId, phone, emailAddr } = data;
     const dataInfo = await allResponse(
-      { document_number, document_type, processId },
+      { document_number, document_type, processId, phone, emailAddr },
       KEY
     );
     const { data: response } = await clientAxiosBackend.post(
@@ -200,15 +223,12 @@ export const getDataPDF = async (data: iFormDataSimulation) => {
 };
 export const fetchSarlaft = async (body: any) => {
   try {
-    const bodyEncrypt = await allResponse(
-      { ...body, processId: getProcessId() },
-      KEY
-    );
+    const bodyEncrypt = await allResponse({ ...body, processId: getProcessId() }, KEY);
     const { data: response } = await clientAxiosBackend.post(
       '/sarlaft/sarlaft-questions',
       { data: bodyEncrypt }
     );
-    const data = await allResponseDecrypted(response.data, KEY)
+    const data = await allResponseDecrypted(response.data, KEY);
     return {
       response: {
         result: data,
@@ -219,19 +239,21 @@ export const fetchSarlaft = async (body: any) => {
     return { error: true, response: e.response?.data?.message };
   }
 };
-export const riskBoxes = async (body: any) => {
+
+export const riskBoxes = async (body: RequestRiskBoxes) => {
   try {
-    const bodyEncrypt = await allResponse(
-      { ...body, processId: getProcessId() },
-      KEY
-    );
-    const { data: response } = await clientAxiosBackend.post(
+    // TODO
+    const bodyEncrypt = await allResponse({ ...body, processId: getProcessId() }, KEY);    
+    const response: any = await clientAxiosBackend.post(
       '/api-composer/composer/risk-boxes',
-      { data: bodyEncrypt }
+      {
+        data: bodyEncrypt,
+      }
     );
+    const data = await allResponseDecrypted(response.data.data, KEY);
     return {
       response: {
-        result: response,
+        result: data,
       },
       error: false,
     };
@@ -242,7 +264,9 @@ export const riskBoxes = async (body: any) => {
 export const delKeysRedis = async (body: any) => {
   try {
     const bodyEncrypt = await allResponse(body, KEY);
-    const { data: response } = await clientAxiosBackend.post('commons/delete-keys', { data: bodyEncrypt });
+    const { data: response } = await clientAxiosBackend.post('commons/delete-keys', {
+      data: bodyEncrypt,
+    });
     return {
       response: {
         result: response?.response,
@@ -256,9 +280,12 @@ export const delKeysRedis = async (body: any) => {
 export const getPDF = async (body: iPdfLetter) => {
   try {
     const bodyEncrypt = await allResponse(body, KEY);
-    const { data: response } = await clientAxiosBackend.post('/commons/generate/pdf', {
-      data: bodyEncrypt,
-    });
+    const { data: response } = await clientAxiosBackend.post(
+      '/api-composer/composer/documents',
+      {
+        data: bodyEncrypt,
+      }
+    );
     const data = await allResponseDecrypted(response.data, KEY);
     return {
       response: {

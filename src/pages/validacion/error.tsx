@@ -9,7 +9,7 @@ import ImageLoader from '../../components/ui/Loaders/imageLoader';
 import ErrorLayout from '../../components/layouts/errorLayout';
 import { AplicationContext } from '../../context/AplicationContext';
 
-const Error: React.FC = () => {
+const ErrorB: React.FC = () => {
   const router = useRouter();
   const {
     setEligirFoto,
@@ -27,20 +27,18 @@ const Error: React.FC = () => {
     sessionStorage.clear();
   }, []);
   return (
-    <ErrorLayout>
+    <ErrorLayout title="Error inesperado">
       <section itemScope itemType="https://schema.org/Action">
         <div className="flex justify-center w-[239px] h-[200px] mx-auto md:w-[358px] md:h-[300px] relative">
           <ImageLoader
             src={`${basePath}/images/error1.png`}
             layout="fill"
-            alt="ha ocurrido un error"
-            title="ha ocurrido un error"
+            alt="Ha ocurrido un error"
+            title="Ha ocurrido un error"
           />
         </div>
         <HeadingError>Ups, ha ocurrido un error</HeadingError>
-        <SubtitleError>
-          Por favor inténtelo nuevamente <br className="block md:hidden" /> más tarde.
-        </SubtitleError>
+        <SubtitleError>Por favor inténtelo nuevamente más tarde.</SubtitleError>
         <ContainerButton>
           <Button id="btn-go-bank" onClick={() => router.push('/')}>
             Volver al inicio
@@ -51,4 +49,4 @@ const Error: React.FC = () => {
   );
 };
 
-export default Error;
+export default ErrorB;

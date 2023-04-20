@@ -1,3 +1,5 @@
+import Typography from '../ui/Typography';
+
 const ExampleInfo: React.FC<{ example?: string }> = ({ example }) => (
   <div className="flex items-center help pl-2 ">
     <svg
@@ -22,12 +24,14 @@ const ExampleInfo: React.FC<{ example?: string }> = ({ example }) => (
         fill="white"
       />
     </svg>
-    <p className="font-light text-[0.625rem] pt-[1px] m-0 leading-[18px] text-azul_gris-100 float-left whitespace-nowrap">
-      <span tabIndex={0} role="paragraph">
-        {example}
-      </span>
-    </p>
+    <Typography
+      variant="overline2"
+      componentHTML="p"
+      className="pt-[1px] m-0 leading-[18px] text-azul_gris-100 float-left whitespace-nowrap"
+    >
+      <span>{example}</span>
+    </Typography>
   </div>
 );
 
-export default ExampleInfo
+export default ExampleInfo;

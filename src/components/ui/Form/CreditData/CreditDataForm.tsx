@@ -1,25 +1,35 @@
 import React, { useEffect, ClipboardEvent, useState } from 'react';
-import { MenuItem, Typography } from '@mui/material';
+import { MenuItem } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import Button from '../../Button';
 import ReactHookFormSelect from '../../Select/newSelect';
 import { SimulationData } from '../../../../interfaces';
 import Input from '../../inputs';
-import { convertToColombianPesos, renderPercentage } from '../../../../utils';
+import {
+  convertToColombianPesos,
+  handlerCity,
+  parseOfficeName,
+  renderPercentage,
+} from '../../../../utils';
 import { yearsAvailable } from '../../../../lib/simulator';
 import useValidations from '../../../../hooks/useValidationsCreditData';
 import { useSessionStorage } from '../../../../hooks/useSessionStorage';
 import { SesionStorageKeys } from '../../../../session';
-import AutoCompleteCustom from '../../../../hooks/autocomplete';
 import useCreditForm from '../../../../hooks/useCreditForm';
 import useProtectedRoutes from '../../../../hooks/useProtectedRoutes';
+import { ApplicationLoader } from '../../Loaders/ApplicationLoader';
+import NewAutoComplete from '../../inputs/newAutoComplete';
+import Typography from '../../Typography';
 
 export function CreditDataForm() {
-  const [insuranceCheck,] = useState(true);
+  const [insuranceCheck] = useState(true);
   const [percentageFinance, setPercentageFinance] = useState(0.7);
   const [dataForm] = useSessionStorage(SesionStorageKeys.dataFormSimulation.key, {});
-  const [mortgageValues, setDataForm] = useSessionStorage(SesionStorageKeys.mortgageValues.key, {});
+  const [mortgageValues, setDataForm] = useSessionStorage(
+    SesionStorageKeys.mortgageValues.key,
+    {}
+  );
   const [personalData] = useSessionStorage(SesionStorageKeys.dataBasicData.key, {});
   const [offices, setOffices] = useState<any>([]);
   const router = useRouter();
@@ -44,8 +54,9 @@ export function CreditDataForm() {
   const termFinance = watch('termFinance', dataForm?.termFinance || 0);
   const office = watch('office', dataForm?.office || 0);
   const stratum = watch('stratum', 0);
-  const amortizationType = watch('amortizationType', "Pesos");
-  const { automationFinanceValue, onSubmit, isValid } = useValidations(
+  const amortizationType = watch('amortizationType', 'Pesos');
+  const houseCity = watch('houseCity', '');
+  const { automationFinanceValue, onSubmit, isValid, isLoading } = useValidations(
     typeHouse,
     houseValue,
     financeValue,
@@ -64,7 +75,8 @@ export function CreditDataForm() {
     errors,
     setCurrentRouting,
     mortgageValues,
-    amortizationType
+    amortizationType,
+    houseCity
   );
   useEffect(() => {
     if (Object.entries(mortgageValues).length === 0) {
@@ -78,6 +90,7 @@ export function CreditDataForm() {
   }, []);
   return (
     <div className="flex flex-col items-center">
+      {isLoading ? <ApplicationLoader /> : null}
       {/* Form When Person chose Hose */}
       <div className="flex flex-col items-center gap-y-[12px] w-full mb-[30px]">
         <div
@@ -117,6 +130,25 @@ export function CreditDataForm() {
             <MenuItem value="used">Usada</MenuItem>
           </ReactHookFormSelect>
         </div>
+        <div className="w-full" data-testid="InputHouseLocation">
+          <Controller
+            control={control}
+            name="houseCity"
+            rules={{ required: true }}
+            defaultValue={undefined}
+            render={({ field: { onChange } }) => (
+              <NewAutoComplete
+                id="houseCity"
+                defaultValue={undefined}
+                placeholder="Ciudad de la vivienda"
+                label="Ciudad de la vivienda"
+                onChange={(e: any) => handlerCity(e, onChange)}
+                zIndex={30}
+              />
+            )}
+          />
+        </div>
+
         <Controller
           render={({ field }) => (
             <Input
@@ -236,11 +268,14 @@ export function CreditDataForm() {
         {/* Card Chose Housing */}
         <div className="cardShadow min-h-[106px] mt-[23px] rounded-xl pt-[24px] pb-[23px] px-[24px] w-full flex flex-col gap-4">
           <div>
-            <span
-              className="w-full font-montserratRegular font-semibold text-primario-900 text-[16px] leading-[18px]"
+            <Typography
+              variant="bodyM3"
+              componentHTML="span"
+              typeFont="Bold"
+              className="w-full  text-primario-900 "
             >
               Elija como continuar el proceso
-            </span>
+            </Typography>
           </div>
           <div className="flex flex-col gap-5">
             <button
@@ -253,9 +288,14 @@ export function CreditDataForm() {
                   <div className="w-[10px] h-[10px] bg-primario-200 rounded-full"> </div>
                 ) : null}
               </div>
-              <span className="font-normal text-primario-900 font-montserratRegular ml-[10px]">
+              <Typography
+                variant="bodyM3"
+                componentHTML="span"
+                typeFont="Regular"
+                className="font-normal text-primario-900 ml-[10px]"
+              >
                 Acercarme a una oficina
-              </span>
+              </Typography>
             </button>
 
             {choseOffice ? (
@@ -265,12 +305,14 @@ export function CreditDataForm() {
                   name="office"
                   defaultValue={undefined}
                   render={({ field: { onChange } }) => (
-                    <AutoCompleteCustom
-                      id="currentCity"
+                    <NewAutoComplete
                       defaultValue={undefined}
                       placeholder="Oficina de preferencia"
                       label="Sucursal"
                       arrayOptions={offices}
+                      getLabelHandler={(option: any) => {
+                        return parseOfficeName(option);
+                      }}
                       onChange={(e: any) => {
                         if (e?.idOffice) {
                           return onChange(e);
@@ -297,33 +339,19 @@ export function CreditDataForm() {
                     </div>
                   ) : null}
                 </div>
-                <span className="font-normal text-primario-900 font-montserratRegular">Recibir visita asesor</span>
+                <Typography
+                  variant="bodyM3"
+                  componentHTML="span"
+                  typeFont="Regular"
+                  className="font-normal text-primario-900 "
+                >
+                  Recibir visita asesor
+                </Typography>
               </button>
             ) : null}
           </div>
         </div>
       </div>
-
-      {/* <button
-        className="flex items-center gap-3 w-full cursor-pointer"
-        onClick={() => setInsuranceCheck(!insuranceCheck)}
-      >
-        <input
-          type="checkbox"
-          tabIndex={0}
-          checked={insuranceCheck}
-          id="insuranceCheck"
-          className="inline-block p-0 m-0 h-[18px] w-[18.6px] min-w-[18.6px]"
-          inputMode="numeric"
-          onChange={(e) => setInsuranceCheck(e.target.checked)}
-        />
-
-        <span className="text-[12px] font-montserratRegular leading-[14px] text-primario-900 text-left cursor-pointer">
-          Deseo incluir en la simulación del crédito el valor de los seguros
-          correspondientes.
-        </span>
-      </button> */}
-
       <Button
         isLanding="w-full md:w-[375px] mx-auto mt-[32px]"
         onClick={onSubmit}

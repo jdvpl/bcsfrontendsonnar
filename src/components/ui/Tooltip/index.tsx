@@ -29,6 +29,9 @@ export function ToolTipInfo({
         data-testid={`btn-tooltip-${id}`}
         id={`btn-tooltip-${id}`}
         type="button"
+        name={`btn-tooltip-${id}`}
+        aria-label={info || 'Más información'}
+        aria-labelledby={`btn-tooltip-${id}`}
         ref={setTriggerRef}
         className={`ml-2  ${absolute ? 'position-absolute top-22' : ''}
         ${className || ''}
@@ -46,8 +49,9 @@ export function ToolTipInfo({
           id={`card-tooltip-${id}`}
           ref={setTooltipRef}
           {...getTooltipProps({
-            className: `tooltip-container max-w-[290px] ${padding ? 'pall-24' : 'pall-15'
-              }`,
+            className: `tooltip-container max-w-[290px] ${
+              padding ? 'pall-24' : 'pall-15'
+            }`,
           })}
         >
           {infohtml}

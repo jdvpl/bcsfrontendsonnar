@@ -4,16 +4,20 @@ import { useMediaQuery } from 'react-responsive';
 import { basePath } from '../../../next.config';
 import ConsultancyTutorial from '../../components/custom/tutorial/ConsultancyTutorial/ConsultancyTutorial';
 import Close from '../../components/svg/Close';
-import LogoBcs from '../../components/svg/LogoBcs';
-import LogoForm from '../../components/svg/LogoForm';
 import { Icons } from '../../components/ui/icons';
 import Stepper from '../../components/ui/Stepper';
 import Typography from '../../components/ui/Typography';
-import { stepperTitles, titleSection } from '../../lib/consultancy';
+import {
+  stepperTitles,
+  titleSection,
+} from '../../components/custom/consultancy/consultancy';
 import useConsultancy from './useConsultancy';
-import TagManager from 'react-gtm-module';
 
-const ConditionalWrapper: FC<any> = ({ condition, wrapper, children }) =>
+import Header from '../../components/ui/Headers/Header';
+import { invokeEvent } from '../../utils';
+import { routes } from '../../routes';
+
+export const ConditionalWrapper: FC<any> = ({ condition, wrapper, children }) =>
   condition ? wrapper(children) : children;
 
 function Consultancy() {
@@ -27,26 +31,24 @@ function Consultancy() {
   });
   const router = useRouter();
 
-  const { nextStep, prevStep, openModal, onCloseModal, renderContent, OptionList } =
-    useConsultancy({
-      actualStep,
-      setActualStep,
-      router,
-      setActiveIndex,
-      activeIndex,
-      setItemActive,
-      isMobile,
-      itemActive,
-    });
+  const { nextStep, prevStep, onCloseModal, renderContent, OptionList } = useConsultancy({
+    actualStep,
+    setActualStep,
+    router,
+    setActiveIndex,
+    activeIndex,
+    setItemActive,
+    isMobile,
+    itemActive,
+  });
+
+  const goHome = () => {
+    invokeEvent('back_home', 'action_funnel');
+    router.push(routes.home);
+  };
+
   useEffect(() => {
-    TagManager.dataLayer({
-      dataLayer: {
-        event: 'load_guide',
-        category: 'load',
-        action: 'load_guide',
-        label: 'load_guide',
-      },
-    });
+    invokeEvent('load_consultancy', 'load_page');
   }, []);
 
   return (
@@ -66,39 +68,30 @@ function Consultancy() {
       ) : null}
 
       {/* Header */}
+      <Header />
       <div className="w-[90%] xs:w-[95%] md:w-[90%] m-auto">
-        <div className="flex justify-between lg:w-[1080px] mx-auto mb-[38px] xs:mt-[36px] md:mt-[64px] lg:mb-[82px] lg:mt-[59px] lg:h-[29px] h-[18px]">
-          <div className="hidden lg:block">
-            <LogoBcs />
-          </div>
-          <div className="lg:hidden cursor-pointer">
-            <a href={basePath}>
-              <Icons icon="bcs-arrow-one-left" />
-            </a>
-          </div>
-          <div className="lg:w-[280px] w-[180px]">
-            <LogoForm />
-          </div>
-        </div>
-
-        <div className="lg:w-[825px] mx-auto md:w-[528px] w-[full] xs:w-full">
+        <div className="lg:w-[825px] mx-auto md:w-[528px] w-[full] xs:w-full lg:mt-[82px] mt-[22px]">
           <Stepper
             steps={4}
             actualStep={actualStep}
             className="lg:w-[684px] md:w-[456px] xs:w-full mx-auto lg:mb-[59px] xs:mb-[36px] md:mb-[53px]"
             title={stepperTitles[actualStep - 1]}
           />
-          <Typography
-            variant="h2"
-            className="lg:w-[445px] leading-[32px] md:w-[445px] sm:w-[303px] w-[303px] mx-auto lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center  font-poppinsSemiBold"
-          >
-            {titleSection[actualStep - 1]}
-          </Typography>
+          <div role="tabpanel" tabIndex={0}>
+            <Typography
+              variant="h2"
+              componentHTML="h2"
+              typeFont="Bold"
+              className="lg:w-[515px] md:w-[445px] sm:w-[303px] w-[303px] mx-auto lg:mb-[36px] xs:mb-[40px] md:mb-[48px] xs:text-[20px] md:text-[28px] text-center"
+            >
+              {titleSection[actualStep - 1]}
+            </Typography>
+          </div>
         </div>
       </div>
 
       {/* Content */}
-      <div className="lg:w-[1127px] md:w-[528px] xs:flex-col md:flex-row w-[95%] xs:w-[95%] lg:gap-x-[120px] gap-x-[34px] mx-auto flex items-center mb-[77px]">
+      <div className="lg:w-[1127px] md:w-[528px] xs:flex-col md:flex-row w-[95%] xs:w-[95%] lg:gap-x-[120px] gap-x-[34px] mx-auto flex items-center mb-[25px]">
         <img
           className="w-[100%] xs:max-w-[340px] xs:h-[180px] md:hidden object-contain"
           src={`${basePath}/images/consultancy/${actualStep}.svg`}
@@ -113,11 +106,9 @@ function Consultancy() {
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'contain',
             backgroundPositionY: 'center',
-            // backgroundPositionX: positionImages(),
           }}
         >
           <OptionList />
-
           {itemActive !== '' ? (
             <div
               onClick={onCloseModal}
@@ -165,15 +156,19 @@ function Consultancy() {
               data-testid="prevTutorialStep"
               ref={prevTutorialStepRef}
               onClick={prevStep}
-              className="md:order-1 cursor-pointer  flex xs:gap-x-3 items-center xs:justify-center xs:flex-row md:flex-col lg:w-[150px]"
+              className="md:order-1 cursor-pointer flex xs:gap-x-3 items-center xs:justify-center xs:flex-row md:flex-col lg:w-[150px]"
+              role="tabpanel"
+              tabIndex={0}
+              title={actualStep === 1 ? 'Volver al Inicio' : 'Anterior'}
             >
-              <div className="rounded-full xs:w-[24px] md:w-[40px] xs:h-[24px] md:h-[40px] border-primario-20 flex justify-center items-center border-2 md:mb-[33px]">
+              <div className="rounded-full xs:w-[24px] md:w-[40px] xs:h-[24px] md:h-[40px] border-primario-300 flex justify-center items-center border md:mb-[33px]">
                 <Icons
-                  icon="bcs-arrow-two-left"
-                  iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-20"
+                  icon="bcs-icon-1506"
+                  iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
+                  title={actualStep === 1 ? 'Volver al Inicio' : 'Anterior'}
                 />
               </div>
-              <a className="text-primario-100 font-bold font-montserratRegular text-center text-[14px] ">
+              <a className="text-primario-300 font-bold font-montserratRegular text-center text-[14px] ">
                 {actualStep === 1 ? 'Volver al Inicio' : 'Anterior'}
               </a>
             </div>
@@ -181,15 +176,19 @@ function Consultancy() {
             <div
               ref={nextTutorialStepRef}
               onClick={nextStep}
-              className="md:order-3 cursor-pointer  flex xs:gap-x-3 items-center flex-row md:flex-col lg:w-[150px]"
+              className="md:order-3 cursor-pointer flex xs:gap-x-3 items-center flex-row md:flex-col lg:w-[150px]"
+              role="tabpanel"
+              tabIndex={0}
+              title={actualStep === 4 ? 'Salir' : 'Siguiente'}
             >
-              <div className="rounded-full xs:w-[24px] md:w-[40px] md:order-1 xs:order-2 xs:h-[24px] md:h-[40px] border-primario-20 flex justify-center items-center border-2 md:mb-[33px]">
+              <div className="rounded-full xs:w-[24px] md:w-[40px] md:order-1 xs:order-2 xs:h-[24px] md:h-[40px] border-primario-300 flex justify-center items-center border md:mb-[33px]">
                 <Icons
-                  icon="bcs-arrow-two-right"
-                  iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-20"
+                  icon="bcs-icon-337"
+                  iconclassNames="md:text-[18px] xs:text-[10px] font-bold text-primario-300"
+                  title={actualStep === 4 ? 'Salir' : 'Siguiente'}
                 />
               </div>
-              <a className=" text-primario-100 font-montserratRegular  md:order-2 xs:order-1 font-bold text-center text-[14px]">
+              <a className=" text-primario-300 font-montserratRegular  md:order-2 xs:order-1 font-bold text-center text-[14px]">
                 {actualStep === 4 ? 'Salir' : 'Siguiente'}
               </a>
             </div>
@@ -205,16 +204,20 @@ function Consultancy() {
 
       {/* Link to Home */}
       <div
-        className={`w-full text-center mb-[80px] xs:hidden md:block${
+        className={`cursor-pointer w-full text-center mb-[80px] xs:hidden md:block${
           actualStep === 1 || actualStep === 4 ? 'hidden' : ''
         }`}
       >
-        <a
+        <Typography
+          variant="bodyM3"
+          componentHTML="a"
+          typeFont="Bold"
           href={`${basePath}`}
-          className=" text-primario-100 font-montserratRegular font-bold text-[14px]"
+          className=" text-primario-100 "
+          onClick={goHome}
         >
           Volver al inicio
-        </a>
+        </Typography>
       </div>
     </>
   );

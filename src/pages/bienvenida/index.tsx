@@ -1,65 +1,77 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { basePath } from '../../../next.config';
 import Typography from '../../components/ui/Typography';
-import Button from '../../components/ui/Button'
+import Button from '../../components/ui/Button';
 import { routes } from '../../routes';
 import Header from '../../components/ui/Headers/Header';
-import TagManager from 'react-gtm-module';
+import { invokeEvent } from '../../utils';
 
 function Bienvenida() {
   const router = useRouter();
-  useEffect(() => {
-    TagManager.dataLayer({
-      dataLayer: {
-        event: 'load_onboarding',
-        category: 'load_page',
-        action: 'load_onboarding',
-        label: 'load_onboarding',
-      },
-    });
 
-  }, []
-  );
+  useEffect(() => {
+    invokeEvent('load_welcome', 'load_page');
+  }, []);
+
+  const startProcess = () => {
+    router.push(routes.startProccess);
+    invokeEvent('go_to_got_request_from_welcome', 'action_funnel');
+  };
+
   return (
     <div>
       <Header />
       <div className="m-auto lg:w-[528px]">
         <div className="mt-20 lg:h-[300px] md:w-[292px] md:h-[300px] sm:w-[195px] sm:h-[200px] xs:h-[200px] xs:w-[195px] m-auto ">
-          <img src={`${basePath}/images/onboarding.svg`} alt="" />
+          <img
+            src={`${basePath}/images/onboarding.svg`}
+            alt="Imagen de inicio de asesoría en el Crédito Hipotecario "
+            title="Imagen de inicio de asesoría en el Crédito Hipotecario"
+          />
         </div>
-        <Typography variant='h3' className='text-center mt-[52px] text-primario-900 text-[24px] font-semibold font-poppinsSemiBold  '>
-          Cumpla su sueño {""}
+        <Typography
+          componentHTML="h3"
+          variant="h3"
+          typeFont="Bold"
+          className="text-center mt-[52px] text-primario-900"
+        >
+          Cumpla su sueño {''}
           <span className="md:block sm:block xs:block lg:inline">
             de comprar vivienda
           </span>
         </Typography>
-        <Typography variant='h4' className='text-center lg:mt-10 md:mt-3 text-primario-900 text-[18px] font-bold mt-3 sm:font-semibold xs:font-semibold font-montserratSemiBold'>Requisitos de solicitud:</Typography>
-        <div className="listInitial flex justify-center font-monserratLight text-[18px] text-primario-900">
-          <ul className='md:mt-3'>
-            <li className='mt-3'>Tener entre 18 y 70 años</li>
+        <Typography variant='bodyM2' componentHTML='div' typeFont='Light' className="listInitial flex justify-center  text-[18px] text-primario-900">
+          <ul className='mt-6'>
+            <Typography variant='h4' componentHTML='p' typeFont='Bold' className='lg:text-left text-center text-primario-900 lg:mt-0'>Requisitos de solicitud:</Typography>
+            <li className='mt-5'>Tener entre 18 y 70 años</li>
             <li className='mt-3'>Ser asalariado o pensionado</li>
             <li className='mt-3'>Estar al día con sus pagos</li>
             <li className='mt-3'>Pagar salud y pensión</li>
-            <li className='mt-3'>Solicitar como único titular</li>
+            <li className='mt-3'>Solicitar individualmente</li>
+            <li className='mt-3'>No aplican subsidios del gobierno</li>
           </ul>
-        </div>
+        </Typography>
         <div className="flex justify-center mt-8 mb-11 ">
-          <Button
-            isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] "
-            type="submit"
-            name="abrirCuenta"
-            data-testid="btnOnboardingtest"
-            onClick={() => router.push(routes.startProccess)}
-            id="btn-next"
-            className='font-montserratMedium'
-          >
-            Iniciar solicitud
-          </Button>
+          <div className="flex justify-center mt-8 mb-11 ">
+            <Button
+              isLanding="w-full xs:w-[288px] sm:w-[343px]  md:w-[343px] lg:w-[375px] "
+              type="submit"
+              name="abrirCuenta"
+              data-testid="btnOnboardingtest"
+              onClick={startProcess}
+              id="btn-next"
+              title="Iniciar solicitud"
+            >
+              <Typography variant="bodyM3" typeFont="Bold" componentHTML="span">
+                Iniciar solicitud
+              </Typography>
+            </Button>
+          </div>
         </div>
       </div>
-    </div >
-  )
+    </div>
+  );
 }
 
-export default Bienvenida
+export default Bienvenida;

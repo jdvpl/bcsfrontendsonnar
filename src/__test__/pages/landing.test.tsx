@@ -8,7 +8,12 @@ import { routes } from '../../routes';
 
 describe('Landing page testing', () => {
   test('should render "Politicas" successfully', () => {
-    const { baseElement } = render(<Home />);
+    const router = createMockRouter({});
+    const { baseElement } =render(
+      <RouterContext.Provider value={router}>
+        <Home />
+      </RouterContext.Provider>
+    );
     expect(baseElement).toBeTruthy();
   });
   test('should goTo consultancy page', async () => {
@@ -34,7 +39,6 @@ describe('Landing page testing', () => {
     expect(router.push).toHaveBeenCalledWith(routes.simulador);
   })
   test('should goTo onboarding page', async () => {
-
     const router = createMockRouter({});
     render(
       <RouterContext.Provider value={router}>
