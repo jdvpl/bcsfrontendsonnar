@@ -281,7 +281,7 @@ describe('clearSessionStorage', () => {
   });
 
   it('should return hasAdviser and nameAdviser properties as null for invalid id', () => {
-    const id = '8560';
+    const id = '08560';
     const expectedOutput = {
       hasAdviser: true,
       nameAdviser: 'PATRICIA CRESPO',
